@@ -6,14 +6,14 @@
 		<view class="item">
 			<input type="password" placeholder="请输入密码" @input="getLoginPaw" />
 			<view class="forget">
-				<text @tap="goForgetPassword">忘记密码</text>
+				<text @tap="forgetPassword">忘记密码</text>
 			</view>
 		</view>
 		<view class="item">
 			<view class="submit" @tap="login">登录</view>
 		</view>
 		<view class="item">
-			<view class="registered" @tap="goRegistered">注册</view>
+			<view class="registered" @tap="registered">注册</view>
 		</view>
 	</view>
 </template>
@@ -29,31 +29,16 @@
 			console.log(this.title)
 		},
 		methods: {
-			// 获取登录名
 			getLoginName(e) {
 				this.loginName = e.detail.value
 				console.log(this.loginName)
+				
 			},
-			// 获取密码
 			getLoginPaw(e) {
 				this.loginPaw = e.detail.value
 				console.log(this.loginPaw)
-			},
-			// 进入忘记密码页
-			goForgetPassword() {
-				console.log(1111)
-				uni.navigateTo({
-					url: '../forgetPassword/forgetPassword'
-				});
-			},
-			// 进入注册页
-			goRegistered() {
-				uni.navigateTo({
-					url: `../registered/registered`
-				});
 			}
-		},
-		
+		}
 	}
 </script>
 

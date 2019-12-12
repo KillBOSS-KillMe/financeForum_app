@@ -1,3 +1,4 @@
+
 // customData = {}  // 自定义数据
 // customFunction ()　{}  // 自定义方法
 // onLoad () {}  // 在Page和Component共用的生命周期函数
@@ -20,11 +21,26 @@
 // });
 // this.$navigate(url)
 
+// 阴影边框
+// box-shadow: #f1fefb 1rpx 1rpx 10rpx 5rpx;
 
-// 水平垂直居中
+// flexflexflexflexflexflexflexflex
 // display: flex;
 // align-items: center;
-// justify-content: center;
+// justify-content: space-between;
+// 竖向
+// display: flex;
+// align-items: center;
+// justify-content: space-between;
+// flex-direction: column;
+// 换行
+// display: flex;
+// align-items: center;
+// justify-content: space-between;
+// flex-direction: row;
+// flex-wrap: wrap;
+
+
 
 // 居右
 // flex-direction:row;
@@ -32,16 +48,21 @@
 
 // vertical-align:middle;
 
-// overflow:hidden;
-// text-overflow:ellipsis;
-// white-space:nowrap;
 
 // 自动换行
 // word-break:break-all;
 
+// 单行文本溢出
 // overflow:hidden;
 // text-overflow:ellipsis;
 // white-space:nowrap;
+
+// 多行文本溢出
+<!-- -webkit-line-clamp: 2;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis; -->
 
 <script>
 	export default {

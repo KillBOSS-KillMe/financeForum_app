@@ -131,7 +131,18 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -148,9 +159,33 @@ var _default =
 
   },
   onLoad: function onLoad() {
-
+    console.log(this.title);
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    // 获取登录名
+    getLoginName: function getLoginName(e) {
+      this.loginName = e.detail.value;
+      console.log(this.loginName);
+    },
+    // 获取密码
+    getLoginPaw: function getLoginPaw(e) {
+      this.loginPaw = e.detail.value;
+      console.log(this.loginPaw);
+    },
+    // 进入忘记密码页
+    goForgetPassword: function goForgetPassword() {
+      console.log(1111);
+      uni.navigateTo({
+        url: '../forgetPassword/forgetPassword' });
+
+    },
+    // 进入注册页
+    goRegistered: function goRegistered() {
+      uni.navigateTo({
+        url: "../registered/registered" });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 21 */
