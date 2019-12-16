@@ -24,7 +24,7 @@
 				"navigationBarTitleText": "新微金论坛"
 			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

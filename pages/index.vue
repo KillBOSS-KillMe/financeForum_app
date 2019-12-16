@@ -1,8 +1,9 @@
 <template>
 	<view class="index">
+		<pageSearch></pageSearch>
 		<!-- 轮播 -->
 		<view class="page-section-spacing banner">
-			<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff" :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item  v-for="(item,index) in bannerList" :key="index">
 					<image class="bannerImg" :src="item.img" mode="aspectFill"></image>
 				</swiper-item>
@@ -41,6 +42,7 @@
 </template>
 
 <script>
+
 export default {
 	data() {
 		return {
