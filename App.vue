@@ -79,6 +79,13 @@ text-overflow: ellipsis; -->
 </script>
 
 <style>
+	.line{
+		width: 750rpx;
+		height: 6rpx;
+		background: #2390DC;
+	}
+	
+	
 	/*每个页面公共css */
 	@font-face {font-family: "iconfont";
 	  src: url('//at.alicdn.com/t/font_1566333_h1ojde4vym.eot?t=1576488644039'); /* IE9 */

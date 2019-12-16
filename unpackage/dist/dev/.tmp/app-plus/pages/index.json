@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "登录",
-  "usingComponents": {}
+  "navigationBarTitleText": "新微金论坛",
+  "usingComponents": {
+    "page-search": "/components/pageSearch"
+  }
 }

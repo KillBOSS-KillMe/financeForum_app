@@ -1,14 +1,56 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/registered/registered",
-    "pages/forgetPassword/forgetPassword"
+    "pages/login",
+    "pages/registered",
+    "pages/forgetPassword",
+    "pages/index",
+    "pages/collection",
+    "pages/apply",
+    "pages/exchang",
+    "pages/me"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "deepskyblue",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index",
+        "text": "首页",
+        "iconPath": "./static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/indexed.png"
+      },
+      {
+        "pagePath": "pages/collection",
+        "text": "干货汇总",
+        "iconPath": "static/tabbar/news.png",
+        "selectedIconPath": "static/tabbar/newsed.png"
+      },
+      {
+        "pagePath": "pages/apply",
+        "text": "系统应用",
+        "iconPath": "static/tabbar/paper.png",
+        "selectedIconPath": "static/tabbar/papered.png"
+      },
+      {
+        "pagePath": "pages/exchang",
+        "text": "微金交流",
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/myed.png"
+      },
+      {
+        "pagePath": "pages/me",
+        "text": "个人中心",
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/myed.png"
+      }
+    ]
   },
   "nvueCompiler": "uni-app",
   "renderer": "auto",
@@ -17,6 +59,8 @@
     "autoclose": false
   },
   "appname": "financeForum_app",
-  "compilerVersion": "2.3.3",
-  "usingComponents": {}
+  "compilerVersion": "2.4.6",
+  "usingComponents": {
+    "page-search": "/components/pageSearch"
+  }
 }

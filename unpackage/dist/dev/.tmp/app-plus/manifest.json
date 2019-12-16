@@ -24,7 +24,7 @@
   },
   "plus": {
     "useragent": {
-      "value": "uni-app appservice",
+      "value": "uni-app",
       "concatenate": true
     },
     "splashscreen": {
@@ -35,9 +35,9 @@
     },
     "popGesture": "close",
     "launchwebview": {
-      "render": "always",
       "id": "1",
-      "kernel": "WKWebview"
+      "kernel": "WKWebview",
+      "uni-app": "auto"
     },
     "statusbar": {
       "immersed": "supportedDevice",
@@ -84,14 +84,59 @@
     },
     "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
     "allowsInlineMediaPlayback": true,
+    "safearea": {
+      "background": "#FFFFFF",
+      "bottom": {
+        "offset": "auto"
+      }
+    },
     "uni-app": {
-      "compilerVersion": "2.3.3",
+      "compilerVersion": "2.4.6",
       "control": "v8",
       "nvueCompiler": "uni-app",
       "renderer": "auto",
       "nvue": {
         "flex-direction": "column"
       }
+    },
+    "tabBar": {
+      "color": "#333",
+      "selectedColor": "deepskyblue",
+      "backgroundColor": "#FFFFFF",
+      "list": [
+        {
+          "pagePath": "pages/index",
+          "text": "首页",
+          "iconPath": "./static/tabbar/index.png",
+          "selectedIconPath": "static/tabbar/indexed.png"
+        },
+        {
+          "pagePath": "pages/collection",
+          "text": "干货汇总",
+          "iconPath": "static/tabbar/news.png",
+          "selectedIconPath": "static/tabbar/newsed.png"
+        },
+        {
+          "pagePath": "pages/apply",
+          "text": "系统应用",
+          "iconPath": "static/tabbar/paper.png",
+          "selectedIconPath": "static/tabbar/papered.png"
+        },
+        {
+          "pagePath": "pages/exchang",
+          "text": "微金交流",
+          "iconPath": "static/tabbar/my.png",
+          "selectedIconPath": "static/tabbar/myed.png"
+        },
+        {
+          "pagePath": "pages/me",
+          "text": "个人中心",
+          "iconPath": "static/tabbar/my.png",
+          "selectedIconPath": "static/tabbar/myed.png"
+        }
+      ],
+      "borderStyle": "rgba(0,0,0,0.4)",
+      "height": "50px"
     }
   }
 }
