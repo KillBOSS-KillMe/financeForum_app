@@ -12,6 +12,7 @@
 				</block>
 			</view>
 		</view>
+		<view class="line"></view>
 		<view class="collection">
 			<text class="title">信用卡工具</text>
 			<view class="collectionList">
@@ -23,6 +24,7 @@
 				</block>
 			</view>
 		</view>
+		<view class="line"></view>
 		<view class="collection">
 			<text class="title">微金工具</text>
 			<view class="collectionList">
@@ -106,5 +108,10 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+.line{
+	width: 750rpx;
+	background: #F9F9F9;
+	height: 6rpx;
 }
 </style>
