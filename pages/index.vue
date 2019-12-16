@@ -42,7 +42,6 @@
 </template>
 
 <script>
-
 export default {
 	data() {
 		return {
@@ -106,6 +105,7 @@ export default {
 }
 .bannerImg{
 	width: 690rpx;
+
 }
 .nav{
 	width: 690rpx;
@@ -115,7 +115,6 @@ export default {
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	border-bottom:12rpx solid #f9f9f9;
-	/* border-bottom:12rpx solid #ccc; */
 }
 .nav .navList{
 	width:116rpx;
