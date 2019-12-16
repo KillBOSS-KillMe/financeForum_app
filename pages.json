@@ -1,21 +1,27 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/login",
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
 		},
 		{
-			"path": "pages/registered/registered",
+			"path": "pages/registered",
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
 		},
 		{
-			"path": "pages/forgetPassword/forgetPassword",
+			"path": "pages/forgetPassword",
 			"style": {
 				"navigationBarTitleText": "修改密码"
+			}
+		},
+		{
+			"path": "pages/index",
+			"style": {
+				"navigationBarTitleText": "新微金论坛"
 			}
 		}
 	],
@@ -32,6 +38,44 @@
 				"name": "", //模式名称
 				"path": "", //启动页面，必选
 				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	},
+	"tabBar":{
+		"color":"#333",
+		"selectedColor":"deepskyblue",
+		"backgroundColor":"#eee",
+		"borderStyle":"black",
+		"list":[
+			{
+				"pagePath":"pages/index",
+				"text":"首页",
+				"iconPath":"./static/tabbar/index.png",
+				"selectedIconPath":"static/tabbar/indexed.png"
+			},
+			{
+				"pagePath":"pages/news",
+				"text":"干货汇总",
+				"iconPath":"static/tabbar/news.png",
+				"selectedIconPath":"static/tabbar/newsed.png"
+			},
+			{
+				"pagePath":"pages/paper",
+				"text":"系统应用",
+				"iconPath":"static/tabbar/paper.png",
+				"selectedIconPath":"static/tabbar/papered.png"
+			},
+			{
+				"pagePath":"pages/my",
+				"text":"微金交流",
+				"iconPath":"static/tabbar/my.png",
+				"selectedIconPath":"static/tabbar/myed.png"
+			},
+			{
+				"pagePath":"pages/my",
+				"text":"个人中心",
+				"iconPath":"static/tabbar/my.png",
+				"selectedIconPath":"static/tabbar/myed.png"
 			}
 		]
 	}
