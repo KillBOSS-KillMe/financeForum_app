@@ -23,6 +23,30 @@
 			"style": {
 				"navigationBarTitleText": "新微金论坛"
 			}
+		},
+		{
+			"path": "pages/collection",
+			"style": {
+				"navigationBarTitleText": "干货汇总"
+			}
+		},
+		{
+			"path": "pages/apply",
+			"style": {
+				"navigationBarTitleText": "系统应用"
+			}
+		},
+		{
+			"path": "pages/exchang",
+			"style": {
+				"navigationBarTitleText": "微金交流"
+			}
+		},
+		{
+			"path": "pages/me",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
 		}
     ],
 	"globalStyle": {
@@ -54,25 +78,25 @@
 				"selectedIconPath":"static/tabbar/indexed.png"
 			},
 			{
-				"pagePath":"pages/news",
+				"pagePath":"pages/collection",
 				"text":"干货汇总",
 				"iconPath":"static/tabbar/news.png",
 				"selectedIconPath":"static/tabbar/newsed.png"
 			},
 			{
-				"pagePath":"pages/paper",
+				"pagePath":"pages/apply",
 				"text":"系统应用",
 				"iconPath":"static/tabbar/paper.png",
 				"selectedIconPath":"static/tabbar/papered.png"
 			},
 			{
-				"pagePath":"pages/my",
+				"pagePath":"pages/exchang",
 				"text":"微金交流",
 				"iconPath":"static/tabbar/my.png",
 				"selectedIconPath":"static/tabbar/myed.png"
 			},
 			{
-				"pagePath":"pages/my",
+				"pagePath":"pages/me",
 				"text":"个人中心",
 				"iconPath":"static/tabbar/my.png",
 				"selectedIconPath":"static/tabbar/myed.png"
