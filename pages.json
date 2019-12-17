@@ -59,6 +59,25 @@
             "style" : {
 				"navigationBarTitleText": "查询工具"
 			}
+        },
+		{
+            "path" : "pages/post",
+            "style" : {
+				"navigationBarTitleText": "发帖"
+			}
+        },
+		// 实战心得-选择模块
+		{
+            "path" : "pages/experience",
+            "style" : {
+				"navigationBarTitleText": "选择模块"
+			}
+        },
+		{
+            "path" : "pages/productSupermarket",
+            "style" : {
+				"navigationBarTitleText": "产品超市"
+			}
         }
     ],
 	"globalStyle": {
