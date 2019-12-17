@@ -20,7 +20,7 @@
 		</view>
 		<!-- 数据列表 -->
 		<view class="content">
-			 <view class="inv-h-w">
+			<view class="inv-h-w">
 				<view :class="['inv-h',Inv==0?'inv-h-se':'']" @tap="Inv=0">最新产品解析</view>
 				<view :class="['inv-h',Inv==1?'inv-h-se':'']" @tap="Inv=1">办卡提额技术</view>
 			</view>

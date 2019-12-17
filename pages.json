@@ -78,6 +78,25 @@
             "style" : {
 				"navigationBarTitleText": "产品超市"
 			}
+        },
+		//用户认证
+		{
+            "path" : "pages/meMessage",
+            "style" : {
+				"navigationBarTitleText": "我的消息"
+			}
+        },
+        {
+            "path" : "pages/userInfo",
+            "style" : {
+				"navigationBarTitleText": "个人信息"
+			}
+        },
+		{
+            "path" : "pages/myDraft",
+            "style" : {
+				"navigationBarTitleText": "我的草稿"
+			}
         }
     ],
 	"globalStyle": {
