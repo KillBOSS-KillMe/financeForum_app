@@ -47,7 +47,19 @@
 			"style": {
 				"navigationBarTitleText": "个人中心"
 			}
-		}
+		},
+		{
+            "path" : "pages/articleDetail",
+            "style" : {
+				"navigationBarTitleText": "文章详情"
+			}
+        },
+        {
+            "path" : "pages/queryTool",
+            "style" : {
+				"navigationBarTitleText": "查询工具"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -221,6 +221,10 @@
 	justify-content: space-between;
 	margin-bottom: 20rpx;
 }
+.me .contentList .item .left{
+	display: flex;
+	/* justify-content: space-between; */
+}
 .me .contentList .item .left text{
 	font-size: 30rpx;
 	font-weight: 600;
@@ -233,5 +237,6 @@
 .cur{
 	color: #333333;
 	font-size: 30rpx;
+	display: inline-block;
 }
 </style>
