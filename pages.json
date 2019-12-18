@@ -97,6 +97,12 @@
             "style" : {
 				"navigationBarTitleText": "我的草稿"
 			}
+        },
+        {
+            "path" : "pages/meSetting",
+            "style" : {
+				"navigationBarTitleText": "个人设置"
+			}
         }
     ],
 	"globalStyle": {

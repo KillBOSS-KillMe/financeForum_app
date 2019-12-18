@@ -1,6 +1,9 @@
 <template>
 	<view class="myDraft">
-		
+		<view class="myDraftList">
+			
+		</view>
+		<button type="primary"></button>
 	</view>
 </template>
 
