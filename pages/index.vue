@@ -36,6 +36,7 @@
 						</view>
 					</view>
 				</view>
+				<uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more>
 			</view>
 		</view>
 	</view>

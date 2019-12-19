@@ -103,6 +103,12 @@
             "style" : {
 				"navigationBarTitleText": "个人设置"
 			}
+        },
+		{
+            "path" : "pages/joinMember",
+            "style" : {
+				"navigationBarTitleText": "加入会员"
+			}
         }
     ],
 	"globalStyle": {
