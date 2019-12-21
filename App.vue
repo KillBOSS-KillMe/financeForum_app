@@ -74,6 +74,9 @@ text-overflow: ellipsis; -->
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		globalData:{
+			requestUrl: 'http://www.finance.cc/api',
 		}
 	}
 </script>

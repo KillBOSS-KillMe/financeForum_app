@@ -122,7 +122,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
 //
 //
 //
@@ -146,7 +149,17 @@ var _default =
 {
   data: function data() {
     return {
-      title: 'Hello' };
+      title: 'Hello',
+      disabled: false,
+      currentTime: 60, // 倒计时初始值
+      time: '获取验证码',
+      formNode: {
+        mobile: '', // 手机号
+        code: '', // 验证码
+        password: '', //密码
+        verification_key: '', //
+        password1: '' } };
+
 
   },
   onLoad: function onLoad() {
@@ -154,14 +167,156 @@ var _default =
   },
   methods: {
     getLoginName: function getLoginName(e) {
-      this.loginName = e.detail.value;
-      console.log(this.loginName);
+      var formNode = this.formNode;
+      var name = e.currentTarget.dataset.name;
+      var value = e.detail.value;
+      formNode[name] = value;
+      this.formNode = formNode;
+      // this.loginName = e.detail.value
+      console.log(this.formNode);
 
     },
-    getLoginPaw: function getLoginPaw(e) {
-      this.loginPaw = e.detail.value;
-      console.log(this.loginPaw);
+    // 获取验证码
+    getCode: function getCode() {var _this = this;
+      if (this.disabled) {
+        return false;
+      }
+      if (this.formNode.mobile == '') {
+        wx.showToast({
+          title: "请输入手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.mobile.length != 11) {
+        wx.showToast({
+          title: "请输入正确的手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      uni.showToast({
+        title: "请求发送中...",
+        icon: 'loading',
+        duration: 1000 });
+
+      this.disabled = true;
+      console.log(getApp().globalData.requestUrl);
+      uni.request({
+        url: "".concat(getApp().globalData.requestUrl, "/send_sms"), //仅为示例，并非真实接口地址。
+        method: 'POST',
+        data: {
+          mobile: this.formNode.mobile },
+
+        success: function success(res) {
+          console.log(res);
+          if (res.statusCode == 200) {
+            _this.formNode.verification_key = res.data.key;
+            _this.countdown();
+          } else {
+            uni.showToast({
+              title: "手机号有误" });
+
+          }
+
+        } });
+
+    },
+    //倒计时
+    countdown: function countdown() {var _this2 = this;
+      var currentTime = this.currentTime;
+      this.time = "\u5012\u8BA1\u65F6".concat(currentTime, "\u79D2");
+      var interval = setInterval(function () {
+        _this2.time = '倒计时' + (currentTime - 1) + '秒';
+        currentTime--;
+        if (currentTime <= 0) {
+          clearInterval(interval);
+          _this2.time = '重新获取';
+          _this2.currentTime = 60;
+          _this2.disabled = false;
+        }
+      }, 1000);
+    },
+    //立即注册
+    login: function login() {
+      if (this.formNode.mobile == '') {
+        wx.showToast({
+          title: "请输入手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.mobile.length != 11) {
+        wx.showToast({
+          title: "请输入正确的手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.code == '') {
+        wx.showToast({
+          title: "请输入验证码",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.password == '') {
+        wx.showToast({
+          title: "请输入密码",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.password1 == '') {
+        wx.showToast({
+          title: "请确认密码",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.password != this.formNode.password1) {
+        wx.showToast({
+          title: "请输入密码一致",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      uni.showToast({
+        title: "注册中...",
+        icon: 'loading',
+        duration: 1000 });
+
+      uni.request({
+        url: "".concat(getApp().globalData.requestUrl, "/register"), //仅为示例，并非真实接口地址。
+        method: 'POST',
+        data: this.formNode,
+        success: function success(res) {
+          console.log(res);
+          if (res.data.status_code == 1) {
+            uni.showToast({
+              title: res.data.message });
+
+            uni.reLaunch({
+              url: './index' });
+
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

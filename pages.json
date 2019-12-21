@@ -15,7 +15,7 @@
 		{
 			"path": "pages/forgetPassword",
 			"style": {
-				"navigationBarTitleText": "修改密码"
+				"navigationBarTitleText": "找回密码"
 			}
 		},
 		{
@@ -108,6 +108,12 @@
             "path" : "pages/joinMember",
             "style" : {
 				"navigationBarTitleText": "加入会员"
+			}
+        },
+        {
+            "path" : "pages/contactCustomer",
+            "style" : {
+				"navigationBarTitleText": "联系客服"
 			}
         }
     ],

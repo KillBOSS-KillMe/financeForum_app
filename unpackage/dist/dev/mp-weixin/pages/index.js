@@ -175,6 +175,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -221,6 +224,14 @@ var _default =
     //
     changeTab: function changeTab(Inv) {
       that.navIdx = Inv;
+    },
+    // 轮播跳转
+    goBanner: function goBanner(e) {
+      console.log(e);
+    },
+    // 文章详情
+    goDetail: function goDetail(e) {
+      console.log(e);
     } } };exports.default = _default;
 
 /***/ }),

@@ -169,7 +169,9 @@ var _default =
   },
   onHide: function onHide() {
     console.log('App Hide');
-  } };exports.default = _default;
+  },
+  globalData: {
+    requestUrl: 'http://www.finance.cc/api' } };exports.default = _default;
 
 /***/ }),
 /* 12 */

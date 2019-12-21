@@ -4,19 +4,22 @@
 			<input type="text" placeholder="请输入用户名/手机号" @input="getLoginName" />
 		</view>
 		<view class="item">
-			<input type="text" placeholder="请输入用户名/手机号" @input="getLoginName" />
-		</view>
-		<view class="item">
-			<input type="password" placeholder="请输入密码" @input="getLoginPaw" />
-			<view class="forget">
-				<text @tap="forgetPassword">忘记密码</text>
+			<input type="number" style="width: 400rpx;" placeholder="请输入验证码" @input="getLoginName" />
+			<view class="getCode">
+				<text @tap="getCode">获取验证码</text>
 			</view>
 		</view>
 		<view class="item">
-			<view class="submit" @tap="login">确定</view>
+			<input type="password" placeholder="请输入密码" @input="getLoginPaw" />
+			<!-- <view class="forget">
+				<text @tap="forgetPassword">忘记密码</text>
+			</view> -->
 		</view>
 		<view class="item">
-			<view class="registered" @tap="registered">注册</view>
+			<input type="password" placeholder="请再次输入密码" @input="getLoginName" />
+		</view>
+		<view class="item">
+			<view class="submit" @tap="login">确定</view>
 		</view>
 	</view>
 </template>
@@ -56,24 +59,33 @@
 	.item{
 		width: 670rpx;
 		height: auto;
-		padding: 40rpx;
+		padding:0 40rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		align-content: center;
 	}
 	input{
 		width: 630rpx;
 		height: 80rpx;
 		border-radius: 10rpx;
-		background-color: #F8F8F8;
-		color: #333333;
+		border: 1rpx solid #F8F8F8;
+		color: #999999;
 		font-size: 30rpx;
 		padding: 0 20rpx;
+		margin-bottom: 60rpx;
 	}
-	.forget{
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		font-size: 23rpx;
-		color: #999999;
-		padding-top: 20rpx;
+	.getCode{
+		margin-bottom: 60rpx;
+	}
+	.getCode text{
+		color: #2390DC;
+		font-size: 30rpx;
+		border: 1rpx solid #2390DC;
+		height: 78rpx;
+		line-height: 78rpx;
+		border-radius: 10rpx;
+		padding: 0 16rpx;
 	}
 	.submit{
 		display: flex;

@@ -17,7 +17,8 @@
     "pages/userInfo",
     "pages/myDraft",
     "pages/meSetting",
-    "pages/joinMember"
+    "pages/joinMember",
+    "pages/contactCustomer"
   ],
   "subPackages": [],
   "window": {

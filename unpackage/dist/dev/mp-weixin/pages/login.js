@@ -176,13 +176,13 @@ var _default =
     goForgetPassword: function goForgetPassword() {
       console.log(1111);
       uni.navigateTo({
-        url: '../forgetPassword/forgetPassword' });
+        url: '/pages/forgetPassword' });
 
     },
     // 进入注册页
     goRegistered: function goRegistered() {
       uni.navigateTo({
-        url: "../registered/registered" });
+        url: "/pages/registered" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
