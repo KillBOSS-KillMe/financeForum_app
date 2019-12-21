@@ -87,6 +87,10 @@ text-overflow: ellipsis; -->
 	text{
 		display: block;
 	}
+	uni-tabbar .uni-tabbar__icon{
+		width: 43rpx !important;
+		height: 43rpx !important;
+	}
 	
 @font-face {font-family: "iconfont";
   src: url('//at.alicdn.com/t/font_1566333_f3wj55yjsk.eot?t=1576744990556'); /* IE9 */

@@ -1,0 +1,25 @@
+
+.meSetting{
+	width: 690rpx;
+	padding: 30rpx;
+}
+.meSetting .item{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin-bottom: 30rpx;
+}
+.meSetting .item .left{
+	font-size: 30rpx;
+	font-weight: 600;
+	color: #333333;
+}
+
