@@ -1,4 +1,44 @@
 {
+<<<<<<< HEAD
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.0",
+	"appid": "touristappid",
+	"projectname": "financeForum_app",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"name": "",
+					"path": "",
+					"query": "",
+					"id": 0
+				}
+			]
+		}
+	}
+=======
   "description": "项目配置文件。",
   "packOptions": {
     "ignore": []
@@ -41,4 +81,5 @@
       ]
     }
   }
+>>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 }

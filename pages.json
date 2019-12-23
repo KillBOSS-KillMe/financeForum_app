@@ -49,70 +49,70 @@
 			}
 		},
 		{
-            "path" : "pages/articleDetail",
-            "style" : {
+			"path": "pages/articleDetail",
+			"style": {
 				"navigationBarTitleText": "文章详情"
 			}
-        },
-        {
-            "path" : "pages/queryTool",
-            "style" : {
+		},
+		{
+			"path": "pages/queryTool",
+			"style": {
 				"navigationBarTitleText": "查询工具"
 			}
-        },
+		},
 		{
-            "path" : "pages/post",
-            "style" : {
+			"path": "pages/post",
+			"style": {
 				"navigationBarTitleText": "发帖"
 			}
-        },
+		},
 		// 实战心得-选择模块
 		{
-            "path" : "pages/experience",
-            "style" : {
+			"path": "pages/experience",
+			"style": {
 				"navigationBarTitleText": "选择模块"
 			}
-        },
+		},
 		{
-            "path" : "pages/productSupermarket",
-            "style" : {
+			"path": "pages/productSupermarket",
+			"style": {
 				"navigationBarTitleText": "产品超市"
 			}
-        },
+		},
 		//用户认证
 		{
-            "path" : "pages/meMessage",
-            "style" : {
+			"path": "pages/meMessage",
+			"style": {
 				"navigationBarTitleText": "我的消息"
 			}
-        },
-        {
-            "path" : "pages/userInfo",
-            "style" : {
+		},
+		{
+			"path": "pages/userInfo",
+			"style": {
 				"navigationBarTitleText": "个人信息"
 			}
-        },
+		},
 		{
-            "path" : "pages/myDraft",
-            "style" : {
+			"path": "pages/myDraft",
+			"style": {
 				"navigationBarTitleText": "我的草稿"
 			}
-        },
-        {
-            "path" : "pages/meSetting",
-            "style" : {
+		},
+		{
+			"path": "pages/meSetting",
+			"style": {
 				"navigationBarTitleText": "个人设置"
 			}
-        },
+		},
 		{
-            "path" : "pages/joinMember",
-            "style" : {
+			"path": "pages/joinMember",
+			"style": {
 				"navigationBarTitleText": "加入会员"
 			}
-        },
-        {
-            "path" : "pages/contactCustomer",
-            "style" : {
+		},
+		{
+			"path": "pages/contactCustomer",
+			"style": {
 				"navigationBarTitleText": "联系客服"
 			}
         },
@@ -122,14 +122,14 @@
 				"navigationBarTitleText": "精准匹配"
 			}
         }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8"
 	},
-	"condition" : { //模式配置，仅开发期间生效
+	"condition": { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [
 			{
@@ -139,41 +139,41 @@
 			}
 		]
 	},
-	"tabBar":{
-		"color":"#333",
-		"selectedColor":"#2390DC",
-		"backgroundColor":"#FFFFFF",
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "#2390DC",
+		"backgroundColor": "#FFFFFF",
 		// "borderStyle":"black",
-		"list":[
+		"list": [
 			{
-				"pagePath":"pages/index",
-				"text":"首页",
-				"iconPath":"./static/index.png",
-				"selectedIconPath":"static/indexCur.png"
+				"pagePath": "pages/index",
+				"text": "首页",
+				"iconPath": "./static/index.png",
+				"selectedIconPath": "static/indexCur.png"
 			},
 			{
-				"pagePath":"pages/collection",
-				"text":"干货汇总",
-				"iconPath":"static/gather.png",
-				"selectedIconPath":"static/gatherCur.png"
+				"pagePath": "pages/collection",
+				"text": "干货汇总",
+				"iconPath": "static/gather.png",
+				"selectedIconPath": "static/gatherCur.png"
 			},
 			{
-				"pagePath":"pages/apply",
-				"text":"系统应用",
-				"iconPath":"static/apply.png",
-				"selectedIconPath":"static/applyCur.png"
+				"pagePath": "pages/apply",
+				"text": "系统应用",
+				"iconPath": "static/apply.png",
+				"selectedIconPath": "static/applyCur.png"
 			},
 			{
-				"pagePath":"pages/exchang",
-				"text":"微金交流",
-				"iconPath":"static/exchange.png",
-				"selectedIconPath":"static/exchangeCur.png"
+				"pagePath": "pages/exchang",
+				"text": "微金交流",
+				"iconPath": "static/exchange.png",
+				"selectedIconPath": "static/exchangeCur.png"
 			},
 			{
-				"pagePath":"pages/me",
-				"text":"个人中心",
-				"iconPath":"static/me.png",
-				"selectedIconPath":"static/meCur.png"
+				"pagePath": "pages/me",
+				"text": "个人中心",
+				"iconPath": "static/me.png",
+				"selectedIconPath": "static/meCur.png"
 			}
 		]
 	}

@@ -16,9 +16,13 @@
     "pages/meMessage",
     "pages/userInfo",
     "pages/myDraft",
+<<<<<<< HEAD
+    "pages/meSetting"
+=======
     "pages/meSetting",
     "pages/joinMember",
     "pages/contactCustomer"
+>>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
   ],
   "subPackages": [],
   "window": {
