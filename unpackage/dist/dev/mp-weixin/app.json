@@ -16,7 +16,13 @@
     "pages/meMessage",
     "pages/userInfo",
     "pages/myDraft",
+<<<<<<< HEAD
     "pages/meSetting"
+=======
+    "pages/meSetting",
+    "pages/joinMember",
+    "pages/contactCustomer"
+>>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
   ],
   "subPackages": [],
   "window": {
@@ -27,42 +33,43 @@
   },
   "tabBar": {
     "color": "#333",
-    "selectedColor": "deepskyblue",
+    "selectedColor": "#2390DC",
     "backgroundColor": "#FFFFFF",
     "list": [
       {
         "pagePath": "pages/index",
         "text": "首页",
-        "iconPath": "./static/tabbar/index.png",
-        "selectedIconPath": "static/tabbar/indexed.png"
+        "iconPath": "./static/index.png",
+        "selectedIconPath": "static/indexCur.png"
       },
       {
         "pagePath": "pages/collection",
         "text": "干货汇总",
-        "iconPath": "static/tabbar/news.png",
-        "selectedIconPath": "static/tabbar/newsed.png"
+        "iconPath": "static/gather.png",
+        "selectedIconPath": "static/gatherCur.png"
       },
       {
         "pagePath": "pages/apply",
         "text": "系统应用",
-        "iconPath": "static/tabbar/paper.png",
-        "selectedIconPath": "static/tabbar/papered.png"
+        "iconPath": "static/apply.png",
+        "selectedIconPath": "static/applyCur.png"
       },
       {
         "pagePath": "pages/exchang",
         "text": "微金交流",
-        "iconPath": "static/tabbar/my.png",
-        "selectedIconPath": "static/tabbar/myed.png"
+        "iconPath": "static/exchange.png",
+        "selectedIconPath": "static/exchangeCur.png"
       },
       {
         "pagePath": "pages/me",
         "text": "个人中心",
-        "iconPath": "static/tabbar/my.png",
-        "selectedIconPath": "static/tabbar/myed.png"
+        "iconPath": "static/me.png",
+        "selectedIconPath": "static/meCur.png"
       }
     ]
   },
   "usingComponents": {
-    "page-search": "/components/pageSearch"
+    "page-search": "/components/pageSearch",
+    "uni-load-more": "/components/uni-load-more"
   }
 }

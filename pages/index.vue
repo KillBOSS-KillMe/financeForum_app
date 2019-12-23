@@ -5,7 +5,7 @@
 		<view class="page-section-spacing banner">
 			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff" :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item  v-for="(item,index) in bannerList" :key="index">
-					<image class="bannerImg" :src="item.img" mode="aspectFill"></image>
+					<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -25,17 +25,21 @@
 				<view :class="['inv-h',Inv==1?'inv-h-se':'']" @tap="Inv=1">办卡提额技术</view>
 			</view>
 			<view class="contentList">
-				<view class="item" v-for="(item,index) in list" :key="index">
-					<image :src="item.img" mode="aspectFill"></image>
-					<view class="itemRight">
-						<text class="title">{{item.title}}</text>
-						<view class="itemCon">
-							<text>{{item.time}}</text>
-							<text>{{item.name}}</text>
-							<text>{{item.num}}评</text>
+				<block  v-for="(item,index) in list" :key="index">
+					<view class="item" @tap="goDetail" data-id="item.id">
+						<image :src="item.img" mode="aspectFill"></image>
+						<view class="itemRight">
+							<text class="title">{{item.title}}</text>
+							<view class="itemCon">
+								<text>{{item.time}}</text>
+								<text>{{item.name}}</text>
+								<text>{{item.num}}评</text>
+							</view>
 						</view>
 					</view>
-				</view>
+				</block>
+				
+				<uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more>
 			</view>
 		</view>
 	</view>
@@ -88,6 +92,14 @@ export default {
 		changeTab(Inv){
 			that.navIdx = Inv;
 		},
+		// 轮播跳转
+		goBanner(e) {
+			console.log(e)
+		},
+		// 文章详情
+		goDetail(e) {
+			console.log(e)
+		}
 	}
 };
 </script>

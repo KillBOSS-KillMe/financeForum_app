@@ -15,6 +15,7 @@
 	margin: 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
@@ -23,6 +24,13 @@
 	        justify-content: flex-start;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
+	-webkit-flex-wrap: wrap;
+>>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 	        flex-wrap: wrap;
 }
 .collectionList .item{
@@ -31,6 +39,7 @@
 	margin:0 8rpx 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
@@ -39,6 +48,13 @@
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-flex-wrap: wrap;
+>>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 	        flex-wrap: wrap;
 }
 .collectionList .item:nth-child(5n){
@@ -57,8 +73,12 @@
 	font-weight: 600;
 	margin-top: 16rpx;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 	white-space: nowrap;
 }
 .line{

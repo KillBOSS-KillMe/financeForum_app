@@ -42,7 +42,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconrenzheng"></uni-icon>
 					<text>用户认证</text>
 				</view>
 				<view>
@@ -52,7 +52,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconhuiyuan"></uni-icon>
 					<text>开通会员</text>
 				</view>
 				<view>
@@ -61,7 +61,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconhuiyuan1"></uni-icon>
 					<text>会员区别</text>
 				</view>
 				<view>
@@ -70,7 +70,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconshujuhuizong"></uni-icon>
 					<text>各省产品汇总</text>
 				</view>
 				<view>
@@ -88,7 +88,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon>
 					<text>新手必读</text>
 				</view>
 				<view>
@@ -97,7 +97,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconhongbaoguanli"></uni-icon>
 					<text>推广返佣</text>
 				</view>
 				<view>
@@ -106,7 +106,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconzaixiankefu"></uni-icon>
 					<text>联系客服</text>
 				</view>
 				<view>
@@ -115,7 +115,7 @@
 			</view>
 			<view class="item">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconshezhi"></uni-icon>
 					<text>个人设置</text>
 				</view>
 				<view>
@@ -157,14 +157,14 @@
 	background: #fff;
 	border-radius: 10rpx;
 	height: 200rpx;
-	z-index: 99;
+	z-index: 4;
 	width: 670rpx;
 	box-shadow:0rpx 10rpx 44rpx 4rpx rgba(5,5,5,0.11);
 	margin-top: -70rpx;
 	padding-top: 70rpx;
 }
 .me .meHead .userImg{
-	z-index: 999;
+	z-index: 9;
 	width:144rpx;
 	height:144rpx;
 	border:4rpx solid #FFFFFF;
@@ -223,13 +223,20 @@
 }
 .me .contentList .item .left{
 	display: flex;
-	/* justify-content: space-between; */
+	justify-content: flex-start;
 }
 .me .contentList .item .left text{
 	font-size: 30rpx;
 	font-weight: 600;
 	color: #333333;
+	margin-left: 10rpx;
 	/* width: 200rpx; */
+}
+.me .contentList .item .left icon{
+	color: #C0C0C0;
+	font-size: 40rpx;
+	width: 40rpx;
+	/* background: #007AFF; */
 }
 .me .contentList .item .iconchangyongtubiao-xianxingdaochu-zhuanqu-{
 	color: #C0C0C0;

@@ -43,13 +43,13 @@
 			goForgetPassword() {
 				console.log(1111)
 				uni.navigateTo({
-					url: '../forgetPassword/forgetPassword'
+					url: '/pages/forgetPassword'
 				});
 			},
 			// 进入注册页
 			goRegistered() {
 				uni.navigateTo({
-					url: `../registered/registered`
+					url: `/pages/registered`
 				});
 			}
 		},

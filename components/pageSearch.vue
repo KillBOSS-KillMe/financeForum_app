@@ -1,6 +1,7 @@
 <template>
 	<view class="pageSearch">
-		<image class="code" src="../static/a.jpg" mode=""></image>
+		<uni-icon type="" @tap="goCode" class="iconfont iconsaoyisao"></uni-icon>
+		<!-- <image class="code" src="../static/a.jpg" mode=""></image> -->
 		<view class="searchBox"></view>
 		<image class="service" src="../static/b.jpg" mode=""></image>
 	</view>
@@ -14,7 +15,14 @@
 			}
 		},
 		methods: {
-			
+			goCode(){
+				uni.scanCode({
+				    success:res=> {
+				        console.log('条码类型：' + res.scanType);
+				        console.log('条码内容：' + res.result);
+				    }
+				});
+			}
 		}
 	}
 </script>
@@ -43,5 +51,11 @@
 	height: 70rpx;
 	background: #fff;
 	border-radius: 10rpx;
+}
+.iconsaoyisao{
+	color: #fff;
+	width: 50rpx;
+	height: 50rpx;
+	font-size: 50rpx;
 }
 </style>
