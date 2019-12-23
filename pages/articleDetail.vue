@@ -10,17 +10,27 @@
 						<view class="leftTitleBottom">
 							<text>{{info.type}}</text>
 							<text>{{info.time}}</text>
+							<text class="follow">关注</text>
 						</view>
 					</view>
 				</view>
-				<text class="follow">关注</text>
+				<view class="read">
+					<view>
+						<uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>
+						123
+					</view>
+					<view>
+						<uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>
+						123
+					</view>
+				</view>
 			</view>
 			<rich-text :nodes="nodes"></rich-text>
 			<view class="tip">
 				<text>解析：</text>
 				<view>您还不是<text>VIP会员</text>,本帖隐藏内容仅限VIP会员可见，点击此处开通会员后查看</view>
 			</view>
-			<view class="read"><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>123</view>
+			<!-- <view class="read"><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>123</view> -->
 			<view class="share">
 				<text>分享至</text>
 				<image src="../static/logo.png" mode=""></image>
@@ -32,6 +42,7 @@
 		<view class="reward">
 			<image src="../static/logo.png" mode=""></image>
 			<text>觉得不错，打个赏~</text>
+			<view class="money">2564人已经打赏，共658.21元</view>
 		</view>
 		<view class="line"></view>
 		<view class="comment">
@@ -41,7 +52,14 @@
 					<view class="item">
 						<image :src="item.img" mode=""></image>
 						<view class="right">
-							<text class="rightName">{{item.name}}</text>
+							<view class="itemListHead">
+								<view class="itemListHeadLeft">
+									<text class="rightName">{{item.name}}</text>
+									<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
+									<text class="rightMember">{{item.name}}</text>
+								</view>
+								<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
+							</view>
 							<text class="rightContent">{{item.content}}</text>
 							<view class="rightBottom">
 								<view class="flex">
@@ -113,6 +131,9 @@ export default {
 	align-content: center;
 	align-items: center;
 	margin: 30rpx 0;
+	border-bottom: 1rpx dashed #ECECEC;
+	border-top: 1rpx dashed #ECECEC;
+	padding: 30rpx 0;
 }
 .articleDetail .content .info .left {
 	display: flex;
@@ -135,15 +156,16 @@ export default {
 }
 .articleDetail .content .info .left .leftTitleBottom{
 	display: flex;
+	align-items: flex-end;
 }
 .articleDetail .content .info .left .leftTitleBottom>text{
 	color: #666666;
 	font-size: 24rpx;
 	margin-right: 20rpx;
 }
-.articleDetail .content .info .follow {
+.articleDetail .follow {
 	font-size: 28rpx;
-	color: #fff;
+	color: #fff !important;
 	font-weight: 600;
 	background: #2390dc;
 	width: 98rpx;
@@ -151,6 +173,17 @@ export default {
 	line-height: 58rpx;
 	text-align: center;
 	border-radius: 10rpx;
+}
+.read{
+	width: 100rpx;
+	height: 90rpx;
+	display: flex;
+	align-content: space-between;
+	flex-wrap: wrap;
+}
+.read view{
+	font-size: 20rpx;
+	color: #333333;
 }
 .content .tip{
 	font-size: 28rpx;
@@ -162,15 +195,16 @@ export default {
 	display: inline-block;
 	color: #EE4D4D;
 }
-.content .read{
+/* .content .read{
 	color: #999999;
 	font-size: 24rpx;
 	margin: 16rpx 0;
-}
+} */
 .content .share{
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	margin-top: 30rpx;
 }
 .content .share text,.reward text{
 	font-size: 28rpx;
@@ -245,7 +279,7 @@ export default {
 	font-size: 28rpx;
 	color: #333333;
 	font-weight: 600;
-	margin-bottom: 50rpx;
+	/* margin-bottom: 10rpx; */
     overflow:hidden;
 	text-overflow:ellipsis;
 	white-space:nowrap;
@@ -272,6 +306,27 @@ export default {
 	color: #666666;
 	font-size: 24rpx;
 	margin-right: 36rpx;
+}
+.comment .itemListHead{
+	display: flex;
+	justify-content: space-between;
+}
+.itemListHeadLeft{
+	display: flex;
+	align-items: flex-start;
+}
+.rightMember{
+	background: #D2BF8E;
+	color: #fff;
+	font-size: 18rpx;
+	padding: 1rpx 10rpx;
+	border-radius: 10rpx;
+	margin-left: 20rpx;
+}
+.reward .money{
+	font-size: 20rpx;
+	font-weight: 700;
+	color: #B8B8B8;
 }
 .bottom{
 	width: 690rpx;

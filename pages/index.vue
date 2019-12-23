@@ -99,6 +99,9 @@ export default {
 		// 文章详情
 		goDetail(e) {
 			console.log(e)
+			uni.navigateTo({
+				url:`/pages/articleDetail`
+			})
 		}
 	}
 };
