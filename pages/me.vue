@@ -6,7 +6,9 @@
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view><text class="login">admin</text><text class="tip">青铜新手</text></view>
 				<view class="meHeadList">
-					<text>我的收藏</text><text>我的好友</text><text>我的发表</text>
+					<text data-name="meFavorite" @tap="goPageNavigateTo">我的收藏</text>
+					<text data-name="meFriend" @tap="goPageNavigateTo">我的好友</text>
+					<text data-name="mePost" @tap="goPageNavigateTo">我的发表</text>
 				</view>
 			</view>
 		</view>

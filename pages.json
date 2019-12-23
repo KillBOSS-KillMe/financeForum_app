@@ -79,13 +79,9 @@
 				"navigationBarTitleText": "产品超市"
 			}
 		},
-		//用户认证
-		{
-			"path": "pages/meMessage",
-			"style": {
-				"navigationBarTitleText": "我的消息"
-			}
-		},
+
+
+
 		{
 			"path": "pages/meUserInfo",
 			"style": {
@@ -93,39 +89,59 @@
 			}
 		},
 		{
-			"path": "pages/meMyDraft",
-			"style": {
-				"navigationBarTitleText": "我的草稿"
-			}
-		},
-		{
-			"path": "pages/meSetting",
-			"style": {
-				"navigationBarTitleText": "个人设置"
-			}
-		},
-		{
-			"path": "pages/joinMember",
-			"style": {
-				"navigationBarTitleText": "加入会员"
-			}
-		},
-		{
-			"path": "pages/contactCustomer",
-			"style": {
-				"navigationBarTitleText": "联系客服"
-			}
-		}, 
-		{
 			"path": "pages/meFavorite",
 			"style": {
 				"navigationBarTitleText": "我的收藏"
 			}
 		},
 		{
+			"path": "pages/meFriend",
+			"style": {
+				"navigationBarTitleText": "我的好友"
+			}
+		},
+		{
+			"path": "pages/mePost",
+			"style": {
+				"navigationBarTitleText": "我的发表"
+			}
+		},
+		
+		{
+			"path": "pages/meMyDraft",
+			"style": {
+				"navigationBarTitleText": "我的草稿"
+			}
+		},
+		{
+			"path": "pages/meMyMobile",
+			"style": {
+				"navigationBarTitleText": "我的手机"
+			}
+		},
+		{
+			"path": "pages/meMessage",
+			"style": {
+				"navigationBarTitleText": "我的消息"
+			}
+		},
+		{
+			"path": "pages/meCertification",
+			"style": {
+				"navigationBarTitleText": "用户认证"
+			}
+		},
+		{
 			"path": "pages/meVIP",
 			"style": {
 				"navigationBarTitleText": "开通会员"
+			}
+		},
+		
+		{
+			"path": "pages/joinMember",
+			"style": {
+				"navigationBarTitleText": "加入会员"
 			}
 		},
 		{
@@ -140,13 +156,6 @@
 				"navigationBarTitleText": "各省产品汇总"
 			}
 		},
-		
-		{
-			"path": "pages/meCertification",
-			"style": {
-				"navigationBarTitleText": "用户认证"
-			}
-		},
 		{
 			"path": "pages/meReserve",
 			"style": {
@@ -154,9 +163,21 @@
 			}
 		},
 		{
+			"path": "pages/contactCustomer",
+			"style": {
+				"navigationBarTitleText": "联系客服"
+			}
+		}, 
+		{
 			"path": "pages/meNewbieRead",
 			"style": {
 				"navigationBarTitleText": "新手必读"
+			}
+		},
+		{
+			"path": "pages/meSpread",
+			"style": {
+				"navigationBarTitleText": "推广返佣"
 			}
 		},
 		{
@@ -167,17 +188,26 @@
 		},
 		
 		{
+			"path": "pages/meSetting",
+			"style": {
+				"navigationBarTitleText": "个人设置"
+			}
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		{
 			"path": "pages/indexAccurate",
 			"style": {
 				"navigationBarTitleText": "精准匹配"
 			}
-		},
-		{
-			"path": "pages/meSpread",
-			"style": {
-				"navigationBarTitleText": "推广返佣"
-			}
 		}
+		
 ],
 "globalStyle": {
 	"navigationBarTextStyle": "#fff",
