@@ -2,9 +2,8 @@
 	<view>
 		<view class="search">
 			<input type="text" />
-			<uni-icon type="" class="iconfont renzheng"></uni-icon>
+			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 		</view>
-		asdfasdfasdfasdfasdf
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
@@ -12,8 +11,8 @@
 					<view class="con">
 						<view>
 							<text class="title">{{item.name}}</text>
-							<uni-icon type="" class="iconfont renzheng" v-if="item.gender == 1"></uni-icon>
-							<uni-icon type="" class="iconfont renzheng" v-if="item.gender == 2"></uni-icon>
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.gender == 1"></uni-icon>
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.gender == 2"></uni-icon>
 							<text class="label" v-if="item.vip > 1">管理员VIP{{item.vip}}级</text>
 						</view>
 						<view class="info">{{item.info}}</view>
@@ -77,6 +76,7 @@
 <style >
 	.search{
 		width: 690rpx;
+		height: 70rpx;
 		margin: 0 30rpx;
 		display: flex;
 		align-items: center;
@@ -110,20 +110,21 @@
 		margin: 20rpx 30rpx;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-start;
 	}
 	.item image{
 		width: 118rpx;
 		height: 118rpx;
 		border-radius: 118rpx;
+		margin: 20rpx;
 	}
 	.item .con{
-		width: 118rpx;
+		width: 390rpx;
 		height: 118rpx;
 		border-radius: 118rpx;
 		display: flex;
-		align-items: center;
-		justify-content: flex-start;
+		align-items: flex-start;
+		justify-content: space-between;
 		flex-direction: column;
 	}
 	.item .con view{
@@ -131,10 +132,6 @@
 		align-items: center;
 		justify-content: space-between;
 	}
-	/* <text class="title">{{item.name}}</text>
-							<uni-icon type="" class="iconfont renzheng" v-if="item.gender == 1"></uni-icon>
-							<uni-icon type="" class="iconfont renzheng" v-if="item.gender == 2"></uni-icon>
-							<text class="label" v-if="item.vip > 1">管理员VIP{{item.vip}}级</text> */
 	.item .title {
 		font-size: 24rpx;
 		margin: 0 10rpx;
@@ -166,9 +163,23 @@
 		-webkit-box-orient: vertical;
 	}
 	.operating{
+		width: 100rpx;
+		height: 118rpx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-direction: column;
+		padding-left: 20rpx;
+	}
+	.operating view{
+		width: 100rpx;
+		height: 60rpx;
+		font-size: 26rpx;
+		color: #fff;
+		background-color: #B8B8B8;
+		border-radius: 10rpx;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		flex-direction: column;
 	}
 </style>
