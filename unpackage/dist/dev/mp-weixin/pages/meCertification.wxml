@@ -1,1 +1,1 @@
-<view>1111</view>
+<view class="meCer"><view data-event-opts="{{[['tap',[['go',['$event']]]]]}}" class="item" bindtap="__e"><text>实名认证</text><view><text>未认证</text><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" vue-id="1" type bind:__l="__l"></uni-icon></view></view></view>
