@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-(global.webpackJsonp=global.webpackJsonp||[]).push([["pages/index"],{39:
-/*!*********************************************************************!*\
-  !*** D:/workspan/financeForum_app/main.js?{"page":"pages%2Findex"} ***!
-  \*********************************************************************/
-/*! no static exports found */function(t,i,n){"use strict";(function(t){n(/*! uni-pages */4),n(/*! @dcloudio/uni-stat */5);i(n(/*! vue */2));function i(t){return t&&t.__esModule?t:{default:t}}t(i(n(/*! ./pages/index.vue */40)).default)}).call(this,n(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */1).createPage)},40:
-/*!****************************************************!*\
-  !*** D:/workspan/financeForum_app/pages/index.vue ***!
-  \****************************************************/
-/*! no static exports found */function(t,i,n){"use strict";n.r(i);var e=n(/*! ./index.vue?vue&type=template&id=089484d2& */41),a=n(/*! ./index.vue?vue&type=script&lang=js& */43);for(var r in a)"default"!==r&&function(t){n.d(i,t,function(){return a[t]})}(r);n(/*! ./index.vue?vue&type=style&index=0&lang=css& */45);var c=n(/*! ../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/runtime/componentNormalizer.js */14),u=Object(c.default)(a.default,e.render,e.staticRenderFns,!1,null,null,null);u.options.__file="workspan/financeForum_app/pages/index.vue",i.default=u.exports},41:
-/*!***********************************************************************************!*\
-  !*** D:/workspan/financeForum_app/pages/index.vue?vue&type=template&id=089484d2& ***!
-  \***********************************************************************************/
-/*! exports provided: render, staticRenderFns */function(t,i,n){"use strict";n.r(i);var e=n(/*! -!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-hbuilderx/packages/webpack-uni-nvue-loader/lib/templateLoader.js??vue-loader-options!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./index.vue?vue&type=template&id=089484d2& */42);n.d(i,"render",function(){return e.render}),n.d(i,"staticRenderFns",function(){return e.staticRenderFns})},42:
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-hbuilderx/packages/webpack-uni-nvue-loader/lib/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/workspan/financeForum_app/pages/index.vue?vue&type=template&id=089484d2& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */function(t,i,n){"use strict";n.r(i),n.d(i,"render",function(){return e}),n.d(i,"staticRenderFns",function(){return a});var e=function(){var t=this,i=t.$createElement;t._self._c;t._isMounted||(t.e0=function(i){t.Inv=0},t.e1=function(i){t.Inv=1})},a=[];e._withStripped=!0},43:
-/*!*****************************************************************************!*\
-  !*** D:/workspan/financeForum_app/pages/index.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/*! no static exports found */function(t,i,n){"use strict";n.r(i);var e=n(/*! -!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./index.vue?vue&type=script&lang=js& */44),a=n.n(e);for(var r in e)"default"!==r&&function(t){n.d(i,t,function(){return e[t]})}(r);i.default=a.a},44:
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/workspan/financeForum_app/pages/index.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */function(t,i,n){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.default=void 0;var e={data:function(){return{title:"Hello",background:["color1","color2","color3"],indicatorDots:!0,autoplay:!0,interval:2e3,duration:500,bannerList:[{id:"1",img:"../static/a.jpg"},{id:"2",img:"../static/b.jpg"},{id:"12",img:"../static/a.jpg"}],nav:[{id:"1",title:"产品超市",img:"../static/a.jpg"},{id:"2",title:"信贷技术",img:"../static/a.jpg"},{id:"3",title:"办卡提额",img:"../static/a.jpg"},{id:"1",title:"信用修复",img:"../static/a.jpg"},{id:"1",title:"查询工具",img:"../static/a.jpg"},{id:"1",title:"精准匹配",img:"../static/a.jpg"},{id:"1",title:"最新资讯",img:"../static/a.jpg"},{id:"1",title:"小微企业",img:"../static/a.jpg"},{id:"1",title:"负债重组",img:"../static/a.jpg"},{id:"1",title:"开通会员",img:"../static/a.jpg"}],Inv:0,list:[{id:"1",img:"../static/b.jpg",time:"12小时前",name:"admin",num:"3",title:"云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制"},{id:"1",img:"../static/b.jpg",time:"11小时前",name:"admin",num:"3",title:"dgfdhdyju"},{id:"1",img:"../static/b.jpg",time:"12小时前",name:"admin",num:"2",title:"云南城投股吧说说股票风险如何控制云南城投股吧"}]}},onLoad:function(){console.log(this.title)},methods:{goTo:function(t){console.log(t)},changeTab:function(t){that.navIdx=t}}};i.default=e},45:
-/*!*************************************************************************************!*\
-  !*** D:/workspan/financeForum_app/pages/index.vue?vue&type=style&index=0&lang=css& ***!
-  \*************************************************************************************/
-/*! no static exports found */function(t,i,n){"use strict";n.r(i);var e=n(/*! -!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/css-loader??ref--6-oneOf-1-2!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--6-oneOf-1-3!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!../../../soft/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./index.vue?vue&type=style&index=0&lang=css& */46),a=n.n(e);for(var r in e)"default"!==r&&function(t){n.d(i,t,function(){return e[t]})}(r);i.default=a.a},46:
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/workspan/financeForum_app/pages/index.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */function(t,i,n){}},[[39,"common/runtime","common/vendor"]]]);
-=======
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/index"],{
 
 /***/ 39:
@@ -166,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -238,7 +203,7 @@ var _default =
       { id: '1', title: '最新资讯', img: '../static/a.jpg' },
       { id: '1', title: '小微企业', img: '../static/a.jpg' },
       { id: '1', title: '负债重组', img: '../static/a.jpg' },
-      { id: '1', title: '开通会员', img: '../static/a.jpg' }],
+      { id: '10', title: '开通会员', img: '../static/a.jpg' }],
 
       Inv: 0,
       list: [
@@ -254,7 +219,15 @@ var _default =
   methods: {
     // 导航详情
     goTo: function goTo(e) {
-      console.log(e);
+      console.log(e.currentTarget.dataset.id);
+      var id = e.currentTarget.dataset.id;
+      //开通会员
+      if (id == 10) {
+        uni.navigateTo({
+          url: "/pages/joinMember" });
+
+      }
+
     },
     //
     changeTab: function changeTab(Inv) {
@@ -267,7 +240,11 @@ var _default =
     // 文章详情
     goDetail: function goDetail(e) {
       console.log(e);
+      uni.navigateTo({
+        url: "/pages/articleDetail" });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -299,5 +276,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 },[[39,"common/runtime","common/vendor"]]]);
->>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 //# sourceMappingURL=../../.sourcemap/mp-weixin/pages/index.js.map

@@ -13,22 +13,33 @@
     "pages/post",
     "pages/experience",
     "pages/productSupermarket",
+    "pages/meUserInfo",
+    "pages/meFavorite",
+    "pages/meFriend",
+    "pages/mePost",
+    "pages/meMyDraft",
+    "pages/meMyMobile",
     "pages/meMessage",
-    "pages/userInfo",
-    "pages/myDraft",
-<<<<<<< HEAD
-    "pages/meSetting"
-=======
-    "pages/meSetting",
+    "pages/meCertification",
+    "pages/meVIP",
     "pages/joinMember",
-    "pages/contactCustomer"
->>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
+    "pages/meVIPDiff",
+    "pages/meAllProduct",
+    "pages/meReserve",
+    "pages/contactCustomer",
+    "pages/meNewbieRead",
+    "pages/meSpread",
+    "pages/meSpread",
+    "pages/meSpread",
+    "pages/meService",
+    "pages/meSetting",
+    "pages/indexAccurate"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarBackgroundColor": "#2390DC",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {

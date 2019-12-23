@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
 	"description": "项目配置文件。",
 	"packOptions": {
 		"ignore": []
@@ -8,7 +7,7 @@
 		"urlCheck": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "2.9.2",
 	"appid": "touristappid",
 	"projectname": "financeForum_app",
 	"simulatorType": "wechat",
@@ -27,59 +26,21 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"name": "",
 					"path": "",
 					"query": "",
 					"id": 0
+				},
+				{
+					"id": 1,
+					"name": "pages/meSpread",
+					"pathName": "pages/meSpread",
+					"query": ""
 				}
 			]
 		}
 	}
-=======
-  "description": "项目配置文件。",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.9.2",
-  "appid": "touristappid",
-  "projectname": "financeForum_app",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": 1,
-      "list": [
-        {
-          "name": "",
-          "path": "",
-          "query": "",
-          "id": 0
-        },
-        {
-          "id": 1,
-          "name": "pages/index",
-          "pathName": "pages/index",
-          "query": ""
-        }
-      ]
-    }
-  }
->>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 }
