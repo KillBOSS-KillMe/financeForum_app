@@ -79,7 +79,46 @@
 				"navigationBarTitleText": "产品超市"
 			}
 		},
-		//用户认证
+
+
+
+		{
+			"path": "pages/meUserInfo",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/meFavorite",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages/meFriend",
+			"style": {
+				"navigationBarTitleText": "我的好友"
+			}
+		},
+		{
+			"path": "pages/mePost",
+			"style": {
+				"navigationBarTitleText": "我的发表"
+			}
+		},
+		
+		{
+			"path": "pages/meMyDraft",
+			"style": {
+				"navigationBarTitleText": "我的草稿"
+			}
+		},
+		{
+			"path": "pages/meMyMobile",
+			"style": {
+				"navigationBarTitleText": "我的手机"
+			}
+		},
 		{
 			"path": "pages/meMessage",
 			"style": {
@@ -87,23 +126,18 @@
 			}
 		},
 		{
-			"path": "pages/userInfo",
+			"path": "pages/meCertification",
 			"style": {
-				"navigationBarTitleText": "个人信息"
+				"navigationBarTitleText": "用户认证"
 			}
 		},
 		{
-			"path": "pages/myDraft",
+			"path": "pages/meVIP",
 			"style": {
-				"navigationBarTitleText": "我的草稿"
+				"navigationBarTitleText": "开通会员"
 			}
 		},
-		{
-			"path": "pages/meSetting",
-			"style": {
-				"navigationBarTitleText": "个人设置"
-			}
-		},
+		
 		{
 			"path": "pages/joinMember",
 			"style": {
@@ -111,20 +145,33 @@
 			}
 		},
 		{
+			"path": "pages/meVIPDiff",
+			"style": {
+				"navigationBarTitleText": "会员区别"
+			}
+		},
+		{
+			"path": "pages/meAllProduct",
+			"style": {
+				"navigationBarTitleText": "各省产品汇总"
+			}
+		},
+		{
+			"path": "pages/meReserve",
+			"style": {
+				"navigationBarTitleText": "备用金打造"
+			}
+		},
+		{
 			"path": "pages/contactCustomer",
 			"style": {
 				"navigationBarTitleText": "联系客服"
 			}
-		}, {
-			"path": "pages/meFavorite",
-			"style": {
-				"navigationBarTitleText": "我的收藏"
-			}
-		},
+		}, 
 		{
-			"path": "pages/indexAccurate",
+			"path": "pages/meNewbieRead",
 			"style": {
-				"navigationBarTitleText": "精准匹配"
+				"navigationBarTitleText": "新手必读"
 			}
 		},
 		{
@@ -132,7 +179,35 @@
 			"style": {
 				"navigationBarTitleText": "推广返佣"
 			}
+		},
+		{
+			"path": "pages/meService",
+			"style": {
+				"navigationBarTitleText": "联系客服"
+			}
+		},
+		
+		{
+			"path": "pages/meSetting",
+			"style": {
+				"navigationBarTitleText": "个人设置"
+			}
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		{
+			"path": "pages/indexAccurate",
+			"style": {
+				"navigationBarTitleText": "精准匹配"
+			}
 		}
+		
 ],
 "globalStyle": {
 	"navigationBarTextStyle": "#fff",
