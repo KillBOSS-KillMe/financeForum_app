@@ -1,7 +1,7 @@
 <template>
 	<view class="me">
 		<view class="meHead">
-			<image class="userImg" src="../static/a.jpg" mode=""></image>
+			<image class="userImg" src="../static/a.jpg" mode="" data-name="meUserInfo" @tap="goPageNavigateTo">></image>
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view><text class="login">admin</text><text class="tip">青铜新手</text></view>
@@ -12,7 +12,7 @@
 		</view>
 		<view class="line"></view>
 		<view class="contentList">
-			<view class="item">
+			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 					<text>我的草稿</text>
@@ -21,7 +21,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 					<text>我的手机</text>
@@ -31,7 +31,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 					<text>我的消息</text>
@@ -40,7 +40,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meCertification" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconrenzheng"></uni-icon>
 					<text>用户认证</text>
@@ -50,7 +50,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meVIP" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconhuiyuan"></uni-icon>
 					<text>开通会员</text>
@@ -59,7 +59,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meVIPDiff" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconhuiyuan1"></uni-icon>
 					<text>会员区别</text>
@@ -68,7 +68,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meAllProduct" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconshujuhuizong"></uni-icon>
 					<text>各省产品汇总</text>
@@ -77,7 +77,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meReserve" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 					<text>备用金打造</text>
@@ -86,7 +86,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meNewbieRead" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon>
 					<text>新手必读</text>
@@ -95,7 +95,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meSpread" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconhongbaoguanli"></uni-icon>
 					<text>推广返佣</text>
@@ -104,7 +104,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meService" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconzaixiankefu"></uni-icon>
 					<text>联系客服</text>
@@ -113,7 +113,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item">
+			<view class="item" data-name="meSetting" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconshezhi"></uni-icon>
 					<text>个人设置</text>
@@ -134,7 +134,13 @@
 			}
 		},
 		methods: {
-			
+			// 进入页面
+			goPageNavigateTo(e) {
+				console.log(e)
+				uni.navigateTo({
+					url:`/pages/articleDetail`
+				})
+			}
 		}
 	}
 </script>

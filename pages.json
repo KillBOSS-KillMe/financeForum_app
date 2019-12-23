@@ -87,13 +87,13 @@
 			}
 		},
 		{
-			"path": "pages/userInfo",
+			"path": "pages/meUserInfo",
 			"style": {
 				"navigationBarTitleText": "个人信息"
 			}
 		},
 		{
-			"path": "pages/myDraft",
+			"path": "pages/meMyDraft",
 			"style": {
 				"navigationBarTitleText": "我的草稿"
 			}
@@ -115,12 +115,57 @@
 			"style": {
 				"navigationBarTitleText": "联系客服"
 			}
-		}, {
+		}, 
+		{
 			"path": "pages/meFavorite",
 			"style": {
 				"navigationBarTitleText": "我的收藏"
 			}
 		},
+		{
+			"path": "pages/meVIP",
+			"style": {
+				"navigationBarTitleText": "开通会员"
+			}
+		},
+		{
+			"path": "pages/meVIPDiff",
+			"style": {
+				"navigationBarTitleText": "会员区别"
+			}
+		},
+		{
+			"path": "pages/meAllProduct",
+			"style": {
+				"navigationBarTitleText": "各省产品汇总"
+			}
+		},
+		
+		{
+			"path": "pages/meCertification",
+			"style": {
+				"navigationBarTitleText": "用户认证"
+			}
+		},
+		{
+			"path": "pages/meReserve",
+			"style": {
+				"navigationBarTitleText": "备用金打造"
+			}
+		},
+		{
+			"path": "pages/meNewbieRead",
+			"style": {
+				"navigationBarTitleText": "新手必读"
+			}
+		},
+		{
+			"path": "pages/meService",
+			"style": {
+				"navigationBarTitleText": "联系客服"
+			}
+		},
+		
 		{
 			"path": "pages/indexAccurate",
 			"style": {
