@@ -7,7 +7,16 @@
     "pages/collection",
     "pages/apply",
     "pages/exchang",
-    "pages/me"
+    "pages/me",
+    "pages/articleDetail",
+    "pages/queryTool",
+    "pages/post",
+    "pages/experience",
+    "pages/productSupermarket",
+    "pages/meMessage",
+    "pages/userInfo",
+    "pages/myDraft",
+    "pages/meSetting"
   ],
   "subPackages": [],
   "window": {
