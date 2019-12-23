@@ -24,6 +24,7 @@
 		<view class="list">
 			<text class="listInlet">我的邀请</text>
 			<wTable :columns="columns" :data="tableData" @on-row-click="clickrow" border @on-select-all="selectAll" @on-select="selectO" />
+			<view class="model">更多用户<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon></view>
 		</view>
 	</view>
 </template>
@@ -33,7 +34,11 @@ import wTable from '@/components/wTable.vue';
 export default {
 	data() {
 		return {
-			tableData: [],
+			tableData: [
+				{ name:'大锤',age:'17777777777',address:'2019-10-25'},
+				{ name:'张三',age:'21',address:'成都'},
+				{ name:'李四',age:'16',address:'南京' }
+			],
 			columns: [
 				{ title: '用户名', key: 'name' },
 				{ title: '手机号', key: 'age' },
@@ -42,13 +47,16 @@ export default {
 		};
 	},
 	components: { wTable },
-	methods: {}
+	methods: {
+		
+	}
 };
 </script>
 
 <style>
 .meSpread {
 	width: 750rpx;
+	padding-bottom: 60rpx;
 }
 .head {
 	width: 690rpx;
@@ -133,6 +141,7 @@ export default {
 .list {
 	width: 690rpx;
 	padding: 30rpx;
+	position: relative;
 }
 .list .listInlet {
 	text-align: center;
@@ -141,5 +150,20 @@ export default {
 	font-weight: 700;
 	color: #737373;
 	padding-bottom: 20rpx;
+}
+.model{
+	width: 690rpx;
+	/* background: #000000; */
+	background: rgba(255,255,255,.3);
+	color: #2390DC;
+	display: flex;
+	justify-content: center;
+	/* margin-top: -160rpx; */
+	height: 150rpx;
+	align-items: flex-end;
+	font-size: 24rpx;
+	z-index: 9;
+	position: absolute;
+	top: 240rpx;
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
 	<view class="w_table">
-		<view class="w_table_swper" :style="{ height:height? height.indexOf('%')!==-1?height:height+'upx':'100%' }">
+		<view class="w_table_swper">
 			<view class="w_table_content">
 				<!-- 表头 -->
 				<view class="w-table_title">
 					<view class="w-table_title_item" v-for="(item,index) in columns" :class="{'w-table_title_item_border': border }"
 					 :key="index" :style="{ width:item.width?item.width+'upx':'230upx',textAlign:item.align||'left' }">
-						<view class="w_table_title_content" v-if="item.type==='checkbox'">
+						<!-- <view class="w_table_title_content" v-if="item.type==='checkbox'">
 							<checkbox @click.native.stop="checkHeader" :checked="allCheck" />
-						</view>
-						<view class="w_table_title_content" v-if="item.type==='index'">#</view>
+						</view> -->
+						<!-- <view class="w_table_title_content" v-if="item.type==='index'">#</view> -->
 						<text class="w_table_title_content" v-if="item.title">{{ item.title }}</text>
 					</view>
 				</view>
@@ -17,7 +17,7 @@
 				<view class="w_table_body" v-if="data.length" v-for="(item,index) in data" :key="index">
 					<view class="w_table_body_col" v-for="(col,cIndex) in columns" :key="cIndex" :style="{ textAlign:col.align||'left' }"
 					 @click="clickRow(item,index)">
-						<view class="col_cell" :class="{ 'col_cell_border':border }" :style="{ width:col.width?col.width+'upx':'200upx'}">
+						<view class="col_cell" :class="{ 'col_cell_border':border }" :style="{ width:col.width?col.width+'upx':'230upx'}">
 							<view class="col_text">
 								<checkbox v-if="col.type==='checkbox'" :checked="item._isChecked" @click.native.stop="checkItemCheckbox(item,index)" />
 								<view v-if="col.type==='index'">
@@ -88,44 +88,44 @@
 			 * @param {Object} item为当前行的数据
 			 * @param {Object} index为当前行的下标
 			 */
-			clickRow(row, index) {
-				let params = {
-					row,
-					index
-				}
-				this.$emit('on-row-click', params)
-			},
+			// clickRow(row, index) {
+			// 	let params = {
+			// 		row,
+			// 		index
+			// 	}
+			// 	this.$emit('on-row-click', params)
+			// },
 			/**
 			 * 	--	 点击全选
 			 */
-			checkHeader() {
-				this.allCheck = !this.allCheck;
-				this.data.forEach(it => {
-					it._isChecked = this.allCheck;
-				})
-				this.$emit('on-select-all', {
-					allChecked: this.data.filter(item => item._isChecked)
-				})
-			},
+			// checkHeader() {
+			// 	this.allCheck = !this.allCheck;
+			// 	this.data.forEach(it => {
+			// 		it._isChecked = this.allCheck;
+			// 	})
+			// 	this.$emit('on-select-all', {
+			// 		allChecked: this.data.filter(item => item._isChecked)
+			// 	})
+			// },
 			/**
 			 * 	--	点击单选
 			 */
-			checkItemCheckbox(item) {
-				item._isChecked = !item._isChecked;
-				this.data.forEach(it => {
-					if(!it._isChecked){
-						this.allCheck = false;
-					}
-				})
-				let ary = this.data.filter(item => item._isChecked); //已选择的项
-				if(ary.length == this.data.length){
-					this.allCheck = true
-				}
-				this.$emit('on-select', {
-					allChecked: ary,
-					checked: item
-				})
-			}
+			// checkItemCheckbox(item) {
+			// 	item._isChecked = !item._isChecked;
+			// 	this.data.forEach(it => {
+			// 		if(!it._isChecked){
+			// 			this.allCheck = false;
+			// 		}
+			// 	})
+			// 	let ary = this.data.filter(item => item._isChecked); //已选择的项
+			// 	if(ary.length == this.data.length){
+			// 		this.allCheck = true
+			// 	}
+			// 	this.$emit('on-select', {
+			// 		allChecked: ary,
+			// 		checked: item
+			// 	})
+			// }
 		},
 		created() {
 			this.columns.forEach(it => {
@@ -153,14 +153,14 @@
 		width: 100%;
 		position: relative;
 		display: inline-block;
-		height: 100%;
-		min-height: 130upx;
+		/* height: 100%; */
+		/* min-height: 130upx; */
 		min-width: 100%;
 		background: #fff;
 		/* border: 2upx solid #ccc; */
 		font-size: 14upx;
 		box-sizing: border-box;
-		overflow: scroll;
+		/* overflow: scroll; */
 	}
 
 	.w_table_swper {
@@ -187,6 +187,7 @@
 
 	.w-table_title_item {
 		display: inline-block;
+		text-align: center;
 	}
 
 	.w-table_title_item_border {
@@ -195,6 +196,10 @@
 
 	.w_table_title_content {
 		padding: 0 10upx;
+		text-align: center;
+		color: #737373;
+		font-size: 24rpx;
+		font-weight: 700;
 	}
 
 	.w_table_body {
@@ -231,6 +236,13 @@
 		display: inline-block;
 		/* padding: 0 10upx; */
 		margin: 0 auto;
+		font-size: 24rpx;
+		color: #737373;
+		text-align: center;
+		width: 230rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	.w_table_null {
