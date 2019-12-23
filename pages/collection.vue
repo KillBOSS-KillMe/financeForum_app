@@ -2,7 +2,7 @@
 	<view class="collection">
 		<pageSearch></pageSearch>
 		<view class="page-section-spacing banner">
-			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff" :autoplay="autoplay" :interval="interval" :duration="duration">
+			<swiper class="swiper" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff" :autoplay="autoplay" :interval="interval">
 				<swiper-item  v-for="(item,index) in bannerList" :key="index">
 					<image class="bannerImg" :src="item.img" mode="aspectFill"></image>
 				</swiper-item>
