@@ -121,12 +121,18 @@
             "style" : {
 				"navigationBarTitleText": "精准匹配"
 			}
+        },
+	    {
+            "path" : "pages/meSpread",
+            "style" : {
+				"navigationBarTitleText": "推广返佣"
+			}
         }
-	],
+    ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "#fff",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#FFFFFF",
+		"navigationBarBackgroundColor": "#2390DC",
 		"backgroundColor": "#F8F8F8"
 	},
 	"condition": { //模式配置，仅开发期间生效

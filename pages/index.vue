@@ -26,7 +26,7 @@
 			</view>
 			<view class="contentList">
 				<block  v-for="(item,index) in list" :key="index">
-					<view class="item" @tap="goDetail" data-id="item.id">
+					<view class="item" @tap="goDetail" :data-id="item.id">
 						<image :src="item.img" mode="aspectFill"></image>
 						<view class="itemRight">
 							<text class="title">{{item.title}}</text>
@@ -70,7 +70,7 @@ export default {
 				{id:'1',title:'最新资讯',img:'../static/a.jpg'},
 				{id:'1',title:'小微企业',img:'../static/a.jpg'},
 				{id:'1',title:'负债重组',img:'../static/a.jpg'},
-				{id:'1',title:'开通会员',img:'../static/a.jpg'}
+				{id:'10',title:'开通会员',img:'../static/a.jpg'}
 			],
 			Inv:0,
 			list:[
@@ -86,7 +86,15 @@ export default {
 	methods: {
 		// 导航详情
 		goTo(e){
-			console.log(e)
+			console.log(e.currentTarget.dataset.id)
+			let id = e.currentTarget.dataset.id
+			//开通会员
+			if(id == 10){
+				uni.navigateTo({
+					url:`/pages/joinMember`
+				})
+			}
+			
 		},
 		//
 		changeTab(Inv){
