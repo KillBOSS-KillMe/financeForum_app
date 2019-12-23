@@ -8,8 +8,8 @@
 			</view>
 		</view>
 		<view class="invite">
-			<text class="quickInlet">立即邀请</text>
-			<text class="faceInlet">面对面邀请</text>
+			<text class="quickInlet" @tap="quickInlet(1)">立即邀请</text>
+			<text class="faceInlet" @tap="quickInlet(2)">面对面邀请</text>
 		</view>
 		<view class="content">
 			<text>1、分享邀请链接给您的好友，用户下载安装app您将获得3现金奖励；</text>
@@ -26,11 +26,44 @@
 			<wTable :columns="columns" :data="tableData" @on-row-click="clickrow" border @on-select-all="selectAll" @on-select="selectO" />
 			<view class="model">更多用户<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon></view>
 		</view>
+		<!-- 底部分享弹窗 立即邀请 -->
+		<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
+			<view class="uni-share">
+				<text class="uni-share-title">分享到</text>
+				<view class="uni-share-content">
+					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+						<view class="uni-share-content-image">
+							<image :src="item.icon" class="content-image" mode="widthFix" />
+						</view>
+						<text class="uni-share-content-text">{{ item.text }}</text>
+					</view>
+				</view>
+				<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
+			</view>
+		</uni-popup>
+		<!-- 面对面邀请 -->
+		<uni-popup ref="center" type="center" class="meShare" @touchmove.stop.prevent>
+			<view class="fase">
+				<image src="../static/logo.png" mode=""></image>
+				<text>邀请领现金</text>
+			</view>
+			<!-- <view class="uni-share">
+				<view class="uni-share-content">
+					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+						<view class="uni-share-content-image">
+							<image :src="item.icon" class="content-image" mode="widthFix" />
+						</view>
+						<text class="uni-share-content-text">{{ item.text }}</text>
+					</view>
+				</view>
+			</view> -->
+		</uni-popup>
 	</view>
 </template>
 
 <script>
 import wTable from '@/components/wTable.vue';
+import uniPopup from "@/components/uni-popup.vue"
 export default {
 	data() {
 		return {
@@ -43,12 +76,56 @@ export default {
 				{ title: '用户名', key: 'name' },
 				{ title: '手机号', key: 'age' },
 				{ title: '时间', key: 'address' }
+			],
+			bottomData: [{
+					text: '微信',
+					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-2.png',
+					name: 'wx'
+				},
+				{
+					text: '支付宝',
+					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-8.png',
+					name: 'wx'
+				},
+				{
+					text: 'QQ',
+					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/gird-3.png',
+					name: 'qq'
+				},
+				{
+					text: '新浪',
+					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-1.png',
+					name: 'sina'
+				},
+				{
+					text: '百度',
+					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-7.png',
+					name: 'copy'
+				},
+				{
+					text: '其他',
+					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-5.png',
+					name: 'more'
+				}
 			]
-		};
+		}
 	},
-	components: { wTable },
+	components: {
+		wTable ,
+		uniPopup,
+	},
 	methods: {
-		
+		quickInlet(e){
+			if(e == 1){
+				this.$refs.showshare.open()
+			} else if(e == 2){
+				this.$refs.center.open()
+			}
+			console.log(e)
+		},
+		cancel(type) {
+			this.$refs['show' + type].close()
+		},
 	}
 };
 </script>
@@ -166,4 +243,147 @@ export default {
 	position: absolute;
 	top: 240rpx;
 }
+
+	.example {
+		padding: 0 30rpx 30rpx;
+	}
+
+	.example-info {
+		padding: 30rpx;
+		color: #3b4144;
+		background: #ffffff;
+	}
+
+	.example-body {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 0;
+		font-size: 14rpx;
+		background-color: #ffffff;
+	}
+	.uni-tip-title {
+		margin-bottom: 10px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 16px;
+		color: #333;
+	}
+
+	.uni-tip-content {
+		font-size: 14px;
+		color: #666;
+	}
+
+	.uni-tip-group-button {
+		display: flex;
+		flex-direction: row;
+		margin-top: 20px;
+	}
+
+	.uni-tip-button {
+		flex: 1;
+		text-align: center;
+		font-size: 14px;
+		color: #3b4144;
+	}
+
+	.modelShow{
+		background: #000000;
+		width: 750rpx;
+		height: 100vh;
+		position: fixed;
+		z-index: 99;
+		top: 0;
+		left: 0;
+		opacity: .4;
+		overflow: hidden;
+	}
+	.meShare{
+		width: 750rpx;
+		position: fixed;
+		z-index: 99;
+		bottom: 0;
+		left: 0;
+	}
+	/* 底部分享 */
+	.uni-share {
+		display: flex;
+		flex-direction: column;
+		background-color: #fff;
+	}
+
+	.uni-share-title {
+		line-height: 60rpx;
+		font-size: 24rpx;
+		padding: 15rpx 0;
+		text-align: center;
+	}
+
+	.uni-share-content {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 15px;
+	}
+
+	.uni-share-content-box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 200rpx;
+	}
+
+	.uni-share-content-image {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		width: 60rpx;
+		height: 60rpx;
+		overflow: hidden;
+		border-radius: 10rpx;
+	}
+
+	.content-image {
+		width: 60rpx;
+		height: 60rpx;
+	}
+
+	.uni-share-content-text {
+		font-size: 26rpx;
+		color: #333;
+		padding-top: 5px;
+		padding-bottom: 10px;
+	}
+
+	.uni-share-btn {
+		height: 90rpx;
+		line-height: 90rpx;
+		font-size: 14px;
+		border-top-color: #f5f5f5;
+		border-top-width: 1px;
+		border-top-style: solid;
+		text-align: center;
+		color: #666;
+	}
+	.fase{
+		width: 400rpx;
+		background: #fff;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding: 40rpx 20rpx;
+	}
+	.fase image{
+		width: 252rpx;
+		height: 252rpx;
+	}
+	.fase text{
+		font-size: 32rpx;
+		font-weight: 500;
+		color: #333;
+		margin-top: 16rpx;
+	}
 </style>

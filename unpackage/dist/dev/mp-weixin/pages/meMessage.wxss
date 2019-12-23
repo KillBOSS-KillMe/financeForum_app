@@ -10,40 +10,20 @@
 	margin-top: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-<<<<<<< HEAD
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	    -ms-flex-align: center;
-=======
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
->>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 	        align-items: center;
 }
 .meMessage .item>view{
 	display: -webkit-box;
 	display: -webkit-flex;
-<<<<<<< HEAD
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
-=======
-	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
->>>>>>> 0ecb2a5adc1a8c3b6efa4a7fc48a2d10abb36e0a
 	        align-items: center;
 }
 .meMessage .item>view>text{
