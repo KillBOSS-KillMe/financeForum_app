@@ -75,9 +75,10 @@
 
 <style >
 	.search{
-		width: 690rpx;
+		width: 650rpx;
 		height: 70rpx;
 		margin: 0 30rpx;
+		padding: 0 20rpx;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
