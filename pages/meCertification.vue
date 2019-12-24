@@ -1,8 +1,14 @@
 <template>
-	<view class="meCer">
-		<view class="item" @tap="go"> 
-			<text>实名认证</text>
-			<view><text>未认证</text><uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon></view>
+	<view>
+		<view class="topBorder"></view>
+		<view class="list" @tap="go">
+			<view class="item">
+				<view>实名认证</view>
+				<view>
+					未认证
+					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -25,35 +31,28 @@
 </script>
 
 <style>
-	.meCer{
-		width: 690rpx;
-		padding: 0 30rpx;
-		margin-top: 20rpx;
+	.topBorder{
+		width: 750rpx;
+		height: 16rpx;
+		opacity: 1;
+		background: #F3F3F3;
+	}
+	.list{
+		width: 750rpx;
+		height: auto;
 	}
 	.item{
+		width: 690rpx;
+		height: 90rpx;
+		margin: 0 30rpx;
+		border-bottom: 2rpx solid #110F53;
 		display: flex;
-		justify-content: space-between;
-		align-content: center;
 		align-items: center;
-	}
-	.item>view{
-		display: flex;
 		justify-content: space-between;
-		align-content: center;
-		align-items: center;
-	}
-	.item>text{
+		color: #333333;
 		font-size: 28rpx;
-		font-weight: 500;
-		color: #333;
 	}
-	.item>view text{
-		font-size: 24rpx;
-		font-weight: 500;
-		color: #333;
-	}
-	.item>view .iconfont{
-		font-size: 30rpx;
-		color: #C0C0C0;
+	.iconfont{
+		margin-left: 10rpx;
 	}
 </style>
