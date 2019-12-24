@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="list">
-			<view class="item">
+			<view class="item" @tap="goMyMobile" data-name="meMyMobile_1">
 				<view>手机号更换</view>
 				<view>
 					1899999999999
@@ -20,7 +20,12 @@
 			}
 		},
 		methods: {
-			
+			goMyMobile(e){
+				let url = e.target.dataset.name
+				uni.navigateTo({
+					url: `/pages/${url}`
+				})
+			}
 		}
 	}
 </script>

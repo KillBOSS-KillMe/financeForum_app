@@ -116,6 +116,24 @@
 			}
 		},
 		{
+			"path": "pages/meMyMobile_1",
+			"style": {
+				"navigationBarTitleText": "更换手机号"
+			}
+		},
+		{
+			"path": "pages/meMyMobile_2",
+			"style": {
+				"navigationBarTitleText": "更换手机号"
+			}
+		},
+		{
+			"path": "pages/meMyMobile_3",
+			"style": {
+				"navigationBarTitleText": "更换手机号"
+			}
+		},
+		{
 			"path": "pages/meMessage",
 			"style": {
 				"navigationBarTitleText": "我的消息"
