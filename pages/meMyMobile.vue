@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<view class="topBorder"></view>
 		<view class="list">
 			<view class="item">
 				<view>手机号更换</view>
@@ -27,15 +26,10 @@
 </script>
 
 <style>
-	.topBorder{
-		width: 750rpx;
-		height: 16rpx;
-		opacity: 1;
-		background: #F3F3F3;
-	}
 	.list{
 		width: 750rpx;
 		height: auto;
+		border-top: 2rpx solid #F3F3F3;
 	}
 	.item{
 		width: 690rpx;
