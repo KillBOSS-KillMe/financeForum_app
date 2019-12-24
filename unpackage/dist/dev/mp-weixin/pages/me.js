@@ -266,7 +266,7 @@ var _default =
     // 进入页面
     goPageNavigateTo: function goPageNavigateTo(e) {
       console.log(e);
-      var url = e.target.dataset.name;
+      var url = e.currentTarget.dataset.name;
       uni.navigateTo({
         url: "/pages/".concat(url) });
 

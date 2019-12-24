@@ -19,6 +19,9 @@
     "pages/mePost",
     "pages/meMyDraft",
     "pages/meMyMobile",
+    "pages/meMyMobile_1",
+    "pages/meMyMobile_2",
+    "pages/meMyMobile_3",
     "pages/meMessage",
     "pages/meCertification",
     "pages/meVIP",
@@ -32,7 +35,10 @@
     "pages/meService",
     "pages/meSetting",
     "pages/indexAccurate",
-    "pages/meCertificationConfirm"
+    "pages/meCertificationConfirm",
+    "pages/meEdit",
+    "pages/meApplyMessage",
+    "pages/meTreaty"
   ],
   "subPackages": [],
   "window": {

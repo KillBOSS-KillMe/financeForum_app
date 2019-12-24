@@ -1,8 +1,9 @@
 
 .search{
-	width: 690rpx;
+	width: 650rpx;
 	height: 70rpx;
 	margin: 0 30rpx;
+	padding: 0 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

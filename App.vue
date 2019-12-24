@@ -84,7 +84,46 @@ text-overflow: ellipsis; -->
 		},
 		globalData:{
 			requestUrl: 'http://www.finance.cc/api',
-		}
+			token: ''
+		},
+		// getToken() {
+		// 	uni.login({
+		// 	  // provider: 'weixin',
+		// 	  success: res => {
+		// 	    console.log(res.code,'+++6+');
+		// 	  }
+		// 	});
+			// wx.login({
+			//   success: res => {
+			// 	if (res.code) {
+			// 	  console.log(res.code) 
+			// 	  wx.request({
+			// 		// url: `${this.globalData.requestUrl}/auth/get_token`,
+			// 		url: `${this.globalData.requestUrl}/weapp/authorizations`,
+			// 		method: 'POST',
+			// 		header: {
+			// 		  apikey: this.globalData.apikey
+			// 		},
+			// 		data: {
+			// 		  code: res.code,
+			// 		  verification_code: '1234'
+			// 		},
+			// 		success: data => {
+			// 		  wx.hideToast()
+			// 		  data = this.null2str(data)
+			// 		  if (data.data.code == '200') {
+			// 			let token = `${data.data.msg.token_type} ${data.data.msg.token}`
+			// 			console.log('==========================')
+			// 			console.log(token)
+			// 			console.log('==========================')
+			// 			this.$parent.globalData.token = token
+			// 		  }
+			// 		}
+			// 	  })
+			// 	}
+			//   }
+			// })
+		// }
 	}
 </script>
 

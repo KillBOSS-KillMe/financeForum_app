@@ -22,11 +22,12 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				loginPaw:'',
+				loginName:''
 			}
 		},
 		onLoad() {
-			console.log(this.title)
+			
 		},
 		methods: {
 			// 获取登录名
@@ -41,7 +42,6 @@
 			},
 			// 进入忘记密码页
 			goForgetPassword() {
-				console.log(1111)
 				uni.navigateTo({
 					url: '/pages/forgetPassword'
 				});
@@ -50,6 +50,59 @@
 			goRegistered() {
 				uni.navigateTo({
 					url: `/pages/registered`
+				});
+			},
+			login(){
+				// console.log(this.loginName)
+				if (this.loginName == '') {
+					uni.showToast({
+						title: "请输入手机号或者用户名",
+						icon: 'none',
+						duration: 2000
+					});
+					return false
+				}
+				if (this.loginPaw == '') {
+					uni.showToast({
+						title: "请输入密码",
+						icon: 'none',
+						duration: 2000
+					});
+					return false
+				}
+				uni.showToast({
+					title: "登录中...",
+					icon: 'loading',
+					duration: 10000
+				})
+				uni.request({
+				    url: `${getApp().globalData.requestUrl}/login`, //仅为示例，并非真实接口地址。
+					method: 'POST',
+				    data: {
+						username:this.loginName,
+						password:this.loginPaw
+					},
+				    success: (res) => {
+				        console.log(res);
+						if(res.statusCode == 200){
+							uni.showToast({
+								title: '登录成功',
+								icon:"none"
+							});
+							console.log(res.data.access_token)
+							getApp().globalData.token = res.data.access_token
+							console.log(getApp().globalData.token)
+							uni.reLaunch({
+							    url: './index'
+							});
+						} else{
+							uni.showToast({
+								title: res.data.message,
+								icon:"none"
+							});
+						}
+						
+				    }
 				});
 			}
 		},

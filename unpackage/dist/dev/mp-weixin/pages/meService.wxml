@@ -1,1 +1,1 @@
-<view>1111</view>
+<view class="meMessage"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block><view data-event-opts="{{[['tap',[['goNext',['$0'],[[['list','',index,'id']]]]]]]}}" class="item" bindtap="__e"><view><image src="{{item.img}}" mode></image><text>{{item.title}}</text></view><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" vue-id="{{'1-'+index}}" type bind:__l="__l"></uni-icon></view></block></block></view>

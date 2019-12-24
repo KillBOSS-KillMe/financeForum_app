@@ -93,7 +93,7 @@
 							this.countdown();
 						} else{
 							uni.showToast({
-								title: "手机号有误",
+								title: res.data.message
 							});
 						}
 						
@@ -118,7 +118,7 @@
 			//立即注册
 			login(){
 				if (this.formNode.mobile == '') {
-					wx.showToast({
+					uni.showToast({
 						title: "请输入手机号",
 						icon: 'none',
 						duration: 2000
@@ -126,7 +126,7 @@
 					return false
 				}
 				if (this.formNode.mobile.length != 11) {
-					wx.showToast({
+					uni.showToast({
 						title: "请输入正确的手机号",
 						icon: 'none',
 						duration: 2000
@@ -134,7 +134,7 @@
 					return false
 				}
 				if (this.formNode.code == '') {
-					wx.showToast({
+					uni.showToast({
 						title: "请输入验证码",
 						icon: 'none',
 						duration: 2000
@@ -142,7 +142,7 @@
 					return false
 				}
 				if (this.formNode.password == '') {
-					wx.showToast({
+					uni.showToast({
 						title: "请输入密码",
 						icon: 'none',
 						duration: 2000
@@ -150,7 +150,7 @@
 					return false
 				}
 				if (this.formNode.password1 == '') {
-					wx.showToast({
+					uni.showToast({
 						title: "请确认密码",
 						icon: 'none',
 						duration: 2000
@@ -158,7 +158,7 @@
 					return false
 				}
 				if (this.formNode.password != this.formNode.password1) {
-					wx.showToast({
+					uni.showToast({
 						title: "请输入密码一致",
 						icon: 'none',
 						duration: 2000
@@ -168,7 +168,7 @@
 				uni.showToast({
 					title: "注册中...",
 					icon: 'loading',
-					duration: 1000
+					duration: 10000
 				})
 				uni.request({
 				    url: `${getApp().globalData.requestUrl}/register`, //仅为示例，并非真实接口地址。
@@ -186,6 +186,7 @@
 						} else{
 							uni.showToast({
 								title: res.data.message,
+								icon:"none"
 							});
 						}
 						

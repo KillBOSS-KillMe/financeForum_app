@@ -29,8 +29,8 @@
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
-		<view class="login">
-			<view>直接登录</view>
+		<view class="login" @tap="outLogin">
+			<view>退出登录</view>
 		</view>
 	</view>
 </template>
@@ -40,7 +40,35 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+	  // 退出登录
+	  outLogin(){
+		  uni.request({
+		  	url: `${getApp().globalData.requestUrl}/logout`, //仅为示例，并非真实接口地址。
+			 header: {
+			  // authorization: this.$parent.globalData.token
+			},
+		  	method: 'POST',
+		  	success: (res) => {
+		  	    console.log(res);
+		  		// if(res.data.status_code == 1){
+		  		// 	uni.showToast({
+		  		// 		title: res.data.message,
+		  		// 	});
+		  		// 	uni.reLaunch({
+		  		// 	    url: './index'
+		  		// 	});
+		  		// } else{
+		  		// 	uni.showToast({
+		  		// 		title: res.data.message,
+		  		// 		icon:"none"
+		  		// 	});
+		  		// }
+		  		
+		  	}
+		  })
+	 }
+  }
 };
 </script>
 

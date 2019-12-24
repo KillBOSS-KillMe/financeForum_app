@@ -2,11 +2,20 @@
 .me{
 	width: 750rpx;
 }
+.me .icon{
+	position: absolute;
+	top: 30rpx;
+	right: 40rpx;
+}
+.me .icon icon{
+	color: #fff;
+	font-size: 46rpx;
+	font-weight: 600;
+}
 .me .meHead{
 	width: 690rpx;
 	padding: 30rpx;
-	background: #007AFF;
-	/* position: relative; */
+	background: #2390DC;
 	height: 280rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -33,7 +42,6 @@
 	height:144rpx;
 	border:4rpx solid #FFFFFF;
 	border-radius:144rpx;
-	margin-top: 20rpx;
 }
 .me .meHeadCon>view{
 	display: -webkit-box;

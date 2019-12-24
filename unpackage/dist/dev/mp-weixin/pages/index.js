@@ -213,8 +213,15 @@ var _default =
 
 
   },
-  onLoad: function onLoad() {
-    console.log(this.title);
+  onLaunch: function onLaunch() {
+
+  },
+  onShow: function onShow() {
+    console.log(getApp().globalData.token);
+    // this.getToken()
+  },
+  onHide: function onHide() {
+    console.log('App Hide');
   },
   methods: {
     // 导航详情

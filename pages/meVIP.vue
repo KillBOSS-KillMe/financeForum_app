@@ -1,5 +1,5 @@
 <template>
-	<view class="meMessage">
+	<view class="meVip">
 		<block v-for="(item,index) in list" :key="index">
 			<view class="item" @tap="goNext(item.id)">
 				<view>
@@ -18,8 +18,8 @@
 		data() {
 			return {
 				list:[
-					{id:'1',img:'../static/logo.png',title:'联系客服了解并且开通会员'},
-					{id:'2',img:'../static/logo.png',title:'咨询客服了解商务合作'}
+					{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
+					{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
 				]
 			}
 		},

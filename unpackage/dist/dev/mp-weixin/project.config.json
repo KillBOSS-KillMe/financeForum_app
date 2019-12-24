@@ -36,8 +36,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/meSpread",
-					"pathName": "pages/meSpread",
+					"name": "pages/index",
+					"pathName": "pages/index",
 					"query": ""
 				}
 			]

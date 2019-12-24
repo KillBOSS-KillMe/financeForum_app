@@ -228,6 +228,12 @@
             "style" : {
 				"navigationBarTitleText": "系统消息"
 			}
+        },
+		{
+            "path" : "pages/meTreaty",
+            "style" : {
+				"navigationBarTitleText": "相关协议"
+			}
         }
     ],
 	"globalStyle": {

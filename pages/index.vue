@@ -80,8 +80,15 @@ export default {
 			]
 		};
 	},
-	onLoad() {
-		console.log(this.title);
+	onLaunch(){
+		
+	},
+	onShow(){ 
+		console.log(getApp().globalData.token)
+		// this.getToken()
+	},
+	onHide(){
+		console.log('App Hide')
 	},
 	methods: {
 		// 导航详情
