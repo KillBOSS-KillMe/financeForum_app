@@ -137,25 +137,77 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      list: [
-      { id: '1', img: '../static/logo.png', title: '联系客服微信 bn154896547' },
-      { id: '2', img: '../static/logo.png', title: '联系客服电话 18535464004 ' }] };
+      bannerList: [
+      { id: '1', img: '../static/a.jpg' },
+      { id: '2', img: '../static/b.jpg' },
+      { id: '12', img: '../static/a.jpg' }]
 
-
+      // list:[
+      // 	{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
+      // 	{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
+      // ]
+    };
   },
-  methods: {
-    goNext: function goNext(e) {
-      // if(e == 1){
-
-      // }else if(){
-
-      // }
-      console.log(e);
-    } } };exports.default = _default;
+  methods: {} };exports.default = _default;
 
 /***/ }),
 
