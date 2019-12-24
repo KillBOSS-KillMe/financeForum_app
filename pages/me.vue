@@ -142,7 +142,7 @@
 			// 进入页面
 			goPageNavigateTo(e) {
 				console.log(e)
-				let url = e.target.dataset.name
+				let url = e.currentTarget.dataset.name
 				uni.navigateTo({
 					url: `/pages/${url}`
 				})

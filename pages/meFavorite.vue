@@ -44,7 +44,7 @@
 	.item{
 		width: 690rpx;
 		height: 136rpx;
-		padding: 20rpx 0;
+		padding: 20rpx 30rpx;
 		border-radius: 10rpx;
 		display: flex;
 		align-items: center;
