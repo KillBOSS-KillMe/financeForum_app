@@ -204,6 +204,12 @@
             "style" : {
 				"navigationBarTitleText": "编辑"
 			}
+        },
+		{
+            "path" : "pages/meApplyMessage",
+            "style" : {
+				"navigationBarTitleText": "系统消息"
+			}
         }
     ],
 	"globalStyle": {

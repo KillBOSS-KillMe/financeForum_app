@@ -63,14 +63,15 @@ export default {
 	font-size: 32rpx;
 	color: #fff;
 	background-color: #2390DC;
+	box-shadow: 0 10rpx 45rpx 0 rgba(35,144,220,0.6);
 }
 .item {
   width: 690rpx;
   margin: 0 30rpx;
   display: flex;
   justify-content: space-between;
-	border-bottom: 1rpx solid #3E8CFD;
-	padding: 20rpx 0;;
+	border-bottom: 1rpx solid #3e8cfd;
+	padding: 30rpx 0;
 }
 .item .left {
   display: flex;
