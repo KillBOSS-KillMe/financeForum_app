@@ -21,7 +21,12 @@
 		</view>
 		<view class="itemList">
 			<text>居住地</text>
-			<text>北京市 东城区 东华门街道</text>
+			<view class="right">
+				<pickerAddress @change="goAddress">{{txt}}</pickerAddress>
+			<!-- 	<text>北京市 东城区 东华门街道</text> -->
+				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+			</view>
+			
 		</view>
 		<view class="itemList">
 			<text>学历</text>
@@ -60,14 +65,21 @@
 </template>
 
 <script>
+	import pickerAddress from '../components/wangding-pickerAddress.vue'
 	export default {
 		data() {
 			return {
-				
+				txt: '选择地址',
 			}
 		},
+		components:{
+			pickerAddress
+		},
 		methods: {
-			
+			goAddress(data) {
+				this.txt = data.data.join('')
+				console.log(data.data.join(''))
+			}
 		}
 	}
 </script>
@@ -88,6 +100,8 @@
 .edit .itemList .right{
 	display: flex;
 	align-items: center;
+	font-size: 30rpx;
+	color: #333333;
 }
 .edit .itemList .right image{
 	width: 58rpx;
@@ -95,7 +109,7 @@
 	border-radius: 58rpx;
 	margin-right: 20rpx;
 }
-.edit .itemList text{
+.edit .itemList text,.right text{
 	font-size: 30rpx;
 	color: #333333;
 }
@@ -105,7 +119,7 @@
 	color: #333333;
 	text-align: right;
 }
-.edit .itemList text:first-child{
+.edit .itemList>text:first-child{
 	font-weight: 600;
 }
 .edit .itemList:last-of-type{
