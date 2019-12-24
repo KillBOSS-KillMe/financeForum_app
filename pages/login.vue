@@ -19,26 +19,25 @@
 </template>
 
 <script>
+	const app = getApp()
 	export default {
 		data() {
 			return {
-				loginPaw:'',
-				loginName:''
+				loginPaw: '',
+				loginName: ''
 			}
 		},
 		onLoad() {
-			
+
 		},
 		methods: {
 			// 获取登录名
 			getLoginName(e) {
 				this.loginName = e.detail.value
-				console.log(this.loginName)
 			},
 			// 获取密码
 			getLoginPaw(e) {
 				this.loginPaw = e.detail.value
-				console.log(this.loginPaw)
 			},
 			// 进入忘记密码页
 			goForgetPassword() {
@@ -52,8 +51,8 @@
 					url: `/pages/registered`
 				});
 			},
-			login(){
-				// console.log(this.loginName)
+			login() {
+				console.log(this.loginName, this.loginPaw)
 				if (this.loginName == '') {
 					uni.showToast({
 						title: "请输入手机号或者用户名",
@@ -76,37 +75,36 @@
 					duration: 10000
 				})
 				uni.request({
-				    url: `${getApp().globalData.requestUrl}/login`, //仅为示例，并非真实接口地址。
+					url: `${app.globalData.requestUrl}/login`,
 					method: 'POST',
-				    data: {
-						username:this.loginName,
-						password:this.loginPaw
+					data: {
+						username: this.loginName,
+						password: this.loginPaw
 					},
-				    success: (res) => {
-				        console.log(res);
-						if(res.statusCode == 200){
+					success: (res) => {
+						console.log(res);
+						if (res.statusCode == 200) {
 							uni.showToast({
 								title: '登录成功',
-								icon:"none"
+								icon: "none"
 							});
 							console.log(res.data.access_token)
-							getApp().globalData.token = res.data.access_token
-							console.log(getApp().globalData.token)
+							app.globalData.token = res.data.access_token
+							console.log(app.globalData.token)
 							uni.reLaunch({
-							    url: './index'
+								url: './index'
 							});
-						} else{
+						} else {
 							uni.showToast({
 								title: res.data.message,
-								icon:"none"
+								icon: "none"
 							});
 						}
-						
-				    }
+					}
 				});
 			}
 		},
-		
+
 	}
 </script>
 
@@ -118,12 +116,14 @@
 		justify-content: center;
 		margin-top: 100rpx;
 	}
-	.item{
+
+	.item {
 		width: 670rpx;
 		height: auto;
 		padding: 40rpx;
 	}
-	input{
+
+	input {
 		width: 630rpx;
 		height: 80rpx;
 		border-radius: 10rpx;
@@ -132,7 +132,8 @@
 		font-size: 30rpx;
 		padding: 0 20rpx;
 	}
-	.forget{
+
+	.forget {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
@@ -140,7 +141,8 @@
 		color: #999999;
 		padding-top: 20rpx;
 	}
-	.submit{
+
+	.submit {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -152,7 +154,8 @@
 		font-size: 30rpx;
 		font-weight: 600;
 	}
-	.registered{
+
+	.registered {
 		display: flex;
 		align-items: center;
 		justify-content: center;

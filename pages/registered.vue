@@ -1,7 +1,7 @@
 <template>
 	<view class="login">
 		<view class="item">
-			<input type="text" placeholder="请输入手机号" @input="getLoginName" data-name="mobile"/>
+			<input type="text" placeholder="请输入手机号" @input="getLoginName" data-name="mobile" />
 		</view>
 		<view class="item">
 			<input type="number" style="width: 400rpx;" data-name="code" placeholder="请输入验证码" @input="getLoginName" />
@@ -22,17 +22,18 @@
 </template>
 
 <script>
+	const app = getApp()
 	export default {
 		data() {
 			return {
 				title: 'Hello',
 				disabled: false,
-				currentTime: 60,   // 倒计时初始值
+				currentTime: 60, // 倒计时初始值
 				time: '获取验证码',
-				formNode:{
-					mobile: '',       // 手机号
-					code: '',          // 验证码
-					password: '',     //密码
+				formNode: {
+					mobile: '', // 手机号
+					code: '', // 验证码
+					password: '', //密码
 					verification_key: '', //
 					password1: ''
 				}
@@ -50,10 +51,10 @@
 				this.formNode = formNode
 				// this.loginName = e.detail.value
 				console.log(this.formNode)
-				
+
 			},
 			// 获取验证码
-			getCode(){
+			getCode() {
 				if (this.disabled) {
 					return false
 				}
@@ -79,29 +80,29 @@
 					duration: 1000
 				});
 				this.disabled = true
-				console.log(getApp().globalData.requestUrl)
+				console.log(app.globalData.requestUrl)
 				uni.request({
-				    url: `${getApp().globalData.requestUrl}/send_sms`, //仅为示例，并非真实接口地址。
+					url: `${app.globalData.requestUrl}/send_sms`,
 					method: 'POST',
-				    data: {
+					data: {
 						mobile: this.formNode.mobile
 					},
-				    success: (res) => {
-				        console.log(res);
-						if(res.statusCode == 200){
+					success: (res) => {
+						console.log(res);
+						if (res.statusCode == 200) {
 							this.formNode.verification_key = res.data.key
 							this.countdown();
-						} else{
+						} else {
 							uni.showToast({
 								title: res.data.message
 							});
 						}
-						
-				    }
+
+					}
 				});
 			},
 			//倒计时
-			countdown(){
+			countdown() {
 				var currentTime = this.currentTime;
 				this.time = `倒计时${currentTime}秒`
 				var interval = setInterval(() => {
@@ -116,7 +117,7 @@
 				}, 1000)
 			},
 			//立即注册
-			login(){
+			login() {
 				if (this.formNode.mobile == '') {
 					uni.showToast({
 						title: "请输入手机号",
@@ -171,26 +172,26 @@
 					duration: 10000
 				})
 				uni.request({
-				    url: `${getApp().globalData.requestUrl}/register`, //仅为示例，并非真实接口地址。
+					url: `${app.globalData.requestUrl}/register`, //仅为示例，并非真实接口地址。
 					method: 'POST',
-				    data: this.formNode,
-				    success: (res) => {
-				        console.log(res);
-						if(res.data.status_code == 1){
+					data: this.formNode,
+					success: (res) => {
+						console.log(res);
+						if (res.data.status_code == 1) {
 							uni.showToast({
 								title: res.data.message,
 							});
 							uni.reLaunch({
-							    url: './index'
+								url: './index'
 							});
-						} else{
+						} else {
 							uni.showToast({
 								title: res.data.message,
-								icon:"none"
+								icon: "none"
 							});
 						}
-						
-				    }
+
+					}
 				});
 			}
 		},
@@ -203,18 +204,20 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		margin-top: 100rpx;	
+		margin-top: 100rpx;
 	}
-	.item{
+
+	.item {
 		width: 670rpx;
 		height: auto;
-		padding:0 40rpx;
+		padding: 0 40rpx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		align-content: center;
 	}
-	input{
+
+	input {
 		width: 630rpx;
 		height: 80rpx;
 		border-radius: 10rpx;
@@ -224,10 +227,12 @@
 		padding: 0 20rpx;
 		margin-bottom: 60rpx;
 	}
-	.getCode{
+
+	.getCode {
 		margin-bottom: 60rpx;
 	}
-	.getCode text{
+
+	.getCode text {
 		color: #2390DC;
 		font-size: 30rpx;
 		border: 1rpx solid #2390DC;
@@ -236,7 +241,8 @@
 		border-radius: 10rpx;
 		padding: 0 16rpx;
 	}
-	.submit{
+
+	.submit {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -248,7 +254,8 @@
 		font-size: 30rpx;
 		font-weight: 600;
 	}
-	.registered{
+
+	.registered {
 		display: flex;
 		align-items: center;
 		justify-content: center;
