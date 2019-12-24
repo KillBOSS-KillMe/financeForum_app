@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="list">
-			<view class="item" @tap="goMyMobile" data-name="meMyMobile_1">
+			<view class="item" @tap="goMyMobile" data-name="meMyMobile_3">
 				<view>手机号更换</view>
 				<view>
 					1899999999999
