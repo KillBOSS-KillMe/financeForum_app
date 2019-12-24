@@ -198,6 +198,12 @@
             "style" : {
 				"navigationBarTitleText": "实名认证"
 			}
+        },
+		{
+            "path" : "pages/meEdit",
+            "style" : {
+				"navigationBarTitleText": "编辑"
+			}
         }
     ],
 	"globalStyle": {

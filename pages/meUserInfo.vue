@@ -1,6 +1,7 @@
 <template>
 	<view class="me">
 		<view class="meHead">
+			<view class="icon" @tap="edit"><uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon></view>
 			<image class="userImg" src="../static/a.jpg" mode=""></image>
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
@@ -96,6 +97,12 @@
 				console.log(e)
 				this.Inv = e;
 			},
+			//编辑
+			edit(){
+				uni.navigateTo({
+					url:`/pages/meEdit`
+				})
+			}
 		}
 	}
 </script>
@@ -104,11 +111,21 @@
 .me{
 	width: 750rpx;
 }
+.me .icon{
+	position: absolute;
+	top: 30rpx;
+	right: 40rpx;
+}
+
+.me .icon icon{
+	color: #fff;
+	font-size: 46rpx;
+	font-weight: 600;
+}
 .me .meHead{
 	width: 690rpx;
 	padding: 30rpx;
-	background: #007AFF;
-	/* position: relative; */
+	background: #2390DC;
 	height: 280rpx;
 	display: flex;
 	justify-content: center;
@@ -130,7 +147,6 @@
 	height:144rpx;
 	border:4rpx solid #FFFFFF;
 	border-radius:144rpx;
-	margin-top: 20rpx;
 }
 .me .meHeadCon>view{
 	display: flex;
