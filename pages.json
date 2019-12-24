@@ -176,18 +176,6 @@
 			}
 		},
 		{
-			"path": "pages/meSpread",
-			"style": {
-				"navigationBarTitleText": "推广返佣"
-			}
-		},
-		{
-			"path": "pages/meSpread",
-			"style": {
-				"navigationBarTitleText": "推广返佣"
-			}
-		},
-		{
 			"path": "pages/meService",
 			"style": {
 				"navigationBarTitleText": "联系客服"
@@ -204,8 +192,14 @@
 			"style": {
 				"navigationBarTitleText": "精准匹配"
 			}
-		}
-	],
+		},
+		{
+            "path" : "pages/meCertificationConfirm",
+            "style" : {
+				"navigationBarTitleText": "实名认证"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",

@@ -39,7 +39,7 @@
 					</view>
 				</block>
 				
-				<uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more>
+				<!-- <uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more> -->
 			</view>
 		</view>
 	</view>

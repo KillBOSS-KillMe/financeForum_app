@@ -29,11 +29,10 @@
     "pages/contactCustomer",
     "pages/meNewbieRead",
     "pages/meSpread",
-    "pages/meSpread",
-    "pages/meSpread",
     "pages/meService",
     "pages/meSetting",
-    "pages/indexAccurate"
+    "pages/indexAccurate",
+    "pages/meCertificationConfirm"
   ],
   "subPackages": [],
   "window": {
