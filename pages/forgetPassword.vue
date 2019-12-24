@@ -25,6 +25,7 @@
 </template>
 
 <script>
+	const app = getApp()
 	export default {
 		data() {
 			return {
@@ -38,7 +39,7 @@
 			getLoginName(e) {
 				this.loginName = e.detail.value
 				console.log(this.loginName)
-				
+
 			},
 			getLoginPaw(e) {
 				this.loginPaw = e.detail.value
@@ -56,16 +57,18 @@
 		justify-content: center;
 		margin-top: 100rpx;
 	}
-	.item{
+
+	.item {
 		width: 670rpx;
 		height: auto;
-		padding:0 40rpx;
+		padding: 0 40rpx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		align-content: center;
 	}
-	input{
+
+	input {
 		width: 630rpx;
 		height: 80rpx;
 		border-radius: 10rpx;
@@ -75,10 +78,12 @@
 		padding: 0 20rpx;
 		margin-bottom: 60rpx;
 	}
-	.getCode{
+
+	.getCode {
 		margin-bottom: 60rpx;
 	}
-	.getCode text{
+
+	.getCode text {
 		color: #2390DC;
 		font-size: 30rpx;
 		border: 1rpx solid #2390DC;
@@ -87,7 +92,8 @@
 		border-radius: 10rpx;
 		padding: 0 16rpx;
 	}
-	.submit{
+
+	.submit {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -99,7 +105,8 @@
 		font-size: 30rpx;
 		font-weight: 600;
 	}
-	.registered{
+
+	.registered {
 		display: flex;
 		align-items: center;
 		justify-content: center;

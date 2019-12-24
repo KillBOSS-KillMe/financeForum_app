@@ -75,7 +75,7 @@
 					duration: 10000
 				})
 				uni.request({
-					url: `${app.globalData.requestUrl}/login`, //仅为示例，并非真实接口地址。
+					url: `${app.globalData.requestUrl}/login`,
 					method: 'POST',
 					data: {
 						username: this.loginName,
