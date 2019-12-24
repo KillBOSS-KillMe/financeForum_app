@@ -1,13 +1,23 @@
 <template>
 	<view>
-		<view class="list">
-			<view class="item" @tap="goMyMobile" data-name="meMyMobile_3">
-				<view>手机号更换</view>
-				<view>
-					1899999999999
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
+		<view class="con">
+			<view class="item">
+				<label>姓名：</label>
+				<input type="text" />
 			</view>
+			<view class="item">
+				<label>身份证：</label>
+				<input type="text" />
+			</view>
+			<view class="item IQCode">
+				<label>验证码：</label>
+				<input type="text" />
+				<view class="getCode">获取验证码</view>
+			</view>
+		</view>
+		
+		<view class="submit">
+			<view @tap="goMyMobile" data-name="meMyMobile_3">确认</view>
 		</view>
 	</view>
 </template>
@@ -31,23 +41,68 @@
 </script>
 
 <style>
-	.list{
+	.con {
 		width: 750rpx;
 		height: auto;
-		border-top: 2rpx solid #F3F3F3;
-	}
-	.item{
-		width: 690rpx;
-		height: 90rpx;
-		margin: 0 30rpx;
-		border-bottom: 2rpx solid #110F53;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		color: #333333;
-		font-size: 28rpx;
+		flex-direction: column;
 	}
-	.iconfont{
-		margin-left: 10rpx;
+	.con .item{
+		width: 605rpx;
+		height: 75rpx;
+		padding: 0 20rpx;
+		margin: 20rpx 0;
+		border: 1rpx solid #dedede;
+		border-radius: 10rpx;
+		
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.con label{
+		width: 210rpx;
+		font-size: 26rpx;	
+		font-weight: 600;
+	}
+	.con input{
+		width: 405rpx;
+		font-size: 24rpx;
+	}
+	.con .IQCode input{
+		width: 250rpx;
+	}
+	.con .getCode{
+		width: 140rpx;
+		color: #ef4c4c;
+		font-size: 25rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.submit view{
+		width: 630rpx;
+		height: 80rpx;
+		color: #fff;
+		font-size: 32rpx;
+		
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #2390DC;
+    box-shadow: 5px 5px 5px 0 #2390DC;
+    -webkit-box-shadow: #2390DC 0px 0px 10px;
+    -moz-box-shadow: #2390DC 0px 0px 10px;
+	}
+	.submit{
+		width: 750rpx;
+		height: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 50rpx 0;
 	}
 </style>

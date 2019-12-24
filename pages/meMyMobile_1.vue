@@ -1,31 +1,22 @@
 <template>
 	<view>
-		<!-- <view class="list">
-			<view class="item" @tap="goMyMobile" data-name="meMyMobile_2">
-				<view>手机号更换</view>
-				<view>
-					1899999999999
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
-			</view>
-		</view> -->
 		<view class="head">
 			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			<span>199999999999</span>
 		</view>
 		<view class="con">
 			<view class="item">
-				<label>姓名：</label>
-				<input type="text" />
-			</view>
-			<view class="item">
-				<label>身份证：</label>
+				<label>新手机号：</label>
 				<input type="text" />
 			</view>
 			<view class="item IQCode">
 				<label>验证码：</label>
 				<input type="text" />
 				<view class="getCode">获取验证码</view>
+			</view>
+			<view class="item">
+				<label>登录密码：</label>
+				<input type="text" />
 			</view>
 		</view>
 		
