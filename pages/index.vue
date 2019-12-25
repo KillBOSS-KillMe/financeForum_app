@@ -12,17 +12,17 @@
 				:interval="interval"
 				:duration="duration"
 			>
-				<swiper-item v-for="(item, index) in pageNode.ad.aditems" :key="index">
-					<image class="bannerImg" :src="item.image" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
+				<swiper-item v-for="(item, index) in pageNode.ad" :key="index">
+					<image class="bannerImg" :data-id="item.aditems.id" :src="imgUrl + item.aditems.image" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 导航 -->
 		<view class="nav">
-			<block v-for="(item, index) in nav" :key="index">
+			<block v-for="(item, index) in pageNode.navs" :key="index">
 				<view class="navList" @tap="goTo" :data-id="item.id">
 					<image :src="item.img" mode="aspectFill"></image>
-					<text>{{ item.title }}</text>
+					<text>{{ item.name }}</text>
 				</view>
 			</block>
 		</view>
@@ -87,13 +87,15 @@ export default {
 				{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
 				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
 			],
-			pageNode: []
+			pageNode: [],
+			imgUrl: ''
 		};
 	},
 	onLaunch(){
 
 	},
 	onShow(){
+		this.imgUrl = getApp().globalData.imgUrl
 		console.log(getApp().globalData.token)
 		this.getList()
 		// this.getToken()
