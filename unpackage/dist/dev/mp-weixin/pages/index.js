@@ -220,7 +220,7 @@ var app = getApp();var _default =
       { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' },
       { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }],
 
-      formNode: [] };
+      pageNode: [] };
 
   },
   onLaunch: function onLaunch() {
@@ -270,10 +270,7 @@ var app = getApp();var _default =
         success: function success(res) {
           console.log(res);
           if (res.data.status_code == 200) {
-            _this.formNode = res.data.data;
-            console.log(_this.formNode, '++++');
-            console.log(_this.formNode.ad, "-----");
-
+            _this.pageNode = res.data.data;
             console.log(res.data.data.ad.aditems);
           } else {
             uni.showToast({

@@ -222,7 +222,7 @@ var app = getApp();var _default =
               icon: "none" });
 
             console.log(res.data.access_token);
-            app.globalData.token = res.data.access_token;
+            app.globalData.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
             console.log(app.globalData.token);
             uni.reLaunch({
               url: './index' });

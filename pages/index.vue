@@ -12,7 +12,7 @@
 				:interval="interval"
 				:duration="duration"
 			>
-				<swiper-item v-for="(item, index) in formNode.ad" :key="index">
+				<swiper-item v-for="(item, index) in pageNode.ad.aditems" :key="index">
 					<image class="bannerImg" :src="item.image" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 				</swiper-item>
 			</swiper>
@@ -87,7 +87,7 @@ export default {
 				{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
 				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
 			],
-			formNode: []
+			pageNode: []
 		};
 	},
 	onLaunch(){
@@ -137,10 +137,7 @@ export default {
 				success: (res) => {
 					console.log(res);
 					if (res.data.status_code == 200) {
-						this.formNode = res.data.data
-						console.log(this.formNode,'++++')
-						console.log(this.formNode.ad,"-----")
-						
+						this.pageNode = res.data.data
 						console.log(res.data.data.ad.aditems)
 					} else {
 						uni.showToast({
