@@ -84,6 +84,7 @@ text-overflow: ellipsis; -->
 		},
 		globalData:{
 			requestUrl: 'http://www.finance.cc/api',
+			imgUrl: 'http://www.finance.cc/uploads/',
 			token: ''
 		},
 		// getToken() {

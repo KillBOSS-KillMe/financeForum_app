@@ -12,8 +12,8 @@
 				:interval="interval"
 				:duration="duration"
 			>
-				<swiper-item v-for="(item, index) in bannerList" :key="index">
-					<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
+				<swiper-item v-for="(item, index) in formNode.ad" :key="index">
+					<image class="bannerImg" :src="item.image" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -86,7 +86,8 @@ export default {
 				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
 				{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
 				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-			]
+			],
+			formNode: []
 		};
 	},
 	onLaunch(){
@@ -135,14 +136,17 @@ export default {
 				method: 'GET',
 				success: (res) => {
 					console.log(res);
-					// if (res.statusCode == 200) {
-					// 	this.formNode.verification_key = res.data.key
-					// 	this.countdown();
-					// } else {
-					// 	uni.showToast({
-					// 		title: res.data.message
-					// 	});
-					// }
+					if (res.data.status_code == 200) {
+						this.formNode = res.data.data
+						console.log(this.formNode,'++++')
+						console.log(this.formNode.ad,"-----")
+						
+						console.log(res.data.data.ad.aditems)
+					} else {
+						uni.showToast({
+							title: res.data.message
+						});
+					}
 
 				}
 			})
