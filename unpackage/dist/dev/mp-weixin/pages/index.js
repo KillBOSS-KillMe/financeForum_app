@@ -220,13 +220,15 @@ var app = getApp();var _default =
       { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' },
       { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }],
 
-      pageNode: [] };
+      pageNode: [],
+      imgUrl: '' };
 
   },
   onLaunch: function onLaunch() {
 
   },
   onShow: function onShow() {
+    this.imgUrl = getApp().globalData.imgUrl;
     console.log(getApp().globalData.token);
     this.getList();
     // this.getToken()

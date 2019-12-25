@@ -156,8 +156,8 @@ var app = getApp();var _default =
 {
   data: function data() {
     return {
-      loginPaw: '',
-      loginName: '' };
+      loginPaw: '123123',
+      loginName: '18700458359' };
 
   },
   onLoad: function onLoad() {
