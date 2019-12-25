@@ -5,7 +5,7 @@
 		<view class="searchBox">
 			<input type="text" @input="getSearchKey" />
 		</view>
-		<image class="service" src="../static/b.jpg" mode=""></image>
+		<image class="service" src="../static/b.jpg" mode="" @tap="goMe"></image>
 	</view>
 </template>
 
@@ -28,6 +28,12 @@
 			getSearchKey(e) {
 				console.log(e.detail.value)
 				this.searchKey = e.detail.value
+			},
+			goMe() {
+				// 进入个人中心
+				uni.switchTab({
+					url: `/pages/me`
+				})
 			}
 		}
 	}
