@@ -36,93 +36,117 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {};
-  },
-  methods: {
-	  // 退出登录
-	  outLogin(){
-		  uni.request({
-		  	url: `${getApp().globalData.requestUrl}/logout`, //仅为示例，并非真实接口地址。
-			 header: {
-			  // authorization: this.$parent.globalData.token
+	const app = getApp()
+	export default {
+		data() {
+			return {};
+		},
+
+		methods: {
+			outLogin() {
+				
+				uni.showModal({
+					title: '提示',
+					content: '是否退出系统',
+					success: res => {
+						if (res.confirm) {
+							// console.log('用户点击确定');
+							this.runOutLogin()
+						} else if (res.cancel) {
+							// console.log('用户点击取消');
+						}
+					}
+				});
+				
 			},
-		  	method: 'POST',
-		  	success: (res) => {
-		  	    console.log(res);
-		  		// if(res.data.status_code == 1){
-		  		// 	uni.showToast({
-		  		// 		title: res.data.message,
-		  		// 	});
-		  		// 	uni.reLaunch({
-		  		// 	    url: './index'
-		  		// 	});
-		  		// } else{
-		  		// 	uni.showToast({
-		  		// 		title: res.data.message,
-		  		// 		icon:"none"
-		  		// 	});
-		  		// }
-		  		
-		  	}
-		  })
-	 }
-  }
-};
+			runOutLogin() {
+				// 执行用户登出
+				uni.showLoading({
+				  title: '执行中...'
+				});
+				uni.request({
+					url: `${app.globalData.requestUrl}/logout`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = app.null2str(res)
+						if (res.data.state_code == 1) {
+							uni.reLaunch({
+								url: `/pages/login`
+							})
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+					}
+				})
+			}
+		}
+	};
 </script>
 
 <style>
-.login {
-	margin-top: 200rpx;
-	width: 750rpx;
-	height: auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.login view{
-	width: 630rpx;
-	height: 80rpx;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10rpx;
-	font-size: 32rpx;
-	color: #fff;
-	background-color: #2390DC;
-	box-shadow: 0 10rpx 45rpx 0 rgba(35,144,220,0.6);
-}
-.item {
-  width: 690rpx;
-  margin: 0 30rpx;
-  display: flex;
-  justify-content: space-between;
-	border-bottom: 1rpx solid #3e8cfd;
-	padding: 30rpx 0;
-}
-.item .left {
-  display: flex;
-  justify-content: flex-start;
-}
-.item text {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #333333;
-  margin: 0 10rpx;
-}
-.item icon {
-  color: #c0c0c0;
-  font-size: 40rpx;
-  width: 40rpx;
-  /* background: #007AFF; */
-}
-.item .iconchangyongtubiao-xianxingdaochu-zhuanqu- {
-  color: #c0c0c0;
-}
-.item view {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+	.login {
+		margin-top: 200rpx;
+		width: 750rpx;
+		height: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.login view {
+		width: 630rpx;
+		height: 80rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10rpx;
+		font-size: 32rpx;
+		color: #fff;
+		background-color: #2390DC;
+		box-shadow: 0 10rpx 45rpx 0 rgba(35, 144, 220, 0.6);
+	}
+
+	.item {
+		width: 690rpx;
+		margin: 0 30rpx;
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1rpx solid #3e8cfd;
+		padding: 30rpx 0;
+	}
+
+	.item .left {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.item text {
+		font-size: 30rpx;
+		font-weight: 600;
+		color: #333333;
+		margin: 0 10rpx;
+	}
+
+	.item icon {
+		color: #c0c0c0;
+		font-size: 40rpx;
+		width: 40rpx;
+		/* background: #007AFF; */
+	}
+
+	.item .iconchangyongtubiao-xianxingdaochu-zhuanqu- {
+		color: #c0c0c0;
+	}
+
+	.item view {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 </style>

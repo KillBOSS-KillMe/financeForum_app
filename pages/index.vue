@@ -72,8 +72,7 @@
 
 		},
 		onShow() {
-			this.imgUrl = getApp().globalData.imgUrl
-			console.log(getApp().globalData.token)
+			this.imgUrl = app.globalData.imgUrl
 			this.getList()
 			// this.getToken()
 		},
@@ -136,7 +135,7 @@
 						if (res.data.status_code == 200) {
 							let pageNode = res.data.data
 							this.pageNode = pageNode
-							if (pageNode.length > 0){
+							if (pageNode.board_data.length > 0){
 								this.boardId = pageNode.board_data[0].block_id
 							}
 						} else {
