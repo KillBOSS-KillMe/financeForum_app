@@ -132,11 +132,15 @@
 </template>
 
 <script>
+	const app = getApp()
 	export default {
 		data() {
 			return {
 
 			}
+		},
+		onShow() {
+			this.getUserInfo()
 		},
 		methods: {
 			// 进入页面
@@ -145,6 +149,33 @@
 				let url = e.currentTarget.dataset.name
 				uni.navigateTo({
 					url: `/pages/${url}`
+				})
+			},
+			getUserInfo() {
+				// 用户信息获取
+				uni.showLoading({
+				  title: '用户信息获取中...'
+				});
+				uni.request({
+					url: `${app.globalData.requestUrl}/me`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = app.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							this.userInfo = res.data.data
+							
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
 				})
 			}
 		}

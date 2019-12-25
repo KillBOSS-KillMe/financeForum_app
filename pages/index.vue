@@ -72,8 +72,7 @@
 
 		},
 		onShow() {
-			this.imgUrl = getApp().globalData.imgUrl
-			console.log(getApp().globalData.token)
+			this.imgUrl = app.globalData.imgUrl
 			this.getList()
 			// this.getToken()
 		},
