@@ -21,7 +21,7 @@
 		<view class="nav">
 			<block v-for="(item, index) in pageNode.navs" :key="index">
 				<view class="navList" :data-id="item.id" :data-link="item.link" @tap="goTo" >
-					<image :src="imgUrl + item.img" mode="aspectFill"></image>
+					<image :src="imgUrl + item.icon" mode="aspectFill"></image>
 					<text>{{ item.name }}</text>
 				</view>
 			</block>
@@ -30,7 +30,7 @@
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageNode.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="Inv = index">{{ item.title }}</view>
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="Inv = index" :data-id="item.id">{{ item.title }}</view>
 				</block>
 				<!-- <view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
 				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
@@ -123,6 +123,7 @@ export default {
 		//
 		changeTab(Inv){
 			that.navIdx = Inv;
+			console.log(that.navIdx)
 		},
 		// 轮播跳转
 		goBanner(e) {
@@ -151,6 +152,29 @@ export default {
 						});
 					}
 
+				}
+			})
+		},
+		//加载更多
+		onReachBottom(){
+			// console.log(this.pageNode.board_data[Inv].block_id)
+			uni.request({
+				url: `${app.globalData.requestUrl}/index-board-posts`,
+				method: 'GET',
+				data:{
+					board_id:this.pageNode
+				},
+				success: (res) => {
+					console.log(res);
+					console.log(res.data.status_code)
+					if (res.data.status_code == 200) {
+						this.pageNode = res.data.data
+					} else {
+						uni.showToast({
+							title: res.data.message
+						});
+					}
+			
 				}
 			})
 		}

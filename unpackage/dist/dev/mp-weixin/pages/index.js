@@ -92,11 +92,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      _vm.Inv = 0
-    }
-
-    _vm.e1 = function($event) {
-      _vm.Inv = 1
+      _vm.Inv = _vm.index
     }
   }
 }
@@ -132,6 +128,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
 //
 //
 //
@@ -252,6 +252,7 @@ var app = getApp();var _default =
     //
     changeTab: function changeTab(Inv) {
       that.navIdx = Inv;
+      console.log(that.navIdx);
     },
     // 轮播跳转
     goBanner: function goBanner(e) {
@@ -274,6 +275,29 @@ var app = getApp();var _default =
           console.log(res.data.status_code);
           if (res.data.status_code == 200) {
             _this.pageNode = res.data.data;
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    },
+    //加载更多
+    onReachBottom: function onReachBottom() {var _this2 = this;
+      // console.log(this.pageNode.board_data[Inv].block_id)
+      uni.request({
+        url: "".concat(app.globalData.requestUrl, "/index-board-posts"),
+        method: 'GET',
+        data: {
+          board_id: this.pageNode },
+
+        success: function success(res) {
+          console.log(res);
+          console.log(res.data.status_code);
+          if (res.data.status_code == 200) {
+            _this2.pageNode = res.data.data;
           } else {
             uni.showToast({
               title: res.data.message });
