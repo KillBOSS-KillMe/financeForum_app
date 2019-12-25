@@ -271,6 +271,7 @@ var app = getApp();var _default =
         method: 'GET',
         success: function success(res) {
           console.log(res);
+          console.log(res.data.status_code);
           if (res.data.status_code == 200) {
             _this.pageNode = res.data.data;
           } else {
