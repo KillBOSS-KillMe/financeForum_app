@@ -51,7 +51,7 @@
 		<button type="primary" class="off">立即开通，尽享权益</button>
 		<view class="radio">
 			<label class="radio">
-				<radio value="" /><text>我以阅读开通普通会员vip</text>
+				<radio value="" /><view>我以阅读开通普通会员vip</view>
 			</label>
 		</view>
 		<!-- <image src="../static/mevip.png" mode=""></image> -->

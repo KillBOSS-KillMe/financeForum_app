@@ -145,7 +145,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var _default =
+
+var app = getApp();var _default =
 {
   data: function data() {
     return {
@@ -203,9 +204,9 @@ var _default =
         duration: 1000 });
 
       this.disabled = true;
-      console.log(getApp().globalData.requestUrl);
+      console.log(app.globalData.requestUrl);
       uni.request({
-        url: "".concat(getApp().globalData.requestUrl, "/send_sms"), //仅为示例，并非真实接口地址。
+        url: "".concat(app.globalData.requestUrl, "/send_sms"),
         method: 'POST',
         data: {
           mobile: this.formNode.mobile },
@@ -295,7 +296,7 @@ var _default =
         duration: 10000 });
 
       uni.request({
-        url: "".concat(getApp().globalData.requestUrl, "/register"), //仅为示例，并非真实接口地址。
+        url: "".concat(app.globalData.requestUrl, "/register"), //仅为示例，并非真实接口地址。
         method: 'POST',
         data: this.formNode,
         success: function success(res) {

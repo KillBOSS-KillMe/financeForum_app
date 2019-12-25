@@ -151,7 +151,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var _default =
+
+var app = getApp();var _default =
 {
   data: function data() {
     return {
@@ -166,12 +167,10 @@ var _default =
     // 获取登录名
     getLoginName: function getLoginName(e) {
       this.loginName = e.detail.value;
-      console.log(this.loginName);
     },
     // 获取密码
     getLoginPaw: function getLoginPaw(e) {
       this.loginPaw = e.detail.value;
-      console.log(this.loginPaw);
     },
     // 进入忘记密码页
     goForgetPassword: function goForgetPassword() {
@@ -186,7 +185,7 @@ var _default =
 
     },
     login: function login() {
-      // console.log(this.loginName)
+      console.log(this.loginName, this.loginPaw);
       if (this.loginName == '') {
         uni.showToast({
           title: "请输入手机号或者用户名",
@@ -209,7 +208,7 @@ var _default =
         duration: 10000 });
 
       uni.request({
-        url: "".concat(getApp().globalData.requestUrl, "/login"), //仅为示例，并非真实接口地址。
+        url: "".concat(app.globalData.requestUrl, "/login"),
         method: 'POST',
         data: {
           username: this.loginName,
@@ -223,8 +222,8 @@ var _default =
               icon: "none" });
 
             console.log(res.data.access_token);
-            getApp().globalData.token = res.data.access_token;
-            console.log(getApp().globalData.token);
+            app.globalData.token = res.data.access_token;
+            console.log(app.globalData.token);
             uni.reLaunch({
               url: './index' });
 
@@ -234,7 +233,6 @@ var _default =
               icon: "none" });
 
           }
-
         } });
 
     } } };exports.default = _default;

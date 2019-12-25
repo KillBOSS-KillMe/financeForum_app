@@ -15,12 +15,12 @@
 	        justify-content: center;
 	margin-top: 100rpx;
 }
-.item{
+.item {
 	width: 670rpx;
 	height: auto;
 	padding: 40rpx;
 }
-input{
+input {
 	width: 630rpx;
 	height: 80rpx;
 	border-radius: 10rpx;
@@ -29,7 +29,7 @@ input{
 	font-size: 30rpx;
 	padding: 0 20rpx;
 }
-.forget{
+.forget {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -43,7 +43,7 @@ input{
 	color: #999999;
 	padding-top: 20rpx;
 }
-.submit{
+.submit {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -61,7 +61,7 @@ input{
 	font-size: 30rpx;
 	font-weight: 600;
 }
-.registered{
+.registered {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

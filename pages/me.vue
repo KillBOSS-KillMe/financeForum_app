@@ -159,7 +159,7 @@
 	.me .meHead {
 		width: 690rpx;
 		padding: 30rpx;
-		background: #007AFF;
+		background: #2390DC;
 		/* position: relative; */
 		height: 280rpx;
 		display: flex;
