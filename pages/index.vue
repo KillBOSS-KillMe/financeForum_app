@@ -12,7 +12,7 @@
 				:interval="interval"
 				:duration="duration"
 			>
-				<swiper-item v-for="(item, index) in pageNode.ad.aditems" :key="index">
+				<swiper-item v-for="(item, index) in pageNode.ad" :key="index">
 					<image class="bannerImg" :src="item.image" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 				</swiper-item>
 			</swiper>
@@ -138,7 +138,6 @@ export default {
 					console.log(res);
 					if (res.data.status_code == 200) {
 						this.pageNode = res.data.data
-						console.log(res.data.data.ad.aditems)
 					} else {
 						uni.showToast({
 							title: res.data.message

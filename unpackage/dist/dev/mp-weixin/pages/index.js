@@ -271,7 +271,6 @@ var app = getApp();var _default =
           console.log(res);
           if (res.data.status_code == 200) {
             _this.pageNode = res.data.data;
-            console.log(res.data.data.ad.aditems);
           } else {
             uni.showToast({
               title: res.data.message });
