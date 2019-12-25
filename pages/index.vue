@@ -29,24 +29,28 @@
 		<!-- 数据列表 -->
 		<view class="content">
 			<view class="inv-h-w">
-				<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
-				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view>
+				<block v-for="(item, index) in pageNode.board_data" :key="index">
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="Inv = index">{{ item.title }}</view>
+				</block>
+				<!-- <view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
+				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
 			</view>
 			<view class="contentList">
-				<block v-for="(item, index) in list" :key="index">
+				<block v-for="(item, index) in pageNode.board_data[Inv].posts" :key="index">
 					<view class="item" @tap="goDetail" :data-id="item.id">
-						<image :src="item.img" mode="aspectFill"></image>
+						<!-- {{item.photoalbums[0].path}} -->
+						<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
+						<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 						<view class="itemRight">
 							<text class="title">{{ item.title }}</text>
 							<view class="itemCon">
-								<text>{{ item.time }}</text>
-								<text>{{ item.name }}</text>
-								<text>{{ item.num }}评</text>
+								<text>{{ item.created_at }}</text>
+								<text>用户名</text>
+								<text>12222评</text>
 							</view>
 						</view>
 					</view>
 				</block>
-
 				<!-- <uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more> -->
 			</view>
 		</view>
