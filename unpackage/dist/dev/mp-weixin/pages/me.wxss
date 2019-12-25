@@ -5,8 +5,7 @@
 .me .meHead {
 	width: 690rpx;
 	padding: 30rpx;
-	background: #007AFF;
-	/* position: relative; */
+	background: #2390DC;
 	height: 280rpx;
 	display: -webkit-box;
 	display: -webkit-flex;

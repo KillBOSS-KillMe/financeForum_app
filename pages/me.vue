@@ -64,7 +64,7 @@
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
-			<view class="item" data-name="meVIPDiff" @tap="goPageNavigateTo">
+		<!-- 	<view class="item" data-name="meVIPDiff" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconhuiyuan1"></uni-icon>
 					<text>会员区别</text>
@@ -72,7 +72,7 @@
 				<view>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
-			</view>
+			</view> -->
 			<view class="item" data-name="meAllProduct" @tap="goPageNavigateTo">
 				<view class="left">
 					<uni-icon type="" class="iconfont iconshujuhuizong"></uni-icon>
@@ -160,7 +160,6 @@
 		width: 690rpx;
 		padding: 30rpx;
 		background: #2390DC;
-		/* position: relative; */
 		height: 280rpx;
 		display: flex;
 		justify-content: center;

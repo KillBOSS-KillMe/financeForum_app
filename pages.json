@@ -212,30 +212,36 @@
 			}
 		},
 		{
-            "path" : "pages/meCertificationConfirm",
-            "style" : {
+			"path": "pages/meCertificationConfirm",
+			"style": {
 				"navigationBarTitleText": "实名认证"
 			}
-        },
+		},
 		{
-            "path" : "pages/meEdit",
-            "style" : {
+			"path": "pages/meEdit",
+			"style": {
 				"navigationBarTitleText": "编辑"
 			}
-        },
+		},
 		{
-            "path" : "pages/meApplyMessage",
-            "style" : {
+			"path": "pages/meApplyMessage",
+			"style": {
 				"navigationBarTitleText": "系统消息"
 			}
-        },
+		},
 		{
-            "path" : "pages/meTreaty",
-            "style" : {
+			"path": "pages/meTreaty",
+			"style": {
 				"navigationBarTitleText": "相关协议"
 			}
-        }
-    ],
+		},
+		{
+			"path": "pages/paySuccess",
+			"style": {
+				"navigationBarTitleText": "支付成功"
+			}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",

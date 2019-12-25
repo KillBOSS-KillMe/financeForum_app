@@ -178,7 +178,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var _default =
+//
+//
+//
+//
+//
+//
+//
+//
+
+var app = getApp();var _default =
 {
   data: function data() {
     return {
@@ -218,6 +227,7 @@ var _default =
   },
   onShow: function onShow() {
     console.log(getApp().globalData.token);
+    this.getList();
     // this.getToken()
   },
   onHide: function onHide() {
@@ -249,6 +259,25 @@ var _default =
       console.log(e);
       uni.navigateTo({
         url: "/pages/articleDetail" });
+
+    },
+    //获取数据
+    getList: function getList() {
+      uni.request({
+        url: "".concat(app.globalData.requestUrl, "/index"),
+        method: 'GET',
+        success: function success(res) {
+          console.log(res);
+          // if (res.statusCode == 200) {
+          // 	this.formNode.verification_key = res.data.key
+          // 	this.countdown();
+          // } else {
+          // 	uni.showToast({
+          // 		title: res.data.message
+          // 	});
+          // }
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

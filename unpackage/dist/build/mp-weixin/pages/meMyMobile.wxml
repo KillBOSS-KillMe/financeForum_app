@@ -1,0 +1,1 @@
+<view><view class="list"><view class="item" data-name="meMyMobile_1" data-event-opts="{{[['tap',[['goMyMobile',['$event']]]]]}}" bindtap="__e"><view>手机号更换</view><view>1899999999999<uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" vue-id="1" type bind:__l="__l"></uni-icon></view></view></view></view>
