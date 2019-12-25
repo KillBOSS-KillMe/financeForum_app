@@ -3,24 +3,18 @@
 		<pageSearch></pageSearch>
 		<!-- 轮播 -->
 		<view class="page-section-spacing banner">
-			<swiper
-				class="swiper"
-				:indicator-dots="indicatorDots"
-				indicator-color="rgba(255,255,255,.3)"
-				indicator-active-color="#fff"
-				:autoplay="autoplay"
-				:interval="interval"
-				:duration="duration"
-			>
+			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff"
+			 :autoplay="autoplay" :interval="interval" :duration="duration">
 				<swiper-item v-for="(item, index) in pageNode.ad.aditems" :key="index">
-					<image class="bannerImg" :data-id="item.id" :data-link="item.link" :src="imgUrl + item.image" mode="aspectFill" @tap="goBanner"></image>
+					<image class="bannerImg" :data-id="item.id" :data-link="item.link" :src="imgUrl + item.image" mode="aspectFill"
+					 @tap="goBanner"></image>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 导航 -->
 		<view class="nav">
 			<block v-for="(item, index) in pageNode.navs" :key="index">
-				<view class="navList" :data-bind_board="item.bind_board" :data-id="item.id" :data-link="item.link" @tap="goNavs" >
+				<view class="navList" :data-bind_board="item.bind_board" :data-id="item.id" :data-link="item.link" @tap="goNavs">
 					<image :src="imgUrl + item.icon" mode="aspectFill"></image>
 					<text>{{ item.name }}</text>
 				</view>
@@ -30,7 +24,7 @@
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageNode.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="Inv = index" :data-id="item.id">{{ item.title }}</view>
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
 				</block>
 				<!-- <view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
 				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
@@ -58,248 +52,250 @@
 </template>
 
 <script>
-const app = getApp()
-export default {
-	data() {
-		return {
-			title: 'Hello',
-			background: ['color1', 'color2', 'color3'],
-			indicatorDots: true,
-			autoplay: true,
-			interval: 2000,
-			duration: 500,
-			bannerList:[
-				{id:'1',img:'../static/a.jpg'},
-				{id:'2',img:'../static/b.jpg'},
-				{id:'12',img:'../static/a.jpg'},
-			],
-			nav:[
-				{id:'1',title:'产品超市',img:'../static/a.jpg'},
-				{id:'2',title:'信贷技术',img:'../static/a.jpg'},
-				{id:'3',title:'办卡提额',img:'../static/a.jpg'},
-				{id:'1',title:'信用修复',img:'../static/a.jpg'},
-				{id:'1',title:'查询工具',img:'../static/a.jpg'},
-				{id:'1',title:'精准匹配',img:'../static/a.jpg'},
-				{id:'1',title:'最新资讯',img:'../static/a.jpg'},
-				{id:'1',title:'小微企业',img:'../static/a.jpg'},
-				{id:'1',title:'负债重组',img:'../static/a.jpg'},
-				{id:'10',title:'开通会员',img:'../static/a.jpg'}
-			],
-			Inv:0,
-			list:[
-				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
-				{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
-				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-			],
-			pageNode: [],
-			imgUrl: ''
-		};
-	},
-	onLaunch(){
+	const app = getApp()
+	export default {
+		data() {
+			return {
+				indicatorDots: true,
+				autoplay: true,
+				interval: 2000,
+				duration: 500,
+				Inv: 0,
+				boardId: '',
+				pageNode: [],
+				imgUrl: ''
+			};
+		},
+		onLaunch() {
 
-	},
-	onShow(){
-		this.imgUrl = getApp().globalData.imgUrl
-		console.log(getApp().globalData.token)
-		this.getList()
-		// this.getToken()
-	},
-	onHide(){
-		console.log('App Hide')
-	},
-	methods: {
-		// 导航详情
-		goNavs(e){
-			console.log(e.currentTarget.dataset.id)
-			let link = e.currentTarget.dataset.link
-			let bind_board = e.currentTarget.dataset.bind_board
-			let id = e.currentTarget.dataset.id
-			if (bind_board == '0') {
+		},
+		onShow() {
+			this.imgUrl = getApp().globalData.imgUrl
+			console.log(getApp().globalData.token)
+			this.getList()
+			// this.getToken()
+		},
+		onHide() {
+			console.log('App Hide')
+		},
+		methods: {
+			// 导航详情
+			goNavs(e) {
+				console.log(e.currentTarget.dataset.id)
+				let link = e.currentTarget.dataset.link
+				let bind_board = e.currentTarget.dataset.bind_board
+				let id = e.currentTarget.dataset.id
+				if (bind_board == '0') {
+					uni.navigateTo({
+						url: `/pages/productSupermarket`
+					})
+				} else {
+					uni.navigateTo({
+						url: `/pages/indexAccurate?id=${id}`
+					})
+				}
+				// //开通会员
+				// if(id == 10){
+				// 	uni.navigateTo({
+				// 		url:`/pages/joinMember`
+				// 	})
+				// }
+
+			},
+			//
+			selListType(e) {
+				this.Inv = e.currentTarget.dataset.index
+				this.boardId = e.currentTarget.dataset.block_id
+			},
+			// changeTab(Inv){
+			// 	that.navIdx = Inv;
+			// 	console.log(that.navIdx)
+			// },
+			// 轮播跳转
+			goBanner(e) {
+				console.log(e)
+			},
+			// 文章详情
+			goDetail(e) {
+				console.log(e)
 				uni.navigateTo({
-					url: `/pages/productSupermarket`
+					url: `/pages/articleDetail`
 				})
-			} else {
-				uni.navigateTo({
-					url: `/pages/indexAccurate?id=${id}`
+			},
+			//获取数据
+			getList() {
+				uni.request({
+					url: `${app.globalData.requestUrl}/index`,
+					method: 'GET',
+					success: res => {
+						res = app.null2str(res)
+						if (res.data.status_code == 200) {
+							let pageNode = res.data.data
+							this.pageNode = pageNode
+							if (pageNode.length > 0){
+								this.boardId = pageNode.board_data[0].block_id
+							}
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+
+					}
+				})
+			},
+			//加载更多
+			onReachBottom() {
+				// console.log(this.pageNode.board_data[Inv].block_id)
+				uni.request({
+					url: `${app.globalData.requestUrl}/index-board-posts`,
+					method: 'GET',
+					data: {
+						board_id: this.boardId
+					},
+					success: res => {
+
+						res = app.null2str(res)
+						if (res.data.status_code == 200) {
+							this.pageNode = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+
+					}
 				})
 			}
-			// //开通会员
-			// if(id == 10){
-			// 	uni.navigateTo({
-			// 		url:`/pages/joinMember`
-			// 	})
-			// }
-
-		},
-		//
-		changeTab(Inv){
-			that.navIdx = Inv;
-			console.log(that.navIdx)
-		},
-		// 轮播跳转
-		goBanner(e) {
-			console.log(e)
-		},
-		// 文章详情
-		goDetail(e) {
-			console.log(e)
-			uni.navigateTo({
-				url:`/pages/articleDetail`
-			})
-		},
-		//获取数据
-		getList(){
-			uni.request({
-				url: `${app.globalData.requestUrl}/index`,
-				method: 'GET',
-				success: (res) => {
-					console.log(res);
-					console.log(res.data.status_code)
-					if (res.data.status_code == 200) {
-						this.pageNode = res.data.data
-					} else {
-						uni.showToast({
-							title: res.data.message
-						});
-					}
-
-				}
-			})
-		},
-		//加载更多
-		onReachBottom(){
-			// console.log(this.pageNode.board_data[Inv].block_id)
-			uni.request({
-				url: `${app.globalData.requestUrl}/index-board-posts`,
-				method: 'GET',
-				data:{
-					board_id:this.pageNode
-				},
-				success: (res) => {
-					console.log(res);
-					console.log(res.data.status_code)
-					if (res.data.status_code == 200) {
-						this.pageNode = res.data.data
-					} else {
-						uni.showToast({
-							title: res.data.message
-						});
-					}
-			
-				}
-			})
 		}
-	}
-};
+	};
 </script>
 
 <style>
-.index {
-	width: 750rppx;
-}
-.banner {
-	width: 690rpx;
-	margin: 30rpx;
-	background: #007aff;
-	border-radius: 10rpx;
-	overflow: hidden;
-}
-.bannerImg {
-	width: 690rpx;
-}
-.nav {
-	width: 690rpx;
-	padding: 30rpx;
-	/* background: #007AFF; */
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	border-bottom: 12rpx solid #f9f9f9;
-}
-.nav .navList {
-	width: 116rpx;
-	margin-right: 27.99rpx;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin-bottom: 38rpx;
-}
-.nav .navList:nth-child(5n) {
-	margin-right: 0;
-}
-.nav .navList text {
-	font-size: 28rpx;
-	color: #333333;
-	font-weight: 600;
-	display: block;
-}
-.nav .navList image {
-	width: 50rpx;
-	height: 50rpx;
-	margin-bottom: 14rpx;
-}
-.content {
-	width: 690rpx;
-	padding: 0 30rpx;
-}
-.content .inv-h-w {
-	display: flex;
-}
-.content .inv-h {
-	font-size: 32rpx;
-	flex: 1;
-	text-align: center;
-	color: #999999;
-	padding: 30rpx 0;
-}
-.content .inv-h-se {
-	color: #2390dc;
-	font-weight: 600;
-}
-.content .inv-h-se:after {
-	content: ' ';
-	display: block;
-	border-bottom: 6rpx solid #2390dc;
-	width: 46rpx;
-	margin: 26rpx auto 0;
-	border-radius: 3rpx;
-}
-.content .contentList .item {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 40rpx;
-}
-.content .contentList .item image {
-	width: 220rpx;
-	height: 136rpx;
-	border-radius: 10rpx;
-}
-.content .contentList .item .itemRight {
-	width: 440rpx;
-	display: flex;
-	align-content: space-between;
-	flex-wrap: wrap;
-}
-.content .contentList .item .itemRight .title {
-	font-size: 28rpx;
-	color: #333333;
-	font-weight: 600;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-}
-.content .itemCon {
-	width: 440rpx;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	/* justify-content: flex-end; */
-}
-.content .itemCon text {
-	display: block;
-	font-size: 24rpx;
-	color: #999999;
-}
+	.index {
+		width: 750rppx;
+	}
+
+	.banner {
+		width: 690rpx;
+		margin: 30rpx;
+		background: #007aff;
+		border-radius: 10rpx;
+		overflow: hidden;
+	}
+
+	.bannerImg {
+		width: 690rpx;
+	}
+
+	.nav {
+		width: 690rpx;
+		padding: 30rpx;
+		/* background: #007AFF; */
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		border-bottom: 12rpx solid #f9f9f9;
+	}
+
+	.nav .navList {
+		width: 116rpx;
+		margin-right: 27.99rpx;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-bottom: 38rpx;
+	}
+
+	.nav .navList:nth-child(5n) {
+		margin-right: 0;
+	}
+
+	.nav .navList text {
+		font-size: 28rpx;
+		color: #333333;
+		font-weight: 600;
+		display: block;
+	}
+
+	.nav .navList image {
+		width: 50rpx;
+		height: 50rpx;
+		margin-bottom: 14rpx;
+	}
+
+	.content {
+		width: 690rpx;
+		padding: 0 30rpx;
+	}
+
+	.content .inv-h-w {
+		display: flex;
+	}
+
+	.content .inv-h {
+		font-size: 32rpx;
+		flex: 1;
+		text-align: center;
+		color: #999999;
+		padding: 30rpx 0;
+	}
+
+	.content .inv-h-se {
+		color: #2390dc;
+		font-weight: 600;
+	}
+
+	.content .inv-h-se:after {
+		content: ' ';
+		display: block;
+		border-bottom: 6rpx solid #2390dc;
+		width: 46rpx;
+		margin: 26rpx auto 0;
+		border-radius: 3rpx;
+	}
+
+	.content .contentList .item {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 40rpx;
+	}
+
+	.content .contentList .item image {
+		width: 220rpx;
+		height: 136rpx;
+		border-radius: 10rpx;
+	}
+
+	.content .contentList .item .itemRight {
+		width: 440rpx;
+		display: flex;
+		align-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.content .contentList .item .itemRight .title {
+		font-size: 28rpx;
+		color: #333333;
+		font-weight: 600;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	.content .itemCon {
+		width: 440rpx;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		/* justify-content: flex-end; */
+	}
+
+	.content .itemCon text {
+		display: block;
+		font-size: 24rpx;
+		color: #999999;
+	}
 </style>
