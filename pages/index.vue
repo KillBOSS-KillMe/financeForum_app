@@ -125,10 +125,15 @@
 			},
 			//获取数据
 			getList() {
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
 				uni.request({
 					url: `${app.globalData.requestUrl}/index`,
 					method: 'GET',
 					success: res => {
+						uni.hideLoading();
 						res = app.null2str(res)
 						if (res.data.status_code == 200) {
 							let pageNode = res.data.data
@@ -150,6 +155,10 @@
 				console.log(this.boardId)
 				this.page ++;
 				// console.log(this.pageNode.board_data[Inv].block_id)
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
 				uni.request({
 					url: `${app.globalData.requestUrl}/index-board-posts`,
 					method: 'GET',
@@ -159,6 +168,7 @@
 						page:this.page
 					},
 					success: res => {
+						uni.hideLoading();
 						res = app.null2str(res)
 						if (res.data.status_code == 200) {
 							if(res.data.data == ''){

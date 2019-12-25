@@ -61,8 +61,12 @@
 			},
 			runOutLogin() {
 				// 执行用户登出
+				// uni.showLoading({
+				//   title: '执行中...'
+				// });
 				uni.showLoading({
-				  title: '执行中...'
+				  title: '加载中...',
+					duration: 1000000
 				});
 				uni.request({
 					url: `${app.globalData.requestUrl}/logout`,

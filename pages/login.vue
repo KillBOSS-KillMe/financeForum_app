@@ -69,11 +69,15 @@
 					});
 					return false
 				}
-				uni.showToast({
-					title: "登录中...",
-					icon: 'loading',
-					duration: 10000
-				})
+				// uni.showToast({
+				// 	title: "登录中...",
+				// 	icon: 'loading',
+				// 	duration: 10000
+				// })
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
 				uni.request({
 					url: `${app.globalData.requestUrl}/login`,
 					method: 'POST',
@@ -81,8 +85,10 @@
 						username: this.loginName,
 						password: this.loginPaw
 					},
-					success: (res) => {
+					success: res => {
 						console.log(res);
+						uni.hideLoading();
+						res = app.null2str(res)
 						if (res.statusCode == 200) {
 							uni.showToast({
 								title: '登录成功',
