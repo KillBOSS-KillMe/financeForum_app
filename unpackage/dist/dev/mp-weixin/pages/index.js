@@ -90,11 +90,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      _vm.Inv = _vm.index
-    }
-  }
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -180,48 +175,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 var app = getApp();var _default =
 {
   data: function data() {
     return {
-      title: 'Hello',
-      background: ['color1', 'color2', 'color3'],
       indicatorDots: true,
       autoplay: true,
       interval: 2000,
       duration: 500,
-      bannerList: [
-      { id: '1', img: '../static/a.jpg' },
-      { id: '2', img: '../static/b.jpg' },
-      { id: '12', img: '../static/a.jpg' }],
-
-      nav: [
-      { id: '1', title: '产品超市', img: '../static/a.jpg' },
-      { id: '2', title: '信贷技术', img: '../static/a.jpg' },
-      { id: '3', title: '办卡提额', img: '../static/a.jpg' },
-      { id: '1', title: '信用修复', img: '../static/a.jpg' },
-      { id: '1', title: '查询工具', img: '../static/a.jpg' },
-      { id: '1', title: '精准匹配', img: '../static/a.jpg' },
-      { id: '1', title: '最新资讯', img: '../static/a.jpg' },
-      { id: '1', title: '小微企业', img: '../static/a.jpg' },
-      { id: '1', title: '负债重组', img: '../static/a.jpg' },
-      { id: '10', title: '开通会员', img: '../static/a.jpg' }],
-
       Inv: 0,
-      list: [
-      { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制' },
-      { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' },
-      { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }],
-
+      boardId: '',
       pageNode: [],
-      imgUrl: '' };
+      imgUrl: '',
+      page_size: 10,
+      page: 0 };
 
   },
   onLaunch: function onLaunch() {
@@ -261,10 +229,14 @@ var app = getApp();var _default =
 
     },
     //
-    changeTab: function changeTab(Inv) {
-      that.navIdx = Inv;
-      console.log(that.navIdx);
+    selListType: function selListType(e) {
+      this.Inv = e.currentTarget.dataset.index;
+      this.boardId = e.currentTarget.dataset.block_id;
     },
+    // changeTab(Inv){
+    // 	that.navIdx = Inv;
+    // 	console.log(that.navIdx)
+    // },
     // 轮播跳转
     goBanner: function goBanner(e) {
       console.log(e);
@@ -282,10 +254,13 @@ var app = getApp();var _default =
         url: "".concat(app.globalData.requestUrl, "/index"),
         method: 'GET',
         success: function success(res) {
-          console.log(res);
-          console.log(res.data.status_code);
+          res = app.null2str(res);
           if (res.data.status_code == 200) {
-            _this.pageNode = res.data.data;
+            var pageNode = res.data.data;
+            _this.pageNode = pageNode;
+            if (pageNode.length > 0) {
+              _this.boardId = pageNode.board_data[0].block_id;
+            }
           } else {
             uni.showToast({
               title: res.data.message });
@@ -297,17 +272,26 @@ var app = getApp();var _default =
     },
     //加载更多
     onReachBottom: function onReachBottom() {var _this2 = this;
+      console.log(this.boardId);
+      this.page++;
       // console.log(this.pageNode.board_data[Inv].block_id)
       uni.request({
         url: "".concat(app.globalData.requestUrl, "/index-board-posts"),
         method: 'GET',
         data: {
-          board_id: this.pageNode },
+          board_id: this.boardId,
+          page_size: this.page_size,
+          page: this.page },
 
         success: function success(res) {
-          console.log(res);
-          console.log(res.data.status_code);
+          res = app.null2str(res);
           if (res.data.status_code == 200) {
+            if (res.data.data == '') {
+              uni.showToast({
+                title: "暂无数据",
+                icon: "none" });
+
+            }
             _this2.pageNode = res.data.data;
           } else {
             uni.showToast({

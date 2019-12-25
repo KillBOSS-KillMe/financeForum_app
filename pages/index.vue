@@ -63,7 +63,9 @@
 				Inv: 0,
 				boardId: '',
 				pageNode: [],
-				imgUrl: ''
+				imgUrl: '',
+				page_size: 10,
+				page:0
 			};
 		},
 		onLaunch() {
@@ -146,17 +148,26 @@
 			},
 			//加载更多
 			onReachBottom() {
+				console.log(this.boardId)
+				this.page ++;
 				// console.log(this.pageNode.board_data[Inv].block_id)
 				uni.request({
 					url: `${app.globalData.requestUrl}/index-board-posts`,
 					method: 'GET',
 					data: {
-						board_id: this.boardId
+						board_id: this.boardId,
+						page_size:this.page_size,
+						page:this.page
 					},
 					success: res => {
-
 						res = app.null2str(res)
 						if (res.data.status_code == 200) {
+							if(res.data.data == ''){
+								uni.showToast({
+									title:"暂无数据",
+									icon:"none"
+								})
+							}
 							this.pageNode = res.data.data
 						} else {
 							uni.showToast({
