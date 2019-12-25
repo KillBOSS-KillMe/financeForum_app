@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -140,18 +140,77 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-var _default =
+//
+//
+//
+
+var app = getApp();var _default =
 {
   data: function data() {
     return {
-      list: [
-      { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制' },
-      { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' },
-      { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }] };
-
+      list: [],
+      page: '1',
+      page_size: '10',
+      boardId: '1' };
 
   },
-  methods: {} };exports.default = _default;
+  onShow: function onShow(e) {
+    // console.log(e)
+    // this.board_id == e
+
+  },
+  onLoad: function onLoad(e) {
+    console.log(this.boardId);
+    this.boardId = e.id;
+    console.log(e);
+    console.log(this.boardId);
+    this.getList();
+    uni.setNavigationBarTitle({
+      title: e.name });
+
+  },
+  onLaunch: function onLaunch() {
+
+  },
+  methods: {
+    getList: function getList(boardId) {var _this = this;
+      uni.request({
+        url: "".concat(app.globalData.requestUrl, "/posts/board-posts"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          board_id: boardId,
+          page_size: this.page_size,
+          page: this.page },
+
+        success: function success(res) {
+          res = app.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            _this.list = _this.list.concat(res.data.data);
+            if (res.data.data == 0) {
+              uni.showToast({
+                title: '暂无更多数据',
+                icon: "none" });
+
+            }
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    },
+    onReachBottom: function onReachBottom() {
+      console.log(this.boardId);
+      this.page++;
+      this.getList(this.boardId);
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

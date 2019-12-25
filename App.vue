@@ -178,7 +178,11 @@ text-overflow: ellipsis; -->
 	text {
 		display: block;
 	}
-
+	.null{
+		text-align: center;
+		font-size: 24rpx;
+		color: #999999;
+	}
 	uni-tabbar .uni-tabbar__icon {
 		width: 43rpx !important;
 		height: 43rpx !important;
