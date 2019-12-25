@@ -20,7 +20,7 @@
 		<!-- 导航 -->
 		<view class="nav">
 			<block v-for="(item, index) in pageNode.navs" :key="index">
-				<view class="navList" :data-id="item.id" :data-link="item.link" @tap="goTo" >
+				<view class="navList" :data-bind_board="item.bind_board" :data-id="item.id" :data-link="item.link" @tap="goNavs" >
 					<image :src="imgUrl + item.icon" mode="aspectFill"></image>
 					<text>{{ item.name }}</text>
 				</view>
@@ -109,15 +109,26 @@ export default {
 	},
 	methods: {
 		// 导航详情
-		goTo(e){
+		goNavs(e){
 			console.log(e.currentTarget.dataset.id)
+			let link = e.currentTarget.dataset.link
+			let bind_board = e.currentTarget.dataset.bind_board
 			let id = e.currentTarget.dataset.id
-			//开通会员
-			if(id == 10){
+			if (bind_board == '0') {
 				uni.navigateTo({
-					url:`/pages/joinMember`
+					url: `/pages/productSupermarket`
+				})
+			} else {
+				uni.navigateTo({
+					url: `/pages/indexAccurate?id=${id}`
 				})
 			}
+			// //开通会员
+			// if(id == 10){
+			// 	uni.navigateTo({
+			// 		url:`/pages/joinMember`
+			// 	})
+			// }
 
 		},
 		//

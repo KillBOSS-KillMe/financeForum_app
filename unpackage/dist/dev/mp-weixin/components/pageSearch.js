@@ -114,6 +114,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -129,6 +131,10 @@ var _default =
           console.log('条码内容：' + res.result);
         } });
 
+    },
+    getSearchKey: function getSearchKey(e) {
+      console.log(e.detail.value);
+      this.searchKey = e.detail.value;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -1,5 +1,5 @@
 
-.pageSearch{
+.pageSearch {
 	width: 690rpx;
 	background: #2390DC;
 	padding: 20rpx 30rpx;
@@ -15,22 +15,27 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.service{
+.service {
 	width: 60rpx;
 	height: 60rpx;
 	border-radius: 50rpx;
 }
-.code{
+.code {
 	width: 50rpx;
 	height: 50rpx;
 }
-.searchBox{
+.searchBox {
 	width: 532rpx;
 	height: 70rpx;
 	background: #fff;
 	border-radius: 10rpx;
 }
-.iconsaoyisao{
+.searchBox input {
+	width: 492rpx;
+	height: 70rpx;
+	padding: 0 20rpx;
+}
+.iconsaoyisao {
 	color: #fff;
 	width: 50rpx;
 	height: 50rpx;

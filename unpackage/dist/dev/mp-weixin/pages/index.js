@@ -238,15 +238,26 @@ var app = getApp();var _default =
   },
   methods: {
     // 导航详情
-    goTo: function goTo(e) {
+    goNavs: function goNavs(e) {
       console.log(e.currentTarget.dataset.id);
+      var link = e.currentTarget.dataset.link;
+      var bind_board = e.currentTarget.dataset.bind_board;
       var id = e.currentTarget.dataset.id;
-      //开通会员
-      if (id == 10) {
+      if (bind_board == '0') {
         uni.navigateTo({
-          url: "/pages/joinMember" });
+          url: "/pages/productSupermarket" });
+
+      } else {
+        uni.navigateTo({
+          url: "/pages/indexAccurate?id=".concat(id) });
 
       }
+      // //开通会员
+      // if(id == 10){
+      // 	uni.navigateTo({
+      // 		url:`/pages/joinMember`
+      // 	})
+      // }
 
     },
     //
