@@ -12,15 +12,15 @@
 				:interval="interval"
 				:duration="duration"
 			>
-				<swiper-item v-for="(item, index) in pageNode.ad" :key="index">
-					<image class="bannerImg" :data-id="item.aditems.id" :src="imgUrl + item.aditems.image" mode="aspectFill" @tap="goBanner"></image>
+				<swiper-item v-for="(item, index) in pageNode.ad.aditems" :key="index">
+					<image class="bannerImg" :data-id="item.id" :data-link="item.link" :src="imgUrl + item.image" mode="aspectFill" @tap="goBanner"></image>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 导航 -->
 		<view class="nav">
 			<block v-for="(item, index) in pageNode.navs" :key="index">
-				<view class="navList" @tap="goTo" :data-id="item.id" :data-link="item.link">
+				<view class="navList" :data-id="item.id" :data-link="item.link" @tap="goTo" >
 					<image :src="imgUrl + item.img" mode="aspectFill"></image>
 					<text>{{ item.name }}</text>
 				</view>
