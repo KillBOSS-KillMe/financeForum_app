@@ -89,7 +89,7 @@
 								icon: "none"
 							});
 							console.log(res.data.access_token)
-							app.globalData.token = res.data.access_token
+							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
 							console.log(app.globalData.token)
 							uni.reLaunch({
 								url: './index'
