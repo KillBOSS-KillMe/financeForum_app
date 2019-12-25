@@ -13,15 +13,15 @@
 				:duration="duration"
 			>
 				<swiper-item v-for="(item, index) in pageNode.ad" :key="index">
-					<image class="bannerImg" :data-id="item.aditems.id" :src="imgUrl + item.aditems.image" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
+					<image class="bannerImg" :data-id="item.aditems.id" :src="imgUrl + item.aditems.image" mode="aspectFill" @tap="goBanner"></image>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 导航 -->
 		<view class="nav">
 			<block v-for="(item, index) in pageNode.navs" :key="index">
-				<view class="navList" @tap="goTo" :data-id="item.id">
-					<image :src="item.img" mode="aspectFill"></image>
+				<view class="navList" @tap="goTo" :data-id="item.id" :data-link="item.link">
+					<image :src="imgUrl + item.img" mode="aspectFill"></image>
 					<text>{{ item.name }}</text>
 				</view>
 			</block>
@@ -138,9 +138,10 @@ export default {
 				method: 'GET',
 				success: (res) => {
 					console.log(res);
+					console.log(res.data.status_code)
 					if (res.data.status_code == 200) {
 						this.pageNode = res.data.data
-						console.log(res.data.data.ad.aditems)
+						console.log(this.pageNode)
 					} else {
 						uni.showToast({
 							title: res.data.message
