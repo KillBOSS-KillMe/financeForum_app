@@ -122,8 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -199,15 +198,25 @@ var _default =
       bannerList: [
       { id: '1', img: '../static/a.jpg' },
       { id: '2', img: '../static/b.jpg' },
-      { id: '12', img: '../static/a.jpg' }]
+      { id: '12', img: '../static/a.jpg' }],
 
+      isCheck: false
       // list:[
       // 	{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
       // 	{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
       // ]
     };
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    meTreaty: function meTreaty() {
+      uni.navigateTo({
+        url: '/pages/meTreaty' });
+
+    },
+    checkboxChange: function checkboxChange(e) {
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

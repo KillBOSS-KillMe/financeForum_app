@@ -38,7 +38,8 @@
     "pages/meCertificationConfirm",
     "pages/meEdit",
     "pages/meApplyMessage",
-    "pages/meTreaty"
+    "pages/meTreaty",
+    "pages/paySuccess"
   ],
   "subPackages": [],
   "window": {
@@ -87,5 +88,6 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  }
+  },
+  "sitemapLocation": "sitemap53.json"
 }

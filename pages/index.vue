@@ -3,42 +3,50 @@
 		<pageSearch></pageSearch>
 		<!-- 轮播 -->
 		<view class="page-section-spacing banner">
-			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff" :autoplay="autoplay" :interval="interval" :duration="duration">
-				<swiper-item  v-for="(item,index) in bannerList" :key="index">
+			<swiper
+				class="swiper"
+				:indicator-dots="indicatorDots"
+				indicator-color="rgba(255,255,255,.3)"
+				indicator-active-color="#fff"
+				:autoplay="autoplay"
+				:interval="interval"
+				:duration="duration"
+			>
+				<swiper-item v-for="(item, index) in bannerList" :key="index">
 					<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 				</swiper-item>
 			</swiper>
 		</view>
 		<!-- 导航 -->
 		<view class="nav">
-			<block v-for="(item,index) in nav" :key="index">
+			<block v-for="(item, index) in nav" :key="index">
 				<view class="navList" @tap="goTo" :data-id="item.id">
 					<image :src="item.img" mode="aspectFill"></image>
-					<text>{{item.title}}</text>
+					<text>{{ item.title }}</text>
 				</view>
 			</block>
 		</view>
 		<!-- 数据列表 -->
 		<view class="content">
 			<view class="inv-h-w">
-				<view :class="['inv-h',Inv==0?'inv-h-se':'']" @tap="Inv=0">最新产品解析</view>
-				<view :class="['inv-h',Inv==1?'inv-h-se':'']" @tap="Inv=1">办卡提额技术</view>
+				<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
+				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view>
 			</view>
 			<view class="contentList">
-				<block  v-for="(item,index) in list" :key="index">
+				<block v-for="(item, index) in list" :key="index">
 					<view class="item" @tap="goDetail" :data-id="item.id">
 						<image :src="item.img" mode="aspectFill"></image>
 						<view class="itemRight">
-							<text class="title">{{item.title}}</text>
+							<text class="title">{{ item.title }}</text>
 							<view class="itemCon">
-								<text>{{item.time}}</text>
-								<text>{{item.name}}</text>
-								<text>{{item.num}}评</text>
+								<text>{{ item.time }}</text>
+								<text>{{ item.name }}</text>
+								<text>{{ item.num }}评</text>
 							</view>
 						</view>
 					</view>
 				</block>
-				
+
 				<!-- <uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more> -->
 			</view>
 		</view>
@@ -46,6 +54,7 @@
 </template>
 
 <script>
+const app = getApp()
 export default {
 	data() {
 		return {
@@ -81,10 +90,11 @@ export default {
 		};
 	},
 	onLaunch(){
-		
+
 	},
-	onShow(){ 
+	onShow(){
 		console.log(getApp().globalData.token)
+		this.getList()
 		// this.getToken()
 	},
 	onHide(){
@@ -101,7 +111,7 @@ export default {
 					url:`/pages/joinMember`
 				})
 			}
-			
+
 		},
 		//
 		changeTab(Inv){
@@ -117,6 +127,25 @@ export default {
 			uni.navigateTo({
 				url:`/pages/articleDetail`
 			})
+		},
+		//获取数据
+		getList(){
+			uni.request({
+				url: `${app.globalData.requestUrl}/index`,
+				method: 'GET',
+				success: (res) => {
+					console.log(res);
+					// if (res.statusCode == 200) {
+					// 	this.formNode.verification_key = res.data.key
+					// 	this.countdown();
+					// } else {
+					// 	uni.showToast({
+					// 		title: res.data.message
+					// 	});
+					// }
+
+				}
+			})
 		}
 	}
 };
@@ -126,109 +155,107 @@ export default {
 .index {
 	width: 750rppx;
 }
-.banner{
+.banner {
 	width: 690rpx;
 	margin: 30rpx;
-	background: #007AFF;
+	background: #007aff;
 	border-radius: 10rpx;
 	overflow: hidden;
 }
-.bannerImg{
+.bannerImg {
 	width: 690rpx;
-
 }
-.nav{
+.nav {
 	width: 690rpx;
 	padding: 30rpx;
 	/* background: #007AFF; */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	border-bottom:12rpx solid #f9f9f9;
+	border-bottom: 12rpx solid #f9f9f9;
 }
-.nav .navList{
-	width:116rpx;
+.nav .navList {
+	width: 116rpx;
 	margin-right: 27.99rpx;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	margin-bottom: 38rpx;
 }
-.nav .navList:nth-child(5n){
+.nav .navList:nth-child(5n) {
 	margin-right: 0;
 }
-.nav .navList text{
+.nav .navList text {
 	font-size: 28rpx;
 	color: #333333;
 	font-weight: 600;
 	display: block;
 }
-.nav .navList image{
+.nav .navList image {
 	width: 50rpx;
 	height: 50rpx;
 	margin-bottom: 14rpx;
 }
-.content{
+.content {
 	width: 690rpx;
 	padding: 0 30rpx;
 }
-.content .inv-h-w{
+.content .inv-h-w {
 	display: flex;
 }
-.content .inv-h{
+.content .inv-h {
 	font-size: 32rpx;
 	flex: 1;
 	text-align: center;
 	color: #999999;
 	padding: 30rpx 0;
 }
-.content .inv-h-se{
-	color: #2390DC;
+.content .inv-h-se {
+	color: #2390dc;
 	font-weight: 600;
 }
-.content .inv-h-se:after{
-	content: " ";
+.content .inv-h-se:after {
+	content: ' ';
 	display: block;
-	border-bottom: 6rpx solid #2390DC;
+	border-bottom: 6rpx solid #2390dc;
 	width: 46rpx;
 	margin: 26rpx auto 0;
 	border-radius: 3rpx;
 }
-.content .contentList .item{
+.content .contentList .item {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 40rpx;
 }
-.content .contentList .item image{
+.content .contentList .item image {
 	width: 220rpx;
 	height: 136rpx;
 	border-radius: 10rpx;
 }
-.content .contentList .item .itemRight{
+.content .contentList .item .itemRight {
 	width: 440rpx;
 	display: flex;
 	align-content: space-between;
 	flex-wrap: wrap;
 }
-.content .contentList .item .itemRight .title{
+.content .contentList .item .itemRight .title {
 	font-size: 28rpx;
 	color: #333333;
 	font-weight: 600;
-	overflow : hidden;
+	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
-.content .itemCon{
+.content .itemCon {
 	width: 440rpx;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	/* justify-content: flex-end; */
-	
 }
-.content .itemCon text{
+.content .itemCon text {
 	display: block;
 	font-size: 24rpx;
 	color: #999999;
