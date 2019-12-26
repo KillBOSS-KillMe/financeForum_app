@@ -152,7 +152,8 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: { goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;uni.navigateTo({ url: "/pages/".concat(url) });} } };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return {};}, methods: { goMyMobile: function goMyMobile(e) {// 进入个人中心
+      uni.reLaunch({ url: './me' });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -206,6 +206,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -288,8 +292,13 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { Inv: 0, list: [{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制' }, { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' }, { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }], userInfo: [] };}, onLoad: function onLoad() {this.getUserInfo();}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;}, //编辑
-    edit: function edit() {uni.navigateTo({ url: "/pages/meEdit" });}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { Inv: 0, list: [{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制' }, { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' }, { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }], userInfo: [] };}, onLoad: function onLoad() {this.getUserInfo();}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;}, // 编辑
+    edit: function edit() {uni.navigateTo({ url: "/pages/meEdit" });}, // 关注
+    meFollow: function meFollow() {uni.navigateTo({ url: "/pages/meFollow" });}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
       uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res); // console.log(res,'++++++')
           console.log(res.data, '+++++++++');_this.userInfo = res.data;if (res.data.status_code == 200) {}} });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

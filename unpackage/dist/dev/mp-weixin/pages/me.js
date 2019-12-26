@@ -390,7 +390,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
+var app = getApp();var _default = { data: function data() {return {};}, onLoad: function onLoad() {}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
     goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;uni.navigateTo({ url: "/pages/".concat(url) });}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
       // uni.showLoading({
       //   title: '用户信息获取中...'

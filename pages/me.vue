@@ -140,6 +140,9 @@
 
 			}
 		},
+		onLoad() {
+			
+		},
 		onShow() {
 			this.getUserInfo()
 		},

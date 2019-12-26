@@ -212,7 +212,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
 //
 //
 //
@@ -304,10 +308,7 @@ var app = getApp();var _default = { data: function data() {return { info: { id: 
     this.getArticleDetail();}, methods: { // 文章详情加载
     getArticleDetail: function getArticleDetail() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: app.globalData.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.articleDetail = res.data;} else {uni.showToast({ title: res.data.message });}} });}, shareFriend: function shareFriend() {//分享到微信朋友
       this.share('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
-      this.share('WXSenceTimeline');}, share: function share(WXSenceType) {console.log(window.location.href);uni.share({
-        provider: "weixin",
-        scene: WXSenceType,
-        type: 0,
+      this.share('WXSenceTimeline');}, share: function share(WXSenceType) {console.log(window.location.href);uni.share({ provider: "weixin", scene: WXSenceType, type: 0,
         href: window.location.href,
         title: this.articleDetail.title,
         summary: "唐艺昕，没有水的地方叫沙漠，没有你的地方，你知道叫什么吗？不知道。叫寂寞。",
@@ -317,6 +318,106 @@ var app = getApp();var _default = { data: function data() {return { info: { id: 
         },
         fail: function fail(err) {
           console.log("fail:" + JSON.stringify(err));
+        } });
+
+    },
+    // 文章--添加--收藏
+    addCollection: function addCollection() {var _this2 = this;
+      uni.showLoading({
+        title: '加载中...',
+        duration: 1000000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/add_collection"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          post_id: this.articleDetail.id },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '1') {
+            // 修改帖子的收藏状态
+            _this2.articleDetail.is_collections == 1;
+            uni.showToast({
+              title: res.data.message });
+
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 文章--取消--收藏
+    delCollection: function delCollection() {var _this3 = this;
+      uni.showLoading({
+        title: '加载中...',
+        duration: 1000000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/del_collection"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          post_id: this.articleDetail.id },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '1') {
+            // 修改帖子的收藏状态
+            _this3.articleDetail.is_collections == 0;
+            uni.showToast({
+              title: res.data.message });
+
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    addFollow: function addFollow() {
+      // 关注用户
+      uni.showLoading({
+        title: '加载中...',
+        duration: 1000000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/add_follow"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          follow_id: this.articleDetail.user_id },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '1') {
+            uni.showToast({
+              title: res.data.message });
+
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
         } });
 
     } } };exports.default = _default;

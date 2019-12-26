@@ -130,6 +130,21 @@
 		font-size: 28rpx;
 		color: #333333;
 }
+.reward .iconText{
+		width: 65rpx;
+		height: 65rpx;
+		border-radius: 65rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		/* background-color: ; */
+}
 .content .share image {
 		width: 64rpx;
 		height: 64rpx;

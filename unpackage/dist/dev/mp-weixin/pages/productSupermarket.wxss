@@ -211,7 +211,12 @@
 	font-size: 28rpx;
 	color: #999;
 	overflow: hidden;
+<<<<<<< HEAD
 	text-overflow: ellipsis;
+=======
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+>>>>>>> fc11bdcfd867bb5075c9d8195f1638f0fe69ddb3
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
@@ -235,5 +240,21 @@
 	font-weight: 600;
 	margin-left: 10rpx;
 }
+<<<<<<< HEAD
 
+=======
+/* .content .itemCon{
+	width: 440rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between; */
+/* justify-content: flex-end;
+	/* 
+} */
+/* .content .itemCon text{
+	display: block;
+	font-size: 24rpx;
+	color: #999999;
+} */
+>>>>>>> fc11bdcfd867bb5075c9d8195f1638f0fe69ddb3
 

@@ -23,10 +23,10 @@
 		},
 		methods: {
 			goMyMobile(e){
-				let url = e.target.dataset.name
-				uni.navigateTo({
-					url: `/pages/${url}`
-				})
+				// 进入个人中心
+				uni.reLaunch({
+					url: './me'
+				});
 			}
 		}
 	}

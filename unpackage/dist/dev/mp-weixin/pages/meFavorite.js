@@ -122,7 +122,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
 
 
 
@@ -164,7 +165,26 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [{ image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }, { image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20 }] };} };exports.default = _default;
+//
+var app = getApp();var _default = { data: function data() {return { list: [] };}, onLoad: function onLoad() {// 获取收藏列表
+    this.getList();}, methods: { getList: function getList() {var _this = this; // 获取收藏列表
+      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/collections"), method: 'GET', header: { authorization: app.globalData.token },
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '1') {
+            _this.list = res.data.data;
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
