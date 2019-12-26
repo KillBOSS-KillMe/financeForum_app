@@ -39,7 +39,8 @@
     "pages/meEdit",
     "pages/meApplyMessage",
     "pages/meTreaty",
-    "pages/paySuccess"
+    "pages/paySuccess",
+    "pages/productDetail"
   ],
   "subPackages": [],
   "window": {
@@ -89,5 +90,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap99.json"
+  "sitemapLocation": "sitemap46.json"
 }
