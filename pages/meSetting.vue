@@ -37,6 +37,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {};
@@ -61,11 +62,15 @@
 			},
 			runOutLogin() {
 				// 执行用户登出
+				// uni.showLoading({
+				//   title: '执行中...'
+				// });
 				uni.showLoading({
-				  title: '执行中...'
+				  title: '加载中...',
+					duration: 1000000
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/logout`,
+					url: `${helper.requestUrl}/logout`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token

@@ -23,6 +23,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -80,15 +81,21 @@
 					duration: 1000
 				});
 				this.disabled = true
-				console.log(app.globalData.requestUrl)
+				console.log(helper.requestUrl)
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/send_sms`,
+					url: `${helper.requestUrl}/send_sms`,
 					method: 'POST',
 					data: {
 						mobile: this.formNode.mobile
 					},
 					success: (res) => {
 						console.log(res);
+						uni.hideLoading();
+						res = app.null2str(res)
 						if (res.statusCode == 200) {
 							this.formNode.verification_key = res.data.key
 							this.countdown();
@@ -166,17 +173,23 @@
 					});
 					return false
 				}
-				uni.showToast({
-					title: "注册中...",
-					icon: 'loading',
-					duration: 10000
-				})
+				// uni.showToast({
+				// 	title: "注册中...",
+				// 	icon: 'loading',
+				// 	duration: 1000000
+				// })
+				uni.showLoading({
+				  title: '注册中...',
+					duration: 1000000
+				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/register`, //仅为示例，并非真实接口地址。
+					url: `${helper.requestUrl}/register`, //仅为示例，并非真实接口地址。
 					method: 'POST',
 					data: this.formNode,
 					success: (res) => {
 						console.log(res);
+						uni.hideLoading();
+						res = app.null2str(res)
 						if (res.data.status_code == 1) {
 							uni.showToast({
 								title: res.data.message,

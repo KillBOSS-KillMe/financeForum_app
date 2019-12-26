@@ -82,6 +82,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -114,7 +115,7 @@
 				  title: '用户信息获取中...'
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/me`,
+					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token

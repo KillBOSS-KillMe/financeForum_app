@@ -133,6 +133,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -153,11 +154,15 @@
 			},
 			getUserInfo() {
 				// 用户信息获取
+				// uni.showLoading({
+				//   title: '用户信息获取中...'
+				// });
 				uni.showLoading({
-				  title: '用户信息获取中...'
+				  title: '加载中...',
+					duration: 1000000
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/me`,
+					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token

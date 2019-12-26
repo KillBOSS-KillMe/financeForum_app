@@ -66,6 +66,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	import pickerAddress from '../components/wangding-pickerAddress.vue'
 	export default {
 		data() {
@@ -98,7 +99,7 @@
 				  title: '用户信息获取中...'
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/me`,
+					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token

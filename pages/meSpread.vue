@@ -62,6 +62,8 @@
 </template>
 
 <script>
+const app = getApp()
+import helper from '../common/helper.js';
 import wTable from '@/components/wTable.vue';
 import uniPopup from "@/components/uni-popup.vue"
 export default {
