@@ -101,6 +101,7 @@
 
 <script>
 const app = getApp()
+import helper from '../common/helper.js';
 export default {
 	data() {
 		return {
@@ -131,7 +132,7 @@ export default {
 				return false
 			}
 			uni.request({
-				url: `${app.globalData.requestUrl}/holes/search`,
+				url: `${helper.requestUrl}/holes/search`,
 				method: 'GET',
 				// header: {
 				// 	authorization: app.globalData.token
@@ -140,7 +141,7 @@ export default {
 					kewords: this.kewords
 				},
 				success: res => {
-					res = app.null2str(res)
+					res = helper.null2str(res)
 					console.log(res)
 					if (res.data.status_code == 200) {
 						 this.list = this.list.concat(res.data.data)
