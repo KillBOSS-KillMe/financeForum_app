@@ -33,47 +33,47 @@
 			<view class="contentList" v-if="Inv==1">
 				<view class="itemList">
 					<text>性别</text>
-					<text>男</text>
+					<text>{{userInfo.sex}}</text>
 				</view>
 				<view class="itemList">
 					<text>居住地</text>
-					<text>北京市 东城区 东华门街道</text>
+					<text>{{userInfo.province}} {{userInfo.city}} {{userInfo.district}}</text>
 				</view>
 				<view class="itemList">
 					<text>居住县</text>
-					<text>东华门街道</text>
+					<text>{{userInfo.cash}}</text>
 				</view>
 				<view class="itemList">
 					<text>学历</text>
-					<text>本科</text>
+					<text>{{userInfo.education}}</text>
 				</view>
 				<view class="itemList">
 					<text>芝麻信用分</text>
-					<text>799</text>
+					<text>{{userInfo.sesame_credit}}</text>
 				</view>
 				<view class="itemList">
 					<text>信用卡</text>
-					<text>无</text>
+					<text>{{userInfo.credit_card}}</text>
 				</view>
 				<view class="itemList">
 					<text>社保</text>
-					<text>无</text>
+					<text>{{userInfo.social_security}}</text>
 				</view>
 				<view class="itemList">
 					<text>公积金</text>
-					<text>4</text>
+					<text>{{userInfo.provident_fund}}</text>
 				</view>
 				<view class="itemList">
 					<text>贡献</text>
-					<text>3</text>
+					<text>{{userInfo.contribution}}</text>
 				</view>
 				<view class="itemList">
 					<text>威望</text>
-					<text>2</text>
+					<text>{{userInfo.prestige}}</text>
 				</view>
 				<view class="itemList">
 					<text>现金</text>
-					<text>1</text>
+					<text>{{userInfo.cash}}</text>
 				</view>
 			</view>
 		</view>
@@ -91,8 +91,12 @@
 					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
 					{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
 					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-				]
+				],
+				userInfo: []
 			}
+		},
+		onLoad() {
+			this.getUserInfo()
 		},
 		methods: {
 			changeTab(e){
@@ -103,6 +107,31 @@
 			edit(){
 				uni.navigateTo({
 					url:`/pages/meEdit`
+				})
+			},
+			getUserInfo() {
+				// 用户信息获取
+				uni.showLoading({
+				  title: '用户信息获取中...'
+				});
+				uni.request({
+					url: `${helper.requestUrl}/me`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = app.null2str(res)
+						// console.log(res,'++++++')
+						console.log(res.data,'+++++++++')
+						this.userInfo = res.data
+						if (res.data.status_code == 200) {
+							
+							
+						}
+				
+					}
 				})
 			}
 		}
