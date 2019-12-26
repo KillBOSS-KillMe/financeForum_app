@@ -108,6 +108,7 @@ export default {
 		changeTab(e){
 			console.log(e)
 			this.Inv = e;
+			this.page = '1'
 			if(this.Inv == 0){
 				// 最新
 				this.tabType = 'is_new'
@@ -211,6 +212,10 @@ export default {
 				}
 			});
 		},
+		onReachBottom() {
+			this.page ++;
+			this.getTab()
+		}
 	}
 };
 </script>
