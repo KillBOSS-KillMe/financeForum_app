@@ -82,6 +82,7 @@
 </template>
 
 <script>
+const app = getApp()
 export default {
 	data() {
 		return {
@@ -100,10 +101,47 @@ export default {
 			commentList:[
 				{id:'1',img:'../static/logo.png',name:'admin',content:'写的不错，可以试试！',time:'9分钟之前',floor:'1'},
 				{id:'1',img:'../static/logo.png',name:'adminadminadmin',content:'写的不错，xxxxxxxx可以试试！',time:'9分钟之前',floor:'1'}
-			]
+			],
+			options: null
 		}
 	},
-	methods: {}
+	onLoad(options) {
+		this.options = options
+		// 文章详情加载
+		this.getArticleDetail()
+	},
+	methods: {
+		// 文章详情加载
+		getArticleDetail() {
+			uni.showLoading({
+			  title: '加载中...',
+				duration: 1000000
+			});
+			uni.request({
+				url: `${app.globalData.requestUrl}/posts/show`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data: {
+					post_id: this.options.id
+				},
+				success: res => {
+					uni.hideLoading();
+					res = app.null2str(res)
+					console.log(res)
+					if (res.data.status_code == 200) {
+						this.articleDetail = res.data.data
+					} else {
+						uni.showToast({
+							title: res.data.message
+						});
+					}
+			
+				}
+			})
+		}
+	}
 };
 </script>
 

@@ -120,7 +120,7 @@
 			goDetail(e) {
 				console.log(e)
 				uni.navigateTo({
-					url: `/pages/articleDetail`
+					url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 				})
 			},
 			//获取数据
