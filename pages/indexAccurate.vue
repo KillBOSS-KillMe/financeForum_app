@@ -49,7 +49,7 @@
 			
 		},
 		methods: {
-			getList(boardId){
+			getList(){
 				uni.request({
 					url: `${app.globalData.requestUrl}/posts/board-posts`,
 					method: 'GET',
@@ -57,7 +57,7 @@
 						authorization: app.globalData.token
 					},
 					data:{
-						board_id: boardId,
+						board_id: this.boardId,
 						page_size: this.page_size,
 						page: this.page
 					},
@@ -82,9 +82,8 @@
 				})
 			},
 			onReachBottom() {
-				console.log(this.boardId)
 				this.page ++;
-				this.getList(this.boardId)
+				this.getList()
 			}
 		}
 		
