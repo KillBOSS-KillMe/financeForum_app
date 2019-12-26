@@ -15,6 +15,7 @@
     "pages/productSupermarket",
     "pages/meUserInfo",
     "pages/meFavorite",
+    "pages/meFollow",
     "pages/meFriend",
     "pages/mePost",
     "pages/meMyDraft",
@@ -88,6 +89,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap99.json"
+  }
 }

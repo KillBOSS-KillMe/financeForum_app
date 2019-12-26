@@ -3,13 +3,14 @@
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
-					<image v-bind:src="item.image" data-index="index" />
+					<image :src="imgUrl + item.image" mode="aspectFill" v-if="item.image != ''"></image>
+					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 					<view class="con">
-						<view class="title">{{item.title + item.title + item.title + index}}</view>
+						<view class="title">{{item.title}}</view>
 						<view class="info">
-							<text>{{item.time}}</text>
+							<text>{{item.collection_time}}</text>
 							<text>{{item.user}}</text>
-							<text>{{item.comment}}评</text>
+							<text>{{item.comments_count}}评</text>
 						</view>
 					</view>
 				</view>
@@ -24,17 +25,41 @@
 	export default {
 		data() {
 			return {
-				list: [
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前', user: 'admin', comment: 20}
-				]
+				list: []
 			};
+		},
+		onLoad() {
+			// 获取收藏列表
+			this.getList()
+		},
+		methods:{
+			getList() {
+				// 获取收藏列表
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/collections`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == '1') {
+							this.list = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				})
+			}
 		}
 	}
 </script>

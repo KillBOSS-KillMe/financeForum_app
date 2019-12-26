@@ -6,11 +6,11 @@
 				<view class="left">
 					<image :src="articleDetail.img" mode=""></image>
 					<view class="leftTitle">
-						<text>{{articleDetail.name}}</text>
+						<text>{{articleDetail.user.name}}</text>
 						<view class="leftTitleBottom">
-							<text>{{articleDetail.type}}</text>
-							<text>{{articleDetail.time}}</text>
-							<text class="follow">关注</text>
+							<text>{{articleDetail.user.type}}</text>
+							<text>{{articleDetail.user.created_at}}</text>
+							<text class="follow" @tap="addFollow">关注</text>
 						</view>
 					</view>
 				</view>
@@ -40,11 +40,11 @@
 				<image src="../static/logo.png" mode="" @tap="shareFriend"></image>
 				<!-- 分享到微信朋友圈 -->
 				<image src="../static/logo.png" mode="" @tap="shareFriendcricle"></image>
-				<image src="../static/logo.png" mode=""></image>
 			</view>
 		</view>
 		<view class="line"></view>
 		<view class="reward">
+			<!-- <view class="iconText">赏</view> -->
 			<image src="../static/logo.png" mode=""></image>
 			<text>觉得不错，打个赏~</text>
 			<view class="money">2564人已经打赏，共658.21元</view>
@@ -80,8 +80,10 @@
 		</view>
 		<view class="bottom">
 			<input type="text" value="" placeholder="发表评论..." />
-			<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
-			<uni-icon class="iconfont iconfenxiang" type=""></uni-icon>
+			<!-- 收藏 -->
+			<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 1" @tap="delCollection"></uni-icon>
+			<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 0" @tap="addCollection"></uni-icon>
+			<!-- <uni-icon class="iconfont iconfenxiang" type=""></uni-icon> -->
 		</view>
 	</view>
 </template>
@@ -166,7 +168,6 @@
 								title: res.data.message
 							});
 						}
-
 					}
 				})
 			},
@@ -195,6 +196,106 @@
 						console.log("fail:" + JSON.stringify(err));
 					}
 				});
+			},
+			// 文章--添加--收藏
+			addCollection() {
+				uni.showLoading({
+					title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/add_collection`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						post_id: this.articleDetail.id
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == '1') {
+							// 修改帖子的收藏状态
+							this.articleDetail.is_collections == 1
+							uni.showToast({
+								title: res.data.message
+							});
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+						}
+					}
+				})
+			},
+			// 文章--取消--收藏
+			delCollection() {
+				uni.showLoading({
+					title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/del_collection`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						post_id: this.articleDetail.id
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == '1') {
+							// 修改帖子的收藏状态
+							this.articleDetail.is_collections == 0
+							uni.showToast({
+								title: res.data.message
+							});
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+						}
+					}
+				})
+			},
+			addFollow() {
+				// 关注用户
+				uni.showLoading({
+					title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/add_follow`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						follow_id: this.articleDetail.user_id
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == '1') {
+							uni.showToast({
+								title: res.data.message
+							});
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+						}
+					}
+				})
 			}
 		}
 		
@@ -320,7 +421,15 @@
 		font-size: 28rpx;
 		color: #333333;
 	}
-
+	.reward .iconText{
+		width: 65rpx;
+		height: 65rpx;
+		border-radius: 65rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		/* background-color: ; */
+	}
 	.content .share image {
 		width: 64rpx;
 		height: 64rpx;

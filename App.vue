@@ -148,7 +148,16 @@ text-overflow: ellipsis; -->
 		width: 43rpx !important;
 		height: 43rpx !important;
 	}
-
+	.nullList {
+		width: 750rpx;
+		height: 300rpx;
+		font-size: 50rpx;
+		font-weight: 600;
+		color: #eee;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	@font-face {
 		font-family: "iconfont";
 		src: url('//at.alicdn.com/t/font_1566333_2jzcez69zrc.eot?t=1577238101641');
