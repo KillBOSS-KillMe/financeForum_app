@@ -1,7 +1,7 @@
 <template>
 	<view class="productSupermarket">
 		<view class="banner">
-			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="#D2D2D2" indicator-active-color="#2390DC" :interval="interval" :duration="duration">
+			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="#D2D2D2" indicator-active-color="#2390DC">
 				<swiper-item>
 					<view class="swiper-item">
 						<view class="bannerItem">
@@ -57,8 +57,8 @@
 		</view>
 		<view class="line"></view>
 		<view class="query">
-			<input type="text" value="" placeholder="请输入需要查询的贷款工具" />
-			<text>查网贷</text>
+			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" />
+			<text @tap="getSearch">查网贷</text>
 		</view>
 		<view class="line"></view>
 		<view class="content">
@@ -100,22 +100,67 @@
 </template>
 
 <script>
-	const app = getApp()
-	import helper from '../common/helper.js';
-	export default {
-		data() {
-			return {
-					indicatorDots: true,
-				Inv: 0,
-				list:[
-					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
-					{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
-					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-				]
-			};
+const app = getApp()
+export default {
+	data() {
+		return {
+		    indicatorDots: true,
+			Inv: 0,
+			list:[
+				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
+				{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
+				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
+			],
+			kewords: ''
+		};
+	},
+	onLoad() {
+		// this.getPage()
+	},
+	methods: {
+		//搜索查询网贷
+		onInput(e){
+			this.kewords = e.detail.value
 		},
-		methods: {}
-	};
+		getSearch(){
+			if( this.kewords == ''){
+				uni.showToast({
+					title: "请输入查询内容",
+					icon: "none"
+				})
+				return false
+			}
+			uni.request({
+				url: `${app.globalData.requestUrl}/holes/search`,
+				method: 'GET',
+				// header: {
+				// 	authorization: app.globalData.token
+				// },
+				data:{
+					kewords: this.kewords
+				},
+				success: res => {
+					res = app.null2str(res)
+					console.log(res)
+					if (res.data.status_code == 200) {
+						 this.list = this.list.concat(res.data.data)
+						 if(res.data.data == 0){
+						 	uni.showToast({
+						 		title:'暂无更多数据',
+						 		icon:"none"
+						 	})
+						 }
+					} else {
+						uni.showToast({
+							title: res.data.message
+						});
+					}
+			
+				}
+			})
+		}
+	}
+};
 </script>
 
 <style>
