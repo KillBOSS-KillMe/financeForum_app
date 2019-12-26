@@ -11,7 +11,8 @@
 							<text>{{item.comments_count}}评</text>
 						</view>
 					</view>
-					<image :src="item.img" mode="aspectFill"></image>
+					<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
+					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 				</view>
 			</block>
 			<view class="null" v-if="list.length == 0">暂无数据</view>
@@ -27,7 +28,8 @@
 				list:[],
 				page: '1',
 				page_size:'10',
-				boardId: '1'
+				boardId: '1',
+				imgUrl: ''
 			}
 		},
 		onShow(e) {
@@ -36,10 +38,9 @@
 			
 		},
 		onLoad(e) {
-			console.log(this.boardId)
+			// console.log(this.boardId)
+			this.imgUrl = app.globalData.imgUrl
 			this.boardId = e.id
-			console.log(e)
-			console.log(this.boardId)
 			this.getList()
 			uni.setNavigationBarTitle({
 				title: e.name

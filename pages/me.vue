@@ -32,7 +32,7 @@
 					<text>我的手机</text>
 				</view>
 				<view>
-					<text class="cur">123456</text>
+					<text class="cur">{{userInfo.mobile}}</text>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -136,7 +136,7 @@
 	export default {
 		data() {
 			return {
-
+				userInfo:{}
 			}
 		},
 		onShow() {
@@ -165,14 +165,12 @@
 					success: res => {
 						uni.hideLoading();
 						res = app.null2str(res)
-						console.log(res)
+						// console.log(res,'++++++')
+						console.log(res.data,'+++++++++')
+						this.userInfo = res.data
 						if (res.data.status_code == 200) {
-							this.userInfo = res.data.data
 							
-						} else {
-							uni.showToast({
-								title: res.data.message
-							});
+							
 						}
 				
 					}
