@@ -189,7 +189,7 @@ var app = getApp();var _default =
       pageNode: [],
       imgUrl: '',
       page_size: 10,
-      page: 0 };
+      page: 1 };
 
   },
   onLaunch: function onLaunch() {
@@ -202,22 +202,24 @@ var app = getApp();var _default =
     // this.getToken()
   },
   onHide: function onHide() {
-    console.log('App Hide');
+
   },
   methods: {
     // 导航详情
     goNavs: function goNavs(e) {
-      console.log(e.currentTarget.dataset.id);
+      // console.log(e.currentTarget.dataset.id)
       var link = e.currentTarget.dataset.link;
       var bind_board = e.currentTarget.dataset.bind_board;
       var id = e.currentTarget.dataset.id;
+      var name = e.currentTarget.dataset.name;
+      console.log(bind_board);
       if (bind_board == '0') {
         uni.navigateTo({
           url: "/pages/productSupermarket" });
 
-      } else {
+      } else if (bind_board == '1') {
         uni.navigateTo({
-          url: "/pages/indexAccurate?id=".concat(id) });
+          url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });
 
       }
       // //开通会员

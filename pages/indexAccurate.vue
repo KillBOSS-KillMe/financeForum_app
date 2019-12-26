@@ -1,35 +1,93 @@
 <template>
 	<view class="indexAccurate">
 		<view class="contentList">
-			<view class="item" v-for="(item,index) in list" :key="index">
-				<view class="itemRight">
-					<text class="title">{{item.title}}</text>
-					<view class="itemCon">
-						<text>{{item.time}}</text>
-						<text>{{item.name}}</text>
-						<text>{{item.num}}评</text>
+			<block  v-for="(item,index) in list" :key="index">
+				<view class="item" @tap="goDetail(item.id)">
+					<view class="itemRight">
+						<text class="title">{{item.title}}</text>
+						<view class="itemCon">
+							<text>{{item.created_at}}</text>
+							<text>{{item.user.name}}</text>
+							<text>{{item.comments_count}}评</text>
+						</view>
 					</view>
+					<image :src="item.img" mode="aspectFill"></image>
 				</view>
-				<image :src="item.img" mode="aspectFill"></image>
-			</view>
+			</block>
+			<view class="null" v-if="list.length == 0">暂无数据</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	const app = getApp()
 	export default {
 		data() {
 			return {
-				list:[
-					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
-					{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
-					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-				]
+				list:[],
+				page: '1',
+				page_size:'10',
+				boardId: '1'
 			}
 		},
-		methods: {
+		onShow(e) {
+			// console.log(e)
+			// this.board_id == e
 			
+		},
+		onLoad(e) {
+			console.log(this.boardId)
+			this.boardId = e.id
+			console.log(e)
+			console.log(this.boardId)
+			this.getList()
+			uni.setNavigationBarTitle({
+				title: e.name
+			})
+		},
+		onLaunch(){
+			
+		},
+		methods: {
+			getList(boardId){
+				uni.request({
+					url: `${app.globalData.requestUrl}/posts/board-posts`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data:{
+						board_id: boardId,
+						page_size: this.page_size,
+						page: this.page
+					},
+					success: res => {
+						res = app.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							 this.list = this.list.concat(res.data.data)
+							 if(res.data.data == 0){
+							 	uni.showToast({
+							 		title:'暂无更多数据',
+							 		icon:"none"
+							 	})
+							 }
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				})
+			},
+			onReachBottom() {
+				console.log(this.boardId)
+				this.page ++;
+				this.getList(this.boardId)
+			}
 		}
+		
 	}
 </script>
 
