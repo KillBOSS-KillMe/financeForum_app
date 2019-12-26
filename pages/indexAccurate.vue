@@ -21,6 +21,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -51,7 +52,7 @@
 		methods: {
 			getList(boardId){
 				uni.request({
-					url: `${app.globalData.requestUrl}/posts/board-posts`,
+					url: `${helper.requestUrl}/posts/board-posts`,
 					method: 'GET',
 					header: {
 						authorization: app.globalData.token

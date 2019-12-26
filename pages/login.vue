@@ -20,6 +20,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -28,7 +29,7 @@
 			}
 		},
 		onLoad() {
-
+			console.log(helper.requestUrl)
 		},
 		methods: {
 			// 获取登录名
@@ -79,7 +80,7 @@
 					duration: 1000000
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/login`,
+					url: `${helper.requestUrl}/login`,
 					method: 'POST',
 					data: {
 						username: this.loginName,
@@ -88,7 +89,7 @@
 					success: res => {
 						console.log(res);
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						if (res.statusCode == 200) {
 							uni.showToast({
 								title: '登录成功',
@@ -108,6 +109,23 @@
 						}
 					}
 				});
+			},
+			null2str(res) {
+				for (let x in res) {
+					if (res[x] === null) { // 如果是null 把直接内容转为 ''
+						res[x] = ''
+					} else {
+						if (Array.isArray(res[x])) { // 是数组遍历数组 递归继续处理
+							res[x] = res[x].map(z => {
+								return this.null2str(z)
+							})
+						}
+						if (typeof(res[x]) === 'object') { // 是json 递归继续处理
+							res[x] = this.null2str(res[x])
+						}
+					}
+				}
+				return res
 			}
 		},
 

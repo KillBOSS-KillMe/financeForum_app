@@ -65,6 +65,8 @@
 </template>
 
 <script>
+	const app = getApp()
+	import helper from '../common/helper.js';
 	import pickerAddress from '../components/wangding-pickerAddress.vue'
 	export default {
 		data() {

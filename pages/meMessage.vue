@@ -14,6 +14,8 @@
 </template>
 
 <script>
+	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {

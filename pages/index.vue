@@ -53,6 +53,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -132,11 +133,11 @@
 					duration: 1000000
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/index`,
+					url: `${helper.requestUrl}/index`,
 					method: 'GET',
 					success: res => {
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
 							let pageNode = res.data.data
 							this.pageNode = pageNode
@@ -162,7 +163,7 @@
 					duration: 1000000
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/index-board-posts`,
+					url: `${helper.requestUrl}/index-board-posts`,
 					method: 'GET',
 					data: {
 						board_id: this.boardId,
@@ -171,7 +172,7 @@
 					},
 					success: res => {
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
 							if(res.data.data == ''){
 								uni.showToast({

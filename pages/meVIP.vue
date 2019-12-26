@@ -68,32 +68,34 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			bannerList:[
-				{id:'1',img:'../static/a.jpg'},
-				{id:'2',img:'../static/b.jpg'},
-				{id:'12',img:'../static/a.jpg'},
-			],
-			isCheck: false
-			// list:[
-			// 	{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
-			// 	{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
-			// ]
-		}
-	},
-	methods: {
-		meTreaty(){
-			uni.navigateTo({
-				url:'/pages/meTreaty'
-			})
+	const app = getApp()
+	import helper from '../common/helper.js';
+	export default {
+		data() {
+			return {
+				bannerList:[
+					{id:'1',img:'../static/a.jpg'},
+					{id:'2',img:'../static/b.jpg'},
+					{id:'12',img:'../static/a.jpg'},
+				],
+				isCheck: false
+				// list:[
+				// 	{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
+				// 	{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
+				// ]
+			}
 		},
-		checkboxChange(e){
+		methods: {
+			meTreaty(){
+				uni.navigateTo({
+					url:'/pages/meTreaty'
+				})
+			},
+			checkboxChange(e){
 
+			}
 		}
 	}
-}
 </script>
 
 <style>

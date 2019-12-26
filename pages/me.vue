@@ -133,6 +133,7 @@
 
 <script>
 	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -161,7 +162,7 @@
 					duration: 1000000
 				});
 				uni.request({
-					url: `${app.globalData.requestUrl}/me`,
+					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token

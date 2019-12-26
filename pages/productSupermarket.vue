@@ -100,20 +100,22 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-		    indicatorDots: true,
-			Inv: 0,
-			list:[
-				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
-				{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
-				{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-			]
-		};
-	},
-	methods: {}
-};
+	const app = getApp()
+	import helper from '../common/helper.js';
+	export default {
+		data() {
+			return {
+					indicatorDots: true,
+				Inv: 0,
+				list:[
+					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
+					{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
+					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
+				]
+			};
+		},
+		methods: {}
+	};
 </script>
 
 <style>
