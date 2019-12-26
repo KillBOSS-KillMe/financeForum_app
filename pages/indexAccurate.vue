@@ -64,7 +64,7 @@
 						page: this.page
 					},
 					success: res => {
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == 200) {
 							 this.list = this.list.concat(res.data.data)

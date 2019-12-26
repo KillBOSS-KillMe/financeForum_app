@@ -157,7 +157,7 @@
 					},
 					success: res => {
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == 200) {
 							this.articleDetail = res.data

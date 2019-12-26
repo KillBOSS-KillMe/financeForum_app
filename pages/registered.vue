@@ -95,7 +95,7 @@
 					success: (res) => {
 						console.log(res);
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						if (res.statusCode == 200) {
 							this.formNode.verification_key = res.data.key
 							this.countdown();
@@ -189,7 +189,7 @@
 					success: (res) => {
 						console.log(res);
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						if (res.data.status_code == 1) {
 							uni.showToast({
 								title: res.data.message,

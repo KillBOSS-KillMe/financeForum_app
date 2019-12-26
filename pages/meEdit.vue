@@ -106,7 +106,7 @@
 					},
 					success: res => {
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						// console.log(res,'++++++')
 						console.log(res.data,'+++++++++')
 						this.userInfo = res.data

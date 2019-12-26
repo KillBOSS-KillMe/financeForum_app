@@ -77,7 +77,7 @@
 					},
 					success: res => {
 						uni.hideLoading();
-						res = app.null2str(res)
+						res = helper.null2str(res)
 						if (res.data.state_code == 1) {
 							uni.reLaunch({
 								url: `/pages/login`
