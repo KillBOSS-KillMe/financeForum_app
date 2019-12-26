@@ -73,7 +73,7 @@
 
 		},
 		onShow() {
-			this.imgUrl = app.globalData.imgUrl
+			this.imgUrl = helper.imgUrl
 			this.getList()
 			// this.getToken()
 		},
@@ -180,7 +180,7 @@
 									icon:"none"
 								})
 							}
-							this.pageNode = res.data.data
+							this.pageNode = this.pageNode.concat(res.data.data)
 						} else {
 							uni.showToast({
 								title: res.data.message
