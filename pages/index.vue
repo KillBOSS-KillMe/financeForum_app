@@ -124,6 +124,9 @@
 				uni.request({
 					url: `${helper.requestUrl}/index`,
 					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
@@ -154,6 +157,9 @@
 				uni.request({
 					url: `${helper.requestUrl}/index-board-posts`,
 					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
 					data: {
 						board_id: this.boardId,
 						page_size:this.page_size,

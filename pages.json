@@ -264,6 +264,12 @@
 			"style": {
 				"navigationBarTitleText": "所有产品"
 			}
+		},
+		{
+			"path": "pages/applyShow",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
 		}
 	],
 	"globalStyle": {

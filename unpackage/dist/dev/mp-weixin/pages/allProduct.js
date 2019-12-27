@@ -225,11 +225,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { imgUrl: '', list: [], currentIndex: 0, mask: false, moneyList: [{ name: '所有额度' }, { name: '100-5000' }, { name: '5000-2万' }, { name: '2万-5万' }, { name: '5万-10万' }, { name: '10万以上' }] };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getList()
-  }, methods: { getTap: function getTap(e) {console.log(e);this.mask = true;}, screenList: function screenList(e) {console.log(e);}, hideModal: function hideModal() {this.mask = false;}, //获取列表数据
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/categories-holes"), method: 'GET', // header: {
-        // 	authorization: app.globalData.token
-        // },
-        data: { category_id: this.category_id, page_size: this.page_size, page: this.page }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.list = _this.list.concat(res.data.data);} else {uni.showToast({ title: res.data.message, icon: 'none' });
+  }, methods: { getTap: function getTap(e) {console.log(e);this.mask = true;}, screenList: function screenList(e) {console.log(e);this.currentIndex = e;}, hideModal: function hideModal() {this.mask = false;}, //获取列表数据
+    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/categories-holes"), method: 'GET', header: { authorization: app.globalData.token }, data: { category_id: this.category_id, page_size: this.page_size, page: this.page }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.list = _this.list.concat(res.data.data);} else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
           }
         } });
 

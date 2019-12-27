@@ -79,8 +79,37 @@
 			  ]
 			}
 		},
+		onLoad() {
+			// 加载微金交流首页数据
+			this.getIndexData()
+		},
 		methods: {
-			
+			getIndexData() {
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/forum/index`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res);
+						if (res.data.status_code == '200') {
+							this.pageData = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: "none"
+							});
+						}
+					}
+				});
+			}
 		}
 	}
 </script>

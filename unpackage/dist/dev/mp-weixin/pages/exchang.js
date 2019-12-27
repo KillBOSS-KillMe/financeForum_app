@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -245,7 +245,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { navList: [{ img: '../static/logo.png', title: '实战心得' }, { img: '../static/logo.png', title: '拒贷汇总' }, { img: '../static/logo.png', title: '微金公告' }, { img: '../static/logo.png', title: '从业感悟' }, { img: '../static/logo.png', title: '论坛搜索' }], Inv: 0, list: [{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制', imgList: [{ img1: '../static/logo.png' }, { img1: '../static/logo.png' }, { img1: '../static/logo.png' }] }, { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' }, { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }] };}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { navList: [{ img: '../static/logo.png', title: '实战心得' }, { img: '../static/logo.png', title: '拒贷汇总' }, { img: '../static/logo.png', title: '微金公告' }, { img: '../static/logo.png', title: '从业感悟' }, { img: '../static/logo.png', title: '论坛搜索' }], Inv: 0, list: [{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制', imgList: [{ img1: '../static/logo.png' }, { img1: '../static/logo.png' }, { img1: '../static/logo.png' }] }, { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' }, { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }] };}, onLoad: function onLoad() {// 加载微金交流首页数据
+    this.getIndexData();}, methods: { getIndexData: function getIndexData() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/forum/index"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.pageData = res.data.data;} else {uni.showToast({ title: res.data.message, icon: "none" });}} });} } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

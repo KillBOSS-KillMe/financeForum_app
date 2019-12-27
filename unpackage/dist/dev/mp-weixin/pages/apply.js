@@ -165,8 +165,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {
+    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
             _this.collectionList = res.data.data;
           } else {
             // uni.showToast({
@@ -194,8 +197,10 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
         // 帖子
       } else if (type == 'child') {
         // 应用子
+        console.log(id);
         uni.navigateTo({
-          url: "/pages/articleDetail?id=".concat(id) });
+
+          url: "/pages/applyShow?id=".concat(id) });
 
       } else if (type == 'ex_link') {
         console.log(extra, '+++++');
@@ -205,7 +210,7 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
         // 外联
       } else if (type == 'category') {
         uni.navigateTo({
-          url: "/pages/articleDetail?id=".concat(id) });
+          url: "/pages/applyShow?id=".concat(id) });
 
       }
       console.log(e);

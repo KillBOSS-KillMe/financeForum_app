@@ -248,6 +248,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/index"),
         method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
@@ -278,6 +281,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
         method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
         data: {
           board_id: this.boardId,
           page_size: this.page_size,

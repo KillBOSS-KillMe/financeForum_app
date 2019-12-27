@@ -145,7 +145,7 @@
 .modelShowText{
 	width: 690rpx;
 	position: fixed;
-	top: 180rpx;
+	top: 90rpx;
 	left: 0;
 	overflow: hidden;
 	z-index: 8;

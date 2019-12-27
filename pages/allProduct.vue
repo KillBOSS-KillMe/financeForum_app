@@ -79,6 +79,7 @@ export default {
 		},
 		screenList(e){
 			console.log(e)
+			this.currentIndex = e
 		},
 		hideModal(){
 			this.mask = false
@@ -88,9 +89,9 @@ export default {
 			uni.request({
 				url: `${helper.requestUrl}/holes/categories-holes`,
 				method: 'GET',
-				// header: {
-				// 	authorization: app.globalData.token
-				// },
+				header: {
+					authorization: app.globalData.token
+				},
 				data: {
 					category_id: this.category_id,
 					page_size: this.page_size,
@@ -230,7 +231,7 @@ export default {
 .modelShowText{
 	width: 690rpx;
 	position: fixed;
-	top: 180rpx;
+	top: 90rpx;
 	left: 0;
 	overflow: hidden;
 	z-index: 8;
