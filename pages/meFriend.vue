@@ -5,17 +5,19 @@
 			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 		</view>
 		<view class="list">
-			<block v-for="(item,index) in list" :key="index">
-				<view class="item">
-					<image v-bind:src="item.image" data-index="index" />
+			<block v-for="(item,index) in friendsList" :key="index">
+				<view class="item" :data-id="item.user_id">
+					<image :src="imgUrl + item.avatar" mode="aspectFill" v-if="item.avatar != ''"></image>
+					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 					<view class="con">
 						<view>
 							<text class="title">{{item.name}}</text>
-							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.gender == 1"></uni-icon>
-							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.gender == 2"></uni-icon>
+							<!-- 性别（m 男 f 女 no_set 未设置） -->
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'f'"></uni-icon>
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'm'"></uni-icon>
 							<text class="label" v-if="item.vip > 1">管理员VIP{{item.vip}}级</text>
 						</view>
-						<view class="info">{{item.info}}</view>
+						<view class="info">{{item.signature}}</view>
 					</view>
 					<view class="operating">
 						<view>取消</view>
@@ -32,45 +34,42 @@
 	export default {
 		data() {
 			return {
-				list: [
-					{
-						id: 1,
-						image: '../static/a.jpg',
-						name: 'admin',
-						gender: 1,
-						vip: 9,
-						info: '信息信息信息信息信息'
-					},
-					{
-						id: 1,
-						image: '../static/a.jpg',
-						name: 'admin',
-						gender: 1,
-						vip: 9,
-						info: '信息信息信息信息信息'
-					},
-					{
-						id: 1,
-						image: '../static/a.jpg',
-						name: 'admin',
-						gender: 1,
-						vip: 9,
-						info: '信息信息信息信息信息'
-					},
-					{
-						id: 1,
-						image: '../static/a.jpg',
-						name: 'admin',
-						gender: 1,
-						vip: 9,
-						info: '信息信息信息信息信息'
-					}
-				]
-				
+				imgUrl: '',
+				friendsList: []
 			}
 		},
+		onLoad() {
+			this.imgUrl = helper.imgUrl
+			// 加载好友列表
+			this.getFriends()
+		},
 		methods: {
-			
+			getFriends() {
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/friends`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res);
+						if (res.data.status_code == '1') {
+							this.friendsList = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: "none"
+							});
+						}
+					}
+				});
+			},
 		}
 	}
 </script>

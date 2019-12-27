@@ -22,7 +22,10 @@
 					<view class="itemRight">
 						<view class="itemRightHead">
 							<text>123</text>
-							<view><text>来自</text>贷款产品交流</view>
+							<view>
+								来自
+								<text>贷款产品交流</text>
+							</view>
 						</view>
 						<text class="title">{{item.title}}</text>
 						<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
@@ -41,9 +44,6 @@
 									<text>{{item.num}}评</text>
 								</view>
 							</view>
-							
-							
-							
 						</view>
 					</view>
 				</view>
@@ -143,12 +143,12 @@
 	margin-bottom: 40rpx;
 }
 .content .contentList .item>image{
-	width: 220rpx;
-	height: 136rpx;
-	border-radius: 10rpx;
+	width: 85rpx;
+	height: 85rpx;
+	border-radius: 85rpx;
 }
 .content .contentList .item .itemRight{
-	width: 440rpx;
+	width: 580rpx;
 	display: flex;
 	align-content: flex-start;
 	flex-wrap: wrap;
@@ -165,7 +165,7 @@
 	margin: 10rpx 0;
 }
 .content .itemCon{
-	width: 440rpx;
+	width: 580rpx;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -178,11 +178,11 @@
 	color: #999999;
 }
 .itemRightHead{
-	width: 440rpx;
+	width: 580rpx;
 	display: flex;
 	justify-content: space-between;
 }
-.itemRightHead>text{
+.itemRightHead text{
 	color: #333333;
 	font-size: 28rpx;
 	font-weight: 600;
@@ -192,8 +192,18 @@
 	font-size: 28rpx;
 	font-weight: 600;
 }
+.itemRightHead view{
+	color: #2390DC;
+	font-size: 28rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.itemRightHead view text{
+	padding-left: 20rpx;
+}
 .itemContent{
-	width: 440rpx;
+	width: 580rpx;
 	font-size: 28rpx;
 	color: #666666;
 	overflow : hidden;

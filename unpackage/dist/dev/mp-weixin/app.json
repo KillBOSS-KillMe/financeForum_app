@@ -42,7 +42,8 @@
     "pages/meTreaty",
     "pages/paySuccess",
     "pages/productDetail",
-    "pages/searchNetloan"
+    "pages/searchNetloan",
+    "pages/allProduct"
   ],
   "subPackages": [],
   "window": {
