@@ -79,6 +79,7 @@ export default {
 		},
 		screenList(e){
 			console.log(e)
+			this.currentIndex = e
 		},
 		hideModal(){
 			this.mask = false
@@ -230,7 +231,7 @@ export default {
 .modelShowText{
 	width: 690rpx;
 	position: fixed;
-	top: 180rpx;
+	top: 90rpx;
 	left: 0;
 	overflow: hidden;
 	z-index: 8;

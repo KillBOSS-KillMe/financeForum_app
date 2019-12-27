@@ -7,7 +7,7 @@
 						<view class="navs">
 							<block v-for="(sonItem, sonIndex) in itemAll" :key="sonIndex">
 							<!-- {{sonIndex}} -->
-							<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9">
+							<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9" @tap="navsHead">
 								<image src="../static/logo.png" mode="" v-if="sonItem.icon == ''"></image>
 								<image :src="sonItem.icon" mode="" v-else></image>
 								<text>{{ sonItem.title }}</text>
@@ -86,6 +86,11 @@ export default {
 		this.imgUrl = helper.imgUrl;
 	},
 	methods: {
+		navsHead() {
+			uni.navigateTo({
+				url:'/pages/allProduct'
+			})
+		},
 		changeTab(e){
 			console.log(e)
 			this.Inv = e;
