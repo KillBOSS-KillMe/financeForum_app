@@ -20,7 +20,7 @@
 			</swiper>
 		</view>
 		<view class="line"></view>
-		<view class="quickInlet">
+		<!-- <view class="quickInlet">
 			<view class="quickItem">
 				<image src="../static/logo.png" mode=""></image>
 				<view>
@@ -36,10 +36,10 @@
 				</view>
 			</view>
 		</view>
-		<view class="line"></view>
-		<view class="query">
-			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" />
-			<text @tap="getSearch">查网贷</text>
+		<view class="line"></view> -->
+		<view class="query"  @tap="getSearch">
+			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled"/>
+			<text>查网贷</text>
 		</view>
 		<view class="line"></view>
 		<view class="content">
@@ -49,34 +49,32 @@
 				<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
 			</view>
 			<view class="contentList">
-				<view class="item" v-for="(item, index) in list" :key="index">
-					<image :src="imgUrl + item.icon" mode="aspectFill"></image>
-					<view class="itemRight">
-						<view class="productInfo">
-							<text>{{ item.name }}</text>
-							<view>
-								<text>申请人数:</text>
-								<text class="cur">{{ item.apply_sum }}</text>
+				<block  v-for="(item, index) in list" :key="index">
+					<view class="item" @tap="goProduct" :data-id="item.id">
+						<image :src="imgUrl + item.icon" mode="aspectFill"></image>
+						<view class="itemRight">
+							<view class="productInfo">
+								<text>{{ item.name }}</text>
+								<view>
+									<text>申请人数:</text>
+									<text class="cur">{{ item.apply_sum }}</text>
+								</view>
 							</view>
+							<view class="moneyBox">
+								<view class="money">
+									额度：
+									<text>{{ item.quota }}</text>
+								</view>
+								<view class="money">
+									费用：
+									<text>{{ item.fee_ratio }}</text>
+								</view>
+							</view>
+							<text class="title">{{ item.introduction }}</text>
 						</view>
-						<view class="moneyBox">
-							<view class="money">
-								额度：
-								<text>{{ item.quota }}</text>
-							</view>
-							<view class="money">
-								费用：
-								<text>{{ item.fee_ratio }}</text>
-							</view>
-						</view>
-						<text class="title">{{ item.title }}</text>
-						<!-- 	<view class="itemCon">
-							<text>{{item.time}}</text>
-							<text>{{item.name}}</text>
-							<text>{{item.num}}评</text>
-						</view> -->
 					</view>
-				</view>
+				</block>
+				
 			</view>
 		</view>
 	</view>
@@ -122,40 +120,40 @@ export default {
 			this.list = []
 			this.getTab()
 		},
-		//搜索查询网贷
-		onInput(e) {
-			this.keywords = e.detail.value;
-		},
 		getSearch() {
-			if (this.keywords == '') {
-				uni.showToast({
-					title: '请输入查询内容',
-					icon: 'none'
-				});
-				return false;
-			}
-			uni.request({
-				url: `${helper.requestUrl}/holes/search`,
-				method: 'GET',
-				// header: {
-				// 	authorization: app.globalData.token
-				// },
-				data: {
-					keywords: this.keywords
-				},
-				success: res => {
-					res = helper.null2str(res);
-					console.log(res);
-					if (res.data.status_code == 200) {
-					} else {
-						uni.showToast({
-							title: res.data.message,
-							icon: 'none'
-						});
-					}
-				}
-			});
+			uni.navigateTo({
+				url:'/pages/searchNetloan'
+			})
 		},
+		// 	if (this.keywords == '') {
+		// 		uni.showToast({
+		// 			title: '请输入查询内容',
+		// 			icon: 'none'
+		// 		});
+		// 		return false;
+		// 	}
+		// 	uni.request({
+		// 		url: `${helper.requestUrl}/holes/search`,
+		// 		method: 'GET',
+		// 		// header: {
+		// 		// 	authorization: app.globalData.token
+		// 		// },
+		// 		data: {
+		// 			keywords: this.keywords
+		// 		},
+		// 		success: res => {
+		// 			res = helper.null2str(res);
+		// 			console.log(res);
+		// 			if (res.data.status_code == 200) {
+		// 			} else {
+		// 				uni.showToast({
+		// 					title: res.data.message,
+		// 					icon: 'none'
+		// 				});
+		// 			}
+		// 		}
+		// 	});
+		// },
 		//导航
 		getNav() {
 			uni.request({
@@ -211,6 +209,13 @@ export default {
 					}
 				}
 			});
+		},
+		goProduct(e){
+			console.log(e)
+			let id = e.currentTarget.dataset.id
+			uni.navigateTo({
+				url:`/pages/productDetail?id=${id}`
+			})
 		},
 		onReachBottom() {
 			this.page ++;
@@ -409,17 +414,5 @@ export default {
 	font-weight: 600;
 	margin-left: 10rpx;
 }
-/* .content .itemCon{
-	width: 440rpx;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between; */
-/* justify-content: flex-end;
-	/* 
-} */
-/* .content .itemCon text{
-	display: block;
-	font-size: 24rpx;
-	color: #999999;
-} */
+
 </style>

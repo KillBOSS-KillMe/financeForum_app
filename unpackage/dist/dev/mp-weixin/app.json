@@ -40,7 +40,9 @@
     "pages/meEdit",
     "pages/meApplyMessage",
     "pages/meTreaty",
-    "pages/paySuccess"
+    "pages/paySuccess",
+    "pages/productDetail",
+    "pages/searchNetloan"
   ],
   "subPackages": [],
   "window": {
@@ -89,6 +91,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap23.json"
+  }
 }

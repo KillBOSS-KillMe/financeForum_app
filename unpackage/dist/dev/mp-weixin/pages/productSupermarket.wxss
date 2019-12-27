@@ -263,17 +263,5 @@
 	font-weight: 600;
 	margin-left: 10rpx;
 }
-/* .content .itemCon{
-	width: 440rpx;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between; */
-/* justify-content: flex-end;
-	/* 
-} */
-/* .content .itemCon text{
-	display: block;
-	font-size: 24rpx;
-	color: #999999;
-} */
+
 

@@ -24,8 +24,8 @@
 	export default {
 		data() {
 			return {
-				loginPaw: '123123',
-				loginName: '18700458359'
+				loginPaw: '',
+				loginName: ''
 			}
 		},
 		onLoad() {
@@ -56,7 +56,7 @@
 				console.log(this.loginName, this.loginPaw)
 				if (this.loginName == '') {
 					uni.showToast({
-						title: "请输入手机号或者用户名",
+						title: '请输入手机号或者用户名',
 						icon: 'none',
 						duration: 2000
 					});
@@ -64,7 +64,7 @@
 				}
 				if (this.loginPaw == '') {
 					uni.showToast({
-						title: "请输入密码",
+						title: '请输入密码',
 						icon: 'none',
 						duration: 2000
 					});
@@ -95,16 +95,14 @@
 								title: '登录成功',
 								icon: "none"
 							});
-							console.log(res.data.access_token)
 							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
-							console.log(app.globalData.token)
 							uni.reLaunch({
 								url: './index'
 							});
 						} else {
 							uni.showToast({
 								title: res.data.message,
-								icon: "none"
+								icon: 'none'
 							});
 						}
 					}

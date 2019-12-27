@@ -246,8 +246,20 @@
 			"style": {
 				"navigationBarTitleText": "支付成功"
 			}
-		}
-	],
+		},
+		{
+            "path" : "pages/productDetail",
+            "style" : {
+				"navigationBarTitleText": "产品详情"
+			}
+        },
+		{
+            "path" : "pages/searchNetloan",
+            "style" : {
+				"navigationBarTitleText": "搜索"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
