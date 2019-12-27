@@ -39,9 +39,11 @@
 			</view>
 			<!-- </block> -->
 		</view>
-		<view class="modelShow"></view>
-		<view class="modelShowText">
-			<text>所有额度</text>
+		<view class="modelShow" @tap="hideModal" v-if="mask"></view>
+		<view class="modelShowText" v-if="mask">
+			<block v-for="(item,index) in moneyList" :key="index">
+				<text @tap="screenList(index)" :class="[index == currentIndex ? 'active' : 'cor']">{{item.name}}</text>
+			</block>
 		</view>
 	</view>
 </template>
@@ -53,7 +55,17 @@ export default {
 	data() {
 		return {
 			imgUrl: '',
-			list: []
+			list: [],
+			currentIndex: 0,
+			mask:false,
+			moneyList: [
+				{name:'所有额度'},
+				{name:'100-5000'},
+				{name:'5000-2万'},
+				{name:'2万-5万'},
+				{name:'5万-10万'},
+				{name:'10万以上'}
+			]
 		};
 	},
 	onLoad() {
@@ -63,6 +75,13 @@ export default {
 	methods: {
 		getTap(e){
 			console.log(e)
+			this.mask = true
+		},
+		screenList(e){
+			console.log(e)
+		},
+		hideModal(){
+			this.mask = false
 		},
 		//获取列表数据
 		getList() {
@@ -217,15 +236,29 @@ export default {
 	z-index: 8;
 	background: #fff;
 	padding: 30rpx;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 }
 .modelShowText text{
-	width: 186rpx;
+	width: 206rpx;
 	height: 56rpx;
-	background: #eee;
 	font-size: 28rpx;
-	color: #0A0000;
 	font-weight: 600;
 	line-height: 56rpx;
 	text-align: center;
+	margin:0 35rpx 30rpx 0;
+	border-radius: 10rpx;
+}
+.cor{
+	background: #eee;
+	color: #0A0000;
+}
+.active{
+	background: #2390DC;
+	color: #fff;
+}
+.modelShowText text:nth-child(3n){
+	margin-right: 0;
 }
 </style>
