@@ -22,14 +22,15 @@
 				<view :class="['inv-h',Inv==1?'inv-h-se':'']" @tap="changeTab(1)">资料</view>
 			</view>
 			<view class="contentList" v-if="Inv==0">
-				<view class="item" v-for="(item,index) in list" :key="index">
-					<image :src="item.img" mode="aspectFill"></image>
+				<view class="item" :data-id="item.post_id" v-for="(item,index) in publishList" :key="index">
+					<image :src="imgUrl + item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''"></image>
+					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 					<view class="itemRight">
 						<text class="title">{{item.title}}</text>
 						<view class="itemCon">
-							<text>{{item.time}}</text>
-							<text>{{item.name}}</text>
-							<text>{{item.num}}评</text>
+							<text>{{item.publish_time}}</text>
+							<text>{{item.user}}</text>
+							<text>{{item.comments_count}}评</text>
 						</view>
 					</view>
 				</view>
@@ -37,7 +38,10 @@
 			<view class="contentList" v-if="Inv==1">
 				<view class="itemList">
 					<text>性别</text>
-					<text>{{userInfo.sex}}</text>
+					<!-- 性别（m 男 f 女 no_set 未设置） -->
+					<text v-if="userInfo.sex == 'm'">男</text>
+					<text v-if="userInfo.sex == 'f'">女</text>
+					<text v-if="userInfo.sex == 'no_set'">未设置</text>
 				</view>
 				<view class="itemList">
 					<text>居住地</text>
@@ -91,36 +95,17 @@
 		data() {
 			return {
 				Inv: 0,
-				list: [{
-						id: '1',
-						img: '../static/b.jpg',
-						time: '12小时前',
-						name: 'admin',
-						num: '3',
-						title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'
-					},
-					{
-						id: '1',
-						img: '../static/b.jpg',
-						time: '11小时前',
-						name: 'admin',
-						num: '3',
-						title: 'dgfdhdyju'
-					},
-					{
-						id: '1',
-						img: '../static/b.jpg',
-						time: '12小时前',
-						name: 'admin',
-						num: '2',
-						title: '云南城投股吧说说股票风险如何控制云南城投股吧'
-					}
-				],
+				imgUrl: '',
+				publishList: [],
 				userInfo: []
 			}
 		},
 		onLoad() {
+			this.imgUrl = helper.imgUrl
+			// 获取用户信息
 			this.getUserInfo()
+			// 获取我的发布
+			this.getPublish()
 		},
 		methods: {
 			changeTab(e) {
@@ -138,6 +123,33 @@
 				uni.navigateTo({
 					url: `/pages/meFollow`
 				})
+			},
+			// 获取我的发布列表
+			getPublish() {
+				uni.showLoading({
+				  title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/publish`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						console.log(res);
+						uni.hideLoading();
+						res = helper.null2str(res)
+						if (res.data.status_code == '1') {
+							this.publishList = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: "none"
+							});
+						}
+					}
+				});
 			},
 			getUserInfo() {
 				// 用户信息获取
