@@ -6,7 +6,7 @@
 				<text class="title">{{item.title}}</text>
 				<view class="collectionList">
 					<block  v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
-						<view class="item">
+						<view class="item" @tap="go" :data-id="childrenItem.id" :data-extra="childrenItem.extra" :data-type="childrenItem.type">
 							<image class="img" :src="imgUrl+childrenItem.icon" mode=""></image>
 							<text>{{childrenItem.title}}</text>
 						</view>
@@ -52,6 +52,39 @@
 				
 					}
 				})
+			},
+			go(e){
+				let type = e.currentTarget.dataset.type
+				let extra = e.currentTarget.dataset.extra
+				let id = e.currentTarget.dataset.id
+				if(type == 'block'){
+					uni.navigateTo({
+						url:`/pages/${extra}`
+					})
+				} else if(type == 'series'){
+					
+				} else if(type == 'post'){
+					uni.navigateTo({
+						url:`/pages/articleDetail?id=${id}`
+					})
+					// 帖子
+				} else if(type == 'child'){
+					// 应用子
+					uni.navigateTo({
+						url:`/pages/articleDetail?id=${id}`
+					})
+				} else if(type == 'ex_link'){
+					console.log(extra,'+++++')
+					// plus.runtime.openURL(extra)
+				 	plus.runtime.openWeb(extra)
+					// window.location.href = extra
+					// 外联
+				} else if(type == 'category'){
+					uni.navigateTo({
+						url:`/pages/articleDetail?id=${id}`
+					})
+				}
+				console.log(e)
 			}
 		}
 	}

@@ -165,8 +165,12 @@
 							this.articleDetail = res.data
 						} else {
 							uni.showToast({
-								title: res.data.message
+								title: res.data.message,
+								icon: 'none'
 							});
+							uni.navigateBack({
+								delta:1
+							})
 						}
 					}
 				})
