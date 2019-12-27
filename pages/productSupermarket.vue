@@ -37,9 +37,9 @@
 			</view>
 		</view>
 		<view class="line"></view> -->
-		<view class="query">
-			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" />
-			<text @tap="getSearch">查网贷</text>
+		<view class="query"  @tap="getSearch">
+			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled"/>
+			<text>查网贷</text>
 		</view>
 		<view class="line"></view>
 		<view class="content">
@@ -120,40 +120,40 @@ export default {
 			this.list = []
 			this.getTab()
 		},
-		//搜索查询网贷
-		onInput(e) {
-			this.keywords = e.detail.value;
-		},
 		getSearch() {
-			if (this.keywords == '') {
-				uni.showToast({
-					title: '请输入查询内容',
-					icon: 'none'
-				});
-				return false;
-			}
-			uni.request({
-				url: `${helper.requestUrl}/holes/search`,
-				method: 'GET',
-				// header: {
-				// 	authorization: app.globalData.token
-				// },
-				data: {
-					keywords: this.keywords
-				},
-				success: res => {
-					res = helper.null2str(res);
-					console.log(res);
-					if (res.data.status_code == 200) {
-					} else {
-						uni.showToast({
-							title: res.data.message,
-							icon: 'none'
-						});
-					}
-				}
-			});
+			uni.navigateTo({
+				url:'/pages/searchNetloan'
+			})
 		},
+		// 	if (this.keywords == '') {
+		// 		uni.showToast({
+		// 			title: '请输入查询内容',
+		// 			icon: 'none'
+		// 		});
+		// 		return false;
+		// 	}
+		// 	uni.request({
+		// 		url: `${helper.requestUrl}/holes/search`,
+		// 		method: 'GET',
+		// 		// header: {
+		// 		// 	authorization: app.globalData.token
+		// 		// },
+		// 		data: {
+		// 			keywords: this.keywords
+		// 		},
+		// 		success: res => {
+		// 			res = helper.null2str(res);
+		// 			console.log(res);
+		// 			if (res.data.status_code == 200) {
+		// 			} else {
+		// 				uni.showToast({
+		// 					title: res.data.message,
+		// 					icon: 'none'
+		// 				});
+		// 			}
+		// 		}
+		// 	});
+		// },
 		//导航
 		getNav() {
 			uni.request({

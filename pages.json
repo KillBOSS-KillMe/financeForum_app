@@ -252,6 +252,12 @@
             "style" : {
 				"navigationBarTitleText": "产品详情"
 			}
+        },
+		{
+            "path" : "pages/searchNetloan",
+            "style" : {
+				"navigationBarTitleText": "搜索"
+			}
         }
     ],
 	"globalStyle": {

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "微金交流",
-  "usingComponents": {}
+  "usingComponents": {
+    "page-search": "/components/pageSearch"
+  }
 }
