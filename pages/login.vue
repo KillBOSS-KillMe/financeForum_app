@@ -24,8 +24,8 @@
 	export default {
 		data() {
 			return {
-				loginPaw: '',
-				loginName: ''
+				loginPaw: '123456',
+				loginName: '18700458359'
 			}
 		},
 		onLoad() {
