@@ -91,30 +91,19 @@
 				console.log(bind_board)
 				if (bind_board == '0') {
 					uni.navigateTo({
-						url: `/pages/productSupermarket`
+						url: `/pages/${link}`
 					})
 				} else if(bind_board == '1') {
 					uni.navigateTo({
 						url: `/pages/indexAccurate?id=${id}&name=${name}`
 					})
 				}
-				// //开通会员
-				// if(id == 10){
-				// 	uni.navigateTo({
-				// 		url:`/pages/joinMember`
-				// 	})
-				// }
-
 			},
 			//
 			selListType(e) {
 				this.Inv = e.currentTarget.dataset.index
 				this.boardId = e.currentTarget.dataset.block_id
 			},
-			// changeTab(Inv){
-			// 	that.navIdx = Inv;
-			// 	console.log(that.navIdx)
-			// },
 			// 轮播跳转
 			goBanner(e) {
 				console.log(e)

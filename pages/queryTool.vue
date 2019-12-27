@@ -1,39 +1,26 @@
 <template>
 	<view class="queryTool">
-		<view class="collection">
-			<view class="collectionList">
-				<block  v-for="(item,index) in collectionList" :key="index">
-					<view class="item">
-						<image class="img" :src="item.img" mode=""></image>
-						<text>{{item.title}}</text>
-					</view>
-				</block>
+		<block v-for="(item,index) in collectionList.children" :key="index">
+			<!-- <text>{{item.title}}</text> -->
+			<view class="headList" v-if="item.type != 'category'">
+				<view class="head">
+					<image :src="imgUrl+item.icon" mode=""></image>
+					<text class="title">{{item.title}}</text>
+				</view>
+			</view> 
+			<view class="collection" v-if="item.type == 'category'">
+				<text class="title">{{item.title}}</text>
+				<view class="collectionList">
+					<block v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
+						<view class="item">
+							<image class="img" :src="imgUrl+childrenItem.icon" mode=""></image>
+							<text>{{childrenItem.title}}</text>
+						</view>
+					</block>
+				</view>
 			</view>
-		</view>
-		<view class="line"></view>
-		<view class="collection">
-			<text class="title">信用卡工具</text>
-			<view class="collectionList">
-				<block  v-for="(item,index) in collectionList" :key="index">
-					<view class="item">
-						<image class="img" :src="item.img" mode=""></image>
-						<text>{{item.title}}</text>
-					</view>
-				</block>
-			</view>
-		</view>
-		<view class="line"></view>
-		<view class="collection">
-			<text class="title">微金工具</text>
-			<view class="collectionList">
-				<block  v-for="(item,index) in collectionList" :key="index">
-					<view class="item">
-						<image class="img" :src="item.img" mode=""></image>
-						<text>{{item.title}}</text>
-					</view>
-				</block>
-			</view>
-		</view>
+			<!-- <view class="line"></view> -->
+		</block>
 	</view>
 </template>
 
@@ -43,38 +30,83 @@
 	export default {
 		data() {
 			return {
-				collectionList:[
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'1征信查询23',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'}
-				]
+				collectionList:[],
+				imgUrl:''
 			}
 		},
+		onLoad() {
+			this.getList();
+			this.imgUrl = helper.imgUrl
+		},
 		methods: {
-			
+			getList(){
+				uni.request({
+					url: `${helper.requestUrl}/system-tools/query-tools`,
+					method: 'GET',
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							this.collectionList = res.data.data
+							console.log(this.collectionList,'+++++++++')
+						} else {
+							// uni.showToast({
+							// 	title: res.data.message
+							// });
+						}
+				
+					}
+				})
+			}
 		}
 	}
 </script>
 
 <style>
 .queryTool{
-	width: 750rpx;
+	width:690rpx;
+	padding: 30rpx;
+	display: flex;
+	flex-wrap: wrap;
 }
 .collection{
 	width: 690rpx;
-	padding: 30rpx 30rpx 0;
+	padding: 30rpx 0 0;
 }
 .collection .title{
 	color: #333333;
 	font-size: 32rpx;
 	font-weight: 600;
+}
+.headList{
+	width: 180rpx;
+	display: flex;
+	justify-content: center;
+	/* justify-content: center; */
+	margin-right: 20rpx;
+}
+.headList .head>text{
+	font-size: 28rpx;
+	font-weight: 600;
+	color: #333;
+	margin-top: 6rpx;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.head{
+	width: 180rpx;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.head image{
+	width: 96rpx;
+	height: 96rpx;
+	border-radius: 50rpx;
+	margin: 0;
 }
 .collectionList{
 	margin: 30rpx 0;

@@ -1,41 +1,20 @@
 <template>
 	<view class="apply">
 		<pageSearch></pageSearch>
-		<view class="collection">
-			<text class="title">干货汇总</text>
-			<view class="collectionList">
-				<block  v-for="(item,index) in collectionList" :key="index">
-					<view class="item">
-						<image class="img" :src="item.img" mode=""></image>
-						<text>{{item.title}}</text>
-					</view>
-				</block>
+		<block v-for="(item,index) in collectionList" :key="index">
+			<view class="collection">
+				<text class="title">{{item.title}}</text>
+				<view class="collectionList">
+					<block  v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
+						<view class="item">
+							<image class="img" :src="imgUrl+childrenItem.icon" mode=""></image>
+							<text>{{childrenItem.title}}</text>
+						</view>
+					</block>
+				</view>
 			</view>
-		</view>
-		<view class="line"></view>
-		<view class="collection">
-			<text class="title">信用卡工具</text>
-			<view class="collectionList">
-				<block  v-for="(item,index) in collectionList" :key="index">
-					<view class="item">
-						<image class="img" :src="item.img" mode=""></image>
-						<text>{{item.title}}</text>
-					</view>
-				</block>
-			</view>
-		</view>
-		<view class="line"></view>
-		<view class="collection">
-			<text class="title">微金工具</text>
-			<view class="collectionList">
-				<block  v-for="(item,index) in collectionList" :key="index">
-					<view class="item">
-						<image class="img" :src="item.img" mode=""></image>
-						<text>{{item.title}}</text>
-					</view>
-				</block>
-			</view>
-		</view>
+			<view class="line"></view>
+		</block>
 	</view>
 </template>
 
@@ -45,22 +24,35 @@
 	export default {
 		data() {
 			return {
-				collectionList:[
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'123',img:'../static/a.jpg'},
-					{id:'1',title:'1征信查询23',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'},
-					{id:'1',title:'征信查询',img:'../static/a.jpg'}
-				]
+				collectionList:[],
+				imgUrl:''
 			}
 		},
+		onLoad() {
+			this.getList();
+			this.imgUrl = helper.imgUrl
+		},
 		methods: {
-			
+			// collectionList
+			getList(){
+				uni.request({
+					url: `${helper.requestUrl}/system-tools/apps`,
+					method: 'GET',
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							this.collectionList = res.data.data
+						} else {
+							// uni.showToast({
+							// 	title: res.data.message
+							// });
+						}
+				
+					}
+				})
+			}
 		}
 	}
 </script>

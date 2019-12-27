@@ -20,23 +20,6 @@
 			</swiper>
 		</view>
 		<view class="line"></view>
-		<!-- <view class="quickInlet">
-			<view class="quickItem">
-				<image src="../static/logo.png" mode=""></image>
-				<view>
-					<text class="limit">额度筛选</text>
-					<text>按额度筛选贷款</text>
-				</view>
-			</view>
-			<view class="quickItem">
-				<image src="../static/logo.png" mode=""></image>
-				<view>
-					<text class="limit">额度筛选</text>
-					<text>按额度筛选贷款</text>
-				</view>
-			</view>
-		</view>
-		<view class="line"></view> -->
 		<view class="query"  @tap="getSearch">
 			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled"/>
 			<text>查网贷</text>
@@ -125,43 +108,14 @@ export default {
 				url:'/pages/searchNetloan'
 			})
 		},
-		// 	if (this.keywords == '') {
-		// 		uni.showToast({
-		// 			title: '请输入查询内容',
-		// 			icon: 'none'
-		// 		});
-		// 		return false;
-		// 	}
-		// 	uni.request({
-		// 		url: `${helper.requestUrl}/holes/search`,
-		// 		method: 'GET',
-		// 		// header: {
-		// 		// 	authorization: app.globalData.token
-		// 		// },
-		// 		data: {
-		// 			keywords: this.keywords
-		// 		},
-		// 		success: res => {
-		// 			res = helper.null2str(res);
-		// 			console.log(res);
-		// 			if (res.data.status_code == 200) {
-		// 			} else {
-		// 				uni.showToast({
-		// 					title: res.data.message,
-		// 					icon: 'none'
-		// 				});
-		// 			}
-		// 		}
-		// 	});
-		// },
 		//导航
 		getNav() {
 			uni.request({
 				url: `${helper.requestUrl}/holes/categories`,
 				method: 'GET',
-				// header: {
-				// 	authorization: app.globalData.token
-				// },
+				header: {
+					authorization: app.globalData.token
+				},
 				success: res => {
 					res = helper.null2str(res);
 					console.log(res);
@@ -188,9 +142,9 @@ export default {
 			uni.request({
 				url: `${helper.requestUrl}/holes/index-recommends`,
 				method: 'GET',
-				// header: {
-				// 	authorization: app.globalData.token
-				// },
+				header: {
+					authorization: app.globalData.token
+				},
 				data:{
 					type: this.tabType,
 					page_size:this.page_size,
