@@ -41,7 +41,8 @@
     "pages/meApplyMessage",
     "pages/meTreaty",
     "pages/paySuccess",
-    "pages/productDetail"
+    "pages/productDetail",
+    "pages/searchNetloan"
   ],
   "subPackages": [],
   "window": {
