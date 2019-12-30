@@ -40,6 +40,9 @@
 				uni.request({
 					url: `${helper.requestUrl}/system-tools/category-tool`,
 					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
 					data: {
 						tool_id: this.ItemId
 					},

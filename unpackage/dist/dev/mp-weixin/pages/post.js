@@ -24,7 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -80,7 +80,36 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '' } };}, onLoad: function onLoad(e) {console.log(e);this.formNode.board_id = e.id;}, methods: { inputValue: function inputValue(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode;}, // 发帖
+    post: function post() {uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/send"), method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: this.formNode,
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '200') {
+            uni.showToast({
+              title: res.data.message,
+              icon: "none" });
+
+            setTimeout(function () {
+              uni.reLaunch({
+                url: "/pages/index" });
+
+            }, 2000);
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: "none" });
+
+          }
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

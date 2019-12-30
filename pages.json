@@ -270,6 +270,12 @@
 			"style": {
 				"navigationBarTitleText": "分类"
 			}
+		},
+		{
+			"path": "pages/iframe",
+			"style": {
+				// "navigationBarTitleText": "分类"
+			}
 		}
 	],
 	"globalStyle": {

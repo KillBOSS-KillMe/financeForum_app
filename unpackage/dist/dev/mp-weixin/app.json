@@ -44,7 +44,8 @@
     "pages/productDetail",
     "pages/searchNetloan",
     "pages/allProduct",
-    "pages/applyShow"
+    "pages/applyShow",
+    "pages/iframe"
   ],
   "subPackages": [],
   "window": {

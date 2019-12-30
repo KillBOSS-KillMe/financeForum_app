@@ -70,7 +70,7 @@
 			};
 		},
 		onLaunch() {
-
+			
 		},
 		onShow() {
 			this.imgUrl = helper.imgUrl
@@ -78,6 +78,9 @@
 			// this.getToken()
 		},
 		onHide() {
+			
+		},
+		onLoad() {
 			
 		},
 		methods: {
@@ -184,7 +187,8 @@
 
 					}
 				})
-			}
+			},
+			
 		}
 	};
 </script>

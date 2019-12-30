@@ -9,7 +9,7 @@
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);__webpack_require__(/*! @dcloudio/uni-stat */ 5);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var pageSearch = function pageSearch() {return __webpack_require__.e(/*! import() | components/pageSearch */ "components/pageSearch").then(__webpack_require__.bind(null, /*! ./components/pageSearch.vue */ 358));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more */ "components/uni-load-more").then(__webpack_require__.bind(null, /*! ./components/uni-load-more.vue */ 365));};
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var pageSearch = function pageSearch() {return __webpack_require__.e(/*! import() | components/pageSearch */ "components/pageSearch").then(__webpack_require__.bind(null, /*! ./components/pageSearch.vue */ 372));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more */ "components/uni-load-more").then(__webpack_require__.bind(null, /*! ./components/uni-load-more.vue */ 379));};
 
 
 _vue.default.config.productionTip = false;
@@ -93,93 +93,71 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  onLaunch: function onLaunch() {
-    console.log('App Launch');
-  },
-  onShow: function onShow() {
-    console.log('App Show');
-  },
-  onHide: function onHide() {
-    console.log('App Hide');
-  },
-  globalData: {
-    token: '' },
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-  methods: {} };exports.default = _default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _helper = _interopRequireDefault(__webpack_require__(/*! ./common/helper.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { onLaunch: function onLaunch() {console.log('App Launch');}, onShow: function onShow() {console.log('App Show');}, onHide: function onHide() {console.log('App Hide');}, globalData: { token: '' }, onLoad: function onLoad() {// this.getToken()
+  }, methods: {
+    // 获取Token
+    getToken: function getToken() {var _this = this;
+      uni.login({
+        success: function success(res) {
+          if (res.code) {
+            console.log(res.code);
+            uni.request({
+              url: "".concat(_helper.default.requestUrl, "/refresh"),
+              method: 'POST',
+              header: {
+                authorization: _this.$options.globalData.token },
+
+              // data: {
+              // 	code: res.code
+              // },
+              success: function success(data) {
+                data = _helper.default.null2str(data);
+                console.log(data);
+                if (data.statusCode == '200') {
+                  var token = "".concat(data.data.token);
+                  _this.$options.globalData.token = token;
+                  console.log(_this.$options.globalData.token);
+                }
+              } });
+
+          }
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 12 */

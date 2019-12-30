@@ -165,7 +165,8 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+    getList: function getList() {var _this = this;console.log(app.globalData.token);uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', header: { authorization: app.globalData.token },
+        success: function success(res) {
           // uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
@@ -184,6 +185,7 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
       var type = e.currentTarget.dataset.type;
       var extra = e.currentTarget.dataset.extra;
       var id = e.currentTarget.dataset.id;
+      var name = e.currentTarget.dataset.name;
       if (type == 'block') {
         uni.navigateTo({
           url: "/pages/".concat(extra) });
@@ -199,13 +201,14 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
         // 应用子
         console.log(id);
         uni.navigateTo({
-
           url: "/pages/applyShow?id=".concat(id) });
 
       } else if (type == 'ex_link') {
-        console.log(extra, '+++++');
+        // console.log(extra,'+++++')
         // plus.runtime.openURL(extra)
-        plus.runtime.openWeb(extra);
+        uni.navigateTo({
+          url: "/pages/iframe?url=".concat(extra, "&name=").concat(name) });
+
         // window.location.href = extra
         // 外联
       } else if (type == 'category') {

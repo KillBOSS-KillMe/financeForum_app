@@ -214,6 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -304,15 +305,14 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { info: { id: '1', title: '有钱花二次贷，只要有信用卡或者有公积金就 来，人均10000起步，秒批最高10万，当天到 账', img: '../static/logo.png', name: 'admin', type: '楼主', time: '1小时之前' }, nodes: [{ name: 'div', attrs: { class: 'div-class', style: 'color: #333333;font-size:14px;line-height:20px;' }, children: [{ type: 'text', text: '公告年终业绩每股收入是:3.98元，（即是第四季度收入是:1.87元的）；2017年前三3季度每股收入业绩是:1.99元，公告' }] }], commentList: [{ id: '1', img: '../static/logo.png', name: 'admin', content: '写的不错，可以试试！', time: '9分钟之前', floor: '1' }, { id: '1', img: '../static/logo.png', name: 'adminadminadmin', content: '写的不错，xxxxxxxx可以试试！', time: '9分钟之前', floor: '1' }], articleDetail: null, options: null, imgUrl: '' };}, onLoad: function onLoad(options) {this.options = options;this.imgUrl = app.globalData.imgUrl; // 文章详情加载
-    this.getArticleDetail();}, methods: { // 文章详情加载
+//
+var app = getApp();var _default = { data: function data() {return { focus: false, isShow: '0', info: { id: '1', title: '有钱花二次贷，只要有信用卡或者有公积金就 来，人均10000起步，秒批最高10万，当天到 账', img: '../static/logo.png', name: 'admin', type: '楼主', time: '1小时之前' }, nodes: [{ name: 'div', attrs: { class: 'div-class', style: 'color: #333333;font-size:14px;line-height:20px;' }, children: [{ type: 'text', text: '公告年终业绩每股收入是:3.98元，（即是第四季度收入是:1.87元的）；2017年前三3季度每股收入业绩是:1.99元，公告' }] }], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '' };}, onLoad: function onLoad(options) {this.options = options;this.imgUrl = app.globalData.imgUrl; // 文章详情加载
+    this.getArticleDetail();}, onShow: function onShow() {//评论列表
+    this.getComment();}, methods: { //获取发布内容
+    getContent: function getContent(e) {this.postContent = e.detail.value;console.log(e);}, // 文章详情加载
     getArticleDetail: function getArticleDetail() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: app.globalData.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.articleDetail = res.data;} else {uni.showToast({ title: res.data.message, icon: 'none' });uni.navigateBack({ delta: 1 });}} });}, shareFriend: function shareFriend() {//分享到微信朋友
       this.share('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
-      this.share('WXSenceTimeline');}, share: function share(WXSenceType) {console.log(window.location.href);
-      uni.share({
-        provider: "weixin",
-        scene: WXSenceType,
-        type: 0,
+      this.share('WXSenceTimeline');}, share: function share(WXSenceType) {console.log(window.location.href);uni.share({ provider: "weixin", scene: WXSenceType, type: 0,
         href: window.location.href,
         title: this.articleDetail.title,
         summary: "唐艺昕，没有水的地方叫沙漠，没有你的地方，你知道叫什么吗？不知道。叫寂寞。",
@@ -424,6 +424,125 @@ var app = getApp();var _default = { data: function data() {return { info: { id: 
           }
         } });
 
+    },
+    // 评论列表
+    getComment: function getComment() {var _this4 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/post-comments"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          post_id: this.options.id,
+          just_landlord: this.just_landlord,
+          page: this.page,
+          page_size: '10' },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '**********');
+          if (res.data.status_code == '200') {
+            _this4.commentList = _this4.commentList.concat(res.data.data);
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    //发布评论
+    postDiscuss: function postDiscuss() {
+      console.log(this.comment_id);
+      if (this.isShow == '0') {
+        this.getPost();
+      } else if (this.isShow == '1') {
+        this.postReply();
+      }
+    },
+    // 评论
+    getPost: function getPost() {var _this5 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/send-comment"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          post_id: this.options.id,
+          content: this.postContent },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '200') {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+            _this5.postContent = ' ';
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 回复评论
+    reply: function reply(e) {
+      console.log(e);
+      this.comment_id = e.currentTarget.dataset.id;
+      this.isShow = e.currentTarget.dataset.num;
+      this.focus = true;
+    },
+    postReply: function postReply() {var _this6 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/send-reply"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          comment_id: this.comment_id,
+          content: this.postContent },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '200') {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+            _this6.postContent = ' ';
+            _this6.isShow = '0';
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    //只看楼主
+    commentLandlord: function commentLandlord(e) {
+      console.log(e);
+      this.just_landlord = e;
+      this.commentList = [];
+      this.page = '1';
+      this.getComment();
+    },
+    onReachBottom: function onReachBottom() {
+      this.page++;
+      this.getComment();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -6,7 +6,7 @@
 				<text class="title">{{item.title}}</text>
 				<view class="collectionList">
 					<block  v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
-						<view class="item" @tap="go" :data-id="childrenItem.id" :data-extra="childrenItem.extra" :data-type="childrenItem.type">
+						<view class="item" @tap="go" :data-id="childrenItem.id" :data-extra="childrenItem.extra" :data-type="childrenItem.type" :data-name="childrenItem.title">
 							<image class="img" :src="imgUrl+childrenItem.icon" mode=""></image>
 							<text>{{childrenItem.title}}</text>
 						</view>
@@ -35,6 +35,7 @@
 		methods: {
 			// collectionList
 			getList(){
+				console.log(app.globalData.token)
 				uni.request({
 					url: `${helper.requestUrl}/system-tools/apps`,
 					method: 'GET',
@@ -60,6 +61,7 @@
 				let type = e.currentTarget.dataset.type
 				let extra = e.currentTarget.dataset.extra
 				let id = e.currentTarget.dataset.id
+				let name = e.currentTarget.dataset.name
 				if(type == 'block'){
 					uni.navigateTo({
 						url:`/pages/${extra}`
@@ -75,13 +77,14 @@
 					// 应用子
 					console.log(id)
 					uni.navigateTo({
-						
 						url:`/pages/applyShow?id=${id}`
 					})
 				} else if(type == 'ex_link'){
-					console.log(extra,'+++++')
+					// console.log(extra,'+++++')
 					// plus.runtime.openURL(extra)
-				 	plus.runtime.openWeb(extra)
+				 	uni.navigateTo({
+				 		url:`/pages/iframe?url=${extra}&name=${name}`
+				 	})
 					// window.location.href = extra
 					// 外联
 				} else if(type == 'category'){

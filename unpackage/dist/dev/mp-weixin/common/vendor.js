@@ -734,7 +734,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7117,7 +7117,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7138,14 +7138,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7221,7 +7221,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7695,7 +7695,19 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 391:
+/***/ 4:
+/*!*******************************************!*\
+  !*** D:/work/financeForum_app/pages.json ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ 405:
 /*!***************************************************!*\
   !*** D:/work/financeForum_app/components/data.js ***!
   \***************************************************/
@@ -12615,7 +12627,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 392:
+/***/ 406:
 /*!***************************************************!*\
   !*** D:/work/financeForum_app/components/cell.js ***!
   \***************************************************/
@@ -12643,18 +12655,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     if (ctx.props.column) params.column = ctx.props.column;
     return ctx.props.render(h, params);
   } };exports.default = _default;
-
-/***/ }),
-
-/***/ 4:
-/*!*******************************************!*\
-  !*** D:/work/financeForum_app/pages.json ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 /***/ }),
 
@@ -13564,7 +13564,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@^2.0.0-alpha-24420191128001","_id"
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login": { "navigationBarTitleText": "登录", "usingComponents": {} }, "pages/registered": { "navigationBarTitleText": "注册", "usingComponents": {} }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码", "usingComponents": {} }, "pages/index": { "navigationBarTitleText": "新微金论坛", "usingComponents": {} }, "pages/collection": { "navigationBarTitleText": "干货汇总", "usingComponents": {} }, "pages/apply": { "navigationBarTitleText": "系统应用", "usingComponents": {} }, "pages/exchang": { "navigationBarTitleText": "微金交流", "usingComponents": {} }, "pages/me": { "navigationBarTitleText": "个人中心", "usingComponents": {} }, "pages/articleDetail": { "navigationBarTitleText": "文章详情", "usingComponents": {} }, "pages/queryTool": { "navigationBarTitleText": "查询工具", "usingComponents": {} }, "pages/post": { "navigationBarTitleText": "发帖", "usingComponents": {} }, "pages/experience": { "navigationBarTitleText": "选择模块", "usingComponents": {} }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市", "usingComponents": {} }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息", "usingComponents": {} }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏", "usingComponents": {} }, "pages/meFollow": { "navigationBarTitleText": "我的关注", "usingComponents": {} }, "pages/meFriend": { "navigationBarTitleText": "我的好友", "usingComponents": {} }, "pages/mePost": { "navigationBarTitleText": "我的发表", "usingComponents": {} }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿", "usingComponents": {} }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机", "usingComponents": {} }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号", "usingComponents": {} }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号", "usingComponents": {} }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号", "usingComponents": {} }, "pages/meMessage": { "navigationBarTitleText": "我的消息", "usingComponents": {} }, "pages/meCertification": { "navigationBarTitleText": "用户认证", "usingComponents": {} }, "pages/meVIP": { "navigationBarTitleText": "开通会员", "usingComponents": {} }, "pages/joinMember": { "navigationBarTitleText": "加入会员", "usingComponents": {} }, "pages/meVIPDiff": { "navigationBarTitleText": "会员区别", "usingComponents": {} }, "pages/meAllProduct": { "navigationBarTitleText": "各省产品汇总", "usingComponents": {} }, "pages/meReserve": { "navigationBarTitleText": "备用金打造", "usingComponents": {} }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服", "usingComponents": {} }, "pages/meNewbieRead": { "navigationBarTitleText": "新手必读", "usingComponents": {} }, "pages/meSpread": { "navigationBarTitleText": "推广返佣", "usingComponents": { "w-table": "/components/wTable", "uni-popup": "/components/uni-popup" } }, "pages/meService": { "navigationBarTitleText": "联系客服", "usingComponents": {} }, "pages/meSetting": { "navigationBarTitleText": "个人设置", "usingComponents": {} }, "pages/indexAccurate": { "navigationBarTitleText": "精准匹配", "usingComponents": {} }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证", "usingComponents": {} }, "pages/meEdit": { "navigationBarTitleText": "编辑", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" } }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息", "usingComponents": {} }, "pages/meTreaty": { "navigationBarTitleText": "相关协议", "usingComponents": {} }, "pages/paySuccess": { "navigationBarTitleText": "支付成功", "usingComponents": {} }, "pages/productDetail": { "navigationBarTitleText": "产品详情", "usingComponents": {} }, "pages/searchNetloan": { "navigationBarTitleText": "搜索", "usingComponents": {} }, "pages/allProduct": { "navigationBarTitleText": "所有产品", "usingComponents": {} }, "pages/applyShow": { "navigationBarTitleText": "分类", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login": { "navigationBarTitleText": "登录", "usingComponents": {} }, "pages/registered": { "navigationBarTitleText": "注册", "usingComponents": {} }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码", "usingComponents": {} }, "pages/index": { "navigationBarTitleText": "新微金论坛", "usingComponents": {} }, "pages/collection": { "navigationBarTitleText": "干货汇总", "usingComponents": {} }, "pages/apply": { "navigationBarTitleText": "系统应用", "usingComponents": {} }, "pages/exchang": { "navigationBarTitleText": "微金交流", "usingComponents": {} }, "pages/me": { "navigationBarTitleText": "个人中心", "usingComponents": {} }, "pages/articleDetail": { "navigationBarTitleText": "文章详情", "usingComponents": {} }, "pages/queryTool": { "navigationBarTitleText": "查询工具", "usingComponents": {} }, "pages/post": { "navigationBarTitleText": "发帖", "usingComponents": {} }, "pages/experience": { "navigationBarTitleText": "选择模块", "usingComponents": {} }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市", "usingComponents": {} }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息", "usingComponents": {} }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏", "usingComponents": {} }, "pages/meFollow": { "navigationBarTitleText": "我的关注", "usingComponents": {} }, "pages/meFriend": { "navigationBarTitleText": "我的好友", "usingComponents": {} }, "pages/mePost": { "navigationBarTitleText": "我的发表", "usingComponents": {} }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿", "usingComponents": {} }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机", "usingComponents": {} }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号", "usingComponents": {} }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号", "usingComponents": {} }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号", "usingComponents": {} }, "pages/meMessage": { "navigationBarTitleText": "我的消息", "usingComponents": {} }, "pages/meCertification": { "navigationBarTitleText": "用户认证", "usingComponents": {} }, "pages/meVIP": { "navigationBarTitleText": "开通会员", "usingComponents": {} }, "pages/joinMember": { "navigationBarTitleText": "加入会员", "usingComponents": {} }, "pages/meVIPDiff": { "navigationBarTitleText": "会员区别", "usingComponents": {} }, "pages/meAllProduct": { "navigationBarTitleText": "各省产品汇总", "usingComponents": {} }, "pages/meReserve": { "navigationBarTitleText": "备用金打造", "usingComponents": {} }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服", "usingComponents": {} }, "pages/meNewbieRead": { "navigationBarTitleText": "新手必读", "usingComponents": {} }, "pages/meSpread": { "navigationBarTitleText": "推广返佣", "usingComponents": { "w-table": "/components/wTable", "uni-popup": "/components/uni-popup" } }, "pages/meService": { "navigationBarTitleText": "联系客服", "usingComponents": {} }, "pages/meSetting": { "navigationBarTitleText": "个人设置", "usingComponents": {} }, "pages/indexAccurate": { "navigationBarTitleText": "精准匹配", "usingComponents": {} }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证", "usingComponents": {} }, "pages/meEdit": { "navigationBarTitleText": "编辑", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" } }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息", "usingComponents": {} }, "pages/meTreaty": { "navigationBarTitleText": "相关协议", "usingComponents": {} }, "pages/paySuccess": { "navigationBarTitleText": "支付成功", "usingComponents": {} }, "pages/productDetail": { "navigationBarTitleText": "产品详情", "usingComponents": {} }, "pages/searchNetloan": { "navigationBarTitleText": "搜索", "usingComponents": {} }, "pages/allProduct": { "navigationBarTitleText": "所有产品", "usingComponents": {} }, "pages/applyShow": { "navigationBarTitleText": "分类", "usingComponents": {} }, "pages/iframe": { "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

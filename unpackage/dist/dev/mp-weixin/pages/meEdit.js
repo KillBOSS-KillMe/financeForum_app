@@ -190,6 +190,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -256,10 +263,23 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 386));};var _default = { data: function data() {return { txt: '选择地址', userInfo: [], formNode: [] };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {this.getUserInfo();}, methods: { //获取input数据
-    onInput: function onInput(e) {console.log(e);}, goAddress: function goAddress(data) {this.txt = data.data.join('');console.log(data.data.join(''));}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
-      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res); // console.log(res,'++++++')
-          console.log(res.data, '+++++++++');_this.userInfo = res.data;if (res.data.status_code == 200) {}} });} } };exports.default = _default;
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 400));};var _default = { data: function data() {return { txt: '选择地址', // formNode: [],
+      formNode: [], array: ['男', '女', '无'], index: 0 };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {this.getformNode();}, methods: { //获取input数据
+    onInput: function onInput(e) {console.log(e, '+++'); // this.finish()
+    }, bindPickerChange: function bindPickerChange(e) {console.log('picker发送选择改变，携带值为', e.target.value);this.index = e.target.value;console.log(this.array[this.index]);}, goAddress: function goAddress(data) {console.log(data);this.txt = data.data.join('');this.formNode.province = data.data[0];this.formNode.city = data.data[1];this.formNode.district = data.data[2];console.log(this.formNode.province, '+');}, getformNode: function getformNode() {var _this = this; // 用户信息获取
+      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.formNode = res.data;} });}, // 修改
+    finish: function finish() {var _this2 = this;console.log(this.formNode);uni.showToast({ title: '提交中...', icon: 'none' });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/edit"), method: 'POST', header: { authorization: app.globalData.token }, data: this.formNode, success: function success(res) {// uni.hideLoading();
+          res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this2.collectionList = res.data.data;} else {// uni.showToast({
+            // 	title: res.data.message
+            // });
+          }} });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

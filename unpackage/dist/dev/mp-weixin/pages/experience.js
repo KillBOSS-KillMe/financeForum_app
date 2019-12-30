@@ -122,13 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -152,13 +146,38 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-//
-//
-//
-//
-//
-var app = getApp();var _default = { data: function data() {return {};}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { type: [], imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.getType();},
+  methods: {
+    //获取模块
+    getType: function getType() {var _this = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/can-boards"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '200') {
+            _this.type = res.data.data;
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: "none" });
+
+          }
+        } });
+
+    },
+    getPost: function getPost(e) {
+      console.log(e);
+      uni.navigateTo({
+        url: "/pages/post?id=".concat(e) });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

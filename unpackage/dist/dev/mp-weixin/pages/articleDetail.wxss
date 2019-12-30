@@ -314,11 +314,11 @@
 		background: #fff;
 }
 .bottom input {
-		width: 508rpx;
-		border: 1rpx solid #E4E4E4;
+		width: 608rpx;
+		border: 1rpx solid #B8B8B8;
 		height: 70rpx;
 		line-height: 70rpx;
-		border-radius: 10rpx;
+		border-radius: 40rpx;
 		padding: 0 20rpx;
 		color: #999999;
 		font-size: 24rpx;

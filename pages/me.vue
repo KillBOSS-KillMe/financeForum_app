@@ -160,10 +160,10 @@
 				// uni.showLoading({
 				//   title: '用户信息获取中...'
 				// });
-				uni.showLoading({
-				  title: '加载中...',
-					duration: 1000000
-				});
+				// uni.showLoading({
+				//   title: '加载中...',
+				// 	duration: 1000000
+				// });
 				uni.request({
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
@@ -177,12 +177,7 @@
 						if (res.data.status_code == 200) {
 							this.userInfo = res.data.data
 							
-						} else {
-							uni.showToast({
-								title: res.data.message
-							});
 						}
-				
 					}
 				})
 			}
