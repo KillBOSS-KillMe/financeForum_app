@@ -9,11 +9,9 @@
 	padding: 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	position: absolute;
 	/* height: 100rpx; */
@@ -26,15 +24,12 @@
 	width: 345rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 	color: #2390DC;
 	font-size: 30rpx;
@@ -53,11 +48,9 @@
 .content .contentList .item {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	padding-bottom: 40rpx;
 	border-bottom: 1rpx solid #E8E8E8;
@@ -71,24 +64,19 @@
 	width: 530rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: space-between;
-	    -ms-flex-line-pack: justify;
 	        align-content: space-between;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .content .contentList .item .itemRight .productInfo {
 	width: 530rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 .content .contentList .item .itemRight .productInfo > text {
@@ -99,14 +87,11 @@
 .content .contentList .item .itemRight .productInfo > view {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: center;
-	    -ms-flex-line-pack: center;
 	        align-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 }
 .content .contentList .item .itemRight .productInfo > view text {
@@ -121,8 +106,7 @@
 	font-size: 28rpx;
 	color: #999;
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
@@ -131,13 +115,11 @@
 	width: 530rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 }
 .content .money {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	font-size: 28rpx;
 	color: #999;
@@ -171,14 +153,11 @@
 	padding: 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
-	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .modelShowText text{
