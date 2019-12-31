@@ -30,6 +30,12 @@
 				]
 			}
 		},
+		onLoad() {
+			console.log(options)
+			uni.setNavigationBarTitle({
+				title: options.title
+			})
+		},
 		methods: {
 			
 		}

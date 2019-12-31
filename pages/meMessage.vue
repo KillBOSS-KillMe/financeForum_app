@@ -32,7 +32,7 @@
 				let type = e.currentTarget.dataset.type
 				let title = e.currentTarget.dataset.title
 				uni.navigateTo({
-					url: `/pages/meMessageDetails?type=${type}&title=${title}`
+					url: `/pages/meApplyMessage?type=${type}&title=${title}`
 				})
 			}
 		}

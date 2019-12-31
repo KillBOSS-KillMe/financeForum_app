@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<textarea @input="onInput"></textarea>
+		<textarea @input="onInput" placeholder="请输入修改信息"></textarea>
 		<view class="submit">
 			<view @tap="submit">确定</view>
 		</view>

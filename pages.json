@@ -146,13 +146,6 @@
 			}
 		},
 		{
-			"path": "pages/meMessageDetails",
-			"style": {
-				"navigationBarTitleText": "消息详情"
-			}
-		},
-		
-		{
 			"path": "pages/meCertification",
 			"style": {
 				"navigationBarTitleText": "用户认证"
