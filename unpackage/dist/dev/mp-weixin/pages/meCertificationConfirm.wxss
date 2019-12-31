@@ -14,11 +14,9 @@
 .item{
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	border-bottom: 1rpx solid #ECECEC;
 	padding: 30rpx 0;
@@ -31,7 +29,6 @@
 .right{
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 }
 .right input{
@@ -57,11 +54,9 @@
 .card{
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	margin-top: 40rpx;
 }
@@ -74,8 +69,7 @@
 	width: 630rpx;
 	height: 80rpx;
 	background: #2390DC;
-	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
-	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	border-radius: 10rpx;
 	barder:none;
 	margin-top: 40rpx;

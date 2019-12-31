@@ -22,39 +22,45 @@
 		<view class="line"></view>
 		<view class="content">
 			<view class="inv-h-w">
-				<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">贷款产品交流</view>
+				<block v-for="(item, index) in pageData.board_data" :key="index">
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
+				</block>
+		<!-- 		<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">贷款产品交流</view>
 				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">信用卡交流</view>
-				<view :class="['inv-h', Inv == 2 ? 'inv-h-se' : '']" @tap="Inv = 2">推荐热帖</view>
+				<view :class="['inv-h', Inv == 2 ? 'inv-h-se' : '']" @tap="Inv = 2">推荐热帖</view> -->
 			</view>
 			<view class="contentList">
-				<view class="item" v-for="(item, index) in list" :key="index">
-					<image :src="item.img" mode="aspectFill"></image>
-					<view class="itemRight">
-						<view class="itemRightHead">
-							<text>123</text>
-							<view>
-								来自
-								<text>贷款产品交流</text>
-							</view>
-						</view>
-						<text class="title">{{ item.title }}</text>
-						<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
-						<block v-for="(item1, index) in item.imgList" :key="index"><image class="imgList" :src="item1.img1" mode=""></image></block>
-						<view class="itemCon">
-							<text>{{ item.time }}</text>
-							<view class="itemBottom">
+				<block v-for="(item, index) in pageData.board_data[Inv].posts" :key="index">
+					<view class="item">
+						<image :src="imgUrl+item.user.avatar" mode="aspectFill"></image>
+						<view class="itemRight">
+							<view class="itemRightHead">
+								<text>123</text>
 								<view>
-									<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-									<text>{{ item.name }}</text>
+									来自
+									<text>{{item.from_board}}</text>
 								</view>
-								<view>
-									<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-									<text>{{ item.num }}评</text>
+							</view>
+							<text class="title">{{ item.user.name }}</text>
+							<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
+							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="item1.img1" mode=""></image></block>
+							<view class="itemCon">
+								<text>{{ item.created_at }}</text>
+								<view class="itemBottom">
+									<view>
+										<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+										<text>{{ item.like }}</text>
+									</view>
+									<view>
+										<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+										<text>{{ item.comments_count }}</text>
+									</view>
 								</view>
 							</view>
 						</view>
 					</view>
-				</view>
+				</block>
+				
 			</view>
 		</view>
 	</view>
@@ -97,6 +103,10 @@ export default {
 		this.imgUrl = helper.imgUrl
 	},
 	methods: {
+		selListType(e) {
+			this.Inv = e.currentTarget.dataset.index
+			this.boardId = e.currentTarget.dataset.block_id
+		},
 		// 数据
 		getIndexData() {
 			uni.showLoading({
