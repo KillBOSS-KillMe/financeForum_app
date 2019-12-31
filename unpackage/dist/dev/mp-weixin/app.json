@@ -45,7 +45,8 @@
     "pages/searchNetloan",
     "pages/allProduct",
     "pages/applyShow",
-    "pages/iframe"
+    "pages/iframe",
+    "pages/meFan"
   ],
   "subPackages": [],
   "window": {
@@ -94,5 +95,6 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  }
+  },
+  "sitemapLocation": "sitemap57.json"
 }

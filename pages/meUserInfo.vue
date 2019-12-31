@@ -11,7 +11,7 @@
 				<view class="meHeadList">
 					<text>参与</text>
 					<text @tap="meFollow">关注</text>
-					<text>粉丝</text>
+					<text @tap="meFan">粉丝</text>
 				</view>
 			</view>
 		</view>
@@ -116,6 +116,12 @@
 			edit() {
 				uni.navigateTo({
 					url: `/pages/meEdit`
+				})
+			},
+			// 粉丝
+			meFan() {
+				uni.navigateTo({
+					url: `/pages/meFan`
 				})
 			},
 			// 关注
