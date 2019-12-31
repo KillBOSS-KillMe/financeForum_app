@@ -1,9 +1,9 @@
 
-.edit{
+.edit {
 	width: 690rpx;
 	padding: 0 30rpx 80rpx;
 }
-.edit .itemList{
+.edit .itemList {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -19,7 +19,7 @@
 	padding: 30rpx 0;
 	border-bottom: 2rpx dashed #000000;
 }
-.edit .itemList .right{
+.edit .itemList .right {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -31,29 +31,31 @@
 	font-size: 30rpx;
 	color: #333333;
 }
-.edit .itemList .right image{
+.edit .itemList .right image {
 	width: 58rpx;
 	height: 58rpx;
 	border-radius: 58rpx;
 	margin-right: 20rpx;
 }
-.edit .itemList text,.right text{
+.edit .itemList text,
+.right text,
+.uni-input {
 	font-size: 30rpx;
 	color: #333333;
 }
-.edit .itemList input{
+.edit .itemList input {
 	width: 500rpx;
 	font-size: 30rpx;
 	color: #333333;
 	text-align: right;
 }
-.edit .itemList>text:first-child{
+.edit .itemList > text:first-child {
 	font-weight: 600;
 }
-.edit .itemList:last-of-type{
+.edit .itemList:last-of-type {
 	border: none;
 }
-.edit button{
+.edit button {
 	margin-top: 30rpx;
 }
 

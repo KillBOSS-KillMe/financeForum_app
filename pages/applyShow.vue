@@ -1,19 +1,19 @@
 <template>
-	<view class="apply">
-		<pageSearch></pageSearch>
+	<view class="queryTool">
 		<block v-for="(item,index) in collectionList" :key="index">
 			<view class="collection">
 				<text class="title">{{item.title}}</text>
 				<view class="collectionList">
-					<block  v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
-						<view class="item" @tap="go" :data-id="childrenItem.id" :data-extra="childrenItem.extra" :data-type="childrenItem.type" :data-name="childrenItem.title">
+					<block v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
+						<view class="item">
 							<image class="img" :src="imgUrl+childrenItem.icon" mode=""></image>
 							<text>{{childrenItem.title}}</text>
 						</view>
 					</block>
+					<view class="null" v-if="item.children.length == 0">暂无数据</view>
 				</view>
 			</view>
-			<view class="line"></view>
+			<!-- <view class="line"></view> -->
 		</block>
 	</view>
 </template>
@@ -25,29 +25,34 @@
 		data() {
 			return {
 				collectionList:[],
-				imgUrl:''
+				imgUrl:'',
+				ItemId: ''
 			}
 		},
-		onLoad() {
+		onLoad(e) {
+			console.log(e)
+			this.ItemId = e.id
 			this.getList();
 			this.imgUrl = helper.imgUrl
 		},
 		methods: {
-			// collectionList
 			getList(){
-				console.log(app.globalData.token)
 				uni.request({
-					url: `${helper.requestUrl}/system-tools/apps`,
+					url: `${helper.requestUrl}/system-tools/category-tool`,
 					method: 'GET',
 					header: {
 						authorization: app.globalData.token
+					},
+					data: {
+						tool_id: this.ItemId
 					},
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == 200) {
-							this.collectionList = res.data.data
+							this.collectionList = res.data.children
+							console.log(this.collectionList,'+++++++++')
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message
@@ -56,60 +61,53 @@
 				
 					}
 				})
-			},
-			go(e){
-				let type = e.currentTarget.dataset.type
-				let extra = e.currentTarget.dataset.extra
-				let id = e.currentTarget.dataset.id
-				let name = e.currentTarget.dataset.name
-				if(type == 'block'){
-					uni.navigateTo({
-						url:`/pages/${extra}`
-					})
-				} else if(type == 'series'){
-					
-				} else if(type == 'post'){
-					uni.navigateTo({
-						url:`/pages/articleDetail?id=${id}`
-					})
-					// 帖子
-				} else if(type == 'child'){
-					// 应用子
-					console.log(id)
-					uni.navigateTo({
-						url:`/pages/applyShow?id=${id}`
-					})
-				} else if(type == 'ex_link'){
-					// console.log(extra,'+++++')
-					// plus.runtime.openURL(extra)
-				 	uni.navigateTo({
-				 		url:`/pages/iframe?url=${extra}&name=${name}`
-				 	})
-					// window.location.href = extra
-					// 外联
-				} else if(type == 'category'){
-					uni.navigateTo({
-						url:`/pages/applyShow?id=${id}`
-					})
-				}
-				console.log(e)
 			}
 		}
 	}
 </script>
 
 <style>
-.apply{
-	width: 750rpx;
+.queryTool{
+	width:690rpx;
+	padding: 0 30rpx;
 }
 .collection{
 	width: 690rpx;
-	padding: 30rpx 30rpx 0;
+	padding: 30rpx 0 0;
 }
 .collection .title{
 	color: #333333;
 	font-size: 32rpx;
 	font-weight: 600;
+}
+.headList{
+	width: 180rpx;
+	display: flex;
+	justify-content: center;
+	/* justify-content: center; */
+	margin-right: 20rpx;
+}
+.headList .head>text{
+	font-size: 28rpx;
+	font-weight: 600;
+	color: #333;
+	margin-top: 6rpx;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.head{
+	width: 180rpx;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.head image{
+	width: 96rpx;
+	height: 96rpx;
+	border-radius: 50rpx;
+	margin: 0;
 }
 .collectionList{
 	margin: 30rpx 0;

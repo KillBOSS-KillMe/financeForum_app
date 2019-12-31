@@ -43,7 +43,9 @@
     "pages/paySuccess",
     "pages/productDetail",
     "pages/searchNetloan",
-    "pages/allProduct"
+    "pages/allProduct",
+    "pages/applyShow",
+    "pages/iframe"
   ],
   "subPackages": [],
   "window": {
@@ -92,6 +94,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap18.json"
+  }
 }

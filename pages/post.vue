@@ -1,8 +1,8 @@
 <template>
 	<view class="post">
-		<input class="title" type="text" value="" placeholder="请输入标题" @input="inputValue">
+		<input class="title" type="text" value="" placeholder="请输入标题" @input="inputValue" data-name="title">
 		<view class="content">
-			<textarea value="" placeholder="请输入发布内容..." />
+			<textarea value="" placeholder="请输入发布内容..." @input="inputValue" data-name="content"/>
 			<text class="tip">贷款进口子交流</text>
 		</view>
 		<view class="sound">
@@ -21,7 +21,7 @@
 				<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
 			</view>
 		</view>
-		<button type="primary" class="submit">发帖</button>
+		<button type="primary" class="submit" @tap="post">发帖</button>
 	</view>
 </template>
 
@@ -31,11 +31,58 @@
 	export default {
 		data() {
 			return {
-				
+				formNode: {
+					title: '',
+					content: '',
+					board_id: '',
+					topic_id: ''
+				}
 			}
 		},
+		onLoad(e) {
+			console.log(e)
+			this.formNode.board_id = e.id
+		},
 		methods: {
-			
+			inputValue(e){
+				let formNode = this.formNode
+				let name = e.currentTarget.dataset.name
+				let value = e.detail.value
+				formNode[name] = value
+				this.formNode = formNode
+			},
+			// 发帖
+			post(){
+				uni.request({
+					url: `${helper.requestUrl}/posts/send`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: this.formNode,
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res);
+						if (res.data.status_code == '200') {
+							uni.showToast({
+								title: res.data.message,
+								icon: "none"
+							});
+							setTimeout(() => {
+								uni.reLaunch({
+									url: `/pages/index`
+								})
+							}, 2000)
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: "none"
+							});
+						}
+					}
+				});
+			}
 		}
 	}
 </script>

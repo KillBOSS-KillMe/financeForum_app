@@ -51,17 +51,17 @@
 		</view>
 		<view class="line"></view>
 		<view class="comment">
-			<view class="commentTitle"><text class="commentTit">评论</text><text class="commentLandlord">只看楼主</text></view>
+			<view class="commentTitle"><text class="commentTit">评论</text><text class="commentLandlord" @tap="commentLandlord(articleDetail.user_id)">只看楼主</text></view>
 			<view class="list">
 				<block v-for="(item,index) in commentList" :key="index">
 					<view class="item">
-						<image :src="item.img" mode=""></image>
+						<image src="../static/logo.png" mode=""></image>
 						<view class="right">
 							<view class="itemListHead">
 								<view class="itemListHeadLeft">
-									<text class="rightName">{{item.name}}</text>
+									<text class="rightName">{{item.user.name}}</text>
 									<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
-									<text class="rightMember">{{item.name}}</text>
+									<text class="rightMember">{{item.user.type}}</text>
 								</view>
 								<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
 							</view>
@@ -69,9 +69,9 @@
 							<view class="rightBottom">
 								<view class="flex">
 									<text>{{item.floor}}楼</text>
-									<text>{{item.time}}</text>
+									<text>{{item.created_at}}</text>
 								</view>
-								<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
+								<uni-icon class="iconfont iconzanzan" type="" @tap="reply" :data-id="item.id" :data-num="1"></uni-icon>
 							</view>
 						</view>
 					</view>
@@ -79,10 +79,11 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<input type="text" value="" placeholder="发表评论..." />
+			<input type="text" :value="postContent" focus @input="getContent" placeholder="发表评论..." />
+			<uni-icon class="iconfont iconfenxiang" type="" @tap="postDiscuss"></uni-icon>
 			<!-- 收藏 -->
-			<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 1" @tap="delCollection"></uni-icon>
-			<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 0" @tap="addCollection"></uni-icon>
+			<!-- <uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 1" @tap="delCollection"></uni-icon>
+			<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 0" @tap="addCollection"></uni-icon> -->
 			<!-- <uni-icon class="iconfont iconfenxiang" type=""></uni-icon> -->
 		</view>
 	</view>
@@ -94,6 +95,8 @@
 	export default {
 		data() {
 			return {
+				focus: false,
+				isShow: '0',
 				info: {
 					id: '1',
 					title: '有钱花二次贷，只要有信用卡或者有公积金就 来，人均10000起步，秒批最高10万，当天到 账',
@@ -113,26 +116,14 @@
 						text: '公告年终业绩每股收入是:3.98元，（即是第四季度收入是:1.87元的）；2017年前三3季度每股收入业绩是:1.99元，公告'
 					}]
 				}],
-				commentList: [{
-						id: '1',
-						img: '../static/logo.png',
-						name: 'admin',
-						content: '写的不错，可以试试！',
-						time: '9分钟之前',
-						floor: '1'
-					},
-					{
-						id: '1',
-						img: '../static/logo.png',
-						name: 'adminadminadmin',
-						content: '写的不错，xxxxxxxx可以试试！',
-						time: '9分钟之前',
-						floor: '1'
-					}
-				],
+				commentList: [],
 				articleDetail: null,
 				options: null,
 				imgUrl: '',
+				page: '1',
+				postContent: '',
+				just_landlord: '',
+				comment_id: ''
 			}
 		},
 		onLoad(options) {
@@ -141,7 +132,16 @@
 			// 文章详情加载
 			this.getArticleDetail()
 		},
+		onShow(){
+			//评论列表
+			this.getComment()
+		},
 		methods: {
+			//获取发布内容
+			getContent(e){
+				this.postContent = e.detail.value
+				console.log(e)
+			},
 			// 文章详情加载
 			getArticleDetail() {
 				uni.showLoading({
@@ -165,8 +165,12 @@
 							this.articleDetail = res.data
 						} else {
 							uni.showToast({
-								title: res.data.message
+								title: res.data.message,
+								icon: 'none'
 							});
+							uni.navigateBack({
+								delta:1
+							})
 						}
 					}
 				})
@@ -296,6 +300,125 @@
 						}
 					}
 				})
+			},
+			// 评论列表
+			getComment(){
+				uni.request({
+					url: `${helper.requestUrl}/posts/post-comments`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						post_id: this.options.id,
+						just_landlord: this.just_landlord,
+						page: this.page,
+						page_size: '10'
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res,'**********')
+						if (res.data.status_code == '200') {
+							this.commentList = this.commentList.concat(res.data.data)
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+						}
+					}
+				})
+			},
+			//发布评论
+			postDiscuss(){
+				console.log(this.comment_id)
+				if(this.isShow == '0'){
+					this.getPost()
+				}else if(this.isShow == '1'){
+					this.postReply()
+				}
+			},
+			// 评论
+			getPost(){
+				uni.request({
+					url: `${helper.requestUrl}/posts/send-comment`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						post_id: this.options.id,
+						content: this.postContent
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == '200') {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+							this.postContent = ' '
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+						}
+					}
+				})
+			},
+			// 回复评论
+			reply(e){
+				console.log(e)
+				this.comment_id = e.currentTarget.dataset.id
+				this.isShow = e.currentTarget.dataset.num
+				this.focus = true
+			},
+			postReply(){
+				uni.request({
+					url: `${helper.requestUrl}/posts/send-reply`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						comment_id: this.comment_id,
+						content: this.postContent
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == '200') {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+							this.postContent = ' '
+							this.isShow = '0'
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none'
+							});
+						}
+					}
+				})
+			},
+			//只看楼主
+			commentLandlord(e){
+				console.log(e)
+				this.just_landlord = e
+				this.commentList = []
+				this.page = '1'
+				this.getComment()
+			},
+			onReachBottom(){
+				this.page ++;
+				this.getComment()
 			}
 		}
 		
@@ -585,11 +708,11 @@
 	}
 
 	.bottom input {
-		width: 508rpx;
-		border: 1rpx solid #E4E4E4;
+		width: 608rpx;
+		border: 1rpx solid #B8B8B8;
 		height: 70rpx;
 		line-height: 70rpx;
-		border-radius: 10rpx;
+		border-radius: 40rpx;
 		padding: 0 20rpx;
 		color: #999999;
 		font-size: 24rpx;

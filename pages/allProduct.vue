@@ -89,9 +89,9 @@ export default {
 			uni.request({
 				url: `${helper.requestUrl}/holes/categories-holes`,
 				method: 'GET',
-				// header: {
-				// 	authorization: app.globalData.token
-				// },
+				header: {
+					authorization: app.globalData.token
+				},
 				data: {
 					category_id: this.category_id,
 					page_size: this.page_size,
