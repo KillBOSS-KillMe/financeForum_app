@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -154,7 +154,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: '../static/logo.png', title: '提到我的' }, { id: '2', img: '../static/logo.png', title: '评论' }, { id: '3', img: '../static/logo.png', title: '系统消息' }] };}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: '../static/logo.png', title: '提到我的' }, { id: '2', img: '../static/logo.png', title: '评论' }, { id: '3', img: '../static/logo.png', title: '系统消息' }] };}, methods: { goMessageDetails: function goMessageDetails(e) {console.log(e);var type = e.currentTarget.dataset.type;var title = e.currentTarget.dataset.title;
+      uni.navigateTo({
+        url: "/pages/meMessageDetails?type=".concat(type, "&title=").concat(title) });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

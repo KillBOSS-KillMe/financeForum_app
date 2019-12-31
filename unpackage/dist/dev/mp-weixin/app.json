@@ -24,6 +24,7 @@
     "pages/meMyMobile_2",
     "pages/meMyMobile_3",
     "pages/meMessage",
+    "pages/meMessageDetails",
     "pages/meCertification",
     "pages/meVIP",
     "pages/joinMember",

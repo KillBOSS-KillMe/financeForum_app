@@ -1,7 +1,7 @@
 <template>
 	<view class="meMessage">
 		<block v-for="(item,index) in list" :key="index">
-			<view class="item">
+			<view class="item" :data-title="item.title" :data-type="item.id" @tap="goMessageDetails">
 				<view>
 					<image :src="item.img" mode=""></image>
 					<text>{{item.title}}</text>
@@ -27,7 +27,14 @@
 			}
 		},
 		methods: {
-			
+			goMessageDetails(e) {
+				console.log(e)
+				let type = e.currentTarget.dataset.type
+				let title = e.currentTarget.dataset.title
+				uni.navigateTo({
+					url: `/pages/meMessageDetails?type=${type}&title=${title}`
+				})
+			}
 		}
 	}
 </script>
