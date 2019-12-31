@@ -66,6 +66,17 @@
 								<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
 							</view>
 							<text class="rightContent">{{item.content}}</text>
+							<view>
+								<block v-for="(postComItem,postComIndex) in item.replies" :key="postComIndex">
+									<view class="postCom">
+										<text class="cur">{{postComItem.user.name}}</text>
+										<text>回复</text>
+										<text class="cur">{{item.user.name}}：</text>
+										<view>{{postComItem.content}}</view>
+									</view>
+									
+								</block>
+							</view>
 							<view class="rightBottom">
 								<view class="flex">
 									<text>{{item.floor}}楼</text>
@@ -398,7 +409,7 @@
 								icon: 'none'
 							});
 							this.postContent = ' '
-							this.isShow = '0'
+							this.isShow = '0'																																													
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -514,7 +525,23 @@
 		font-size: 20rpx;
 		color: #333333;
 	}
-
+	.postCom{
+		display: flex;
+		font-size: 28rpx;
+		color: #666666;
+		margin: 8rpx 0 14rpx;
+		background: #F0F0F0;
+		border-radius: 40rpx;
+		padding: 10rpx 16rpx;
+		
+	}
+	.postCom text{
+		white-space: nowrap;
+	}
+	.postCom .cur{
+		color: #2390DC;
+		
+	}
 	.content .tip {
 		font-size: 28rpx;
 		color: #333333;
@@ -642,13 +669,13 @@
 
 	.comment .rightContent {
 		font-size: 28rpx;
-		color: #333333;
+		color: #666;
 		-webkit-line-clamp: 2;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		margin-bottom: 20rpx;
+		margin-bottom: 10rpx;
 	}
 
 	.comment .rightBottom {
