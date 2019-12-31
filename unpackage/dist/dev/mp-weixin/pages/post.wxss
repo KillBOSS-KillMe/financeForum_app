@@ -1,9 +1,9 @@
 
-.post{
+.post {
 	width: 690rpx;
 	padding: 10rpx 30rpx;
 }
-.post .title{
+.post .title {
 	border: 1rpx solid #F8F8F8;
 	padding: 0rpx 20rpx;
 	border-radius: 10rpx;
@@ -12,36 +12,29 @@
 	height: 80rpx;
 	line-height: 80rpx;
 }
-.post .content{
+.post .content {
 	width: 630rpx;
-<<<<<<< HEAD
 	height: 240rpx;
 	border: 1rpx solid #F8F8F8;
-=======
-	/* height: 240rpx; */
-	border: 1rpx solid #f8f8f8;
->>>>>>> 6559119feee24d3363bf2f3e08724feac489f7d1
 	padding: 28rpx;
 	border-radius: 10rpx;
 }
-<<<<<<< HEAD
-.post .content textarea{
+.post .content textarea {
 	height: 210rpx;
-=======
+}
 #editor {
->>>>>>> 6559119feee24d3363bf2f3e08724feac489f7d1
 	width: 636rpx;
 }
-.post .content .tip{
+.post .content .tip {
 	color: #999999;
 	font-size: 28rpx;
 	text-align: right;
 }
-.sound{
+.sound {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
-	display: flex;	
+	display: flex;
 	width: 638rpx;
 	height: 28rpx;
 	border: 1rpx solid #F8F8F8;
@@ -53,23 +46,23 @@
 	padding: 26rpx;
 	margin-bottom: 30rpx;
 }
-.sound text{
+.sound text {
 	font-size: 30rpx;
 	font-weight: 600;
 	color: #333333;
 	margin-left: 16rpx;
 }
-.sound .address{
+.sound .address {
 	color: #999999;
 	font-weight: 200;
 }
-.enclosure{
-	padding:0 30rpx 100rpx;
+.enclosure {
+	padding: 0 30rpx 100rpx;
 }
-.enclosureList>icon{
+.enclosureList>icon {
 	margin-right: 40rpx;
 }
-.submit{
+.submit {
 	width: 630rpx;
 	position: fixed;
 	bottom: 60rpx;
