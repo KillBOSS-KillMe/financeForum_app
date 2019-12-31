@@ -25,7 +25,7 @@
 		<view v-if="!mask" class="result">
 			<view v-if="itemList.length > 0" class="content">
 				<block v-for="(item, index) in itemList" :key="index">
-					<view class="item">
+					<view class="item" @tap="goDetail(item.id)">
 						<image :src="imgUrl + item.icon"></image>
 						<text>{{ item.name }}</text>
 					</view>
@@ -61,6 +61,12 @@ export default {
 	},
 
 	methods: {
+		// 跳转详情
+		goDetail(e){
+			uni.navigateTo({
+				url:`/pages/productDetail?id=${e}`
+			})
+		},
 		// 获取输入框的输入信息
 		bindInput(e) {
 			this.inputValue = e.detail.value;

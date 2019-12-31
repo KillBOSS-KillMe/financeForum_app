@@ -135,9 +135,9 @@
 				uni.request({
 					url: `${helper.requestUrl}/holes/detial`,
 					method: 'GET',
-					// header: {
-					// 	authorization: app.globalData.token
-					// },
+					header: {
+						authorization: app.globalData.token
+					},
 					data:{
 						hole_id: this.productId
 					},

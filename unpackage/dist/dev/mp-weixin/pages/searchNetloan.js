@@ -207,11 +207,17 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { inputValue: '', sercherStorage: [], storageFlag: false, // 显示搜索记录标志位
-      mask: true, mask1: false, itemList: [], current_page: 1, imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.openLocationsercher();}, methods: { // 获取输入框的输入信息
+      mask: true, mask1: false, itemList: [], current_page: 1, imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.openLocationsercher();}, methods: { // 跳转详情
+    goDetail: function goDetail(e) {uni.navigateTo({ url: "/pages/productDetail?id=".concat(e) });}, // 获取输入框的输入信息
     bindInput: function bindInput(e) {this.inputValue = e.detail.value;if (this.inputValue == '') {this.mask = true;}}, // // 清楚历史记录单条
     clearList: function clearList(e) {console.log(e, '++++');var index = e;this.sercherStorage.splice(index, 1); //将搜索记录更新到缓存
-      var searchData = this.sercherStorage;uni.setStorageSync('searchData', searchData);if (this.sercherStorage.length == 0) {this.storageFlag = false;} else {this.storageFlag = true;}}, // // 清楚缓存历史并关闭历史搜索框
-    clearSearchStorage: function clearSearchStorage() {uni.removeStorageSync('searchData');this.sercherStorage = [];this.storageFlag = false;},
+      var searchData = this.sercherStorage;uni.setStorageSync('searchData', searchData);if (this.sercherStorage.length == 0) {this.storageFlag = false;} else {this.storageFlag = true;}},
+    // // 清楚缓存历史并关闭历史搜索框
+    clearSearchStorage: function clearSearchStorage() {
+      uni.removeStorageSync('searchData');
+      this.sercherStorage = [];
+      this.storageFlag = false;
+    },
     // // 点击缓存搜索列表
     tapSercherStorage: function tapSercherStorage(e) {
       var index = e;

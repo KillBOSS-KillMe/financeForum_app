@@ -346,10 +346,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制' }, { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' }, { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }], productId: '', listInfo: [], imgUrl: '' };}, onLoad: function onLoad(e) {this.productId = e.id;this.imgUrl = _helper.default.imgUrl;this.getInfo();}, methods: { getInfo: function getInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/detial"), method: 'GET', // header: {
-        // 	authorization: app.globalData.token
-        // },
-        data: { hole_id: this.productId }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.listInfo = res.data.data; // console.log(this.listInfo,'++++')
+var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '3', title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制' }, { id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' }, { id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }], productId: '', listInfo: [], imgUrl: '' };}, onLoad: function onLoad(e) {this.productId = e.id;this.imgUrl = _helper.default.imgUrl;this.getInfo();}, methods: { getInfo: function getInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/detial"), method: 'GET', header: { authorization: app.globalData.token }, data: { hole_id: this.productId }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.listInfo = res.data.data; // console.log(this.listInfo,'++++')
           } else {uni.showToast({ title: res.data.message, icon: 'none' });}} });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

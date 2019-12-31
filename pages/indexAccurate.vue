@@ -83,6 +83,12 @@
 					}
 				})
 			},
+			// 跳转详情
+			goDetail(e){
+				uni.navigateTo({
+					url:`/pages/articleDetail?id=${e}`
+				})
+			},
 			onReachBottom() {
 				this.page ++;
 				this.getList()

@@ -3,10 +3,10 @@
 		<input class="title" type="text" value="" placeholder="请输入标题" @input="inputValue" data-name="title" />
 		<view class="content">
 			<!-- <editor style="background-color: #EBEBEB; width: 100%; padding: 10upx;" placeholder="公司介绍" id="editor" class="ql-container" :placeholder="placeholder" @input="editorChange" @ready="onEditorReady"></editor> -->
-			<editor id="editor" @ready="onEditorReady" @input="contentChange" :read-only="false"></editor>
+			<editor id="editor" class="ql-container" @ready="onEditorReady" @input="contentChange" :read-only="false"></editor>
 			<!-- <editor id="editor" class="ql-container" placeholder="请输入发布内容..." @input="inputValue"></editor> -->
 			<!-- <textarea value="" placeholder="请输入发布内容..." @input="inputValue" data-name="content"/> -->
-			<text class="tip">{{ name }}</text>
+			<text class="tip">{{ name }}111111</text>
 		</view>
 		<view class="sound">
 			<uni-icon class="iconfont iconyuyin" type=""></uni-icon>
@@ -20,7 +20,7 @@
 			<view class="enclosureList">
 				<uni-icon class="iconfont iconbiaoqing" type=""></uni-icon>
 				<uni-icon class="iconfont iconzhaopian" type="" @tap="getPhoto"></uni-icon>
-				<uni-icon class="iconfont iconshipin" type=""></uni-icon>
+				<uni-icon class="iconfont iconshipin" @tap="getPhoto" type=""></uni-icon>
 				<uni-icon class="iconfont iconat" type=""></uni-icon>
 			</view>
 		</view>
@@ -50,19 +50,66 @@ export default {
 		this.name = e.name;
 	},
 	methods: {
+		// 上传图片
+		getPhoto() {
+			uni.chooseImage({
+				count: 1,
+				sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				sourceType: ['album', 'camera'],
+				success: res => {
+					uni.showToast({
+						title: '图片上传中',
+						icon: 'loading'
+					});
+					Promise.all(
+						res.tempFiles.map(item => {
+							return new Promise((resolve, reject) => {
+								uni.uploadFile({
+									url: `${helper.requestUrl}/posts/uploads`,
+									filePath: item.path,
+									name: 'file',
+									header: {
+										authorization: app.globalData.token
+									},
+									success: res => {
+										console.log(res)
+										resolve({
+											path: JSON.parse(res.data).data
+										});
+									}
+								});
+							});
+						})
+					).then(e => {
+						uni.hideToast();
+						this.imgInfo = e[0].path;
+						console.log(this.imgInfo,'图片')
+					}).catch(err => console.log(err));
+				}
+			});
+		},
 		onEditorReady() {
-			uni
-				.createSelectorQuery()
-				.select('#editor')
-				.context(res => {
-					console.log(res);
-					this.editorCtx = res.context;
-					let content = {
-						// html:`<p wx:nodeid="70">import AceRow from "@/xx/Ace_Row"</p><p wx:nodeid="73">components:{</p><p wx:nodeid="79" style='white-space:pre;'>	AceRow</p><p wx:nodeid="76">}</p><p wx:nodeid="76"><br></p><p wx:nodeid="13">&lt;Ace-Row :gutter='10'&gt;</p><p wx:nodeid="66" style='white-space:pre;'>	&lt;Ace-Col :span='5' :offset='1' &gt;&lt;/Ace-Col&gt;						</p><p wx:nodeid="68">&lt;/Ace-Row&gt;</p>`
-					};
-					this.editorCtx.setContents(content); //设置富文本编辑器的内容
+			console.log(this.imgInfo,'****')
+			uni.createSelectorQuery().select('#editor').context((res) => {
+				console.log(res)
+				this.editorContext.insertImage({
+				  src: this.imgInfo.path,
 				})
-				.exec();
+				// this.editorCtx.setContents({
+				// 	html:that.info.gongsijieshao,
+				// 	success:(res)=> {
+				// 		console.log(res)
+				// 	},
+				// 	fail:(res)=> {
+				// 		console.log(res)
+				// 		},
+				// })
+					// this.editorCtx = res.context
+					// this.editorCtx.insertImage({
+					//   src: this.imgInfo.path
+					// })
+					// console.log(this.editorCtx)
+			}).exec()
 		},
 		contentChange(e) {
 			console.log(e.detail);
@@ -105,43 +152,6 @@ export default {
 					}
 				}
 			});
-		},
-		// 上传图片
-		getPhoto() {
-			uni.chooseImage({
-				count: 1,
-				sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-				sourceType: ['album', 'camera'],
-				success: res => {
-					uni.showToast({
-						title: '图片上传中',
-						icon: 'loading'
-					});
-					Promise.all(
-						res.tempFiles.map(item => {
-							return new Promise((resolve, reject) => {
-								uni.uploadFile({
-									url: `${helper.requestUrl}/posts/uploads`,
-									filePath: item.path,
-									name: 'file',
-									header: {
-										authorization: app.globalData.token
-									},
-									success: res => {
-										console.log(res)
-										resolve({
-											path: JSON.parse(res.data).data
-										});
-									}
-								});
-							});
-						})
-					).then(e => {
-						uni.hideToast();
-						this.imgInfo = e[0].path;
-					}).catch(err => console.log(err));
-				}
-			});
 		}
 	}
 };
@@ -163,16 +173,13 @@ export default {
 }
 .post .content {
 	width: 630rpx;
-	height: 240rpx;
+	/* height: 240rpx; */
 	border: 1rpx solid #f8f8f8;
 	padding: 28rpx;
-	margin: 30rpx 0;
 	border-radius: 10rpx;
 }
 #editor {
-	height: 210rpx !important;
 	width: 636rpx;
-	border: 1rpx solid #007AFF;
 }
 .post .content .tip {
 	color: #999999;

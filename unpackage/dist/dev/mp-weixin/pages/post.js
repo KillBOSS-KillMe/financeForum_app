@@ -86,8 +86,55 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '', name: '', imgInfo: '' } };}, onLoad: function onLoad(e) {console.log(e);this.formNode.board_id = e.id;this.name = e.name;}, methods: { onEditorReady: function onEditorReady() {var _this = this;uni.createSelectorQuery().select('#editor').context(function (res) {console.log(res);_this.editorCtx = res.context;var content = {// html:`<p wx:nodeid="70">import AceRow from "@/xx/Ace_Row"</p><p wx:nodeid="73">components:{</p><p wx:nodeid="79" style='white-space:pre;'>	AceRow</p><p wx:nodeid="76">}</p><p wx:nodeid="76"><br></p><p wx:nodeid="13">&lt;Ace-Row :gutter='10'&gt;</p><p wx:nodeid="66" style='white-space:pre;'>	&lt;Ace-Col :span='5' :offset='1' &gt;&lt;/Ace-Col&gt;						</p><p wx:nodeid="68">&lt;/Ace-Row&gt;</p>`
-        };_this.editorCtx.setContents(content); //设置富文本编辑器的内容
+var app = getApp();var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '', name: '', imgInfo: '' } };}, onLoad: function onLoad(e) {console.log(e);this.formNode.board_id = e.id;this.name = e.name;}, methods: { // 上传图片
+    getPhoto: function getPhoto() {var _this = this;uni.chooseImage({ count: 1, sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], success: function success(res) {uni.showToast({ title: '图片上传中', icon: 'loading' });Promise.all(res.tempFiles.map(function (item) {
+            return new Promise(function (resolve, reject) {
+              uni.uploadFile({
+                url: "".concat(_helper.default.requestUrl, "/posts/uploads"),
+                filePath: item.path,
+                name: 'file',
+                header: {
+                  authorization: app.globalData.token },
+
+                success: function success(res) {
+                  console.log(res);
+                  resolve({
+                    path: JSON.parse(res.data).data });
+
+                } });
+
+            });
+          })).
+          then(function (e) {
+            uni.hideToast();
+            _this.imgInfo = e[0].path;
+            console.log(_this.imgInfo, '图片');
+          }).catch(function (err) {return console.log(err);});
+        } });
+
+    },
+    onEditorReady: function onEditorReady() {var _this2 = this;
+      console.log(this.imgInfo, '****');
+      uni.createSelectorQuery().select('#editor').context(function (res) {
+        console.log(res);
+        _this2.editorContext.insertImage({
+          src: _this2.imgInfo.path });
+
+        // this.editorCtx.setContents({
+        // 	html:that.info.gongsijieshao,
+        // 	success:(res)=> {
+        // 		console.log(res)
+        // 	},
+        // 	fail:(res)=> {
+        // 		console.log(res)
+        // 		},
+        // })
+        // this.editorCtx = res.context
+        // this.editorCtx.insertImage({
+        //   src: this.imgInfo.path
+        // })
+        // console.log(this.editorCtx)
       }).exec();
     },
     contentChange: function contentChange(e) {
@@ -129,43 +176,6 @@ var app = getApp();var _default = { data: function data() {return { formNode: { 
               icon: 'none' });
 
           }
-        } });
-
-    },
-    // 上传图片
-    getPhoto: function getPhoto() {var _this2 = this;
-      uni.chooseImage({
-        count: 1,
-        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'],
-        success: function success(res) {
-          uni.showToast({
-            title: '图片上传中',
-            icon: 'loading' });
-
-          Promise.all(
-          res.tempFiles.map(function (item) {
-            return new Promise(function (resolve, reject) {
-              uni.uploadFile({
-                url: "".concat(_helper.default.requestUrl, "/posts/uploads"),
-                filePath: item.path,
-                name: 'file',
-                header: {
-                  authorization: app.globalData.token },
-
-                success: function success(res) {
-                  console.log(res);
-                  resolve({
-                    path: JSON.parse(res.data).data });
-
-                } });
-
-            });
-          })).
-          then(function (e) {
-            uni.hideToast();
-            _this2.imgInfo = e[0].path;
-          }).catch(function (err) {return console.log(err);});
         } });
 
     } } };exports.default = _default;

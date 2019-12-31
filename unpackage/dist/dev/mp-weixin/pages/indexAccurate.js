@@ -207,6 +207,12 @@ var app = getApp();var _default = { data: function data() {return { list: [], pa
         } });
 
     },
+    // 跳转详情
+    goDetail: function goDetail(e) {
+      uni.navigateTo({
+        url: "/pages/articleDetail?id=".concat(e) });
+
+    },
     onReachBottom: function onReachBottom() {
       this.page++;
       this.getList();
