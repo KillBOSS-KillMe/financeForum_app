@@ -122,6 +122,7 @@
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
+		margin-top: 16rpx;
 	/* justify-content: flex-end; */
 }
 .content .itemCon text {
@@ -194,5 +195,12 @@
 	display: -webkit-flex;
 	display: flex;
 	margin-left: 18rpx;
+	-webkit-align-content: center;
+	        align-content: center;
+}
+.itemBottom .exchangIcon{
+	color: #999;
+	font-size: 28rpx;
+	margin-right: 10rpx;
 }
 

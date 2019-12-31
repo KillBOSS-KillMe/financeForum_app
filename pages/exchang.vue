@@ -35,24 +35,24 @@
 						<image :src="imgUrl+item.user.avatar" mode="aspectFill"></image>
 						<view class="itemRight">
 							<view class="itemRightHead">
-								<text>123</text>
+								<text>{{item.user.name}}</text>
 								<view>
 									来自
 									<text>{{item.from_board}}</text>
 								</view>
 							</view>
-							<text class="title">{{ item.user.name }}</text>
+							<text class="title">{{ item.title }}</text>
 							<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
 							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="item1.img1" mode=""></image></block>
 							<view class="itemCon">
 								<text>{{ item.created_at }}</text>
 								<view class="itemBottom">
 									<view>
-										<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+										<uni-icon type="" class="iconfont icondianzan exchangIcon"></uni-icon>
 										<text>{{ item.like }}</text>
 									</view>
 									<view>
-										<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+										<uni-icon type="" class="iconfont iconhuifu exchangIcon"></uni-icon>
 										<text>{{ item.comments_count }}</text>
 									</view>
 								</view>
@@ -143,7 +143,34 @@ export default {
 					url: `/pages/experience`
 				});
 			}
-		}
+		},
+		// 加载下一页
+		// getIndexData() {
+		// 	uni.showLoading({
+		// 		title: '加载中...',
+		// 		duration: 1000000
+		// 	});
+		// 	uni.request({
+		// 		url: `${helper.requestUrl}/forum/index`,
+		// 		method: 'GET',
+		// 		header: {
+		// 			authorization: app.globalData.token
+		// 		},
+		// 		success: res => {
+		// 			uni.hideLoading();
+		// 			res = helper.null2str(res);
+		// 			console.log(res);
+		// 			if (res.data.status_code == '200') {
+		// 				this.pageData = res.data.data;
+		// 			} else {
+		// 				uni.showToast({
+		// 					title: res.data.message,
+		// 					icon: 'none'
+		// 				});
+		// 			}
+		// 		}
+		// 	});
+		// },
 	}
 };
 </script>
@@ -248,6 +275,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+		margin-top: 16rpx;
 	/* justify-content: flex-end; */
 }
 .content .itemCon text {
@@ -306,5 +334,11 @@ export default {
 .itemBottom > view {
 	display: flex;
 	margin-left: 18rpx;
+	align-content: center;
+}
+.itemBottom .exchangIcon{
+	color: #999;
+	font-size: 28rpx;
+	margin-right: 10rpx;
 }
 </style>
