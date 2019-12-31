@@ -7,7 +7,7 @@
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
-		<view class="itemList" data-name="signature" data-title="修改签名" @tap="goEditSet">
+		<view class="itemList moon" data-name="signature" data-title="修改签名" @tap="goEditSet">
 			<text>签名</text>
 			<view>
 				<text>{{formNode.signature}}</text>
@@ -19,10 +19,13 @@
 			<text>真实姓名</text>
 			<input type="text" value="黎明" v-model="formNode.name" placeholder="" />
 		</view>
-		<picker @change="bindPickerChange" :value="index" :range="array">
-			<view class="itemList" data-name="sex" data-title="修改性别" @tap="goEditSet">
+		<picker @change="bindPickerChange" :value="index" :range="array" data-name="sex">
+			<view class="itemList moon">
 				<text>性别</text>
-					<view class="uni-input">{{ array[index] }}</view>
+				<view>
+					<text>{{ array[index] }}</text>
+					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				</view>
 				<!-- <input type="text" value="男" v-model="formNode.sex" placeholder="" /> -->
 			</view>
 		</picker>
@@ -48,10 +51,21 @@
 			<text>芝麻信用分</text>
 			<input type="text" value="" v-model="formNode.sesame_credit" placeholder="" />
 		</view>
-		<view class="itemList" data-name="credit_card" data-title="修改信用卡" @tap="goEditSet">
+		<picker @change="bindPickerChange" :value="index" :range="arrayCard" data-name="credit_card">
+			<view class="itemList moon">
+				<text>信用卡</text>
+				<view>
+					<text>{{ arrayCard[index] }}</text>
+					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				</view>
+				<!-- <input type="text" value="男" v-model="formNode.sex" placeholder="" /> -->
+			</view>
+		</picker>
+<!-- 		<view class="itemList" data-name="credit_card" data-title="修改信用卡">
+			
 			<text>信用卡</text>
 			<input type="text" value="无" v-model="formNode.credit_card" placeholder="" />
-		</view>
+		</view> -->
 		<view class="itemList" data-name="social_security" data-title="修改社保" @tap="goEditSet">
 			<text>社保</text>
 			<input type="text" value="无" v-model="formNode.social_security" placeholder="" />
@@ -60,7 +74,7 @@
 			<text>公积金</text>
 			<input type="text" value="99" v-model="formNode.provident_fund" placeholder="" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改手机" @tap="goEditSet">
+		<view class="itemList" data-name="" data-title="修改手机">
 			<text>手机</text>
 			<input type="text" value="" v-model="formNode.mobile" placeholder="" disabled="ture" />
 		</view>
@@ -83,13 +97,19 @@ export default {
 			// formNode: [],
 			formNode: [],
 			array: ['男','女','无'],
+			arrayCard: ['有','无'],
 			index: 0,
+			setData: '',
+			options: ''
 		};
 	},
 	components: {
 		pickerAddress
 	},
 	onLoad() {
+		
+	},
+	onShow() {
 		this.getformNode();
 	},
 	methods: {
@@ -103,9 +123,16 @@ export default {
 			})
 		},
 		bindPickerChange(e){
+			console.log(e)
 			console.log('picker发送选择改变，携带值为', e.target.value)
-			 this.index = e.target.value
-			 console.log(this.array[this.index])
+			this.index = e.target.value
+			if(e.currentTarget.dataset.name == 'sex'){
+				this.setData = this.array[this.index]
+			} else{
+				this.setData = this.arrayCard[this.index]
+			}
+			 this.options = e.currentTarget.dataset.name
+			 this.submit()
 		},
 		goAddress(data) {
 			console.log(data);
@@ -134,11 +161,10 @@ export default {
 			});
 		},
 		// 修改
-		finish() {
-			console.log(this.formNode);
-			uni.showToast({
-				title: '提交中...',
-				icon: 'none'
+		submit() {
+			uni.showLoading({
+			  title: '提交中...',
+				duration: 1000000
 			});
 			uni.request({
 				url: `${helper.requestUrl}/user/edit`,
@@ -146,20 +172,30 @@ export default {
 				header: {
 					authorization: app.globalData.token
 				},
-				data: this.formNode,
+				data: {
+					field: this.options,
+					value: this.setData
+				},
+				// data: this.setData,
 				success: res => {
-					// uni.hideLoading();
-					res = helper.null2str(res);
-					console.log(res);
-					if (res.data.status_code == 200) {
-						this.collectionList = res.data.data;
+					uni.hideLoading();
+					res = helper.null2str(res)
+					console.log(res)
+					if (res.data.status_code == '1') {
+						uni.showToast({
+							title: res.data.message
+						});
+						setTimeout(() => {
+							this.getformNode()
+						}, 2000)
 					} else {
-						// uni.showToast({
-						// 	title: res.data.message
-						// });
+						uni.showToast({
+							title: res.data.message
+						});
 					}
+			
 				}
-			});
+			})
 		}
 	}
 };
@@ -180,6 +216,7 @@ export default {
 .edit .itemList .right {
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
 	font-size: 30rpx;
 	color: #333333;
 }
@@ -193,13 +230,20 @@ export default {
 .right text,.uni-input {
 	font-size: 30rpx;
 	color: #333333;
+	white-space: nowrap;
+	margin-right: 20rpx;
 }
-.edit .itemList input {
-	width: 500rpx;
+.edit .itemList input,.itemList>view {
+	width: 520rpx;
 	font-size: 30rpx;
 	color: #333333;
 	text-align: right;
+	overflow: hidden;
 }
+/* .edit .itemList input,.itemList>view {
+	display: flex;
+	justify-content: space-between;
+} */
 .edit .itemList > text:first-child {
 	font-weight: 600;
 }
@@ -208,5 +252,18 @@ export default {
 }
 .edit button {
 	margin-top: 30rpx;
+}
+.moon>view{
+	width: 500rpx;
+	display: flex;
+	justify-content: space-between;
+	text-align: right;
+}
+.moon>view>text{
+	width: 460rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: right;
 }
 </style>

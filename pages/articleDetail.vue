@@ -579,6 +579,7 @@ export default {
 	color: #666666;
 	font-size: 24rpx;
 	margin-right: 20rpx;
+	white-space: nowrap;
 }
 
 .articleDetail .follow {
@@ -644,7 +645,7 @@ export default {
 	font-size: 28rpx;
 	color: #333333;
 }
-.content .share icon{
+.content .share .iconfont{
 	width: 60rpx;
 	font-size: 60rpx;
 	color: green;

@@ -198,6 +198,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -272,16 +286,38 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 418));};var _default = { data: function data() {return { txt: '选择地址', // formNode: [],
-      formNode: [], array: ['男', '女', '无'], index: 0 };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {this.getformNode();}, methods: { // 进入编辑页
-    goEditSet: function goEditSet(e) {console.log(e);var name = e.currentTarget.dataset.name;var title = e.currentTarget.dataset.title;uni.navigateTo({ url: "/pages/meEditSet?name=".concat(name, "&title=").concat(title) });}, bindPickerChange: function bindPickerChange(e) {console.log('picker发送选择改变，携带值为', e.target.value);this.index = e.target.value;console.log(this.array[this.index]);}, goAddress: function goAddress(data) {console.log(data);this.txt = data.data.join('');this.formNode.province = data.data[0];this.formNode.city = data.data[1];this.formNode.district = data.data[2];console.log(this.formNode.province, '+');}, getformNode: function getformNode() {var _this = this; // 用户信息获取
+      formNode: [], array: ['男', '女', '无'], arrayCard: ['有', '无'], index: 0, setData: '', options: '' };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {}, onShow: function onShow() {this.getformNode();}, methods: { // 进入编辑页
+    goEditSet: function goEditSet(e) {console.log(e);var name = e.currentTarget.dataset.name;var title = e.currentTarget.dataset.title;uni.navigateTo({ url: "/pages/meEditSet?name=".concat(name, "&title=").concat(title) });}, bindPickerChange: function bindPickerChange(e) {console.log(e);console.log('picker发送选择改变，携带值为', e.target.value);this.index = e.target.value;if (e.currentTarget.dataset.name == 'sex') {this.setData = this.array[this.index];} else {this.setData = this.arrayCard[this.index];}this.options = e.currentTarget.dataset.name;this.submit();}, goAddress: function goAddress(data) {console.log(data);this.txt = data.data.join('');this.formNode.province = data.data[0];this.formNode.city = data.data[1];this.formNode.district = data.data[2];console.log(this.formNode.province, '+');}, getformNode: function getformNode() {var _this = this; // 用户信息获取
       uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.formNode = res.data;} });}, // 修改
-    finish: function finish() {var _this2 = this;console.log(this.formNode);uni.showToast({ title: '提交中...', icon: 'none' });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/edit"), method: 'POST', header: { authorization: app.globalData.token }, data: this.formNode, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this2.collectionList = res.data.data;} else {
-            // uni.showToast({
-            // 	title: res.data.message
-            // });
+    submit: function submit() {var _this2 = this;uni.showLoading({ title: '提交中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/edit"), method: 'POST', header: { authorization: app.globalData.token }, data: { field: this.options, value: this.setData }, // data: this.setData,
+        success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {
+            uni.showToast({
+              title: res.data.message });
+
+            setTimeout(function () {
+              _this2.getformNode();
+            }, 2000);
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
           }
+
         } });
 
     } } };exports.default = _default;

@@ -31,7 +31,7 @@
 			</view>
 			<view class="contentList">
 				<block v-for="(item, index) in pageData.board_data[Inv].posts" :key="index">
-					<view class="item">
+					<view class="item" @tap="goDetail(item.id)">
 						<image :src="imgUrl+item.user.avatar" mode="aspectFill"></image>
 						<view class="itemRight">
 							<view class="itemRightHead">
@@ -43,7 +43,7 @@
 							</view>
 							<text class="title">{{ item.title }}</text>
 							<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
-							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="item1.img1" mode=""></image></block>
+							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="imgUrl+item1.image" mode=""></image></block>
 							<view class="itemCon">
 								<text>{{ item.created_at }}</text>
 								<view class="itemBottom">
@@ -94,6 +94,11 @@ export default {
 		selListType(e) {
 			this.Inv = e.currentTarget.dataset.index
 			this.boardId = e.currentTarget.dataset.block_id
+		},
+		goDetail(e){
+			uni.navigateTo({
+				url:`/pages/articleDetail?id=${e}`
+			})
 		},
 		// 数据
 		getIndexData() {
