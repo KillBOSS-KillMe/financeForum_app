@@ -276,6 +276,11 @@
 			"style": {
 				// "navigationBarTitleText": "分类"
 			}
+		}, {
+			"path": "pages/meFan",
+			"style": {
+				"navigationBarTitleText": "我的粉丝"
+			}
 		}
 	],
 	"globalStyle": {

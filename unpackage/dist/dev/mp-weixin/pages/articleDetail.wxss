@@ -111,6 +111,24 @@
 		font-size: 20rpx;
 		color: #333333;
 }
+.postCom{
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		font-size: 28rpx;
+		color: #666666;
+		margin: 8rpx 0 14rpx;
+		background: #F0F0F0;
+		border-radius: 40rpx;
+		padding: 10rpx 16rpx;
+}
+.postCom text{
+		white-space: nowrap;
+}
+.postCom .cur{
+		color: #2390DC;
+}
 .content .tip {
 		font-size: 28rpx;
 		color: #333333;
@@ -265,14 +283,14 @@
 }
 .comment .rightContent {
 		font-size: 28rpx;
-		color: #333333;
+		color: #666;
 		-webkit-line-clamp: 2;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		-o-text-overflow: ellipsis;
 		   text-overflow: ellipsis;
-		margin-bottom: 20rpx;
+		margin-bottom: 10rpx;
 }
 .comment .rightBottom {
 		display: -webkit-box;
