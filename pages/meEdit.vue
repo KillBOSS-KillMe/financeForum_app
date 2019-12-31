@@ -15,12 +15,12 @@
 			</view>
 			<!-- <input type="text" v-model="formNode.signature" value=""  placeholder="" /> -->
 		</view>
-		<view class="itemList" data-name="name" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="name" data-title="修改姓名" @tap="goEditSet">
 			<text>真实姓名</text>
 			<input type="text" value="黎明" v-model="formNode.name" placeholder="" />
 		</view>
 		<picker @change="bindPickerChange" :value="index" :range="array">
-			<view class="itemList" data-name="sex" data-title="修改" @tap="goEditSet">
+			<view class="itemList" data-name="sex" data-title="修改性别" @tap="goEditSet">
 				<text>性别</text>
 					<view class="uni-input">{{ array[index] }}</view>
 				<!-- <input type="text" value="男" v-model="formNode.sex" placeholder="" /> -->
@@ -36,37 +36,37 @@
 				</view>
 			</view>
 		</pickerAddress>
-		<view class="itemList" data-name="education" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="education" data-title="修改学历" @tap="goEditSet">
 			<text>学历</text>
 			<input type="text" value="" v-model="formNode.education" placeholder="" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="" data-title="修改支付宝" @tap="goEditSet">
 			<text>支付宝</text>
 			<input type="text" value="" v-model="formNode.mobile" placeholder="" />
 		</view>
-		<view class="itemList" data-name="sesame_credit" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="sesame_credit" data-title="修改芝麻信用分" @tap="goEditSet">
 			<text>芝麻信用分</text>
 			<input type="text" value="" v-model="formNode.sesame_credit" placeholder="" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改信用卡" @tap="goEditSet">
+		<view class="itemList" data-name="credit_card" data-title="修改信用卡" @tap="goEditSet">
 			<text>信用卡</text>
 			<input type="text" value="无" v-model="formNode.credit_card" placeholder="" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="social_security" data-title="修改社保" @tap="goEditSet">
 			<text>社保</text>
 			<input type="text" value="无" v-model="formNode.social_security" placeholder="" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="provident_fund" data-title="修改公积金" @tap="goEditSet">
 			<text>公积金</text>
 			<input type="text" value="99" v-model="formNode.provident_fund" placeholder="" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="" data-title="修改手机" @tap="goEditSet">
 			<text>手机</text>
-			<input type="text" value="999" v-model="formNode.mobile" placeholder="" disabled="ture" />
+			<input type="text" value="" v-model="formNode.mobile" placeholder="" disabled="ture" />
 		</view>
-		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
+		<view class="itemList" data-name="email" data-title="修改邮箱" @tap="goEditSet">
 			<text>邮箱</text>
-			<input type="text" value="999" v-model="formNode.email" placeholder="" />
+			<input type="text" value="" v-model="formNode.email" placeholder="" />
 		</view>
 		<!-- <button type="primary" @tap="finish">完成</button> -->
 	</view>
