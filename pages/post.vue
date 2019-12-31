@@ -1,9 +1,25 @@
 <template>
 	<view class="post">
-		<input class="title" type="text" value="" placeholder="请输入标题" @input="inputValue" data-name="title">
+		<input
+			class="title"
+			type="text"
+			value=""
+			placeholder="请输入标题"
+			@input="inputValue"
+			data-name="title"
+		>
 		<view class="content">
-			<textarea value="" placeholder="请输入发布内容..." @input="inputValue" data-name="content"/>
-			<text class="tip">贷款进口子交流</text>
+			<!-- <editor style="background-color: #EBEBEB; width: 100%; padding: 10upx;" placeholder="公司介绍" id="editor" class="ql-container" :placeholder="placeholder" @input="editorChange" @ready="onEditorReady"></editor> -->
+			<editor
+				id="editor"
+				class="ql-container"
+				@ready="onEditorReady"
+				@input="contentChange"
+				:read-only="false"
+			></editor>
+			<!-- <editor id="editor" class="ql-container" placeholder="请输入发布内容..." @input="inputValue"></editor> -->
+			<!-- <textarea value="" placeholder="请输入发布内容..." @input="inputValue" data-name="content"/> -->
+			<text class="tip">{{ name }}111111</text>
 		</view>
 		<view class="sound">
 			<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
@@ -15,10 +31,10 @@
 		</view>
 		<view class="enclosure">
 			<view class="enclosureList">
-				<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
-				<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
-				<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
-				<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
+				<uni-icon class="iconfont iconbiaoqing" type=""></uni-icon>
+				<uni-icon class="iconfont iconzhaopian" type="" @tap="getPhoto"></uni-icon>
+				<uni-icon class="iconfont iconshipin" @tap="getPhoto" type=""></uni-icon>
+				<uni-icon class="iconfont iconat" type=""></uni-icon>
 			</view>
 		</view>
 		<button type="primary" class="submit" @tap="post">发帖</button>
@@ -38,6 +54,76 @@
 					topic_id: ''
 				}
 			}
+		},
+		onLoad(e) {
+			console.log(e);
+			this.formNode.board_id = e.id;
+			this.name = e.name;
+		},
+	methods: {
+		// 上传图片
+		getPhoto() {
+			uni.chooseImage({
+				count: 1,
+				sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				sourceType: ['album', 'camera'],
+				success: res => {
+					uni.showToast({
+						title: '图片上传中',
+						icon: 'loading'
+					});
+					Promise.all(
+						res.tempFiles.map(item => {
+							return new Promise((resolve, reject) => {
+								uni.uploadFile({
+									url: `${helper.requestUrl}/posts/uploads`,
+									filePath: item.path,
+									name: 'file',
+									header: {
+										authorization: app.globalData.token
+									},
+									success: res => {
+										console.log(res)
+										resolve({
+											path: JSON.parse(res.data).data
+										});
+									}
+								});
+							});
+						})
+					).then(e => {
+						uni.hideToast();
+						this.imgInfo = e[0].path;
+						console.log(this.imgInfo,'图片')
+					}).catch(err => console.log(err));
+				}
+			});
+		},
+		onEditorReady() {
+			console.log(this.imgInfo,'****')
+			uni.createSelectorQuery().select('#editor').context((res) => {
+				console.log(res)
+				this.editorContext.insertImage({
+				  src: this.imgInfo.path,
+				})
+				// this.editorCtx.setContents({
+				// 	html:that.info.gongsijieshao,
+				// 	success:(res)=> {
+				// 		console.log(res)
+				// 	},
+				// 	fail:(res)=> {
+				// 		console.log(res)
+				// 		},
+				// })
+					// this.editorCtx = res.context
+					// this.editorCtx.insertImage({
+					//   src: this.imgInfo.path
+					// })
+					// console.log(this.editorCtx)
+			}).exec()
+		},
+		contentChange(e) {
+			console.log(e.detail);
 		},
 		onLoad(e) {
 			console.log(e)
@@ -68,21 +154,15 @@
 							uni.showToast({
 								title: res.data.message,
 								icon: "none"
-							});
-							setTimeout(() => {
-								uni.reLaunch({
-									url: `/pages/index`
-								})
 							}, 2000)
 						} else {
-							uni.showToast({
-								title: res.data.message,
-								icon: "none"
-							});
-						}
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						});
 					}
-				});
-			}
+				}
+			});
 		}
 	}
 </script>
@@ -103,14 +183,22 @@
 }
 .post .content{
 	width: 630rpx;
+<<<<<<< HEAD
 	height: 240rpx;
 	border: 1rpx solid #F8F8F8;
+=======
+	/* height: 240rpx; */
+	border: 1rpx solid #f8f8f8;
+>>>>>>> 6559119feee24d3363bf2f3e08724feac489f7d1
 	padding: 28rpx;
-	margin: 30rpx 0;
 	border-radius: 10rpx;
 }
+<<<<<<< HEAD
 .post .content textarea{
 	height: 210rpx;
+=======
+#editor {
+>>>>>>> 6559119feee24d3363bf2f3e08724feac489f7d1
 	width: 636rpx;
 }
 .post .content .tip{

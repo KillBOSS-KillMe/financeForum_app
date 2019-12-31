@@ -14,14 +14,22 @@
 }
 .post .content{
 	width: 630rpx;
+<<<<<<< HEAD
 	height: 240rpx;
 	border: 1rpx solid #F8F8F8;
+=======
+	/* height: 240rpx; */
+	border: 1rpx solid #f8f8f8;
+>>>>>>> 6559119feee24d3363bf2f3e08724feac489f7d1
 	padding: 28rpx;
-	margin: 30rpx 0;
 	border-radius: 10rpx;
 }
+<<<<<<< HEAD
 .post .content textarea{
 	height: 210rpx;
+=======
+#editor {
+>>>>>>> 6559119feee24d3363bf2f3e08724feac489f7d1
 	width: 636rpx;
 }
 .post .content .tip{
