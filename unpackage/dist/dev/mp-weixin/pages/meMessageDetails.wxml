@@ -1,0 +1,1 @@
+<view class="meMessage"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block><view class="item"><image src="{{item.img}}" mode></image><view class="info"><text class="title">{{item.title}}</text><text class="con">{{item.con}}</text></view></view></block></block></view>

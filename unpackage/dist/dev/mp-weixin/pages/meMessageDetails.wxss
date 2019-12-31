@@ -1,0 +1,60 @@
+
+.meMessage{
+	width: 690rpx;
+	padding: 0 30rpx;
+}
+.meMessage .item{
+	width: 690rpx;
+	height: auto;
+	border: 1rpx solid #F8F8F8;
+	border-radius: 10rpx;
+	padding: 30rpx 0;
+	margin-top: 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	/* align-items: center; */
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.meMessage .item image{
+	width: 96rpx;
+	height: 96rpx;
+	border-radius: 96rpx;
+}
+.meMessage .item .info{
+	width: 580rpx;
+	height: auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.meMessage .info .title{
+	color: #333333;
+	font-size: 34rpx;
+	font-weight: 600;
+}
+.meMessage .info .con{
+	color: #ddd;
+	font-size: 25rpx;
+	margin-top: 20rpx;
+}
+
+

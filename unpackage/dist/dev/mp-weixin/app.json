@@ -24,6 +24,7 @@
     "pages/meMyMobile_2",
     "pages/meMyMobile_3",
     "pages/meMessage",
+    "pages/meMessageDetails",
     "pages/meCertification",
     "pages/meVIP",
     "pages/joinMember",
@@ -95,6 +96,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap57.json"
+  }
 }

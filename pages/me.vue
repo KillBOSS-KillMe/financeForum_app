@@ -10,7 +10,7 @@
 				</view>
 				<view class="meHeadList">
 					<text data-name="meFavorite" @tap="goPageNavigateTo">我的收藏</text>
-					<text data-name="meFriend" @tap="goPageNavigateTo">我的好友</text>
+					<!-- <text data-name="meFriend" @tap="goPageNavigateTo">我的好友</text> -->
 					<text data-name="mePost" @tap="goPageNavigateTo">我的发表</text>
 				</view>
 			</view>
