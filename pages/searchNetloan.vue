@@ -14,7 +14,6 @@
 								<icon class="iconfont iconlishijilu"></icon>
 								<text>{{ item }}</text>
 							</view>
-							<!-- @tap.stop='clearList({{index}})'  id="{{item.id}}"-->
 							<icon class="iconfont iconbuoumaotubiao20" @tap.stop="clearList(index)"></icon>
 						</view>
 					</block>
