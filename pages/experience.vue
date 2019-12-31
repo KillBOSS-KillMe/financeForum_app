@@ -1,7 +1,7 @@
 <template>
 	<view class="experience">
 		<block v-for="(item,index) in type" :key="index">
-			<view class="item" @tap="getPost(item.id)">
+			<view class="item" @tap="getPost" :data-id="item.id" :data-name="item.title">
 				<image class="logo" :src="imgUrl+item.icon" mode=""></image>
 				<text>{{item.title}}</text>
 			</view>
@@ -50,7 +50,7 @@
 			getPost(e){
 				console.log(e)
 				uni.navigateTo({
-					url:`/pages/post?id=${e}`
+					url:`/pages/post?id=${e.currentTarget.dataset.id}&name=${e.currentTarget.dataset.name}`
 				})
 			}
 		}
