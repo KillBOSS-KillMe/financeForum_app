@@ -38,6 +38,7 @@
     "pages/meSetting",
     "pages/indexAccurate",
     "pages/meCertificationConfirm",
+    "pages/meEditSet",
     "pages/meEdit",
     "pages/meApplyMessage",
     "pages/meTreaty",

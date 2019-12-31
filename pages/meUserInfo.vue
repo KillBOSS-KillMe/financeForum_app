@@ -212,7 +212,9 @@
 		justify-content: center;
 		flex-wrap: wrap;
 	}
-
+	.me .meHead .iconxinshoubangzhu{
+		color: #fff;
+	}
 	.me .meHead .meHeadCon {
 		background: #fff;
 		border-radius: 10rpx;

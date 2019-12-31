@@ -7,7 +7,7 @@
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="signature" data-title="修改签名" @tap="goEditSet">
 			<text>签名</text>
 			<view>
 				<text>{{formNode.signature}}</text>
@@ -15,57 +15,58 @@
 			</view>
 			<!-- <input type="text" v-model="formNode.signature" value=""  placeholder="" /> -->
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="name" data-title="修改" @tap="goEditSet">
 			<text>真实姓名</text>
-			<input type="text" value="黎明" v-model="formNode.name" @input="onInput" placeholder="" />
+			<input type="text" value="黎明" v-model="formNode.name" placeholder="" />
 		</view>
-		<view class="itemList">
-			<text>性别</text>
-			<picker @change="bindPickerChange" :value="index" :range="array">
-				<view class="uni-input">{{ array[index] }}</view>
-			</picker>
-			<!-- <input type="text" value="男" v-model="formNode.sex" @input="onInput" placeholder="" /> -->
-		</view>
-		<view class="itemList">
-			<text>居住地</text>
-			<view class="right">
-				<pickerAddress @change="goAddress">{{ txt }}</pickerAddress>
-
-				<!-- 	<text>北京市 东城区 东华门街道</text> -->
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+		<picker @change="bindPickerChange" :value="index" :range="array">
+			<view class="itemList" data-name="sex" data-title="修改" @tap="goEditSet">
+				<text>性别</text>
+					<view class="uni-input">{{ array[index] }}</view>
+				<!-- <input type="text" value="男" v-model="formNode.sex" placeholder="" /> -->
 			</view>
-		</view>
-		<view class="itemList">
+		</picker>
+		<pickerAddress @change="goAddress">
+			<view class="itemList">
+				<text>居住地</text>
+				<view class="right">
+					{{ txt }}
+					<!-- 	<text>北京市 东城区 东华门街道</text> -->
+					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				</view>
+			</view>
+		</pickerAddress>
+		<view class="itemList" data-name="education" data-title="修改" @tap="goEditSet">
 			<text>学历</text>
-			<input type="text" value="本科" v-model="formNode.education" @input="onInput" placeholder="" />
+			<input type="text" value="" v-model="formNode.education" placeholder="" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
 			<text>支付宝</text>
-			<input type="text" value="999" v-model="formNode.mobile" @input="onInput" placeholder="" />
+			<input type="text" value="" v-model="formNode.mobile" placeholder="" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="sesame_credit" data-title="修改" @tap="goEditSet">
 			<text>芝麻信用分</text>
-			<input type="text" value="999" v-model="formNode.sesame_credit" @input="onInput" placeholder="" />
+			<input type="text" value="" v-model="formNode.sesame_credit" placeholder="" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="" data-title="修改信用卡" @tap="goEditSet">
 			<text>信用卡</text>
-			<input type="text" value="无" v-model="formNode.credit_card" @input="onInput" placeholder="" />
+			<input type="text" value="无" v-model="formNode.credit_card" placeholder="" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
 			<text>社保</text>
-			<input type="text" value="无" v-model="formNode.social_security" @input="onInput" placeholder="" />
+			<input type="text" value="无" v-model="formNode.social_security" placeholder="" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
 			<text>公积金</text>
-			<input type="text" value="99" v-model="formNode.provident_fund" @input="onInput" placeholder="" />
+			<input type="text" value="99" v-model="formNode.provident_fund" placeholder="" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
 			<text>手机</text>
-			<input type="text" value="999" v-model="formNode.mobile" @input="onInput" placeholder="" disabled="ture" />
+			<input type="text" value="999" v-model="formNode.mobile" placeholder="" disabled="ture" />
 		</view>
-		<view class="itemList">
+		<view class="itemList" data-name="" data-title="修改" @tap="goEditSet">
 			<text>邮箱</text>
-			<input type="text" value="999" v-model="formNode.email" @input="onInput" placeholder="" />
+			<input type="text" value="999" v-model="formNode.email" placeholder="" />
 		</view>
 		<!-- <button type="primary" @tap="finish">完成</button> -->
 	</view>
@@ -92,10 +93,14 @@ export default {
 		this.getformNode();
 	},
 	methods: {
-		//获取input数据
-		onInput(e) {
-			console.log(e, '+++');
-			// this.finish()
+		// 进入编辑页
+		goEditSet(e) {
+			console.log(e)
+			let name = e.currentTarget.dataset.name
+			let title = e.currentTarget.dataset.title
+			uni.navigateTo({
+				url: `/pages/meEditSet?name=${name}&title=${title}`
+			})
 		},
 		bindPickerChange(e){
 			console.log('picker发送选择改变，携带值为', e.target.value)

@@ -231,6 +231,12 @@
 			}
 		},
 		{
+			"path": "pages/meEditSet",
+			"style": {
+				"navigationBarTitleText": "信息录入"
+			}
+		},
+		{
 			"path": "pages/meEdit",
 			"style": {
 				"navigationBarTitleText": "编辑"

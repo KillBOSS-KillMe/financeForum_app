@@ -1,0 +1,1 @@
+<view><textarea data-event-opts="{{[['input',[['onInput',['$event']]]]]}}" bindinput="__e"></textarea><view class="submit"><view data-event-opts="{{[['tap',[['submit',['$event']]]]]}}" bindtap="__e">确定</view></view></view>

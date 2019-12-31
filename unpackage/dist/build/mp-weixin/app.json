@@ -15,6 +15,7 @@
     "pages/productSupermarket",
     "pages/meUserInfo",
     "pages/meFavorite",
+    "pages/meFollow",
     "pages/meFriend",
     "pages/mePost",
     "pages/meMyDraft",
@@ -39,7 +40,13 @@
     "pages/meEdit",
     "pages/meApplyMessage",
     "pages/meTreaty",
-    "pages/paySuccess"
+    "pages/paySuccess",
+    "pages/productDetail",
+    "pages/searchNetloan",
+    "pages/allProduct",
+    "pages/applyShow",
+    "pages/iframe",
+    "pages/meFan"
   ],
   "subPackages": [],
   "window": {
