@@ -1,7 +1,15 @@
+
 <template>
 	<view class="queryTool">
 		<block v-for="(item,index) in collectionList" :key="index">
-			<view class="collection">
+			<!-- <text>{{item.title}}</text> -->
+			<view class="headList" v-if="item.type != 'category'">
+				<view class="head">
+					<image :src="imgUrl+item.icon" mode=""></image>
+					<text class="title">{{item.title}}</text>
+				</view>
+			</view> 
+			<view class="collection" v-if="item.type == 'category'">
 				<text class="title">{{item.title}}</text>
 				<view class="collectionList">
 					<block v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
@@ -10,14 +18,12 @@
 							<text>{{childrenItem.title}}</text>
 						</view>
 					</block>
-					<view class="null" v-if="item.children.length == 0">暂无数据</view>
 				</view>
 			</view>
 			<!-- <view class="line"></view> -->
 		</block>
 	</view>
 </template>
-
 <script>
 	const app = getApp()
 	import helper from '../common/helper.js';
@@ -69,7 +75,9 @@
 <style>
 .queryTool{
 	width:690rpx;
-	padding: 0 30rpx;
+	padding:30rpx;
+	display: flex;
+	flex-wrap: wrap;
 }
 .collection{
 	width: 690rpx;

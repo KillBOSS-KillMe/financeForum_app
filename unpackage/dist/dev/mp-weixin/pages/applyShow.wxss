@@ -1,7 +1,12 @@
 
 .queryTool{
 	width:690rpx;
-	padding: 0 30rpx;
+	padding:30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
 }
 .collection{
 	width: 690rpx;
