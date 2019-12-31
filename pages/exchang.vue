@@ -60,7 +60,7 @@
 						</view>
 					</view>
 				</block>
-				
+				<view class="null" v-if="pageData.board_data[Inv].posts.length == 0">暂无数据</view>
 			</view>
 		</view>
 	</view>
@@ -80,21 +80,9 @@ export default {
 				{ id: '5', img: '../static/logo.png', title: '论坛搜索' }
 			],
 			Inv: 0,
-			list: [
-				{
-					id: '1',
-					img: '../static/b.jpg',
-					time: '12小时前',
-					name: 'admin',
-					num: '3',
-					title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制',
-					imgList: [{ img1: '../static/logo.png' }, { img1: '../static/logo.png' }, { img1: '../static/logo.png' }]
-				},
-				{ id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' },
-				{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }
-			],
 			pageData: '',
-			imgUrl:''
+			imgUrl:'',
+			page: '1'
 		};
 	},
 	onLoad() {
@@ -145,32 +133,41 @@ export default {
 			}
 		},
 		// 加载下一页
-		// getIndexData() {
-		// 	uni.showLoading({
-		// 		title: '加载中...',
-		// 		duration: 1000000
-		// 	});
-		// 	uni.request({
-		// 		url: `${helper.requestUrl}/forum/index`,
-		// 		method: 'GET',
-		// 		header: {
-		// 			authorization: app.globalData.token
-		// 		},
-		// 		success: res => {
-		// 			uni.hideLoading();
-		// 			res = helper.null2str(res);
-		// 			console.log(res);
-		// 			if (res.data.status_code == '200') {
-		// 				this.pageData = res.data.data;
-		// 			} else {
-		// 				uni.showToast({
-		// 					title: res.data.message,
-		// 					icon: 'none'
-		// 				});
-		// 			}
-		// 		}
-		// 	});
-		// },
+		onReachBottom(){
+			this.page ++;
+			this.getList()
+		},
+		getList() {
+			uni.showLoading({
+				title: '加载中...',
+				duration: 1000000
+			});
+			uni.request({
+				url: `${helper.requestUrl}/forum/posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data:{
+					board_id: this.boardId,
+					page: this.page,
+					page_size: '10'
+				},
+				success: res => {
+					uni.hideLoading();
+					res = helper.null2str(res);
+					console.log(res);
+					if (res.data.status_code == '200') {
+						this.pageData = this.pageData.concat(res.data.data);
+					} else {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						});
+					}
+				}
+			});
+		},
 	}
 };
 </script>
