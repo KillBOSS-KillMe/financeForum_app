@@ -234,8 +234,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
   }, onHide: function onHide() {}, onLoad: function onLoad() {}, methods: { // 导航详情
     goNavs: function goNavs(e) {// console.log(e.currentTarget.dataset.id)
       var link = e.currentTarget.dataset.link;var bind_board = e.currentTarget.dataset.bind_board;var id = e.currentTarget.dataset.id;var name = e.currentTarget.dataset.name;console.log(bind_board);if (bind_board == '0') {uni.navigateTo({ url: "/pages/".concat(link) });} else if (bind_board == '1') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });}}, //
-    selListType: function selListType(e) {this.Inv = e.currentTarget.dataset.index;this.boardId = e.currentTarget.dataset.block_id;}, // 轮播跳转
-    goBanner: function goBanner(e) {console.log(e);}, // 文章详情
+    selListType: function selListType(e) {this.Inv = e.currentTarget.dataset.index;this.boardId = e.currentTarget.dataset.block_id;this.page = '1';}, // 轮播跳转
+    goBanner: function goBanner(e) {console.log(e);},
+    // 文章详情
     goDetail: function goDetail(e) {
       console.log(e);
       uni.navigateTo({
