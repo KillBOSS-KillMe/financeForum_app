@@ -31,28 +31,28 @@
 			</view>
 			<view class="contentList">
 				<block v-for="(item, index) in pageData.board_data[Inv].posts" :key="index">
-					<view class="item">
+					<view class="item" @tap="goDetail(item.id)">
 						<image :src="imgUrl+item.user.avatar" mode="aspectFill"></image>
 						<view class="itemRight">
 							<view class="itemRightHead">
-								<text>123</text>
+								<text>{{item.user.name}}</text>
 								<view>
 									来自
 									<text>{{item.from_board}}</text>
 								</view>
 							</view>
-							<text class="title">{{ item.user.name }}</text>
+							<text class="title">{{ item.title }}</text>
 							<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
-							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="item1.img1" mode=""></image></block>
+							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="imgUrl+item1.image" mode=""></image></block>
 							<view class="itemCon">
 								<text>{{ item.created_at }}</text>
 								<view class="itemBottom">
 									<view>
-										<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+										<uni-icon type="" class="iconfont icondianzan exchangIcon"></uni-icon>
 										<text>{{ item.like }}</text>
 									</view>
 									<view>
-										<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+										<uni-icon type="" class="iconfont iconhuifu exchangIcon"></uni-icon>
 										<text>{{ item.comments_count }}</text>
 									</view>
 								</view>
@@ -60,7 +60,7 @@
 						</view>
 					</view>
 				</block>
-				
+				<view class="null" v-if="pageData.board_data[Inv].posts.length == 0">暂无数据</view>
 			</view>
 		</view>
 	</view>
@@ -80,21 +80,9 @@ export default {
 				{ id: '5', img: '../static/logo.png', title: '论坛搜索' }
 			],
 			Inv: 0,
-			list: [
-				{
-					id: '1',
-					img: '../static/b.jpg',
-					time: '12小时前',
-					name: 'admin',
-					num: '3',
-					title: '云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制',
-					imgList: [{ img1: '../static/logo.png' }, { img1: '../static/logo.png' }, { img1: '../static/logo.png' }]
-				},
-				{ id: '1', img: '../static/b.jpg', time: '11小时前', name: 'admin', num: '3', title: 'dgfdhdyju' },
-				{ id: '1', img: '../static/b.jpg', time: '12小时前', name: 'admin', num: '2', title: '云南城投股吧说说股票风险如何控制云南城投股吧' }
-			],
 			pageData: '',
-			imgUrl:''
+			imgUrl:'',
+			page: '1'
 		};
 	},
 	onLoad() {
@@ -106,6 +94,11 @@ export default {
 		selListType(e) {
 			this.Inv = e.currentTarget.dataset.index
 			this.boardId = e.currentTarget.dataset.block_id
+		},
+		goDetail(e){
+			uni.navigateTo({
+				url:`/pages/articleDetail?id=${e}`
+			})
 		},
 		// 数据
 		getIndexData() {
@@ -143,7 +136,43 @@ export default {
 					url: `/pages/experience`
 				});
 			}
-		}
+		},
+		// 加载下一页
+		onReachBottom(){
+			this.page ++;
+			this.getList()
+		},
+		getList() {
+			uni.showLoading({
+				title: '加载中...',
+				duration: 1000000
+			});
+			uni.request({
+				url: `${helper.requestUrl}/forum/posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data:{
+					board_id: this.boardId,
+					page: this.page,
+					page_size: '10'
+				},
+				success: res => {
+					uni.hideLoading();
+					res = helper.null2str(res);
+					console.log(res);
+					if (res.data.status_code == '200') {
+						this.pageData = this.pageData.concat(res.data.data);
+					} else {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						});
+					}
+				}
+			});
+		},
 	}
 };
 </script>
@@ -248,6 +277,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+		margin-top: 16rpx;
 	/* justify-content: flex-end; */
 }
 .content .itemCon text {
@@ -306,5 +336,11 @@ export default {
 .itemBottom > view {
 	display: flex;
 	margin-left: 18rpx;
+	align-content: center;
+}
+.itemBottom .exchangIcon{
+	color: #999;
+	font-size: 28rpx;
+	margin-right: 10rpx;
 }
 </style>

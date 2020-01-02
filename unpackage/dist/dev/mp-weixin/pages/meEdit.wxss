@@ -28,6 +28,10 @@
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
 	font-size: 30rpx;
 	color: #333333;
 }
@@ -42,13 +46,20 @@
 .uni-input {
 	font-size: 30rpx;
 	color: #333333;
+	white-space: nowrap;
+	margin-right: 20rpx;
 }
-.edit .itemList input {
-	width: 500rpx;
+.edit .itemList input,.itemList>view {
+	width: 520rpx;
 	font-size: 30rpx;
 	color: #333333;
 	text-align: right;
+	overflow: hidden;
 }
+/* .edit .itemList input,.itemList>view {
+	display: flex;
+	justify-content: space-between;
+} */
 .edit .itemList > text:first-child {
 	font-weight: 600;
 }
@@ -57,5 +68,25 @@
 }
 .edit button {
 	margin-top: 30rpx;
+}
+.moon>view{
+	width: 500rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	text-align: right;
+}
+.moon>view>text{
+	width: 460rpx;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: right;
 }
 
