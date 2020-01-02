@@ -292,6 +292,12 @@
 			"style": {
 				"navigationBarTitleText": "手机实名查询-嘉合骏贷款超市"
 			}
+		},
+		{
+			"path": "pages/payType",
+			"style": {
+				"navigationBarTitleText": "支付方式"
+			}
 		}
 	],
 	"globalStyle": {

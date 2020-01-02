@@ -8,7 +8,7 @@
 				<view class="qq">请联系客服QQ/邮箱：<text>398750480 / 1771343694</text></view>
 			</view>
 		</view>
-		<button type="primary" class="iAgree">我同意</button>
+		<button type="primary" class="iAgree" @tap="iAgree(1)">我同意</button>
 	</view>
 </template>
 
@@ -22,7 +22,12 @@
 			}
 		},
 		methods: {
-			
+			iAgree(e){
+				app.globalData.vipIndex= e
+				uni.navigateBack({
+					delta: 1
+				})
+			}
 		}
 	}
 </script>

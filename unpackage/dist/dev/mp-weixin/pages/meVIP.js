@@ -193,6 +193,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -262,11 +271,16 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { bannerList: [{ id: '1', img: '../static/a.jpg' }, { id: '2', img: '../static/b.jpg' }, { id: '12', img: '../static/a.jpg' }], isCheck: false // list:[
-      // 	{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
-      // 	{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
-      // ]
-    };}, methods: { meTreaty: function meTreaty() {uni.navigateTo({ url: '/pages/meTreaty' });}, checkboxChange: function checkboxChange(e) {} } };exports.default = _default;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { bannerList: [{ id: '1', img: '../static/a.jpg' }, { id: '2', img: '../static/b.jpg' }], isCheck: false, bannerIndex: '0', current: '0', list: [{ id: '1', img: 'iconchanpin_yonghuzhifu', title: '产品超市', icon: '1' }, { id: '2', img: 'iconqian_', title: '信贷技术', icon: '1' }, { id: '3', img: 'iconweixin1', title: '最新资讯', icon: '1' }, { id: '4', img: 'iconqiyegongchangjianzhu', title: '小微企业', icon: '0' }, { id: '5', img: 'iconqunfengjingzhunyinliu', title: '精准匹配', icon: '0' }, { id: '6', img: 'iconxiepinglun', title: '实站心得', icon: '0' }, { id: '7', img: 'iconliebiao', title: '拒贷汇总', icon: '0' }, { id: '8', img: 'iconhongbaoguanli', title: '备用金打造', icon: '0' }], vip: [] };}, onLoad: function onLoad() {console.log(app.globalData.vipIndex);if (app.globalData.vipIndex == 1) {this.isCheck = true;}this.vipList();}, methods: { meTreaty: function meTreaty() {uni.navigateTo({ url: '/pages/meTreaty' });}, banner: function banner(e) {this.bannerIndex = e.detail.current;console.log(e);}, checkboxChange: function checkboxChange(e) {if (e == false) {this.isCheck = true;} else {this.isCheck = false;}console.log(this.isCheck);}, vipList: function vipList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/vips"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.vip = res.data.data;} else {uni.showToast({ title: res.data.message });}} });}, goVip: function goVip(e) {console.log(e);uni.navigateTo({ url: "/pages/payType?id=".concat(e.currentTarget.dataset.id, "&money=").concat(e.currentTarget.dataset.money) });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

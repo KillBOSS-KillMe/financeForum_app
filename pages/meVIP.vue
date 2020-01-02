@@ -7,10 +7,13 @@
 		<view class="content">
 			<view class="banner">
 				<view class="bannerBox">
-					<swiper class="swiper"  next-margin='50rpx'>
-						<swiper-item  v-for="(item,index) in bannerList" :key="index">
-							<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
-						</swiper-item>
+					<swiper class="swiper"  next-margin='50rpx' :current="current"  @change="banner">
+						<block v-for="(item,index) in bannerList" :key="index">
+							<swiper-item>
+								<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
+							</swiper-item>
+						</block>
+						
 					</swiper>
 				</view>
 				<!-- <swiper class="swiper">
@@ -20,45 +23,51 @@
 				</swiper> -->
 			</view>
 			<view class="list">
-				<text>永久会员可享受一下功能权限</text>
-				<view class="listItem">
-					<view class="item">
-						<image src="../static/logo.png" mode=""></image>
-						<text>精准匹配</text>
-					</view>
-					<view class="item">
-						<image src="../static/logo.png" mode=""></image>
-						<text>精准匹配</text>
-					</view>
-					<view class="item">
-						<image src="../static/logo.png" mode=""></image>
-						<text>精准匹配</text>
-					</view>
-					<view class="item">
-						<image src="../static/logo.png" mode=""></image>
-						<text>精准匹配</text>
-					</view>
-					<view class="item">
-						<image src="../static/logo.png" mode=""></image>
-						<text>精准匹配</text>
-					</view>
+				<text>会员可享受一以下功能权限</text>
+				<view class="listItem" v-if="bannerIndex == '1'">
+					<block v-for="(item,index) in list" :key="index">
+						<view class="item">
+							<view class="icon blue"><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
+							<text>{{item.title}}</text>
+						</view>
+					</block>
+				</view>
+				<view class="listItem" v-if="bannerIndex == '0'">
+					<block v-for="(item,index) in list" :key="index">
+						<view class="item"  v-if="item.icon == '1'">
+							<view class="icon" :class="['blue', item.icon == bannerIndex ? 'cur' : '']"><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
+							<text>{{item.title}}</text>
+						</view>
+					</block>
 				</view>
 			</view>
-			<view class="longVip">
+			<view class="longVip"  v-if="bannerIndex == '0'">
 				<view class="money">
 					￥
-					<text>1289</text>
+					<text>{{vip[0].vip_price}}</text>
+					/年
+				</view>
+				<view class="time">
+					<text class="long">普通会员超价值</text>
+					<text>普通会员专享受价￥{{vip[0].vip_price}}</text>
+				</view>
+			</view>
+			<view class="longVip"  v-if="bannerIndex == '1'">
+				<view class="money">
+					￥
+					<text>{{vip[1].vip_price}}</text>
 					/年
 				</view>
 				<view class="time">
 					<text class="long">永久会员超价值</text>
-					<text>永久会员专享受价￥1289</text>
+					<text>永久会员专享受价￥{{vip[1].vip_price}}</text>
 				</view>
 			</view>
 		</view>
-		<button type="primary" class="off">立即开通，尽享权益</button>
+		<button type="primary" class="off" disabled="" v-if="isCheck == false">立即开通，尽享权益</button>
+		<button type="primary" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip[bannerIndex].id" :data-money="vip[bannerIndex].vip_price">立即开通，尽享权益</button>
 		<view class="radio">
-			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange" :checked="isCheck" /></label>
+			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange(isCheck)" :checked="isCheck" /></label>
 			<view>
 				我以阅读开通普通会员vip
 				<text @tap="meTreaty">相关协议</text>
@@ -75,15 +84,30 @@
 			return {
 				bannerList:[
 					{id:'1',img:'../static/a.jpg'},
-					{id:'2',img:'../static/b.jpg'},
-					{id:'12',img:'../static/a.jpg'},
+					{id:'2',img:'../static/b.jpg'}
 				],
-				isCheck: false
-				// list:[
-				// 	{id:'1',img:'../static/logo.png',title:'联系客服微信 bn154896547'},
-				// 	{id:'2',img:'../static/logo.png',title:'联系客服电话 18535464004 '}
-				// ]
+				isCheck: false,
+				bannerIndex: '0',
+				current: '0',
+				list:[
+					{id:'1',img:'iconchanpin_yonghuzhifu',title:'产品超市',icon:'1'},
+					{id:'2',img:'iconqian_',title:'信贷技术',icon:'1'},
+					{id:'3',img:'iconweixin1',title:'最新资讯',icon:'1'},
+					{id:'4',img:'iconqiyegongchangjianzhu',title:'小微企业',icon:'0'},
+					{id:'5',img:'iconqunfengjingzhunyinliu',title:'精准匹配',icon:'0'},
+					{id:'6',img:'iconxiepinglun',title:'实站心得',icon:'0'},
+					{id:'7',img:'iconliebiao',title:'拒贷汇总',icon:'0'},
+					{id:'8',img:'iconhongbaoguanli',title:'备用金打造',icon:'0'},
+				],
+				vip: []
 			}
+		},
+		onLoad() {
+			console.log(app.globalData.vipIndex)
+			if(app.globalData.vipIndex == 1){
+				this.isCheck = true
+			}
+			this.vipList()
 		},
 		methods: {
 			meTreaty(){
@@ -91,8 +115,45 @@
 					url:'/pages/meTreaty'
 				})
 			},
+			banner(e){
+				this.bannerIndex = e.detail.current
+				console.log(e)
+			},
 			checkboxChange(e){
-
+				if(e == false){
+					this.isCheck = true
+				} else{
+					this.isCheck = false
+				}
+				console.log(this.isCheck)
+			},
+			vipList(){
+				uni.request({
+					url: `${helper.requestUrl}/vips`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							this.vip = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				})
+			},
+			goVip(e){
+				console.log(e)
+				uni.navigateTo({
+					url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${e.currentTarget.dataset.money}`
+				})
 			}
 		}
 	}
@@ -179,11 +240,28 @@
 .listItem .item:nth-child(4n) {
 	margin-right: 0;
 }
-.listItem .item > image {
+.listItem .item .icon {
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 96rpx;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
 }
+.blue{
+	border: 1rpx solid #2390DC;
+}
+.listItem .item .iconfont{
+	font-size: 44rpx;
+}
+.listItem .item .iconfont{
+	color: #2390DC;
+}
+/* .cur{
+		border: 1rpx solid #D6D6D6;
+		color: #D6D6D6;
+} */
 .listItem .item > text {
 	font-size: 28rpx;
 	font-weight: 600;
@@ -216,6 +294,7 @@
 	font-size: 24rpx;
 	font-weight: 700;
 	color: #b8b8b8;
+	white-space: nowrap;
 }
 .time .long {
 	width: 202rpx;
@@ -259,4 +338,5 @@
 	width: 26rpx;
 	height: 26rpx;
 } */
+
 </style>

@@ -126,8 +126,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ./common/helper.js 
 //
 //
 //
-var _default = { onLaunch: function onLaunch() {console.log('App Launch');}, onShow: function onShow() {console.log('App Show');}, onHide: function onHide() {console.log('App Hide');}, globalData: { token: '' }, onLoad: function onLoad() {// this.getToken()
-  }, methods: {
+var _default = { onLaunch: function onLaunch() {console.log('App Launch');}, onShow: function onShow() {console.log('App Show');}, onHide: function onHide() {console.log('App Hide');}, globalData: { token: '', vipIndex: '' }, onLoad: function onLoad() {// this.getToken()
+  },
+  methods: {
     // 获取Token
     getToken: function getToken() {var _this = this;
       uni.login({
