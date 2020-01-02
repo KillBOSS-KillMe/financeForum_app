@@ -47,7 +47,8 @@
     "pages/allProduct",
     "pages/applyShow",
     "pages/iframe",
-    "pages/meFan"
+    "pages/meFan",
+    "pages/tel"
   ],
   "subPackages": [],
   "window": {

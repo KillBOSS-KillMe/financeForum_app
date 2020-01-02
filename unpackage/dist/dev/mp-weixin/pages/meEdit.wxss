@@ -49,7 +49,8 @@
 	white-space: nowrap;
 	margin-right: 20rpx;
 }
-.edit .itemList input,.itemList>view {
+.edit .itemList input,
+.itemList > view {
 	width: 520rpx;
 	font-size: 30rpx;
 	color: #333333;
@@ -60,17 +61,17 @@
 	display: flex;
 	justify-content: space-between;
 } */
-.edit .itemList > text:first-child {
+.edit .itemList > text:first-child,.edit .itemList .moon > text:first-child {
 	font-weight: 600;
 }
 .edit .itemList:last-of-type {
 	border: none;
 }
-.edit button {
+/* .edit button {
 	margin-top: 30rpx;
-}
-.moon>view{
-	width: 500rpx;
+} */
+.moon{
+	width: 690rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -79,9 +80,30 @@
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.moon > view {
+	width: 500rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
 	text-align: right;
 }
-.moon>view>text{
+.moon > view > text {
 	width: 460rpx;
 	overflow: hidden;
 	-o-text-overflow: ellipsis;

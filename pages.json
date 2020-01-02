@@ -287,6 +287,11 @@
 			"style": {
 				"navigationBarTitleText": "我的粉丝"
 			}
+		}, {
+			"path": "pages/tel",
+			"style": {
+				"navigationBarTitleText": "手机实名查询-嘉合骏贷款超市"
+			}
 		}
 	],
 	"globalStyle": {

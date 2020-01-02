@@ -106,6 +106,7 @@
 			selListType(e) {
 				this.Inv = e.currentTarget.dataset.index
 				this.boardId = e.currentTarget.dataset.block_id
+				this.page = '1'
 			},
 			// 轮播跳转
 			goBanner(e) {

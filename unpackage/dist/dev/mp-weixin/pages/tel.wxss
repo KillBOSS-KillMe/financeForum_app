@@ -1,0 +1,37 @@
+
+.tel{
+	width: 750rpx;
+}
+.item{
+	width: 690rpx;
+	padding: 30rpx;
+}
+.item>text{
+	font-size: 30rpx;
+	font-weight: 700;
+	color: #333;
+}
+.item>text:before{
+	content: '';
+	width: 12rpx;
+	height: 26rpx;
+	background: #2390DC;
+	display: inline-block;
+	margin-right: 14rpx;
+	border-radius: 10rpx;
+}
+.item .itemList view{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	font-size: 28rpx;
+	font-weight: 600;
+	color: #333;
+	margin-top: 30rpx;
+	/* justify-content: ; */
+}
+.item .itemList view text{
+	color: #dc8f63;
+}
+

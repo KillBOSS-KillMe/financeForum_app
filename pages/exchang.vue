@@ -14,7 +14,7 @@
 		<view class="nav">
 			<block v-for="(item, index) in navList" :key="index">
 				<view class="item" @tap="getNav(item.id)">
-					<image :src="item.img" mode=""></image>
+					<view><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
 					<text>{{ item.title }}</text>
 				</view>
 			</block>
@@ -25,9 +25,6 @@
 				<block v-for="(item, index) in pageData.board_data" :key="index">
 					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
 				</block>
-		<!-- 		<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">贷款产品交流</view>
-				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">信用卡交流</view>
-				<view :class="['inv-h', Inv == 2 ? 'inv-h-se' : '']" @tap="Inv = 2">推荐热帖</view> -->
 			</view>
 			<view class="contentList">
 				<block v-for="(item, index) in pageData.board_data[Inv].posts" :key="index">
@@ -73,11 +70,11 @@ export default {
 	data() {
 		return {
 			navList: [
-				{ id: '1', img: '../static/logo.png', title: '实战心得' },
-				{ id: '2', img: '../static/logo.png', title: '拒贷汇总' },
-				{ id: '3', img: '../static/logo.png', title: '微金公告' },
-				{ id: '4', img: '../static/logo.png', title: '从业感悟' },
-				{ id: '5', img: '../static/logo.png', title: '论坛搜索' }
+				{ id: '1', img: 'iconxiepinglun', title: '实战心得' },
+				{ id: '2', img: 'iconliebiao', title: '拒贷汇总' },
+				{ id: '3', img: 'iconbulletin', title: '微金公告' },
+				{ id: '4', img: 'iconyonghu', title: '从业感悟' },
+				{ id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }
 			],
 			Inv: 0,
 			pageData: '',
@@ -204,11 +201,37 @@ export default {
 	justify-content: space-between;
 	flex-wrap: wrap;
 }
-.exchang .nav .item image {
+.exchang .nav .item{
+	/* display: flex;
+	justify-content: center;
+	flex-wrap: wrap; */
+}
+.exchang .nav .item>view{
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 96rpx;
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	margin: 0 auto;
+	background-image: linear-gradient(#F9A2A2, #F46969);
+}
+.exchang .nav .item:nth-child(2)>view{
+	background-image: linear-gradient(#F9D5A1, #F4C26B);
+}
+.exchang .nav .item:nth-child(3)>view{
+	background-image: linear-gradient(#B4A1F9, #826BF4);
+}
+.exchang .nav .item:nth-child(4)>view{
+	background-image: linear-gradient(#A1DDF9, #6BD2F4);
+}
+.exchang .nav .item:nth-child(5)>view{
+	background-image: linear-gradient(#A1F9D9, #6BF4B2);
+}
+.exchang .nav .iconfont{
+	color: #fff;
+	font-size: 46rpx;
 }
 .exchang .nav .item text {
 	display: block;
