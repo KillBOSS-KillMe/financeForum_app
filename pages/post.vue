@@ -81,12 +81,12 @@
 			<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
 			<text class="address">显示所在位置</text>
 		</view> -->
-		<view class="postAttach">
+		<!-- <view class="postAttach">
 			<view>
 				<uni-icon class="iconfont iconat" type=""></uni-icon>
 				<text class="address">通知好友</text>
 			</view>
-		</view>
+		</view> -->
 		<!-- 	<view class="postAttach">
 			<uni-icon class="iconfont iconbiaoqing" type=""></uni-icon>
 			<uni-icon class="iconfont iconzhaopian" type="" @tap="getPhoto"></uni-icon>
@@ -132,8 +132,11 @@
 			
 			// 录音部分
 			recorderManager.onStop(res => {
+				// 获取音频文件地址
 				console.log('recorder stop' + JSON.stringify(res));
 				this.voicePath = res.tempFilePath;
+				// 上传音频文件
+				this.upVoice()
 			});
 		},
 		methods: {
@@ -148,6 +151,7 @@
 					}
 				})
 			},
+			// |||||||||||||||||||||录音部分--开始|||||||||||||||||||||
 			startRecord() {
 				console.log('开始录音');
 				uni.showToast({
@@ -174,7 +178,24 @@
 					innerAudioContext.play();
 				}
 			},
-			
+			// 音频上传
+			upVoice() {
+				uni.uploadFile({
+					url: `${helper.requestUrl}/posts/uploads`,
+					filePath: this.voicePath,
+					name: 'file',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						console.log(res)
+						// resolve({
+						// 	path: JSON.parse(res.data).data
+						// });
+					}
+				});
+			},
+			// |||||||||||||||||||||录音部分--结束|||||||||||||||||||||
 			// |||||||||||||||||||||---以下---为富文本部分|||||||||||||||||||||
 			readOnlyChange() {
 				this.readOnly = !this.readOnly
