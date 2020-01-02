@@ -1,7 +1,7 @@
 <template>
 	<view class="meSetting">
 		<view class="item">
-			<view class="left">
+			<view class="left" @tap="modifyPassword">
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				<text>修改密码</text>
 			</view>
@@ -9,10 +9,10 @@
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
-		<view class="item">
+		<view class="item" @tap="delCaching">
 			<view class="left">
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				<text>清楚缓存</text>
+				<text>清除缓存</text>
 			</view>
 			<view>
 				<text>12.34M</text>
@@ -44,8 +44,30 @@
 		},
 
 		methods: {
+			modifyPassword() {
+				// 修改密码
+				// 进入修改密码页
+				uni.navigateTo({
+					url: '/pages/forgetPassword'
+				});
+			},
+			delCaching() {
+				// 删除系统缓存
+				uni.showModal({
+					title: '提示',
+					content: '确认删除缓存',
+					success: res => {
+						if (res.confirm) {
+							// console.log('用户点击确定');
+							uni.clearStorageSync();
+						} else if (res.cancel) {
+							// console.log('用户点击取消');
+						}
+					}
+				});
+			},
 			outLogin() {
-				
+				// 退出系统--进入登录页
 				uni.showModal({
 					title: '提示',
 					content: '是否退出系统',
@@ -58,15 +80,11 @@
 						}
 					}
 				});
-				
 			},
 			runOutLogin() {
-				// 执行用户登出
-				// uni.showLoading({
-				//   title: '执行中...'
-				// });
+				// 退出系统--进入登录页--执行
 				uni.showLoading({
-				  title: '加载中...',
+				  title: '退出系统...',
 					duration: 1000000
 				});
 				uni.request({
