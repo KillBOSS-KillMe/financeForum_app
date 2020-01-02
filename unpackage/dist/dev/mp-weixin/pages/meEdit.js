@@ -212,6 +212,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -300,12 +325,71 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 418));};var _default = { data: function data() {return { txt: '选择地址', // formNode: [],
-      formNode: [], array: ['男', '女', '无'], arrayCard: ['有', '无'], index: 0, setData: '', options: '' };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {}, onShow: function onShow() {this.getformNode();}, methods: { // 进入编辑页
-    goEditSet: function goEditSet(e) {console.log(e);var name = e.currentTarget.dataset.name;var title = e.currentTarget.dataset.title;uni.navigateTo({ url: "/pages/meEditSet?name=".concat(name, "&title=").concat(title) });}, bindPickerChange: function bindPickerChange(e) {console.log(e);console.log('picker发送选择改变，携带值为', e.target.value);this.index = e.target.value;if (e.currentTarget.dataset.name == 'sex') {this.setData = this.array[this.index];} else {this.setData = this.arrayCard[this.index];}this.options = e.currentTarget.dataset.name;this.submit();}, goAddress: function goAddress(data) {console.log(data);this.txt = data.data.join('');this.formNode.province = data.data[0];this.formNode.city = data.data[1];this.formNode.district = data.data[2];console.log(this.formNode.province, '+');}, getformNode: function getformNode() {var _this = this; // 用户信息获取
-      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.formNode = res.data;} });}, // 修改
-    submit: function submit() {var _this2 = this;uni.showLoading({ title: '提交中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/edit"), method: 'POST', header: { authorization: app.globalData.token }, data: { field: this.options, value: this.setData }, // data: this.setData,
-        success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {
+      formNode: { sex: '', credit_card: '', social_security: '', //社保
+        provident_fund: '', //公积金
+        education: '', //学历
+        province: '', //省市区
+        city: '', district: '' }, array: ['男', '女', '无'], arrayCard: ['无', '有'], schoolList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'], index: 0, setData: '', options: '', imgUrl: '' };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getformNode();}, methods: { // 进入编辑页
+    goEditSet: function goEditSet(e) {console.log(e);var name = e.currentTarget.dataset.name;var title = e.currentTarget.dataset.title;uni.navigateTo({ url: "/pages/meEditSet?name=".concat(name, "&title=").concat(title) });}, bindPickerChange: function bindPickerChange(e) {this.index = e.target.value;if (e.currentTarget.dataset.name == 'sex') {this.setData = this.array[this.index];this.formNode.sex == this.setData;} else if (e.currentTarget.dataset.name == 'credit_card') {this.setData = this.index;this.formNode.credit_card == this.arrayCard[this.index];} else if (e.currentTarget.dataset.name == 'social_security') {this.setData = this.index;this.formNode.social_security == this.arrayCard[this.index];} else if (e.currentTarget.dataset.name == 'provident_fund') {this.setData = this.index;this.formNode.provident_fund == this.arrayCard[this.index];} else if (e.currentTarget.dataset.name == 'education') {this.setData = ++this.index;this.formNode.education == this.schoolList[this.index];}this.options = e.currentTarget.dataset.name;this.submit();}, goAddress: function goAddress(e) {console.log(e);this.txt = e.data.join('');for (var i = 0; i < e.data.length; i++) {this.setData = e.data[i];if (i == '0') {this.options = 'province';} else if (i == '1') {this.options = 'city';} else if (i == '2') {this.options = 'district';}this.submit();}}, getformNode: function getformNode() {var _this = this; // 用户信息获取
+      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.formNode = res.data;if (_this.formNode.credit_card == 0) {_this.formNode.credit_card = '无';} else {_this.formNode.credit_card = '有';};if (_this.formNode.social_security == 0) {_this.formNode.social_security = '无';} else {_this.formNode.social_security = '有';}if (_this.formNode.provident_fund == 0) {_this.formNode.provident_fund = '无';} else {_this.formNode.provident_fund = '有';}if (_this.formNode.education == 1) {_this.formNode.education = '小学';} else if (_this.formNode.education == 2) {_this.formNode.education = '初中';} else if (_this.formNode.education == 3) {_this.formNode.education = '高中';} else if (_this.formNode.education == 4) {_this.formNode.education = '大专';} else if (_this.formNode.education == 5) {_this.formNode.education = '本科';
+          } else if (_this.formNode.education == 6) {
+            _this.formNode.education = '硕士';
+          } else if (_this.formNode.education == 7) {
+            _this.formNode.education = '博士';
+          }
+          _this.txt = _this.formNode.province + _this.formNode.city + _this.formNode.district;
+          console.log(_this.txt);
+        } });
+
+    },
+    // 修改
+    submit: function submit() {var _this2 = this;
+      uni.showLoading({
+        title: '提交中...',
+        duration: 1000000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/edit"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          field: this.options,
+          value: this.setData },
+
+        // data: this.setData,
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == '1') {
             uni.showToast({
               title: res.data.message });
 
@@ -317,7 +401,47 @@ var app = getApp();var pickerAddress = function pickerAddress() {return Promise.
               title: res.data.message });
 
           }
+        } });
 
+    },
+    // 上图头像
+    goImg: function goImg() {var _this3 = this;
+      uni.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'],
+        success: function success(res) {
+          uni.showToast({
+            title: '图片上传中',
+            icon: 'loading' });
+
+          Promise.all(
+          res.tempFiles.map(function (item) {
+            return new Promise(function (resolve, reject) {
+              uni.uploadFile({
+                url: "".concat(_helper.default.requestUrl, "/posts/uploads"),
+                filePath: item.path,
+                name: 'file',
+                header: {
+                  authorization: app.globalData.token },
+
+                success: function success(res) {
+                  console.log(res);
+                  resolve({
+                    path: JSON.parse(res.data).data });
+
+                } });
+
+            });
+          })).
+          then(function (e) {
+            uni.hideToast();
+            _this3.imgInfo = e[0].path;
+            _this3.options = 'avatar';
+            _this3.setData = _this3.imgInfo.path;
+            _this3.submit();
+            console.log(_this3.imgInfo, '图片');
+          }).catch(function (err) {return console.log(err);});
         } });
 
     } } };exports.default = _default;
