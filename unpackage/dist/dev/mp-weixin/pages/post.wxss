@@ -1,4 +1,42 @@
 
+.postAttach{
+	width: 690rpx;
+	height: auto;
+	padding: 30rpx;
+	font-size: 28rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.postAttach view{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+.postAttach .operating .iconfont{
+	margin-left: 20rpx;
+}
+.postAttach .iconfont{
+	font-size: 40rpx;
+}
 .submit {
 	width: 750rpx;
 	height: auto;
@@ -68,7 +106,6 @@
 .ql-active {
 	color: #06c;
 }
-
 /* icon部分 */
 @font-face {
 	font-family: "iconfont";

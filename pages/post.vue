@@ -63,6 +63,36 @@
 				</editor>
 			</view>
 		</view>
+		<view class="postAttach">
+			<view>
+				<uni-icon class="iconfont iconyuyin" type=""></uni-icon>
+				<text>附加语音</text>
+			</view>
+			<view class="operating">
+				<!-- 录音 -->
+				<!-- touchstart 手指触摸事件 -->
+				<!-- touchend 手指触摸动作结束事件 -->
+				<uni-icon class="iconfont iconyuyin" type="" @touchstart="startRecord" @touchend="endRecord"></uni-icon>
+				<!-- 播放录音 -->
+				<uni-icon class="iconfont iconzanting" type="" @tap="playVoice"></uni-icon>
+			</view>
+		</view>
+		<!-- 	<view class="postAttach">
+			<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
+			<text class="address">显示所在位置</text>
+		</view> -->
+		<view class="postAttach">
+			<view>
+				<uni-icon class="iconfont iconat" type=""></uni-icon>
+				<text class="address">通知好友</text>
+			</view>
+		</view>
+		<!-- 	<view class="postAttach">
+			<uni-icon class="iconfont iconbiaoqing" type=""></uni-icon>
+			<uni-icon class="iconfont iconzhaopian" type="" @tap="getPhoto"></uni-icon>
+			<uni-icon class="iconfont iconshipin" @tap="getPhoto" type=""></uni-icon>
+			<uni-icon class="iconfont iconat" type=""></uni-icon>
+		</view> -->
 		<view class="submit">
 			<view @tap="submit">发布</view>
 		</view>
@@ -72,6 +102,11 @@
 <script>
 	const app = getApp()
 	import helper from '../common/helper.js';
+	// 录音部分--开始
+	const recorderManager = uni.getRecorderManager();
+	const innerAudioContext = uni.createInnerAudioContext();
+	innerAudioContext.autoplay = true;
+	// 录音部分--结束
 	export default {
 		data() {
 			return {
@@ -89,12 +124,20 @@
 			console.log(e);
 			this.formNode.board_id = e.id;
 			this.name = e.name;
+			// 富文本部分
 			uni.loadFontFace({
 				family: 'Pacifico',
 				source: 'url("https://sungd.github.io/Pacifico.ttf")'
 			})
+			
+			// 录音部分
+			recorderManager.onStop(res => {
+				console.log('recorder stop' + JSON.stringify(res));
+				this.voicePath = res.tempFilePath;
+			});
 		},
 		methods: {
+			// 数据提交
 			submit() {
 				this.editorCtx.getContents({
 					success: data => {
@@ -105,6 +148,34 @@
 					}
 				})
 			},
+			startRecord() {
+				console.log('开始录音');
+				uni.showToast({
+					title: "录音中...",
+					duration: 99999999,
+					icon: 'loading'
+				});
+				recorderManager.start();
+			},
+			endRecord() {
+				console.log('录音结束');
+				uni.hideToast()
+				uni.showToast({
+					title: "结束录音",
+					duration: 2000,
+					icon: 'success'
+				});
+				recorderManager.stop();
+			},
+			playVoice() {
+				console.log('播放录音');
+				if (this.voicePath) {
+					innerAudioContext.src = this.voicePath;
+					innerAudioContext.play();
+				}
+			},
+			
+			// |||||||||||||||||||||---以下---为富文本部分|||||||||||||||||||||
 			readOnlyChange() {
 				this.readOnly = !this.readOnly
 			},
@@ -201,12 +272,33 @@
 					}
 				});
 			}
+			// |||||||||||||||||||||---以上---为富文本部分|||||||||||||||||||||
 		},
 		
 	}
 </script>
 
 <style>
+	.postAttach{
+		width: 690rpx;
+		height: auto;
+		padding: 30rpx;
+		font-size: 28rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.postAttach view{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.postAttach .operating .iconfont{
+		margin-left: 20rpx;
+	}
+	.postAttach .iconfont{
+		font-size: 40rpx;
+	}
 	.submit {
 		width: 750rpx;
 		height: auto;
@@ -214,9 +306,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
 	}
-
 	.submit view {
 		width: 400rpx;
 		height: 90rpx;
