@@ -259,7 +259,7 @@
 	}
 
 	.me .contentList {
-		width: 690rpx;
+		/* width: 690rpx; */
 
 	}
 
@@ -275,12 +275,15 @@
 		padding: 0 30rpx;
 		display: flex;
 		justify-content: space-between;
+		align-content: center;
+		height: 50rpx;
 		margin-bottom: 20rpx;
 	}
 
 	.me .contentList .item .left {
 		display: flex;
 		justify-content: flex-start;
+		align-items: center;
 	}
 
 	.me .contentList .item .left text {
@@ -291,7 +294,7 @@
 		/* width: 200rpx; */
 	}
 
-	.me .contentList .item .left icon {
+	.me .contentList .item .left .iconfont {
 		color: #C0C0C0;
 		font-size: 40rpx;
 		width: 40rpx;
