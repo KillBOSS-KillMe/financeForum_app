@@ -4,10 +4,8 @@
 	padding:30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .collection{
@@ -23,11 +21,9 @@
 	width: 180rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 	/* justify-content: center; */
 	margin-right: 20rpx;
@@ -39,22 +35,18 @@
 	margin-top: 6rpx;
 	text-align: center;
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .head{
 	width: 180rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .head image{
@@ -67,14 +59,11 @@
 	margin: 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
-	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .collectionList .item{
@@ -83,14 +72,11 @@
 	margin:0 8rpx 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .collectionList .item:nth-child(5n){
@@ -109,8 +95,7 @@
 	font-weight: 600;
 	margin-top: 16rpx;
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .line{

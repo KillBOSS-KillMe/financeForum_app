@@ -1,4 +1,12 @@
 
+.setTitle{
+	width: 690rpx;
+	height: auto;
+	padding: 30rpx;
+	font-size: 32rpx;
+	font-weight: 600;
+	color: #333;
+}
 .postAttach{
 	width: 690rpx;
 	height: auto;
