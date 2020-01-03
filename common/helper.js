@@ -1,5 +1,8 @@
-const requestUrl = 'http://47.105.95.48/api';
+
+// const requestUrl = 'http://www.finance.cc/api';
 // const imgUrl = 'http://www.finance.cc/uploads/';
+
+const requestUrl = 'http://47.105.95.48/api';
 const imgUrl = 'http://47.105.95.48/uploads/';
 
 // 时间戳转时间
