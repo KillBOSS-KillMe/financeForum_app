@@ -57,7 +57,8 @@
 					 data-value="rtl"></view>
 
 				</view>
-
+				
+				<input type="text" class="setTitle" :value="title" placeholder="输入帖子标题" @input="getTitle" />
 				<editor id="editor" class="ql-container" placeholder="开始输入..." showImgSize showImgToolbar showImgResize
 				 @statuschange="onStatusChange" :read-only="readOnly" @ready="onEditorReady">
 				</editor>
@@ -118,13 +119,17 @@
 					topic_id: ''
 				},
 				readOnly: false,
-				formats: {}
+				formats: {},
+				title: '',
+				voicePath: '',
+				htmlCon: '',
+				options: null
 			}
 		},
-		onLoad(e) {
-			console.log(e);
-			this.formNode.board_id = e.id;
-			this.name = e.name;
+		onLoad(options) {
+			console.log(options);
+			this.formNode.board_id = options.id;
+			this.options = options;
 			// 富文本部分
 			uni.loadFontFace({
 				family: 'Pacifico',
@@ -145,12 +150,67 @@
 			submit() {
 				this.editorCtx.getContents({
 					success: data => {
-						console.log('insert divider success')
-						console.log(data)
+						// console.log('insert divider success')
+						// console.log(data)
 						// 获取富文本中的内容
 						console.log(data.html)
+						this.htmlCon = data.html
+						// 上传数据
+						this.upData()
 					}
 				})
+			},
+			upData() {
+				if (this.title == '') {
+					uni.showToast({
+						title: '请输入标题'
+					});
+					return false
+				}
+				if (this.htmlCon == '') {
+					uni.showToast({
+						title: '请编辑帖子内容'
+					});
+					return false
+				}
+				uni.showLoading({
+				  title: '发布中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/posts/send`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						board_id: this.options.id,  // 模块ID
+						topic_id: '',  // 主体ID
+						title: this.title,  // 帖子标题
+						content: this.htmlCon,  // 帖子内容
+						voice: this.voicePath  // 录音的文件路径
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						if (res.data.status_code == 200) {
+							uni.showToast({
+								title: res.data.message
+							});
+							// 返回上一页
+							uni.navigateBack()
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				})
+			},
+			// 获取帖子标题
+			getTitle(e) {
+				this.title = e.detail.value
 			},
 			// |||||||||||||||||||||录音部分--开始|||||||||||||||||||||
 			startRecord() {
@@ -183,6 +243,10 @@
 			upVoice() {
 				console.log('=========================================')
 				console.log(this.voicePath)
+				uni.showLoading({
+				  title: '语音上传中...',
+					duration: 1000000
+				});
 				uni.uploadFile({
 					url: `${helper.requestUrl}/posts/uploads`,
 					filePath: this.voicePath,
@@ -191,10 +255,17 @@
 						authorization: app.globalData.token
 					},
 					success: res => {
-						console.log(res)
-						// resolve({
-						// 	path: JSON.parse(res.data).data
-						// });
+						// console.log(res)
+						uni.hideLoading();
+						res = helper.null2str(res)
+						res = JSON.parse(res.data)
+						if (res.status_code == 200) {
+							this.voicePath = res.data.path
+						} else {
+							uni.showToast({
+								title: '上传失败，请重新录音'
+							});
+						}
 					}
 				});
 			},
@@ -303,6 +374,14 @@
 </script>
 
 <style>
+	.setTitle{
+		width: 690rpx;
+		height: auto;
+		padding: 30rpx;
+		font-size: 32rpx;
+		font-weight: 600;
+		color: #333;
+	}
 	.postAttach{
 		width: 690rpx;
 		height: auto;
