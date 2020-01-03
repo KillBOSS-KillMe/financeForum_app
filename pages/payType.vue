@@ -59,20 +59,14 @@ export default {
 				},
 				success: res => {
 					console.log(res);
+					console.log(res.data)
 					// 调起支付
 					uni.requestPayment({
 						provider: 'alipay',
-						orderInfo: {
-							dealId: res.dealId,
-							appKey: res.appKey,
-							totalAmount: res.totalAmount,
-							tpOrderId: res.tpOrderId,
-							dealTitle: res.dealTitle,
-							rsaSign: res.rsaSign,
-							bizInfo: res.bizInfo
-						}, //订单数据
+						orderInfo: res.data, //订单数据
 						success: function(res) {
-							// console.log('success:' + JSON.stringify(res));
+							console.log('success:' + JSON.stringify(res));
+							console.log('*********')
 						},
 						fail: function(err) {
 							// console.log('fail:' + JSON.stringify(err));

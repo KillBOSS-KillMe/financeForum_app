@@ -37,12 +37,19 @@
     "pages/meSetting",
     "pages/indexAccurate",
     "pages/meCertificationConfirm",
+    "pages/meEditSet",
     "pages/meEdit",
     "pages/meApplyMessage",
     "pages/meTreaty",
     "pages/paySuccess",
     "pages/productDetail",
-    "pages/searchNetloan"
+    "pages/searchNetloan",
+    "pages/allProduct",
+    "pages/applyShow",
+    "pages/iframe",
+    "pages/meFan",
+    "pages/tel",
+    "pages/payType"
   ],
   "window": {
     "navigationBarTextStyle": "white",
