@@ -6,35 +6,44 @@
 		border-top: 2rpx solid #F3F3F3;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
 		        flex-direction: column;
 }
-.head .iconfont{
+.head>view{
 		width: 172rpx;
 		height: 172rpx;
 		margin: 60rpx 0;
 		border-radius: 172rpx;
-		font-size: 130rpx;
-		color: #fff;
 		background-color: #3e8cfd;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
+}
+.head .iconfont{
+		font-size: 130rpx;
+		color: #fff;
 }
 .head .title{
 		font-size: 32rpx;
@@ -57,12 +66,16 @@
 		
 		display: -webkit-flex;
 		
+		display: -ms-flexbox;
+		
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 		margin-bottom: 15px;
     border-radius: 2px;
@@ -76,12 +89,15 @@
 		height: auto;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 		padding: 50rpx 0;
 }

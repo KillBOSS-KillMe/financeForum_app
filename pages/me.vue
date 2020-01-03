@@ -1,11 +1,11 @@
 <template>
 	<view class="me">
 		<view class="meHead">
-			<image class="userImg" src="../static/a.jpg" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<image class="userImg" :src="imgUrl+userInfo.avatar" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view>
-					<text class="login">admin</text>
+					<text class="login">{{userInfo.name}}</text>
 					<text class="tip">青铜新手</text>
 				</view>
 				<view class="meHeadList">
@@ -32,7 +32,7 @@
 					<text>我的手机</text>
 				</view>
 				<view>
-					<text class="cur">123456</text>
+					<text class="cur">{{userInfo.mobile}}</text>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -137,11 +137,12 @@
 	export default {
 		data() {
 			return {
-
+				userInfo: {},
+				imgUrl: ''
 			}
 		},
 		onLoad() {
-			
+			this.imgUrl = helper.imgUrl
 		},
 		onShow() {
 			this.getUserInfo()
@@ -173,9 +174,11 @@
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
-						console.log(res)
+						console.log(res,'++++++++')
+						this.userInfo = res.data
+						console.log(this.userInfo.mobile)
 						if (res.data.status_code == 200) {
-							this.userInfo = res.data.data
+							
 							
 						}
 					}
@@ -188,6 +191,7 @@
 <style>
 	.me {
 		width: 750rpx;
+		padding: 0 0 30rpx;
 	}
 
 	.me .meHead {
@@ -277,7 +281,7 @@
 		justify-content: space-between;
 		align-content: center;
 		height: 50rpx;
-		margin-bottom: 20rpx;
+		margin-bottom: 28rpx;
 	}
 
 	.me .contentList .item .left {

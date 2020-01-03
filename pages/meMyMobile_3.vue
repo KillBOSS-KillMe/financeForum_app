@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<view class="head">
-			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+			<view><uni-icon type="" class="iconfont iconshoujihaomaguizheng"></uni-icon></view>
+			
 			<span class="title">更换成功</span>
 			<span>请使用新手机号新密码进行登录！</span>
 		</view>
@@ -43,17 +44,19 @@
 		justify-content: space-between;
 		flex-direction: column;
 	}
-	.head .iconfont{
+	.head>view{
 		width: 172rpx;
 		height: 172rpx;
 		margin: 60rpx 0;
 		border-radius: 172rpx;
-		font-size: 130rpx;
-		color: #fff;
 		background-color: #3e8cfd;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+	.head .iconfont{
+		font-size: 130rpx;
+		color: #fff;
 	}
 	.head .title{
 		font-size: 32rpx;

@@ -1,22 +1,21 @@
 <template>
 	<view>
 		<view class="head">
-			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-			<span>199999999999</span>
+			<view>
+				<uni-icon type="" class="iconfont iconshoujihaomaguizheng"></uni-icon>
+			</view>
+			<span>{{mobile}}</span>
 		</view>
 		<view class="con">
-			<view class="item">
+<!-- 			<view class="item">
 				<label>新手机号：</label>
 				<input type="text" />
-			</view>
+			</view> -->
 			<view class="item IQCode">
 				<label>验证码：</label>
-				<input type="text" />
-				<view class="getCode">获取验证码</view>
-			</view>
-			<view class="item">
-				<label>登录密码：</label>
-				<input type="text" />
+				<input type="number" @input="inputValue"/>
+				<view  class="getCode" v-if="noShow == 0">{{time}}</view>
+				<view class="getCode" v-else @tap="getCode">{{time}}</view>
 			</view>
 		</view>
 		
@@ -32,16 +31,104 @@
 	export default {
 		data() {
 			return {
-				
+				mobile: '',
+				currentTime: 60, // 倒计时初始值
+				time: '获取验证码',
+				noShow: 1,
+				verification_key: '',
+				mobileCode: ''
 			}
 		},
+		onLoad(e) {
+			console.log(e)
+			this.mobile = e.num
+		},
 		methods: {
+			inputValue(e){
+				console.log(e)
+				this.mobileCode = e.detail.value
+			},
 			goMyMobile(e){
 				let url = e.target.dataset.name
-				uni.navigateTo({
-					url: `/pages/${url}`
-				})
-			}
+				if(this.mobileCode == ""){
+					uni.showToast({
+						title: '请获取验证码',
+						icon: 'none'
+					})
+				}else{
+					uni.request({
+						url: `${helper.requestUrl}/user/old-mobile-verification`,
+						method: 'POST',
+						header: {
+							authorization: app.globalData.token
+						},
+						data: {
+							code: this.mobileCode,
+							verification_key: this.verification_key
+						},
+						success: (res) => {
+							console.log(res);
+							uni.hideLoading();
+							res = helper.null2str(res)
+							if (res.statusCode == 200) {
+								uni.navigateTo({
+									url: `/pages/${url}`
+								})
+							} else {
+								uni.showToast({
+									title: res.data.message
+								});
+							}
+					
+						}
+					});
+				}
+				
+				// uni.navigateTo({
+				// 	url: `/pages/${url}`
+				// })
+			},
+			getCode(){
+				uni.request({
+					url: `${helper.requestUrl}/send_sms`,
+					method: 'POST',
+					data: {
+						mobile: this.mobile
+					},
+					success: (res) => {
+						console.log(res);
+						uni.hideLoading();
+						res = helper.null2str(res)
+						if (res.statusCode == 200) {
+							this.verification_key = res.data.key
+							this.countdown();
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				});
+			},
+			//倒计时
+			countdown() {
+				var currentTime = this.currentTime;
+				this.time = `倒计时${currentTime}秒`
+				var interval = setInterval(() => {
+					this.time = '倒计时' + (currentTime - 1) + '秒'
+					currentTime--
+					if (currentTime <= 0) {
+						clearInterval(interval)
+						this.time = '重新获取'
+						this.currentTime = 60
+						this.noShow = 1
+					} else if(currentTime > 0){
+						this.noShow = 0
+					}
+					
+				}, 1000)
+			},
 		}
 	}
 </script>
@@ -50,24 +137,26 @@
 	.head{
 		width: 750rpx;
 		height: 256rpx;
-		height: auto;
 		border-top: 2rpx solid #F3F3F3;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		flex-direction: column;
 	}
 	.head .iconfont{
-		width: 95rpx;
-		height: 95rpx;
-		margin: 35rpx 0;
-		border-radius: 95rpx;
 		font-size: 62rpx;
 		color: #fff;
+		text-align: center;
+	}
+	.head>view{
 		background-color: #3e8cfd;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 95rpx;
+		height: 95rpx;
+		margin: 35rpx 0;
+		border-radius: 95rpx;
 	}
 	.head span{
 		margin-bottom: 50rpx;

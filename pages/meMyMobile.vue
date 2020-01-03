@@ -4,7 +4,7 @@
 			<view class="item" @tap="goMyMobile" data-name="meMyMobile_1">
 				<view>手机号更换</view>
 				<view>
-					1899999999999
+					{{mobile}}
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -18,14 +18,31 @@
 	export default {
 		data() {
 			return {
-				
+				mobile: ''
 			}
+		},
+		onLoad() {
+			uni.request({
+				url: `${helper.requestUrl}/user/old-mobile`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				success: res => {
+					res = helper.null2str(res)
+					console.log(res)
+					if (res.data.status_code == 200) {
+						this.mobile = res.data.mobile
+						
+					}
+				}
+			})
 		},
 		methods: {
 			goMyMobile(e){
 				let url = e.target.dataset.name
 				uni.navigateTo({
-					url: `/pages/${url}`
+					url: `/pages/${url}?num=${this.mobile}`
 				})
 			}
 		}
