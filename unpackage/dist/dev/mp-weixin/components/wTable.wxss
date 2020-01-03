@@ -9,12 +9,14 @@
 	background: #fff;
 	/* border: 2upx solid #ccc; */
 	font-size: 14rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	/* overflow: scroll; */
 }
 .w_table_swper {
 	height: 100%;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .w_table_content {
 	height: 100%;
@@ -22,13 +24,16 @@
 }
 .w-table_title {
 	width: -webkit-fit-content;
+	width: -moz-fit-content;
 	width: fit-content;
 	height: 60rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	line-height: 60rpx;
 	position: -webkit-sticky;
@@ -54,15 +59,18 @@
 .w_table_body {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 .w_table_body_col {
 	height: 60rpx;
 	line-height: 60rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	width: 100%;
 	border-bottom: 2rpx solid #f8f8f8;
 	margin: 0 auto;
@@ -71,7 +79,8 @@
 	display: inline-block;
 	width: 100%;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .col_cell_border {
@@ -89,7 +98,8 @@
 	text-align: center;
 	width: 230rpx;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .w_table_null {

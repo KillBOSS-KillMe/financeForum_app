@@ -9,11 +9,14 @@
 	height: 280rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .me .meHead .meHeadCon {
@@ -22,7 +25,8 @@
 	height: 200rpx;
 	z-index: 4;
 	width: 670rpx;
-	box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
+	-webkit-box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
+	        box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
 	margin-top: -70rpx;
 	padding-top: 70rpx;
 }
@@ -37,9 +41,11 @@
 .me .meHeadCon>view {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	margin: 20rpx 0;
 }
@@ -64,9 +70,11 @@
 	padding: 0 40rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify !important;
 	-webkit-justify-content: space-between !important;
+	    -ms-flex-pack: justify !important;
 	        justify-content: space-between !important;
 	margin-top: 45rpx !important;
 }
@@ -89,11 +97,14 @@
 	padding: 0 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
 	        align-content: center;
 	height: 50rpx;
 	margin-bottom: 20rpx;
@@ -101,12 +112,15 @@
 .me .contentList .item .left {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 }
 .me .contentList .item .left text {
