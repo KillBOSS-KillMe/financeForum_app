@@ -122,7 +122,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
 
 
 
@@ -214,7 +220,126 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: {} };exports.default = _default;
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { formNode: { real_name: '', //真是姓名
+        id_card: '', //身份证
+        phone: '', card_positive: '', //身份证正面
+        card_peverse: '' }, imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, methods: { inputValue: function inputValue(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode;console.log(this.formNode);}, getCard: function getCard(e) {console.log(e);var type = e;this.getImg(type);}, //上传图片
+    getImg: function getImg(op) {var _this = this;uni.chooseImage({ count: 1, sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], success: function success(res) {uni.showToast({ title: '图片上传中', icon: 'loading' });Promise.all(res.tempFiles.map(function (item) {return new Promise(function (resolve, reject) {uni.uploadFile({ url: "".concat(_helper.default.requestUrl, "/posts/uploads"), filePath: item.path, name: 'file', header: { authorization: app.globalData.token }, success: function success(res) {console.log(res);resolve({ path: JSON.parse(res.data).data });
+                } });
+
+            });
+          })).
+          then(function (e) {
+            uni.hideToast();
+            console.log(e[0].path.path, '++++++++++');
+            if (op == 1) {
+              _this.formNode.card_positive = e[0].path.path;
+              console.log(_this.formNode.card_positive);
+            } else {
+              _this.formNode.card_peverse = e[0].path.path;
+            }
+          }).catch(function (err) {return console.log(err);});
+        } });
+
+    },
+    submint: function submint() {
+      if (this.formNode.real_name == '') {
+        wx.showToast({
+          title: "请填写您的真实姓名",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.id_card == '') {
+        wx.showToast({
+          title: "请输入18位有效身份证号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.id_card.length != 18) {
+        wx.showToast({
+          title: "请输入18位有效身份证号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.phone == '') {
+        wx.showToast({
+          title: "请输入您的联系方式",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.phone.length != 11) {
+        wx.showToast({
+          title: "请输入您的联系方式",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.card_positive == '') {
+        wx.showToast({
+          title: "请上传身份证正面",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.card_peverse == '') {
+        wx.showToast({
+          title: "请上传身份证反面",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      uni.showLoading({
+        title: '认证中...',
+        duration: 1000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/real-check"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: this.formNode,
+        success: function success(res) {
+          console.log(res);
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '*-*****');
+          if (res.data.status_code == 200) {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+            uni.reLaunch({
+              url: '/pages/me' });
+
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+          }
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
