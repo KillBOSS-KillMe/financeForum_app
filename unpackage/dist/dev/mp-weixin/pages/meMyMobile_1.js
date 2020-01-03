@@ -149,9 +149,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -177,10 +174,83 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-//
-//
-var app = getApp();var _default = { data: function data() {return {};}, methods: { goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;uni.navigateTo({ url: "/pages/".concat(url) });} } };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { mobile: '', currentTime: 60, // 倒计时初始值
+      time: '获取验证码', noShow: 1, verification_key: '', mobileCode: '' };}, onLoad: function onLoad(e) {console.log(e);this.mobile = e.num;}, methods: { inputValue: function inputValue(e) {console.log(e);this.mobileCode = e.detail.value;}, goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;if (this.mobileCode == "") {uni.showToast({ title: '请获取验证码', icon: 'none' });
+
+      } else {
+        uni.request({
+          url: "".concat(_helper.default.requestUrl, "/user/old-mobile-verification"),
+          method: 'POST',
+          header: {
+            authorization: app.globalData.token },
+
+          data: {
+            code: this.mobileCode,
+            verification_key: this.verification_key },
+
+          success: function success(res) {
+            console.log(res);
+            uni.hideLoading();
+            res = _helper.default.null2str(res);
+            if (res.statusCode == 200) {
+              uni.navigateTo({
+                url: "/pages/".concat(url) });
+
+            } else {
+              uni.showToast({
+                title: res.data.message });
+
+            }
+
+          } });
+
+      }
+
+      // uni.navigateTo({
+      // 	url: `/pages/${url}`
+      // })
+    },
+    getCode: function getCode() {var _this = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/send_sms"),
+        method: 'POST',
+        data: {
+          mobile: this.mobile },
+
+        success: function success(res) {
+          console.log(res);
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          if (res.statusCode == 200) {
+            _this.verification_key = res.data.key;
+            _this.countdown();
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    },
+    //倒计时
+    countdown: function countdown() {var _this2 = this;
+      var currentTime = this.currentTime;
+      this.time = "\u5012\u8BA1\u65F6".concat(currentTime, "\u79D2");
+      var interval = setInterval(function () {
+        _this2.time = '倒计时' + (currentTime - 1) + '秒';
+        currentTime--;
+        if (currentTime <= 0) {
+          clearInterval(interval);
+          _this2.time = '重新获取';
+          _this2.currentTime = 60;
+          _this2.noShow = 1;
+        } else if (currentTime > 0) {
+          _this2.noShow = 0;
+        }
+
+      }, 1000);
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

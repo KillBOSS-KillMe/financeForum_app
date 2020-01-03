@@ -152,7 +152,23 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: { goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;uni.navigateTo({ url: "/pages/".concat(url) });} } };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { mobile: '' };}, onLoad: function onLoad() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/old-mobile"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+        res = _helper.default.null2str(res);
+        console.log(res);
+        if (res.data.status_code == 200) {
+          _this.mobile = res.data.mobile;
+
+        }
+      } });
+
+  },
+  methods: {
+    goMyMobile: function goMyMobile(e) {
+      var url = e.target.dataset.name;
+      uni.navigateTo({
+        url: "/pages/".concat(url, "?num=").concat(this.mobile) });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

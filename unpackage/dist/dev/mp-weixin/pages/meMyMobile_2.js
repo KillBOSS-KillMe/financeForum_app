@@ -172,7 +172,136 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: { goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;uni.navigateTo({ url: "/pages/".concat(url) });} } };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { formNode: { password: '', code: '', mobile: '', verification_key: '' }, currentTime: 60, // 倒计时初始值
+      time: '获取验证码', showNo: false };}, methods: { inputValue: function inputValue(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode;console.log(this.formNode);}, // 获取验证码
+    getCode: function getCode() {var _this = this;console.log(1);
+      if (this.showNo) {
+        return false;
+      }
+      if (this.formNode.mobile == '') {
+        wx.showToast({
+          title: "请输入手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.mobile.length != 11) {
+        wx.showToast({
+          title: "请输入正确的手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      // uni.showToast({
+      // 	title: "请求发送中...",
+      // 	icon: 'loading',
+      // 	duration: 1000
+      // });
+      this.showNo = true;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/send_sms"),
+        method: 'POST',
+        data: {
+          mobile: this.formNode.mobile },
+
+        success: function success(res) {
+          console.log(res);
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          if (res.statusCode == 200) {
+            _this.formNode.verification_key = res.data.key;
+            _this.countdown();
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    },
+    //倒计时
+    countdown: function countdown() {var _this2 = this;
+      var currentTime = this.currentTime;
+      this.time = "\u5012\u8BA1\u65F6".concat(currentTime, "\u79D2");
+      var interval = setInterval(function () {
+        _this2.time = '倒计时' + (currentTime - 1) + '秒';
+        currentTime--;
+        if (currentTime <= 0) {
+          clearInterval(interval);
+          _this2.time = '重新获取';
+          _this2.currentTime = 60;
+          _this2.showNo = false;
+        }
+      }, 1000);
+    },
+    goMyMobile: function goMyMobile(e) {
+      var url = e.target.dataset.name;
+
+      if (this.formNode.mobile == '') {
+        uni.showToast({
+          title: "请输入手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.mobile.length != 11) {
+        uni.showToast({
+          title: "请输入正确的手机号",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.code == '') {
+        uni.showToast({
+          title: "请输入验证码",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      if (this.formNode.password == '') {
+        uni.showToast({
+          title: "请输入密码",
+          icon: 'none',
+          duration: 2000 });
+
+        return false;
+      }
+      uni.showLoading({
+        title: '修改中...',
+        duration: 1000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/mobile-replace"), //仅为示例，并非真实接口地址。
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: this.formNode,
+        success: function success(res) {
+          console.log(res);
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            uni.navigateTo({
+              url: "/pages/".concat(url) });
+
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: "none" });
+
+          }
+
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

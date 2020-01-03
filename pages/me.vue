@@ -32,7 +32,7 @@
 					<text>我的手机</text>
 				</view>
 				<view>
-					<text class="cur">123456</text>
+					<text class="cur">{{userInfo.mobile}}</text>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -137,7 +137,7 @@
 	export default {
 		data() {
 			return {
-
+				userInfo: {}
 			}
 		},
 		onLoad() {
@@ -188,6 +188,7 @@
 <style>
 	.me {
 		width: 750rpx;
+		padding: 0 0 30rpx;
 	}
 
 	.me .meHead {
@@ -277,7 +278,7 @@
 		justify-content: space-between;
 		align-content: center;
 		height: 50rpx;
-		margin-bottom: 20rpx;
+		margin-bottom: 28rpx;
 	}
 
 	.me .contentList .item .left {
