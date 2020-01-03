@@ -4,7 +4,7 @@
 			<text class="title">{{ articleDetail.title }}</text>
 			<view class="info">
 				<view class="left">
-					<image :src="articleDetail.img" mode=""></image>
+					<image :src="imgUrl+articleDetail.theme_pic" mode=""></image>
 					<view class="leftTitle">
 						<text>{{ articleDetail.user.name }}</text>
 						<view class="leftTitleBottom">
@@ -63,7 +63,7 @@
 			<view class="list">
 				<block v-for="(item, index) in commentList" :key="index">
 					<view class="item">
-						<image src="../static/logo.png" mode=""></image>
+						<image :src="imgUrl+item.user.avatar" mode=""></image>
 						<view class="right">
 							<view class="itemListHead">
 								<view class="itemListHeadLeft">
@@ -153,7 +153,7 @@ export default {
 	},
 	onLoad(options) {
 		this.options = options;
-		this.imgUrl = app.globalData.imgUrl;
+		this.imgUrl = helper.imgUrl;
 		// 文章详情加载
 		this.getArticleDetail();
 	},
@@ -649,6 +649,7 @@ export default {
 	width: 60rpx;
 	font-size: 60rpx;
 	color: green;
+	margin-left: 20rpx;
 }
 .reward .iconText {
 	width: 65rpx;

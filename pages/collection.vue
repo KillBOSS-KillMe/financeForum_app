@@ -9,17 +9,19 @@
 			</swiper>
 		</view>
 		<view class="contentList">
-			<view class="item" v-for="(item,index) in list" :key="index">
-				<image :src="item.img" mode="aspectFill"></image>
-				<view class="itemRight">
-					<text class="title">{{item.title}}</text>
-					<view class="itemCon">
-						<text>{{item.time}}</text>
-						<text>{{item.name}}</text>
-						<text>{{item.num}}评</text>
+			<block  v-for="(item,index) in list" :key="index">
+				<view class="item" @tap="goDetail(item.id)">
+					<image :src="imgUrl+item.theme_pic" mode="aspectFill"></image>
+					<view class="itemRight">
+						<text class="title">{{item.title}}</text>
+						<view class="itemCon">
+							<text>{{item.created_at}}</text>
+							<text>{{item.user.name}}</text>
+							<text>{{item.comments_count}}评</text>
+						</view>
 					</view>
 				</view>
-			</view>
+			</block>
 		</view>
 	</view>
 </template>
@@ -37,15 +39,58 @@
 					{id:'2',img:'../static/b.jpg'},
 					{id:'12',img:'../static/a.jpg'},
 				],
-				list:[
-					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'3',title:'云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制云南城投股吧说说股票风险如何控制'},
-					{id:'1',img:'../static/b.jpg',time:'11小时前',name:'admin',num:'3',title:'dgfdhdyju'},
-					{id:'1',img:'../static/b.jpg',time:'12小时前',name:'admin',num:'2',title:'云南城投股吧说说股票风险如何控制云南城投股吧'}
-				]
+				list: [],
+				page: '1',
+				imgUrl: ''
 			}
 		},
+		onLoad() {
+			this.imgUrl = helper.imgUrl
+			this.getList()
+		},
 		methods: {
-			
+			getList(){
+				uni.request({
+					url: `${helper.requestUrl}/posts/board-posts`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data:{
+						board_id: '5',
+						page_size: '10',
+						page: this.page
+					},
+					success: res => {
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							 this.list = this.list.concat(res.data.data)
+							 if(res.data.data == 0){
+							 	uni.showToast({
+							 		title:'暂无更多数据',
+							 		icon:"none"
+							 	})
+							 }
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				})
+			},
+			// 跳转详情
+			goDetail(e){
+				uni.navigateTo({
+					url:`/pages/articleDetail?id=${e}`
+				})
+			},
+			onReachBottom() {
+				this.page ++;
+				this.getList()
+			}
 		}
 	}
 </script>

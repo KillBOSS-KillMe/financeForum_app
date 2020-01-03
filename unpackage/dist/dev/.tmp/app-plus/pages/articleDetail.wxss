@@ -146,6 +146,7 @@
 	width: 60rpx;
 	font-size: 60rpx;
 	color: green;
+	margin-left: 20rpx;
 }
 .reward .iconText {
 	width: 65rpx;

@@ -80,7 +80,16 @@
 						url:`/pages/applyShow?id=${id}`
 					})
 				} else if(type == 'ex_link'){
-					// console.log(extra,'+++++')
+					console.log(extra,'+++++')
+					if(extra == ''){
+						uni.showToast({
+							title: '此页面不存在',
+							icon: 'none'
+						})
+						uni.navigateBack({
+							delta: 1
+						})
+					}
 					// plus.runtime.openURL(extra)
 				 	uni.navigateTo({
 				 		url:`/pages/iframe?url=${extra}&name=${name}`
