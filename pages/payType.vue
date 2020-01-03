@@ -72,10 +72,10 @@ export default {
 							bizInfo: res.bizInfo
 						}, //订单数据
 						success: function(res) {
-							console.log('success:' + JSON.stringify(res));
+							// console.log('success:' + JSON.stringify(res));
 						},
 						fail: function(err) {
-							console.log('fail:' + JSON.stringify(err));
+							// console.log('fail:' + JSON.stringify(err));
 						}
 					});
 				}
