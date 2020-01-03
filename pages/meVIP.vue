@@ -1,26 +1,21 @@
 <template>
 	<view class="meVip">
 		<view class="head">
-			<image src="../static/logo.png" mode=""></image>
-			<text>黎明</text>
+			<image :src="imgUrl+vip.user.avatar" mode=""></image>
+			<text>{{vip.user.name}}</text>
 		</view>
 		<view class="content">
 			<view class="banner">
 				<view class="bannerBox">
 					<swiper class="swiper"  next-margin='50rpx' :current="current"  @change="banner">
-						<block v-for="(item,index) in bannerList" :key="index">
+						<block v-for="(item,index) in vip" :key="index">
 							<swiper-item>
-								<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
+								<image class="bannerImg" :src="imgUrl+item.title_pic" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 							</swiper-item>
 						</block>
 						
 					</swiper>
 				</view>
-				<!-- <swiper class="swiper">
-					<swiper-item  v-for="(item,index) in bannerList" :key="index">
-						<image class="bannerImg" :src="item.img" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
-					</swiper-item>
-				</swiper> -->
 			</view>
 			<view class="list">
 				<text>会员可享受一以下功能权限</text>
@@ -99,10 +94,12 @@
 					{id:'7',img:'iconliebiao',title:'拒贷汇总',icon:'0'},
 					{id:'8',img:'iconhongbaoguanli',title:'备用金打造',icon:'0'},
 				],
-				vip: []
+				vip: [],
+				imgUrl: ''
 			}
 		},
 		onLoad() {
+				this.imgUrl = helper.imgUrl
 			console.log(app.globalData.vipIndex)
 			if(app.globalData.vipIndex == 1){
 				this.isCheck = true
@@ -187,20 +184,25 @@
 	font-size: 30rpx;
 	font-weight: 600;
 }
-
+uni-swiper{
+	height: 400rpx;
+}
 .banner {
 	width: 750rpx;
-	height: 300rpx;
-	margin-top: -50rpx;
+	height: 340rpx;
+	margin-top: -70rpx;
 	display: flex;
 	justify-content: center;
+	
 }
 .banner .bannerBox {
 	width:630rpx;
-	height: 300rpx;
+	height: 340rpx;
+	border-radius: 10rpx;
 }
 .banner .bannerBox image{
-	padding: 0 20rpx;
+	width: 100%;
+	height: 100%;
 }
 .list {
 	width: 690rpx;
