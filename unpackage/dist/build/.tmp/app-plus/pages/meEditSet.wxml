@@ -1,0 +1,1 @@
+<view><textarea placeholder="请输入修改信息" data-event-opts="{{[['input',[['onInput',['$event']]]]]}}" bindinput="__e"></textarea><view class="submit"><view data-event-opts="{{[['tap',[['submit',['$event']]]]]}}" bindtap="__e">确定</view></view></view>

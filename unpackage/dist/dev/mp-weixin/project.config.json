@@ -4,11 +4,13 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false
+		"urlCheck": false,
+		"es6": true,
+		"minified": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
-	"appid": "wxec67f04e3616f8d2",
+	"appid": "wx5288d1f667f49f05",
 	"projectname": "financeForum_app",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

@@ -37,6 +37,7 @@
     "pages/meSetting",
     "pages/indexAccurate",
     "pages/meCertificationConfirm",
+    "pages/meEditSet",
     "pages/meEdit",
     "pages/meApplyMessage",
     "pages/meTreaty",
@@ -46,7 +47,9 @@
     "pages/allProduct",
     "pages/applyShow",
     "pages/iframe",
-    "pages/meFan"
+    "pages/meFan",
+    "pages/tel",
+    "pages/payType"
   ],
   "subPackages": [],
   "window": {

@@ -181,6 +181,8 @@
 			},
 			// 音频上传
 			upVoice() {
+				console.log('=========================================')
+				console.log(this.voicePath)
 				uni.uploadFile({
 					url: `${helper.requestUrl}/posts/uploads`,
 					filePath: this.voicePath,
