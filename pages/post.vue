@@ -81,6 +81,7 @@
 			<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
 			<text class="address">显示所在位置</text>
 		</view> -->
+		<!-- 当前无好友列表，暂时不做 -->
 		<!-- <view class="postAttach">
 			<view>
 				<uni-icon class="iconfont iconat" type=""></uni-icon>
