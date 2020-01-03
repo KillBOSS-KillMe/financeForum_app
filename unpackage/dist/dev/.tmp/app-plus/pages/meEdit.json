@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "编辑",
-  "usingComponents": {
-    "picker-address": "/components/wangding-pickerAddress"
-  }
-}

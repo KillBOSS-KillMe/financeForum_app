@@ -128,7 +128,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -232,22 +234,93 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp(); // 录音部分--开始
 var recorderManager = uni.getRecorderManager();var innerAudioContext = uni.createInnerAudioContext();innerAudioContext.autoplay = true; // 录音部分--结束
-var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '' }, readOnly: false, formats: {} };}, onLoad: function onLoad(e) {var _this = this;console.log(e);this.formNode.board_id = e.id;this.name = e.name; // 富文本部分
+var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '' }, readOnly: false, formats: {}, title: '', voicePath: '', htmlCon: '', options: null };}, onLoad: function onLoad(options) {var _this = this;console.log(options);this.formNode.board_id = options.id;this.options = options; // 富文本部分
     uni.loadFontFace({ family: 'Pacifico', source: 'url("https://sungd.github.io/Pacifico.ttf")' }); // 录音部分
     recorderManager.onStop(function (res) {// 获取音频文件地址
       console.log('recorder stop' + JSON.stringify(res));_this.voicePath = res.tempFilePath; // 上传音频文件
       _this.upVoice();});}, methods: { // 数据提交
-    submit: function submit() {this.editorCtx.getContents({ success: function success(data) {console.log('insert divider success');console.log(data); // 获取富文本中的内容
-          console.log(data.html);} });}, // |||||||||||||||||||||录音部分--开始|||||||||||||||||||||
-    startRecord: function startRecord() {console.log('开始录音');uni.showToast({ title: "录音中...", duration: 99999999, icon: 'loading' });recorderManager.start();}, endRecord: function endRecord() {console.log('录音结束');uni.hideToast();uni.showToast({ title: "结束录音", duration: 2000, icon: 'success' });recorderManager.stop();}, playVoice: function playVoice() {console.log('播放录音');if (this.voicePath) {innerAudioContext.src = this.voicePath;innerAudioContext.play();}}, // 音频上传
-    upVoice: function upVoice() {uni.uploadFile({ url: "".concat(_helper.default.requestUrl, "/posts/uploads"), filePath: this.voicePath, name: 'file', header: { authorization: app.globalData.token }, success: function success(res) {console.log(res); // resolve({
-          // 	path: JSON.parse(res.data).data
-          // });
-        } });}, // |||||||||||||||||||||录音部分--结束|||||||||||||||||||||
+    submit: function submit() {var _this2 = this;this.editorCtx.getContents({ success: function success(data) {// console.log('insert divider success')
+          // console.log(data)
+          // 获取富文本中的内容
+          console.log(data.html);_this2.htmlCon = data.html; // 上传数据
+          _this2.upData();} });}, upData: function upData() {if (this.title == '') {uni.showToast({ title: '请输入标题' });return false;}if (this.htmlCon == '') {uni.showToast({ title: '请编辑帖子内容' });return false;}uni.showLoading({ title: '发布中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/send"), method: 'POST', header: { authorization: app.globalData.token }, data: { board_id: this.options.id, // 模块ID
+          topic_id: '', // 主体ID
+          title: this.title, // 帖子标题
+          content: this.htmlCon, // 帖子内容
+          voice: this.voicePath // 录音的文件路径
+        }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == 200) {uni.showToast({ title: res.data.message }); // 返回上一页
+            uni.navigateBack();} else {uni.showToast({ title: res.data.message });}} });}, // 获取帖子标题
+    getTitle: function getTitle(e) {this.title = e.detail.value;}, // |||||||||||||||||||||录音部分--开始|||||||||||||||||||||
+    startRecord: function startRecord() {console.log('开始录音');uni.showToast({ title: "录音中...", duration: 99999999, icon: 'loading' });recorderManager.start();}, endRecord: function endRecord() {console.log('录音结束');uni.hideToast();uni.showToast({
+        title: "结束录音",
+        duration: 2000,
+        icon: 'success' });
+
+      recorderManager.stop();
+    },
+    playVoice: function playVoice() {
+      console.log('播放录音');
+      if (this.voicePath) {
+        innerAudioContext.src = this.voicePath;
+        innerAudioContext.play();
+      }
+    },
+    // 音频上传
+    upVoice: function upVoice() {var _this3 = this;
+      console.log('=========================================');
+      console.log(this.voicePath);
+      uni.showLoading({
+        title: '语音上传中...',
+        duration: 1000000 });
+
+      uni.uploadFile({
+        url: "".concat(_helper.default.requestUrl, "/posts/uploads"),
+        filePath: this.voicePath,
+        name: 'file',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          // console.log(res)
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          res = JSON.parse(res.data);
+          if (res.status_code == 200) {
+            _this3.voicePath = res.data.path;
+          } else {
+            uni.showToast({
+              title: '上传失败，请重新录音' });
+
+          }
+        } });
+
+    },
+    // |||||||||||||||||||||录音部分--结束|||||||||||||||||||||
     // |||||||||||||||||||||---以下---为富文本部分|||||||||||||||||||||
-    readOnlyChange: function readOnlyChange() {this.readOnly = !this.readOnly;}, onEditorReady: function onEditorReady() {var _this2 = this;uni.createSelectorQuery().select('#editor').context(function (res) {// console.log(res.context)
-        _this2.editorCtx = res.context;}).exec();}, undo: function undo() {this.editorCtx.undo();}, redo: function redo() {this.editorCtx.redo();}, format: function format(e) {var _e$target$dataset = e.target.dataset,name = _e$target$dataset.name,value = _e$target$dataset.value;if (!name) return; // console.log('format', name, value)
-      this.editorCtx.format(name, value);},
+    readOnlyChange: function readOnlyChange() {
+      this.readOnly = !this.readOnly;
+    },
+    onEditorReady: function onEditorReady() {var _this4 = this;
+      uni.createSelectorQuery().select('#editor').context(function (res) {
+        // console.log(res.context)
+        _this4.editorCtx = res.context;
+      }).exec();
+    },
+    undo: function undo() {
+      this.editorCtx.undo();
+    },
+    redo: function redo() {
+      this.editorCtx.redo();
+    },
+    format: function format(e) {var _e$target$dataset =
+
+
+
+      e.target.dataset,name = _e$target$dataset.name,value = _e$target$dataset.value;
+      if (!name) return;
+      // console.log('format', name, value)
+      this.editorCtx.format(name, value);
+    },
     onStatusChange: function onStatusChange(e) {
       var formats = e.detail;
       this.formats = formats;
@@ -276,7 +349,7 @@ var _default = { data: function data() {return { formNode: { title: '', content:
         text: formatDate });
 
     },
-    insertImage: function insertImage() {var _this3 = this;
+    insertImage: function insertImage() {var _this5 = this;
       uni.chooseImage({
         count: 1,
         // sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -309,7 +382,7 @@ var _default = { data: function data() {return { formNode: { title: '', content:
             uni.hideToast();
             // this.imgInfo = e[0].path;
             // console.log(this.imgInfo, '图片')
-            _this3.editorCtx.insertImage({
+            _this5.editorCtx.insertImage({
               src: e[0].path.path,
               alt: '图像',
               success: function success() {
