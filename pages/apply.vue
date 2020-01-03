@@ -86,14 +86,13 @@
 							title: '此页面不存在',
 							icon: 'none'
 						})
-						uni.navigateBack({
-							delta: 1
+					}else{
+						uni.navigateTo({
+							url:`/pages/iframe?url=${extra}&name=${name}`
+							// url:'/pages/iframe'
 						})
 					}
 					// plus.runtime.openURL(extra)
-				 	uni.navigateTo({
-				 		url:`/pages/iframe?url=${extra}&name=${name}`
-				 	})
 					// window.location.href = extra
 					// 外联
 				} else if(type == 'category'){

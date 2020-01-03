@@ -5,7 +5,8 @@
 		<view class="searchBox">
 			<input type="text" @input="getSearchKey" />
 		</view>
-		<image class="service" src="../static/b.jpg" mode="" @tap="goMe"></image>
+		<view class="service"><uni-icon type="" class="iconfont iconyonghuguanli"></uni-icon></view>
+		<!-- <image class="service" src="../static/b.jpg" mode="" @tap="goMe"></image> -->
 	</view>
 </template>
 
@@ -53,9 +54,16 @@
 	.service {
 		width: 60rpx;
 		height: 60rpx;
-		border-radius: 50rpx;
+		border-radius: 60rpx;
+		background: #FFFFFF;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-
+ .service .iconfont{
+	 font-size: 36rpx;
+	 color: #999999;
+ }
 	.code {
 		width: 50rpx;
 		height: 50rpx;

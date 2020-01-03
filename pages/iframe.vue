@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<web-view :webview-styles="webviewStyles" :src="url"></web-view>
+		<web-view :src="url"></web-view>
+		<!-- <web-view src="https://www.xncredit.com/h5/loan_2017/zx_search/index.html?ref=gongjuxiang&from=singlemessage&isappinstalled=0"></web-view> -->
 	</view>
 </template>
 
@@ -8,12 +9,7 @@
 export default {
 	data() {
 		return {
-			webviewStyles: {
-				progress: {
-					color: '#FF3333'
-				},
-				url:''
-			}
+			url: ''
 		};
 	},
 	onLoad(e) {
