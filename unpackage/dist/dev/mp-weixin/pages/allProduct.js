@@ -224,9 +224,87 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', list: [], currentIndex: 0, mask: false, moneyList: [{ name: '所有额度' }, { name: '100-5000' }, { name: '5000-2万' }, { name: '2万-5万' }, { name: '5万-10万' }, { name: '10万以上' }] };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getList()
-  }, methods: { getTap: function getTap(e) {console.log(e);this.mask = true;}, screenList: function screenList(e) {console.log(e);this.currentIndex = e;}, hideModal: function hideModal() {this.mask = false;}, //获取列表数据
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/categories-holes"), method: 'GET', header: { authorization: app.globalData.token }, data: { category_id: this.category_id, page_size: this.page_size, page: this.page }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.list = _this.list.concat(res.data.data);} else {
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ name: '所有额度' }, { name: '100-5000' }, { name: '5000-2万' }, { name: '2万-5万' }, { name: '5万-10万' }, { name: '10万以上' }], typeList: [{ name: '所有贷款分类' }, { name: '不查征信' }, { name: '万元起步' }, { name: '极速下款' }, { name: '黑户必做' }, { name: '白户贷款' }, { name: '保险贷款' }, {
+        name: '私人借条' },
+
+      {
+        name: '淘宝授权' },
+
+      {
+        name: '车房贷款' },
+
+      {
+        name: '千元贷款' },
+
+      {
+        name: '代还信用卡' },
+
+      {
+        name: '社保公积金' },
+
+      {
+        name: '信用卡贷款' },
+
+      {
+        name: '芝麻分贷' },
+
+      {
+        name: '分期销售' },
+
+      {
+        name: '苹果ID贷' },
+
+      {
+        name: '黑卡系列' }] };
+
+
+
+  },
+  onLoad: function onLoad() {
+    this.imgUrl = _helper.default.imgUrl;
+    this.getList();
+  },
+  methods: {
+    // 标签列表显示
+    getTap: function getTap(e) {
+      if (e == 1) {
+        this.keyShow = this.moneyList;
+      } else {
+        this.keyShow = this.typeList;
+      }
+      this.mask = true;
+    },
+    // 标签选择
+    screenList: function screenList(e) {
+      this.currentIndex = e;
+      this.quota = this.keyShow[this.currentIndex].name;
+      this.list = [];
+      this.getList();
+    },
+    // 隐藏标签列表
+    hideModal: function hideModal() {
+      this.mask = false;
+    },
+    //获取列表数据
+    getList: function getList() {var _this = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/holes/categories-holes"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          // category_id: this.category_id,
+          quota: this.quota
+          // page_size: this.page_size,
+          // page: this.page
+        },
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            _this.list = _this.list.concat(res.data.data);
+          } else {
             uni.showToast({
               title: res.data.message,
               icon: 'none' });

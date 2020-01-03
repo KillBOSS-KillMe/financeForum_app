@@ -4,7 +4,7 @@
 	padding: 30rpx;
 	position: relative;
 }
-.content .screen{
+.content .screen {
 	width: 690rpx;
 	padding: 30rpx;
 	display: -webkit-box;
@@ -20,7 +20,7 @@
 	background: #fff;
 	z-index: 9;
 }
-.content .screen view{
+.content .screen view {
 	width: 345rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -35,14 +35,14 @@
 	font-size: 30rpx;
 	font-weight: 600;
 }
-.content .screen view icon{
+.content .screen view icon {
 	font-size: 28rpx;
 	margin-left: 6rpx;
 }
-.content .screen .left{
+.content .screen .left {
 	border-right: 1rpx solid #E8E8E8;
 }
-.content .contentList{
+.content .contentList {
 	margin-top: 100rpx;
 }
 .content .contentList .item {
@@ -79,12 +79,12 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 }
-.content .contentList .item .itemRight .productInfo > text {
+.content .contentList .item .itemRight .productInfo>text {
 	font-size: 32rpx;
 	color: #333333;
 	font-weight: 600;
 }
-.content .contentList .item .itemRight .productInfo > view {
+.content .contentList .item .itemRight .productInfo>view {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -94,11 +94,11 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.content .contentList .item .itemRight .productInfo > view text {
+.content .contentList .item .itemRight .productInfo>view text {
 	font-size: 28rpx;
 	color: #999;
 }
-.content .contentList .item .itemRight .productInfo > view .cur {
+.content .contentList .item .itemRight .productInfo>view .cur {
 	color: #f69522;
 	margin-left: 6rpx;
 }
@@ -125,13 +125,14 @@
 	color: #999;
 	margin-right: 20rpx;
 }
-.content .money > text {
+.content .money>text {
 	color: #f69522;
 	font-weight: 600;
 	margin-left: 10rpx;
 }
+
 /* 模态框 */
-.modelShow{
+.modelShow {
 	width: 750rpx;
 	height: 100vh;
 	background: #000000;
@@ -142,7 +143,7 @@
 	overflow: hidden;
 	z-index: 8;
 }
-.modelShowText{
+.modelShowText {
 	width: 690rpx;
 	position: fixed;
 	top: 90rpx;
@@ -160,25 +161,25 @@
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.modelShowText text{
+.modelShowText text {
 	width: 206rpx;
 	height: 56rpx;
 	font-size: 28rpx;
 	font-weight: 600;
 	line-height: 56rpx;
 	text-align: center;
-	margin:0 35rpx 30rpx 0;
+	margin: 0 35rpx 30rpx 0;
 	border-radius: 10rpx;
 }
-.cor{
+.cor {
 	background: #eee;
 	color: #0A0000;
 }
-.active{
+.active {
 	background: #2390DC;
 	color: #fff;
 }
-.modelShowText text:nth-child(3n){
+.modelShowText text:nth-child(3n) {
 	margin-right: 0;
 }
 

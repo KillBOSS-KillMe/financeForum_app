@@ -1,1 +1,0 @@
-<view class="paySuccess"><image src="../static/logo.png" mode></image><text>本次交易支付成功</text><view><button type="primary">返回首页</button><button type="primary">查看会员</button></view></view>
