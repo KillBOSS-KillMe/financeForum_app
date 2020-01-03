@@ -1,7 +1,9 @@
 <template>
 	<view>
 		<view class="head">
-			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+			<view>
+				<uni-icon type="" class="iconfont iconshoujihaomaguizheng"></uni-icon>
+			</view>
 			<span>{{mobile}}</span>
 		</view>
 		<view class="con">
@@ -135,24 +137,26 @@
 	.head{
 		width: 750rpx;
 		height: 256rpx;
-		height: auto;
 		border-top: 2rpx solid #F3F3F3;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		flex-direction: column;
 	}
 	.head .iconfont{
-		width: 95rpx;
-		height: 95rpx;
-		margin: 35rpx 0;
-		border-radius: 95rpx;
 		font-size: 62rpx;
 		color: #fff;
+		text-align: center;
+	}
+	.head>view{
 		background-color: #3e8cfd;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		width: 95rpx;
+		height: 95rpx;
+		margin: 35rpx 0;
+		border-radius: 95rpx;
 	}
 	.head span{
 		margin-bottom: 50rpx;

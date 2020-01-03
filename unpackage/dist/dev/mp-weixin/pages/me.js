@@ -390,7 +390,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { userInfo: {} };}, onLoad: function onLoad() {}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
+var app = getApp();var _default = { data: function data() {return { userInfo: {}, imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
     goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;uni.navigateTo({ url: "/pages/".concat(url) });}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
       // uni.showLoading({
       //   title: '用户信息获取中...'
@@ -399,7 +399,7 @@ var app = getApp();var _default = { data: function data() {return { userInfo: {}
       //   title: '加载中...',
       // 	duration: 1000000
       // });
-      uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.userInfo = res.data.data;}} });} } };exports.default = _default;
+      uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');_this.userInfo = res.data;console.log(_this.userInfo.mobile);if (res.data.status_code == 200) {}} });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
