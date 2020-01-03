@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "推广返佣",
   "usingComponents": {
-    "w-table": "/components/wTable",
     "uni-popup": "/components/uni-popup"
   }
 }

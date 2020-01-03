@@ -3,7 +3,7 @@
 		<view class="head">
 			<view class="meSpreadHead">
 				<text class="balance">总余额</text>
-				<text class="money">￥13254</text>
+				<!-- <text class="money">￥{{ collectionList.member.user_blance }}</text> -->
 				<button class="withdraw" type="primary">提现</button>
 			</view>
 		</view>
@@ -23,20 +23,42 @@
 		<view class="hr"></view>
 		<view class="list">
 			<text class="listInlet">我的邀请</text>
-			<wTable :columns="columns" :data="tableData" @on-row-click="clickrow" border @on-select-all="selectAll" @on-select="selectO" />
-			<view class="model">更多用户<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon></view>
+			<view class="meTable">
+				<view class="item headTab">
+					<block v-for="(item,index) in columns" :key="index">
+						<text>{{item.title}}</text>
+					</block>
+				</view>
+				<block v-for="(item,index) in collectionList.member.invitees" :key="index">
+					<view class="item">
+						<text>{{item.user.name}}</text>
+						<text>{{item.user.mobile}}</text>
+						<text>{{item.created_at}}</text>
+					</view>
+				</block>
+			<!-- 	<view class="item head">
+					<block v-for="(item,index) in tableData" :key="index">
+						<text>{{item.title}}</text>
+					</block>
+				</view> -->
+			</view>
+			<!-- <wTable :columns="columns" :data="tableData" @on-row-click="clickrow" border @on-select-all="selectAll" @on-select="selectO" /> -->
+			<view class="model" @tap="goMore" v-show="isShow">
+				更多用户
+				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+			</view>
 		</view>
 		<!-- 底部分享弹窗 立即邀请 -->
 		<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
 			<view class="uni-share">
 				<text class="uni-share-title">分享到</text>
 				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
-						<view class="uni-share-content-image">
-							<image :src="item.icon" class="content-image" mode="widthFix" />
+					<block v-for="(item, index) in bottomData" :key="index">
+						<view class="uni-share-content-box" @tap="goShare(item.text)">
+							<view class="uni-share-content-image"><uni-icon type="" class="iconfont" :class="item.icon"></uni-icon></view>
+							<text class="uni-share-content-text">{{ item.text }}</text>
 						</view>
-						<text class="uni-share-content-text">{{ item.text }}</text>
-					</view>
+					</block>
 				</view>
 				<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
 			</view>
@@ -44,90 +66,102 @@
 		<!-- 面对面邀请 -->
 		<uni-popup ref="center" type="center" class="meShare" @touchmove.stop.prevent>
 			<view class="fase">
-				<image src="../static/logo.png" mode=""></image>
+				<image :src="collectionList.face" mode=""></image>
 				<text>邀请领现金</text>
 			</view>
-			<!-- <view class="uni-share">
-				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
-						<view class="uni-share-content-image">
-							<image :src="item.icon" class="content-image" mode="widthFix" />
-						</view>
-						<text class="uni-share-content-text">{{ item.text }}</text>
-					</view>
-				</view>
-			</view> -->
 		</uni-popup>
 	</view>
 </template>
 
 <script>
-const app = getApp()
+const app = getApp();
 import helper from '../common/helper.js';
-import wTable from '@/components/wTable.vue';
-import uniPopup from "@/components/uni-popup.vue"
+import uniPopup from '@/components/uni-popup.vue';
 export default {
 	data() {
 		return {
-			tableData: [
-				{ name:'大锤',age:'17777777777',address:'2019-10-25'},
-				{ name:'张三',age:'21',address:'成都'},
-				{ name:'李四',age:'16',address:'南京' }
-			],
-			columns: [
-				{ title: '用户名', key: 'name' },
-				{ title: '手机号', key: 'age' },
-				{ title: '时间', key: 'address' }
-			],
-			bottomData: [{
-					text: '微信',
-					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-2.png',
-					name: 'wx'
+			tableData: [{ name: '大锤', age: '17777777777', address: '2019-10-25' }, { name: '张三', age: '21', address: '成都' }, { name: '李四', age: '16', address: '南京' }],
+			columns: [{ title: '用户名', key: 'name' }, { title: '手机号', key: 'age' }, { title: '时间', key: 'address' }],
+			bottomData: [
+				{
+					text: '微信好友',
+					icon: 'iconweixin'
 				},
 				{
-					text: '支付宝',
-					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-8.png',
-					name: 'wx'
-				},
-				{
-					text: 'QQ',
-					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/gird-3.png',
-					name: 'qq'
-				},
-				{
-					text: '新浪',
-					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-1.png',
-					name: 'sina'
-				},
-				{
-					text: '百度',
-					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-7.png',
-					name: 'copy'
-				},
-				{
-					text: '其他',
-					icon: 'https://img-cdn-qiniu.dcloud.net.cn/uni-ui/grid-5.png',
-					name: 'more'
+					text: '微信朋友圈',
+					icon: 'iconpengyouquan'
 				}
-			]
-		}
+			],
+			collectionList: {},
+			imgUrl: '',
+			isShow: true,
+		};
 	},
 	components: {
-		wTable ,
-		uniPopup,
+		// wTable,
+		uniPopup
+	},
+	onLoad() {
+		this.content();
+		this.imgUrl = helper.imgUrl;
 	},
 	methods: {
-		quickInlet(e){
-			if(e == 1){
-				this.$refs.showshare.open()
-			} else if(e == 2){
-				this.$refs.center.open()
+		goMore(){
+			this.isShow = false
+		},
+		quickInlet(e) {
+			if (e == 1) {
+				this.$refs.showshare.open();
+			} else if (e == 2) {
+				this.$refs.center.open();
 			}
-			console.log(e)
+			// console.log(e);
 		},
 		cancel(type) {
-			this.$refs['show' + type].close()
+			this.$refs['show' + type].close();
 		},
+		content() {
+			uni.request({
+				url: `${helper.requestUrl}/promote-rebates`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				success: res => {
+					// uni.hideLoading();
+					res = helper.null2str(res);
+					// console.log(res);
+					if (res.data.status_code == 200) {
+						this.collectionList = res.data;
+					} else {
+						// uni.showToast({
+						// 	title: res.data.message
+						// });
+					}
+				}
+			});
+		},
+		goShare(e) {
+			// console.log(e)
+			let sceneType = ''
+			if(e == '微信好友'){
+				sceneType = 'WXSceneSession'
+			} else if(e == '微信好友'){
+				sceneType = 'WXSenceTimeline'
+			}
+			uni.share({
+				provider: 'weixin',
+				scene: sceneType,
+				type: 1,
+				summary: this.collectionList.share_link,
+				success: function(res) {
+					// console.log('success:' + JSON.stringify(res));
+				},
+				fail: function(err) {
+					// console.log('fail:' + JSON.stringify(err));
+				}
+			});
+		}
 	}
 };
 </script>
@@ -230,11 +264,11 @@ export default {
 	color: #737373;
 	padding-bottom: 20rpx;
 }
-.model{
+.model {
 	width: 690rpx;
 	/* background: #000000; */
-	background: rgba(255,255,255,.3);
-	color: #2390DC;
+	background: rgba(255, 255, 255, 0.3);
+	color: #2390dc;
 	display: flex;
 	justify-content: center;
 	/* margin-top: -160rpx; */
@@ -246,146 +280,174 @@ export default {
 	top: 240rpx;
 }
 
-	.example {
-		padding: 0 30rpx 30rpx;
-	}
+.example {
+	padding: 0 30rpx 30rpx;
+}
 
-	.example-info {
-		padding: 30rpx;
-		color: #3b4144;
-		background: #ffffff;
-	}
+.example-info {
+	padding: 30rpx;
+	color: #3b4144;
+	background: #ffffff;
+}
 
-	.example-body {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		padding: 0;
-		font-size: 14rpx;
-		background-color: #ffffff;
-	}
-	.uni-tip-title {
-		margin-bottom: 10px;
-		text-align: center;
-		font-weight: bold;
-		font-size: 16px;
-		color: #333;
-	}
+.example-body {
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0;
+	font-size: 14rpx;
+	background-color: #ffffff;
+}
+.uni-tip-title {
+	margin-bottom: 10px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	color: #333;
+}
 
-	.uni-tip-content {
-		font-size: 14px;
-		color: #666;
-	}
+.uni-tip-content {
+	font-size: 14px;
+	color: #666;
+}
 
-	.uni-tip-group-button {
-		display: flex;
-		flex-direction: row;
-		margin-top: 20px;
-	}
+.uni-tip-group-button {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+}
 
-	.uni-tip-button {
-		flex: 1;
-		text-align: center;
-		font-size: 14px;
-		color: #3b4144;
-	}
+.uni-tip-button {
+	flex: 1;
+	text-align: center;
+	font-size: 14px;
+	color: #3b4144;
+}
 
-	.modelShow{
-		background: #000000;
-		width: 750rpx;
-		height: 100vh;
-		position: fixed;
-		z-index: 99;
-		top: 0;
-		left: 0;
-		opacity: .4;
-		overflow: hidden;
-	}
-	.meShare{
-		width: 750rpx;
-		position: fixed;
-		z-index: 99;
-		bottom: 0;
-		left: 0;
-	}
-	/* 底部分享 */
-	.uni-share {
-		display: flex;
-		flex-direction: column;
-		background-color: #fff;
-	}
+.modelShow {
+	background: #000000;
+	width: 750rpx;
+	height: 100vh;
+	position: fixed;
+	z-index: 99;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+	overflow: hidden;
+}
+.meShare {
+	width: 750rpx;
+	position: fixed;
+	z-index: 99;
+	bottom: 0;
+	left: 0;
+}
+/* 底部分享 */
+.uni-share {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
 
-	.uni-share-title {
-		line-height: 60rpx;
-		font-size: 24rpx;
-		padding: 15rpx 0;
-		text-align: center;
-	}
+.uni-share-title {
+	line-height: 60rpx;
+	font-size: 24rpx;
+	padding: 15rpx 0;
+	text-align: center;
+}
 
-	.uni-share-content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		padding: 15px;
-	}
+.uni-share-content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 15px;
+}
 
-	.uni-share-content-box {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 200rpx;
-	}
+.uni-share-content-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 200rpx;
+}
 
-	.uni-share-content-image {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		width: 60rpx;
-		height: 60rpx;
-		overflow: hidden;
-		border-radius: 10rpx;
-	}
+.uni-share-content-image {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 70rpx;
+	height: 70rpx;
+	overflow: hidden;
+	border-radius: 10rpx;
+}
+.uni-share-content-image .iconfont {
+	font-size: 60rpx;
+	color: #07c160;
+}
+.content-image {
+	width: 60rpx;
+	height: 60rpx;
+}
 
-	.content-image {
-		width: 60rpx;
-		height: 60rpx;
-	}
+.uni-share-content-text {
+	font-size: 26rpx;
+	color: #333;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
 
-	.uni-share-content-text {
-		font-size: 26rpx;
-		color: #333;
-		padding-top: 5px;
-		padding-bottom: 10px;
-	}
-
-	.uni-share-btn {
-		height: 90rpx;
-		line-height: 90rpx;
-		font-size: 14px;
-		border-top-color: #f5f5f5;
-		border-top-width: 1px;
-		border-top-style: solid;
-		text-align: center;
-		color: #666;
-	}
-	.fase{
-		width: 400rpx;
-		background: #fff;
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		padding: 40rpx 20rpx;
-	}
-	.fase image{
-		width: 252rpx;
-		height: 252rpx;
-	}
-	.fase text{
-		font-size: 32rpx;
-		font-weight: 500;
-		color: #333;
-		margin-top: 16rpx;
-	}
+.uni-share-btn {
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 14px;
+	border-top-color: #f5f5f5;
+	border-top-width: 1px;
+	border-top-style: solid;
+	text-align: center;
+	color: #666;
+}
+.fase {
+	width: 400rpx;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 40rpx 20rpx;
+}
+.fase image {
+	width: 252rpx;
+	height: 252rpx;
+}
+.fase text {
+	font-size: 32rpx;
+	font-weight: 500;
+	color: #333;
+	margin-top: 16rpx;
+}
+.meTable{
+	/* background: #0066CC; */
+}
+.meTable .item{
+	display: flex;
+	justify-content: space-between;
+	padding: 18rpx 0;
+}
+.meTable .item text{
+	text-align: center;
+	font-size: 24rpx;
+	color: #737373;
+}
+.meTable .item.headTab text{
+	font-weight: 700;
+}
+.meTable .item text:first-child{
+	width: 200rpx;
+}
+.meTable .item text:nth-child(2){
+	width: 280rpx;
+}
+.meTable .item text:nth-child(3){
+	width: 280rpx;
+}
 </style>

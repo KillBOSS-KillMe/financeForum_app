@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "cell": "/components/cell"
-  },
+  "usingComponents": {},
   "component": true
 }

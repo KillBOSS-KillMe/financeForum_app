@@ -23,7 +23,7 @@
 								<view v-if="col.type==='index'">
 									{{ index+1 }}
 								</view>
-								<Cell v-if="col.render" :row="item" :column="col" :index="index" :render="col.render" />
+								<!-- <cell v-if="col.render" :row="item" :column="col" :index="index" :render="col.render" /> -->
 								<text v-else-if="!col.render" v-html="item[col.key]"></text>
 							</view>
 						</view>
@@ -38,10 +38,13 @@
 </template>
 
 <script>
-	import Cell from './cell'
+	// import helper from '../common/helper.js';
+  // import cell from '../common/cell.js'
+  // import cell from '@/common/cell.js'
+	// console.log(cell, 99999)
 	export default {
 		components: {
-			Cell
+			// cell
 		},
 		props: {
 			/**
