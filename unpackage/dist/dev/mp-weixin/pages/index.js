@@ -230,12 +230,13 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 10, page: 1 };}, onLaunch: function onLaunch() {}, onShow: function onShow() {this.imgUrl = _helper.default.imgUrl;this.getList(); // this.getToken()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 10, page: 1 };}, onLaunch: function onLaunch() {}, onShow: function onShow() {this.imgUrl = _helper.default.imgUrl;this.getUserInfo();this.getList(); // this.getToken()
   }, onHide: function onHide() {}, onLoad: function onLoad() {}, methods: { // 导航详情
     goNavs: function goNavs(e) {// console.log(e.currentTarget.dataset.id)
       var link = e.currentTarget.dataset.link;var bind_board = e.currentTarget.dataset.bind_board;var id = e.currentTarget.dataset.id;var name = e.currentTarget.dataset.name;console.log(bind_board);if (bind_board == '0') {uni.navigateTo({ url: "/pages/".concat(link) });} else if (bind_board == '1') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });}}, //
     selListType: function selListType(e) {this.Inv = e.currentTarget.dataset.index;this.boardId = e.currentTarget.dataset.block_id;this.page = '1';}, // 轮播跳转
-    goBanner: function goBanner(e) {console.log(e);},
+    goBanner: function goBanner(e) {console.log(e);
+    },
     // 文章详情
     goDetail: function goDetail(e) {
       console.log(e);
@@ -243,8 +244,29 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
 
     },
+    getUserInfo: function getUserInfo() {var _this = this;
+      // 用户信息获取
+      uni.showLoading({
+        title: '用户信息获取中...' });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/me"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '++++++++');
+          _this.userInfo = res.data;
+          app.globalData.userInfo = res.data;
+          console.log(_this.userInfo.mobile);
+        } });
+
+    },
     //获取数据
-    getList: function getList() {var _this = this;
+    getList: function getList() {var _this2 = this;
       uni.showLoading({
         title: '加载中...',
         duration: 1000000 });
@@ -253,16 +275,16 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         url: "".concat(_helper.default.requestUrl, "/index"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
-
+          // authorization: app.globalData.token
+        },
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
             var pageNode = res.data.data;
-            _this.pageNode = pageNode;
+            _this2.pageNode = pageNode;
             if (pageNode.board_data.length > 0) {
-              _this.boardId = pageNode.board_data[0].block_id;
+              _this2.boardId = pageNode.board_data[0].block_id;
             }
           } else {
             uni.showToast({
@@ -274,7 +296,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
     },
     //加载更多
-    onReachBottom: function onReachBottom() {var _this2 = this;
+    onReachBottom: function onReachBottom() {var _this3 = this;
       console.log(this.boardId);
       this.page++;
       // console.log(this.pageNode.board_data[Inv].block_id)
@@ -303,7 +325,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
                 icon: "none" });
 
             }
-            _this2.pageNode = _this2.pageNode.concat(res.data.data);
+            _this3.pageNode = _this3.pageNode.concat(res.data.data);
           } else {
             uni.showToast({
               title: res.data.message });

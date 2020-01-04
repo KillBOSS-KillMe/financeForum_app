@@ -159,13 +159,9 @@
 			},
 			getUserInfo() {
 				// 用户信息获取
-				// uni.showLoading({
-				//   title: '用户信息获取中...'
-				// });
-				// uni.showLoading({
-				//   title: '加载中...',
-				// 	duration: 1000000
-				// });
+				uni.showLoading({
+				  title: '用户信息获取中...'
+				});
 				uni.request({
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',

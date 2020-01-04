@@ -12,7 +12,7 @@
 		</view>
 		<view class="contentList">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="item" @tap="goProduct">
+				<view class="item" @tap="goProduct" :data-id="item.id">
 					<image :src="imgUrl + item.icon" mode="aspectFill" v-if="item.icon != ''"></image>
 					<image src="../static/a.jpg" mode="" v-if="item.icon == ''"></image>
 					<view class="itemRight">
@@ -141,6 +141,12 @@
 			this.getList()
 		},
 		methods: {
+			goProduct(e) {
+				let id = e.currentTarget.dataset.id
+				uni.navigateTo({
+					url:`/pages/productDetail?id=${id}`
+				})
+			},
 			// 标签列表显示
 			getTap(e) {
 				if (e == 1) {
@@ -155,6 +161,7 @@
 				this.currentIndex = e
 				this.quota = this.keyShow[this.currentIndex].name
 				this.list = []
+				this.mask = false
 				this.getList()
 			},
 			// 隐藏标签列表

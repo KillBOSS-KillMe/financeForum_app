@@ -265,6 +265,12 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
     this.getList();
   },
   methods: {
+    goProduct: function goProduct(e) {
+      var id = e.currentTarget.dataset.id;
+      uni.navigateTo({
+        url: "/pages/productDetail?id=".concat(id) });
+
+    },
     // 标签列表显示
     getTap: function getTap(e) {
       if (e == 1) {
@@ -279,6 +285,7 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
       this.currentIndex = e;
       this.quota = this.keyShow[this.currentIndex].name;
       this.list = [];
+      this.mask = false;
       this.getList();
     },
     // 隐藏标签列表
