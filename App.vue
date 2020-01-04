@@ -86,6 +86,9 @@ uni-tabbar .uni-tabbar__icon {
 	width: 43rpx !important;
 	height: 43rpx !important;
 }
+button[type=primary]{
+	background: none;
+}
 .nullList {
 	width: 750rpx;
 	height: 300rpx;

@@ -9,7 +9,7 @@
 		"minified": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "2.9.2",
 	"appid": "wx5288d1f667f49f05",
 	"projectname": "financeForum_app",
 	"simulatorType": "wechat",

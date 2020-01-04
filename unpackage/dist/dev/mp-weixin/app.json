@@ -99,5 +99,10 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
+<<<<<<< HEAD
   }
+=======
+  },
+  "sitemapLocation": "sitemap.json"
+>>>>>>> dd1608ad61592fd73e4900eeaa30aa314fe09f66
 }

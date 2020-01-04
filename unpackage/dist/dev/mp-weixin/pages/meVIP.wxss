@@ -42,8 +42,8 @@ uni-swiper{
 }
 .banner {
 	width: 750rpx;
-	height: 340rpx;
-	margin-top: -70rpx;
+	/* height: auto; */
+	margin-top: -60rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -55,7 +55,7 @@ uni-swiper{
 }
 .banner .bannerBox {
 	width:630rpx;
-	height: 340rpx;
+	/* height: 340rpx; */
 	border-radius: 10rpx;
 }
 .banner .bannerBox image{
@@ -228,6 +228,7 @@ uni-swiper{
 	font-size: 30rpx;
 	font-weight: 700;
 	margin-top: 60rpx;
+	color: #fff;
 }
 .radio {
 	width: 690rpx;

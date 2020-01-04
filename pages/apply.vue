@@ -87,10 +87,20 @@
 							icon: 'none'
 						})
 					}else{
-						uni.navigateTo({
-							url:`/pages/iframe?url=${extra}&name=${name}`
-							// url:'/pages/iframe'
-						})
+						// #ifndef MP-WEIXIN
+								uni.showToast({
+									title:'该小程序在不支持，请下载App',
+									icon: 'none'
+								})
+						// #endif
+						// #ifndef APP-PLUS
+								// uni.navigateTo({
+								// 	url:`/pages/iframe?url=${extra}&name=${name}`
+								// })
+								uni.showToast({
+									title:'App'
+								})
+						// #endif
 					}
 					// plus.runtime.openURL(extra)
 					// window.location.href = extra

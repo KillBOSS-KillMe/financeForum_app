@@ -8,7 +8,7 @@
 			<view class="banner">
 				<view class="bannerBox">
 					<swiper class="swiper"  next-margin='50rpx' :current="current"  @change="banner">
-						<block v-for="(item,index) in vip" :key="index">
+						<block v-for="(item,index) in vip.data" :key="index">
 							<swiper-item>
 								<image class="bannerImg" :src="imgUrl+item.title_pic" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
 							</swiper-item>
@@ -39,28 +39,28 @@
 			<view class="longVip"  v-if="bannerIndex == '0'">
 				<view class="money">
 					￥
-					<text>{{vip[0].vip_price}}</text>
+					<text>{{vip.data[0].vip_price}}</text>
 					/年
 				</view>
 				<view class="time">
 					<text class="long">普通会员超价值</text>
-					<text>普通会员专享受价￥{{vip[0].vip_price}}</text>
+					<text>普通会员专享受价￥{{vip.data[0].vip_price}}</text>
 				</view>
 			</view>
 			<view class="longVip"  v-if="bannerIndex == '1'">
 				<view class="money">
 					￥
-					<text>{{vip[1].vip_price}}</text>
+					<text>{{vip.data[1].vip_price}}</text>
 					/年
 				</view>
 				<view class="time">
 					<text class="long">永久会员超价值</text>
-					<text>永久会员专享受价￥{{vip[1].vip_price}}</text>
+					<text>永久会员专享受价￥{{vip[1].data.vip_price}}</text>
 				</view>
 			</view>
 		</view>
-		<button type="primary" class="off" disabled="" v-if="isCheck == false">立即开通，尽享权益</button>
-		<button type="primary" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip[bannerIndex].id" :data-money="vip[bannerIndex].vip_price">立即开通，尽享权益</button>
+		<button type="" class="off" disabled="" v-if="isCheck == false">立即开通，尽享权益</button>
+		<button type="" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip.data[bannerIndex].id" :data-money="vip.data[bannerIndex].vip_price">立即开通，尽享权益</button>
 		<view class="radio">
 			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange(isCheck)" :checked="isCheck" /></label>
 			<view>
@@ -136,7 +136,7 @@
 						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == 200) {
-							this.vip = res.data.data
+							this.vip = res.data
 						} else {
 							uni.showToast({
 								title: res.data.message
@@ -189,15 +189,15 @@ uni-swiper{
 }
 .banner {
 	width: 750rpx;
-	height: 340rpx;
-	margin-top: -70rpx;
+	/* height: auto; */
+	margin-top: -60rpx;
 	display: flex;
 	justify-content: center;
 	
 }
 .banner .bannerBox {
 	width:630rpx;
-	height: 340rpx;
+	/* height: 340rpx; */
 	border-radius: 10rpx;
 }
 .banner .bannerBox image{
@@ -319,6 +319,7 @@ uni-swiper{
 	font-size: 30rpx;
 	font-weight: 700;
 	margin-top: 60rpx;
+	color: #fff;
 }
 .radio {
 	width: 690rpx;
