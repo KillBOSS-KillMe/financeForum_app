@@ -31,7 +31,7 @@ export default {
 		vipIndex: '',
 	},
 	onLoad() {
-		// this.getToken()
+		this.getToken()
 	},
 	methods: {
 		// 获取Token
@@ -86,9 +86,9 @@ uni-tabbar .uni-tabbar__icon {
 	width: 43rpx !important;
 	height: 43rpx !important;
 }
-button[type=primary]{
+/* button[type=primary]{
 	background: none;
-}
+} */
 .nullList {
 	width: 750rpx;
 	height: 300rpx;

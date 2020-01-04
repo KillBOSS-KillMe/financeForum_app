@@ -1,19 +1,44 @@
 <template>
 	<view class="meMessage">
-		<block v-for="(item,index) in list" :key="index">
-			<view class="item">
-				<view>
-					<image :src="item.img" mode=""></image>
-					<view class="right">
-						<text class="title">{{item.title}}</text>
-						<text>{{item.content}}</text>
+		<view v-if="type == '3'">
+			<block v-for="(item,index) in list" :key="index">
+				<view class="item">
+					<view>
+						<image :src="imgUrl+item.img" mode=""></image>
+						<view class="right">
+							<text class="title">{{item.title}}</text>
+							<text>{{item.content}}</text>
+						</view>
 					</view>
-					
 				</view>
-				<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
-			</view>
-		</block>
-		
+			</block>
+		</view>
+		<view v-if="type == '2'">
+			<block v-for="(item,index) in list" :key="index">
+				<view class="comment">
+					<view>
+						<text class="title">{{item.post.title}}</text>
+						<text class="commentContent">{{item.content}}</text>
+						<text class="commentTime">{{item.created_at}}</text>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view v-if="type == '1'">
+			<block v-for="(item,index) in list" :key="index">
+				<view class="item">
+					<view>
+						<image :src="imgUrl+item.about.user.avatar" mode=""></image>
+						<view class="right">
+							<text class="title">{{item.about.user.name}}</text>
+							<text>提到了我</text>
+							<text>{{item.created_at}}</text>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view class="null" v-if="list.length == '0'">暂无数据</view>
 	</view>
 </template>
 
@@ -23,21 +48,50 @@
 	export default {
 		data() {
 			return {
-				list:[
-					{id:'1',img:'../static/logo.png',title:'提到我的',content:'出现GV兴奋地和规范化您构成同一家那个号'},
-					{id:'2',img:'../static/logo.png',title:'评论'},
-					{id:'3',img:'../static/logo.png',title:'系统消息'}
-				]
+				list:[],
+				type: '',
+				imgUrl: ''
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			console.log(options)
 			uni.setNavigationBarTitle({
 				title: options.title
 			})
+			this.type = options.type
+			this.getList()
+			this.imgUrl = helper.imgUrl
 		},
 		methods: {
-			
+			getList(){
+				let url = ''
+				if(this.type == '1'){
+					url='abouts'
+				} else if(this.type == '2'){
+					url='comments'
+				} else if(this.type == '3'){
+					url='news-list'
+				}
+				uni.request({
+					url: `${helper.requestUrl}/user/${url}`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res);
+						if (res.data.status_code == 200) {
+							this.list = res.data.data;
+						} else {
+							// uni.showToast({
+							// 	title: res.data.message
+							// });
+						}
+					}
+				});
+			}
 		}
 	}
 </script>
@@ -45,7 +99,7 @@
 <style>
 .meMessage{
 	width: 690rpx;
-	padding: 0 30rpx;
+	padding:30rpx;
 }
 .meMessage .item{
 	border: 1rpx solid #F8F8F8;
@@ -84,5 +138,30 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+.comment{
+	width: 690rpx;
+	padding: 20rpx 0;
+	color: #666;
+}
+.comment .title{
+	font-size: 28rpx !important;
+	color: #000000;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.commentContent{
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	font-size: 26rpx;
+	color: #000000;
+	margin: 10rpx 0;
+}
+.commentTime{
+	font-size: 24rpx;
 }
 </style>

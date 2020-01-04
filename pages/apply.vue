@@ -87,18 +87,15 @@
 							icon: 'none'
 						})
 					}else{
-						// #ifndef MP-WEIXIN
+						// #ifdef MP-WEIXIN
 								uni.showToast({
 									title:'该小程序在不支持，请下载App',
 									icon: 'none'
 								})
 						// #endif
-						// #ifndef APP-PLUS
-								// uni.navigateTo({
-								// 	url:`/pages/iframe?url=${extra}&name=${name}`
-								// })
-								uni.showToast({
-									title:'App'
+						// #ifdef APP-NVUE
+								uni.navigateTo({
+									url:`/pages/iframe?url=${extra}&name=${name}`
 								})
 						// #endif
 					}
