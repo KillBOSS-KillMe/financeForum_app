@@ -1,7 +1,7 @@
 <template>
 	<view class="me">
 		<view class="meHead">
-			<image class="userImg" :src="imgUrl+userInfo.avatar" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<image class="userImg" :src="imageUrl" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view>
@@ -138,7 +138,8 @@
 		data() {
 			return {
 				userInfo: {},
-				imgUrl: ''
+				imgUrl: '',
+				imageUrl: ''
 			}
 		},
 		onLoad() {
@@ -170,10 +171,10 @@
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
-						console.log(res,'++++++++')
-						this.userInfo = res.data
-						app.globalData.userInfo = res.data
-						console.log(this.userInfo.mobile)
+						if (res.statusCode == 200) {
+							this.userInfo = res.data
+							this.imageUrl = this.imgUrl+this.userInfo.avatar
+						}
 					}
 				})
 			}
