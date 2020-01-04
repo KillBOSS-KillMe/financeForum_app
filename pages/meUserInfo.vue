@@ -4,10 +4,11 @@
 			<view class="icon" @tap="edit">
 				<uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon>
 			</view>
-			<image class="userImg" src="../static/a.jpg" mode=""></image>
+			<image class="userImg" :src="imgUrl+userInfo.avatar" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<!-- <image class="userImg" src="../static/a.jpg" mode=""></image> -->
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
-				<view><text class="login">admin</text><text class="tip">青铜新手</text></view>
+				<view><text class="login">{{userInfo.name}}</text><text class="tip">青铜新手</text></view>
 				<view class="meHeadList">
 					<text>参与</text>
 					<text @tap="meFollow">关注</text>
@@ -101,11 +102,11 @@
 			}
 		},
 		onLoad() {
-			this.imgUrl = helper.imgUrl
 			// 获取用户信息
 			this.getUserInfo()
 			// 获取我的发布
 			this.getPublish()
+			this.imgUrl = helper.imgUrl
 		},
 		methods: {
 			changeTab(e) {

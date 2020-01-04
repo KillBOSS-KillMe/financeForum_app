@@ -214,6 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -304,9 +305,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { Inv: 0, imgUrl: '', publishList: [], userInfo: [] };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // 获取用户信息
+//
+var app = getApp();var _default = { data: function data() {return { Inv: 0, imgUrl: '', publishList: [], userInfo: [] };}, onLoad: function onLoad() {// 获取用户信息
     this.getUserInfo(); // 获取我的发布
-    this.getPublish();}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;}, // 编辑
+    this.getPublish();this.imgUrl = _helper.default.imgUrl;}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;}, // 编辑
     edit: function edit() {uni.navigateTo({ url: "/pages/meEdit" });}, // 粉丝
     meFan: function meFan() {uni.navigateTo({ url: "/pages/meFan" });}, // 关注
     meFollow: function meFollow() {uni.navigateTo({ url: "/pages/meFollow" });}, // 获取我的发布列表
