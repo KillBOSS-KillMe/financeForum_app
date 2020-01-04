@@ -8,10 +8,10 @@
 			<input placeholder="请输入搜素内容" @input="bindInput" value="" />
 			<text @tap="runSearch(typeList[typeIndex].key)">搜索</text>
 		</view>
-		<view class="contentList">
+		<view class="contentList" v-if="typeList[typeIndex].key == 'post'">
 			<block v-for="(item, index) in postList" :key="index">
-				<view class="item" @tap="goDetail" :data-id="item.id">
-					<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
+				<view class="item" @tap="goPostDetail" :data-id="item.id">
+					<image :src="imgUrl + item.theme_pic" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
 					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 					<view class="itemRight">
 						<text class="title">{{ item.title }}</text>
@@ -23,6 +23,9 @@
 					</view>
 				</view>
 			</block>
+		</view>
+		<view class="userList" v-if="typeList[typeIndex].key == 'user'">
+			
 		</view>
 	</view>
 </template>
@@ -54,6 +57,11 @@ export default {
 			console.log('picker发送选择改变，携带值为', e.target.value)
 			this.typeIndex = e.target.value
 		},
+		goPostDetail(e) {
+			uni.navigateTo({
+				url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
+			})
+		},
 		// 跳转详情
 		// goDetail(e){
 		// 	uni.navigateTo({
@@ -83,14 +91,14 @@ export default {
 				success: res => {
 					uni.hideLoading();
 					res = helper.null2str(res)
-					console.log(res,'++++++++')
+					// console.log(res,'++++++++')
 					if (res.data.status_code == 200) {
 						if (type == 'user') {
 							// 用户列表
 							this.userList = []
 						} else {
 							// 帖子
-							this.postList = []
+							this.postList = res.data.data
 						}
 						// this.itemList = this.itemList.concat(res.data.data);
 						// // 当前页码
@@ -151,7 +159,7 @@ export default {
 	.contentList .item {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 40rpx;
+		margin: 40rpx 0;
 	}
 	.contentList .item image {
 		width: 220rpx;
