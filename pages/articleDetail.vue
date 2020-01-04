@@ -97,7 +97,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<input type="text" :value="postContent" focus @input="getContent" placeholder="发表评论..." />
+			<input type="text" :value="postContent" :focus="focus" @input="getContent" placeholder="发表评论..." />
 			<uni-icon class="iconfont iconziyuan icon" type="" @tap="postDiscuss"></uni-icon>
 			<uni-icon class="iconfont iconzanzan" :class="['icon', isHide == '1' ? 'active' : '']" @tap="clickZan" type=""></uni-icon>
 			<!-- 收藏 -->
@@ -604,8 +604,12 @@ export default {
 }
 
 .read view {
+	width: 100rpx;
 	font-size: 20rpx;
 	color: #333333;
+}
+.read view .iconfont{
+	margin-right: 6rpx;
 }
 .postCom {
 	display: flex;
