@@ -74,6 +74,7 @@
 		},
 		onShow() {
 			this.imgUrl = helper.imgUrl
+			this.getUserInfo()
 			this.getList()
 			// this.getToken()
 		},
@@ -119,6 +120,27 @@
 					url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 				})
 			},
+			getUserInfo() {
+				// 用户信息获取
+				uni.showLoading({
+				  title: '用户信息获取中...'
+				});
+				uni.request({
+					url: `${helper.requestUrl}/me`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res,'++++++++')
+						this.userInfo = res.data
+						app.globalData.userInfo = res.data
+						console.log(this.userInfo.mobile)
+					}
+				})
+			},
 			//获取数据
 			getList() {
 				uni.showLoading({
@@ -129,7 +151,7 @@
 					url: `${helper.requestUrl}/index`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						// authorization: app.globalData.token
 					},
 					success: res => {
 						uni.hideLoading();

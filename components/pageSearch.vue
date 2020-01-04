@@ -5,8 +5,9 @@
 		<view class="searchBox">
 			<input type="text" @input="getSearchKey" />
 		</view>
-		<view class="service"><uni-icon type="" class="iconfont iconyonghuguanli"></uni-icon></view>
-		<!-- <image class="service" src="../static/b.jpg" mode="" @tap="goMe"></image> -->
+		<view class="service" @tap="goMe">
+			<uni-icon type="" class="iconfont iconyonghuguanli"></uni-icon>
+		</view>
 	</view>
 </template>
 
@@ -14,7 +15,6 @@
 	export default {
 		data() {
 			return {
-
 			}
 		},
 		methods: {

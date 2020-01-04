@@ -1,6 +1,7 @@
 
 .me {
 	width: 750rpx;
+	padding: 0 0 30rpx;
 }
 .me .meHead {
 	width: 690rpx;
@@ -107,7 +108,7 @@
 	    -ms-flex-line-pack: center;
 	        align-content: center;
 	height: 50rpx;
-	margin-bottom: 20rpx;
+	margin-bottom: 28rpx;
 }
 .me .contentList .item .left {
 	display: -webkit-box;

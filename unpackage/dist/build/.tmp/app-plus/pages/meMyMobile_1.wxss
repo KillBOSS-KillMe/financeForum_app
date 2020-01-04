@@ -2,7 +2,6 @@
 .head{
 		width: 750rpx;
 		height: 256rpx;
-		height: auto;
 		border-top: 2rpx solid #F3F3F3;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -12,10 +11,10 @@
 		-webkit-align-items: center;
 		    -ms-flex-align: center;
 		        align-items: center;
-		-webkit-box-pack: justify;
-		-webkit-justify-content: space-between;
-		    -ms-flex-pack: justify;
-		        justify-content: space-between;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: column;
@@ -23,12 +22,11 @@
 		        flex-direction: column;
 }
 .head .iconfont{
-		width: 95rpx;
-		height: 95rpx;
-		margin: 35rpx 0;
-		border-radius: 95rpx;
 		font-size: 62rpx;
 		color: #fff;
+		text-align: center;
+}
+.head>view{
 		background-color: #3e8cfd;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -42,6 +40,10 @@
 		-webkit-justify-content: center;
 		    -ms-flex-pack: center;
 		        justify-content: center;
+		width: 95rpx;
+		height: 95rpx;
+		margin: 35rpx 0;
+		border-radius: 95rpx;
 }
 .head ._span{
 		margin-bottom: 50rpx;

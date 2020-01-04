@@ -22,13 +22,11 @@
 		    -ms-flex-direction: column;
 		        flex-direction: column;
 }
-.head .iconfont{
+.head>view{
 		width: 172rpx;
 		height: 172rpx;
 		margin: 60rpx 0;
 		border-radius: 172rpx;
-		font-size: 130rpx;
-		color: #fff;
 		background-color: #3e8cfd;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -42,6 +40,10 @@
 		-webkit-justify-content: center;
 		    -ms-flex-pack: center;
 		        justify-content: center;
+}
+.head .iconfont{
+		font-size: 130rpx;
+		color: #fff;
 }
 .head .title{
 		font-size: 32rpx;

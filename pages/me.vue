@@ -158,13 +158,9 @@
 			},
 			getUserInfo() {
 				// 用户信息获取
-				// uni.showLoading({
-				//   title: '用户信息获取中...'
-				// });
-				// uni.showLoading({
-				//   title: '加载中...',
-				// 	duration: 1000000
-				// });
+				uni.showLoading({
+				  title: '用户信息获取中...'
+				});
 				uni.request({
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
@@ -176,11 +172,8 @@
 						res = helper.null2str(res)
 						console.log(res,'++++++++')
 						this.userInfo = res.data
+						app.globalData.userInfo = res.data
 						console.log(this.userInfo.mobile)
-						if (res.data.status_code == 200) {
-							
-							
-						}
 					}
 				})
 			}

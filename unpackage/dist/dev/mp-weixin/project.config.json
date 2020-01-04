@@ -9,17 +9,11 @@
 		"minified": true
 	},
 	"compileType": "miniprogram",
-<<<<<<< HEAD
 	"libVersion": "2.7.0",
-	"appid": "wx5288d1f667f49f05",
-	"projectname": "financeForum_app",
-=======
-	"libVersion": "2.9.2",
 	"appid": "wx5288d1f667f49f05",
 	"projectname": "financeForum_app",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
->>>>>>> ec2f50996a1fb13e475eaf2828f85fb3e8c87d86
 	"condition": {
 		"search": {
 			"current": -1,
@@ -29,39 +23,18 @@
 			"current": -1,
 			"list": []
 		},
-<<<<<<< HEAD
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-=======
->>>>>>> ec2f50996a1fb13e475eaf2828f85fb3e8c87d86
 		"game": {
 			"current": -1,
 			"list": []
 		},
-<<<<<<< HEAD
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-=======
->>>>>>> ec2f50996a1fb13e475eaf2828f85fb3e8c87d86
 		"miniprogram": {
 			"current": 0,
 			"list": [
 				{
-<<<<<<< HEAD
-					"id": -1,
-					"name": "pages/allProduct",
-					"pathName": "pages/allProduct",
-					"scene": null
-=======
 					"name": "",
 					"path": "",
 					"query": "",
 					"id": 0
->>>>>>> ec2f50996a1fb13e475eaf2828f85fb3e8c87d86
 				}
 			]
 		}
