@@ -2,8 +2,8 @@
 	<view class="pageSearch">
 		<uni-icon type="" @tap="goCode" class="iconfont iconsaoyisao"></uni-icon>
 		<!-- <image class="code" src="../static/a.jpg" mode=""></image> -->
-		<view class="searchBox">
-			<input type="text" @input="getSearchKey" />
+		<view class="searchBox" @tap="goSearch">
+			<input type="text" disabled />
 		</view>
 		<view class="service" @tap="goMe">
 			<uni-icon type="" class="iconfont iconyonghuguanli"></uni-icon>
@@ -26,9 +26,15 @@
 					}
 				});
 			},
-			getSearchKey(e) {
-				console.log(e.detail.value)
-				this.searchKey = e.detail.value
+			// getSearchKey(e) {
+			// 	console.log(e.detail.value)
+			// 	this.searchKey = e.detail.value
+			// },
+			goSearch() {
+				// 进入搜索页
+				uni.navigateTo({
+					url: `/pages/search`
+				})
 			},
 			goMe() {
 				// 进入个人中心
