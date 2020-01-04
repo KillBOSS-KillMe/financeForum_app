@@ -19,7 +19,7 @@
 		<view class="contentList">
 			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconzhizhang5"></uni-icon>
 					<text>我的草稿</text>
 				</view>
 				<view>
@@ -28,7 +28,7 @@
 			</view>
 			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconshouji"></uni-icon>
 					<text>我的手机</text>
 				</view>
 				<view>
@@ -38,7 +38,7 @@
 			</view>
 			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconxiaoxi"></uni-icon>
 					<text>我的消息</text>
 				</view>
 				<view>
@@ -84,7 +84,7 @@
 			</view>
 			<view class="item" data-name="meReserve" @tap="goPageNavigateTo">
 				<view class="left">
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<uni-icon type="" class="iconfont iconhongbao1"></uni-icon>
 					<text>备用金打造</text>
 				</view>
 				<view>
