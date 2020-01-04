@@ -169,10 +169,6 @@ export default {
 		},
 		// 文章详情加载
 		getArticleDetail() {
-			uni.showLoading({
-				title: '加载中...',
-				duration: 1000000
-			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/show`,
 				method: 'GET',
@@ -194,11 +190,15 @@ export default {
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: 'none'
+							icon: 'none',
+							duration: 2000
 						});
-						uni.navigateBack({
-							delta: 1
-						});
+						setTimeout(e => {
+							uni.navigateBack({
+								delta: 1
+							})
+						}, 2000)
+						
 					}
 				}
 			});
