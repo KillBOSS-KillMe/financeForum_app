@@ -1,43 +1,50 @@
 <template>
 	<view class="searchNet">
 		<view class="search">
-			<!-- <picker class="picker" bindchange="bindChange" value="{{Index}}"  range="{{Data}}" range-key="name"> -->
-			<picker @change="selSearchType" :value="index" :range="typeList" range-key="name">
-				<view class="uni-input">{{typeList[index].name}}123123123</view>
+			<picker @change="selSearchType" :value="typeIndex" :range="typeList" range-key="name">
+				<view class="searchType" v-if="typeIndex != -1">{{typeList[typeIndex].name}}</view>
+				<view class="searchType" v-if="typeIndex == -1">选择搜索</view>
 			</picker>
 			<input placeholder="请输入搜素内容" @input="bindInput" value="" />
-			<text @tap="setSearchStorage(inputValue)">查网贷</text>
+			<text @tap="runSearch(typeList[typeIndex].key)">搜索</text>
 		</view>
-		<view v-if="mask">
-			<view class="historySearch" v-if="storageFlag">
-				<text class="hotSearchTitle">历史记录</text>
-				<view class="history">
-					<block v-for="(item, index) in sercherStorage" :key="index">
-						<view class="historyItem" @tap="setSearchStorage(item)">
-							<view>
-								<icon class="iconfont iconlishijilu"></icon>
-								<text>{{ item }}</text>
-							</view>
-							<icon class="iconfont iconbuoumaotubiao20" @tap.stop="clearList(index)"></icon>
+		<view class="contentList" v-if="typeList[typeIndex].key == 'post'">
+			<block v-for="(item, index) in postList" :key="index">
+				<view class="item" @tap="goPostDetail" :data-id="item.id">
+					<image :src="imgUrl + item.theme_pic" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
+					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
+					<view class="itemRight">
+						<text class="title">{{ item.title }}</text>
+						<view class="itemCon">
+							<text>{{ item.created_at }}</text>
+							<text>用户名</text>
+							<text>{{item.comments_count}}评</text>
 						</view>
-					</block>
-				</view>
-			</view>
-			<view class="clearHistor" v-if="sercherStorage.length !== 0" @tap="clearSearchStorage">消除全部搜索历史</view>
-		</view>
-		<view v-if="!mask" class="result">
-			<view v-if="itemList.length > 0" class="content">
-				<block v-for="(item, index) in itemList" :key="index">
-					<view class="item" @tap="goDetail(item.id)">
-						<image :src="imgUrl + item.icon"></image>
-						<text>{{ item.name }}</text>
 					</view>
-				</block>
-			</view>
-			<view v-if="itemList.length == 0" class="none">
-				<!-- <icon class="iconfont iconc-kongzhuangtai"></icon> -->
-				<text>没有找到相关信息</text>
-			</view>
+				</view>
+			</block>
+		</view>
+		<view class="userList" v-if="typeList[typeIndex].key == 'user'">
+			<block v-for="(item,index) in userList" :key="index">
+				<view class="item">
+					<image :src="imgUrl + item.avatar" v-if="item.avatar != ''"></image>
+					<image src="../static/a.jpg" v-else></image>
+					<view class="con">
+						<view>
+							<text class="title">{{item.name}}</text>
+							<!-- 性别（m 男 f 女 no_set 未设置） -->
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'm'"></uni-icon>
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'f'"></uni-icon>
+							<!-- <text class="label" v-if="item.vip > 1">管理员VIP{{item.vip}}级</text> -->
+							<text class="label">{{item.type}}</text>
+						</view>
+						<view class="info">{{item.signature}}</view>
+					</view>
+					<view class="operating">
+						<view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view>
+					</view>
+				</view>
+			</block>
 		</view>
 	</view>
 </template>
@@ -48,17 +55,14 @@ import helper from '../common/helper.js';
 export default {
 	data() {
 		return {
+			typeIndex: 0,
 			inputValue: '',
 			typeList: [
 				{name: '用户', key: 'user'},
-				{name: '用户', key: 'user'},
-				{name: '用户', key: 'user'},
-				{name: '用户', key: 'user'},
+				{name: '帖子', key: 'post'}
 			],
-			sercherStorage: [],
-			storageFlag: false, // 显示搜索记录标志位
-			mask: true,
-			mask1: false,
+			postList: [],
+			userList: [],
 			itemList: [],
 			current_page: 1,
 			imgUrl: ''
@@ -66,104 +70,63 @@ export default {
 	},
 	onLoad() {
 		this.imgUrl = helper.imgUrl;
-		this.openLocationsercher();
 	},
 
 	methods: {
 		selSearchType(e) {
 			console.log('picker发送选择改变，携带值为', e.target.value)
-			this.index = e.target.value
+			this.typeIndex = e.target.value
 		},
-		// 跳转详情
-		goDetail(e){
+		goPostDetail(e) {
 			uni.navigateTo({
-				url:`/pages/productDetail?id=${e}`
+				url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 			})
 		},
+		// 跳转详情
+		// goDetail(e){
+		// 	uni.navigateTo({
+		// 		url:`/pages/productDetail?id=${e}`
+		// 	})
+		// },
 		// 获取输入框的输入信息
 		bindInput(e) {
 			this.inputValue = e.detail.value;
-			if (this.inputValue == '') {
-				this.mask = true;
-			}
 		},
-		// // 清楚历史记录单条
-		clearList(e) {
-			console.log(e, '++++');
-			let index = e;
-			this.sercherStorage.splice(index, 1);
-			//将搜索记录更新到缓存
-			var searchData = this.sercherStorage;
-			uni.setStorageSync('searchData', searchData);
-			if (this.sercherStorage.length == 0) {
-				this.storageFlag = false;
-			} else {
-				this.storageFlag = true;
-			}
-		},
-		// // 清楚缓存历史并关闭历史搜索框
-		clearSearchStorage() {
-			uni.removeStorageSync('searchData');
-			this.sercherStorage = [];
-			this.storageFlag = false;
-		},
-		// // 点击缓存搜索列表
-		tapSercherStorage(e) {
-			var index = e;
-			this.inputValue = index;
-		},
-		// //添加搜索记录并搜索
-		setSearchStorage(e) {
-			this.inputValue = e;
-			if (this.inputValue != '') {
-				//将搜索记录更新到缓存
-				var searchData = this.sercherStorage;
-				searchData.unshift(this.inputValue);
-				searchData = [...new Set(searchData)];
-				searchData = searchData.splice(0, 6);
-				console.log(searchData);
-				uni.setStorageSync('searchData', searchData);
-				this.storageFlag = true;
-				this.mask = false;
-				this.openLocationsercher();
-				this.itemList = [];
-				this.current_page = 1;
-				this.getListData();
-			}
-		},
-		// // 打开历史记录列表
-		openLocationsercher() {
-			console.log(uni.getStorageSync('searchData'));
-			this.sercherStorage = uni.getStorageSync('searchData') || []; //调用API从本地缓存中获取数据
-			if (this.sercherStorage == '') {
-				this.storageFlag = false;
-			} else {
-				this.storageFlag = true;
-			}
-		},
-		getListData() {
+		runSearch(type) {
+			uni.showLoading({
+			  title: '搜索中...'
+			});
 			uni.request({
-				url: `${helper.requestUrl}/holes/search`,
-				// header: {
-				// 	authorization: this.$parent.globalData.token,
-				// },
-				method: 'GET',
+				url: `${helper.requestUrl}/search`,
+				header: {
+					authorization: app.globalData.token
+				},
+				method: 'POST',
 				data: {
+					type: type,
 					keywords: this.inputValue,
 					page: this.current_page,
 					page_size: 20
 				},
 				success: res => {
-					res = helper.null2str(res);
-					console.log(res);
+					uni.hideLoading();
+					res = helper.null2str(res)
+					// console.log(res,'++++++++')
 					if (res.data.status_code == 200) {
-						this.itemList = this.itemList.concat(res.data.data);
-						// 当前页码
-						this.current_page = res.data.current_page;
-						// 总页码
-						this.last_page = res.data.last_page;
-					} else if (res.data.status_code == 400) {
-						this.itemList = '';
+						if (type == 'user') {
+							// 用户列表
+							this.userList = []
+						} else {
+							// 帖子
+							this.postList = res.data.data
+						}
+						// this.itemList = this.itemList.concat(res.data.data);
+						// // 当前页码
+						// this.current_page = res.data.current_page;
+						// // 总页码
+						// this.last_page = res.data.last_page;
+					} else {
+						
 					}
 				}
 			});
@@ -173,6 +136,15 @@ export default {
 </script>
 
 <style>
+.searchType{
+	min-width: 70rpx;
+	height: 70rpx;
+	font-size: 28rpx;
+	color: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .searchNet {
 	width: 690rpx;
 	padding: 30rpx;
@@ -182,7 +154,7 @@ export default {
 	justify-content: space-between;
 }
 .search input {
-	width: 470rpx;
+	width: 400rpx;
 	border: 1rpx solid #e8e8e8;
 	height: 70rpx;
 	line-height: 70rpx;
@@ -202,100 +174,132 @@ export default {
 	line-height: 70rpx;
 	border-radius: 10rpx;
 }
-.historySearch {
-	width: 690rpx;
-	margin: 10rpx 0;
-}
-.hotSearchTitle {
-	font-size: 32rpx;
-	color: #cacaca;
-	font-weight: 600;
-	display: block;
-	padding: 15rpx 30rpx 24rpx;
-	border-bottom: 1rpx solid #f0f0f0;
-}
-.history text {
-	display: block;
-}
-.history .historyItem {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: 1rpx solid #f0f0f0;
-	padding: 20rpx 30rpx;
-}
-.history view {
-	display: flex;
-	align-items: center;
-}
-.history text {
-	font-size: 26rpx;
-	color: #000000;
-}
-.iconlishijilu {
-	color: #000000;
-	font-size: 28rpx;
-	width: 28rpx;
-	// height: 26rpx;
-	display: flex;
-	align-items: center;
-	margin-right: 16rpx;
-}
-.clearHistor {
-	color: #000000;
-	font-size: 26rpx;
-	font-weight: 600;
-	text-align: center;
-	margin: 40rpx 0;
-}
-.none {
-	margin-top: 100rpx;
-}
-/* .iconc-kongzhuangtai{
-	width: 160rpx;
-	display: block;
-	font-size: 150rpx;
-	margin: 0 auto;
-} */
-.none text {
-	text-align: center;
-	color: #454545;
-	font-size: 24rpx;
-	display: block;
-	margin: 20rpx 0 0 0;
-}
-.result {
-	width: 690rpx;
-	margin: 30rpx 0;
-}
-.result .content {
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
-}
-.result .content .item {
-	width: 160rpx;
-	margin: 0 20rpx 30rpx 0;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-.result .content .item:nth-child(4n) {
-	margin-right: 0;
-}
-.result .content .item image {
-	width: 96rpx;
-	height: 96rpx;
-	border-radius: 96rpx;
-}
-.result .content .item text {
-	/* text-align: center; */
-	color: #333;
-	font-size: 28rpx;
-	font-weight: 600;
-	margin-top: 10rpx;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-}
+
+
+	.contentList .item {
+		display: flex;
+		justify-content: space-between;
+		margin: 40rpx 0;
+	}
+	.contentList .item image {
+		width: 220rpx;
+		height: 136rpx;
+		border-radius: 10rpx;
+	}
+	.contentList .item .itemRight {
+		width: 440rpx;
+		display: flex;
+		align-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	.contentList .item .itemRight .title {
+		font-size: 28rpx;
+		color: #333333;
+		font-weight: 600;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	.itemCon {
+		width: 440rpx;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		/* justify-content: flex-end; */
+	}
+
+	.itemCon text {
+		display: block;
+		font-size: 24rpx;
+		color: #999999;
+	}
+	
+	.userList{
+		width: 750rpx;
+		height: auto;
+	}
+	.userList .item{
+		width: 690rpx;
+		height: 170rpx;
+		border-radius: 10rpx;
+		background-color: #F9F9F9;
+		margin: 20rpx 30rpx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.userList .item image{
+		width: 118rpx;
+		height: 118rpx;
+		border-radius: 118rpx;
+		margin: 20rpx;
+	}
+	.userList .item .con{
+		width: 390rpx;
+		height: 118rpx;
+		border-radius: 118rpx;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	.userList .item .con view{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.userList .item .title {
+		font-size: 24rpx;
+		margin: 0 10rpx;
+		font-size: 24rpx;
+		font-weight: 600;
+		color: #333333;
+	}
+	.userList .item .label{
+		font-size: 18rpx;
+		padding: 5rpx 10rpx;
+		border-radius: 30rpx;
+		color: #fff;
+		background-color: #D2BF8E;
+	}
+	.userList .item .iconfont {
+		font-size: 22rpx;
+		margin: 0 10rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.userList .item .con .info{
+		color: #666666;
+		font-size: 26rpx;
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	}
+	.userList .operating{
+		width: 100rpx;
+		height: 118rpx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-direction: column;
+		padding-left: 20rpx;
+	}
+	.userList .operating view{
+		width: 100rpx;
+		height: 60rpx;
+		font-size: 26rpx;
+		color: #fff;
+		background-color: #B8B8B8;
+		border-radius: 10rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 </style>
