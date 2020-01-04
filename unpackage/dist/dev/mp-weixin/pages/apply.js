@@ -211,10 +211,20 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
             icon: 'none' });
 
         } else {
-          uni.navigateTo({
-            url: "/pages/iframe?url=".concat(extra, "&name=").concat(name)
-            // url:'/pages/iframe'
-          });
+
+
+
+
+
+
+
+          // uni.navigateTo({
+          // 	url:`/pages/iframe?url=${extra}&name=${name}`
+          // })
+          uni.showToast({
+            title: 'App' });
+
+
         }
         // plus.runtime.openURL(extra)
         // window.location.href = extra
