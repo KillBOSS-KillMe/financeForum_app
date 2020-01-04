@@ -1,0 +1,1 @@
+<view><view data-event-opts="{{[['tap',[['go',['$event']]]]]}}" class="list" bindtap="__e"><view class="item"><view>实名认证</view><view>未认证<uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" vue-id="1" type bind:__l="__l"></uni-icon></view></view></view></view>
