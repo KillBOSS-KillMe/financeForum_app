@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "信息录入",
+  "usingComponents": {
+    "picker-address": "/components/wangding-pickerAddress"
+  }
+}

@@ -138,6 +138,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -152,7 +156,25 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: { go: function go() {uni.navigateTo({ url: "/pages/meCertificationConfirm" });} } };exports.default = _default;
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { userInfo: {} };}, onLoad: function onLoad() {this.getInfo();}, methods: { go: function go() {uni.navigateTo({ url: "/pages/meCertificationConfirm" });}, getInfo: function getInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          if (res.statusCode == 200) {
+            _this.userInfo = res.data.is_real;
+            console.log(_this.userInfo);
+          }
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
