@@ -3,8 +3,8 @@
 		<view class="head">
 			<view class="meSpreadHead">
 				<text class="balance">总余额</text>
-				<!-- <text class="money">￥{{ collectionList.member.user_blance }}</text> -->
-				<button class="withdraw" type="primary">提现</button>
+				<text class="money">￥{{ collectionList.member.user_blance }}</text>
+				<button class="withdraw" type="">提现</button>
 			</view>
 		</view>
 		<view class="invite">
@@ -211,6 +211,7 @@ export default {
 	border-radius: 36rpx;
 	font-size: 32rpx;
 	font-weight: 700;
+	color: #FFFFFF;
 }
 .invite {
 	width: 690rpx;

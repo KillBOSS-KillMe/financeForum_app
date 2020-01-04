@@ -43,6 +43,7 @@
 	border-radius: 36rpx;
 	font-size: 32rpx;
 	font-weight: 700;
+	color: #FFFFFF;
 }
 .invite {
 	width: 690rpx;

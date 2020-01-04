@@ -212,17 +212,14 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
 
         } else {
 
-
-
-
-
-
-
-          // uni.navigateTo({
-          // 	url:`/pages/iframe?url=${extra}&name=${name}`
-          // })
           uni.showToast({
-            title: 'App' });
+            title: '该小程序在不支持，请下载App',
+            icon: 'none' });
+
+
+
+
+
 
 
         }
