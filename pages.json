@@ -298,6 +298,12 @@
 			"style": {
 				"navigationBarTitleText": "支付方式"
 			}
+		},
+		{
+			"path": "pages/search",
+			"style": {
+				"navigationBarTitleText": "搜索"
+			}
 		}
 	],
 	"globalStyle": {
