@@ -25,7 +25,26 @@
 			</block>
 		</view>
 		<view class="userList" v-if="typeList[typeIndex].key == 'user'">
-			
+			<block v-for="(item,index) in userList" :key="index">
+				<view class="item">
+					<image :src="imgUrl + item.avatar" v-if="item.avatar != ''"></image>
+					<image src="../static/a.jpg" v-else></image>
+					<view class="con">
+						<view>
+							<text class="title">{{item.name}}</text>
+							<!-- 性别（m 男 f 女 no_set 未设置） -->
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'm'"></uni-icon>
+							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'f'"></uni-icon>
+							<!-- <text class="label" v-if="item.vip > 1">管理员VIP{{item.vip}}级</text> -->
+							<text class="label">{{item.type}}</text>
+						</view>
+						<view class="info">{{item.signature}}</view>
+					</view>
+					<view class="operating">
+						<view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view>
+					</view>
+				</view>
+			</block>
 		</view>
 	</view>
 </template>
@@ -43,6 +62,7 @@ export default {
 				{name: '帖子', key: 'post'}
 			],
 			postList: [],
+			userList: [],
 			itemList: [],
 			current_page: 1,
 			imgUrl: ''
@@ -116,15 +136,15 @@ export default {
 </script>
 
 <style>
-	.searchType{
-		min-width: 70rpx;
-		height: 70rpx;
-		font-size: 28rpx;
-		color: #333;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+.searchType{
+	min-width: 70rpx;
+	height: 70rpx;
+	font-size: 28rpx;
+	color: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .searchNet {
 	width: 690rpx;
 	padding: 30rpx;
@@ -196,5 +216,90 @@ export default {
 		display: block;
 		font-size: 24rpx;
 		color: #999999;
+	}
+	
+	.userList{
+		width: 750rpx;
+		height: auto;
+	}
+	.userList .item{
+		width: 690rpx;
+		height: 170rpx;
+		border-radius: 10rpx;
+		background-color: #F9F9F9;
+		margin: 20rpx 30rpx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.userList .item image{
+		width: 118rpx;
+		height: 118rpx;
+		border-radius: 118rpx;
+		margin: 20rpx;
+	}
+	.userList .item .con{
+		width: 390rpx;
+		height: 118rpx;
+		border-radius: 118rpx;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	.userList .item .con view{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.userList .item .title {
+		font-size: 24rpx;
+		margin: 0 10rpx;
+		font-size: 24rpx;
+		font-weight: 600;
+		color: #333333;
+	}
+	.userList .item .label{
+		font-size: 18rpx;
+		padding: 5rpx 10rpx;
+		border-radius: 30rpx;
+		color: #fff;
+		background-color: #D2BF8E;
+	}
+	.userList .item .iconfont {
+		font-size: 22rpx;
+		margin: 0 10rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.userList .item .con .info{
+		color: #666666;
+		font-size: 26rpx;
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+	}
+	.userList .operating{
+		width: 100rpx;
+		height: 118rpx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-direction: column;
+		padding-left: 20rpx;
+	}
+	.userList .operating view{
+		width: 100rpx;
+		height: 60rpx;
+		font-size: 26rpx;
+		color: #fff;
+		background-color: #B8B8B8;
+		border-radius: 10rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>
