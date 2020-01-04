@@ -2,11 +2,11 @@
 	<view class="content">
 		<view class="screen">
 			<view class="left" @tap="getTap(1)">
-				<text>所有额度</text>
+				<text>{{typeText1}}</text>
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 			<view class="right" @tap="getTap(2)">
-				<text>所有贷款分类</text>
+				<text>{{typeText2}}</text>
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
@@ -55,6 +55,9 @@
 		data() {
 			return {
 				imgUrl: '',
+				type: '',
+				typeText1: '所有额度',
+				typeText2: '所有贷款分类',
 				list: [],
 				currentIndex: 0,
 				mask: false,
@@ -149,6 +152,7 @@
 			},
 			// 标签列表显示
 			getTap(e) {
+				this.type = e
 				if (e == 1) {
 					this.keyShow = this.moneyList
 				} else {
@@ -160,6 +164,13 @@
 			screenList(e) {
 				this.currentIndex = e
 				this.quota = this.keyShow[this.currentIndex].name
+				if (this.type == 1) {
+					this.typeText1 = this.keyShow[this.currentIndex].name
+					this.typeText2 = '所有贷款分类'
+				} else {
+					this.typeText1 = '所有额度'
+					this.typeText2 = this.keyShow[this.currentIndex].name
+				}
 				this.list = []
 				this.mask = false
 				this.getList()

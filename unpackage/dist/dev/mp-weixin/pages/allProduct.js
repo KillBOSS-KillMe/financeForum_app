@@ -224,7 +224,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ name: '所有额度' }, { name: '100-5000' }, { name: '5000-2万' }, { name: '2万-5万' }, { name: '5万-10万' }, { name: '10万以上' }], typeList: [{ name: '所有贷款分类' }, { name: '不查征信' }, { name: '万元起步' }, { name: '极速下款' }, { name: '黑户必做' }, { name: '白户贷款' }, { name: '保险贷款' }, {
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', type: '', typeText1: '所有额度', typeText2: '所有贷款分类', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ name: '所有额度' }, { name: '100-5000' }, { name: '5000-2万' }, { name: '2万-5万' }, { name: '5万-10万' }, { name: '10万以上' }], typeList: [{ name: '所有贷款分类' }, { name: '不查征信' }, { name: '万元起步' }, { name: '极速下款' }, { name: '黑户必做' }, { name: '白户贷款' }, {
+        name: '保险贷款' },
+
+      {
         name: '私人借条' },
 
       {
@@ -273,6 +276,7 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
     },
     // 标签列表显示
     getTap: function getTap(e) {
+      this.type = e;
       if (e == 1) {
         this.keyShow = this.moneyList;
       } else {
@@ -284,6 +288,13 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
     screenList: function screenList(e) {
       this.currentIndex = e;
       this.quota = this.keyShow[this.currentIndex].name;
+      if (this.type == 1) {
+        this.typeText1 = this.keyShow[this.currentIndex].name;
+        this.typeText2 = '所有贷款分类';
+      } else {
+        this.typeText1 = '所有额度';
+        this.typeText2 = this.keyShow[this.currentIndex].name;
+      }
       this.list = [];
       this.mask = false;
       this.getList();
