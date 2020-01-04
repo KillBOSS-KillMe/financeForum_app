@@ -9,7 +9,7 @@
 							<!-- {{sonIndex}} -->
 							<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9" @tap="navsHead">
 								<image src="../static/logo.png" mode="" v-if="sonItem.icon == ''"></image>
-								<image :src="sonItem.icon" mode="" v-else></image>
+								<image :src="imgUrl+sonItem.icon" mode="" v-else></image>
 								<text>{{ sonItem.title }}</text>
 							</view>
 							</block>

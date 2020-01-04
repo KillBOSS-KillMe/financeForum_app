@@ -73,13 +73,13 @@
 	white-space: nowrap;
 }
 .articleDetail .follow {
-	font-size: 28rpx;
+	font-size: 22rpx !important;
 	color: #fff !important;
 	font-weight: 600;
 	background: #2390dc;
-	width: 98rpx;
-	height: 58rpx;
-	line-height: 58rpx;
+	width: 80rpx;
+	height: 48rpx;
+	line-height: 48rpx;
 	text-align: center;
 	border-radius: 10rpx;
 }

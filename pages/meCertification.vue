@@ -41,7 +41,7 @@
 		width: 690rpx;
 		height: 90rpx;
 		margin: 0 30rpx;
-		border-bottom: 2rpx solid #110F53;
+		border-bottom: 2rpx solid #fbfbfc;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
