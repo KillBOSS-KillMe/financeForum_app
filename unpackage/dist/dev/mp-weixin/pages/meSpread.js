@@ -281,10 +281,10 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
           if (res.data.status_code == 200) {_this.collectionList = res.data;} else {// uni.showToast({
             // 	title: res.data.message
             // });
-          }} });}, goShare: function goShare(e) {// console.log(e)
-      var sceneType = '';if (e == '微信好友') {sceneType = 'WXSceneSession';} else if (e == '微信好友') {sceneType = 'WXSenceTimeline';}uni.share({ provider: 'weixin', scene: sceneType, type: 1, summary: this.collectionList.share_link, success: function success(res) {// console.log('success:' + JSON.stringify(res));
-        }, fail: function fail(err) {// console.log('fail:' + JSON.stringify(err));
+          }} });}, goShare: function goShare(e) {console.log(e);var sceneType = '';if (e == '微信好友') {sceneType = 'WXSceneSession';} else if (e == '微信好友') {sceneType = 'WXSenceTimeline';}uni.share({ provider: 'weixin', scene: sceneType, type: 1, summary: this.collectionList.share_link, success: function success(res) {console.log('success:' + JSON.stringify(res));}, fail: function fail(err) {
+          console.log('fail:' + JSON.stringify(err));
         } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
