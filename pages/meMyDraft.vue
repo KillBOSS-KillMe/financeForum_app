@@ -37,23 +37,21 @@
 	export default {
 		data() {
 			return {
-				list: [
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
-					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'}
-				],
-				imgUrl: ''
+				list: [],
+				imgUrl: '',
+				nextPageUrl: ''
 			};
 		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl;
 			// 加载查稿列表
 			this.myDraftPosts()
+		},
+		onReachBottom() {
+			// 页面上拉触底事件的处理函数
+			if (this.nextPageUrl != '') {
+				this.getMore()
+			}
 		},
 		methods: {
 			goDetails(e) {
@@ -79,6 +77,7 @@
 						console.log(res,'++++++++')
 						if (res.data.status_code == 200) {
 							this.list = res.data.data
+							this.nextPageUrl = res.data.next_page_url
 						} else {
 							uni.showToast({
 								title: res.data.message
@@ -87,6 +86,35 @@
 					}
 				})
 			},
+			getMore() {
+				// 加载更多
+				uni.showLoading({
+				  title: '列表获取中...'
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/my-draft-posts`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res,'++++++++')
+						if (res.data.status_code == 200) {
+							let list = this.list
+							let newList = res.data.data
+							this.list = list.concat(newList)
+							this.nextPageUrl = res.data.next_page_url
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+							this.nextPageUrl = ''
+						}
+					}
+				})
+			}
 		}
 	}
 </script>

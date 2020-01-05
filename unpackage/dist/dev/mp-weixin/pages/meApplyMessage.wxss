@@ -10,20 +10,25 @@
 	margin-top: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 }
 .meMessage .item>view{
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 }
 .meMessage .item>view>text{
@@ -48,7 +53,8 @@
 	font-weight: 400;
 	color: #666666;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .comment{
@@ -60,7 +66,8 @@
 	font-size: 28rpx !important;
 	color: #000000;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .commentContent{
@@ -68,7 +75,8 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	text-overflow: ellipsis; 
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis; 
 	font-size: 26rpx;
 	color: #000000;
 	margin: 10rpx 0;

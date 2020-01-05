@@ -11,7 +11,7 @@
     "code": "100"
   },
   "description": "",
-  "launch_path": "__uniappview.html",
+  "launch_path": "__uniapptabbar.html",
   "developer": {
     "name": "",
     "email": "",
@@ -28,7 +28,7 @@
   },
   "plus": {
     "useragent": {
-      "value": "uni-app",
+      "value": "uni-app appservice",
       "concatenate": true
     },
     "splashscreen": {
@@ -38,11 +38,7 @@
       "delay": 0
     },
     "popGesture": "close",
-    "launchwebview": {
-      "id": "1",
-      "kernel": "WKWebview",
-      "uni-app": "auto"
-    },
+    "launchwebview": {},
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "light",
@@ -103,7 +99,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.4.6",
+      "compilerVersion": "2.3.3",
       "control": "v8",
       "nvueCompiler": "uni-app",
       "renderer": "auto",
@@ -111,44 +107,10 @@
         "flex-direction": "column"
       }
     },
-    "tabBar": {
-      "color": "#333",
-      "selectedColor": "#2390DC",
-      "backgroundColor": "#FFFFFF",
-      "list": [
-        {
-          "pagePath": "pages/index",
-          "text": "首页",
-          "iconPath": "./static/index.png",
-          "selectedIconPath": "static/indexCur.png"
-        },
-        {
-          "pagePath": "pages/collection",
-          "text": "干货汇总",
-          "iconPath": "static/gather.png",
-          "selectedIconPath": "static/gatherCur.png"
-        },
-        {
-          "pagePath": "pages/apply",
-          "text": "系统应用",
-          "iconPath": "static/apply.png",
-          "selectedIconPath": "static/applyCur.png"
-        },
-        {
-          "pagePath": "pages/exchang",
-          "text": "微金交流",
-          "iconPath": "static/exchange.png",
-          "selectedIconPath": "static/exchangeCur.png"
-        },
-        {
-          "pagePath": "pages/me",
-          "text": "个人中心",
-          "iconPath": "static/me.png",
-          "selectedIconPath": "static/meCur.png"
-        }
-      ],
-      "borderStyle": "rgba(0,0,0,0.4)",
-      "height": "50px"
+    "secondwebview": {
+      "id": "1",
+      "launch_path": "__uniappview.html",
+      "kernel": "WKWebview"
     }
   }
 }

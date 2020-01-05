@@ -102,7 +102,7 @@
     "autoclose": false
   },
   "appname": "financeForum_app",
-  "compilerVersion": "2.4.6",
+  "compilerVersion": "2.3.3",
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
