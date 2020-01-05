@@ -73,16 +73,16 @@
 			
 		},
 		onShow() {
-			this.imgUrl = helper.imgUrl
-			this.getUserInfo()
-			this.getList()
+			
 			// this.getToken()
 		},
 		onHide() {
 			
 		},
 		onLoad() {
-			
+			this.imgUrl = helper.imgUrl
+			this.getUserInfo()
+			this.getList()
 		},
 		methods: {
 			// 导航详情
@@ -195,13 +195,14 @@
 						uni.hideLoading();
 						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
-							if(res.data.data == ''){
+							if (res.data.data.length > 0) {
+								this.pageNode = this.pageNode.concat(res.data.data)
+							} else {
 								uni.showToast({
-									title:"暂无数据",
+									title:"没有更多数据了",
 									icon:"none"
 								})
 							}
-							this.pageNode = this.pageNode.concat(res.data.data)
 						} else {
 							uni.showToast({
 								title: res.data.message
