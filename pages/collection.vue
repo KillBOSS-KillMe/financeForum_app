@@ -4,7 +4,7 @@
 		<view class="page-section-spacing banner">
 			<swiper class="swiper" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff" :autoplay="autoplay" :interval="interval">
 				<swiper-item  v-for="(item,index) in bannerList" :key="index">
-					<image class="bannerImg" :src="item.img" mode="aspectFill"></image>
+					<image class="bannerImg" :src="imgUrl + item.image" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -42,10 +42,47 @@
 		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl
+			this.getAd()
 			this.getList()
 		},
 		methods: {
-			getList(){
+			// 加载轮播图
+			getAd() {
+				uni.showLoading({
+					title: '加载中...',
+					duration: 1000000
+				});
+				uni.request({
+					url: `${helper.requestUrl}/board/info`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data:{
+						board_id: '5',
+						page_size: '10',
+						page: 1
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res)
+						if (res.data.status_code == 200) {
+							 this.bannerList = res.data.board_ad.aditems
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+				
+					}
+				})
+			},
+			getList() {
+				uni.showLoading({
+					title: '加载中...',
+					duration: 1000000
+				});
 				uni.request({
 					url: `${helper.requestUrl}/posts/board-posts`,
 					method: 'GET',
@@ -58,6 +95,7 @@
 						page: this.page
 					},
 					success: res => {
+						uni.hideLoading();
 						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == 200) {
