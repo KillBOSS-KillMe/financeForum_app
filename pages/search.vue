@@ -41,7 +41,8 @@
 						<view class="info">{{item.signature}}</view>
 					</view>
 					<view class="operating">
-						<view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view>
+						<!-- 关注，取消关注 -->
+						<!-- <view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view> -->
 					</view>
 				</view>
 			</block>

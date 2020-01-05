@@ -2,27 +2,27 @@
 	<view>
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="item" v-if="item.image != ''">
-					<image v-bind:src="item.image" data-index="index" />
+				<view class="item" v-if="item.theme_pic != ''">
+					<image v-bind:src="imgUrl + item.theme_pic" data-index="index" />
 					<view class="con">
 						<view class="title">
 							<span class="label">【草稿】</span>
-							<span>{{item.title + item.title + item.title + index}}</span>
+							<span>{{item.title}}</span>
 						</view>
 						<view class="info">
-							<span>{{item.time}}</span>
+							<span>{{item.updated_at}}</span>
 						</view>
 					</view>
 				</view>
-				<view class="item notImg" v-else>
+				<view class="item notImg" v-else :data-id="item.id" @tap="goDetails">
 					<!-- <image v-bind:src="item.image" data-index="index" /> -->
 					<view class="con">
 						<view class="title">
 							<span class="label">【草稿】</span>
-							<span>{{item.title + item.title + item.title + index}}</span>
+							<span>{{item.title}}</span>
 						</view>
 						<view class="info">
-							<span>{{item.time}}</span>
+							<span>{{item.updated_at}}</span>
 						</view>
 					</view>
 				</view>
@@ -46,8 +46,47 @@
 					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
 					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'},
 					{image: '../static/a.jpg', title: '标题标题标题标题标题标题标题', time: '12小时前'}
-				]
+				],
+				imgUrl: ''
 			};
+		},
+		onLoad() {
+			this.imgUrl = helper.imgUrl;
+			// 加载查稿列表
+			this.myDraftPosts()
+		},
+		methods: {
+			goDetails(e) {
+				let id = e.currentTarget.dataset.id
+				uni.navigateTo({
+					url: `/pages/articleDetail?id=${id}`
+				})
+			},
+			myDraftPosts() {
+				// 加载查稿列表
+				uni.showLoading({
+				  title: '列表获取中...'
+				});
+				uni.request({
+					url: `${helper.requestUrl}/user/my-draft-posts`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						console.log(res,'++++++++')
+						if (res.data.status_code == 200) {
+							this.list = res.data.data
+						} else {
+							uni.showToast({
+								title: res.data.message
+							});
+						}
+					}
+				})
+			},
 		}
 	}
 </script>
@@ -63,7 +102,7 @@
 		border-radius: 10rpx;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-start;
 	}
 	.item image{
 		width: 220rpx;
@@ -74,7 +113,7 @@
 		height: 136rpx;
 		margin-left: 20rpx;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		flex-direction: column;
 	}
@@ -86,7 +125,7 @@
 	}
 	.item .title{
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: flex-start;
 		width: 450rpx;
 		height: auto;
