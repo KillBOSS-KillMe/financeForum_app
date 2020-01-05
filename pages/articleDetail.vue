@@ -10,7 +10,8 @@
 						<view class="leftTitleBottom">
 							<text>{{ articleDetail.user.type }}</text>
 							<text>{{ articleDetail.user.created_at }}</text>
-							<text class="follow" @tap="addFollow">关注</text>
+							<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
+							<text class="follow" @tap="addFollow" v-else>已关注</text>
 						</view>
 					</view>
 				</view>
@@ -103,11 +104,9 @@
 		<view class="bottom">
 			<input type="text" :value="postContent" :focus="focus" @input="getContent" placeholder="发表评论..." />
 			<uni-icon class="iconfont iconziyuan icon" type="" @tap="postDiscuss"></uni-icon>
-			<uni-icon class="iconfont iconzanzan" :class="['icon', isHide == '1' ? 'active' : '']" @tap="clickZan" type=""></uni-icon>
-			<!-- 收藏 -->
-			<!-- 	<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 1" @tap="delCollection"></uni-icon>
-			<uni-icon class="iconfont iconzanzan" type="" v-if="articleDetail.is_collections == 0" @tap="addCollection"></uni-icon> -->
-			<!-- <uni-icon class="iconfont iconfenxiang" type=""></uni-icon> -->
+			<!-- 收藏/收藏 -->
+			<uni-icon class="iconfont iconzanzan" @tap="clickZan" type="" v-if="postComItem.is_collections == '0'"></uni-icon>
+			<uni-icon class="iconfont icondianzan active" type="" v-else></uni-icon>
 		</view>
 	</view>
 </template>
