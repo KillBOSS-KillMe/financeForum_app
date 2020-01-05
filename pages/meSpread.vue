@@ -53,12 +53,26 @@
 			<view class="uni-share">
 				<text class="uni-share-title">分享到</text>
 				<view class="uni-share-content">
-					<block v-for="(item, index) in bottomData" :key="index">
-						<view class="uni-share-content-box" @tap="goShare(item.text)">
-							<view class="uni-share-content-image"><uni-icon type="" class="iconfont" :class="item.icon"></uni-icon></view>
-							<text class="uni-share-content-text">{{ item.text }}</text>
-						</view>
-					</block>
+					<!-- #ifdef MP-WEIXIN -->
+						<button class="share-btn" open-type="share">
+							<view class="uni-share-content-box">
+								<view class="uni-share-content-image">
+									<uni-icon type="" class="iconfont iconweixin"></uni-icon>
+								</view>
+								<text class="uni-share-content-text">微信好友</text>
+							</view>
+						</button>
+					<!-- #endif -->
+					<!-- #ifdef APP-PLUS -->
+						<block v-for="(item, index) in bottomData" :key="index">
+							<view class="uni-share-content-box" @tap="goShare(item.type)">
+								<view class="uni-share-content-image">
+									<uni-icon type="" class="iconfont" :class="item.icon"></uni-icon>
+								</view>
+								<text class="uni-share-content-text">{{ item.text }}</text>
+							</view>
+						</block>
+					<!-- #endif -->
 				</view>
 				<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
 			</view>
@@ -80,15 +94,25 @@ import uniPopup from '@/components/uni-popup.vue';
 export default {
 	data() {
 		return {
-			tableData: [{ name: '大锤', age: '17777777777', address: '2019-10-25' }, { name: '张三', age: '21', address: '成都' }, { name: '李四', age: '16', address: '南京' }],
-			columns: [{ title: '用户名', key: 'name' }, { title: '手机号', key: 'age' }, { title: '时间', key: 'address' }],
+			tableData: [
+				{ name: '大锤', age: '17777777777', address: '2019-10-25' }, 
+				{ name: '张三', age: '21', address: '成都' }, 
+				{ name: '李四', age: '16', address: '南京' },
+			],
+			columns: [
+				{ title: '用户名', key: 'name' }, 
+				{ title: '手机号', key: 'age' }, 
+				{ title: '时间', key: 'address' },
+			],
 			bottomData: [
 				{
 					text: '微信好友',
+					type: 'WXSceneSession',
 					icon: 'iconweixin'
 				},
 				{
 					text: '微信朋友圈',
+					type: 'WXSenceTimeline',
 					icon: 'iconpengyouquan'
 				}
 			],
@@ -105,9 +129,36 @@ export default {
 		this.content();
 		this.imgUrl = helper.imgUrl;
 	},
+	// 微信分享
+	onShareAppMessage() {
+		let url = this.getPageUrl()
+		return {
+			title: this.articleDetail.title,
+			path: url
+		}
+	},
 	methods: {
 		goMore(){
 			this.isShow = false
+		},
+		// 获取当前页路径及参数,用于分享
+		getPageUrl() {
+			// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+			// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
+			let pageNode = getCurrentPages()
+			pageNode = pageNode[pageNode.length - 1]
+			let url = pageNode.route
+			let options = pageNode.options
+			let optionsString = '?'
+			for( let key in options ){
+					optionsString += key
+					optionsString += '='
+					optionsString += options[key]
+					optionsString += '&'
+			}
+			optionsString = optionsString.substring(0, optionsString.length - 1)
+			url += optionsString
+			return url
 		},
 		quickInlet(e) {
 			if (e == 1) {
@@ -141,19 +192,17 @@ export default {
 				}
 			});
 		},
-		goShare(e) {
-			console.log(e)
-			let sceneType = ''
-			if(e == '微信好友'){
-				sceneType = 'WXSceneSession'
-			} else if(e == '微信好友'){
-				sceneType = 'WXSenceTimeline'
-			}
+		goShare(WXSenceType) {
+			// 获取页面路径
+			let url = this.getPageUrl()
 			uni.share({
 				provider: 'weixin',
-				scene: sceneType,
-				type: 1,
-				summary: this.collectionList.share_link,
+				scene: WXSenceType,
+				type: 0,
+				href: url,
+				title: this.articleDetail.title,
+				summary: '',
+				imageUrl: '',
 				success: function(res) {
 					console.log('success:' + JSON.stringify(res));
 				},
@@ -161,12 +210,66 @@ export default {
 					console.log('fail:' + JSON.stringify(err));
 				}
 			});
-		}
+		},
+		// goShare(e) {
+		// 	console.log(e)
+		// 	let sceneType = ''
+		// 	if(e == '微信好友'){
+		// 		sceneType = 'WXSceneSession'
+		// 	} else if(e == '微信好友'){
+		// 		sceneType = 'WXSenceTimeline'
+		// 	}
+		// 	uni.share({
+		// 		provider: 'weixin',
+		// 		scene: sceneType,
+		// 		type: 1,
+		// 		summary: this.collectionList.share_link,
+		// 		success: function(res) {
+		// 			console.log('success:' + JSON.stringify(res));
+		// 		},
+		// 		fail: function(err) {
+		// 			console.log('fail:' + JSON.stringify(err));
+		// 		}
+		// 	});
+		// }
 	}
 };
 </script>
 
 <style>
+
+button {
+	background: #fff;
+	position:relative;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:14px;
+	padding-right:14px;
+	box-sizing:border-box;
+	font-size:18px;
+	text-align:center;
+	text-decoration:none;
+	line-height:2.55555556;
+	border-radius:5px;
+	-webkit-tap-highlight-color:transparent;
+	overflow:hidden;
+	color:#000000;
+	background-color:#F8F8F8;
+	margin: 0;
+}
+button {
+  border-radius:0;
+}
+button {
+  background-color: #fff;
+}
+button::after {
+  border: none;
+}
+	
+	
+	
 .meSpread {
 	width: 750rpx;
 	padding-bottom: 60rpx;

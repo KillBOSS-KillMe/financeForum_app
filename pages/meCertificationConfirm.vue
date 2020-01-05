@@ -37,11 +37,11 @@
 			<view class="card">
 				<view @tap="getCard(1)">
 					<image v-if="formNode.card_positive != ''" :src="formNode.card_positive" mode=""></image>
-					<image v-else src="../static/a.jpg" mode=""></image>
+					<image v-else src="../static/card0.png" mode=""></image>
 				</view>
 				<view @tap="getCard(2)">
 					<image v-if="formNode.card_peverse != ''" :src="formNode.card_peverse" mode=""></image>
-					<image v-else src="../static/a.jpg" mode=""></image>
+					<image v-else src="../static/card1.png" mode=""></image>
 				</view>
 			</view>
 		</view>
