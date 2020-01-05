@@ -2,7 +2,7 @@
 	<view>
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="item" v-if="item.theme_pic != ''">
+				<view class="item" v-if="item.theme_pic != ''" :data-id="item.id" @tap="goDetails">
 					<image v-bind:src="imgUrl + item.theme_pic" data-index="index" />
 					<view class="con">
 						<view class="title">
