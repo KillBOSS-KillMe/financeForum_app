@@ -10,10 +10,9 @@
 					<swiper class="swiper"  next-margin='50rpx' :current="current"  @change="banner">
 						<block v-for="(item,index) in vip.data" :key="index">
 							<swiper-item>
-								<image class="bannerImg" :src="imgUrl+item.title_pic" mode="aspectFill" @tap="goBanner" data-id="item.id"></image>
+								<image class="bannerImg" :src="imgUrl+item.title_pic" @tap="goBanner" data-id="item.id"></image>
 							</swiper-item>
 						</block>
-						
 					</swiper>
 				</view>
 			</view>
@@ -197,12 +196,18 @@ uni-swiper{
 }
 .banner .bannerBox {
 	width:630rpx;
-	/* height: 340rpx; */
+	height: 360rpx;
 	border-radius: 10rpx;
 }
+.bannerBox swiper, .bannerBox swiper-item {
+	height: 360rpx;
+}
 .banner .bannerBox image{
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
+	width: 630rpx;
+	height: 360rpx;
+	border-radius: 10rpx;
 }
 .list {
 	width: 690rpx;
