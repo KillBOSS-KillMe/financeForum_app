@@ -39,6 +39,39 @@ uni-tabbar .uni-tabbar__icon {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
+button {
+	
+	background: #fff;
+
+
+	position:relative;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:14px;
+	padding-right:14px;
+	-webkit-box-sizing:border-box;
+	        box-sizing:border-box;
+	font-size:18px;
+	text-align:center;
+	text-decoration:none;
+	line-height:2.55555556;
+	border-radius:5px;
+	-webkit-tap-highlight-color:transparent;
+	overflow:hidden;
+	color:#000000;
+	background-color:#F8F8F8;
+	margin: 0;
+}
+button {
+  border-radius:0;
+}
+button {
+  background-color: #fff;
+}
+button::after {
+  border: none;
+}
 @font-face {font-family: "iconfont";
   src: url('//at.alicdn.com/t/font_1566333_4kqxbw8daeo.eot?t=1578130232912'); /* IE9 */
   src: url('//at.alicdn.com/t/font_1566333_4kqxbw8daeo.eot?t=1578130232912#iefix') format('embedded-opentype'), /* IE6-IE8 */

@@ -38,13 +38,17 @@
 			<!-- <view class="read"><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>123</view> -->
 			<view class="share">
 				<text>分享至</text>
-				<!-- 分享到微信好友 -->
-				<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
-				<!-- <image src="../static/logo.png" mode="" @tap="shareFriend"></image> -->
-				<!-- 分享到微信朋友圈 -->
-				<uni-icon class="iconfont iconpengyouquan" @tap="shareFriendcricle" type=""></uni-icon>
-				<!-- <uni-icon type="iconfont iconpengyouquan"></uni-icon> -->
-				<!-- <image src="../static/logo.png" mode="" @tap="shareFriendcricle"></image> -->
+				<!-- #ifdef MP-WEIXIN -->
+					<button class="share-btn" open-type="share">
+						<uni-icon class="iconfont iconweixin" type=""></uni-icon>
+					</button>
+				<!-- #endif -->
+				<!-- #ifdef APP-PLUS -->
+					<!-- 分享到微信好友 -->
+					<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
+					<!-- 分享到微信朋友圈 -->
+					<uni-icon class="iconfont iconpengyouquan" @tap="shareFriendcricle" type=""></uni-icon>
+				<!-- #endif -->
 			</view>
 		</view>
 		<view class="line"></view>
@@ -161,6 +165,13 @@ export default {
 		//评论列表
 		this.getComment();
 	},
+	onShareAppMessage() {
+		let url = this.getPageUrl()
+		return {
+			title: this.articleDetail.title,
+			path: url
+		}
+	},
 	methods: {
 		//获取发布内容
 		getContent(e) {
@@ -203,6 +214,7 @@ export default {
 				}
 			});
 		},
+		
 		shareFriend() {
 			//分享到微信朋友
 			this.share('WXSceneSession');
@@ -211,16 +223,36 @@ export default {
 			//分享到微信朋友圈
 			this.share('WXSenceTimeline');
 		},
+		// 获取当前页路径及参数,用于分享
+		getPageUrl() {
+			// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+			// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
+			let pageNode = getCurrentPages()
+			pageNode = pageNode[pageNode.length - 1]
+			let url = pageNode.route
+			let options = pageNode.options
+			let optionsString = '?'
+			for( let key in options ){
+					optionsString += key
+					optionsString += '='
+					optionsString += options[key]
+					optionsString += '&'
+			}
+			optionsString = optionsString.substring(0, optionsString.length - 1)
+			url += optionsString
+			return url
+		},
 		share(WXSenceType) {
-			console.log(window.location.href);
+			// 获取页面路径
+			let url = this.getPageUrl()
 			uni.share({
 				provider: 'weixin',
 				scene: WXSenceType,
 				type: 0,
-				href: window.location.href,
+				href: url,
 				title: this.articleDetail.title,
-				summary: '唐艺昕，没有水的地方叫沙漠，没有你的地方，你知道叫什么吗？不知道。叫寂寞。',
-				imageUrl: 'http:*******************',
+				summary: '',
+				imageUrl: '',
 				success: function(res) {
 					console.log('success:' + JSON.stringify(res));
 				},
