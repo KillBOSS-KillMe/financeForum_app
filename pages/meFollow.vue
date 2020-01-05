@@ -21,7 +21,7 @@
 						<view class="info">{{item.signature}}</view>
 					</view>
 					<view class="operating">
-						<view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view>
+						<view :data-id="item.follow_id" :data-index="index" @tap="delFollows">取消</view>
 					</view>
 				</view>
 			</block>
