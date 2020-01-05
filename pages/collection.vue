@@ -34,11 +34,7 @@
 			return {
 				autoplay: true,
 				interval: 2000,
-				bannerList:[
-					{id:'1',img:'../static/a.jpg'},
-					{id:'2',img:'../static/b.jpg'},
-					{id:'12',img:'../static/a.jpg'},
-				],
+				bannerList:[],
 				list: [],
 				page: '1',
 				imgUrl: ''
@@ -83,6 +79,7 @@
 			},
 			// 跳转详情
 			goDetail(e){
+				console.log(e + '||||||||||||||||||||')
 				uni.navigateTo({
 					url:`/pages/articleDetail?id=${e}`
 				})

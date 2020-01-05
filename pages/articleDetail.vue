@@ -121,29 +121,8 @@ export default {
 			focus: false,
 			isShow: '0',
 			isHide: '0',
-			info: {
-				id: '1',
-				title: '有钱花二次贷，只要有信用卡或者有公积金就 来，人均10000起步，秒批最高10万，当天到 账',
-				img: '../static/logo.png',
-				name: 'admin',
-				type: '楼主',
-				time: '1小时之前'
-			},
-			nodes: [
-				{
-					name: 'div',
-					attrs: {
-						class: 'div-class',
-						style: 'color: #333333;font-size:14px;line-height:20px;'
-					},
-					children: [
-						{
-							type: 'text',
-							text: '公告年终业绩每股收入是:3.98元，（即是第四季度收入是:1.87元的）；2017年前三3季度每股收入业绩是:1.99元，公告'
-						}
-					]
-				}
-			],
+			info: {},
+			nodes: [],
 			commentList: [],
 			articleDetail: null,
 			options: null,
@@ -180,6 +159,9 @@ export default {
 		},
 		// 文章详情加载
 		getArticleDetail() {
+			uni.showLoading({
+			  title: '加载中...'
+			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/show`,
 				method: 'GET',
@@ -263,6 +245,9 @@ export default {
 		},
 		//打赏
 		postReward(){
+			uni.showLoading({
+			  title: '打赏中...'
+			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/reward`,
 				method: 'GET',
@@ -280,6 +265,7 @@ export default {
 						uni.showToast({
 							title: '打赏成功'
 						});
+						this.articleDetail.rewards_count += 1
 					} else {
 						uni.showToast({
 							title: '打赏失败',
@@ -435,6 +421,9 @@ export default {
 		},
 		// 评论
 		getPost() {
+			uni.showLoading({
+			  title: '评论提交中...'
+			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/send-comment`,
 				method: 'POST',
@@ -472,6 +461,9 @@ export default {
 			this.focus = true;
 		},
 		postReply() {
+			uni.showLoading({
+			  title: '评论发布中...'
+			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/send-reply`,
 				method: 'POST',
@@ -513,6 +505,9 @@ export default {
 		// 点赞
 		clickZan(e) {
 			this.isHide = '1';
+			uni.showLoading({
+			  title: '点赞中...'
+			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/like`,
 				method: 'GET',
@@ -531,6 +526,7 @@ export default {
 							title: '点赞成功',
 							icon: 'none'
 						});
+						this.articleDetail.like += 1
 					} else {
 						uni.showToast({
 							title: '点赞失败',
