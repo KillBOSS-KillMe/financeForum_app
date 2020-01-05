@@ -62,10 +62,17 @@
 				let extra = e.currentTarget.dataset.extra
 				let id = e.currentTarget.dataset.id
 				let name = e.currentTarget.dataset.name
+				console.log(type, extra, id, name)
 				if(type == 'block'){
-					uni.navigateTo({
-						url:`/pages/${extra}`
-					})
+					if (extra != '') {
+						uni.navigateTo({
+							url:`/pages/${extra}`
+						})
+					} else {
+						uni.showToast({
+							title: '此页面不存在'
+						});
+					}
 				} else if(type == 'series'){
 					
 				} else if(type == 'post'){
