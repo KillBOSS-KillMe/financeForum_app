@@ -97,7 +97,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<input type="text" :value="postContent" focus @input="getContent" placeholder="发表评论..." />
+			<input type="text" :value="postContent" :focus="focus" @input="getContent" placeholder="发表评论..." />
 			<uni-icon class="iconfont iconziyuan icon" type="" @tap="postDiscuss"></uni-icon>
 			<uni-icon class="iconfont iconzanzan" :class="['icon', isHide == '1' ? 'active' : '']" @tap="clickZan" type=""></uni-icon>
 			<!-- 收藏 -->
@@ -169,10 +169,6 @@ export default {
 		},
 		// 文章详情加载
 		getArticleDetail() {
-			uni.showLoading({
-				title: '加载中...',
-				duration: 1000000
-			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/show`,
 				method: 'GET',
@@ -194,11 +190,15 @@ export default {
 					} else {
 						uni.showToast({
 							title: res.data.message,
-							icon: 'none'
+							icon: 'none',
+							duration: 2000
 						});
-						uni.navigateBack({
-							delta: 1
-						});
+						setTimeout(e => {
+							uni.navigateBack({
+								delta: 1
+							})
+						}, 2000)
+						
 					}
 				}
 			});
@@ -604,8 +604,12 @@ export default {
 }
 
 .read view {
+	width: 100rpx;
 	font-size: 20rpx;
 	color: #333333;
+}
+.read view .iconfont{
+	margin-right: 6rpx;
 }
 .postCom {
 	display: flex;

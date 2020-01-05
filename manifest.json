@@ -18,9 +18,9 @@
         /* 模块配置 */
         "modules" : {
             "Payment" : {},
-            "Share" : {},
             "Speech" : {},
-            "VideoPlayer" : {}
+            "VideoPlayer" : {},
+            "Share" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -40,6 +40,7 @@
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
                     "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
                     "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
@@ -61,7 +62,8 @@
                 },
                 "speech" : {
                     "ifly" : {}
-                }
+                },
+                "share" : {}
             }
         }
     },

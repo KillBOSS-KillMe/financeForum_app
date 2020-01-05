@@ -142,7 +142,7 @@ export default {
 			});
 		},
 		goShare(e) {
-			// console.log(e)
+			console.log(e)
 			let sceneType = ''
 			if(e == '微信好友'){
 				sceneType = 'WXSceneSession'
@@ -155,10 +155,10 @@ export default {
 				type: 1,
 				summary: this.collectionList.share_link,
 				success: function(res) {
-					// console.log('success:' + JSON.stringify(res));
+					console.log('success:' + JSON.stringify(res));
 				},
 				fail: function(err) {
-					// console.log('fail:' + JSON.stringify(err));
+					console.log('fail:' + JSON.stringify(err));
 				}
 			});
 		}

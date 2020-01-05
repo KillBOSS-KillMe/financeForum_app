@@ -1,10 +1,14 @@
 <template>
 	<view>
-		<view class="list" @tap="go">
+		<view class="list">
 			<view class="item">
 				<view>实名认证</view>
-				<view>
+				<view v-if="userInfo == '0'"  @tap="go">
 					未认证
+					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				</view>
+				<view v-if="userInfo == '1'">
+					已认证
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -18,13 +22,33 @@
 	export default {
 		data() {
 			return {
-				
+				userInfo: {}
 			}
+		},
+		onLoad() {
+			this.getInfo()
 		},
 		methods: {
 			go(){
 				uni.navigateTo({
 					url:`/pages/meCertificationConfirm`
+				})
+			},
+			getInfo(){
+				uni.request({
+					url: `${helper.requestUrl}/me`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						if (res.statusCode == 200) {
+							this.userInfo = res.data.is_real
+							console.log(this.userInfo)
+						}
+					}
 				})
 			}
 		}
