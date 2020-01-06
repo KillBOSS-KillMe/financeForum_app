@@ -63,7 +63,11 @@
                 "speech" : {
                     "ifly" : {}
                 },
-                "share" : {}
+                "share" : {
+                    "weixin" : {
+                        "appid" : ""
+                    }
+                }
             }
         }
     },

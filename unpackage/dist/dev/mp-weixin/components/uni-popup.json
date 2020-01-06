@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "uni-transition": "/components/uni-transition"
-  },
-  "component": true
-}
