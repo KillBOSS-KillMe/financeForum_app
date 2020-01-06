@@ -255,11 +255,15 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
   }, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
     this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
       // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
-      var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd');console.log(loginName + '---===---' + loginPwd);if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });} else {// 执行登录操作
+      var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd');console.log(loginName + '---===---' + loginPwd);if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
+          uni.reLaunch({ url: './login' });}, 3000);} else {// 执行登录操作
         this.runLogin(loginName, loginPwd);}} else {// 获取用户信息
       this.getUserInfo(); // this.getList()
     }}, methods: { // 进行登录操作
-    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({ title: '登录中...', duration: 1000000 });
+    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({
+        title: '登录中...',
+        duration: 1000000 });
+
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/login"),
         method: 'POST',
@@ -301,7 +305,6 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       // console.log(e.currentTarget.dataset.id)
       var link = e.currentTarget.dataset.link;
       var bind_board = e.currentTarget.dataset.bind_board;
-      console.log(bind_board);
       var id = e.currentTarget.dataset.id;
       var name = e.currentTarget.dataset.name;
       console.log(bind_board);
@@ -309,9 +312,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         uni.navigateTo({
           url: "/pages/".concat(link) });
 
-      } else {
+      } else if (bind_board == '1') {
         uni.navigateTo({
-          url: "/pages/indexAccurate?id=".concat(bind_board, "&name=").concat(name) });
+          url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });
 
       }
     },
