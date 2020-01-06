@@ -2,8 +2,8 @@
 	<view>
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="item" :data-id="item.post_id">
-					<image :src="imgUrl + item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''"></image>
+				<view class="item" :data-id="item.post_id" @tap="geDetail">
+					<image :src="imgUrl+item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''"></image>
 					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
 					<view class="con">
 						<view class="title">{{item.title}}</view>
@@ -25,12 +25,14 @@
 	export default {
 		data() {
 			return {
-				list: []
+				list: [],
+				imgUrl: ''
 			};
 		},
 		onLoad() {
 			// 获取收藏列表
 			this.getList()
+			this.imgUrl = helper.imgUrl
 		},
 		methods:{
 			getList() {
@@ -58,6 +60,12 @@
 						}
 				
 					}
+				})
+			},
+			geDetail(e){
+				console.log(e)
+				uni.navigateTo({
+					url:`/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 				})
 			}
 		}

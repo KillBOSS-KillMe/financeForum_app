@@ -65,7 +65,8 @@
                 },
                 "share" : {
                     "weixin" : {
-                        "appid" : ""
+                        "appid" : "",
+                        "UniversalLinks" : ""
                     }
                 }
             }

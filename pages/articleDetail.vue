@@ -10,8 +10,10 @@
 						<view class="leftTitleBottom">
 							<text>{{ articleDetail.user.type }}</text>
 							<text>{{ articleDetail.user.created_at }}</text>
-							<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
-							<text class="follow" @tap="addFollow" v-else>已关注</text>
+							<view v-show="articleDetail.can_follow != '0'">
+								<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
+								<text class="follow" @tap="addFollow" v-else>已关注</text>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -31,9 +33,7 @@
 			<view class="tip">
 				<text>解析：</text>
 				<view>
-					您还不是
-					<text>VIP会员</text>
-					,本帖隐藏内容仅限VIP会员可见，点击此处开通会员后查看
+					您还不是<text>VIP会员</text>,本帖隐藏内容仅限VIP会员可见，点击此处开通会员后查看
 				</view>
 			</view>
 			<!-- <view class="read"><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>123</view> -->

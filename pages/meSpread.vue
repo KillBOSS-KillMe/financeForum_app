@@ -315,6 +315,7 @@ button::after {
 	font-size: 32rpx;
 	font-weight: 700;
 	color: #FFFFFF;
+	margin: 0 auto;
 }
 .invite {
 	width: 690rpx;

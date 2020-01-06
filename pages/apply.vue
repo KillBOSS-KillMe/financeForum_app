@@ -100,7 +100,7 @@
 									icon: 'none'
 								})
 						// #endif
-						// #ifdef APP-NVUE
+						// #ifdef APP-PLUS || H5
 								uni.navigateTo({
 									url:`/pages/iframe?url=${extra}&name=${name}`
 								})
@@ -111,7 +111,7 @@
 					// 外联
 				} else if(type == 'category'){
 					uni.navigateTo({
-						url:`/pages/applyShow?id=${id}`
+						url:`/pages/applyShow?id=${id}&name=${name}`
 					})
 				}
 				console.log(e)
