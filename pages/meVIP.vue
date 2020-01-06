@@ -58,7 +58,7 @@
 				</view>
 			</view>
 		</view>
-		<button type="" class="off" disabled="" v-if="isCheck == false">立即开通，尽享权益</button>
+		<button type="" class="off" v-if="isCheck == false" @tap="goVip">立即开通，尽享权益</button>
 		<button type="" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip.data[bannerIndex].id" :data-money="vip.data[bannerIndex].vip_price">立即开通，尽享权益</button>
 		<view class="radio">
 			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange(isCheck)" :checked="isCheck" /></label>
@@ -98,12 +98,14 @@
 			}
 		},
 		onLoad() {
-				this.imgUrl = helper.imgUrl
+			this.imgUrl = helper.imgUrl
+			this.vipList()
+		},
+		onShow() {
 			console.log(app.globalData.vipIndex)
 			if(app.globalData.vipIndex == 1){
 				this.isCheck = true
 			}
-			this.vipList()
 		},
 		methods: {
 			meTreaty(){
@@ -116,14 +118,10 @@
 				console.log(e)
 			},
 			checkboxChange(e){
-				if(e == false){
-					this.isCheck = true
-				} else{
-					this.isCheck = false
-				}
-				console.log(this.isCheck)
+				this.isCheck = !this.isCheck
 			},
 			vipList(){
+				
 				uni.request({
 					url: `${helper.requestUrl}/vips`,
 					method: 'GET',
@@ -146,10 +144,20 @@
 				})
 			},
 			goVip(e){
-				console.log(e)
-				uni.navigateTo({
-					url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${e.currentTarget.dataset.money}`
-				})
+				console.log(this.isCheck)
+				if (this.isCheck) {
+					console.log(e)
+					uni.navigateTo({
+						url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${e.currentTarget.dataset.money}`
+					})
+				} else {
+					uni.showToast({
+						title: '请同意相关协议',
+						icon: 'none',
+						duration: 2000
+					});
+				}
+				
 			}
 		}
 	}
