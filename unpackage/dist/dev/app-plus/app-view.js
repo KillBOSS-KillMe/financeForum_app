@@ -2921,7 +2921,7 @@ Z([3,'居住地'])
 Z([a,[[2,'+'],[[2,'+'],[[2,'+'],[[2,'+'],[[6],[[7],[3,'userInfo']],[3,'province']],[1,' ']],[[6],[[7],[3,'userInfo']],[3,'city']]],[1,' ']],[[6],[[7],[3,'userInfo']],[3,'district']]]])
 Z(z[59])
 Z([3,'居住县'])
-Z([a,[[6],[[7],[3,'userInfo']],[3,'cash']]])
+Z([a,[[6],[[7],[3,'userInfo']],[3,'district']]])
 Z(z[59])
 Z([3,'学历'])
 Z([a,[[6],[[7],[3,'userInfo']],[3,'education']]])
@@ -2945,7 +2945,7 @@ Z([3,'威望'])
 Z([a,[[6],[[7],[3,'userInfo']],[3,'prestige']]])
 Z(z[59])
 Z([3,'现金'])
-Z([a,z[72][1]])
+Z([a,[[6],[[7],[3,'userInfo']],[3,'cash']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_44);return __WXML_GLOBAL__.ops_cached.$gwx_44
 }
 function gz$gwx_45(){

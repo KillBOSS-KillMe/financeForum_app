@@ -36,12 +36,14 @@
 	export default {
 		data() {
 			return {
-				list: []
+				list: [],
+				imgUrl: ''
 			}
 		},
 		onLoad() {
 			// 加载关注列表
 			this.getList()
+			this.imgUrl = helper.imgUrl
 		},
 		methods: {
 			getList() {

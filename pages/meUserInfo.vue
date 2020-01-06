@@ -50,7 +50,7 @@
 				</view>
 				<view class="itemList">
 					<text>居住县</text>
-					<text>{{userInfo.cash}}</text>
+					<text>{{userInfo.district}}</text>
 				</view>
 				<view class="itemList">
 					<text>学历</text>
@@ -175,6 +175,36 @@
 						// console.log(res,'++++++')
 						console.log(res.data, '+++++++++')
 						this.userInfo = res.data
+						if(this.userInfo.credit_card == 0){
+							this.userInfo.credit_card = '无'
+						} else{
+								this.userInfo.credit_card = '有'
+						};
+						if(this.userInfo.social_security == 0){
+							this.userInfo.social_security = '无'
+						} else{
+							this.userInfo.social_security = '有'
+						}
+						if(this.userInfo.provident_fund == 0){
+							this.userInfo.provident_fund = '无'
+						} else{
+							this.userInfo.provident_fund = '有'
+						}
+						if(this.userInfo.education == 1){
+							this.userInfo.education = '小学'
+						} else if(this.userInfo.education == 2){
+							this.userInfo.education = '初中'
+						}else if(this.userInfo.education == 3){
+							this.userInfo.education = '高中'
+						}else if(this.userInfo.education == 4){
+							this.userInfo.education = '大专'
+						}else if(this.userInfo.education == 5){
+							this.userInfo.education = '本科'
+						}else if(this.userInfo.education == 6){
+							this.userInfo.education = '硕士'
+						}else if(this.userInfo.education == 7){
+							this.userInfo.education = '博士'
+						}
 						if (res.data.status_code == 200) {
 
 
