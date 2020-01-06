@@ -196,11 +196,13 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
 
     // 微信小程序获取code
     wxGetCode: function wxGetCode() {var _this = this;
-      wx.login({
+      uni.login({
         success: function success(res) {
+          console.log(res.data);
           if (res.code) {
             //发起网络请求
             _this.login(res.code);
+            console.log(res.code);
           } else {
             console.log('登录失败！' + res.errMsg);
           }
@@ -208,8 +210,10 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
 
     },
 
+    appLogin: function appLogin() {
+      this.login();
+    },
     login: function login() {var _this2 = this;var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      console.log(this.loginName, this.loginPaw);
       if (this.loginName == '') {
         uni.showToast({
           title: '请输入手机号或者用户名',
@@ -230,6 +234,7 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
         title: '登录中...',
         duration: 1000000 });
 
+      console.log(code);
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/login"),
         method: 'POST',

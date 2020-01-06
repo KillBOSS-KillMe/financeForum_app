@@ -13,8 +13,8 @@
 			<!-- #ifdef MP-WEIXIN -->
 				<view class="submit" @tap="wxGetCode">登录</view>
 			<!-- #endif -->
-			<!-- #ifdef APP-PLUS -->
-				<view class="submit" @tap="login">登录</view>
+			<!-- #ifdef APP-PLUS || H5 -->
+				<view class="submit" @tap="appLogin">登录</view>
 			<!-- #endif -->
 			
 		</view>
@@ -61,11 +61,13 @@
 			// #ifdef MP-WEIXIN
 				// 微信小程序获取code
 				wxGetCode() {
-					wx.login({
+					uni.login({
 						success: res => {
+							console.log(res.data)
 							if (res.code) {
 								//发起网络请求
 								this.login(res.code)
+								console.log(res.code)
 							} else {
 								console.log('登录失败！' + res.errMsg)
 							}
@@ -73,8 +75,10 @@
 					});
 				},
 			// #endif
+			appLogin() {
+				this.login()
+			},
 			login(code = '') {
-				console.log(this.loginName, this.loginPaw)
 				if (this.loginName == '') {
 					uni.showToast({
 						title: '请输入手机号或者用户名',
@@ -95,6 +99,7 @@
 				  title: '登录中...',
 					duration: 1000000
 				});
+				console.log(code)
 				uni.request({
 					url: `${helper.requestUrl}/login`,
 					method: 'POST',
