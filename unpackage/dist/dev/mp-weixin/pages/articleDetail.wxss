@@ -7,8 +7,7 @@ button {
 		margin-right:auto;
 		padding-left:14px;
 		padding-right:14px;
-		-webkit-box-sizing:border-box;
-		        box-sizing:border-box;
+		box-sizing:border-box;
 		font-size:18px;
 		text-align:center;
 		text-decoration:none;
@@ -44,24 +43,19 @@ button::after {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 }
 .articleDetail .content .info {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-align-content: center;
-	    -ms-flex-line-pack: center;
 	        align-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 	margin: 30rpx 0;
 	border-bottom: 1rpx dashed #ececec;
@@ -71,15 +65,12 @@ button::after {
 .articleDetail .content .info .left {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
-	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 }
 .articleDetail .content .info .left > image {
@@ -93,18 +84,15 @@ button::after {
 	color: #333333;
 	font-weight: 600;
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .articleDetail .content .info .left .leftTitleBottom {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
-	    -ms-flex-align: end;
 	        align-items: flex-end;
 }
 .articleDetail .content .info .left .leftTitleBottom > text {
@@ -129,13 +117,10 @@ button::after {
 	height: 90rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: space-between;
-	    -ms-flex-line-pack: justify;
 	        align-content: space-between;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .read view {
@@ -149,7 +134,6 @@ button::after {
 .postCom {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	font-size: 28rpx;
 	color: #666666;
@@ -177,15 +161,12 @@ button::after {
 .content .share {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
-	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 	margin-top: 30rpx;
 }
@@ -206,15 +187,12 @@ button::after {
 	border-radius: 65rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 	/* background-color: ; */
 }
@@ -227,14 +205,11 @@ button::after {
 .reward {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 	margin: 30rpx auto;
 }
@@ -257,15 +232,12 @@ button::after {
 	width: 690rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 	border-bottom: 1rpx solid #e4e4e4;
 }
@@ -289,11 +261,9 @@ button::after {
 .comment .item {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	padding: 30rpx 0;
 	border-bottom: 1rpx solid #e4e4e4;
@@ -312,8 +282,7 @@ button::after {
 	font-weight: 600;
 	/* margin-bottom: 10rpx; */
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .comment .rightContent {
@@ -323,28 +292,23 @@ button::after {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
-	-o-text-overflow: ellipsis;
-	   text-overflow: ellipsis;
+	text-overflow: ellipsis;
 	margin-bottom: 10rpx;
 }
 .comment .rightBottom {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 .comment .flex {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
-	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 }
 .comment .flex > text {
@@ -355,21 +319,17 @@ button::after {
 .comment .itemListHead {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 .itemListHeadLeft {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
-	    -ms-flex-align: start;
 	        align-items: flex-start;
 }
 .rightMember {
@@ -396,14 +356,11 @@ button::after {
 	left: 0;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: center;
-	    -ms-flex-line-pack: center;
 	        align-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	    -ms-flex-align: center;
 	        align-items: center;
 	background: #fff;
 }

@@ -14,7 +14,7 @@
 		<!-- 导航 -->
 		<view class="nav">
 			<block v-for="(item, index) in pageNode.navs" :key="index">
-				<view class="navList" :data-bind_board="item.bind_board" :data-id="item.id" :data-name="item.name" :data-link="item.link" @tap="goNavs">
+				<view class="navList" :data-bind_board="item.bind_board" :data-name="item.name" :data-link="item.link" @tap="goNavs">
 					<image :src="imgUrl + item.icon" mode="aspectFill"></image>
 					<text>{{ item.name }}</text>
 				</view>
@@ -90,6 +90,7 @@
 				// console.log(e.currentTarget.dataset.id)
 				let link = e.currentTarget.dataset.link
 				let bind_board = e.currentTarget.dataset.bind_board
+				console.log(bind_board)
 				let id = e.currentTarget.dataset.id
 				let name = e.currentTarget.dataset.name
 				console.log(bind_board)
@@ -97,9 +98,9 @@
 					uni.navigateTo({
 						url: `/pages/${link}`
 					})
-				} else if(bind_board == '1') {
+				} else{
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${id}&name=${name}`
+						url: `/pages/indexAccurate?id=${bind_board}&name=${name}`
 					})
 				}
 			},

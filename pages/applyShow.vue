@@ -40,6 +40,9 @@
 			this.ItemId = e.id
 			this.getList();
 			this.imgUrl = helper.imgUrl
+			uni.setNavigationBarTitle({
+				title: e.name
+			})
 		},
 		methods: {
 			getList(){
@@ -89,11 +92,15 @@
 	font-weight: 600;
 }
 .headList{
-	width: 180rpx;
+	width: 156rpx;
 	display: flex;
 	justify-content: center;
 	/* justify-content: center; */
 	margin-right: 20rpx;
+	margin-bottom: 20rpx;
+}
+.headList:nth-child(4n){
+	margin-right: 0;
 }
 .headList .head>text{
 	font-size: 28rpx;

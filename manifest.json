@@ -63,7 +63,12 @@
                 "speech" : {
                     "ifly" : {}
                 },
-                "share" : {}
+                "share" : {
+                    "weixin" : {
+                        "appid" : "",
+                        "UniversalLinks" : ""
+                    }
+                }
             }
         }
     },
