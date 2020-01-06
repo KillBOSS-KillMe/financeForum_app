@@ -162,6 +162,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -189,7 +202,37 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { index: '0', payType: 'wechat', money: '' };}, onLoad: function onLoad(e) {console.log(e);this.money = e;}, methods: { radioChange: function radioChange(e) {console.log(e);this.payType = e.detail.value;}, iAgree: function iAgree() {console.log(this.payType);uni.request({ url: "".concat(_helper.default.requestUrl, "/bay-vip"), method: 'POST', header: { authorization: app.globalData.token }, data: { member_id: this.money.id,
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { index: '0', payType: 'wechat', money: '' };}, onLoad: function onLoad(e) {this.userInfo = app.globalData.userInfo;console.log(this.userInfo);console.log(e);this.money = e;}, methods: { radioChange: function radioChange(e) {console.log(e);this.payType = e.detail.value;}, wxAppletPay: function wxAppletPay() {// 微信小程序支付
+      uni.showLoading({ title: '支付信息加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/login"), method: 'POST', data: { username: loginName, password: loginPwd }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {} else {uni.showToast({ title: res.data.message, icon: 'none',
+              duration: 2000 });
+
+          }
+        } });
+
+    },
+    iAgree: function iAgree() {
+      console.log(this.payType);
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/bay-vip"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          member_id: this.money.id,
           pay_type: this.payType },
 
         success: function success(res) {

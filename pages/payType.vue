@@ -7,21 +7,34 @@
 				<text class="money">{{money.money}}</text>
 			</view>
 		</view>
-		<view class="content">
-			<radio-group @change="radioChange" :id="index" style="width: 690rpx;display: flex;">
+		<!-- #ifdef APP-PLUS -->
+			<view class="content">
+				<radio-group @change="radioChange" :id="index" style="width: 690rpx;display: flex;">
+					<view class="item">
+						<label class="radio">
+							<radio value="wechat" checked="true" />
+						</label>
+						<uni-icon type="" class="iconfont iconweixin1"></uni-icon>
+						<text>微信支付</text>
+					</view>
+					<view class="item">
+						<label class="radio"><radio value="aliply" /></label>
+						<uni-icon type="" class="iconfont iconzhifubao"></uni-icon>
+						<text>支付宝支付</text>
+					</view>
+				</radio-group>
+			</view>
+			<button type="primary" class="iAgree" @tap="iAgree">立即支付</button>
+		<!-- #endif -->
+		<!-- #ifdef MP-WEIXIN -->
+			<view class="content">
 				<view class="item">
-					<label class="radio"><radio value="wechat" checked="true" /></label>
 					<uni-icon type="" class="iconfont iconweixin1"></uni-icon>
 					<text>微信支付</text>
 				</view>
-				<view class="item">
-					<label class="radio"><radio value="aliply" /></label>
-					<uni-icon type="" class="iconfont iconzhifubao"></uni-icon>
-					<text>支付宝支付</text>
-				</view>
-			</radio-group>
-		</view>
-		<button type="primary" class="iAgree" @tap="iAgree">立即支付</button>
+			</view>
+			<button type="primary" class="iAgree" @tap="wxAppletPay">立即支付</button>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -37,6 +50,8 @@ export default {
 		};
 	},
 	onLoad(e) {
+		this.userInfo = app.globalData.userInfo
+		console.log(this.userInfo)
 		console.log(e)
 		this.money = e
 	},
@@ -44,6 +59,34 @@ export default {
 		radioChange(e) {
 			console.log(e);
 			this.payType = e.detail.value;
+		},
+		wxAppletPay() {
+			// 微信小程序支付
+			uni.showLoading({
+			  title: '支付信息加载中...',
+				duration: 1000000
+			});
+			uni.request({
+				url: `${helper.requestUrl}/login`,
+				method: 'POST',
+				data: {
+					username: loginName,
+					password: loginPwd
+				},
+				success: res => {
+					console.log(res);
+					uni.hideLoading();
+					res = helper.null2str(res)
+					if (res.statusCode == 200) {
+					} else {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none',
+							duration: 2000
+						});
+					}
+				}
+			});
 		},
 		iAgree() {
 			console.log(this.payType);
@@ -123,7 +166,7 @@ export default {
 .content {
 	margin-top: 40rpx;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 .item {
 	width: 280rpx;
