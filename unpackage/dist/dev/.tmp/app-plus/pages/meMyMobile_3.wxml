@@ -1,0 +1,1 @@
+<view><view class="head"><view><uni-icon class="iconfont iconshoujihaomaguizheng" vue-id="1" type bind:__l="__l"></uni-icon></view><label class="title _span">更换成功</label><label class="_span">请使用新手机号新密码进行登录！</label></view><view class="submit"><view data-name="meMyMobile_2" data-event-opts="{{[['tap',[['goMyMobile',['$event']]]]]}}" bindtap="__e">我知道了</view></view></view>

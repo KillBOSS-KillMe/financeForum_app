@@ -329,7 +329,7 @@
 		"list": [{
 				"pagePath": "pages/index",
 				"text": "首页",
-				"iconPath": "./static/index.png",
+				"iconPath": "static/index.png",
 				"selectedIconPath": "static/indexCur.png"
 			},
 			{
