@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index",
     "pages/login",
     "pages/registered",
     "pages/forgetPassword",
-    "pages/index",
     "pages/collection",
     "pages/apply",
     "pages/exchang",
@@ -99,5 +99,6 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

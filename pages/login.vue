@@ -91,6 +91,9 @@
 						uni.hideLoading();
 						res = helper.null2str(res)
 						if (res.statusCode == 200) {
+							// 登录的账号和密码存入缓存
+							uni.setStorageSync('login_name', this.loginName);
+							uni.setStorageSync('login_pwd', this.loginPaw);
 							uni.showToast({
 								title: '登录成功',
 								icon: "none"
