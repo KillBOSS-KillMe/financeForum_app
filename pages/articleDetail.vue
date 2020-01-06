@@ -231,13 +231,6 @@ export default {
 		share(WXSenceType) {
 			// 获取页面路径
 			let url = this.getPageUrl()
-			console.log(url)
-			uni.showToast({
-				title:url,
-				duration:300000000,
-				icon:'none'
-			})
-			return false;
 			uni.share({
 				provider: 'weixin',
 				scene: WXSenceType,

@@ -371,14 +371,7 @@ var app = getApp();var _default = { data: function data() {return { focus: false
     getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
       var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';for (var key in options) {optionsString += key;optionsString += '=';optionsString += options[key];optionsString += '&';}optionsString = optionsString.substring(0, optionsString.length - 1);url += optionsString;return url;}, share: function share(WXSenceType) {// 获取页面路径
-      var url = this.getPageUrl();console.log(url);uni.showToast({ title: url, duration: 300000000, icon: 'none' });
-      return false;
-      uni.share({
-        provider: 'weixin',
-        scene: WXSenceType,
-        type: 0,
-        href: url,
-        title: this.articleDetail.title,
+      var url = this.getPageUrl();uni.share({ provider: 'weixin', scene: WXSenceType, type: 0, href: url, title: this.articleDetail.title,
         summary: '',
         imageUrl: '',
         success: function success(res) {
