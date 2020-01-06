@@ -3,7 +3,7 @@
 		<view class="head">
 			<view class="meSpreadHead">
 				<text class="balance">总余额</text>
-				<text class="money">￥{{ collectionList.member.user_blance }}</text>
+				<text class="money">￥{{ collectionList.user_blance }}</text>
 				<button class="withdraw" type="">提现</button>
 			</view>
 		</view>
@@ -63,7 +63,7 @@
 							</view>
 						</button>
 					<!-- #endif -->
-					<!-- #ifdef APP-PLUS -->
+					<!-- #ifdef APP-PLUS || H5 -->
 						<block v-for="(item, index) in bottomData" :key="index">
 							<view class="uni-share-content-box" @tap="goShare(item.type)">
 								<view class="uni-share-content-image">
@@ -137,6 +137,14 @@ export default {
 			path: url
 		}
 	},
+	// shareFriend() {
+	// 	//分享到微信朋友
+	// 	this.goShare('WXSceneSession');
+	// },
+	// shareFriendcricle() {
+	// 	//分享到微信朋友圈
+	// 	this.goShare('WXSenceTimeline');
+	// },
 	methods: {
 		goMore(){
 			this.isShow = false
@@ -192,46 +200,57 @@ export default {
 				}
 			});
 		},
-		goShare(WXSenceType) {
-			// 获取页面路径
-			let url = this.getPageUrl()
-			uni.share({
-				provider: 'weixin',
-				scene: WXSenceType,
-				type: 0,
-				href: url,
-				title: this.articleDetail.title,
-				summary: '',
-				imageUrl: '',
-				success: function(res) {
-					console.log('success:' + JSON.stringify(res));
-				},
-				fail: function(err) {
-					console.log('fail:' + JSON.stringify(err));
-				}
-			});
-		},
-		// goShare(e) {
-		// 	console.log(e)
-		// 	let sceneType = ''
-		// 	if(e == '微信好友'){
-		// 		sceneType = 'WXSceneSession'
-		// 	} else if(e == '微信好友'){
-		// 		sceneType = 'WXSenceTimeline'
-		// 	}
+		// goShare(WXSenceType) {
+		// 	// 获取页面路径
+		// 	console.log(this.collectionList,'**')
+		// 	uni.showToast({
+		// 		title: this.collectionList.share_link,
+		// 				icon: 'none',
+		// 				duration: 300000000
+		// 	});
+		// 	return false
+		// 	// let url = this.getPageUrl()
+		// 	console.log(url)
 		// 	uni.share({
 		// 		provider: 'weixin',
-		// 		scene: sceneType,
-		// 		type: 1,
+		// 		scene: WXSenceType,
+		// 		type: 0,
+		// 		href: url,
+		// 		title: '新微金论坛',
 		// 		summary: this.collectionList.share_link,
+		// 		imageUrl: '',
 		// 		success: function(res) {
 		// 			console.log('success:' + JSON.stringify(res));
 		// 		},
 		// 		fail: function(err) {
 		// 			console.log('fail:' + JSON.stringify(err));
-		// 		}
+		// 		},
 		// 	});
-		// }
+		// },
+		goShare(e) {
+			console.log(e)
+			let sceneType = ''
+			if(e == 'WXSceneSession'){
+				sceneType = 'WXSceneSession'
+			} else if(e == 'WXSenceTimeline'){
+				sceneType = 'WXSenceTimeline'
+			}
+			uni.share({
+			    provider: "weixin",
+			    scene: sceneType,
+			    type: 0,
+			    href: this.collectionList.share_link,
+			    title: "新微金论坛",
+			    summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
+			    imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+			    success: function (res) {
+			        console.log("success:" + JSON.stringify(res));
+			    },
+			    fail: function (err) {
+			        console.log("fail:" + JSON.stringify(err));
+			    }
+			});
+		}
 	}
 };
 </script>

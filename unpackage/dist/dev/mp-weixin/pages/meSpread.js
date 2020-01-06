@@ -315,7 +315,15 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 428));};var _default = { data: function data() {return { tableData: [{ name: '大锤', age: '17777777777', address: '2019-10-25' }, { name: '张三', age: '21', address: '成都' }, { name: '李四', age: '16', address: '南京' }], columns: [{ title: '用户名', key: 'name' }, { title: '手机号', key: 'age' }, { title: '时间', key: 'address' }], bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '微信朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], collectionList: {}, imgUrl: '', isShow: true };}, components: { // wTable,
     uniPopup: uniPopup }, onLoad: function onLoad() {this.content();this.imgUrl = _helper.default.imgUrl;}, // 微信分享
-  onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, methods: { goMore: function goMore() {this.isShow = false;}, // 获取当前页路径及参数,用于分享
+  onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, // shareFriend() {
+  // 	//分享到微信朋友
+  // 	this.goShare('WXSceneSession');
+  // },
+  // shareFriendcricle() {
+  // 	//分享到微信朋友圈
+  // 	this.goShare('WXSenceTimeline');
+  // },
+  methods: { goMore: function goMore() {this.isShow = false;}, // 获取当前页路径及参数,用于分享
     getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
       var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';for (var key in options) {optionsString += key;optionsString += '=';optionsString += options[key];optionsString += '&';}optionsString = optionsString.substring(0, optionsString.length - 1);url += optionsString;return url;}, quickInlet: function quickInlet(e) {if (e == 1) {this.$refs.showshare.open();} else if (e == 2) {this.$refs.center.open();} // console.log(e);
@@ -327,22 +335,54 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
           }} });
 
     },
-    goShare: function goShare(WXSenceType) {
-      // 获取页面路径
-      var url = this.getPageUrl();
+    // goShare(WXSenceType) {
+    // 	// 获取页面路径
+    // 	console.log(this.collectionList,'**')
+    // 	uni.showToast({
+    // 		title: this.collectionList.share_link,
+    // 				icon: 'none',
+    // 				duration: 300000000
+    // 	});
+    // 	return false
+    // 	// let url = this.getPageUrl()
+    // 	console.log(url)
+    // 	uni.share({
+    // 		provider: 'weixin',
+    // 		scene: WXSenceType,
+    // 		type: 0,
+    // 		href: url,
+    // 		title: '新微金论坛',
+    // 		summary: this.collectionList.share_link,
+    // 		imageUrl: '',
+    // 		success: function(res) {
+    // 			console.log('success:' + JSON.stringify(res));
+    // 		},
+    // 		fail: function(err) {
+    // 			console.log('fail:' + JSON.stringify(err));
+    // 		},
+    // 	});
+    // },
+    goShare: function goShare(e) {
+      console.log(e);
+      var sceneType = '';
+      if (e == 'WXSceneSession') {
+        sceneType = 'WXSceneSession';
+      } else if (e == 'WXSenceTimeline') {
+        sceneType = 'WXSenceTimeline';
+      }
       uni.share({
-        provider: 'weixin',
-        scene: WXSenceType,
+        provider: "weixin",
+        scene: sceneType,
         type: 0,
-        href: url,
-        title: this.articleDetail.title,
-        summary: '',
-        imageUrl: '',
+        href: this.collectionList.share_link,
+        title: "新微金论坛",
+        summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
+        imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log('success:' + JSON.stringify(res));
+          console.log("success:" + JSON.stringify(res));
         },
         fail: function fail(err) {
-          console.log('fail:' + JSON.stringify(err));
+          console.log("fail:" + JSON.stringify(err));
         } });
 
     } } };exports.default = _default;
