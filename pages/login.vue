@@ -10,7 +10,13 @@
 			</view>
 		</view>
 		<view class="item">
-			<view class="submit" @tap="login">登录</view>
+			<!-- #ifdef MP-WEIXIN -->
+				<view class="submit" @tap="wxGetCode">登录</view>
+			<!-- #endif -->
+			<!-- #ifdef APP-PLUS -->
+				<view class="submit" @tap="login">登录</view>
+			<!-- #endif -->
+			
 		</view>
 		<view class="item">
 			<view class="registered" @tap="goRegistered">注册</view>
@@ -52,7 +58,22 @@
 					url: `/pages/registered`
 				});
 			},
-			login() {
+			// #ifdef MP-WEIXIN
+				// 微信小程序获取code
+				wxGetCode() {
+					wx.login({
+						success: res => {
+							if (res.code) {
+								//发起网络请求
+								this.login(res.code)
+							} else {
+								console.log('登录失败！' + res.errMsg)
+							}
+						}
+					});
+				},
+			// #endif
+			login(code = '') {
 				console.log(this.loginName, this.loginPaw)
 				if (this.loginName == '') {
 					uni.showToast({
@@ -70,13 +91,8 @@
 					});
 					return false
 				}
-				// uni.showToast({
-				// 	title: "登录中...",
-				// 	icon: 'loading',
-				// 	duration: 10000
-				// })
 				uni.showLoading({
-				  title: '加载中...',
+				  title: '登录中...',
 					duration: 1000000
 				});
 				uni.request({
@@ -84,7 +100,8 @@
 					method: 'POST',
 					data: {
 						username: this.loginName,
-						password: this.loginPaw
+						password: this.loginPaw,
+						wx_code: code
 					},
 					success: res => {
 						console.log(res);

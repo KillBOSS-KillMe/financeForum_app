@@ -155,7 +155,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -178,16 +190,25 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 var app = getApp();var _default = { data: function data() {return { loginPaw: '123123', loginName: '17696116171' };}, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { // 获取登录名
     getLoginName: function getLoginName(e) {this.loginName = e.detail.value;}, // 获取密码
     getLoginPaw: function getLoginPaw(e) {this.loginPaw = e.detail.value;}, // 进入忘记密码页
-    goForgetPassword: function goForgetPassword() {uni.navigateTo({ url: '/pages/forgetPassword' });
+    goForgetPassword: function goForgetPassword() {uni.navigateTo({ url: '/pages/forgetPassword' });}, // 进入注册页
+    goRegistered: function goRegistered() {uni.navigateTo({ url: "/pages/registered" });
+    },
+
+    // 微信小程序获取code
+    wxGetCode: function wxGetCode() {var _this = this;
+      wx.login({
+        success: function success(res) {
+          if (res.code) {
+            //发起网络请求
+            _this.login(res.code);
+          } else {
+            console.log('登录失败！' + res.errMsg);
+          }
+        } });
 
     },
-    // 进入注册页
-    goRegistered: function goRegistered() {
-      uni.navigateTo({
-        url: "/pages/registered" });
 
-    },
-    login: function login() {var _this = this;
+    login: function login() {var _this2 = this;var code = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       console.log(this.loginName, this.loginPaw);
       if (this.loginName == '') {
         uni.showToast({
@@ -205,13 +226,8 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
 
         return false;
       }
-      // uni.showToast({
-      // 	title: "登录中...",
-      // 	icon: 'loading',
-      // 	duration: 10000
-      // })
       uni.showLoading({
-        title: '加载中...',
+        title: '登录中...',
         duration: 1000000 });
 
       uni.request({
@@ -219,7 +235,8 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
         method: 'POST',
         data: {
           username: this.loginName,
-          password: this.loginPaw },
+          password: this.loginPaw,
+          wx_code: code },
 
         success: function success(res) {
           console.log(res);
@@ -227,8 +244,8 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
           res = _helper.default.null2str(res);
           if (res.statusCode == 200) {
             // 登录的账号和密码存入缓存
-            uni.setStorageSync('login_name', _this.loginName);
-            uni.setStorageSync('login_pwd', _this.loginPaw);
+            uni.setStorageSync('login_name', _this2.loginName);
+            uni.setStorageSync('login_pwd', _this2.loginPaw);
             uni.showToast({
               title: '登录成功',
               icon: "none" });
@@ -246,14 +263,14 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: '1
         } });
 
     },
-    null2str: function null2str(res) {var _this2 = this;
+    null2str: function null2str(res) {var _this3 = this;
       for (var x in res) {
         if (res[x] === null) {// 如果是null 把直接内容转为 ''
           res[x] = '';
         } else {
           if (Array.isArray(res[x])) {// 是数组遍历数组 递归继续处理
             res[x] = res[x].map(function (z) {
-              return _this2.null2str(z);
+              return _this3.null2str(z);
             });
           }
           if (typeof res[x] === 'object') {// 是json 递归继续处理
