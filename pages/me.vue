@@ -153,9 +153,24 @@
 			goPageNavigateTo(e) {
 				console.log(e)
 				let url = e.currentTarget.dataset.name
-				uni.navigateTo({
-					url: `/pages/${url}`
-				})
+				if(url == 'meNewbieRead'){
+					uni.navigateTo({
+						url: `/pages/articleDetail?id=${21}`
+					})
+					
+				}else if(url == 'meReserve'){
+					uni.navigateTo({
+						url: `/pages/indexAccurate?id=${9}&name=${'备用金打造'}`
+					})
+				}else if(url == 'meAllProduct'){
+					uni.navigateTo({
+						url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
+					})
+				}else{
+					uni.navigateTo({
+						url: `/pages/${url}`
+					})
+				}
 			},
 			getUserInfo() {
 				// 用户信息获取

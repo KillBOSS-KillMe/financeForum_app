@@ -177,9 +177,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [] };}, onLoad: function onLoad() {// 获取收藏列表
-    this.getList();}, methods: { getList: function getList() {var _this = this; // 获取收藏列表
-      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/publish"), method: 'GET', header: { authorization: app.globalData.token },
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '' };}, onLoad: function onLoad() {// 获取收藏列表
+    this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this; // 获取收藏列表
+      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/publish"), method: 'GET', header: {
+          authorization: app.globalData.token },
+
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
@@ -193,6 +195,12 @@ var app = getApp();var _default = { data: function data() {return { list: [] };}
           }
 
         } });
+
+    },
+    geDetail: function geDetail(e) {
+      console.log(e);
+      uni.navigateTo({
+        url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

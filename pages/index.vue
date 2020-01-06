@@ -39,7 +39,7 @@
 							<text class="title">{{ item.title }}</text>
 							<view class="itemCon">
 								<text>{{ item.created_at }}</text>
-								<text>用户名</text>
+								<text>{{item.user.name}}</text>
 								<text>{{item.comments_count}}评</text>
 							</view>
 						</view>
