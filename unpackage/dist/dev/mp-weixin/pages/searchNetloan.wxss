@@ -153,9 +153,9 @@
 	margin-right: 0;
 }
 .result .content .item image {
-	width: 96rpx;
-	height: 96rpx;
-	border-radius: 96rpx;
+	width: 94rpx;
+	height: 94rpx;
+	border-radius: 94rpx;
 }
 .result .content .item text {
 	/* text-align: center; */
@@ -167,5 +167,13 @@
 	   text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
 }
 

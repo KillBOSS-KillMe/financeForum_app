@@ -26,7 +26,7 @@
 				<block v-for="(item, index) in itemList" :key="index">
 					<view class="item" @tap="goDetail(item.id)">
 						<image :src="imgUrl + item.icon"></image>
-						<text>{{ item.name }}</text>
+						<text style="width:120rpx ;">{{ item.name }}</text>
 					</view>
 				</block>
 			</view>
@@ -270,9 +270,9 @@ export default {
 	margin-right: 0;
 }
 .result .content .item image {
-	width: 96rpx;
-	height: 96rpx;
-	border-radius: 96rpx;
+	width: 94rpx;
+	height: 94rpx;
+	border-radius: 94rpx;
 }
 .result .content .item text {
 	/* text-align: center; */
@@ -283,5 +283,7 @@ export default {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
 }
 </style>

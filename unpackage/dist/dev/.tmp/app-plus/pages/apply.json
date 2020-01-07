@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "系统应用",
+  "usingComponents": {
+    "page-search": "/components/pageSearch"
+  }
+}

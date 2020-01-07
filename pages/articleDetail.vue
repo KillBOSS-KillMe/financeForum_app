@@ -30,7 +30,7 @@
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index"><rich-text :nodes="item.content" v-if="item.need_reply == 0"></rich-text></block>
 
-			<view class="tip">
+			<view class="tip"  @tap="goVip">
 				<text>解析：</text>
 				<view>
 					您还不是<text>VIP会员</text>,本帖隐藏内容仅限VIP会员可见，点击此处开通会员后查看
@@ -151,6 +151,11 @@ export default {
 		}
 	},
 	methods: {
+		goVip(){
+			uni.navigateTo({
+				url:'/pages/meVIP'
+			})
+		},
 		//获取发布内容
 		getContent(e) {
 			this.postContent = e.detail.value;
@@ -226,13 +231,6 @@ export default {
 		share(WXSenceType) {
 			// 获取页面路径
 			let url = this.getPageUrl()
-			console.log(url)
-			uni.showToast({
-				title:url,
-				duration:300000000,
-				icon:'none'
-			})
-			return false;
 			uni.share({
 				provider: 'weixin',
 				scene: WXSenceType,
