@@ -105,7 +105,12 @@
 				</view>
 			</view>
 		</view>
-		<button type="primary">立即申请</button>
+		<!-- #ifdef APP-PLUS -->
+			<button type="primary" :data-link="listInfo.link" @tap="APP_PLUS_apply">立即申请</button>
+		<!-- #endif -->
+		<!-- #ifdef MP-WEIXIN -->
+			<button type="primary" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -131,6 +136,23 @@
 			this.getInfo();
 		},
 		methods: {
+			// 微信小程序除服
+			MP_WEIXIN_apply(e) {
+				// console.log(e)
+				// console.log('MP-WEIXIN')
+				uni.showToast({
+					title: '该小程序不支持，请下载APP',
+					icon: 'none'
+				});
+			},
+			// APP触发
+			APP_PLUS_apply(e) {
+				// console.log('APP-PLUS')
+				let link = e.currentTarget.dataset.link
+				uni.navigateTo({
+					url: `/pages/${link}`
+				})
+			},
 			getInfo(){
 				uni.request({
 					url: `${helper.requestUrl}/holes/detial`,
