@@ -2,27 +2,29 @@
 	<view>
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="item" v-if="item.theme_pic != ''" :data-id="item.id" @tap="goDetails">
+				<view class="item" v-if="item.theme_pic != ''">
 					<image v-bind:src="imgUrl + item.theme_pic" data-index="index" />
 					<view class="con">
-						<view class="title">
+						<view class="title" :data-id="item.id" @tap="goDetails">
 							<span class="label">【草稿】</span>
 							<span>{{item.title}}</span>
 						</view>
 						<view class="info">
 							<span>{{item.updated_at}}</span>
+							<span class="del" :data-index="index" @tap="deleteItem">删除</span>
 						</view>
 					</view>
 				</view>
-				<view class="item notImg" v-else :data-id="item.id" @tap="goDetails">
+				<view class="item notImg" v-else>
 					<!-- <image v-bind:src="item.image" data-index="index" /> -->
 					<view class="con">
-						<view class="title">
+						<view class="title" :data-id="item.id" @tap="goDetails">
 							<span class="label">【草稿】</span>
 							<span>{{item.title}}</span>
 						</view>
 						<view class="info">
 							<span>{{item.updated_at}}</span>
+							<span class="del" :data-index="index" @tap="deleteItem">删除</span>
 						</view>
 					</view>
 				</view>
@@ -54,6 +56,63 @@
 			}
 		},
 		methods: {
+			deleteItem(e) {
+				// 点击删除
+				uni.showModal({
+					title: '提示',
+					content: '确认删除?',
+					success: res => {
+						if (res.confirm) {
+							// console.log('用户点击确定');
+							let index = e.currentTarget.dataset.index
+							this.runDeleteItem(index)
+						} else if (res.cancel) {
+							// console.log('用户点击取消');
+						}
+					}
+				});
+			},
+			runDeleteItem(index) {
+				// 执行草稿删除
+				uni.showLoading({
+				  title: '删除中...'
+				});
+				let list = this.list
+				uni.request({
+					url: `${helper.requestUrl}/posts/del`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						post_id: list[index].id
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res);
+						if (res.data.status_code == 200) {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'success',
+								duration: 2000
+							});
+							let newList = []
+							for (let i = 0; i < list.length; i++) {
+								if (list[i].id != list[index].id) {
+									newList.push(list[i])
+								}
+							}
+							this.list = newList
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
+				});
+			},
 			goDetails(e) {
 				let id = e.currentTarget.dataset.id
 				uni.navigateTo({
@@ -63,7 +122,7 @@
 			myDraftPosts() {
 				// 加载查稿列表
 				uni.showLoading({
-				  title: '列表获取中...'
+					title: '列表获取中...'
 				});
 				uni.request({
 					url: `${helper.requestUrl}/user/my-draft-posts`,
@@ -74,7 +133,7 @@
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
-						console.log(res,'++++++++')
+						console.log(res, '++++++++')
 						if (res.data.status_code == 200) {
 							this.list = res.data.data
 							this.nextPageUrl = res.data.next_page_url
@@ -89,7 +148,7 @@
 			getMore() {
 				// 加载更多
 				uni.showLoading({
-				  title: '列表获取中...'
+					title: '列表获取中...'
 				});
 				uni.request({
 					url: `${helper.requestUrl}/user/my-draft-posts`,
@@ -100,7 +159,7 @@
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
-						console.log(res,'++++++++')
+						console.log(res, '++++++++')
 						if (res.data.status_code == 200) {
 							let list = this.list
 							let newList = res.data.data
@@ -123,7 +182,8 @@
 		width: 750rpx;
 		height: auto;
 	}
-	.item{
+
+	.item {
 		width: 690rpx;
 		height: 136rpx;
 		padding: 20rpx 30rpx;
@@ -132,11 +192,13 @@
 		align-items: center;
 		justify-content: flex-start;
 	}
-	.item image{
+
+	.item image {
 		width: 220rpx;
 		height: 136rpx;
 	}
-	.item .con{
+
+	.item .con {
 		width: 450rpx;
 		height: 136rpx;
 		margin-left: 20rpx;
@@ -145,13 +207,15 @@
 		justify-content: space-between;
 		flex-direction: column;
 	}
+
 	.notImg .con,
 	.notImg .title,
-	.notImg .info{
+	.notImg .info {
 		margin: 0 !important;
 		width: 690rpx !important;
 	}
-	.item .title{
+
+	.item .title {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
@@ -160,22 +224,28 @@
 		font-size: 28rpx;
 		font-weight: 600;
 		color: #333333;
-		overflow : hidden;
-		
+		overflow: hidden;
+
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 	}
-	.item .title .label{
+
+	.item .title .label {
 		color: #E22929;
 	}
-	.item .info{
+
+	.item .info {
 		width: 450rpx;
 		font-size: 24rpx;
 		color: #999999;
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
+		justify-content: space-between;
+	}
+
+	.del {
+		color: #E22929;
 	}
 </style>

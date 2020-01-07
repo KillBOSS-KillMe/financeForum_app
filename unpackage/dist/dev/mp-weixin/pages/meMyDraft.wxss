@@ -3,7 +3,7 @@
 	width: 750rpx;
 	height: auto;
 }
-.item{
+.item {
 	width: 690rpx;
 	height: 136rpx;
 	padding: 20rpx 30rpx;
@@ -21,11 +21,11 @@
 	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 }
-.item image{
+.item image {
 	width: 220rpx;
 	height: 136rpx;
 }
-.item .con{
+.item .con {
 	width: 450rpx;
 	height: 136rpx;
 	margin-left: 20rpx;
@@ -49,11 +49,11 @@
 }
 .notImg .con,
 .notImg .title,
-.notImg .info{
+.notImg .info {
 	margin: 0 !important;
 	width: 690rpx !important;
 }
-.item .title{
+.item .title {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -70,19 +70,19 @@
 	font-size: 28rpx;
 	font-weight: 600;
 	color: #333333;
-	overflow : hidden;
-	
+	overflow: hidden;
+
 	-o-text-overflow: ellipsis;
-	
+
 	   text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
-.item .title .label{
+.item .title .label {
 	color: #E22929;
 }
-.item .info{
+.item .info {
 	width: 450rpx;
 	font-size: 24rpx;
 	color: #999999;
@@ -94,9 +94,12 @@
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	-webkit-box-pack: end;
-	-webkit-justify-content: flex-end;
-	    -ms-flex-pack: end;
-	        justify-content: flex-end;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.del {
+	color: #E22929;
 }
 
