@@ -107,8 +107,8 @@
 			<input type="text" :value="postContent" :focus="focus" @input="getContent" placeholder="发表评论..." />
 			<uni-icon class="iconfont iconziyuan icon" type="" @tap="postDiscuss"></uni-icon>
 			<!-- 收藏/收藏 -->
-			<uni-icon class="iconfont iconzanzan" @tap="clickZan" type="" v-if="postComItem.is_collections == '0'"></uni-icon>
-			<uni-icon class="iconfont icondianzan active" type="" v-else></uni-icon>
+			<uni-icon class="iconfont iconzanzan" @tap="clickZan" type="" v-if="articleDetail.is_collections == 0"></uni-icon>
+			<uni-icon class="iconfont icondianzan active" type="" v-if="articleDetail.is_collections == 1"></uni-icon>
 		</view>
 	</view>
 </template>
@@ -168,6 +168,7 @@ export default {
 						success: res => {
 							if (res.confirm) {
 								// console.log('用户点击确定');
+								// 进入开通会员页
 								this.goVip()
 							} else if (res.cancel) {
 								// console.log('用户点击取消');
@@ -557,6 +558,7 @@ export default {
 							icon: 'none'
 						});
 						this.articleDetail.like += 1
+						this.articleDetail.is_collections = 1
 					} else {
 						uni.showToast({
 							title: '点赞失败',
