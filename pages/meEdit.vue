@@ -27,6 +27,8 @@
 				<view class="moon">
 					<text>性别</text>
 					<view>
+						<!-- <text v-if="formNode.sex == ''">{{ formNode.sex }}</text> -->
+						<!-- <text>{{ formNode.sex }}</text> -->
 						<text>{{ formNode.sex }}</text>
 						<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 					</view>

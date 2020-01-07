@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<view class="search">
+		<!-- <view class="search">
 			<input type="text" />
 			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-		</view>
+		</view> -->
 		<view class="list" v-if="list.length > 0">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
@@ -21,7 +21,7 @@
 						<view class="info">{{item.signature}}</view>
 					</view>
 					<view class="operating">
-						<view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view>
+						<!-- <view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view> -->
 					</view>
 				</view>
 			</block>

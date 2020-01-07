@@ -20,7 +20,8 @@
 		</view>
 		
 		<view class="submit">
-			<view @tap="goMyMobile" data-name="meMyMobile_2">下一步</view>
+			<view @tap="goMyMobile" v-if="mobileCode != ''" data-name="meMyMobile_2">下一步</view>
+			<view @tap="goMyMobile" class="notActive" v-if="mobileCode == ''" data-name="meMyMobile_2">下一步</view>
 		</view>
 	</view>
 </template>
@@ -41,6 +42,7 @@
 		},
 		onLoad(e) {
 			console.log(e)
+			console.log(this.mobileCode)
 			this.mobile = e.num
 		},
 		methods: {
@@ -225,5 +227,8 @@
 		align-items: center;
 		justify-content: center;
 		padding: 50rpx 0;
+	}
+	.notActive {
+		background-color: rgba(35, 144, 220, 0.5) !important;
 	}
 </style>

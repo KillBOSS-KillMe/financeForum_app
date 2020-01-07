@@ -98,15 +98,17 @@
 				Inv: 0,
 				imgUrl: '',
 				publishList: [],
-				userInfo: []
+				userInfo: {}
 			}
 		},
 		onLoad() {
-			// 获取用户信息
-			this.getUserInfo()
 			// 获取我的发布
 			this.getPublish()
 			this.imgUrl = helper.imgUrl
+		},
+		onShow() {
+			// 获取用户信息
+			this.getUserInfo()
 		},
 		methods: {
 			changeTab(e) {

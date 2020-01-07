@@ -141,10 +141,10 @@ export default {
 		this.imgUrl = helper.imgUrl;
 		this.userInfo = app.globalData.userInfo
 		console.log(this.userInfo)
-		// 文章详情加载
-		this.getArticleDetail();
 	},
 	onShow() {
+		// 文章详情加载
+		this.getArticleDetail();
 		//评论列表
 		this.getComment();
 	},
@@ -397,6 +397,7 @@ export default {
 						uni.showToast({
 							title: res.data.message
 						});
+						this.articleDetail.is_follow = 1
 					} else {
 						uni.showToast({
 							title: res.data.message,

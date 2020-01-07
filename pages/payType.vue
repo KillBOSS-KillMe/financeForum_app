@@ -97,7 +97,7 @@
 			},
 			runRecharge(payNode) {
 				uni.showToast({
-					title: "充值加载中...",
+					title: "支付加载中...",
 					icon: 'loading',
 					duration: 1000000
 				});
@@ -114,7 +114,7 @@
 						// console.log(res)
 						// console.log('success:' + JSON.stringify(res));
 						uni.showToast({
-							title: "充值成功",
+							title: "支付成功",
 							icon: 'success',
 							duration: 2000
 						});
@@ -127,7 +127,7 @@
 					},
 					fail: err => {
 						uni.showToast({
-							title: "充值失败",
+							title: "支付失败",
 							icon: 'none',
 							duration: 2000
 						});

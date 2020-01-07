@@ -167,4 +167,7 @@
 		        justify-content: center;
 		padding: 50rpx 0;
 }
+.notActive {
+		background-color: rgba(35, 144, 220, 0.5) !important;
+}
 
