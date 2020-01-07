@@ -28,7 +28,9 @@
 					</view>
 				</view>
 			</view>
-			<block v-for="(item, index) in articleDetail.extras" :key="index"><rich-text :nodes="item.content" v-if="item.need_reply == 0"></rich-text></block>
+			<block v-for="(item, index) in articleDetail.extras" :key="index">
+				<rich-text :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
+			</block>
 
 			<view class="tip"  @tap="goVip">
 				<text>解析：</text>
@@ -117,6 +119,7 @@ import helper from '../common/helper.js';
 export default {
 	data() {
 		return {
+			userInfo: {},
 			focus: false,
 			isShow: '0',
 			isHide: '0',
@@ -136,6 +139,8 @@ export default {
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
+		this.userInfo = app.globalData.userInfo
+		console.log(this.userInfo)
 		// 文章详情加载
 		this.getArticleDetail();
 	},
@@ -151,6 +156,27 @@ export default {
 		}
 	},
 	methods: {
+		goVIPPage(e) {
+			// 判断当前用户是否为普通用户
+			if (this.userInfo.type == 'normal') {
+				let content_type = e.currentTarget.dataset.content_type
+				// 判断当前点击文本是否为会员可看
+				if (content_type == 'member') {
+					uni.showModal({
+						title: '提示',
+						content: '是否前往开通会员',
+						success: res => {
+							if (res.confirm) {
+								// console.log('用户点击确定');
+								this.goVip()
+							} else if (res.cancel) {
+								// console.log('用户点击取消');
+							}
+						}
+					});
+				}
+			}
+		},
 		goVip(){
 			uni.navigateTo({
 				url:'/pages/meVIP'

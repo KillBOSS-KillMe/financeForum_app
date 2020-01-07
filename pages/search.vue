@@ -127,7 +127,11 @@ export default {
 						// // 总页码
 						// this.last_page = res.data.last_page;
 					} else {
-						
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none',
+							duration: 2000
+						});
 					}
 				}
 			});

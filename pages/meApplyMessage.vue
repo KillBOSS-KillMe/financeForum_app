@@ -28,11 +28,11 @@
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
 					<view>
-						<image :src="imgUrl+item.about.user.avatar" mode=""></image>
+						<image :src="imgUrl + item.about.theme_pic" mode=""></image>
 						<view class="right">
-							<text class="title">{{item.about.user.name}}</text>
+							<text class="title">{{item.about.title}}</text>
 							<text>提到了我</text>
-							<text>{{item.created_at}}</text>
+							<text>{{item.about.updated_at}}</text>
 						</view>
 					</view>
 				</view>
