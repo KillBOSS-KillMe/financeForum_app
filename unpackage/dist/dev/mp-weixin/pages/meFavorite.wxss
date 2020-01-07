@@ -10,12 +10,15 @@
 	border-radius: 10rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 .item image{
@@ -28,16 +31,20 @@
 	margin-left: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
 .item .title{
@@ -47,7 +54,8 @@
 	font-weight: 600;
 	color: #333333;
 	overflow : hidden;
-	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
@@ -58,12 +66,15 @@
 	color: #999999;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 

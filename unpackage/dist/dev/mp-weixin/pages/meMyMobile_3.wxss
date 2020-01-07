@@ -6,16 +6,20 @@
 		border-top: 2rpx solid #F3F3F3;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
 		        flex-direction: column;
 }
 .head>view{
@@ -26,12 +30,15 @@
 		background-color: #3e8cfd;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 }
 .head .iconfont{
@@ -59,12 +66,16 @@
 		
 		display: -webkit-flex;
 		
+		display: -ms-flexbox;
+		
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 		margin-bottom: 15px;
     border-radius: 2px;
@@ -78,12 +89,15 @@
 		height: auto;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 		padding: 50rpx 0;
 }

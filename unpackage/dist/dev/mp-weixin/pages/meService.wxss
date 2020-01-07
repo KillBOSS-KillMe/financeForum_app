@@ -10,20 +10,25 @@
 	margin-top: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 }
 .meMessage .item>view{
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 }
 .meMessage .item image{
@@ -56,18 +61,22 @@ button::after{
 	height: 100rpx;
 	border-radius: 100rpx;
 	/* background: #22BA42; */
-	background-image: -webkit-linear-gradient(130deg, #A8F4B8, #22BA42);
+	background-image: -o-linear-gradient(130deg, #A8F4B8, #22BA42);
 	background-image: linear-gradient(-40deg, #A8F4B8, #22BA42);
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
-	box-shadow: 0 0 40rpx 0rpx #22BA42;
+	-webkit-box-shadow: 0 0 40rpx 0rpx #22BA42;
+	        box-shadow: 0 0 40rpx 0rpx #22BA42;
 }
 .iconFont .iconfont{
 	font-size: 60rpx;
