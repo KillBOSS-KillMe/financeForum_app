@@ -32,6 +32,26 @@ export default {
 			this.setData = e.detail.value
 		},
 		submit() {
+			console.log('-----------------------------')
+			console.log(this.options.type, '23234234')
+			if (this.options.type == 'number') {
+				console.log(!this.setData%1 === 0)
+				if (!this.setData%1 === 0) {
+					uni.showToast({
+						title: '请输入正整数'
+					});
+					return ''
+				}
+			}
+			if (this.options.type == 'mail') {
+				console.log(!this.setData%1 === 0)
+				if (!this.setData%1 === 0) {
+					uni.showToast({
+						title: '请输入正整数'
+					});
+					return ''
+				}
+			}
 			uni.showLoading({
 			  title: '提交中...',
 				duration: 1000000

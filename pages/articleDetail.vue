@@ -10,9 +10,9 @@
 						<view class="leftTitleBottom">
 							<text>{{ articleDetail.user.type }}</text>
 							<text>{{ articleDetail.user.created_at }}</text>
-							<view v-show="articleDetail.can_follow != '0'">
+							<view>
 								<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
-								<text class="follow" @tap="addFollow" v-else>已关注</text>
+								<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 1">已关注</text>
 							</view>
 						</view>
 					</view>

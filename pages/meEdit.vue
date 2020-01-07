@@ -7,7 +7,7 @@
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
-		<view class="itemList moon" data-name="signature" data-title="修改签名" @tap="goEditSet">
+		<view class="itemList moon" data-name="signature" data-title="修改签名" data-type="text" @tap="goEditSet">
 			<text>签名</text>
 			<view>
 				<text>{{ formNode.signature }}</text>
@@ -15,7 +15,7 @@
 			</view>
 			<!-- <input type="text" v-model="formNode.signature" value=""  placeholder="" /> -->
 		</view>
-		<view class="itemList moon" data-name="name" data-title="修改姓名" @tap="goEditSet">
+		<view class="itemList moon" data-name="name" data-title="修改姓名" data-type="text" @tap="goEditSet">
 			<text>真实姓名</text>
 			<view>
 				<text>{{ formNode.name }}</text>
@@ -59,7 +59,7 @@
 				</view>
 			</picker>
 		</view>
-		<view class="itemList moon" data-name="sesame_credit" data-title="修改芝麻信用分" @tap="goEditSet">
+		<view class="itemList moon" data-name="sesame_credit" data-title="修改芝麻信用分" data-type="number" @tap="goEditSet">
 			<text>芝麻信用分</text>
 			<view>
 				<text>{{ formNode.sesame_credit }}</text>
@@ -103,7 +103,7 @@
 			<text>手机</text>
 			<input type="text" value="" v-model="formNode.mobile" placeholder="" disabled="ture" />
 		</view>
-		<view class="itemList moon" data-name="email" data-title="修改邮箱" @tap="goEditSet">
+		<view class="itemList moon" data-name="email" data-title="修改邮箱" data-type="mail" @tap="goEditSet">
 			<text>邮箱</text>
 			<view>
 				<text>{{ formNode.email }}</text>
@@ -154,10 +154,11 @@ export default {
 		// 进入编辑页
 		goEditSet(e) {
 			console.log(e);
+			let type = e.currentTarget.dataset.type;
 			let name = e.currentTarget.dataset.name;
 			let title = e.currentTarget.dataset.title;
 			uni.navigateTo({
-				url: `/pages/meEditSet?name=${name}&title=${title}`
+				url: `/pages/meEditSet?name=${name}&title=${title}&type=${type}`
 			});
 		},
 		bindPickerChange(e) {
