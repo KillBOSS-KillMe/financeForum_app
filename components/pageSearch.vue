@@ -1,7 +1,7 @@
 <template>
 	<view class="pageSearch">
 		<uni-icon type="" @tap="goCode" class="iconfont iconsaoyisao"></uni-icon>
-		<!-- <image class="code" src="../static/a.jpg" mode=""></image> -->
+		<!-- <image class="code" src="../static/imgLost.png" mode=""></image> -->
 		<view class="searchBox" @tap="goSearch">
 			<input type="text" disabled />
 		</view>

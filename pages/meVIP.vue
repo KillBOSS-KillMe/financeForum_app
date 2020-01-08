@@ -79,10 +79,6 @@
 	export default {
 		data() {
 			return {
-				bannerList:[
-					{id:'1',img:'../static/a.jpg'},
-					{id:'2',img:'../static/b.jpg'}
-				],
 				isCheck: false,
 				bannerIndex: '0',
 				current: '0',

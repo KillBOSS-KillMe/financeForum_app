@@ -34,7 +34,7 @@
 					<view class="item" @tap="goDetail" :data-id="item.id">
 						<!-- {{item.photoalbums[0].path}} -->
 						<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
-						<image src="../static/a.jpg" mode="aspectFill" v-else></image>
+						<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
 						<view class="itemRight">
 							<text class="title">{{ item.title }}</text>
 							<view class="itemCon">

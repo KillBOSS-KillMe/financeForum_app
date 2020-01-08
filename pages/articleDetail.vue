@@ -4,7 +4,7 @@
 			<text class="title">{{ articleDetail.title }}</text>
 			<view class="info">
 				<view class="left">
-					<image :src="imgUrl+articleDetail.theme_pic" mode=""></image>
+					<image :src="imgUrl+articleDetail.user.avatar" mode=""></image>
 					<view class="leftTitle">
 						<text>{{ articleDetail.user.signature }}</text>
 						<view class="leftTitleBottom">

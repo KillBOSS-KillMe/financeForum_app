@@ -5,7 +5,7 @@
 				<uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon>
 			</view>
 			<image class="userImg" :src="imgUrl+userInfo.avatar" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
-			<!-- <image class="userImg" src="../static/a.jpg" mode=""></image> -->
+			<!-- <image class="userImg" src="../static/imgLost.png" mode=""></image> -->
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view><text class="login">{{userInfo.name}}</text><text class="tip">青铜新手</text></view>
@@ -25,7 +25,7 @@
 			<view class="contentList" v-if="Inv==0">
 				<view class="item" :data-id="item.post_id" v-for="(item,index) in publishList" :key="index">
 					<image :src="imgUrl + item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''"></image>
-					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
+					<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
 					<view class="itemRight">
 						<text class="title">{{item.title}}</text>
 						<view class="itemCon">

@@ -16,7 +16,7 @@
 			<block v-for="(item, index) in list" :key="index">
 				<view class="item" @tap="goProduct" :data-id="item.id">
 					<image :src="imgUrl + item.icon" mode="aspectFill" v-if="item.icon != ''"></image>
-					<image src="../static/a.jpg" mode="" v-if="item.icon == ''"></image>
+					<image src="../static/imgLost.png" mode="" v-if="item.icon == ''"></image>
 					<view class="itemRight">
 						<view class="productInfo">
 							<!-- {{ item.name }} {{ item.apply_sum }} {{ item.quota }} {{ item.fee_ratio }} {{ item.introduction }}-->
