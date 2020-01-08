@@ -1,79 +1,9 @@
-// customData = {} // 自定义数据 // customFunction () {} // 自定义方法 // onLoad () {} // 在Page和Component共用的生命周期函数 // onShow () {} // 只在Page中存在的页面生命周期函数 //
-config = {}; // 只在Page实例中存在的配置数据，对应于原生的page.json文件 // data = {}; // 页面所需数据均需在这里声明，可用于模板数据绑定 // components = {}; //
-声明页面中所引用的组件，或声明组件中所引用的子组件 // mixins = []; // 声明页面所引用的Mixin实例 // computed = {}; // 声明计算属性（详见后文介绍） // watch = {}; //
-声明数据watcher（详见后文介绍） // methods = {}; // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明 //
-普通自定义方法在methods对象外声明，与methods平级 // events = {}; // 声明组件之间的事件处理函数 //props {传值} 在WePY中属于 父子组件之间 传值的一种机制 // 页面跳转，传参写法 //
-this.$redirect('./page2', {a: 1, b: 2}) // this.$redirect({ // url: './pages?a=1&b=2' // }); // this.$navigate(url) // 阴影边框 // box-shadow: #f1fefb 1rpx 1rpx 10rpx 5rpx; //
-flexflexflexflexflexflexflexflex // display: flex; // align-items: center; // justify-content: space-between; // 竖向 // display: flex; // align-items: center; // justify-content:
-space-between; // flex-direction: column; // 换行 // display: flex; // align-items: center; // justify-content: space-between; // flex-direction: row; // flex-wrap: wrap;
-//换行隐藏 //overflow : hidden; //text-overflow: ellipsis; //display: -webkit-box; //-webkit-line-clamp: 2; //-webkit-box-orient: vertical; // 居右 // flex-direction:row; //
-justify-content:flex-end // vertical-align:middle; // 自动换行 // word-break:break-all; // 单行文本溢出 // overflow:hidden; // text-overflow:ellipsis; // white-space:nowrap; //
-多行文本溢出
-<!-- -webkit-line-clamp: 2;
-display: -webkit-box;
--webkit-box-orient: vertical;
-overflow: hidden;
-text-overflow: ellipsis; -->
-<script>
-import helper from './common/helper.js';
-export default {
-	onLaunch: function() {
-		console.log('App Launch');
-	},
-	onShow: function() {
-		console.log('App Show');
-	},
-	onHide: function() {
-		console.log('App Hide');
-	},
-	globalData: {
-		token: '',
-		vipIndex: '',
-	},
-	onLoad() {
-		this.getToken()
-	},
-	methods: {
-		// 获取Token
-		getToken() {
-			uni.login({
-				success: res => {
-					if (res.code) {
-						console.log(res.code);
-						uni.request({
-							url: `${helper.requestUrl}/refresh`,
-							method: 'POST',
-							header: {
-								authorization: this.$options.globalData.token
-							},
-							// data: {
-							// 	code: res.code
-							// },
-							success: data => {
-								data = helper.null2str(data);
-								console.log(data);
-								if (data.statusCode == '200') {
-									let token = `${data.data.token}`;
-									this.$options.globalData.token = token;
-									console.log(this.$options.globalData.token);
-								}
-							}
-						});
-					}
-				}
-			});
-		}
-	}
-};
-</script>
 
-<style>
 .line {
 	width: 750rpx;
 	height: 6rpx;
 	background: #F8F8F8;
 }
-
 text {
 	display: block;
 }
@@ -86,6 +16,7 @@ uni-tabbar .uni-tabbar__icon {
 	width: 43rpx !important;
 	height: 43rpx !important;
 }
+
 /* button[type=primary]{
 	background: none;
 } */
@@ -95,11 +26,16 @@ uni-tabbar .uni-tabbar__icon {
 	font-size: 50rpx;
 	font-weight: 600;
 	color: #eee;
+	display: -webkit-box;
+	display: -webkit-flex;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
 }
-
 @font-face {font-family: "iconfont";
   src: url('//at.alicdn.com/t/font_1566333_fwympjhenon.eot?t=1578452189045'); /* IE9 */
   src: url('//at.alicdn.com/t/font_1566333_fwympjhenon.eot?t=1578452189045#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -108,7 +44,6 @@ uni-tabbar .uni-tabbar__icon {
   url('//at.alicdn.com/t/font_1566333_fwympjhenon.ttf?t=1578452189045') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
   url('//at.alicdn.com/t/font_1566333_fwympjhenon.svg?t=1578452189045#iconfont') format('svg'); /* iOS 4.1- */
 }
-
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
@@ -116,242 +51,183 @@ uni-tabbar .uni-tabbar__icon {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .iconzanzan:before {
-  content: "\e65a";
+  content: "\E65A";
 }
-
 .iconqunfengjingzhunyinliu:before {
-  content: "\e70f";
+  content: "\E70F";
 }
-
 .iconiconset0207:before {
-  content: "\e66a";
+  content: "\E66A";
 }
-
 .icondianzan:before {
-  content: "\e60c";
+  content: "\E60C";
 }
-
 .iconzhaopian:before {
-  content: "\e640";
+  content: "\E640";
 }
-
 .iconyonghu:before {
-  content: "\e652";
+  content: "\E652";
 }
-
 .iconhuifu:before {
-  content: "\e66f";
+  content: "\E66F";
 }
-
 .iconqiyegongchangjianzhu:before {
-  content: "\e802";
+  content: "\E802";
 }
-
 .iconsousuo:before {
-  content: "\e614";
+  content: "\E614";
 }
-
 .iconzhizhang5:before {
-  content: "\e64f";
+  content: "\E64F";
 }
-
 .iconhongbao1:before {
-  content: "\e657";
+  content: "\E657";
 }
-
 .iconicon7:before {
-  content: "\e667";
+  content: "\E667";
 }
-
 .iconshangjiantou:before {
-  content: "\e64a";
+  content: "\E64A";
 }
-
 .iconweixin:before {
-  content: "\e6b3";
+  content: "\E6B3";
 }
-
 .iconzhifubao:before {
-  content: "\e610";
+  content: "\E610";
 }
-
 .iconbuoumaotubiao20:before {
-  content: "\e612";
+  content: "\E612";
 }
-
 .iconbiaoqing:before {
-  content: "\e615";
+  content: "\E615";
 }
-
 .iconxinshoubangzhu:before {
-  content: "\e64c";
+  content: "\E64C";
 }
-
 .iconshezhi:before {
-  content: "\e604";
+  content: "\E604";
 }
-
 .iconfenxiang:before {
-  content: "\e613";
+  content: "\E613";
 }
-
 .iconyonghuguanli:before {
-  content: "\e620";
+  content: "\E620";
 }
-
 .iconpengyouquan:before {
-  content: "\e73b";
+  content: "\E73B";
 }
-
 .iconweixin1:before {
-  content: "\e659";
+  content: "\E659";
 }
-
 .icondiandian:before {
-  content: "\e653";
+  content: "\E653";
 }
-
 .iconlishijilu:before {
-  content: "\e64d";
+  content: "\E64D";
 }
-
 .iconrenzheng:before {
-  content: "\e60f";
+  content: "\E60F";
 }
-
 .iconqiapiansousuo:before {
-  content: "\e6b2";
+  content: "\E6B2";
 }
-
 .iconbulletin:before {
-  content: "\e6df";
+  content: "\E6DF";
 }
-
 .iconhuiyuan:before {
-  content: "\e619";
+  content: "\E619";
 }
-
 .iconzaixiankefu:before {
-  content: "\e61c";
+  content: "\E61C";
 }
-
 .iconjiantou:before {
-  content: "\e617";
+  content: "\E617";
 }
-
 .iconlocation:before {
-  content: "\e611";
+  content: "\E611";
 }
-
 .iconico_zuo:before {
-  content: "\e601";
+  content: "\E601";
 }
-
 .iconhuiyuan1:before {
-  content: "\e65f";
+  content: "\E65F";
 }
-
 .iconhongbaoguanli:before {
-  content: "\e628";
+  content: "\E628";
 }
-
 .iconat:before {
-  content: "\e71c";
+  content: "\E71C";
 }
-
 .iconqian_:before {
-  content: "\e61a";
+  content: "\E61A";
 }
-
 .icondianhua:before {
-  content: "\e6f9";
+  content: "\E6F9";
 }
-
 .icongongwenbao:before {
-  content: "\e70b";
+  content: "\E70B";
 }
-
 .iconzanting:before {
-  content: "\e63d";
+  content: "\E63D";
 }
-
 .iconsaoyisao:before {
-  content: "\e605";
+  content: "\E605";
 }
-
 .iconshouye:before {
-  content: "\e606";
+  content: "\E606";
 }
-
 .iconliebiao:before {
-  content: "\e60a";
+  content: "\E60A";
 }
-
 .iconnan:before {
-  content: "\e832";
+  content: "\E832";
 }
-
 .iconhuiyuan2:before {
-  content: "\e64e";
+  content: "\E64E";
 }
-
 .iconrenshu:before {
-  content: "\e63c";
+  content: "\E63C";
 }
-
 .iconxiaoxi:before {
-  content: "\e62c";
+  content: "\E62C";
 }
-
 .iconshipin:before {
-  content: "\e663";
+  content: "\E663";
 }
-
 .iconxiepinglun:before {
-  content: "\e668";
+  content: "\E668";
 }
-
 .iconshoujihaomaguizheng:before {
-  content: "\e6fc";
+  content: "\E6FC";
 }
-
 .icontihuoguanli:before {
-  content: "\e6a4";
+  content: "\E6A4";
 }
-
 .icontihuoguanli1:before {
-  content: "\e6a9";
+  content: "\E6A9";
 }
-
 .iconshouji:before {
-  content: "\e616";
+  content: "\E616";
 }
-
 .iconchanpin_yonghuzhifu:before {
-  content: "\e603";
+  content: "\E603";
 }
-
 .iconziyuan:before {
-  content: "\e61d";
+  content: "\E61D";
 }
-
 .iconyuyin:before {
-  content: "\e6a3";
+  content: "\E6A3";
 }
-
 .iconshujuhuizong:before {
-  content: "\e63b";
+  content: "\E63B";
 }
-
 .iconjurassic_apply:before {
-  content: "\e697";
+  content: "\E697";
 }
-
 .iconchangyongtubiao-xianxingdaochu-zhuanqu-:before {
-  content: "\e74b";
+  content: "\E74B";
 }
 
 
-</style>
+

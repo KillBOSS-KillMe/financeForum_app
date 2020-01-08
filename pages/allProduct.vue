@@ -3,11 +3,13 @@
 		<view class="screen">
 			<view class="left" @tap="getTap(1)">
 				<text>{{typeText1}}</text>
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<uni-icon type="" v-if="down == 0" class="iconfont iconjiantou"></uni-icon>
+				<uni-icon type="" v-if="down == 1" class="iconfont iconshangjiantou"></uni-icon>
 			</view>
 			<view class="right" @tap="getTap(2)">
 				<text>{{typeText2}}</text>
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<uni-icon type="" v-if="top == 0" class="iconfont iconjiantou"></uni-icon>
+				<uni-icon type="" v-if="top == 1" class="iconfont iconshangjiantou"></uni-icon>
 			</view>
 		</view>
 		<view class="contentList">
@@ -83,7 +85,9 @@
 					}
 				],
 				typeList: [],
-				category_id: ''
+				category_id: '',
+				down: "0",
+				top: '0'
 			};
 		},
 		onLoad() {
@@ -102,8 +106,10 @@
 				this.type = e
 				if (e == 1) {
 					this.keyShow = this.moneyList
+					this.down = 1
 				} else {
 					this.keyShow = this.typeList
+					this.top = 1
 					this.getTypeList()
 				}
 				this.mask = true
@@ -115,11 +121,13 @@
 				if (this.type == 1) {
 					this.typeText1 = this.keyShow[this.currentIndex].title
 					this.quota = this.keyShow[this.currentIndex].title
+					this.down = 0
 					// this.typeText2 = '所有贷款分类'
 				} else {
 					// this.typeText1 = '所有额度'
 					this.typeText2 = this.keyShow[this.currentIndex].title
 					this.category_id = e.currentTarget.dataset.id
+					this.top =0
 				}
 				this.list = []
 				this.mask = false
@@ -128,6 +136,8 @@
 			// 隐藏标签列表
 			hideModal() {
 				this.mask = false
+				this.down == 0
+				this.top == 0
 			},
 			getTypeList(){
 				uni.request({
