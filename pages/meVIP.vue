@@ -98,8 +98,8 @@
 			}
 		},
 		onLoad() {
-			this.imgUrl = helper.imgUrl
 			this.vipList()
+			this.imgUrl = helper.imgUrl
 		},
 		onShow() {
 			console.log(app.globalData.vipIndex)

@@ -45,7 +45,7 @@
 				</view>
 			</view>
 		</view>
-		<button type="primary" class="meCertification" @tap="submint">认证</button>
+		<button type="" class="meCertification" @tap="submint">认证</button>
 	</view>
 </template>
 
@@ -284,5 +284,6 @@
 	border-radius: 10rpx;
 	barder:none;
 	margin-top: 40rpx;
+	color: #fff;
 }
 </style>
