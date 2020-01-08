@@ -14,31 +14,48 @@
 .navs {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 	height: 370rpx;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
+<<<<<<< HEAD
 	    -ms-flex-pack: start;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: flex-start;
 }
 .navs .bannerItem {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 	width: 140rpx;
 	margin-bottom: 26rpx;
 	margin-right: 40rpx;
 	-webkit-flex-wrap: wrap;
+<<<<<<< HEAD
 	    -ms-flex-wrap: wrap;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 	height: 160rpx;
 }
@@ -63,16 +80,23 @@
 	padding: 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 }
 .quickInlet .quickItem {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: center;
@@ -81,6 +105,13 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 }
 .quickInlet .quickItem > image {
@@ -105,11 +136,17 @@
 	padding: 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 }
 .query input {
@@ -140,14 +177,20 @@
 .content .inv-h-w {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 }
 .content .inv-h {
 	font-size: 32rpx;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
+<<<<<<< HEAD
 	    -ms-flex: 1;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex: 1;
 	text-align: center;
 	color: #999999;
@@ -169,11 +212,17 @@
 .content .contentList .item {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 	margin-bottom: 40rpx;
 }
@@ -186,6 +235,7 @@
 	width: 530rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: space-between;
@@ -193,17 +243,29 @@
 	        align-content: space-between;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-align-content: space-between;
+	        align-content: space-between;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .content .contentList .item .itemRight .productInfo {
 	width: 530rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 }
 .content .contentList .item .itemRight .productInfo > text {
@@ -214,6 +276,7 @@
 .content .contentList .item .itemRight .productInfo > view {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: center;
@@ -222,6 +285,13 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 }
 .content .contentList .item .itemRight .productInfo > view text {
@@ -236,8 +306,12 @@
 	font-size: 28rpx;
 	color: #999;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
@@ -246,13 +320,19 @@
 	width: 530rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 }
 .content .money {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 	font-size: 28rpx;
 	color: #999;

@@ -6,6 +6,7 @@
 .edit .itemList {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
@@ -15,6 +16,14 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 	padding: 30rpx 0;
 	border-bottom: 2rpx dashed #000000;
@@ -22,6 +31,7 @@
 .edit .itemList .right {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -31,6 +41,14 @@
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
 	    -ms-flex-pack: end;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: flex-end;
 	font-size: 30rpx;
 	color: #333333;
@@ -74,6 +92,7 @@
 	width: 690rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
@@ -86,12 +105,23 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 }
 .moon > view {
 	width: 500rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: center;
@@ -100,14 +130,25 @@
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 	text-align: right;
 }
 .moon > view > text {
 	width: 460rpx;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	white-space: nowrap;
 	text-align: right;
 }

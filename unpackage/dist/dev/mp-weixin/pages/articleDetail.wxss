@@ -7,8 +7,12 @@ button {
 		margin-right:auto;
 		padding-left:14px;
 		padding-right:14px;
+<<<<<<< HEAD
 		-webkit-box-sizing:border-box;
 		        box-sizing:border-box;
+=======
+		box-sizing:border-box;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 		font-size:18px;
 		text-align:center;
 		text-decoration:none;
@@ -44,12 +48,17 @@ button::after {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 }
 .articleDetail .content .info {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
@@ -62,6 +71,16 @@ button::after {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 	margin: 30rpx 0;
 	border-bottom: 1rpx dashed #ececec;
@@ -71,6 +90,7 @@ button::after {
 .articleDetail .content .info .left {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
@@ -80,6 +100,14 @@ button::after {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 }
 .articleDetail .content .info .left > image {
@@ -93,18 +121,28 @@ button::after {
 	color: #333333;
 	font-weight: 600;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	white-space: nowrap;
 }
 .articleDetail .content .info .left .leftTitleBottom {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
 	    -ms-flex-align: end;
+=======
+	display: flex;
+	-webkit-box-align: end;
+	-webkit-align-items: flex-end;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: flex-end;
 }
 .articleDetail .content .info .left .leftTitleBottom > text {
@@ -129,6 +167,7 @@ button::after {
 	height: 90rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: space-between;
@@ -136,6 +175,12 @@ button::after {
 	        align-content: space-between;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-align-content: space-between;
+	        align-content: space-between;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .read view {
@@ -144,6 +189,7 @@ button::after {
 	color: #333333;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -153,6 +199,14 @@ button::after {
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
 	    -ms-flex-pack: end;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: flex-end;
 }
 .read view .iconfont{
@@ -161,7 +215,10 @@ button::after {
 .postCom {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 	font-size: 28rpx;
 	color: #666666;
@@ -189,6 +246,7 @@ button::after {
 .content .share {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
@@ -198,6 +256,14 @@ button::after {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 	margin-top: 30rpx;
 }
@@ -218,6 +284,7 @@ button::after {
 	border-radius: 65rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -227,6 +294,14 @@ button::after {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 	/* background-color: ; */
 }
@@ -239,6 +314,7 @@ button::after {
 .reward {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
@@ -247,6 +323,13 @@ button::after {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 	margin: 30rpx auto;
 }
@@ -269,6 +352,7 @@ button::after {
 	width: 690rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
@@ -278,6 +362,14 @@ button::after {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 	border-bottom: 1rpx solid #e4e4e4;
 }
@@ -301,11 +393,17 @@ button::after {
 .comment .item {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 	padding: 30rpx 0;
 	border-bottom: 1rpx solid #e4e4e4;
@@ -324,8 +422,12 @@ button::after {
 	font-weight: 600;
 	/* margin-bottom: 10rpx; */
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	white-space: nowrap;
 }
 .comment .rightContent {
@@ -335,28 +437,44 @@ button::after {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	margin-bottom: 10rpx;
 }
 .comment .rightBottom {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 }
 .comment .flex {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	    -ms-flex-pack: start;
+=======
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: flex-start;
 }
 .comment .flex > text {
@@ -367,21 +485,33 @@ button::after {
 .comment .itemListHead {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 }
 .itemListHeadLeft {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
 	    -ms-flex-align: start;
+=======
+	display: flex;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: flex-start;
 }
 .rightMember {
@@ -408,6 +538,7 @@ button::after {
 	left: 0;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: center;
@@ -416,6 +547,13 @@ button::after {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 	background: #fff;
 }

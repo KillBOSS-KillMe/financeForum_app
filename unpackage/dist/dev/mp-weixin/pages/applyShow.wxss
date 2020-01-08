@@ -4,10 +4,15 @@
 	padding:30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .collection{
@@ -23,11 +28,17 @@
 	width: 156rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 	/* justify-content: center; */
 	margin-right: 20rpx;
@@ -43,14 +54,19 @@
 	margin-top: 6rpx;
 	text-align: center;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	white-space: nowrap;
 }
 .head{
 	width: 180rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
@@ -59,6 +75,13 @@
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .head image{
@@ -71,6 +94,7 @@
 	margin: 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
@@ -79,6 +103,13 @@
 	        justify-content: flex-start;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .collectionList .item{
@@ -87,6 +118,7 @@
 	margin:0 8rpx 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
@@ -95,6 +127,13 @@
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .collectionList .item:nth-child(5n){
@@ -113,8 +152,12 @@
 	font-weight: 600;
 	margin-top: 16rpx;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	white-space: nowrap;
 }
 .line{

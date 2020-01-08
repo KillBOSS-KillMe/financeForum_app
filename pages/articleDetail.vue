@@ -57,7 +57,6 @@
 		<view class="line"></view>
 		<view class="reward">
 			<view class="iconText" @tap="postReward">赏</view>
-			<!-- <image src="../static/logo.png" mode=""></image> -->
 			<text>觉得不错，打个赏~</text>
 			<view class="money">{{articleDetail.rewards_count}}人已经打赏</view>
 		</view>

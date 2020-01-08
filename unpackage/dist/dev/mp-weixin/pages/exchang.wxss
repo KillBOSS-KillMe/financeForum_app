@@ -23,6 +23,7 @@
 	padding: 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
@@ -31,6 +32,13 @@
 	        justify-content: space-between;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .exchang .nav .item{
@@ -44,6 +52,7 @@
 	border-radius: 96rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
@@ -80,6 +89,35 @@
 .exchang .nav .item:nth-child(5)>view{
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#A1F9D9), to(#6BF4B2));
 	background-image: -o-linear-gradient(#A1F9D9, #6BF4B2);
+=======
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-align-content: center;
+	        align-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin: 0 auto;
+	background-image: -webkit-linear-gradient(#F9A2A2, #F46969);
+	background-image: linear-gradient(#F9A2A2, #F46969);
+}
+.exchang .nav .item:nth-child(2)>view{
+	background-image: -webkit-linear-gradient(#F9D5A1, #F4C26B);
+	background-image: linear-gradient(#F9D5A1, #F4C26B);
+}
+.exchang .nav .item:nth-child(3)>view{
+	background-image: -webkit-linear-gradient(#B4A1F9, #826BF4);
+	background-image: linear-gradient(#B4A1F9, #826BF4);
+}
+.exchang .nav .item:nth-child(4)>view{
+	background-image: -webkit-linear-gradient(#A1DDF9, #6BD2F4);
+	background-image: linear-gradient(#A1DDF9, #6BD2F4);
+}
+.exchang .nav .item:nth-child(5)>view{
+	background-image: -webkit-linear-gradient(#A1F9D9, #6BF4B2);
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	background-image: linear-gradient(#A1F9D9, #6BF4B2);
 }
 .exchang .nav .iconfont{
@@ -101,14 +139,20 @@
 .content .inv-h-w {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 }
 .content .inv-h {
 	font-size: 32rpx;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
+<<<<<<< HEAD
 	    -ms-flex: 1;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex: 1;
 	text-align: center;
 	color: #999999;
@@ -130,11 +174,17 @@
 .content .contentList .item {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 	margin-bottom: 40rpx;
 }
@@ -147,6 +197,7 @@
 	width: 580rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: flex-start;
@@ -154,6 +205,12 @@
 	        align-content: flex-start;
 	-webkit-flex-wrap: wrap;
 	    -ms-flex-wrap: wrap;
+=======
+	display: flex;
+	-webkit-align-content: flex-start;
+	        align-content: flex-start;
+	-webkit-flex-wrap: wrap;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-wrap: wrap;
 }
 .content .contentList .item .itemRight .title {
@@ -161,8 +218,12 @@
 	color: #333333;
 	font-weight: 600;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
@@ -172,16 +233,25 @@
 	width: 580rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
+<<<<<<< HEAD
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 		margin-top: 16rpx;
 	/* justify-content: flex-end; */
@@ -195,11 +265,17 @@
 	width: 580rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 }
 .itemRightHead text {
@@ -218,6 +294,7 @@
 	font-size: 28rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -227,6 +304,14 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 }
 .itemRightHead view text {
@@ -237,8 +322,12 @@
 	font-size: 28rpx;
 	color: #666666;
 	overflow: hidden;
+<<<<<<< HEAD
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
+=======
+	text-overflow: ellipsis;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
@@ -255,17 +344,26 @@
 .itemBottom {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 }
 .itemBottom > view {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	margin-left: 18rpx;
 	-webkit-align-content: center;
 	    -ms-flex-line-pack: center;
+=======
+	display: flex;
+	margin-left: 18rpx;
+	-webkit-align-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-content: center;
 }
 .itemBottom .exchangIcon{

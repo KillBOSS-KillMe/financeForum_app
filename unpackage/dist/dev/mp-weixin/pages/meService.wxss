@@ -10,6 +10,7 @@
 	margin-top: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
@@ -19,16 +20,30 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 }
 .meMessage .item>view{
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        align-items: center;
 }
 .meMessage .item image{
@@ -61,6 +76,7 @@ button::after{
 	height: 100rpx;
 	border-radius: 100rpx;
 	/* background: #22BA42; */
+<<<<<<< HEAD
 	background-image: -o-linear-gradient(130deg, #A8F4B8, #22BA42);
 	background-image: linear-gradient(-40deg, #A8F4B8, #22BA42);
 	display: -webkit-box;
@@ -77,6 +93,20 @@ button::after{
 	        align-items: center;
 	-webkit-box-shadow: 0 0 40rpx 0rpx #22BA42;
 	        box-shadow: 0 0 40rpx 0rpx #22BA42;
+=======
+	background-image: -webkit-linear-gradient(130deg, #A8F4B8, #22BA42);
+	background-image: linear-gradient(-40deg, #A8F4B8, #22BA42);
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	box-shadow: 0 0 40rpx 0rpx #22BA42;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 }
 .iconFont .iconfont{
 	font-size: 60rpx;

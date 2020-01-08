@@ -27,7 +27,10 @@
 	margin-top: 14rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 	font-size: 24rpx;
 	color: #333;
@@ -40,8 +43,12 @@
 	height: 80rpx;
 	line-height: 80rpx;
 	background: #2390DC;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+=======
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	font-size: 32rpx;
 	font-weight: 700;
 	margin-top: 60rpx;

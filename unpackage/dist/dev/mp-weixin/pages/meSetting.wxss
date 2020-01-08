@@ -5,6 +5,7 @@
 	height: auto;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -14,6 +15,14 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 }
 .login view {
@@ -21,6 +30,7 @@
 	height: 80rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -30,24 +40,42 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 	border-radius: 10rpx;
 	font-size: 32rpx;
 	color: #fff;
 	background-color: #2390DC;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 10rpx 45rpx 0 rgba(35, 144, 220, 0.6);
 	        box-shadow: 0 10rpx 45rpx 0 rgba(35, 144, 220, 0.6);
+=======
+	box-shadow: 0 10rpx 45rpx 0 rgba(35, 144, 220, 0.6);
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 }
 .item {
 	width: 690rpx;
 	margin: 0 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
+=======
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: space-between;
 	border-bottom: 1rpx solid #3e8cfd;
 	padding: 30rpx 0;
@@ -55,11 +83,17 @@
 .item .left {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
 	    -ms-flex-pack: start;
+=======
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: flex-start;
 }
 .item text {
@@ -80,6 +114,7 @@
 .item view {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: center;
@@ -89,6 +124,14 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center;
 }
 

@@ -3,21 +3,33 @@
 .uni-load-more {
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
+<<<<<<< HEAD
 	    -ms-flex-direction: row;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        flex-direction: row;
 	height: 80rpx;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+<<<<<<< HEAD
 	    -ms-flex-align: center;
 	        align-items: center;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
+=======
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        justify-content: center
 }
 .uni-load-more__text {
@@ -42,28 +54,40 @@
 	position: absolute;
 	opacity: .2;
 	-webkit-transform-origin: 50%;
+<<<<<<< HEAD
 	    -ms-transform-origin: 50%;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        transform-origin: 50%;
 	-webkit-animation: load .96s ease infinite;
 	        animation: load .96s ease infinite
 }
 .uni-load-more__img>.load .uni-load-view_wrapper:nth-child(1) {
 	-webkit-transform: rotate(90deg);
+<<<<<<< HEAD
 	    -ms-transform: rotate(90deg);
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        transform: rotate(90deg);
 	top: 2px;
 	left: 9px
 }
 .uni-load-more__img>.load .uni-load-view_wrapper:nth-child(2) {
 	-webkit-transform: rotate(180deg);
+<<<<<<< HEAD
 	    -ms-transform: rotate(180deg);
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        transform: rotate(180deg);
 	top: 11px;
 	right: 0
 }
 .uni-load-more__img>.load .uni-load-view_wrapper:nth-child(3) {
 	-webkit-transform: rotate(270deg);
+<<<<<<< HEAD
 	    -ms-transform: rotate(270deg);
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        transform: rotate(270deg);
 	bottom: 2px;
 	left: 9px
@@ -78,8 +102,12 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
+<<<<<<< HEAD
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
+=======
+	box-sizing: border-box;
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	border: solid 2px #777;
 	border-radius: 50%;
 	border-bottom-color: transparent !important;
@@ -94,12 +122,18 @@
 }
 .load2 {
 	-webkit-transform: rotate(30deg);
+<<<<<<< HEAD
 	    -ms-transform: rotate(30deg);
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        transform: rotate(30deg)
 }
 .load3 {
 	-webkit-transform: rotate(60deg);
+<<<<<<< HEAD
 	    -ms-transform: rotate(60deg);
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	        transform: rotate(60deg)
 }
 .load1 .uni-load-view_wrapper:nth-child(1) {

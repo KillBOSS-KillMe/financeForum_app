@@ -23,7 +23,10 @@
 .item .itemList view{
 	display: -webkit-box;
 	display: -webkit-flex;
+<<<<<<< HEAD
 	display: -ms-flexbox;
+=======
+>>>>>>> d9221c1636c77e8683c1008f0b2c3bcbe16f6937
 	display: flex;
 	font-size: 28rpx;
 	font-weight: 600;
