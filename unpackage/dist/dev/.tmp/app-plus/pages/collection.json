@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "干货汇总",
-  "usingComponents": {
-    "page-search": "/components/pageSearch"
-  }
-}

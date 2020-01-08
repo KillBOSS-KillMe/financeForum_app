@@ -32,24 +32,30 @@ export default {
 			this.setData = e.detail.value
 		},
 		submit() {
-			console.log('-----------------------------')
-			console.log(this.options.type, '23234234')
+			if (this.setData == '') {
+				uni.showToast({
+					title: '提交值不能为空',
+					icon: 'none'
+				});
+				return false;
+			}
 			if (this.options.type == 'number') {
-				console.log(!this.setData%1 === 0)
-				if (!this.setData%1 === 0) {
+				var patrn = /(^[1-9]\d*$)/;
+				if (!patrn.test(this.setData)) {
 					uni.showToast({
-						title: '请输入正整数'
+						title: '请输入正整数',
+						icon: 'none'
 					});
 					return ''
 				}
-			}
-			if (this.options.type == 'mail') {
-				console.log(!this.setData%1 === 0)
-				if (!this.setData%1 === 0) {
+			} else if (this.options.type == 'mail') {
+				let myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+				if(!myreg.test(this.setData)) {
 					uni.showToast({
-						title: '请输入正整数'
+						title: '请输入正确的邮箱',
+						icon: 'none'
 					});
-					return ''
+				  return false;
 				}
 			}
 			uni.showLoading({
