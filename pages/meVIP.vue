@@ -63,7 +63,10 @@
 		<view class="radio">
 			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange(isCheck)" :checked="isCheck" /></label>
 			<view>
-				我以阅读开通普通会员vip
+				我已阅读开通
+				<text v-if="bannerIndex == '0'">普通会员</text>
+				<text v-if="bannerIndex == '1'">永久会员</text>
+				vip
 				<text @tap="meTreaty">相关协议</text>
 			</view>
 		</view>

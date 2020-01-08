@@ -40,6 +40,7 @@
 				<view class="itemList">
 					<text>性别</text>
 					<!-- 性别（m 男 f 女 no_set 未设置） -->
+					<text>{{userInfo.sex}}</text>
 					<text v-if="userInfo.sex == 'm'">男</text>
 					<text v-if="userInfo.sex == 'f'">女</text>
 					<text v-if="userInfo.sex == 'no_set'">未设置</text>

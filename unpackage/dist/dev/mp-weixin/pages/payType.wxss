@@ -6,11 +6,14 @@
 .head {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-align-content: flex-end;
+	    -ms-flex-line-pack: end;
 	        align-content: flex-end;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
+	    -ms-flex-align: end;
 	        align-items: flex-end;
 	font-size: 30rpx;
 	font-weight: 800;
@@ -28,6 +31,7 @@
 .head view {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	margin-left: 20rpx;
 }
@@ -36,11 +40,14 @@
 	font-size: 26rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
+	    -ms-flex-align: end;
 	        align-items: flex-end;
 	-webkit-align-content: flex-end;
+	    -ms-flex-line-pack: end;
 	        align-content: flex-end;
 }
 .head view text {
@@ -55,9 +62,11 @@
 	margin-top: 40rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 }
 .item {
@@ -67,7 +76,8 @@
 	/* background: rgba(255,255,255,1); */
 }
 .cur {
-	box-shadow: 0rpx 1rpx 26rpx 0rpx rgba(202, 202, 202, 0.6);
+	-webkit-box-shadow: 0rpx 1rpx 26rpx 0rpx rgba(202, 202, 202, 0.6);
+	        box-shadow: 0rpx 1rpx 26rpx 0rpx rgba(202, 202, 202, 0.6);
 }
 .item text {
 	text-align: center;
@@ -88,9 +98,11 @@
 .item .radio {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: end;
 	-webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
 	        justify-content: flex-end;
 	margin-bottom: 30rpx;
 }
@@ -99,7 +111,8 @@
 	height: 80rpx;
 	line-height: 80rpx;
 	background: #2390dc;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	font-size: 32rpx;
 	font-weight: 700;
 	margin-top: 80rpx;

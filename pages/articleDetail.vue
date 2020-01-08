@@ -701,6 +701,9 @@ export default {
 	width: 100rpx;
 	font-size: 20rpx;
 	color: #333333;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 .read view .iconfont{
 	margin-right: 6rpx;

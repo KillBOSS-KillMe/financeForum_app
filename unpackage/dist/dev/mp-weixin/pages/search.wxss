@@ -6,12 +6,15 @@
 	color: #333;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 }
 .searchNet {
@@ -21,9 +24,11 @@
 .search {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
 .search input {
@@ -50,9 +55,11 @@
 .contentList .item {
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 		margin: 40rpx 0;
 }
@@ -65,10 +72,13 @@
 		width: 440rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-align-content: space-between;
+		    -ms-flex-line-pack: justify;
 		        align-content: space-between;
 		-webkit-flex-wrap: wrap;
+		    -ms-flex-wrap: wrap;
 		        flex-wrap: wrap;
 }
 .contentList .item .itemRight .title {
@@ -76,7 +86,8 @@
 		color: #333333;
 		font-weight: 600;
 		overflow: hidden;
-		text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		   text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
@@ -85,13 +96,16 @@
 		width: 440rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-orient: horizontal;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: row;
+		    -ms-flex-direction: row;
 		        flex-direction: row;
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 		/* justify-content: flex-end; */
 }
@@ -112,12 +126,15 @@
 		margin: 20rpx 30rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: start;
 		-webkit-justify-content: flex-start;
+		    -ms-flex-pack: start;
 		        justify-content: flex-start;
 }
 .userList .item image{
@@ -132,27 +149,34 @@
 		border-radius: 118rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: start;
 		-webkit-align-items: flex-start;
+		    -ms-flex-align: start;
 		        align-items: flex-start;
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
 		        flex-direction: column;
 }
 .userList .item .con view{
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: justify;
 		-webkit-justify-content: space-between;
+		    -ms-flex-pack: justify;
 		        justify-content: space-between;
 }
 .userList .item .title {
@@ -174,19 +198,23 @@
 		margin: 0 10rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 }
 .userList .item .con .info{
 		color: #666666;
 		font-size: 26rpx;
 		overflow : hidden;
-		text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		   text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
@@ -196,16 +224,20 @@
 		height: 118rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: end;
 		-webkit-justify-content: flex-end;
+		    -ms-flex-pack: end;
 		        justify-content: flex-end;
 		-webkit-box-orient: vertical;
 		-webkit-box-direction: normal;
 		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
 		        flex-direction: column;
 		padding-left: 20rpx;
 }
@@ -218,12 +250,15 @@
 		border-radius: 10rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-box-align: center;
 		-webkit-align-items: center;
+		    -ms-flex-align: center;
 		        align-items: center;
 		-webkit-box-pack: center;
 		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
 		        justify-content: center;
 }
 

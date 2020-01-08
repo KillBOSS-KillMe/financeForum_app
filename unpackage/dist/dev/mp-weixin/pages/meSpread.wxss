@@ -7,7 +7,8 @@ button {
 	margin-right:auto;
 	padding-left:14px;
 	padding-right:14px;
-	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	        box-sizing:border-box;
 	font-size:18px;
 	text-align:center;
 	text-decoration:none;
@@ -43,7 +44,8 @@ button::after {
 	width: 690rpx;
 	height: 290rpx;
 	background: #fff;
-	box-shadow: 0px 1px 26px 0px rgba(202, 202, 202, 0.6);
+	-webkit-box-shadow: 0px 1px 26px 0px rgba(202, 202, 202, 0.6);
+	        box-shadow: 0px 1px 26px 0px rgba(202, 202, 202, 0.6);
 	border-radius: 10rpx;
 	margin-top: 60rpx;
 }
@@ -68,7 +70,8 @@ button::after {
 	height: 70rpx;
 	line-height: 70rpx;
 	background: #2390dc;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	border-radius: 36rpx;
 	font-size: 32rpx;
 	font-weight: 700;
@@ -80,9 +83,11 @@ button::after {
 	padding: 10rpx 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 }
 .invite > text {
@@ -138,14 +143,17 @@ button::after {
 	color: #2390dc;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	/* margin-top: -160rpx; */
 	height: 150rpx;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
+	    -ms-flex-align: end;
 	        align-items: flex-end;
 	font-size: 24rpx;
 	z-index: 9;
@@ -164,11 +172,14 @@ button::after {
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
 	        flex-direction: row;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	padding: 0;
 	font-size: 14rpx;
@@ -188,16 +199,19 @@ button::after {
 .uni-tip-group-button {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
 	        flex-direction: row;
 	margin-top: 20px;
 }
 .uni-tip-button {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
+	    -ms-flex: 1;
 	        flex: 1;
 	text-align: center;
 	font-size: 14px;
@@ -225,10 +239,12 @@ button::after {
 .uni-share {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
 	        flex-direction: column;
 	background-color: #fff;
 }
@@ -241,44 +257,55 @@ button::after {
 .uni-share-content {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
 	        flex-direction: row;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	padding: 15px;
 }
 .uni-share-content-box {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
 	        flex-direction: column;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 	width: 200rpx;
 }
 .uni-share-content-image {
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
 	        flex-direction: row;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
+	    -ms-flex-align: center;
 	        align-items: center;
 	width: 70rpx;
 	height: 70rpx;
@@ -314,11 +341,14 @@ button::after {
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	padding: 40rpx 20rpx;
 }
@@ -338,9 +368,11 @@ button::after {
 .meTable .item{
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	padding: 18rpx 0;
 }
