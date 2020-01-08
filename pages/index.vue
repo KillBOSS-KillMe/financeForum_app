@@ -45,6 +45,7 @@
 						</view>
 					</view>
 				</block>
+				<view class="null" v-if="pageNode.board_data[Inv].posts.length == 0">暂无数据</view>
 				<!-- <uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more> -->
 			</view>
 		</view>
