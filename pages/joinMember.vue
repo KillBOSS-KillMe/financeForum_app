@@ -47,10 +47,7 @@
 	export default {
 		data() {
 			return {
-				list:[
-					{id:'1',img:'../static/logo.png',title:'cvxc',content:'非常高的放管服改革吃饭v幸福感v修改和对方忍痛割肉割'},
-					{id:'1',img:'../static/logo.png',title:'所发生的给对方你',content:'非常高的放管服改革吃饭v幸福感v修改和对方忍痛割肉割'}
-				]
+				list:[]
 			}
 		},
 		methods: {

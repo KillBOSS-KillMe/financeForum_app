@@ -8,7 +8,7 @@
 			<block v-for="(item,index) in friendsList" :key="index">
 				<view class="item" :data-id="item.user_id">
 					<image :src="imgUrl + item.avatar" mode="aspectFill" v-if="item.avatar != ''"></image>
-					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
+					<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
 					<view class="con">
 						<view>
 							<text class="title">{{item.name}}</text>

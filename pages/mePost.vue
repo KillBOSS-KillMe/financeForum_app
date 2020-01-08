@@ -4,7 +4,7 @@
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
 					<image :src="imgUrl+item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''" :data-id="item.post_id" @tap="geDetail"></image>
-					<image src="../static/a.jpg" mode="aspectFill" v-else :data-id="item.post_id" @tap="geDetail"></image>
+					<image src="../static/imgLost.png" mode="aspectFill" v-else :data-id="item.post_id" @tap="geDetail"></image>
 					<view class="con">
 						<view class="title" :data-id="item.post_id" @tap="geDetail">{{item.title}}</view>
 						<view class="info">

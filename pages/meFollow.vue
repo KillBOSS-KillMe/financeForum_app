@@ -8,7 +8,7 @@
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
 					<image :src="imgUrl + item.avatar" v-if="item.avatar != ''"></image>
-					<image src="../static/a.jpg" v-else></image>
+					<image src="../static/imgLost.png" v-else></image>
 					<view class="con">
 						<view>
 							<text class="title">{{item.name}}</text>
