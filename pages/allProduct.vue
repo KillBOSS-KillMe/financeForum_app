@@ -3,11 +3,13 @@
 		<view class="screen">
 			<view class="left" @tap="getTap(1)">
 				<text>{{typeText1}}</text>
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<uni-icon type="" v-if="down == 0" class="iconfont iconjiantou"></uni-icon>
+				<uni-icon type="" v-if="down == 1" class="iconfont iconshangjiantou"></uni-icon>
 			</view>
 			<view class="right" @tap="getTap(2)">
 				<text>{{typeText2}}</text>
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<uni-icon type="" v-if="top == 0" class="iconfont iconjiantou"></uni-icon>
+				<uni-icon type="" v-if="top == 1" class="iconfont iconshangjiantou"></uni-icon>
 			</view>
 		</view>
 		<view class="contentList">
@@ -42,7 +44,7 @@
 		<view class="modelShow" @tap="hideModal" v-if="mask"></view>
 		<view class="modelShowText" v-if="mask">
 			<block v-for="(item,index) in keyShow" :key="index">
-				<text @tap="screenList(index)" :class="[index == currentIndex ? 'active' : 'cor']">{{item.name}}</text>
+				<text @tap="screenList" :data-id="item.id" :data-index="index" :class="[index == currentIndex ? 'active' : 'cor']">{{item.title}}</text>
 			</block>
 		</view>
 	</view>
@@ -64,79 +66,28 @@
 				quota: '',
 				keyShow: [],
 				moneyList: [{
-						name: '所有额度'
+						title: '所有额度'
 					},
 					{
-						name: '100-5000'
+						title: '100-5000'
 					},
 					{
 						name: '5000-2万'
 					},
 					{
-						name: '2万-5万'
+						title: '2万-5万'
 					},
 					{
-						name: '5万-10万'
+						title: '5万-10万'
 					},
 					{
-						name: '10万以上'
+						title: '10万以上'
 					}
 				],
-				typeList: [{
-						name: '所有贷款分类'
-					},
-					{
-						name: '不查征信'
-					},
-					{
-						name: '万元起步'
-					},
-					{
-						name: '极速下款'
-					},
-					{
-						name: '黑户必做'
-					},
-					{
-						name: '白户贷款'
-					},
-					{
-						name: '保险贷款'
-					},
-					{
-						name: '私人借条'
-					},
-					{
-						name: '淘宝授权'
-					},
-					{
-						name: '车房贷款'
-					},
-					{
-						name: '千元贷款'
-					},
-					{
-						name: '代还信用卡'
-					},
-					{
-						name: '社保公积金'
-					},
-					{
-						name: '信用卡贷款'
-					},
-					{
-						name: '芝麻分贷'
-					},
-					{
-						name: '分期销售'
-					},
-					{
-						name: '苹果ID贷'
-					},
-					{
-						name: '黑卡系列'
-					}
-				],
+				typeList: [],
+				category_id: '',
+				down: "0",
+				top: '0'
 			};
 		},
 		onLoad() {
@@ -155,21 +106,28 @@
 				this.type = e
 				if (e == 1) {
 					this.keyShow = this.moneyList
+					this.down = 1
 				} else {
 					this.keyShow = this.typeList
+					this.top = 1
+					this.getTypeList()
 				}
 				this.mask = true
 			},
 			// 标签选择
 			screenList(e) {
-				this.currentIndex = e
-				this.quota = this.keyShow[this.currentIndex].name
+				console.log(e,'****')
+				this.currentIndex = e.currentTarget.dataset.index
 				if (this.type == 1) {
-					this.typeText1 = this.keyShow[this.currentIndex].name
-					this.typeText2 = '所有贷款分类'
+					this.typeText1 = this.keyShow[this.currentIndex].title
+					this.quota = this.keyShow[this.currentIndex].title
+					this.down = 0
+					// this.typeText2 = '所有贷款分类'
 				} else {
-					this.typeText1 = '所有额度'
-					this.typeText2 = this.keyShow[this.currentIndex].name
+					// this.typeText1 = '所有额度'
+					this.typeText2 = this.keyShow[this.currentIndex].title
+					this.category_id = e.currentTarget.dataset.id
+					this.top =0
 				}
 				this.list = []
 				this.mask = false
@@ -178,6 +136,26 @@
 			// 隐藏标签列表
 			hideModal() {
 				this.mask = false
+				this.down == 0
+				this.top == 0
+			},
+			getTypeList(){
+				uni.request({
+					url: `${helper.requestUrl}/holes/categories`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						res = helper.null2str(res);
+						console.log(res,'----');
+						if (res.data.status_code == 200) {
+							this.keyShow = res.data.data
+						} else {
+							
+						}
+					}
+				});
 			},
 			//获取列表数据
 			getList() {
@@ -188,7 +166,7 @@
 						authorization: app.globalData.token
 					},
 					data: {
-						// category_id: this.category_id,
+						category_id: this.category_id,
 						quota: this.quota,
 						// page_size: this.page_size,
 						// page: this.page
@@ -199,13 +177,9 @@
 						if (res.data.status_code == 200) {
 							this.list = this.list.concat(res.data.data);
 						} else {
-							uni.showToast({
-								title: res.data.message,
-								icon: 'none'
-							});
 						}
 					}
-				});
+				})
 			}
 		}
 	};
