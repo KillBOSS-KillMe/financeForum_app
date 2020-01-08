@@ -12,7 +12,7 @@
 						</view>
 					</view>
 					<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
-					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
+					<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
 				</view>
 			</block>
 			<view class="null" v-if="list.length == 0">暂无数据</view>
@@ -40,7 +40,8 @@
 		},
 		onLoad(e) {
 			// console.log(this.boardId)
-			this.imgUrl = app.globalData.imgUrl
+			this.imgUrl = helper.imgUrl
+			console.log(this.imgUrl)
 			this.boardId = e.id
 			this.getList()
 			uni.setNavigationBarTitle({

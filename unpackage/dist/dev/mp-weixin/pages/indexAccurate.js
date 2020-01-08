@@ -182,7 +182,8 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 var app = getApp();var _default = { data: function data() {return { list: [], page: '1', page_size: '10', boardId: '1', imgUrl: '' };}, onShow: function onShow(e) {// console.log(e)
     // this.board_id == e
   }, onLoad: function onLoad(e) {// console.log(this.boardId)
-    this.imgUrl = app.globalData.imgUrl;this.boardId = e.id;this.getList();uni.setNavigationBarTitle({ title: e.name });}, onLaunch: function onLaunch() {
+    this.imgUrl = _helper.default.imgUrl;console.log(this.imgUrl);this.boardId = e.id;this.getList();uni.setNavigationBarTitle({ title: e.name });},
+  onLaunch: function onLaunch() {
 
   },
   methods: {

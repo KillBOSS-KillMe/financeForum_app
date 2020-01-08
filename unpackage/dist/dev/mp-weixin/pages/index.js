@@ -313,7 +313,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         uni.navigateTo({
           url: "/pages/".concat(link) });
 
-      } else if (bind_board == '1') {
+      } else {
         uni.navigateTo({
           url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });
 

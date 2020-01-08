@@ -168,7 +168,7 @@
 					uni.navigateTo({
 						url: `/pages/${link}`
 					})
-				} else if(bind_board == '1') {
+				} else{
 					uni.navigateTo({
 						url: `/pages/indexAccurate?id=${id}&name=${name}`
 					})
@@ -303,7 +303,18 @@
 	.bannerImg {
 		width: 690rpx;
 	}
-
+	.swiper{
+		width: 690rpx;
+		height:300rpx;
+		overflow: hidden;
+		border-radius: 10rpx;
+	}
+	swiper-item{
+		width: 690rpx;
+		height:300rpx;
+		overflow: hidden;
+		border-radius: 10rpx;
+	}
 	.nav {
 		width: 690rpx;
 		padding: 30rpx;
