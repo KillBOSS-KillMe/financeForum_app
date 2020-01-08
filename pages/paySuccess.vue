@@ -1,10 +1,10 @@
 <template>
 	<view class="paySuccess">
-		<image src="../static/logo.png" mode=""></image>
+		<image src="../static/success.png" mode=""></image>
 		<text>本次交易支付成功</text>
 		<view>
-			<button type="primary">返回首页</button>
-			<button type="primary">查看会员</button>
+			<button type="" @tap="payClick(1)">返回首页</button>
+			<button type="" @tap="payClick(2)">查看会员</button>
 		</view>
 	</view>
 </template>
@@ -19,7 +19,18 @@
 			}
 		},
 		methods: {
-			
+			payClick(e){
+				console.log(e)
+				if(e== 1){
+					uni.reLaunch({
+						url:'/pages/index'
+					})
+				}else if(e == 2){
+					uni.reLaunch({
+						url:'/pages/me'
+					})
+				}
+			}
 		}
 	}
 </script>
@@ -56,5 +67,8 @@
 	line-height: 80rpx;
 	font-size: 32rpx;
 	font-weight: 700;
+	color: #fff;
+	background: #2390DC;
+	border:none;
 }
 </style>

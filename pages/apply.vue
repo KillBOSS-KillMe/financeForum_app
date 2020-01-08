@@ -102,8 +102,9 @@
 						// #endif
 						// #ifdef APP-PLUS || H5
 								uni.navigateTo({
-									url:`/pages/iframe?url=${extra}&name=${name}`
+									url:`/pages/iframe?name=${name}`
 								})
+								app.globalData.link = extra
 						// #endif
 					}
 					// plus.runtime.openURL(extra)

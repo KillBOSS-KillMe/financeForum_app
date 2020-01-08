@@ -5,7 +5,7 @@
 			<view class="item">
 				<text>真实姓名</text>
 				<view class="right">
-					<input type="text" value="" placeholder="请填写您的真实姓名" @input="inputValue" data-name="real_name"/>
+					<input type="text" value="" placeholder="请填写您的真实姓名" @blur="inputValue" data-name="real_name"/>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -19,14 +19,14 @@
 			<view class="item">
 				<text>身份证号</text>
 				<view class="right">
-					<input type="idcard" value="" placeholder="请输入18位有效身份证号"  @input="inputValue" data-name="id_card"/>
+					<input type="idcard" value="" placeholder="请输入18位有效身份证号"  @blur="inputValue" data-name="id_card"/>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
 			<view class="item">
 				<text>联系方式</text>
 				<view class="right">
-					<input type="number" value="" placeholder="请输入您的联系方式"  @input="inputValue" data-name="phone"/>
+					<input type="number" value="" placeholder="请输入您的联系方式"  @blur="inputValue" data-name="phone"/>
 					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 				</view>
 			</view>
@@ -45,7 +45,8 @@
 				</view>
 			</view>
 		</view>
-		<button type="" class="meCertification" @tap="submint">认证</button>
+		<button type="" v-if="formNode.real_name == '' || formNode.id_card == '' || formNode.phone == '' || formNode.card_positive == '' || formNode.card_peverse == ''" class="meCertification" >认证</button>
+		<button type="" v-else class="meCertification" style="background: #2390DC;"  @tap="submint">认证</button>
 	</view>
 </template>
 
@@ -62,6 +63,7 @@
 					card_positive: '',  //身份证正面
 					card_peverse: '',
 				},
+				isDisabled: false,
 				imgUrl: ''
 			}
 		},
@@ -75,7 +77,6 @@
 				let value = e.detail.value
 				formNode[name] = value
 				this.formNode = formNode
-				console.log(this.formNode)
 			},
 			getCard(e){
 				console.log(e)
@@ -279,7 +280,8 @@
 .meCertification{
 	width: 630rpx;
 	height: 80rpx;
-	background: #2390DC;
+	line-height: 80rpx;
+	background: #91c0e1;
 	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	border-radius: 10rpx;
 	barder:none;

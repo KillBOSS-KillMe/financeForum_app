@@ -29,6 +29,7 @@ export default {
 	globalData: {
 		token: '',
 		vipIndex: '',
+		link: ''
 	},
 	onLoad() {
 		this.getToken()

@@ -8,7 +8,11 @@
 			<!-- <image class="userImg" src="../static/imgLost.png" mode=""></image> -->
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
-				<view><text class="login">{{userInfo.name}}</text><text class="tip">青铜新手</text></view>
+				<view>
+					<text class="tip" v-if="userInfo.type == 'normal'">{{userInfo.deploy.userlevel.level_name}}</text>
+				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text />					
+				</view>
+				
 				<view class="meHeadList">
 					<text>参与</text>
 					<text @tap="meFollow">关注</text>

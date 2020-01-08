@@ -105,11 +105,11 @@
 				</view>
 			</view>
 		</view>
-		<!-- #ifdef APP-PLUS -->
-			<button type="primary" :data-link="listInfo.link" @tap="APP_PLUS_apply">立即申请</button>
+		<!-- #ifdef APP-PLUS || H5 -->
+			<button type="" :data-link="listInfo.link" :data-name="listInfo.name" @tap="APP_PLUS_apply">立即申请</button>
 		<!-- #endif -->
 		<!-- #ifdef MP-WEIXIN -->
-			<button type="primary" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
+			<button type="" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
 		<!-- #endif -->
 	</view>
 </template>
@@ -142,11 +142,21 @@
 			},
 			// APP触发
 			APP_PLUS_apply(e) {
-				// console.log('APP-PLUS')
+				console.log('APP-PLUS')
 				let link = e.currentTarget.dataset.link
+				let name = e.currentTarget.dataset.name
+				console.log(link)
+				console.log(name)
+				if(link == ''){
+					uni.showToast({
+						title: '该模块正在维修站',
+						icon: 'none'
+					})
+				}
 				uni.navigateTo({
-					url: `/pages/${link}`
+					url:`/pages/iframe?name=${name}`
 				})
+				app.globalData.link = link
 			},
 			getInfo(){
 				uni.request({
@@ -310,11 +320,12 @@
 	border-top: 1rpx solid #bfbfbf4d;
 	padding-top: 30rpx;
 }
-uni-button[type=primary]{
+button{
 	background: #2390DC;
 	color: #fff;
 	font-size: 32rpx;
 	font-weight: 600;
 	margin-top: 30rpx;
+	
 }
 </style>

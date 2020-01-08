@@ -120,8 +120,8 @@
 						});
 						// 两秒后返回上一页
 						setTimeout(e => {
-							uni.navigateBack({
-								data: -1
+							uni.reLaunch({
+								url:'/pages/paySuccess'
 							})
 						}, 2000)
 					},

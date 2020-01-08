@@ -6,6 +6,7 @@
 </template>
 
 <script>
+	const app =getApp()
 export default {
 	data() {
 		return {
@@ -13,8 +14,8 @@ export default {
 		};
 	},
 	onLoad(e) {
-		console.log(e)
-		this.url = e.url
+		console.log(e,'****')
+		this.url = app.globalData.link
 		uni.setNavigationBarTitle({
 			title: e.name
 		})

@@ -296,7 +296,6 @@
 	.banner {
 		width: 690rpx;
 		margin: 30rpx;
-		background: #007aff;
 		border-radius: 10rpx;
 		overflow: hidden;
 	}

@@ -8,7 +8,7 @@
 							<block v-for="(sonItem, sonIndex) in itemAll" :key="sonIndex">
 							<!-- {{sonIndex}} -->
 							<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9" @tap="navsHead">
-								<image src="../static/logo.png" mode="" v-if="sonItem.icon == ''"></image>
+								<image src="../static/imgLost.png" mode="" v-if="sonItem.icon == ''"></image>
 								<image :src="imgUrl+sonItem.icon" mode="" v-else></image>
 								<text>{{ sonItem.title }}</text>
 							</view>
@@ -191,16 +191,17 @@ export default {
 }
 .banner {
 	width: 690rpx;
-	height: 370rpx;
+	height: 352rpx;
 	padding: 30rpx 30rpx;
 }
 .banner .swiper {
-	height: 370rpx;
+	width: 100%;
+	height: 100%;
 }
 .navs {
 	display: flex;
 	flex-wrap: wrap;
-	height: 370rpx;
+	height: 340rpx;
 	justify-content: flex-start;
 }
 .navs .bannerItem {
@@ -216,9 +217,8 @@ export default {
 	margin-right: 0rpx;
 }
 .navs .bannerItem > image {
-	width: 96rpx;
-	height: 96rpx;
-	border-radius: 96rpx;
+	width: 66rpx;
+	height: 66rpx;
 }
 .uni-swiper-dots-horizontal{
 	bottom: 0 !important;
