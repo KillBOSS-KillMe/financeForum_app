@@ -1,5 +1,13 @@
 {
+<<<<<<< HEAD
 	"description": "项目配置文件。",
+=======
+<<<<<<< HEAD
+	"description": "项目配置文件。",
+=======
+	"description": "项目配置文件",
+>>>>>>> bf575bfc3d9998ac59afcac9744a76f2ccf54eb3
+>>>>>>> 8b3a5fe7f804e332d19d548526b0684969616329
 	"packOptions": {
 		"ignore": []
 	},

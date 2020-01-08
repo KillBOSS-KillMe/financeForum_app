@@ -6,9 +6,9 @@
 				<view class="left">
 					<image :src="imgUrl+articleDetail.theme_pic" mode=""></image>
 					<view class="leftTitle">
-						<text>{{ articleDetail.user.name }}</text>
+						<text>{{ articleDetail.user.signature }}</text>
 						<view class="leftTitleBottom">
-							<text>{{ articleDetail.user.type }}</text>
+							<text v-if="articleDetail.user.type == 'member'" style="color: #ceb277;">VIP</text>
 							<text>{{ articleDetail.user.created_at }}</text>
 							<view>
 								<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>

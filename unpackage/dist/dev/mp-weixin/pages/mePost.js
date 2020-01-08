@@ -156,6 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -177,9 +178,66 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
 var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '' };}, onLoad: function onLoad() {// 获取收藏列表
-    this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this; // 获取收藏列表
-      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/publish"), method: 'GET', header: {
+    this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { deleteItem: function deleteItem(e) {var _this = this; // 点击删除
+      uni.showModal({ title: '提示', content: '确认删除?', success: function success(res) {if (res.confirm) {// console.log('用户点击确定');
+            var index = e.currentTarget.dataset.index;_this.runDeleteItem(index);} else if (res.cancel) {// console.log('用户点击取消');
+          }
+        } });
+
+    },
+    runDeleteItem: function runDeleteItem(index) {var _this2 = this;
+      // 执行草稿删除
+      uni.showLoading({
+        title: '删除中...' });
+
+      var list = this.list;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/del"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          post_id: list[index].post_id },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          if (res.data.status_code == 200) {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'success',
+              duration: 2000 });
+
+            var newList = [];
+            for (var i = 0; i < list.length; i++) {
+              if (list[i].post_id != list[index].post_id) {
+                newList.push(list[i]);
+              }
+            }
+            _this2.list = newList;
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000 });
+
+          }
+        } });
+
+    },
+    getList: function getList() {var _this3 = this;
+      // 获取收藏列表
+      uni.showLoading({
+        title: '加载中...',
+        duration: 1000000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/publish"),
+        method: 'GET',
+        header: {
           authorization: app.globalData.token },
 
         success: function success(res) {
@@ -187,7 +245,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
           res = _helper.default.null2str(res);
           console.log(res);
           if (res.data.status_code == '1') {
-            _this.list = res.data.data;
+            _this3.list = res.data.data;
           } else {
             uni.showToast({
               title: res.data.message });

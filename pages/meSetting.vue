@@ -2,7 +2,7 @@
 	<view class="meSetting">
 		<view class="item">
 			<view class="left" @tap="modifyPassword">
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
 				<text>修改密码</text>
 			</view>
 			<view>
@@ -11,7 +11,7 @@
 		</view>
 		<view class="item" @tap="delCaching">
 			<view class="left">
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
 				<text>清除缓存</text>
 			</view>
 			<view>
@@ -21,7 +21,7 @@
 		</view>
 		<view class="item">
 			<view class="left">
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
 				<text>关于</text>
 			</view>
 			<view>
