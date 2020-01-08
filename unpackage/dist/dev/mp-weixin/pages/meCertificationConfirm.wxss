@@ -1,0 +1,78 @@
+
+.content{
+	width: 750rpx;
+}
+.online{
+	width: 750rpx;
+	height: 16rpx;
+	background: #f3f3f3;
+}
+.list{
+	width: 690rpx;
+	padding:0 30rpx;
+}
+.item{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	border-bottom: 1rpx solid #ECECEC;
+	padding: 30rpx 0;
+}
+.item>text{
+	color: #333333;
+	font-size: 28rpx;
+	font-weight: 600;
+}
+.right{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.right input{
+	text-align: right;
+	width: 400rpx;
+	font-size: 24rpx;
+	color: #B8B8B8;
+	margin-right: 10rpx;
+}
+.right .iconfont{
+	color: #C0C0C0;
+	font-weight: 600600;
+}
+.codeImg{
+	width: 690rpx;
+	padding:30rpx;
+}
+.codeImg>text{
+	font-size: 28rpx;
+	font-weight: 600;
+	color: #333;
+}
+.card{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	margin-top: 40rpx;
+}
+.card image{
+	width: 328rpx;
+	height: 221rpx;
+	border-radius: 10px 10px 10px 10px;
+}
+.meCertification{
+	width: 630rpx;
+	height: 80rpx;
+	background: #2390DC;
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	border-radius: 10rpx;
+	barder:none;
+	margin-top: 40rpx;
+	color: #fff;
+}
+
