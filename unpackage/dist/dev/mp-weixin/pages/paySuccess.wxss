@@ -4,11 +4,14 @@
 	padding: 50rpx 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .paySuccess image{
@@ -27,9 +30,11 @@
 	width: 600rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	margin-top: 40rpx;
 }

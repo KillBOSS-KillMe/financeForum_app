@@ -31,13 +31,13 @@
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
 				<rich-text :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
 			</block>
-
+<!-- 
 			<view class="tip"  @tap="goVip">
 				<text>解析：</text>
 				<view>
 					您还不是<text>VIP会员</text>,本帖隐藏内容仅限VIP会员可见，点击此处开通会员后查看
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="read"><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>123</view> -->
 			<view class="share">
 				<text>分享至</text>
