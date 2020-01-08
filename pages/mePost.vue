@@ -2,15 +2,16 @@
 	<view>
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="item" :data-id="item.post_id" @tap="geDetail">
-					<image :src="imgUrl+item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''"></image>
-					<image src="../static/a.jpg" mode="aspectFill" v-else></image>
+				<view class="item">
+					<image :src="imgUrl+item.theme_pic" mode="aspectFill" v-if="item.theme_pic != ''" :data-id="item.post_id" @tap="geDetail"></image>
+					<image src="../static/a.jpg" mode="aspectFill" v-else :data-id="item.post_id" @tap="geDetail"></image>
 					<view class="con">
-						<view class="title">{{item.title}}</view>
+						<view class="title" :data-id="item.post_id" @tap="geDetail">{{item.title}}</view>
 						<view class="info">
 							<text>{{item.publish_time}}</text>
-							<text>{{item.user}}</text>
+							<!-- <text>{{item.user}}</text> -->
 							<text>{{item.comments_count}}评</text>
+							<text class="del" :data-index="index" @tap="deleteItem">删除</text>
 						</view>
 					</view>
 				</view>
@@ -35,6 +36,63 @@
 			this.imgUrl = helper.imgUrl
 		},
 		methods:{
+			deleteItem(e) {
+				// 点击删除
+				uni.showModal({
+					title: '提示',
+					content: '确认删除?',
+					success: res => {
+						if (res.confirm) {
+							// console.log('用户点击确定');
+							let index = e.currentTarget.dataset.index
+							this.runDeleteItem(index)
+						} else if (res.cancel) {
+							// console.log('用户点击取消');
+						}
+					}
+				});
+			},
+			runDeleteItem(index) {
+				// 执行草稿删除
+				uni.showLoading({
+				  title: '删除中...'
+				});
+				let list = this.list
+				uni.request({
+					url: `${helper.requestUrl}/posts/del`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						post_id: list[index].post_id
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res);
+						if (res.data.status_code == 200) {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'success',
+								duration: 2000
+							});
+							let newList = []
+							for (let i = 0; i < list.length; i++) {
+								if (list[i].post_id != list[index].post_id) {
+									newList.push(list[i])
+								}
+							}
+							this.list = newList
+						} else {
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none',
+								duration: 2000
+							});
+						}
+					}
+				});
+			},
 			getList() {
 				// 获取收藏列表
 				uni.showLoading({
@@ -117,5 +175,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+	}
+	.del {
+		color: #E22929;
 	}
 </style>
