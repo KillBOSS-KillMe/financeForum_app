@@ -3,7 +3,7 @@
 		<block v-for="(item,index) in list" :key="index">
 			<view class="item" :data-title="item.title" :data-type="item.id" @tap="goMessageDetails">
 				<view>
-					<image :src="item.img" mode=""></image>
+					<uni-icons type="" class="iconfont" :class="item.img"></uni-icons>
 					<text>{{item.title}}</text>
 				</view>
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
@@ -20,9 +20,9 @@
 		data() {
 			return {
 				list:[
-					{id:'1',img:'../static/logo.png',title:'提到我的'},
-					{id:'2',img:'../static/logo.png',title:'评论'},
-					{id:'3',img:'../static/logo.png',title:'系统消息'}
+					{id:'1',img:'iconat',title:'提到我的'},
+					{id:'2',img:'iconxiaoxi1',title:'评论'},
+					{id:'3',img:'iconxitongpeizhi',title:'系统消息'}
 				]
 			}
 		},
@@ -63,9 +63,22 @@
 	font-weight: 600;
 	margin-left: 20rpx;
 }
-.meMessage .item image{
+.meMessage .item .iconfont{
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 96rpx;
+	font-size: 60rpx;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+}
+.iconat{
+	color: #f46b6b;
+}
+.iconxiaoxi1{
+	color: #f4c26c;
+}
+.iconxitongpeizhi{
+	color: #6cd3f4;
 }
 </style>
