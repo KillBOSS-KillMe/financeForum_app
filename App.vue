@@ -71,7 +71,7 @@ export default {
 .line {
 	width: 750rpx;
 	height: 6rpx;
-	background: #2390dc;
+	background: #F8F8F8;
 }
 
 text {

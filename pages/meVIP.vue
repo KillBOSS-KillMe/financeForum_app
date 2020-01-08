@@ -120,8 +120,7 @@
 			checkboxChange(e){
 				this.isCheck = !this.isCheck
 			},
-			vipList(){
-				
+			vipList(){	
 				uni.request({
 					url: `${helper.requestUrl}/vips`,
 					method: 'GET',

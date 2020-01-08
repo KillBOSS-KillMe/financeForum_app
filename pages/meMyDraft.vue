@@ -29,6 +29,7 @@
 					</view>
 				</view>
 			</block>
+			<view class="null" v-if="list.length == 0">暂无数据</view>
 		</view>
 	</view>
 </template>
@@ -138,9 +139,9 @@
 							this.list = res.data.data
 							this.nextPageUrl = res.data.next_page_url
 						} else {
-							uni.showToast({
-								title: res.data.message
-							});
+							// uni.showToast({
+							// 	title: res.data.message
+							// });
 						}
 					}
 				})

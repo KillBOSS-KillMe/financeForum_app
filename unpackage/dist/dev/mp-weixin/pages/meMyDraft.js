@@ -170,7 +170,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -211,8 +213,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
       uni.showModal({ title: '提示', content: '确认删除?', success: function success(res) {if (res.confirm) {// console.log('用户点击确定');
             var index = e.currentTarget.dataset.index;_this.runDeleteItem(index);} else if (res.cancel) {// console.log('用户点击取消');
           }} });}, runDeleteItem: function runDeleteItem(index) {var _this2 = this; // 执行草稿删除
-      uni.showLoading({ title: '删除中...' });
-      var list = this.list;
+      uni.showLoading({ title: '删除中...' });var list = this.list;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/posts/del"),
         method: 'GET',
@@ -273,9 +274,9 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
             _this3.list = res.data.data;
             _this3.nextPageUrl = res.data.next_page_url;
           } else {
-            uni.showToast({
-              title: res.data.message });
-
+            // uni.showToast({
+            // 	title: res.data.message
+            // });
           }
         } });
 
