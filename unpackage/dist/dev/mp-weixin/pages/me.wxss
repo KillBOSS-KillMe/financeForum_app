@@ -77,7 +77,13 @@
 	color: #333333;
 }
 .me .contentList {
-	/* width: 690rpx; */
+	width: 690rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	padding: 0 30rpx 30rpx;
 }
 .line {
 	margin: 110rpx 0 20rpx;
@@ -86,42 +92,37 @@
 	height: 6rpx;
 }
 .me .contentList .item {
-	width: 690rpx;
-	padding: 0 30rpx;
+	width: 172.5rpx;
+	/* padding: 0 30rpx; */
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
-	-webkit-align-content: center;
-	        align-content: center;
-	height: 50rpx;
-	margin-bottom: 28rpx;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	/* align-content: center; */
+	/* height: 50rpx; */
+	margin-bottom: 50rpx;
 }
-.me .contentList .item .left {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: start;
-	-webkit-justify-content: flex-start;
-	        justify-content: flex-start;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
-}
-.me .contentList .item .left text {
-	font-size: 30rpx;
+.me .contentList .item text {
+	font-size: 28rpx;
 	font-weight: 600;
 	color: #333333;
-	margin-left: 10rpx;
+	width: 168rpx;
+	text-align: center;
+	/* margin-left: 10rpx; */
 	/* width: 200rpx; */
 }
-.me .contentList .item .left .iconfont {
-	color: #C0C0C0;
-	font-size: 40rpx;
-	width: 40rpx;
-	/* background: #007AFF; */
+.me .contentList .item>view {
+	width: 52rpx;
+	height: 48rpx;
+	margin-bottom: 16rpx;
+}
+.me .contentList .item>view image{
+	width: 100%;
+	height: 100%;
 }
 .me .contentList .item .iconchangyongtubiao-xianxingdaochu-zhuanqu- {
 	color: #C0C0C0;

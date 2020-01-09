@@ -35,7 +35,7 @@ input {
 	width: 630rpx;
 	height: 80rpx;
 	border-radius: 10rpx;
-	border: 1rpx solid #F8F8F8;
+	border: 1rpx solid #f8f8f8;
 	color: #999999;
 	font-size: 30rpx;
 	padding: 0 20rpx;
@@ -45,9 +45,9 @@ input {
 	margin-bottom: 60rpx;
 }
 .getCode text {
-	color: #2390DC;
+	color: #2390dc;
 	font-size: 30rpx;
-	border: 1rpx solid #2390DC;
+	border: 1rpx solid #2390dc;
 	height: 78rpx;
 	line-height: 78rpx;
 	border-radius: 10rpx;
@@ -66,7 +66,7 @@ input {
 	width: 670rpx;
 	height: 80rpx;
 	border-radius: 10rpx;
-	background-color: #2390DC;
+	background-color: #2390dc;
 	color: #ffffff;
 	font-size: 30rpx;
 	font-weight: 600;

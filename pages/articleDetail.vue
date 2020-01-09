@@ -6,7 +6,7 @@
 				<view class="left">
 					<image :src="imgUrl+articleDetail.user.avatar" mode=""></image>
 					<view class="leftTitle">
-						<text>{{ articleDetail.user.signature }}</text>
+						<text>{{ articleDetail.user.name }}</text>
 						<view class="leftTitleBottom">
 							<text v-if="articleDetail.user.type == 'member'" style="color: #ceb277;">VIP</text>
 							<text>{{ articleDetail.user.created_at }}</text>
@@ -31,13 +31,13 @@
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
 				<rich-text :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
 			</block>
-
+<!-- 
 			<view class="tip"  @tap="goVip">
 				<text>解析：</text>
 				<view>
 					您还不是<text>VIP会员</text>,本帖隐藏内容仅限VIP会员可见，点击此处开通会员后查看
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="read"><uni-icon class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" type=""></uni-icon>123</view> -->
 			<view class="share">
 				<text>分享至</text>
@@ -75,7 +75,8 @@
 								<view class="itemListHeadLeft">
 									<text class="rightName">{{ item.user.name }}</text>
 									<uni-icon class="iconfont iconnan" :class="['active', isSex == '1' ? 'curRed' : '']" type=""></uni-icon>
-									<text class="rightMember">{{ item.user.type }}</text>
+									<text class="rightMember" v-if="item.user.type == 'member'">{{ item.user.deploy.vipuserlevel.level_name}}</text>
+									<text class="rightMember" style="background: #2390DC;" v-else>{{ item.user.deploy.userlevel.level_name}}</text>
 								</view>
 								<uni-icon class="iconfont icondiandian icon" type=""></uni-icon>
 							</view>
@@ -95,7 +96,7 @@
 									<text>{{ item.floor }}楼</text>
 									<text>{{ item.created_at }}</text>
 								</view>
-								<uni-icon class="iconfont iconhuifu active" type="" @tap="reply" :data-id="item.id" :data-num="1"></uni-icon>
+								<uni-icon class="iconfont iconhuifu active" type="" @tap="reply(item.id,1)"></uni-icon>
 							</view>
 						</view>
 					</view>
@@ -427,10 +428,7 @@ export default {
 					if (res.data.status_code == '200') {
 						this.commentList = this.commentList.concat(res.data.data);
 					} else {
-						uni.showToast({
-							title: res.data.message,
-							icon: 'none'
-						});
+					
 					}
 				}
 			});
@@ -485,10 +483,10 @@ export default {
 			});
 		},
 		// 回复评论
-		reply(e) {
-			console.log(e);
-			this.comment_id = e.currentTarget.dataset.id;
-			this.isShow = e.currentTarget.dataset.num;
+		reply(e,i) {
+			console.log(e,i);
+			this.comment_id = e;
+			this.isShow = i;
 			this.focus = true;
 		},
 		postReply() {

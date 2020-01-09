@@ -249,7 +249,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -377,8 +379,7 @@ var app = getApp();var _default = { data: function data() {return { userInfo: {}
       this.share('WXSenceTimeline');}, // 获取当前页路径及参数,用于分享
     getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;
-      var optionsString = '?';
+      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';
       for (var key in options) {
         optionsString += key;
         optionsString += '=';
@@ -562,9 +563,6 @@ var app = getApp();var _default = { data: function data() {return { userInfo: {}
           if (res.data.status_code == '200') {
             _this7.commentList = _this7.commentList.concat(res.data.data);
           } else {
-            uni.showToast({
-              title: res.data.message,
-              icon: 'none' });
 
           }
         } });
@@ -620,10 +618,10 @@ var app = getApp();var _default = { data: function data() {return { userInfo: {}
 
     },
     // 回复评论
-    reply: function reply(e) {
-      console.log(e);
-      this.comment_id = e.currentTarget.dataset.id;
-      this.isShow = e.currentTarget.dataset.num;
+    reply: function reply(e, i) {
+      console.log(e, i);
+      this.comment_id = e;
+      this.isShow = i;
       this.focus = true;
     },
     postReply: function postReply() {var _this9 = this;

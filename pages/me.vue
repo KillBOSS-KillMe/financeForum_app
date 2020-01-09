@@ -1,7 +1,8 @@
 <template>
 	<view class="me">
 		<view class="meHead">
-			<image class="userImg" :src="imageUrl" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<image class="userImg" v-if="userInfo.avatar != ''" :src="imageUrl" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<image class="userImg" v-else src="../static/user.png" mode="" data-name="meUserInfo" @tap="goPageNavigateTo"></image>
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view>
@@ -19,114 +20,70 @@
 		<view class="line"></view>
 		<view class="contentList">
 			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconzhizhang5"></uni-icon>
+					<view>
+						<image src="../static/meCgx.png" mode=""></image>
+					</view>
 					<text>我的草稿</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconshouji"></uni-icon>
+					<view style="width: 46rpx;">
+						<image src="../static/meSj.png" mode=""></image>
+					</view>
 					<text>我的手机</text>
-				</view>
-				<view>
-					<text class="cur">{{userInfo.mobile}}</text>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconxiaoxi"></uni-icon>
+					<view>
+						<image src="../static/meXx.png" mode=""></image>
+					</view>
 					<text>我的消息</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meCertification" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconrenzheng"></uni-icon>
-					<text>用户认证</text>
-				</view>
 				<view>
-					<text class="cur">申请</text>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+					<image src="../static/meRead.png" mode=""></image>
 				</view>
+					<text>用户认证</text>
 			</view>
 			<view class="item" data-name="meVIP" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconhuiyuan"></uni-icon>
+					<view>
+						<image src="../static/meHy.png" mode=""></image>
+					</view>
 					<text>开通会员</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
-		<!-- 	<view class="item" data-name="meVIPDiff" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconhuiyuan1"></uni-icon>
-					<text>会员区别</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
-			</view> -->
 			<view class="item" data-name="meAllProduct" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconshujuhuizong"></uni-icon>
+					<view>
+						<image src="../static/meHz.png" mode=""></image>
+					</view>
 					<text>各省产品汇总</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meReserve" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconhongbao1"></uni-icon>
+					<view>
+						<image src="../static/meByj.png" mode=""></image>
+					</view>
 					<text>备用金打造</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meNewbieRead" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon>
+					<view>
+						<image src="../static/meUser.png" mode=""></image>
+					</view>
 					<text>新手必读</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meSpread" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconhongbaoguanli"></uni-icon>
+					<view>
+						<image src="../static/meTgfy.png" mode=""></image>
+					</view>
 					<text>推广返佣</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meService" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconzaixiankefu"></uni-icon>
+					<view style="width: 60rpx;height: 50rpx;">
+						<image src="../static/meKf.png" mode=""></image>
+					</view>
 					<text>联系客服</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 			<view class="item" data-name="meSetting" @tap="goPageNavigateTo">
-				<view class="left">
-					<uni-icon type="" class="iconfont iconshezhi"></uni-icon>
+					<view>
+						<image src="../static/meSz.png" mode=""></image>
+					</view>
 					<text>个人设置</text>
-				</view>
-				<view>
-					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-				</view>
 			</view>
 		</view>
 	</view>
@@ -273,7 +230,10 @@
 	}
 
 	.me .contentList {
-		/* width: 690rpx; */
+		width: 690rpx;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 30rpx 30rpx;
 
 	}
 
@@ -285,40 +245,38 @@
 	}
 
 	.me .contentList .item {
-		width: 690rpx;
-		padding: 0 30rpx;
+		width: 172.5rpx;
+		/* padding: 0 30rpx; */
 		display: flex;
-		justify-content: space-between;
-		align-content: center;
-		height: 50rpx;
-		margin-bottom: 28rpx;
+		justify-content: center;
+		flex-wrap: wrap;
+		/* align-content: center; */
+		/* height: 50rpx; */
+		margin-bottom: 50rpx;
 	}
 
-	.me .contentList .item .left {
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-	}
-
-	.me .contentList .item .left text {
-		font-size: 30rpx;
+	.me .contentList .item text {
+		font-size: 28rpx;
 		font-weight: 600;
 		color: #333333;
-		margin-left: 10rpx;
+		width: 168rpx;
+		text-align: center;
+		/* margin-left: 10rpx; */
 		/* width: 200rpx; */
 	}
 
-	.me .contentList .item .left .iconfont {
-		color: #C0C0C0;
-		font-size: 40rpx;
-		width: 40rpx;
-		/* background: #007AFF; */
+	.me .contentList .item>view {
+		width: 52rpx;
+		height: 48rpx;
+		margin-bottom: 16rpx;
 	}
-
+	.me .contentList .item>view image{
+		width: 100%;
+		height: 100%;
+	}
 	.me .contentList .item .iconchangyongtubiao-xianxingdaochu-zhuanqu- {
 		color: #C0C0C0;
 	}
-
 	.cur {
 		color: #333333;
 		font-size: 30rpx;

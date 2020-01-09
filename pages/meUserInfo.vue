@@ -4,15 +4,15 @@
 			<view class="icon" @tap="edit">
 				<uni-icon type="" class="iconfont iconxinshoubangzhu"></uni-icon>
 			</view>
-			<image class="userImg" :src="imgUrl+userInfo.avatar" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<image class="userImg" v-if="userInfo.avatar != ''" :src="imgUrl+userInfo.avatar" mode="" data-name="meUserInfo" @tap="goPageNavigateTo" />
+			<image class="userImg" v-else src="../static/user.png" mode="" data-name="meUserInfo" @tap="goPageNavigateTo"></image>
 			<!-- <image class="userImg" src="../static/imgLost.png" mode=""></image> -->
 			<view class="meHeadCon">
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view>
 					<text class="tip" v-if="userInfo.type == 'normal'">{{userInfo.deploy.userlevel.level_name}}</text>
-				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text />					
+				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text>					
 				</view>
-				
 				<view class="meHeadList">
 					<text>参与</text>
 					<text @tap="meFollow">关注</text>
@@ -44,7 +44,7 @@
 				<view class="itemList">
 					<text>性别</text>
 					<!-- 性别（m 男 f 女 no_set 未设置） -->
-					<text>{{userInfo.sex}}</text>
+					<!-- <text>{{userInfo.sex}}</text> -->
 					<text v-if="userInfo.sex == 'm'">男</text>
 					<text v-if="userInfo.sex == 'f'">女</text>
 					<text v-if="userInfo.sex == 'no_set'">未设置</text>
@@ -227,6 +227,7 @@
 <style>
 	.me {
 		width: 750rpx;
+		padding: 0 0 30rpx;
 	}
 
 	.me .icon {

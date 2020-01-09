@@ -1,9 +1,9 @@
 
-// const requestUrl = 'http://www.finance.cc/api';
-// const imgUrl = 'http://www.finance.cc/uploads/';
+const requestUrl = 'http://jinrong.beaconway.cn/api';
+const imgUrl = 'http://jinrong.beaconway.cn/uploads/';
 
-const requestUrl = 'http://47.105.95.48/api';
-const imgUrl = 'http://47.105.95.48/uploads/';
+// const requestUrl = 'http://47.105.95.48/api';
+// const imgUrl = 'http://47.105.95.48/uploads/';
 
 // 时间戳转时间
 const transformTime = new Date() || function() {
@@ -19,6 +19,20 @@ const transformTime = new Date() || function() {
 	} else {
 		return '';
 	}
+}
+
+// 解析链接中的参数
+const getQueryString = function (url, name) {
+  console.log("url = " + url)
+  console.log("name = " + name)
+  var reg = new RegExp('(^|&|/?)' + name + '=([^&|/?]*)(&|/?|$)', 'i')
+  var r = url.substr(1).match(reg)
+  if (r != null) {
+    console.log("r = " + r)
+    console.log("r[2] = " + r[2])
+    return r[2]
+  }
+  return null;
 }
 
 // 数据对象 null => ''
@@ -56,5 +70,6 @@ export default {
 	transformTime,
 	null2str,
 	now,
-	isArray
+	isArray,
+	getQueryString
 }

@@ -1,1 +1,0 @@
-<view class="paySuccess"><image src="../static/success.png" mode></image><text>本次交易支付成功</text><view><button type data-event-opts="{{[['tap',[['payClick',[1]]]]]}}" bindtap="__e">返回首页</button><button type data-event-opts="{{[['tap',[['payClick',[2]]]]]}}" bindtap="__e">查看会员</button></view></view>

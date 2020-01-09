@@ -150,23 +150,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -186,8 +170,28 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
         code: '', // 验证码
         password: '', //密码
         verification_key: '', //
-        password1: '' } };}, onLoad: function onLoad() {console.log(this.title);}, methods: { getLoginName: function getLoginName(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode; // this.loginName = e.detail.value
-      console.log(this.formNode);
+        password1: '', invitation: '' } };}, onLoad: function onLoad(options) {console.log(decodeURIComponent(options.q), '-------------');if (options.q != 'undefined') {
+      //获取二维码的携带的链接信息
+      var qrUrl = decodeURIComponent(options.q);
+      console.log(qrUrl);
+      this.formNode.invitation = _helper.default.getQueryString(qrUrl, 'invitation');
+      console.log(this.formNode.invitation, '999');
+      // this.setData({
+      // 	//获取链接中的参数信息
+      // 	actId: utils.getQueryString(qrUrl, 'actId'),
+      // 	shareUserId: utils.getQueryString(qrUrl, 'shareUserId')
+      // });
+    } else {
+      this.formNode.invitation = '';
+    }
+  },
+  methods: {
+    getLoginName: function getLoginName(e) {
+      var formNode = this.formNode;
+      var name = e.currentTarget.dataset.name;
+      var value = e.detail.value;
+      formNode[name] = value;
+      this.formNode = formNode;
     },
     // 获取验证码
     getCode: function getCode() {var _this = this;
@@ -196,7 +200,7 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.mobile == '') {
         wx.showToast({
-          title: "请输入手机号",
+          title: '请输入手机号',
           icon: 'none',
           duration: 2000 });
 
@@ -204,14 +208,14 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.mobile.length != 11) {
         wx.showToast({
-          title: "请输入正确的手机号",
+          title: '请输入正确的手机号',
           icon: 'none',
           duration: 2000 });
 
         return false;
       }
       uni.showToast({
-        title: "请求发送中...",
+        title: '请求发送中...',
         icon: 'loading',
         duration: 1000 });
 
@@ -239,7 +243,6 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
               title: res.data.message });
 
           }
-
         } });
 
     },
@@ -260,9 +263,10 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
     },
     //立即注册
     login: function login() {
+      // console.log(this.formNode.invitation,'/////')
       if (this.formNode.mobile == '') {
         uni.showToast({
-          title: "请输入手机号",
+          title: '请输入手机号',
           icon: 'none',
           duration: 2000 });
 
@@ -270,7 +274,7 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.mobile.length != 11) {
         uni.showToast({
-          title: "请输入正确的手机号",
+          title: '请输入正确的手机号',
           icon: 'none',
           duration: 2000 });
 
@@ -278,7 +282,7 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.code == '') {
         uni.showToast({
-          title: "请输入验证码",
+          title: '请输入验证码',
           icon: 'none',
           duration: 2000 });
 
@@ -286,7 +290,7 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.password == '') {
         uni.showToast({
-          title: "请输入密码",
+          title: '请输入密码',
           icon: 'none',
           duration: 2000 });
 
@@ -294,7 +298,7 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.password1 == '') {
         uni.showToast({
-          title: "请确认密码",
+          title: '请确认密码',
           icon: 'none',
           duration: 2000 });
 
@@ -302,7 +306,7 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
       }
       if (this.formNode.password != this.formNode.password1) {
         uni.showToast({
-          title: "请输入密码一致",
+          title: '请输入密码一致',
           icon: 'none',
           duration: 2000 });
 
@@ -335,10 +339,9 @@ var app = getApp();var _default = { data: function data() {return { title: 'Hell
           } else {
             uni.showToast({
               title: res.data.message,
-              icon: "none" });
+              icon: 'none' });
 
           }
-
         } });
 
     } } };exports.default = _default;

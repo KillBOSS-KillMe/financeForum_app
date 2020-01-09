@@ -1,6 +1,7 @@
 
 .me {
 	width: 750rpx;
+	padding: 0 0 30rpx;
 }
 .me .icon {
 	position: absolute;

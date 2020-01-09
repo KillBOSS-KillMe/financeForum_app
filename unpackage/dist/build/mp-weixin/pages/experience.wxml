@@ -1,1 +1,0 @@
-<view class="experience"><block wx:for="{{type}}" wx:for-item="item" wx:for-index="index" wx:key="index"><block><view class="item" data-id="{{item.id}}" data-name="{{item.title}}" data-event-opts="{{[['tap',[['getPost',['$event']]]]]}}" bindtap="__e"><image class="logo" src="{{imgUrl+item.icon}}" mode></image><text>{{item.title}}</text></view></block></block></view>

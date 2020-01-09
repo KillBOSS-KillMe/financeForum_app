@@ -144,6 +144,14 @@
 	width: 690rpx;
 
 }
+swiper-item {
+	width: 690rpx;
+	height: 300rpx;
+	overflow: hidden;
+	border-radius: 10rpx;
+
+}
+
 .collection .contentList{
 	width: 690rpx;
 	padding: 10rpx 30rpx 30rpx;

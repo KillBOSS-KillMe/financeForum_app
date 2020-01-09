@@ -1543,11 +1543,11 @@ uni$1;exports.default = _default;
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-// const requestUrl = 'http://www.finance.cc/api';
-// const imgUrl = 'http://www.finance.cc/uploads/';
+var requestUrl = 'http://jinrong.beaconway.cn/api';
+var imgUrl = 'http://jinrong.beaconway.cn/uploads/';
 
-var requestUrl = 'http://47.105.95.48/api';
-var imgUrl = 'http://47.105.95.48/uploads/';
+// const requestUrl = 'http://47.105.95.48/api';
+// const imgUrl = 'http://47.105.95.48/uploads/';
 
 // 时间戳转时间
 var transformTime = new Date() || function () {
@@ -1563,6 +1563,20 @@ var transformTime = new Date() || function () {
   } else {
     return '';
   }
+};
+
+// 解析链接中的参数
+var getQueryString = function getQueryString(url, name) {
+  console.log("url = " + url);
+  console.log("name = " + name);
+  var reg = new RegExp('(^|&|/?)' + name + '=([^&|/?]*)(&|/?|$)', 'i');
+  var r = url.substr(1).match(reg);
+  if (r != null) {
+    console.log("r = " + r);
+    console.log("r[2] = " + r[2]);
+    return r[2];
+  }
+  return null;
 };
 
 // 数据对象 null => ''
@@ -1600,7 +1614,8 @@ var isArray = Array.isArray || function (obj) {
   transformTime: transformTime,
   null2str: null2str,
   now: now,
-  isArray: isArray };exports.default = _default;
+  isArray: isArray,
+  getQueryString: getQueryString };exports.default = _default;
 
 /***/ }),
 
@@ -13625,7 +13640,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "新微金论坛" }, "pages/login": { "navigationBarTitleText": "登录" }, "pages/registered": { "navigationBarTitleText": "注册" }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码" }, "pages/collection": { "navigationBarTitleText": "干货汇总" }, "pages/apply": { "navigationBarTitleText": "系统应用" }, "pages/exchang": { "navigationBarTitleText": "微金交流" }, "pages/me": { "navigationBarTitleText": "个人中心" }, "pages/articleDetail": { "navigationBarTitleText": "文章详情" }, "pages/queryTool": { "navigationBarTitleText": "查询工具" }, "pages/post": { "navigationBarTitleText": "发帖" }, "pages/experience": { "navigationBarTitleText": "选择模块" }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市" }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息" }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏" }, "pages/meFollow": { "navigationBarTitleText": "我的关注" }, "pages/meFriend": { "navigationBarTitleText": "我的好友" }, "pages/mePost": { "navigationBarTitleText": "我的发表" }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿" }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机" }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号" }, "pages/meMessage": { "navigationBarTitleText": "我的消息" }, "pages/meCertification": { "navigationBarTitleText": "用户认证" }, "pages/meVIP": { "navigationBarTitleText": "开通会员" }, "pages/joinMember": { "navigationBarTitleText": "加入会员" }, "pages/meVIPDiff": { "navigationBarTitleText": "会员区别" }, "pages/meAllProduct": { "navigationBarTitleText": "各省产品汇总" }, "pages/meReserve": { "navigationBarTitleText": "备用金打造" }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服" }, "pages/meNewbieRead": { "navigationBarTitleText": "新手必读" }, "pages/meSpread": { "navigationBarTitleText": "推广返佣" }, "pages/meService": { "navigationBarTitleText": "联系客服" }, "pages/meSetting": { "navigationBarTitleText": "个人设置" }, "pages/indexAccurate": { "navigationBarTitleText": "精准匹配" }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证" }, "pages/meEditSet": { "navigationBarTitleText": "信息录入" }, "pages/meEdit": { "navigationBarTitleText": "编辑" }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息" }, "pages/meTreaty": { "navigationBarTitleText": "相关协议" }, "pages/paySuccess": { "navigationBarTitleText": "支付成功" }, "pages/productDetail": { "navigationBarTitleText": "产品详情" }, "pages/searchNetloan": { "navigationBarTitleText": "搜索" }, "pages/allProduct": { "navigationBarTitleText": "所有产品" }, "pages/applyShow": { "navigationBarTitleText": "分类" }, "pages/iframe": {}, "pages/meFan": { "navigationBarTitleText": "我的粉丝" }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市" }, "pages/payType": { "navigationBarTitleText": "支付方式" }, "pages/search": { "navigationBarTitleText": "搜索" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "新微金论坛" }, "pages/login": { "navigationBarTitleText": "登录" }, "pages/registered": { "navigationBarTitleText": "注册" }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码" }, "pages/collection": { "navigationBarTitleText": "精准匹配" }, "pages/apply": { "navigationBarTitleText": "系统应用" }, "pages/exchang": { "navigationBarTitleText": "子诺交流区" }, "pages/me": { "navigationBarTitleText": "个人中心" }, "pages/articleDetail": { "navigationBarTitleText": "文章详情" }, "pages/queryTool": { "navigationBarTitleText": "查询工具" }, "pages/post": { "navigationBarTitleText": "发帖" }, "pages/experience": { "navigationBarTitleText": "选择模块" }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市" }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息" }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏" }, "pages/meFollow": { "navigationBarTitleText": "我的关注" }, "pages/meFriend": { "navigationBarTitleText": "我的好友" }, "pages/mePost": { "navigationBarTitleText": "我的发表" }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿" }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机" }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号" }, "pages/meMessage": { "navigationBarTitleText": "我的消息" }, "pages/meCertification": { "navigationBarTitleText": "用户认证" }, "pages/meVIP": { "navigationBarTitleText": "开通会员" }, "pages/joinMember": { "navigationBarTitleText": "加入会员" }, "pages/meVIPDiff": { "navigationBarTitleText": "会员区别" }, "pages/meAllProduct": { "navigationBarTitleText": "各省产品汇总" }, "pages/meReserve": { "navigationBarTitleText": "备用金打造" }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服" }, "pages/meNewbieRead": { "navigationBarTitleText": "新手必读" }, "pages/meSpread": { "navigationBarTitleText": "推广返佣" }, "pages/meService": { "navigationBarTitleText": "联系客服" }, "pages/meSetting": { "navigationBarTitleText": "个人设置" }, "pages/indexAccurate": { "navigationBarTitleText": "精准匹配" }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证" }, "pages/meEditSet": { "navigationBarTitleText": "信息录入" }, "pages/meEdit": { "navigationBarTitleText": "编辑" }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息" }, "pages/meTreaty": { "navigationBarTitleText": "相关协议" }, "pages/paySuccess": { "navigationBarTitleText": "支付成功" }, "pages/productDetail": { "navigationBarTitleText": "产品详情" }, "pages/searchNetloan": { "navigationBarTitleText": "搜索" }, "pages/allProduct": { "navigationBarTitleText": "所有产品" }, "pages/applyShow": { "navigationBarTitleText": "分类" }, "pages/iframe": {}, "pages/meFan": { "navigationBarTitleText": "我的粉丝" }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市" }, "pages/payType": { "navigationBarTitleText": "支付方式" }, "pages/search": { "navigationBarTitleText": "搜索" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

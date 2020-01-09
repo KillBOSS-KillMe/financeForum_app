@@ -28,7 +28,7 @@
 		{
 			"path": "pages/collection",
 			"style": {
-				"navigationBarTitleText": "干货汇总"
+				"navigationBarTitleText": "精准匹配"
 			}
 		},
 		{
@@ -40,7 +40,7 @@
 		{
 			"path": "pages/exchang",
 			"style": {
-				"navigationBarTitleText": "微金交流"
+				"navigationBarTitleText": "子诺交流区"
 			}
 		},
 		{
@@ -334,7 +334,7 @@
 			},
 			{
 				"pagePath": "pages/collection",
-				"text": "干货汇总",
+				"text": "精准匹配",
 				"iconPath": "static/gather.png",
 				"selectedIconPath": "static/gatherCur.png"
 			},
@@ -346,7 +346,7 @@
 			},
 			{
 				"pagePath": "pages/exchang",
-				"text": "微金交流",
+				"text": "子诺交流区",
 				"iconPath": "static/exchange.png",
 				"selectedIconPath": "static/exchangeCur.png"
 			},

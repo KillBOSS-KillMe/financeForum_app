@@ -72,7 +72,7 @@
       },
       {
         "pagePath": "pages/collection",
-        "text": "干货汇总",
+        "text": "精准匹配",
         "iconPath": "static/gather.png",
         "selectedIconPath": "static/gatherCur.png"
       },
@@ -84,7 +84,7 @@
       },
       {
         "pagePath": "pages/exchang",
-        "text": "微金交流",
+        "text": "子诺交流区",
         "iconPath": "static/exchange.png",
         "selectedIconPath": "static/exchangeCur.png"
       },
@@ -100,5 +100,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap21.json"
+  "sitemapLocation": "sitemap.json"
 }
