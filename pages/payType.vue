@@ -7,7 +7,7 @@
 				<text class="money">{{options.money}}</text>
 			</view>
 		</view>
-		<!-- #ifdef APP-PLUS -->
+		<!-- #ifdef APP-PLUS || H5 -->
 		<view class="content">
 			<radio-group @change="radioChange" :id="index" style="width: 690rpx;display: flex;">
 				<view class="item">
@@ -136,6 +136,9 @@
 			},
 			iAgree() {
 				console.log(this.payType);
+				// uni.showToast({
+				// 	title: this.payType
+				// })
 				uni.request({
 					url: `${helper.requestUrl}/bay-vip`,
 					method: 'POST',
@@ -144,27 +147,62 @@
 					},
 					data: {
 						member_id: this.options.id,
+						app_type: 'app',
 						pay_type: this.payType
 					},
 					success: res => {
 						console.log(res);
 						console.log(res.data)
 						// 调起支付
-						uni.requestPayment({
-							provider: 'alipay',
-							orderInfo: res.data, //订单数据
-							success: function(res) {
-								console.log('success:' + JSON.stringify(res));
-								console.log('*********')
-							},
-							fail: function(err) {
-								// console.log('fail:' + JSON.stringify(err));
-							}
-						});
+						this.appWxpay(res.data)
+						
 					}
+				});
+			},
+			appWxpay(payNode) {
+				// uni.showToast({
+				// 	title: '1111' +JSON.stringify(payNode),
+				// 	icon: 'none',
+				// 	duration: 2000
+				// });
+				uni.requestPayment({
+				    provider: 'wxpay',
+				    orderInfo: payNode, //微信、支付宝订单数据
+						// provider: 'wxpay',
+						// appid: payNode.appid,
+						// timeStamp: String(payNode.timeStamp),
+						// nonceStr: payNode.noncestr,
+						// package: payNode.package,
+						// signType: payNode.signType,
+						// paySign: payNode.paySign,
+				    success: function (res) {
+							uni.showToast({
+								title: "支付成功",
+								icon: 'success',
+								duration: 2000
+							});
+							// 两秒后返回上一页
+							setTimeout(e => {
+								uni.reLaunch({
+									url:'/pages/paySuccess'
+								})
+							}, 2000)
+								console.log(res);
+				        console.log('success:' + JSON.stringify(res));
+				    },
+				    fail: function (err) {
+							uni.showToast({
+								title: JSON.stringify(err),
+								icon: 'none',
+								duration: 2000
+							});
+							// console.log(res);
+				   //      console.log('fail:' + JSON.stringify(err));
+				    },
 				});
 			}
 		}
+		
 	};
 </script>
 

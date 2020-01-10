@@ -1,7 +1,7 @@
 <template>
 	<view class="meSetting">
-		<view class="item">
-			<view class="left" @tap="modifyPassword">
+		<view class="item"  @tap="modifyPassword">
+			<view class="left">
 				<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
 				<text>修改密码</text>
 			</view>
@@ -140,7 +140,7 @@
 		margin: 0 30rpx;
 		display: flex;
 		justify-content: space-between;
-		border-bottom: 1rpx solid #3e8cfd;
+		border-bottom: 1rpx solid #f3f3f6;
 		padding: 30rpx 0;
 	}
 

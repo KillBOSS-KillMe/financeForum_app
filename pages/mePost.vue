@@ -27,7 +27,8 @@
 		data() {
 			return {
 				list: [],
-				imgUrl: ''
+				imgUrl: '',
+				page: 1
 			};
 		},
 		onLoad() {
@@ -105,6 +106,10 @@
 					header: {
 						authorization: app.globalData.token
 					},
+					// data:{
+					// 	page_size: 10,
+					// 	page: this.page
+					// },
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
@@ -125,7 +130,10 @@
 				uni.navigateTo({
 					url:`/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 				})
-			}
+			},
+			// onReachBottom() {
+			// 	this.page ++;
+			// }
 		}
 	}
 </script>
@@ -133,6 +141,7 @@
 	.list {
 		width: 750rpx;
 		height: auto;
+		padding: 0 0 30rpx;
 	}
 	.item{
 		width: 690rpx;

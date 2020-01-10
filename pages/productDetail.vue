@@ -106,10 +106,10 @@
 			</view>
 		</view>
 		<!-- #ifdef APP-PLUS || H5 -->
-			<button type="" :data-link="listInfo.link" :data-name="listInfo.name" @tap="APP_PLUS_apply">立即申请</button>
+			<button type=""  hover-class="btn-hover" :data-link="listInfo.link" :data-name="listInfo.name" @tap="APP_PLUS_apply">立即申请</button>
 		<!-- #endif -->
 		<!-- #ifdef MP-WEIXIN -->
-			<button type="" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
+			<button type=""  hover-class="btn-hover" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
 		<!-- #endif -->
 	</view>
 </template>

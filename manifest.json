@@ -58,7 +58,11 @@
             /* SDK配置 */
             "sdkConfigs" : {
                 "payment" : {
-                    "alipay" : {}
+                    "alipay" : {},
+                    "weixin" : {
+                        "appid" : "wx5288d1f667f49f05",
+                        "UniversalLinks" : ""
+                    }
                 },
                 "speech" : {
                     "ifly" : {}

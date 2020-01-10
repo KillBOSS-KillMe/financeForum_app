@@ -271,6 +271,9 @@ var app = getApp();var _default = { data: function data() {return { options: {},
     },
     iAgree: function iAgree() {
       console.log(this.payType);
+      uni.showToast({
+        title: this.payType });
+
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/bay-vip"),
         method: 'POST',
@@ -279,6 +282,7 @@ var app = getApp();var _default = { data: function data() {return { options: {},
 
         data: {
           member_id: this.options.id,
+          app_type: 'app',
           pay_type: this.payType },
 
         success: function success(res) {
@@ -286,7 +290,7 @@ var app = getApp();var _default = { data: function data() {return { options: {},
           console.log(res.data);
           // 调起支付
           uni.requestPayment({
-            provider: 'alipay',
+            provider: 'wxpay',
             orderInfo: res.data, //订单数据
             success: function success(res) {
               console.log('success:' + JSON.stringify(res));

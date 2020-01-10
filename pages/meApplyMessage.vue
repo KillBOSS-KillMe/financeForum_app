@@ -78,6 +78,10 @@
 					header: {
 						authorization: app.globalData.token
 					},
+					// data: {
+					// 	page: 1,
+					// 	page_size: 5
+					// },
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res);

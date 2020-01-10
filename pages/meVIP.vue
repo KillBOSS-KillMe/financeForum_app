@@ -54,7 +54,7 @@
 				</view>
 				<view class="time">
 					<text class="long">永久会员超价值</text>
-					<text>永久会员专享受价￥{{vip[1].data.vip_price}}</text>
+					<text>永久会员专享受价￥{{vip.data[1].vip_price}}</text>
 				</view>
 			</view>
 		</view>
