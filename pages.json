@@ -24,7 +24,7 @@
 				"navigationBarTitleText": "找回密码"
 			}
 		},
-		
+
 		{
 			"path": "pages/collection",
 			"style": {
@@ -304,6 +304,12 @@
 			"path": "pages/search",
 			"style": {
 				"navigationBarTitleText": "搜索"
+			}
+		},
+		{
+			"path": "pages/meTeamList",
+			"style": {
+				
 			}
 		}
 	],

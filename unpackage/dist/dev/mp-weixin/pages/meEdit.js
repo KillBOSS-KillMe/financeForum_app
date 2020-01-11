@@ -365,7 +365,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 435));};var _default = { data: function data() {return { txt: '选择地址', // formNode: [],
+var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 443));};var _default = { data: function data() {return { txt: '选择地址', // formNode: [],
       formNode: { sex: '', credit_card: '', social_security: '', //社保
         provident_fund: '', //公积金
         education: '', //学历

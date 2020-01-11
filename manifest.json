@@ -17,10 +17,10 @@
         },
         /* 模块配置 */
         "modules" : {
-            "Payment" : {},
             "Speech" : {},
             "VideoPlayer" : {},
-            "Share" : {}
+            "Share" : {},
+            "Payment" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -60,7 +60,7 @@
                 "payment" : {
                     "alipay" : {},
                     "weixin" : {
-                        "appid" : "wx5288d1f667f49f05",
+                        "appid" : "wx1a5d6f1f8c7065c6",
                         "UniversalLinks" : ""
                     }
                 },
@@ -69,7 +69,7 @@
                 },
                 "share" : {
                     "weixin" : {
-                        "appid" : "wx5288d1f667f49f05",
+                        "appid" : "wx1a5d6f1f8c7065c6",
                         "UniversalLinks" : ""
                     }
                 }

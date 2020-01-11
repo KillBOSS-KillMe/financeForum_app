@@ -18,10 +18,10 @@
     "url": ""
   },
   "permissions": {
-    "Payment": {},
     "Speech": {},
     "VideoPlayer": {},
     "Share": {},
+    "Payment": {},
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -116,7 +116,7 @@
         "payment": {
           "alipay": {},
           "weixin": {
-            "appid": "wx5288d1f667f49f05",
+            "appid": "wx1a5d6f1f8c7065c6",
             "UniversalLinks": ""
           }
         },
@@ -125,7 +125,7 @@
         },
         "share": {
           "weixin": {
-            "appid": "wx5288d1f667f49f05",
+            "appid": "wx1a5d6f1f8c7065c6",
             "UniversalLinks": ""
           }
         },

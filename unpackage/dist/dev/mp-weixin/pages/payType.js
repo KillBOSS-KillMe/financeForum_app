@@ -219,9 +219,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var _default = { data: function data() {return { options: {}, userInfo: {}, index: '0', payType: 'wechat' };}, onLoad: function onLoad(options) {this.userInfo = app.globalData.userInfo; // console.log(this.userInfo)
     // console.log(options)
-    this.options = options;}, methods: { radioChange: function radioChange(e) {console.log(e);this.payType = e.detail.value;}, wxAppletPay: function wxAppletPay() {var _this = this; // 微信小程序支付
+    this.options = options;con;}, methods: { radioChange: function radioChange(e) {console.log(e);this.payType = e.detail.value;}, wxAppletPay: function wxAppletPay() {var _this = this; // 微信小程序支付
       uni.showLoading({ title: '支付信息加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/bay-vip"), method: 'POST', header: { authorization: app.globalData.token }, data: { member_id: this.options.id, app_type: 'miniapp', pay_type: 'wechat' }, success: function success(res) {// console.log(res);
-          uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.runRecharge(res.data);} else {uni.showToast({
+          uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.runRecharge(res.data);} else {
+            uni.showToast({
               title: res.data.message,
               icon: 'none',
               duration: 2000 });
@@ -269,11 +270,11 @@ var app = getApp();var _default = { data: function data() {return { options: {},
         } });
 
     },
-    iAgree: function iAgree() {
+    iAgree: function iAgree() {var _this2 = this;
       console.log(this.payType);
-      uni.showToast({
-        title: this.payType });
-
+      // uni.showToast({
+      // 	title: this.payType
+      // })
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/bay-vip"),
         method: 'POST',
@@ -289,17 +290,56 @@ var app = getApp();var _default = { data: function data() {return { options: {},
           console.log(res);
           console.log(res.data);
           // 调起支付
-          uni.requestPayment({
-            provider: 'wxpay',
-            orderInfo: res.data, //订单数据
-            success: function success(res) {
-              console.log('success:' + JSON.stringify(res));
-              console.log('*********');
-            },
-            fail: function fail(err) {
-              // console.log('fail:' + JSON.stringify(err));
-            } });
+          _this2.appWxpay(res.data);
 
+        } });
+
+    },
+    appWxpay: function appWxpay(payNode) {
+      var u = typeof JSON.stringify(payNode);
+      // payNode.package='sign=wxpay'
+      payNode.packageValue = 'Sign=WXPay';
+      // payNode.noncestr = payNode.noncestr.toLowerCase()
+      // payNode.sign = payNode.sign.toLowerCase()
+      console.log(JSON.stringify(payNode));
+      uni.showToast({
+        title: u,
+        icon: 'none',
+        duration: 9000 });
+
+      uni.requestPayment({
+        provider: 'wxpay',
+        orderInfo: JSON.stringify(payNode), //微信、支付宝订单数据
+        // provider: 'wxpay',
+        // appid: payNode.appid,
+        // timeStamp: String(payNode.timeStamp),
+        // nonceStr: payNode.noncestr,
+        // package: payNode.package,
+        // signType: payNode.signType,
+        // paySign: payNode.paySign,
+        success: function success(res) {
+          uni.showToast({
+            title: "支付成功",
+            icon: 'success',
+            duration: 2000 });
+
+          // 两秒后返回上一页
+          setTimeout(function (e) {
+            uni.reLaunch({
+              url: '/pages/paySuccess' });
+
+          }, 2000);
+          console.log(res);
+          console.log('success:' + JSON.stringify(res));
+        },
+        fail: function fail(err) {
+          uni.showToast({
+            title: JSON.stringify(err),
+            icon: 'none',
+            duration: 20000 });
+
+          // console.log(res);
+          //      console.log('fail:' + JSON.stringify(err));
         } });
 
     } } };exports.default = _default;

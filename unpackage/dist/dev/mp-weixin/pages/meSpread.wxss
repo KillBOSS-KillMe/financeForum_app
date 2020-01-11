@@ -22,6 +22,125 @@ button {
 button {
   border-radius:0;
 }
+.team{
+	margin: 30rpx auto 30rpx;
+	width: 650rpx;
+	height: 100rpx;
+	padding: 20rpx;
+	background: #fff;
+	border-radius: 10rpx;
+	box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45); 
+	display: -webkit-box; 
+	display: -webkit-flex; 
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.info{
+	width: 650rpx;
+	height: 120rpx;
+	margin: -60rpx 30rpx 30rpx;
+	padding: 66rpx 20rpx 20rpx;
+	background: #ffffff;
+	border-radius: 10rpx;
+	box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	z-index: 8;
+}
+.info>text{
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 20rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color: #333333;
+}
+.info .sign{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.info .sign text{
+	background-color: #2390DC;
+	color: #FFFFFF;
+	font-size: 18rpx;
+	margin-right: 16rpx;
+	padding: 6rpx 16rpx;
+	border-radius: 5rpx;
+}
+.meMoney{
+	margin: 30rpx auto 30rpx;
+	width: 650rpx;
+	height: 100rpx;
+	padding: 20rpx;
+	background: #fff;
+	border-radius: 10rpx;
+	box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
+}
+.meMoney>text{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #333333;
+	border-bottom: 1rpx solid #E5E5E5;
+	padding: 0 0 10rpx;
+}
+.meMoney>view{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	margin-top: 16rpx;
+}
+.meMoney>view text{
+	width: 260rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color: #2390dc;
+	letter-spacing: 3rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.meMoney>view button{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #ffffff;
+	line-height: 23rpx;
+	background: #2390DC;
+	width: 131rpx;
+	height: 42rpx;
+	line-height: 42rpx;
+	background: #2390dc;
+	border-radius: 21rpx;
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+}
+.team>view{
+	width: 320rpx;
+}
+.team>view:first-child{
+	border-right: 1rpx dotted #D2D2D2;
+}
+.team>view text{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #666666;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+}
+.team>view text:first-child{
+	font-size: 40rpx;
+	font-weight: 700;
+	color: #333333;
+}
 button {
   background-color: #fff;
 }
@@ -31,19 +150,34 @@ button::after {
 .meSpread {
 	width: 750rpx;
 	padding-bottom: 60rpx;
+	background-color: #fafafa;
 }
 .head {
 	width: 690rpx;
 	padding: 10rpx 30rpx;
 	background: #2390dc;
-	height: 184rpx;
-	margin-bottom: 220rpx;
+	height: 140rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.head image{
+	width: 115rpx;
+	height: 115rpx;
+	border-radius: 115rpx;
+	border: 6rpx solid #FFFFFF;
+	margin-top: 20rpx;
+	z-index: 9;
+	box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
 }
 .head .meSpreadHead {
 	width: 690rpx;
 	height: 290rpx;
 	background: #fff;
-	box-shadow: 0px 1px 26px 0px rgba(202, 202, 202, 0.6);
+	box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
 	border-radius: 10rpx;
 	margin-top: 60rpx;
 }
@@ -75,9 +209,18 @@ button::after {
 	color: #FFFFFF;
 	margin: 0 auto;
 }
+.bottom{
+	background: #0066CC;
+	width: 630rpx;
+	margin: 30rpx;
+	padding: 30rpx;
+	background: #ffffff;
+	border-radius: 10rpx;
+	box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45);
+}
 .invite {
-	width: 690rpx;
-	padding: 10rpx 30rpx;
+	/* width: 690rpx;
+	padding: 10rpx 30rpx; */
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -104,8 +247,9 @@ button::after {
 	border: 1rpx solid #2390dc;
 }
 .content {
-	width: 690rpx;
-	padding: 30rpx 30rpx;
+	margin: 26rpx 0;
+/* 	width: 690rpx;
+	padding: 30rpx 30rpx; */
 }
 .content text {
 	font-size: 20rpx;

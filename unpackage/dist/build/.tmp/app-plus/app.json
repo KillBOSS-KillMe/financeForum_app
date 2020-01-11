@@ -50,7 +50,8 @@
     "pages/meFan",
     "pages/tel",
     "pages/payType",
-    "pages/search"
+    "pages/search",
+    "pages/meTeamList"
   ],
   "window": {
     "navigationBarTextStyle": "white",

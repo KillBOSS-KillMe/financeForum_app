@@ -50,7 +50,8 @@
     "pages/meFan",
     "pages/tel",
     "pages/payType",
-    "pages/search"
+    "pages/search",
+    "pages/meTeamList"
   ],
   "subPackages": [],
   "window": {
@@ -100,5 +101,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap0.json"
+  "sitemapLocation": "sitemap75.json"
 }

@@ -224,6 +224,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -313,7 +332,26 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 428));};var _default = { data: function data() {return { tableData: [{ name: '大锤', age: '17777777777', address: '2019-10-25' }, { name: '张三', age: '21', address: '成都' }, { name: '李四', age: '16', address: '南京' }], columns: [{ title: '用户名', key: 'name' }, { title: '手机号', key: 'age' }, { title: '时间', key: 'address' }], bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '微信朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], collectionList: {}, imgUrl: '', isShow: true };}, components: { // wTable,
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 436));};var _default = { data: function data() {return { tableData: [{ name: '大锤', age: '17777777777', address: '2019-10-25' }, { name: '张三', age: '21', address: '成都' }, { name: '李四', age: '16', address: '南京' }], columns: [{ title: '用户名', key: 'name' }, { title: '手机号', key: 'age' }, { title: '时间', key: 'address' }], bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '微信朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], collectionList: {}, imgUrl: '', isShow: true };}, components: { // wTable,
     uniPopup: uniPopup }, onLoad: function onLoad() {this.content();this.imgUrl = _helper.default.imgUrl;}, // 微信分享
   onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, // shareFriend() {
   // 	//分享到微信朋友
@@ -332,10 +370,7 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
           if (res.data.status_code == 200) {_this.collectionList = res.data;} else {// uni.showToast({
             // 	title: res.data.message
             // });
-          }} });
-
-    },
-    // goShare(WXSenceType) {
+          }} });}, // goShare(WXSenceType) {
     // 	// 获取页面路径
     // 	console.log(this.collectionList,'**')
     // 	uni.showToast({
@@ -362,28 +397,25 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
     // 		},
     // 	});
     // },
-    goShare: function goShare(e) {
-      console.log(e);
-      var sceneType = '';
-      if (e == 'WXSceneSession') {
-        sceneType = 'WXSceneSession';
-      } else if (e == 'WXSenceTimeline') {
-        sceneType = 'WXSenceTimeline';
-      }
-      uni.share({
-        provider: "weixin",
-        scene: sceneType,
-        type: 0,
-        href: this.collectionList.share_link,
-        title: "新微金论坛",
-        summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
-        imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
-        success: function success(res) {
+    goShare: function goShare(e) {console.log(e);var sceneType = '';if (e == 'WXSceneSession') {sceneType = 'WXSceneSession';} else if (e == 'WXSenceTimeline') {sceneType = 'WXSenceTimeline';}uni.share({ provider: "weixin", scene: sceneType, type: 0, href: this.collectionList.share_link, title: "新微金论坛", summary: "我正在使用新微金论坛，赶紧跟我一起来体验！", imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png", success: function success(res) {
           console.log("success:" + JSON.stringify(res));
         },
         fail: function fail(err) {
           console.log("fail:" + JSON.stringify(err));
         } });
+
+    },
+    // 团队列表
+    goTeam: function goTeam(e) {
+      console.log(e);
+      var name = '';
+      if (e == 1) {
+        name = '团队长列表';
+      } else {
+        name = '团队列表';
+      }
+      uni.navigateTo({
+        url: "/pages/meTeamList?name=".concat(name) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

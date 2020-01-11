@@ -1,27 +1,52 @@
 <template>
 	<view class="meSpread">
 		<view class="head">
-			<view class="meSpreadHead">
-				<text class="balance">总余额</text>
-				<text class="money">￥{{ collectionList.user_blance }}</text>
-				<button class="withdraw" type="">提现</button>
+			<image :src="imgUrl+collectionList.member.avatar" v-if="collectionList.member.avatar != ''" mode="" ></image>
+			<image v-else src="../static/user.png" mode=""></image>
+		</view>
+		<view class="info">
+			<text>{{collectionList.member.name}}</text>
+			<view class="sign">
+				<text>青铜新手</text>
+				<text v-if="collectionList.member.invitees_level == 0">团队长</text>
+				<text v-else>团员</text>
 			</view>
 		</view>
-		<view class="invite">
-			<text class="quickInlet" @tap="quickInlet(1)">立即邀请</text>
-			<text class="faceInlet" @tap="quickInlet(2)">面对面邀请</text>
+		<view class="team">
+			<view @tap="goTeam(1)">
+				<text>{{collectionList.invitees_count}}</text>
+				<text>团队个数(个)</text>
+			</view>
+			<view @tap="goTeam(2)">
+				<text>{{collectionList.people_sum}}</text>
+				<text>团队总人数</text>
+			</view>
 		</view>
-		<view class="content">
-			<text>1、分享邀请链接给您的好友，用户下载安装app您将获得3现金奖励；</text>
-			<text>2、邀请奖励将在好友领取时（访问此页面）发放；</text>
-			<text>3、邀请奖励：用户开通一年会员，您将获得80元现金奖励；用户开通永久会员，您将获得120元先将奖励；（限会员才有推广权限）</text>
-			<text>4、邀请好友获得现金奖励，满50元均可联系官方客服申请提现；</text>
-			<text>5、一个硬件设备均视为同一用户，邀请链接仅对新注册用户有效；</text>
-			<text>6、如发现任何违规作弊行为将视为情节严重程度进行判断：不予发放奖励封停冻结账号；</text>
-			<text>7、如有其它的疑问请咨询子诺论坛官方客服Tel:18535464004;</text>
+		<view class="meMoney">
+			<text>我的余额</text>
+			<view>
+				<text>￥{{collectionList.user_blance}}</text>
+				<button type="" hover-class="none">提现</button>
+			</view>
 		</view>
-		<view class="hr"></view>
-		<view class="list">
+		<view class="bottom">
+			<view class="invite">
+				<text class="quickInlet" @tap="quickInlet(1)">立即邀请</text>
+				<text class="faceInlet" @tap="quickInlet(2)">面对面邀请</text>
+			</view>
+			<view class="content">
+				<text>1、分享邀请链接给您的好友，用户下载安装app您将获得3现金奖励；</text>
+				<text>2、邀请奖励将在好友领取时（访问此页面）发放；</text>
+				<text>3、邀请奖励：用户开通一年会员，您将获得80元现金奖励；用户开通永久会员，您将获得120元先将奖励；（限会员才有推广权限）</text>
+				<text>4、邀请好友获得现金奖励，满50元均可联系官方客服申请提现；</text>
+				<text>5、一个硬件设备均视为同一用户，邀请链接仅对新注册用户有效；</text>
+				<text>6、如发现任何违规作弊行为将视为情节严重程度进行判断：不予发放奖励封停冻结账号；</text>
+				<text>7、如有其它的疑问请咨询子诺论坛官方客服Tel:18535464004;</text>
+			</view>
+		</view>
+		
+		<!-- <view class="hr"></view> -->
+	<!-- 	<view class="list">
 			<text class="listInlet">我的邀请</text>
 			<view class="meTable">
 				<view class="item headTab">
@@ -36,18 +61,12 @@
 						<text>{{item.created_at}}</text>
 					</view>
 				</block>
-			<!-- 	<view class="item head">
-					<block v-for="(item,index) in tableData" :key="index">
-						<text>{{item.title}}</text>
-					</block>
-				</view> -->
 			</view>
-			<!-- <wTable :columns="columns" :data="tableData" @on-row-click="clickrow" border @on-select-all="selectAll" @on-select="selectO" /> -->
 			<view class="model" @tap="goMore" v-show="isShow">
 				更多用户
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
-		</view>
+		</view> -->
 		<!-- 底部分享弹窗 立即邀请 -->
 		<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
 			<view class="uni-share">
@@ -250,6 +269,19 @@ export default {
 			        console.log("fail:" + JSON.stringify(err));
 			    }
 			});
+		},
+		// 团队列表
+		goTeam(e){
+			console.log(e)
+			let name = ''
+			if(e == 1){
+				name = '团队长列表'
+			}else{
+				name = '团队列表'
+			}
+			uni.navigateTo({
+				url: `/pages/meTeamList?name=${name}`
+			})
 		}
 	}
 };
@@ -280,6 +312,114 @@ button {
 button {
   border-radius:0;
 }
+.team{
+	margin: 30rpx auto 30rpx;
+	width: 650rpx;
+	height: 100rpx;
+	padding: 20rpx;
+	background: #fff;
+	border-radius: 10rpx;
+	box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45); 
+	display: flex;
+	justify-content: space-between;
+}
+.info{
+	width: 650rpx;
+	height: 120rpx;
+	margin: -60rpx 30rpx 30rpx;
+	padding: 66rpx 20rpx 20rpx;
+	background: #ffffff;
+	border-radius: 10rpx;
+	box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	z-index: 8;
+}
+.info>text{
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 20rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color: #333333;
+}
+.info .sign{
+	display: flex;
+	justify-content: center;
+}
+.info .sign text{
+	background-color: #2390DC;
+	color: #FFFFFF;
+	font-size: 18rpx;
+	margin-right: 16rpx;
+	padding: 6rpx 16rpx;
+	border-radius: 5rpx;
+}
+.meMoney{
+	margin: 30rpx auto 30rpx;
+	width: 650rpx;
+	height: 100rpx;
+	padding: 20rpx;
+	background: #fff;
+	border-radius: 10rpx;
+	box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45); 
+}
+.meMoney>text{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #333333;
+	border-bottom: 1rpx solid #E5E5E5;
+	padding: 0 0 10rpx;
+}
+.meMoney>view{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 16rpx;
+}
+.meMoney>view text{
+	width: 260rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color: #2390dc;
+	letter-spacing: 3rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.meMoney>view button{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #ffffff;
+	line-height: 23rpx;
+	background: #2390DC;
+	width: 131rpx;
+	height: 42rpx;
+	line-height: 42rpx;
+	background: #2390dc;
+	border-radius: 21rpx;
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6); 
+}
+.team>view{
+	width: 320rpx;
+}
+.team>view:first-child{
+	border-right: 1rpx dotted #D2D2D2;
+}
+.team>view text{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #666666;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+	
+}
+.team>view text:first-child{
+	font-size: 40rpx;
+	font-weight: 700;
+	color: #333333;
+}
 button {
   background-color: #fff;
 }
@@ -292,19 +432,30 @@ button::after {
 .meSpread {
 	width: 750rpx;
 	padding-bottom: 60rpx;
+	background-color: #fafafa;
 }
 .head {
 	width: 690rpx;
 	padding: 10rpx 30rpx;
 	background: #2390dc;
-	height: 184rpx;
-	margin-bottom: 220rpx;
+	height: 140rpx;
+	display: flex;
+	justify-content: center;
+}
+.head image{
+	width: 115rpx;
+	height: 115rpx;
+	border-radius: 115rpx;
+	border: 6rpx solid #FFFFFF;
+	margin-top: 20rpx;
+	z-index: 9;
+	box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
 }
 .head .meSpreadHead {
 	width: 690rpx;
 	height: 290rpx;
 	background: #fff;
-	box-shadow: 0px 1px 26px 0px rgba(202, 202, 202, 0.6);
+	box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
 	border-radius: 10rpx;
 	margin-top: 60rpx;
 }
@@ -336,9 +487,18 @@ button::after {
 	color: #FFFFFF;
 	margin: 0 auto;
 }
+.bottom{
+	background: #0066CC;
+	width: 630rpx;
+	margin: 30rpx;
+	padding: 30rpx;
+	background: #ffffff;
+	border-radius: 10rpx;
+	box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45); 
+}
 .invite {
-	width: 690rpx;
-	padding: 10rpx 30rpx;
+	/* width: 690rpx;
+	padding: 10rpx 30rpx; */
 	display: flex;
 	justify-content: center;
 }
@@ -361,8 +521,9 @@ button::after {
 	border: 1rpx solid #2390dc;
 }
 .content {
-	width: 690rpx;
-	padding: 30rpx 30rpx;
+	margin: 26rpx 0;
+/* 	width: 690rpx;
+	padding: 30rpx 30rpx; */
 }
 .content text {
 	font-size: 20rpx;

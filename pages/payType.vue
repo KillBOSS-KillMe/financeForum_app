@@ -56,6 +56,7 @@
 			// console.log(this.userInfo)
 			// console.log(options)
 			this.options = options
+			con
 		},
 		methods: {
 			radioChange(e) {
@@ -140,7 +141,7 @@
 				// 	title: this.payType
 				// })
 				uni.request({
-					url: `${helper.requestUrl}/bay-vip`,
+					url: `${helper.requestUrl}/buy-vip`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token
@@ -152,22 +153,50 @@
 					},
 					success: res => {
 						console.log(res);
-						console.log(res.data)
+						console.log(res.data,'****************')
 						// 调起支付
-						this.appWxpay(res.data)
+						// this.appWxpay(res.data)
+						uni.request({
+							url: `${helper.requestUrl}/wechat-second-sign`,
+							method: 'POST',
+							header: {
+								authorization: app.globalData.token
+							},
+							data: {
+								wechat_data: JSON.stringify(res.data)
+							},
+							success: data => {
+								console.log(data);
+								console.log(JSON.stringify(data.data))
+								// 调起支付
+								this.appWxpay(data.data)
+								
+							}
+						});
 						
 					}
 				});
 			},
 			appWxpay(payNode) {
+				// let u = typeof JSON.stringify(payNode)
+				// payNode.packageValue ='Sign=WXPay'
+				// payNode.sign='B3A0B850A70CC3AC8C214EE062531388'
+				// payNode.noncestr = 'OOo2rWtclOyKF1X6'
+				// payNode.prepayid= 'wx11180748726260182c649e131874986700'
+				// payNode.timeStamp='1578737268'
+				// payNode.appid='wx1a5d6f1f8c7065c6'
+				// payNode.partnerid = '1573212951'
+
+				// payNode.sign = payNode.sign.toLowerCase()
+				console.log(JSON.stringify(payNode))
 				// uni.showToast({
-				// 	title: '1111' +JSON.stringify(payNode),
+				// 	title: u,
 				// 	icon: 'none',
-				// 	duration: 2000
+				// 	duration: 9000
 				// });
 				uni.requestPayment({
 				    provider: 'wxpay',
-				    orderInfo: payNode, //微信、支付宝订单数据
+				    orderInfo: JSON.stringify(payNode), //微信、支付宝订单数据
 						// provider: 'wxpay',
 						// appid: payNode.appid,
 						// timeStamp: String(payNode.timeStamp),
