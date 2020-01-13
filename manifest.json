@@ -54,7 +54,11 @@
                 ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "privacyDescription" : {
+                    "NSCalendarsUsageDescription" : ""
+                }
+            },
             /* SDK配置 */
             "sdkConfigs" : {
                 "payment" : {

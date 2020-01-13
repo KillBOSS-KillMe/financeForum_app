@@ -124,6 +124,29 @@
 					uni.navigateTo({
 						url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
 					})
+				}else if(url == 'meSpread'){
+					console.log(url)
+					console.log(this.userInfo.type)
+					if(this.userInfo.type == 'normal'){
+						uni.showToast({
+							title: '您不是会员，暂无此权限',
+							icon: 'none',
+							duration: 1000
+						})
+						setTimeout(e =>{
+							uni.navigateTo({
+								url: `/pages/meVIP`
+							})
+						},1600)
+					}else{
+						uni.navigateTo({
+							url: `/pages/meSpread`
+						})
+					}
+					
+					// uni.navigateTo({
+					// 	url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
+					// })
 				}else{
 					uni.navigateTo({
 						url: `/pages/${url}`
@@ -199,10 +222,12 @@
 
 	.me .login {
 		color: #333333;
-		font-size: 32rpx;
 		font-weight: 600;
 		text-align: center;
 		display: block;
+		overflow:hidden; 
+		text-overflow:ellipsis;
+		white-space:nowrap;
 	}
 
 	.me .tip {

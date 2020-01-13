@@ -15,7 +15,7 @@
 				<text>清除缓存</text>
 			</view>
 			<view>
-				<text>12.34M</text>
+				<text>{{num}}</text>
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
@@ -40,9 +40,15 @@
 	import helper from '../common/helper.js';
 	export default {
 		data() {
-			return {};
+			return {
+				num: '12.34M'
+			};
 		},
-
+		onLoad() {
+			const loginName = uni.getStorageSync('login_name');
+			console.log(loginName)
+			const loginPwd = uni.getStorageSync('login_pwd');
+		},
 		methods: {
 			modifyPassword() {
 				// 修改密码
@@ -59,7 +65,20 @@
 					success: res => {
 						if (res.confirm) {
 							// console.log('用户点击确定');
+							uni.showToast({
+								title: '清除中...',
+								icon: 'loading',
+								duration: 3000
+							})
+							setTimeout( e =>{
+								uni.showToast({
+									title: '清除完成',
+									icon: 'success',
+									duration: 2000
+								})
+							},3000)
 							uni.clearStorageSync();
+							this.num = '0'
 						} else if (res.cancel) {
 							// console.log('用户点击取消');
 						}

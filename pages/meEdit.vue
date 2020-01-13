@@ -30,6 +30,7 @@
 						<!-- <text v-if="formNode.sex == ''">{{ formNode.sex }}</text> -->
 						<!-- <text>{{ formNode.sex }}</text> -->
 						<text>{{ formNode.sex }}</text>
+						
 						<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 					</view>
 					<!-- <input type="text" value="男" v-model="formNode.sex" placeholder="" /> -->
@@ -243,6 +244,11 @@ export default {
 						this.formNode.education = '博士'
 					}
 					this.txt = this.formNode.province + this.formNode.city + this.formNode.district
+					if(this.formNode.sex == 'no_set'){
+						this.formNode.sex = '未设置'
+					}else{
+						this.formNode.sex = this.formNode.sex
+					}
 					console.log(this.txt)
 				}
 			});

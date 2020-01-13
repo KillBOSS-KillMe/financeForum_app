@@ -3,7 +3,7 @@
 	<view class="queryTool">
 		<block v-for="(item,index) in collectionList" :key="index">
 			<!-- <text>{{item.title}}</text> -->
-			<view class="headList" v-if="item.type != 'category'">
+			<view class="headList" v-if="item.type != 'category'" @tap="getData" :data-id="item.id" :data-name="item.title" :data-type="item.type"  :data-link="item.extra">
 				<view class="head">
 					<image :src="imgUrl+item.icon" mode=""></image>
 					<text class="title">{{item.title}}</text>
@@ -13,7 +13,7 @@
 				<text class="title">{{item.title}}</text>
 				<view class="collectionList">
 					<block v-for="(childrenItem,childrenIndex) in item.children" :key="childrenIndex">
-						<view class="item">
+						<view class="item" @tap="getData" :data-id="childrenItem.id" :data-type="childrenItem.type" :data-name="childrenItem.title" :data-link="childrenItem.extra">
 							<image class="img" :src="imgUrl+childrenItem.icon" mode=""></image>
 							<text>{{childrenItem.title}}</text>
 						</view>
@@ -36,7 +36,7 @@
 			}
 		},
 		onLoad(e) {
-			console.log(e)
+			console.log(e,'****')
 			this.ItemId = e.id
 			this.getList();
 			this.imgUrl = helper.imgUrl
@@ -63,13 +63,70 @@
 							this.collectionList = res.data.children
 							console.log(this.collectionList,'+++++++++')
 						} else {
-							// uni.showToast({
-							// 	title: res.data.message
-							// });
+							
 						}
 				
 					}
 				})
+			},
+			getData(e){
+				console.log(e)
+				let type = e.currentTarget.dataset.type
+				let extra = e.currentTarget.dataset.link
+				let id = e.currentTarget.dataset.id
+				let name = e.currentTarget.dataset.name
+				console.log(type, extra, id, name)
+				if(type == 'block'){
+					if (extra != '') {
+						uni.navigateTo({
+							url:`/pages/${extra}`
+						})
+					} else {
+						uni.showToast({
+							title: '此页面不存在'
+						});
+					}
+				} else if(type == 'series'){
+					
+				} else if(type == 'post'){
+					uni.navigateTo({
+						url:`/pages/articleDetail?id=${id}`
+					})
+					// 帖子
+				} else if(type == 'child'){
+					// 应用子
+					console.log(id)
+					uni.navigateTo({
+						url:`/pages/applyShow?id=${id}&name=${name}`
+					})
+				} else if(type == 'ex_link'){
+					if(extra == ''){
+						uni.showToast({
+							title: '此页面不存在',
+							icon: 'none'
+						})
+					}else{
+						// #ifdef MP-WEIXIN
+								uni.showToast({
+									title:'该小程序在不支持，请下载App',
+									icon: 'none'
+								})
+						// #endif
+						// #ifdef APP-PLUS || H5
+								uni.navigateTo({
+									url:`/pages/iframe?name=${name}`
+								})
+								app.globalData.link = extra
+						// #endif
+					}
+					// plus.runtime.openURL(extra)
+					// window.location.href = extra
+					// 外联
+				} else if(type == 'category'){
+					uni.navigateTo({
+						url:`/pages/applyShow?id=${id}`
+					})
+				}
 			}
 		}
 	}

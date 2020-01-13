@@ -70,7 +70,7 @@
 					duration: 1000000
 				});
 				uni.request({
-					url: `${helper.requestUrl}/bay-vip`,
+					url: `${helper.requestUrl}/buy-vip`,
 					method: 'POST',
 					header: {
 						authorization: app.globalData.token
@@ -121,7 +121,7 @@
 						});
 						// 两秒后返回上一页
 						setTimeout(e => {
-							uni.reLaunch({
+							uni.redirectTo({
 								url:'/pages/paySuccess'
 							})
 						}, 2000)
@@ -152,81 +152,35 @@
 						pay_type: this.payType
 					},
 					success: res => {
-						console.log(res);
-						console.log(res.data,'****************')
 						// 调起支付
-						// this.appWxpay(res.data)
-						uni.request({
-							url: `${helper.requestUrl}/wechat-second-sign`,
-							method: 'POST',
-							header: {
-								authorization: app.globalData.token
-							},
-							data: {
-								wechat_data: JSON.stringify(res.data)
-							},
-							success: data => {
-								console.log(data);
-								console.log(JSON.stringify(data.data))
-								// 调起支付
-								this.appWxpay(data.data)
-								
-							}
-						});
-						
+						this.appWxpay(res.data)
 					}
 				});
 			},
 			appWxpay(payNode) {
-				// let u = typeof JSON.stringify(payNode)
-				// payNode.packageValue ='Sign=WXPay'
-				// payNode.sign='B3A0B850A70CC3AC8C214EE062531388'
-				// payNode.noncestr = 'OOo2rWtclOyKF1X6'
-				// payNode.prepayid= 'wx11180748726260182c649e131874986700'
-				// payNode.timeStamp='1578737268'
-				// payNode.appid='wx1a5d6f1f8c7065c6'
-				// payNode.partnerid = '1573212951'
-
-				// payNode.sign = payNode.sign.toLowerCase()
-				console.log(JSON.stringify(payNode))
-				// uni.showToast({
-				// 	title: u,
-				// 	icon: 'none',
-				// 	duration: 9000
-				// });
+				let payTypeWxpay = ''
+				if(this.payType == 'wechat'){
+					payTypeWxpay = 'wxpay'
+				}else{
+					payTypeWxpay = 'alipay'
+				}
 				uni.requestPayment({
-				    provider: 'wxpay',
-				    orderInfo: JSON.stringify(payNode), //微信、支付宝订单数据
-						// provider: 'wxpay',
-						// appid: payNode.appid,
-						// timeStamp: String(payNode.timeStamp),
-						// nonceStr: payNode.noncestr,
-						// package: payNode.package,
-						// signType: payNode.signType,
-						// paySign: payNode.paySign,
+				    provider: payTypeWxpay,
+				    orderInfo: payNode, //微信、支付宝订单数据
 				    success: function (res) {
-							uni.showToast({
-								title: "支付成功",
-								icon: 'success',
-								duration: 2000
-							});
 							// 两秒后返回上一页
 							setTimeout(e => {
-								uni.reLaunch({
+								uni.redirectTo({
 									url:'/pages/paySuccess'
 								})
 							}, 2000)
-								console.log(res);
-				        console.log('success:' + JSON.stringify(res));
 				    },
 				    fail: function (err) {
 							uni.showToast({
-								title: JSON.stringify(err),
+								title: '支付失败',
 								icon: 'none',
 								duration: 2000
 							});
-							// console.log(res);
-				   //      console.log('fail:' + JSON.stringify(err));
 				    },
 				});
 			}

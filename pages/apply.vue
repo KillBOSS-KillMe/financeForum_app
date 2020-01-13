@@ -84,7 +84,7 @@
 					// 应用子
 					console.log(id)
 					uni.navigateTo({
-						url:`/pages/applyShow?id=${id}`
+						url:`/pages/applyShow?id=${id}&name=${name}`
 					})
 				} else if(type == 'ex_link'){
 					console.log(extra,'+++++')

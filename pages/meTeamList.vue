@@ -3,22 +3,26 @@
 		<block v-for="(item,index) in list" :key="index">
 			<view class="item">
 				<view class="left">
-					<image v-if="item.user.avatar != '' && item.user != ''" :src="imgUrl + item.user.avatar" mode=""></image>
+					<image v-if="item.avatar != ''" :src="imgUrl + item.avatar" mode=""></image>
 					<image v-else src="../static/user.png" mode=""></image>
 					<view class="info">
-						<text class="title">{{item.user.name}}</text>
+						<text class="title">{{item.name}}</text>
 						<view>
-							<text>{{item.tip}}青铜新手</text>
-							<text>{{item.tip}}青铜新手</text>
+							<text v-if="item.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
+							<text style="background-color: #C6A25D;" v-if="item.type == 'member'">{{item.deploy.vipuserlevel.level_name}}</text>
+							<text v-show="item.invitees_level == 0">团队长</text>
 						</view>
 						<text class="time">加入时间：{{item.created_at}}</text>
 					</view>
 				</view>
-				<view class="tel" @tap="getTel(item.user.mobile)">
+				<view class="tel" @tap="getTel(item.mobile)">
 					<uni-icons type="" class="iconfont icondianhua"></uni-icons>
 				</view>
 			</view>
 		</block>
+		<view class="null" v-if="list.length == 0">
+			暂无数据
+		</view>
 	</view>
 </template>
 
@@ -28,12 +32,10 @@
 	export default {
 		data() {
 			return {
-				list: [
-					{id:'1',name: '1',img: '../static/user.png',tip: '青铜新手',time: '2012.10.10'},
-					{id:'1',name: '1',img: '../static/user.png',tip: '青铜新手',time: '2012.10.10'},
-					{id:'1',name: '1',img: '../static/user.png',tip: '青铜新手',time: '2012.10.10'}
-				],
-				imgUrl: ''
+				list: [],
+				imgUrl: '',
+				page: '1',
+				is_get_leader: ''   //0所有 1团队长
 			}
 		},
 		onLoad(e) {
@@ -41,9 +43,12 @@
 			uni.setNavigationBarTitle({
 			    title: e.name
 			});
-			if(e.name == '团队列表'){
-				this.getTeam()
+			if(e.name == '团队长列表'){
+				this.is_get_leader = '0'
+			}else{
+				this.is_get_leader = '1'
 			}
+			this.getTeam()
 			this.imgUrl = helper.imgUrl;
 		},
 		methods: {
@@ -56,17 +61,22 @@
 			// 获取团队总人数
 			getTeam(){
 				uni.request({
-					url: `${helper.requestUrl}/promote-rebates`,
+					url: `${helper.requestUrl}/user/team-list`,
 					method: 'GET',
 					header: {
 						authorization: app.globalData.token
 					},
+					data: {
+						page: this.page,
+						page_size: '20',
+						is_get_leader: this.is_get_leader
+					},
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res);
-						// console.log(res);
+						console.log(res);
 						if (res.data.status_code == 200) {
-							this.list = res.data.member.invitees;
+							this.list = res.data.data
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message
@@ -74,8 +84,11 @@
 						}
 					}
 				});
+			},
+			onReachBottom(){
+				this.page ++;
+				this.getTeam()
 			}
-		
 		}
 	}
 </script>
@@ -83,7 +96,7 @@
 <style>
 .meTeamList{
 	width: 750rpx;
-	padding: 0 0 30rpx;
+	padding: 16rpx 0 30rpx;
 }
 .item{
 	width: 650rpx;

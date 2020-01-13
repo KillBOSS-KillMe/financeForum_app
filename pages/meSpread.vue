@@ -7,7 +7,8 @@
 		<view class="info">
 			<text>{{collectionList.member.name}}</text>
 			<view class="sign">
-				<text>青铜新手</text>
+				<!-- <text v-if="collectionList.member.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
+				<text style="background-color: #C6A25D;" v-if="collectionList.member.type == 'member'">{{item.deploy.vipuserlevel.level_name}}</text> -->
 				<text v-if="collectionList.member.invitees_level == 0">团队长</text>
 				<text v-else>团员</text>
 			</view>
