@@ -27,7 +27,7 @@
 			<text>我的余额</text>
 			<view>
 				<text>￥{{collectionList.user_blance}}</text>
-				<button type="" hover-class="none">提现</button>
+				<button type="" hover-class="none" @tap="withdraw">提现</button>
 			</view>
 		</view>
 		<view class="bottom">
@@ -104,6 +104,17 @@
 				<text>邀请领现金</text>
 			</view>
 		</uni-popup>
+		<view class="modelMoney" v-if="cancelShow == false" @touchmove.stop.prevent>
+			<view class="modelBg"></view>
+			<view class="contentModel">
+				<text>请输入提现金额</text>
+				<input type="number" value="" placeholder="请输入提现金额" @input="getInput"/>
+				<view>
+					<text @tap="cancelModel(1)">确认提现</text>
+					<text @tap="cancelModel(2)">取消提现</text>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -139,14 +150,18 @@ export default {
 			collectionList: {},
 			imgUrl: '',
 			isShow: true,
+			cancelShow: true,
+			inputValue: ''
 		};
 	},
 	components: {
 		// wTable,
 		uniPopup
 	},
-	onLoad() {
+	onShow() {
 		this.content();
+	},
+	onLoad() {
 		this.imgUrl = helper.imgUrl;
 	},
 	// 微信分享
@@ -166,6 +181,65 @@ export default {
 	// 	this.goShare('WXSenceTimeline');
 	// },
 	methods: {
+		withdraw(){
+			this.cancelShow = false
+		},
+		cancelModel(e){
+			console.log(e,'888')
+			if(e == '2'){
+				this.cancelShow = true
+			}else if(e == "1"){
+				this.getWithdraw()
+			}
+		},
+		getWithdraw(){
+			if(this.inputValue == ''){
+				uni.showToast({
+					title: '请输入提现金额',
+					icon: 'none'
+				})
+			}
+			if(this.inputValue > this.collectionList.user_blance){
+				uni.showToast({
+					title: '输入提现金额不能大于余额',
+					icon: 'none'
+				})
+			}
+			uni.request({
+				url: `${helper.requestUrl}/user/cash-withdrawals-apply`,
+				method: 'POST',
+				header: {
+					authorization: app.globalData.token
+				},
+				data:{
+					money: this.inputValue
+				},
+				success: res => {
+					// uni.hideLoading();
+					res = helper.null2str(res);
+					console.log(res);
+					if (res.data.status_code == 200) {
+						this.cancelShow = true
+						uni.showToast({
+							title: '提现成功',
+							icon: 'success'
+						})
+						this.content();
+						// setTimeout(() => {
+							
+						// }, 1000)
+					} else {
+						// uni.showToast({
+						// 	title: res.data.message
+						// });
+					}
+				}
+			});
+		},
+		getInput(e){
+			console.log(e,'999')
+			this.inputValue = e.detail.value
+		},
 		goMore(){
 			this.isShow = false
 		},
@@ -427,9 +501,66 @@ button {
 button::after {
   border: none;
 }
-	
-	
-	
+.modelMoney{
+	width: 750rpx;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+.modelBg{
+	width: 750rpx;
+	height: 100vh;
+	background: #000000;
+	opacity: .3;
+}	
+
+.contentModel{
+	position: fixed;
+	z-index: 100;
+	top: 25vh;
+	left: 49rpx;
+	width: 590rpx;
+	height: 306rpx;
+	padding: 30rpx;
+	background: #ffffff;
+	border-radius: 8rpx;
+}
+.contentModel>text{
+	font-size: 32rpx;
+	font-weight: 500;
+	color: #333333;
+	text-align: center;
+}
+.contentModel input{
+	width: 566rpx;
+	height: 58rpx;
+	background: #efefef;
+	border: 2rpx solid #efefef;
+	border-radius: 10rpx;
+	margin: 40rpx auto;
+	padding: 3rpx 16rpx;
+}
+.contentModel>view{
+	display: flex;
+	justify-content: space-between;
+}
+.contentModel>view text{
+	width: 275rpx;
+	height: 80rpx;
+	background: #2390dc;
+	border-radius: 10rpx;
+	color: #fff;
+	font-size: 32rpx;
+	font-weight: 600;
+	text-align: center;
+	line-height: 80rpx;
+}
+.contentModel>view text:last-of-type{
+	color: #2390DC;
+	border: 2rpx solid #2390DC;
+	background: #FFFFFF;
+}
 .meSpread {
 	width: 750rpx;
 	padding-bottom: 60rpx;

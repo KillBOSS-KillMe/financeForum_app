@@ -1,0 +1,105 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/login",
+    "pages/registered",
+    "pages/forgetPassword",
+    "pages/collection",
+    "pages/apply",
+    "pages/exchang",
+    "pages/me",
+    "pages/articleDetail",
+    "pages/queryTool",
+    "pages/post",
+    "pages/experience",
+    "pages/productSupermarket",
+    "pages/meUserInfo",
+    "pages/meFavorite",
+    "pages/meFollow",
+    "pages/meFriend",
+    "pages/mePost",
+    "pages/meMyDraft",
+    "pages/meMyMobile",
+    "pages/meMyMobile_1",
+    "pages/meMyMobile_2",
+    "pages/meMyMobile_3",
+    "pages/meMessage",
+    "pages/meCertification",
+    "pages/meVIP",
+    "pages/joinMember",
+    "pages/meVIPDiff",
+    "pages/meAllProduct",
+    "pages/meReserve",
+    "pages/contactCustomer",
+    "pages/meNewbieRead",
+    "pages/meSpread",
+    "pages/meService",
+    "pages/meSetting",
+    "pages/indexAccurate",
+    "pages/meCertificationConfirm",
+    "pages/meEditSet",
+    "pages/meEdit",
+    "pages/meApplyMessage",
+    "pages/meTreaty",
+    "pages/paySuccess",
+    "pages/productDetail",
+    "pages/searchNetloan",
+    "pages/allProduct",
+    "pages/applyShow",
+    "pages/iframe",
+    "pages/meFan",
+    "pages/tel",
+    "pages/payType",
+    "pages/search",
+    "pages/meTeamList"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#2390DC",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#2390DC",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index",
+        "text": "首页",
+        "iconPath": "static/index.png",
+        "selectedIconPath": "static/indexCur.png"
+      },
+      {
+        "pagePath": "pages/collection",
+        "text": "精准匹配",
+        "iconPath": "static/gather.png",
+        "selectedIconPath": "static/gatherCur.png"
+      },
+      {
+        "pagePath": "pages/apply",
+        "text": "系统应用",
+        "iconPath": "static/apply.png",
+        "selectedIconPath": "static/applyCur.png"
+      },
+      {
+        "pagePath": "pages/exchang",
+        "text": "子诺交流区",
+        "iconPath": "static/exchange.png",
+        "selectedIconPath": "static/exchangeCur.png"
+      },
+      {
+        "pagePath": "pages/me",
+        "text": "个人中心",
+        "iconPath": "static/me.png",
+        "selectedIconPath": "static/meCur.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "page-search": "/components/pageSearch",
+    "uni-load-more": "/components/uni-load-more"
+  },
+  "sitemapLocation": "sitemap.json"
+}

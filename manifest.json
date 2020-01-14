@@ -56,17 +56,33 @@
             /* ios打包配置 */
             "ios" : {
                 "privacyDescription" : {
-                    "NSCalendarsUsageDescription" : ""
+                    "NSCalendarsUsageDescription" : "选择时间",
+                    "NSPhotoLibraryUsageDescription" : "发布帖子",
+                    "NSPhotoLibraryAddUsageDescription" : "发布帖子",
+                    "NSCameraUsageDescription" : "发布帖子",
+                    "NSMicrophoneUsageDescription" : "发布帖子语音",
+                    "NSLocationWhenInUseUsageDescription" : "发布帖子",
+                    "NSLocationAlwaysUsageDescription" : "发布帖子",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "发布帖子",
+                    "NSContactsUsageDescription" : "发布帖子",
+                    "NSBluetoothPeripheralUsageDescription" : "发布帖子",
+                    "NSBluetoothAlwaysUsageDescription" : "发布帖子",
+                    "NSSpeechRecognitionUsageDescription" : "发布帖子",
+                    "NSRemindersUsageDescription" : "发布帖子",
+                    "NSMotionUsageDescription" : "发布帖子",
+                    "NSHealthUpdateUsageDescription" : "发布帖子",
+                    "NSHealthShareUsageDescription" : "发布帖子",
+                    "NSAppleMusicUsageDescription" : "发布帖子"
                 }
             },
             /* SDK配置 */
             "sdkConfigs" : {
                 "payment" : {
-                    "alipay" : {},
                     "weixin" : {
                         "appid" : "wx1a5d6f1f8c7065c6",
                         "UniversalLinks" : ""
-                    }
+                    },
+                    "alipay" : {}
                 },
                 "speech" : {
                     "ifly" : {}
@@ -76,7 +92,8 @@
                         "appid" : "wx1a5d6f1f8c7065c6",
                         "UniversalLinks" : ""
                     }
-                }
+                },
+                "oauth" : {}
             },
             "icons" : {
                 "android" : {

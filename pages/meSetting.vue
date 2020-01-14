@@ -15,7 +15,7 @@
 				<text>清除缓存</text>
 			</view>
 			<view>
-				<text>{{num}}</text>
+				<text>{{num}}M</text>
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
@@ -41,13 +41,26 @@
 	export default {
 		data() {
 			return {
-				num: '12.34M'
+				num: ''
 			};
 		},
 		onLoad() {
 			const loginName = uni.getStorageSync('login_name');
 			console.log(loginName)
 			const loginPwd = uni.getStorageSync('login_pwd');
+		},
+		onShow() {
+			uni.getStorageInfo({
+				success: res =>  {
+					console.log(res.keys);
+					console.log(res.currentSize,'999');
+					// this.num = res.currentSize
+					let currentSize = res.currentSize
+					console.log(currentSize)
+					this.num = currentSize
+					console.log(res.limitSize);
+				}
+			});
 		},
 		methods: {
 			modifyPassword() {
@@ -78,7 +91,9 @@
 								})
 							},3000)
 							uni.clearStorageSync();
-							this.num = '0'
+							setTimeout( e =>{
+								this.num = '0'
+							},3000)
 						} else if (res.cancel) {
 							// console.log('用户点击取消');
 						}
