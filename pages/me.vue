@@ -53,7 +53,7 @@
 					<view>
 						<image src="../static/meHz.png" mode=""></image>
 					</view>
-					<text>各省产品汇总</text>
+					<text>各省产品</text>
 			</view>
 			<view class="item" data-name="meReserve" @tap="goPageNavigateTo">
 					<view>
@@ -84,6 +84,31 @@
 						<image src="../static/meSz.png" mode=""></image>
 					</view>
 					<text>个人设置</text>
+			</view>
+			<view class="item" data-name="rejection" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/hz.png" mode=""></image>
+					</view>
+					<text>拒贷汇总</text>
+			</view>
+			
+			<view class="item" data-name="experience" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/xd.png" mode=""></image>
+					</view>
+					<text>实战心得</text>
+			</view>
+			<view class="item" data-name="risk" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/fx.png" mode=""></image>
+					</view>
+					<text>风险把控</text>
+			</view>
+			<view class="item" data-name="loan" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/lc.png" mode=""></image>
+					</view>
+					<text>贷款流程</text>
 			</view>
 		</view>
 	</view>
@@ -123,6 +148,18 @@
 				}else if(url == 'meAllProduct'){
 					uni.navigateTo({
 						url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
+					})
+				}else if(url == 'rejection'){
+					uni.navigateTo({
+						url: `/pages/indexAccurate?id=${8}&name=${'拒贷汇总'}`
+					})
+				}else if(url == 'risk'){
+					uni.navigateTo({
+						url: `/pages/indexAccurate?id=${8}&name=${'风险把控'}`
+					})
+				}else if(url == 'loan'){
+					uni.navigateTo({
+						url: `/pages/indexAccurate?id=${8}&name=${'贷款流程'}`
 					})
 				}else if(url == 'meSpread'){
 					console.log(url)

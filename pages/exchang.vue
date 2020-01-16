@@ -132,6 +132,10 @@ export default {
 				uni.navigateTo({
 					url: `/pages/experience`
 				});
+			}else if(id== '2'){
+				uni.navigateTo({
+					url: `/pages/indexAccurate?id=${8}&name=拒贷汇总`
+				});
 			}
 		},
 		// 加载下一页

@@ -226,6 +226,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -317,8 +342,33 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var app = getApp();var _default = { data: function data() {return { userInfo: {}, imgUrl: '', imageUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
-    goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;if (url == 'meNewbieRead') {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(21) });} else if (url == 'meReserve') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(9, "&name=", '备用金打造') });} else if (url == 'meAllProduct') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(11, "&name=", '各省产品汇总') });} else if (url == 'meSpread') {console.log(url);console.log(this.userInfo.type);if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });setTimeout(function (e) {uni.navigateTo({ url: "/pages/meVIP" });}, 1600);} else {uni.navigateTo({ url: "/pages/meSpread" });} // uni.navigateTo({
+    goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;if (url == 'meNewbieRead') {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(21) });} else if (url == 'meReserve') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(9, "&name=", '备用金打造') });} else if (url == 'meAllProduct') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(11, "&name=", '各省产品汇总') });} else if (url == 'rejection') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(8, "&name=", '拒贷汇总') });} else if (url == 'risk') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(8, "&name=", '风险把控') });} else if (url == 'loan') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(8, "&name=", '贷款流程') });} else if (url == 'meSpread') {console.log(url);console.log(this.userInfo.type);if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });setTimeout(function (e) {uni.navigateTo({ url: "/pages/meVIP" });}, 1600);} else {uni.navigateTo({ url: "/pages/meSpread" });} // uni.navigateTo({
         // 	url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
         // })
       } else {uni.navigateTo({ url: "/pages/".concat(url) });}}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
