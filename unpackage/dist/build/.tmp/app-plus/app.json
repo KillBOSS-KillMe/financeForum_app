@@ -51,7 +51,15 @@
     "pages/tel",
     "pages/payType",
     "pages/search",
-    "pages/meTeamList"
+    "pages/meTeamList",
+    "pages/commissionSet",
+    "pages/getQrCode",
+    "pages/cashOut",
+    "pages/promptlyGetQr",
+    "pages/teamPeopleDetail",
+    "pages/message",
+    "pages/teamList",
+    "pages/shareCode"
   ],
   "window": {
     "navigationBarTextStyle": "white",

@@ -1,0 +1,53 @@
+
+.shareCode{
+	width: 750rpx;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+}
+.bg{
+	width: 750rpx;
+	height: 100vh;
+	overflow: hidden;
+}
+.content{
+	position: absolute;
+	top: 80rpx;
+	left: 50%;
+	margin-left: -276rpx;
+	z-index: 6;
+	width: 552rpx;
+	height: 834rpx;
+	background: #ffffff;
+	border: 1rpx solid #ffffff;
+	border-radius: 14rpx;
+}
+.content .head{
+	font-size: 28rpx;
+	font-weight: 700;
+	color: #333333;
+	text-align: center;
+	border-bottom: 2rpx dashed #DCDCDC;
+	padding: 24rpx 0;
+}
+.content .head::after{
+	content: '';
+	display: block;
+	width: 20rpx;
+	height: 40rpx;
+	background: #2390DC;
+	border-radius: 0 50rpx 50rpx 0;
+	position: absolute;
+	left: -1rpx;
+}
+.content .head::before{
+	content: '';
+	display: block;
+	width: 20rpx;
+	height: 40rpx;
+	background: #2390DC;
+	border-radius: 50rpx 0 50rpx 0;
+	position: absolute;
+	right: -1rpx;
+}
+
