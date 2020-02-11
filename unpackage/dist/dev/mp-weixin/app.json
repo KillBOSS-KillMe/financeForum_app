@@ -54,7 +54,10 @@
     "pages/meTeamList",
     "pages/commissionSet",
     "pages/getQrCode",
-    "pages/cashOut"
+    "pages/cashOut",
+    "pages/promptlyGetQr",
+    "pages/teamPeopleDetail",
+    "pages/message"
   ],
   "subPackages": [],
   "window": {

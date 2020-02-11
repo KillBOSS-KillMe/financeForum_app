@@ -14,7 +14,7 @@
 					<uni-icon type="" class="iconfont iconsuo"></uni-icon>
 					<text class="itemTitle">请输入密码</text>
 				</view>
-				<input type="number" class="itemInput" value="" placeholder="请输入密码" />
+				<input type="password" class="itemInput" value="" placeholder="请输入密码" />
 			</view>
 		</view>
 		<button type="" class="determine">确认</button>

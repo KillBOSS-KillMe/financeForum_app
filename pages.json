@@ -329,6 +329,24 @@
 			"style": {
 				"navigationBarTitleText": "提现"
 			}
+		},
+		{
+			"path": "pages/promptlyGetQr",
+			"style": {
+				"navigationBarTitleText": "获取二维码"
+			}
+		},
+		{
+			"path": "pages/teamPeopleDetail",
+			"style": {
+				"navigationBarTitleText": "用户信息"
+			}
+		},
+		{
+			"path": "pages/message",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
 		}
 	],
 	"globalStyle": {
