@@ -311,8 +311,14 @@
 			"style": {
 				
 			}
-		}
-	],
+		},
+		{
+            "path" : "pages/commissionSet",
+            "style" : {
+				"navigationBarTitleText": "返佣设置"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",

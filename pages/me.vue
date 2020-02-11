@@ -19,6 +19,31 @@
 		</view>
 		<view class="line"></view>
 		<view class="contentList">
+			<view class="item" data-name="rejection" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/hz.png" mode=""></image>
+					</view>
+					<text>拒贷汇总</text>
+			</view>
+			
+			<view class="item" data-name="experience" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/xd.png" mode=""></image>
+					</view>
+					<text>实战心得</text>
+			</view>
+			<view class="item" data-name="risk" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/fx.png" mode=""></image>
+					</view>
+					<text>风险把控</text>
+			</view>
+			<view class="item" data-name="loan" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/lc.png" mode=""></image>
+					</view>
+					<text>贷款流程</text>
+			</view>
 			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meCgx.png" mode=""></image>
@@ -84,31 +109,6 @@
 						<image src="../static/meSz.png" mode=""></image>
 					</view>
 					<text>个人设置</text>
-			</view>
-			<view class="item" data-name="rejection" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/hz.png" mode=""></image>
-					</view>
-					<text>拒贷汇总</text>
-			</view>
-			
-			<view class="item" data-name="experience" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/xd.png" mode=""></image>
-					</view>
-					<text>实战心得</text>
-			</view>
-			<view class="item" data-name="risk" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/fx.png" mode=""></image>
-					</view>
-					<text>风险把控</text>
-			</view>
-			<view class="item" data-name="loan" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/lc.png" mode=""></image>
-					</view>
-					<text>贷款流程</text>
 			</view>
 		</view>
 	</view>

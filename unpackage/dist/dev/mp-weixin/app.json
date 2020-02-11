@@ -51,7 +51,8 @@
     "pages/tel",
     "pages/payType",
     "pages/search",
-    "pages/meTeamList"
+    "pages/meTeamList",
+    "pages/commissionSet"
   ],
   "subPackages": [],
   "window": {
@@ -100,6 +101,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap43.json"
+  }
 }
