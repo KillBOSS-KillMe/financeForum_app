@@ -52,7 +52,9 @@
     "pages/payType",
     "pages/search",
     "pages/meTeamList",
-    "pages/commissionSet"
+    "pages/commissionSet",
+    "pages/getQrCode",
+    "pages/cashOut"
   ],
   "subPackages": [],
   "window": {

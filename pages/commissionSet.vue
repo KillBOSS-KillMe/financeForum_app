@@ -90,7 +90,6 @@
 	}
 	.determine{
 		width: 650rpx;
-	
 		background: #2390dc;
 		border: none;
 		position: fixed;

@@ -36,8 +36,8 @@
         },
         {
           "id": 1,
-          "name": "pages/commissionSet",
-          "pathName": "pages/commissionSet",
+          "name": "pages/cashOut",
+          "pathName": "pages/cashOut",
           "query": ""
         }
       ]

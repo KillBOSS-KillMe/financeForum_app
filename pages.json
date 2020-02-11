@@ -309,16 +309,28 @@
 		{
 			"path": "pages/meTeamList",
 			"style": {
-				
+
 			}
 		},
 		{
-            "path" : "pages/commissionSet",
-            "style" : {
+			"path": "pages/commissionSet",
+			"style": {
 				"navigationBarTitleText": "返佣设置"
 			}
-        }
-    ],
+		},
+		{
+			"path": "pages/getQrCode",
+			"style": {
+				"navigationBarTitleText": "获取二维码"
+			}
+		},
+		{
+			"path": "pages/cashOut",
+			"style": {
+				"navigationBarTitleText": "提现"
+			}
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
