@@ -347,6 +347,18 @@
 			"style": {
 				"navigationBarTitleText": "消息"
 			}
+		},
+		{
+			"path": "pages/teamList",
+			"style": {
+				"navigationBarTitleText": "团队列表"
+			}
+		},
+		{
+			"path": "pages/shareCode",
+			"style": {
+				"navigationBarTitleText": "获取二维码"
+			}
 		}
 	],
 	"globalStyle": {

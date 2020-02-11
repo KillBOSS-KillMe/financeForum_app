@@ -57,7 +57,9 @@
     "pages/cashOut",
     "pages/promptlyGetQr",
     "pages/teamPeopleDetail",
-    "pages/message"
+    "pages/message",
+    "pages/teamList",
+    "pages/shareCode"
   ],
   "subPackages": [],
   "window": {
