@@ -255,7 +255,57 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -385,51 +435,77 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
   // 	//分享到微信朋友圈
   // 	this.goShare('WXSenceTimeline');
   // },
-  methods: { withdraw: function withdraw() {this.cancelShow = false;}, cancelModel: function cancelModel(e) {console.log(e, '888');if (e == '2') {this.cancelShow = true;} else if (e == "1") {this.getWithdraw();}}, getWithdraw: function getWithdraw() {var _this = this;if (this.inputValue == '') {uni.showToast({ title: '请输入提现金额', icon: 'none' });}if (this.inputValue > this.collectionList.user_blance) {uni.showToast({ title: '输入提现金额不能大于余额', icon: 'none' });}uni.request({ url: "".concat(_helper.default.requestUrl, "/user/cash-withdrawals-apply"), method: 'POST', header: { authorization: app.globalData.token }, data: { money: this.inputValue }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.cancelShow = true;uni.showToast({ title: '提现成功', icon: 'success' });_this.content(); // setTimeout(() => {
-            // }, 1000)
-          } else {// uni.showToast({
-              // 	title: res.data.message
-              // });
-            }} });}, getInput: function getInput(e) {console.log(e, '999');this.inputValue = e.detail.value;}, goMore: function goMore() {this.isShow = false;}, // 获取当前页路径及参数,用于分享
+  methods: { withdraw: function withdraw() {uni.navigateTo({ url: "/pages/cashOut" }); // this.cancelShow = false
+    }, // cancelModel(e){
+    // 	console.log(e,'888')
+    // 	if(e == '2'){
+    // 		this.cancelShow = true
+    // 	}else if(e == "1"){
+    // 		this.getWithdraw()
+    // 	}
+    // },
+    // getWithdraw(){
+    // 	if(this.inputValue == ''){
+    // 		uni.showToast({
+    // 			title: '请输入提现金额',
+    // 			icon: 'none'
+    // 		})
+    // 	}
+    // 	if(this.inputValue > this.collectionList.user_blance){
+    // 		uni.showToast({
+    // 			title: '输入提现金额不能大于余额',
+    // 			icon: 'none'
+    // 		})
+    // 	}
+    // 	uni.request({
+    // 		url: `${helper.requestUrl}/user/cash-withdrawals-apply`,
+    // 		method: 'POST',
+    // 		header: {
+    // 			authorization: app.globalData.token
+    // 		},
+    // 		data:{
+    // 			money: this.inputValue
+    // 		},
+    // 		success: res => {
+    // 			// uni.hideLoading();
+    // 			res = helper.null2str(res);
+    // 			console.log(res);
+    // 			if (res.data.status_code == 200) {
+    // 				this.cancelShow = true
+    // 				uni.showToast({
+    // 					title: '提现成功',
+    // 					icon: 'success'
+    // 				})
+    // 				this.content();
+    // 				// setTimeout(() => {
+    // 				// }, 1000)
+    // 			} else {
+    // 				// uni.showToast({
+    // 				// 	title: res.data.message
+    // 				// });
+    // 			}
+    // 		}
+    // 	});
+    // },
+    // getInput(e){
+    // 	console.log(e,'999')
+    // 	this.inputValue = e.detail.value
+    // },
+    goMore: function goMore() {this.isShow = false;}, // 获取当前页路径及参数,用于分享
     getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';for (var key in options) {optionsString += key;optionsString += '=';optionsString += options[key];optionsString += '&';}optionsString = optionsString.substring(0, optionsString.length - 1);url += optionsString;
-      return url;
-    },
-    quickInlet: function quickInlet(e) {
-      if (e == 1) {
-        this.$refs.showshare.open();
-      } else if (e == 2) {
-        this.$refs.center.open();
-      }
+      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';for (var key in options) {optionsString += key;optionsString += '=';optionsString += options[key];optionsString += '&';}optionsString = optionsString.substring(0, optionsString.length - 1);url += optionsString;return url;}, quickInlet: function quickInlet(e) {uni.navigateTo({ url: "/pages/shareCode?type=".concat(e) }); // if (e == 1) {
+      // 	this.$refs.showshare.open();
+      // } else if (e == 2) {
+      // 	this.$refs.center.open();
+      // }
       // console.log(e);
-    },
-    cancel: function cancel(type) {
-      this.$refs['show' + type].close();
-    },
-    content: function content() {var _this2 = this;
-      uni.request({
-        url: "".concat(_helper.default.requestUrl, "/promote-rebates"),
-        method: 'GET',
-        header: {
-          authorization: app.globalData.token },
-
-        success: function success(res) {
-          // uni.hideLoading();
-          res = _helper.default.null2str(res);
-          // console.log(res);
-          if (res.data.status_code == 200) {
-            _this2.collectionList = res.data;
-          } else {
-            // uni.showToast({
+    }, cancel: function cancel(type) {this.$refs['show' + type].close();}, content: function content() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-rebates"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
+          res = _helper.default.null2str(res); // console.log(res);
+          if (res.data.status_code == 200) {_this.collectionList = res.data;} else {// uni.showToast({
             // 	title: res.data.message
             // });
-          }
-        } });
-
-    },
-    // goShare(WXSenceType) {
+          }} });}, // goShare(WXSenceType) {
     // 	// 获取页面路径
     // 	console.log(this.collectionList,'**')
     // 	uni.showToast({
@@ -456,43 +532,19 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
     // 		},
     // 	});
     // },
-    goShare: function goShare(e) {
-      console.log(e);
-      var sceneType = '';
-      if (e == 'WXSceneSession') {
-        sceneType = 'WXSceneSession';
-      } else if (e == 'WXSenceTimeline') {
-        sceneType = 'WXSenceTimeline';
-      }
-      uni.share({
-        provider: "weixin",
-        scene: sceneType,
-        type: 0,
-        href: this.collectionList.share_link,
-        title: "新微金论坛",
-        summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
-        imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
-        success: function success(res) {
-          console.log("success:" + JSON.stringify(res));
-        },
-        fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err));
-        } });
-
-    },
-    // 团队列表
-    goTeam: function goTeam(e) {
-      console.log(e);
-      var name = '';
-      if (e == 1) {
-        name = '团队长列表';
-      } else {
-        name = '团队列表';
-      }
-      uni.navigateTo({
-        url: "/pages/meTeamList?name=".concat(name) });
-
-    } } };exports.default = _default;
+    goShare: function goShare(e) {console.log(e);var sceneType = '';if (e == 'WXSceneSession') {sceneType = 'WXSceneSession';} else if (e == 'WXSenceTimeline') {sceneType = 'WXSenceTimeline';}uni.share({ provider: "weixin", scene: sceneType, type: 0, href: this.collectionList.share_link, title: "新微金论坛", summary: "我正在使用新微金论坛，赶紧跟我一起来体验！", imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png", success: function success(res) {console.log("success:" + JSON.stringify(res));}, fail: function fail(err) {console.log("fail:" + JSON.stringify(err));} });}, // 团队列表
+    goTeam: function goTeam(e) {// console.log(e)
+      // let name = ''
+      // if(e == 1){
+      // 	name = '团队长列表'
+      // }else{
+      // 	name = '团队列表'
+      // }
+      // uni.navigateTo({
+      // 	url: `/pages/meTeamList?name=${name}`
+      // })
+      uni.navigateTo({ url: "/pages/teamList" });}, // 返佣设置
+    cashSet: function cashSet() {uni.navigateTo({ url: "/pages/commissionSet" });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -14,7 +14,7 @@
 					<view class="code">1234</view>
 			</view>
 		</view>
-		<button type="" class="determine">获取推广二维码</button>
+		<button type="" class="determine" @tap="next(2)">获取推广二维码</button>
 	</view>
 </template>
 
@@ -26,7 +26,11 @@
 			}
 		},
 		methods: {
-			
+			next(e){
+				uni.navigateTo({
+					url:'/pages/shareCode?type=${e}'
+				})
+			}
 		}
 	}
 </script>

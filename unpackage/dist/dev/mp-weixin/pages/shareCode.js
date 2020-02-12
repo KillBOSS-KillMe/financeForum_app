@@ -180,6 +180,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 {
   data: function data() {
     return {
@@ -192,16 +196,19 @@ __webpack_require__.r(__webpack_exports__);
       {
         text: '朋友圈',
         type: 'WXSenceTimeline',
-        icon: 'iconpengyouquan' }] };
+        icon: 'iconpengyouquan' }],
 
 
+      codeType: '' };
 
   },
   components: {
     // wTable,
     uniPopup: uniPopup },
 
-  onLoad: function onLoad() {
+  onLoad: function onLoad(option) {
+    console.log(option);
+    this.codeType = option.type;
     // this.imgUrl = helper.imgUrl;
   },
   // 微信分享

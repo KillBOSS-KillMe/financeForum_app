@@ -15,7 +15,7 @@
 					<view class="content">
 						<text>密码：</text><text>{{item.password}}</text>
 					</view>
-					<text class="button">点击立即输入账号密码获取二维码</text>
+					<text class="button" @tap="link">点击立即输入账号密码获取二维码</text>
 				</view>
 			</block>
 		</view>
@@ -28,12 +28,17 @@
 			return {
 				list:[
 					{id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'},
-						{id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'}
+					{id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'}
 				]
 			}
 		},
 		methods: {
-			
+			link(){
+				console.log('***********')
+				uni.navigateTo({
+					url:'/pages/promptlyGetQr'
+				})
+			}
 		}
 	}
 </script>

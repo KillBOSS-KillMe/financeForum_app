@@ -188,4 +188,34 @@
 button::after {
 	border: none;
 }
+/* 遮罩 */
+.modelShow{
+	width: 418rpx;
+	height: 430rpx;
+	position: absolute;
+	top: 130rpx;
+	left: 50%;
+	margin-left: -210rpx;
+	z-index: 5;
+}
+.zhezhao{
+	width: 418rpx;
+	height: 430rpx;
+	background-color: #fff;
+	opacity: .5;
+	position: absolute;
+}
+.modelShow text{
+	width: 418rpx;
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #333333;
+	letter-spacing: 1px;
+	height: 430rpx;
+	line-height: 430rpx;
+	position: absolute;
+	left: 50%;
+	margin-left: -70rpx;
+	z-index: 6;
+}
 

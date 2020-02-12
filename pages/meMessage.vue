@@ -31,9 +31,16 @@
 				console.log(e)
 				let type = e.currentTarget.dataset.type
 				let title = e.currentTarget.dataset.title
-				uni.navigateTo({
-					url: `/pages/meApplyMessage?type=${type}&title=${title}`
-				})
+				
+				if(type == '3'){
+					uni.navigateTo({
+						url: '/pages/message'
+					})
+				}else{
+					uni.navigateTo({
+						url: `/pages/meApplyMessage?type=${type}&title=${title}`
+					})
+				}
 			}
 		}
 	}

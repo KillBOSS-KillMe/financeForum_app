@@ -1,13 +1,13 @@
 <template>
 	<view class="shareCode">
-		<image class="bg" src="../static/card0.png" mode=""></image>
+		<image class="bg" src="../static/QRBg.png" mode=""></image>
 		<view class="content">
 			<text class="head">新微金推广二维码</text>
 			<view class="con">
 				<image src="../static/card0.png" mode=""></image>
 				<text>注:推广二维码仅限一次，分享后需要刷新</text>
-				<!-- <button type="" class="submit">提交开通申请</button> -->
-				<button type="" class="submit"  @tap="quickInlet(2)">分享</button>
+				<button type="" class="submit" v-if="codeType == '1'">提交开通申请</button>
+				<button type="" class="submit" v-if="codeType == '2'" @tap="quickInlet(2)">分享</button>
 			</view>
 			<!-- 底部分享弹窗 立即邀请 -->
 			<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
@@ -38,8 +38,12 @@
 					<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
 				</view>
 			</uni-popup>
+			<!-- 遮罩 -->
+			<view class="modelShow">
+				<view class="zhezhao"></view>
+				<text>请获取二维码</text>
+			</view>
 		</view>
-		
 	</view>
 </template>
 
@@ -60,13 +64,16 @@
 						icon: 'iconpengyouquan'
 					}
 				],
+				codeType: ''
 			}
 		},
 		components: {
 			// wTable,
 			uniPopup
 		},
-		onLoad() {
+		onLoad(option) {
+			console.log(option)
+			this.codeType = option.type
 			// this.imgUrl = helper.imgUrl;
 		},
 		// 微信分享
@@ -278,5 +285,35 @@
 }
 button::after {
 	border: none;
+}
+/* 遮罩 */
+.modelShow{
+	width: 418rpx;
+	height: 430rpx;
+	position: absolute;
+	top: 130rpx;
+	left: 50%;
+	margin-left: -210rpx;
+	z-index: 5;
+}
+.zhezhao{
+	width: 418rpx;
+	height: 430rpx;
+	background-color: #fff;
+	opacity: .5;
+	position: absolute;
+}
+.modelShow text{
+	width: 418rpx;
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #333333;
+	letter-spacing: 1px;
+	height: 430rpx;
+	line-height: 430rpx;
+	position: absolute;
+	left: 50%;
+	margin-left: -70rpx;
+	z-index: 6;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<view class="meMessage">
-		<view v-if="type == '3'">
+	<!-- 	<view v-if="type == '3'">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
 					<view>
@@ -12,7 +12,7 @@
 					</view>
 				</view>
 			</block>
-		</view>
+		</view> -->
 		<view v-if="type == '2'">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="comment">

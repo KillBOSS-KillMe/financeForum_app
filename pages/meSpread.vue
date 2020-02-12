@@ -1,16 +1,47 @@
 <template>
 	<view class="meSpread">
-		<view class="head">
+		<!-- <view class="head">
 			<image :src="imgUrl+collectionList.member.avatar" v-if="collectionList.member.avatar != ''" mode="" ></image>
 			<image v-else src="../static/user.png" mode=""></image>
 		</view>
 		<view class="info">
 			<text>{{collectionList.member.name}}</text>
 			<view class="sign">
-				<!-- <text v-if="collectionList.member.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
+				<text v-if="collectionList.member.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
 				<text style="background-color: #C6A25D;" v-if="collectionList.member.type == 'member'">{{item.deploy.vipuserlevel.level_name}}</text> -->
-				<text v-if="collectionList.member.invitees_level == 0">团队长</text>
+			<!-- 	<text v-if="collectionList.member.invitees_level == 0">团队长</text>
 				<text v-else>团员</text>
+			</view>
+		</view> --> 
+		<view class="bg"></view>
+		<view class="user">
+			<view class="left">
+				<view>
+					<image :src="imgUrl+collectionList.member.avatar" v-if="collectionList.member.avatar != ''" mode="" ></image>
+					<image v-else src="../static/user.png" mode=""></image>
+				</view>
+				<view class="userInfo">
+					<text class="name">{{collectionList.member.name}}</text>
+					<view class="tip">
+						<view class="">
+							<text v-if="collectionList.member.type == 'normal'">{{collectionList.member.deploy.userlevel.level_name}}</text>
+							<text style="background-color: #C6A25D;" v-if="collectionList.member.type == 'member'">{{collectionList.member.deploy.vipuserlevel.level_name}}</text>
+						  <text v-else style="display: none;"></text>
+						</view>
+						<view class="">
+							<text v-if="collectionList.member.invitees_level == 0">团队长</text>
+							<text v-else>团员</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<text class="right" @tap="cashSet">返佣设置</text>
+		</view>
+		<view class="meMoney">
+			<text>我的余额</text>
+			<view>
+				<text>￥{{collectionList.user_blance}}</text>
+				<button type="" hover-class="none" @tap="withdraw">提现</button>
 			</view>
 		</view>
 		<view class="team">
@@ -23,17 +54,12 @@
 				<text>团队总人数</text>
 			</view>
 		</view>
-		<view class="meMoney">
-			<text>我的余额</text>
-			<view>
-				<text>￥{{collectionList.user_blance}}</text>
-				<button type="" hover-class="none" @tap="withdraw">提现</button>
-			</view>
-		</view>
 		<view class="bottom">
 			<view class="invite">
-				<text class="quickInlet" @tap="quickInlet(1)">立即邀请</text>
-				<text class="faceInlet" @tap="quickInlet(2)">面对面邀请</text>
+				<!-- <text class="quickInlet" @tap="quickInlet(1)">立即邀请</text>
+				<text class="faceInlet" @tap="quickInlet(2)">面对面邀请</text> -->
+				<text class="quickInlet" @tap="quickInlet(1)">立即获取推广二维码</text>
+				<text class="faceInlet" @tap="quickInlet(2)">查看我的推广二维码</text>
 			</view>
 			<view class="content">
 				<text>1、分享邀请链接给您的好友，用户下载安装app您将获得3现金奖励；</text>
@@ -69,21 +95,20 @@
 			</view>
 		</view> -->
 		<!-- 底部分享弹窗 立即邀请 -->
-		<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
+<!-- 		<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
 			<view class="uni-share">
 				<text class="uni-share-title">分享到</text>
 				<view class="uni-share-content">
-					<!-- #ifdef MP-WEIXIN -->
-						<button class="share-btn" open-type="share">
+					 #ifdef MP-WEIXIN -->
+				<!-- 		<button class="share-btn" open-type="share">
 							<view class="uni-share-content-box">
 								<view class="uni-share-content-image">
 									<uni-icon type="" class="iconfont iconweixin"></uni-icon>
 								</view>
 								<text class="uni-share-content-text">微信好友</text>
 							</view>
-						</button>
-					<!-- #endif -->
-					<!-- #ifdef APP-PLUS || H5 -->
+					 #endif -->
+					<!-- #ifdef APP-PLUS || H5
 						<block v-for="(item, index) in bottomData" :key="index">
 							<view class="uni-share-content-box" @tap="goShare(item.type)">
 								<view class="uni-share-content-image">
@@ -92,13 +117,13 @@
 								<text class="uni-share-content-text">{{ item.text }}</text>
 							</view>
 						</block>
-					<!-- #endif -->
-				</view>
+					 #endif -->
+			<!-- 	</view>
 				<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
 			</view>
-		</uni-popup>
+		</uni-popup> -->
 		<!-- 面对面邀请 -->
-		<uni-popup ref="center" type="center" class="meShare" @touchmove.stop.prevent>
+		<!-- <uni-popup ref="center" type="center" class="meShare" @touchmove.stop.prevent>
 			<view class="fase">
 				<image :src="collectionList.face" mode=""></image>
 				<text>邀请领现金</text>
@@ -114,7 +139,7 @@
 					<text @tap="cancelModel(2)">取消提现</text>
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -182,64 +207,67 @@ export default {
 	// },
 	methods: {
 		withdraw(){
-			this.cancelShow = false
+			uni.navigateTo({
+				url: `/pages/cashOut`
+			})
+			// this.cancelShow = false
 		},
-		cancelModel(e){
-			console.log(e,'888')
-			if(e == '2'){
-				this.cancelShow = true
-			}else if(e == "1"){
-				this.getWithdraw()
-			}
-		},
-		getWithdraw(){
-			if(this.inputValue == ''){
-				uni.showToast({
-					title: '请输入提现金额',
-					icon: 'none'
-				})
-			}
-			if(this.inputValue > this.collectionList.user_blance){
-				uni.showToast({
-					title: '输入提现金额不能大于余额',
-					icon: 'none'
-				})
-			}
-			uni.request({
-				url: `${helper.requestUrl}/user/cash-withdrawals-apply`,
-				method: 'POST',
-				header: {
-					authorization: app.globalData.token
-				},
-				data:{
-					money: this.inputValue
-				},
-				success: res => {
-					// uni.hideLoading();
-					res = helper.null2str(res);
-					console.log(res);
-					if (res.data.status_code == 200) {
-						this.cancelShow = true
-						uni.showToast({
-							title: '提现成功',
-							icon: 'success'
-						})
-						this.content();
-						// setTimeout(() => {
+		// cancelModel(e){
+		// 	console.log(e,'888')
+		// 	if(e == '2'){
+		// 		this.cancelShow = true
+		// 	}else if(e == "1"){
+		// 		this.getWithdraw()
+		// 	}
+		// },
+		// getWithdraw(){
+		// 	if(this.inputValue == ''){
+		// 		uni.showToast({
+		// 			title: '请输入提现金额',
+		// 			icon: 'none'
+		// 		})
+		// 	}
+		// 	if(this.inputValue > this.collectionList.user_blance){
+		// 		uni.showToast({
+		// 			title: '输入提现金额不能大于余额',
+		// 			icon: 'none'
+		// 		})
+		// 	}
+		// 	uni.request({
+		// 		url: `${helper.requestUrl}/user/cash-withdrawals-apply`,
+		// 		method: 'POST',
+		// 		header: {
+		// 			authorization: app.globalData.token
+		// 		},
+		// 		data:{
+		// 			money: this.inputValue
+		// 		},
+		// 		success: res => {
+		// 			// uni.hideLoading();
+		// 			res = helper.null2str(res);
+		// 			console.log(res);
+		// 			if (res.data.status_code == 200) {
+		// 				this.cancelShow = true
+		// 				uni.showToast({
+		// 					title: '提现成功',
+		// 					icon: 'success'
+		// 				})
+		// 				this.content();
+		// 				// setTimeout(() => {
 							
-						// }, 1000)
-					} else {
-						// uni.showToast({
-						// 	title: res.data.message
-						// });
-					}
-				}
-			});
-		},
-		getInput(e){
-			console.log(e,'999')
-			this.inputValue = e.detail.value
-		},
+		// 				// }, 1000)
+		// 			} else {
+		// 				// uni.showToast({
+		// 				// 	title: res.data.message
+		// 				// });
+		// 			}
+		// 		}
+		// 	});
+		// },
+		// getInput(e){
+		// 	console.log(e,'999')
+		// 	this.inputValue = e.detail.value
+		// },
 		goMore(){
 			this.isShow = false
 		},
@@ -263,11 +291,14 @@ export default {
 			return url
 		},
 		quickInlet(e) {
-			if (e == 1) {
-				this.$refs.showshare.open();
-			} else if (e == 2) {
-				this.$refs.center.open();
-			}
+			uni.navigateTo({
+				url: `/pages/shareCode?type=${e}`
+			})
+			// if (e == 1) {
+			// 	this.$refs.showshare.open();
+			// } else if (e == 2) {
+			// 	this.$refs.center.open();
+			// }
 			// console.log(e);
 		},
 		cancel(type) {
@@ -347,15 +378,24 @@ export default {
 		},
 		// 团队列表
 		goTeam(e){
-			console.log(e)
-			let name = ''
-			if(e == 1){
-				name = '团队长列表'
-			}else{
-				name = '团队列表'
-			}
+			// console.log(e)
+			// let name = ''
+			// if(e == 1){
+			// 	name = '团队长列表'
+			// }else{
+			// 	name = '团队列表'
+			// }
+			// uni.navigateTo({
+			// 	url: `/pages/meTeamList?name=${name}`
+			// })
 			uni.navigateTo({
-				url: `/pages/meTeamList?name=${name}`
+				url: `/pages/teamList`
+			})
+		},
+		// 返佣设置
+		cashSet(){
+			uni.navigateTo({
+				url: `/pages/commissionSet`
 			})
 		}
 	}
@@ -363,7 +403,69 @@ export default {
 </script>
 
 <style>
-
+.bg{
+	width: 750rpx;
+	background-color: #2390DC;
+	height: 90rpx;
+}
+.user{
+	width: 650rpx;
+	margin: -50rpx 30rpx 0 30rpx;
+	background: #ffffff;
+	border-radius: 10rpx;
+	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20rpx;
+}
+.user .left{
+	display: flex;
+	align-items: center;
+}
+.user .left .name{
+	width: 240rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color: #333333;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.user .left image{
+	width: 115rpx;
+	height: 115rpx;
+	border-radius: 115rpx;
+	border: 6rpx solid #FFFFFF;
+	box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
+	margin-right: 20rpx;
+}
+/* .user .left .userInfo{
+	display: flex;
+	align-items: stretch;
+} */
+.user .left .userInfo .tip{
+	display: flex;
+	margin-top: 26rpx;
+}
+.user .left .userInfo .tip text{
+	background: #2390dc;
+	border-radius: 2rpx;
+	font-size: 18rpx;
+	font-weight: 400;
+	color: #ffffff;
+	padding: 4rpx 14rpx;
+	margin-right: 20rpx;
+}
+.user .right{
+	padding: 6rpx 26rpx;
+	border-radius: 30rpx;
+	background: #2390dc;
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6); 
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #ffffff;
+}
 button {
 	background: #fff;
 	position:relative;
@@ -571,8 +673,8 @@ button::after {
 	padding: 10rpx 30rpx;
 	background: #2390dc;
 	height: 140rpx;
-	display: flex;
-	justify-content: center;
+/* 	display: flex;
+	justify-content: center; */
 }
 .head image{
 	width: 115rpx;
@@ -635,13 +737,15 @@ button::after {
 	justify-content: center;
 }
 .invite > text {
-	width: 270rpx;
-	height: 70rpx;
-	text-align: center;
-	font-size: 32rpx;
+	/* width: 270rpx;
+	height: 70rpx; */
+	/* text-align: center; */
+	font-size: 24rpx;
 	font-weight: 700;
-	line-height: 70rpx;
-	border-radius: 10rpx;
+	/* line-height: 70rpx; */
+	border-radius: 30rpx;
+	letter-spacing: 1rpx;
+	padding: 8rpx 22rpx;
 }
 .quickInlet {
 	background: #2390dc;
