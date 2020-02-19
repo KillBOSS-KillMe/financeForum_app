@@ -11,7 +11,9 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
 	"appid": "wx5288d1f667f49f05",
-	"projectname": "%E6%96%B0%E5%BE%AE%E9%87%91%E8%AE%BA%E5%9D%9B",
+	"projectname": "新微金论坛",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

@@ -23,7 +23,7 @@
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageData.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
 				</block>
 			</view>
 			<view class="contentList">
@@ -79,7 +79,8 @@ export default {
 			Inv: 0,
 			pageData: '',
 			imgUrl:'',
-			page: '1'
+			page: '1',
+			boardId:''
 		};
 	},
 	onLoad() {
@@ -91,6 +92,7 @@ export default {
 		selListType(e) {
 			this.Inv = e.currentTarget.dataset.index
 			this.boardId = e.currentTarget.dataset.block_id
+			this.page = '1'
 		},
 		goDetail(e){
 			uni.navigateTo({
@@ -115,6 +117,8 @@ export default {
 					console.log(res);
 					if (res.data.status_code == '200') {
 						this.pageData = res.data.data;
+						this.boardId = res.data.data.board_data[0].id
+						console.log(this.boardId,'88')
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -164,7 +168,7 @@ export default {
 					res = helper.null2str(res);
 					console.log(res);
 					if (res.data.status_code == '200') {
-						this.pageData = this.pageData.concat(res.data.data);
+						this.pageData.board_data[this.Inv].posts = this.pageData.board_data[this.Inv].posts.concat(res.data.data);
 					} else {
 						uni.showToast({
 							title: res.data.message,

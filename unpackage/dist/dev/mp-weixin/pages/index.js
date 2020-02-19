@@ -253,16 +253,17 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1 };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
   }, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
-    this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
+    this.getListMore();this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
       // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
       var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd');console.log(loginName + '---===---' + loginPwd);if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
           uni.reLaunch({ url: './login' });}, 3000);} else {// 执行登录操作
         this.runLogin(loginName, loginPwd);}} else {// 获取用户信息
       this.getUserInfo(); // this.getList()
     }}, methods: { // 进行登录操作
-    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({ title: '登录中...',
+    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({
+        title: '登录中...',
         duration: 1000000 });
 
       uni.request({
@@ -325,6 +326,8 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       this.boardId = e.currentTarget.dataset.block_id;
       console.log(this.boardId, '222');
       this.page = '1';
+      this.listNode = [];
+      this.getListMore();
     },
     // 轮播跳转
     goBanner: function goBanner(e) {
@@ -379,6 +382,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             if (pageNode.board_data.length > 0) {
               // this.boardId = pageNode.board_data[0].block_id
               _this3.boardId = pageNode.board_data[0].id;
+              _this3.getListMore();
             }
           } else {
             uni.showToast({
@@ -390,7 +394,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
     },
     //加载更多
-    onReachBottom: function onReachBottom() {var _this4 = this;
+    onReachBottom: function onReachBottom() {
       console.log(this.boardId);
       this.page++;
       console.log(this.page);
@@ -399,6 +403,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         title: '加载中...',
         duration: 1000000 });
 
+      this.getListMore();
+    },
+    getListMore: function getListMore() {var _this4 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
         method: 'GET',
@@ -415,9 +422,10 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
             console.log('888', res.data.data);
-            console.log(_this4.pageNode.board_data[_this4.Inv].posts);
+            console.log(_this4.pageNode.board_data[_this4.Inv].posts, '*****');
             if (res.data.data.length > 0) {
-              _this4.pageNode.board_data[_this4.Inv].posts = _this4.pageNode.board_data[_this4.Inv].posts.concat(res.data.data);
+              _this4.listNode = _this4.listNode.concat(res.data.data);
+              // this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
 
               // console.log('//',this.pageNode)
               // console.log(res.data.data)

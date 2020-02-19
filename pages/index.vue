@@ -30,7 +30,7 @@
 				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
 			</view>
 			<view class="contentList">
-				<block v-for="(item, index) in pageNode.board_data[Inv].posts" :key="index">
+				<block v-for="(item, index) in listNode" :key="index">
 					<view class="item" @tap="goDetail" :data-id="item.id">
 						<!-- {{item.photoalbums[0].path}} -->
 						<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
@@ -67,7 +67,8 @@
 				pageNode: [],
 				imgUrl: '',
 				page_size: 5,
-				page:1
+				page:1,
+				listNode: []
 			};
 		},
 		onLaunch() {
@@ -83,7 +84,7 @@
 		onLoad() {
 			this.imgUrl = helper.imgUrl
 			// this.getUserInfo()
-			
+			this.getListMore()
 			this.getList()
 			if (app.globalData.token == "") {
 				// 获取缓存中用于登录的用户名和密码
@@ -180,6 +181,8 @@
 				this.boardId = e.currentTarget.dataset.block_id
 				console.log(this.boardId,'222')
 				this.page = '1'
+				this.listNode = []
+				this.getListMore()
 			},
 			// 轮播跳转
 			goBanner(e) {
@@ -234,6 +237,7 @@
 							if (pageNode.board_data.length > 0){
 								// this.boardId = pageNode.board_data[0].block_id
 								this.boardId = pageNode.board_data[0].id
+								this.getListMore()
 							}
 						} else {
 							uni.showToast({
@@ -254,6 +258,9 @@
 				  title: '加载中...',
 					duration: 1000000
 				});
+				this.getListMore()
+			},
+			getListMore(){
 				uni.request({
 					url: `${helper.requestUrl}/index-board-posts`,
 					method: 'GET',
@@ -270,9 +277,10 @@
 						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
 							console.log('888',res.data.data)
-							console.log(this.pageNode.board_data[this.Inv].posts)
+							console.log(this.pageNode.board_data[this.Inv].posts,'*****')
 							if (res.data.data.length > 0) {
-								this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
+								this.listNode = this.listNode.concat(res.data.data)
+								// this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
 								
 								// console.log('//',this.pageNode)
 								// console.log(res.data.data)
@@ -289,11 +297,10 @@
 								title: res.data.message
 							});
 						}
-
+				
 					}
 				})
-			},
-			
+			}
 		}
 	};
 </script>
