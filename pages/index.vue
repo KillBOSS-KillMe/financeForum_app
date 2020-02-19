@@ -24,7 +24,7 @@
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageNode.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
 				</block>
 				<!-- <view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
 				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
@@ -66,7 +66,7 @@
 				boardId: '',
 				pageNode: [],
 				imgUrl: '',
-				page_size: 10,
+				page_size: 5,
 				page:1
 			};
 		},
@@ -178,6 +178,7 @@
 			selListType(e) {
 				this.Inv = e.currentTarget.dataset.index
 				this.boardId = e.currentTarget.dataset.block_id
+				console.log(this.boardId,'222')
 				this.page = '1'
 			},
 			// 轮播跳转
@@ -231,7 +232,8 @@
 							let pageNode = res.data.data
 							this.pageNode = pageNode
 							if (pageNode.board_data.length > 0){
-								this.boardId = pageNode.board_data[0].block_id
+								// this.boardId = pageNode.board_data[0].block_id
+								this.boardId = pageNode.board_data[0].id
 							}
 						} else {
 							uni.showToast({
@@ -246,6 +248,7 @@
 			onReachBottom() {
 				console.log(this.boardId)
 				this.page ++;
+				console.log(this.page)
 				// console.log(this.pageNode.board_data[Inv].block_id)
 				uni.showLoading({
 				  title: '加载中...',
@@ -266,8 +269,15 @@
 						uni.hideLoading();
 						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
+							console.log('888',res.data.data)
+							console.log(this.pageNode.board_data[this.Inv].posts)
 							if (res.data.data.length > 0) {
-								this.pageNode = this.pageNode.concat(res.data.data)
+								this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
+								
+								// console.log('//',this.pageNode)
+								// console.log(res.data.data)
+								// this.pageNode = this.pageNode.concat(res.data.data)
+								// console.log(this.pageNode)
 							} else {
 								uni.showToast({
 									title:"没有更多数据了",

@@ -253,7 +253,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 10, page: 1 };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1 };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
   }, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
     this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
       // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
@@ -323,6 +323,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     selListType: function selListType(e) {
       this.Inv = e.currentTarget.dataset.index;
       this.boardId = e.currentTarget.dataset.block_id;
+      console.log(this.boardId, '222');
       this.page = '1';
     },
     // 轮播跳转
@@ -376,7 +377,8 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             var pageNode = res.data.data;
             _this3.pageNode = pageNode;
             if (pageNode.board_data.length > 0) {
-              _this3.boardId = pageNode.board_data[0].block_id;
+              // this.boardId = pageNode.board_data[0].block_id
+              _this3.boardId = pageNode.board_data[0].id;
             }
           } else {
             uni.showToast({
@@ -391,6 +393,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     onReachBottom: function onReachBottom() {var _this4 = this;
       console.log(this.boardId);
       this.page++;
+      console.log(this.page);
       // console.log(this.pageNode.board_data[Inv].block_id)
       uni.showLoading({
         title: '加载中...',
@@ -411,8 +414,15 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
           uni.hideLoading();
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
+            console.log('888', res.data.data);
+            console.log(_this4.pageNode.board_data[_this4.Inv].posts);
             if (res.data.data.length > 0) {
-              _this4.pageNode = _this4.pageNode.concat(res.data.data);
+              _this4.pageNode.board_data[_this4.Inv].posts = _this4.pageNode.board_data[_this4.Inv].posts.concat(res.data.data);
+
+              // console.log('//',this.pageNode)
+              // console.log(res.data.data)
+              // this.pageNode = this.pageNode.concat(res.data.data)
+              // console.log(this.pageNode)
             } else {
               uni.showToast({
                 title: "没有更多数据了",
