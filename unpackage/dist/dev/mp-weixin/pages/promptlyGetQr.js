@@ -133,38 +133,114 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
-  },
-  methods: {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { code: '', arrCode: '', formNode: { user_setting_account: '', user_setting_passwd: '' }, codeInput: '' };}, onLoad: function onLoad() {this.tapCode();}, random: function random(a, b) {return Math.round(Math.random() * (a - b) + b);}, methods: {
+    tapCode: function tapCode() {
+      this.code = '';
+      var arr = [];
+      var arr1 = [];
+      for (var i = 0; i < 26; i++) {
+        arr.push(String.fromCharCode(65 + i)); //向数组中添加26位大写字母
+      }
+      for (var i = 0; i < 26; i++) {
+        arr.push(String.fromCharCode(97 + i)); //向数组中添加26位小写字母
+      }
+      for (var j = 0; j <= 9; j++) {
+        arr.push(j); // 向数组中添加0-9共10位数字
+      }
+      for (var m = 0; m < 4; m++) {
+        var index = Math.floor(Math.random() * arr.length);
+        console.log(index, '888');
+        arr1.push(arr[index]);
+
+      }
+      var arr2 = arr1.join("");
+      this.arrCode = arr2.toString();
+    },
+    getValue: function getValue(e) {
+      var formNode = this.formNode;
+      var name = e.currentTarget.dataset.name;
+      var value = e.detail.value;
+      formNode[name] = value;
+      this.formNode = formNode;
+    },
+    codeValue: function codeValue(e) {
+      this.codeInput = e.detail.value;
+      console.log(e);
+    },
     next: function next(e) {
-      uni.navigateTo({
-        url: '/pages/shareCode?type=${e}' });
+      if (this.codeInput != this.arrCode) {
+        uni.showToast({
+          title: '验证码不正确',
+          icon: 'none' });
 
+        this.tapCode();
+      }
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/promote-createmycode"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: this.formNode,
+        success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          uni.showToast({
+            title: res.data.tip_msg,
+            icon: "none" });
+
+          setTimeout(function (e) {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 2000);
+        } });
+
+      // uni.navigateTo({
+      // 	url: '/pages/shareCode?type=${e}'
+      // })
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

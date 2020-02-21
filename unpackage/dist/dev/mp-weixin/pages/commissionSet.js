@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -181,7 +181,89 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { list: { team_relate_1: '', team_relate_2: '', post_type: 'post' } };}, onLoad: function onLoad() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-setting"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          _this.list.team_relate_1 = res.data.team_relate_1;
+          _this.list.team_relate_2 = res.data.team_relate_2;
+          console.log(res.data, '**');
+        } });
+
+    },
+    getSetData: function getSetData(e) {
+      console.log(e);
+      var formNode = this.list;
+      var name = e.currentTarget.dataset.name;
+      var value = e.detail.value;
+      formNode[name] = value;
+      this.list = formNode;
+    },
+    determine: function determine() {
+      if (this.list.team_relate_1 == '') {
+        uni.showToast({
+          title: '请输入奖励比例',
+          icon: 'none' });
+
+        return false;
+      }
+      if (!/(^[0-9]\d*$)/.test(this.list.team_relate_1)) {
+        uni.showToast({
+          title: '请输入整数',
+          icon: 'none' });
+
+        return false;
+      }
+      if (this.list.team_relate_1 > '100' && this.list.team_relate_1 > '0') {
+        uni.showToast({
+          title: '请输入奖励比例0-100',
+          icon: 'none' });
+
+        return false;
+      }
+      if (this.list.team_relate_2 == '') {
+        uni.showToast({
+          title: '请输入奖励比例',
+          icon: 'none' });
+
+        return false;
+      }
+      if (!/(^[0-9]\d*$)/.test(this.list.team_relate_2)) {
+        uni.showToast({
+          title: '请输入整数',
+          icon: 'none' });
+
+        return false;
+      }
+      if (this.list.team_relate_2 > '100' && this.list.team_relate_2 > '0') {
+        uni.showToast({
+          title: '请输入奖励比例0-100',
+          icon: 'none' });
+
+        return false;
+      }
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/promote-setting"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: this.list,
+        success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          uni.showToast({
+            title: res.data.tip_msg,
+            icon: "none" });
+
+          setTimeout(function (e) {
+            uni.navigateBack({
+              delta: 1 });
+
+          }, 2000);
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

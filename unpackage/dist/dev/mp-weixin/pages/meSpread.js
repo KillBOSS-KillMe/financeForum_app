@@ -279,7 +279,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -424,10 +423,40 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 500));};var _default = { data: function data() {return { tableData: [{ name: '大锤', age: '17777777777', address: '2019-10-25' }, { name: '张三', age: '21', address: '成都' }, { name: '李四', age: '16', address: '南京' }], columns: [{ title: '用户名', key: 'name' }, { title: '手机号', key: 'age' }, { title: '时间', key: 'address' }], bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '微信朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], collectionList: {}, imgUrl: '', isShow: true, cancelShow: true, inputValue: '' };}, components: { // wTable,
-    uniPopup: uniPopup }, onShow: function onShow() {this.content();}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, // 微信分享
-  onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, // shareFriend() {
+var app = getApp(); // import uniPopup from '@/components/uni-popup.vue';
+var _default = { data: function data() {return { // tableData: [
+      // 	{ name: '大锤', age: '17777777777', address: '2019-10-25' }, 
+      // 	{ name: '张三', age: '21', address: '成都' }, 
+      // 	{ name: '李四', age: '16', address: '南京' },
+      // ],
+      // columns: [
+      // 	{ title: '用户名', key: 'name' }, 
+      // 	{ title: '手机号', key: 'age' }, 
+      // 	{ title: '时间', key: 'address' },
+      // ],
+      // bottomData: [
+      // 	{
+      // 		text: '微信好友',
+      // 		type: 'WXSceneSession',
+      // 		icon: 'iconweixin'
+      // 	},
+      // 	{
+      // 		text: '微信朋友圈',
+      // 		type: 'WXSenceTimeline',
+      // 		icon: 'iconpengyouquan'
+      // 	}
+      // ],
+      collectionList: {}, imgUrl: '', isShow: true, cancelShow: true, inputValue: '' };}, components: {// wTable,
+    // uniPopup
+  }, onShow: function onShow() {this.content();}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, // 微信分享
+  // onShareAppMessage() {
+  // 	let url = this.getPageUrl()
+  // 	return {
+  // 		title: this.articleDetail.title,
+  // 		path: url
+  // 	}
+  // },
+  // shareFriend() {
   // 	//分享到微信朋友
   // 	this.goShare('WXSceneSession');
   // },
@@ -492,17 +521,32 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
     // 	this.inputValue = e.detail.value
     // },
     goMore: function goMore() {this.isShow = false;}, // 获取当前页路径及参数,用于分享
-    getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
-      // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';for (var key in options) {optionsString += key;optionsString += '=';optionsString += options[key];optionsString += '&';}optionsString = optionsString.substring(0, optionsString.length - 1);url += optionsString;return url;}, quickInlet: function quickInlet(e) {uni.navigateTo({ url: "/pages/shareCode?type=".concat(e) }); // if (e == 1) {
+    // getPageUrl() {
+    // 	// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+    // 	// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
+    // 	let pageNode = getCurrentPages()
+    // 	pageNode = pageNode[pageNode.length - 1]
+    // 	let url = pageNode.route
+    // 	let options = pageNode.options
+    // 	let optionsString = '?'
+    // 	for( let key in options ){
+    // 			optionsString += key
+    // 			optionsString += '='
+    // 			optionsString += options[key]
+    // 			optionsString += '&'
+    // 	}
+    // 	optionsString = optionsString.substring(0, optionsString.length - 1)
+    // 	url += optionsString
+    // 	return url
+    // },
+    quickInlet: function quickInlet(e) {uni.navigateTo({ url: "/pages/shareCode?type=".concat(e) }); // if (e == 1) {
       // 	this.$refs.showshare.open();
       // } else if (e == 2) {
       // 	this.$refs.center.open();
       // }
       // console.log(e);
     }, cancel: function cancel(type) {this.$refs['show' + type].close();}, content: function content() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-rebates"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res); // console.log(res);
-          if (res.data.status_code == 200) {_this.collectionList = res.data;} else {// uni.showToast({
+          res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {_this.collectionList = res.data;} else {// uni.showToast({
             // 	title: res.data.message
             // });
           }} });}, // goShare(WXSenceType) {

@@ -7,17 +7,17 @@
 					<uni-icon type="" class="iconfont iconhuabanfuben"></uni-icon>
 					<text class="itemTitle">请输入账号</text>
 				</view>
-				<input type="number" class="itemInput" value="" placeholder="请输入账号" />
+				<input type="number" class="itemInput" @input="getValue" data-name='user_setting_account' value="" placeholder="请输入账号" />
 			</view>
 			<view class="item">
 				<view class="headItem">
 					<uni-icon type="" class="iconfont iconsuo"></uni-icon>
 					<text class="itemTitle">请输入密码</text>
 				</view>
-				<input type="password" class="itemInput" value="" placeholder="请输入密码" />
+				<input type="password" class="itemInput" @input="getValue" data-name='user_setting_passwd' value="" placeholder="请输入密码" />
 			</view>
 		</view>
-		<button type="" class="determine">确认</button>
+		<button type="" class="determine" @tap="determine">确认</button>
 	</view>
 </template>
 
@@ -27,11 +27,76 @@
 	export default {
 		data() {
 			return {
-
+				formNode: {
+					user_setting_account: '',
+					user_setting_passwd: '',
+					post_type: 'post'
+				}
 			}
 		},
+		onLoad() {
+			
+		},
 		methods: {
-
+			getValue(e){
+				let formNode = this.formNode
+				let name = e.currentTarget.dataset.name
+				let value = e.detail.value
+				formNode[name] = value
+				this.formNode = formNode
+			},
+			determine(){
+				if(this.formNode.user_setting_account == ''){
+					uni.showToast({
+						title: '请输入账号',
+						icon:'none'
+					})
+					return false
+				}
+				if(this.formNode.user_setting_passwd == ''){
+					uni.showToast({
+						title: '请输入密码',
+						icon:'none'
+					})
+					return false
+				}
+				if(this.formNode.user_setting_passwd.length <'6'){
+					uni.showToast({
+						title: '请输入6位数密码',
+						icon:'none'
+					})
+					return false
+				}
+				uni.request({
+					url: `${helper.requestUrl}/promote-getmycode`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: this.formNode,
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res,'**');
+						if (res.data.code == 0) {
+							uni.showToast({
+								title: res.data.tip_msg,
+								icon: 'none'
+							});
+							setTimeout( e =>{
+								uni.navigateBack({
+									delta: 2
+								})
+							},2000)
+						} else {
+							uni.showToast({
+								title: res.data.tip_msg,
+								icon: 'none'
+							});
+						}
+					}
+				});
+			}
 		}
 	}
 </script>

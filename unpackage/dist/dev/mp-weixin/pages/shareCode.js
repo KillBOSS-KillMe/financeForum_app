@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 500));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -184,49 +184,115 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-{
-  data: function data() {
-    return {
-      bottomData: [
-      {
-        text: '微信好友',
-        type: 'WXSceneSession',
-        icon: 'iconweixin' },
 
-      {
-        text: '朋友圈',
-        type: 'WXSenceTimeline',
-        icon: 'iconpengyouquan' }],
+var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 500));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '' };}, components: { // wTable,
+    uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '2') {this.getCode();}}, // 微信分享
+  onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}console.log(e);}, // 分享获取数据
+    getCode: function getCode() {uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-showmycode"), method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '---');
+          if (res.data.code == -1) {
+
+            uni.showToast({
+              title: res.data.tip_msg,
+              icon: 'none' });
+
+            setTimeout(function (e) {
+              uni.navigateBack({
+                delta: 1 });
+
+            }, 2000);
+          } else {
 
 
-      codeType: '' };
+          }
+        } });
 
-  },
-  components: {
-    // wTable,
-    uniPopup: uniPopup },
+    },
+    // 提交申请
+    getList: function getList() {
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/promote-getmycode"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
 
-  onLoad: function onLoad(option) {
-    console.log(option);
-    this.codeType = option.type;
-    // this.imgUrl = helper.imgUrl;
-  },
-  // 微信分享
-  onShareAppMessage: function onShareAppMessage() {
-    var url = this.getPageUrl();
-    return {
-      title: this.articleDetail.title,
-      path: url };
+        success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '++++');
+          if (res.data.code == 0) {
+            uni.navigateTo({
+              url: '/pages/getQrCode' });
 
-  },
-  methods: {
-    quickInlet: function quickInlet(e) {
-      if (e == 2) {
-        this.$refs.showshare.open();
-      } else if (e == 1) {
-        this.$refs.center.open();
-      }
-      console.log(e);
+          } else {
+            uni.showToast({
+              title: res.data.tip_msg,
+              icon: 'none' });
+
+            setTimeout(function (e) {
+              uni.navigateBack({
+                delta: 1 });
+
+            }, 2000);
+          }
+        } });
+
     },
     cancel: function cancel(type) {
       this.$refs['show' + type].close();

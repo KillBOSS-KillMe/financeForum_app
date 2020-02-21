@@ -24,13 +24,12 @@
 					<text class="name">{{collectionList.member.name}}</text>
 					<view class="tip">
 						<view class="">
-							<text v-if="collectionList.member.type == 'normal'">{{collectionList.member.deploy.userlevel.level_name}}</text>
-							<text style="background-color: #C6A25D;" v-if="collectionList.member.type == 'member'">{{collectionList.member.deploy.vipuserlevel.level_name}}</text>
-						  <text v-else style="display: none;"></text>
+							<text style="background-color: #C6A25D;" v-if="collectionList.member.vip_id == '1'">{{collectionList.member.integral_des}}</text>
+							<text v-else>{{collectionList.member.integral_des}}</text>
 						</view>
 						<view class="">
-							<text v-if="collectionList.member.invitees_level == 0">团队长</text>
-							<text v-else>团员</text>
+							<text v-if="collectionList.member.team_des != ''">{{collectionList.member.team_des}}</text>
+							<text style="display: none;"></text>
 						</view>
 					</view>
 				</view>
@@ -50,7 +49,7 @@
 				<text>团队个数(个)</text>
 			</view>
 			<view @tap="goTeam(2)">
-				<text>{{collectionList.people_sum}}</text>
+				<text>{{collectionList.people_sum_total}}</text>
 				<text>团队总人数</text>
 			</view>
 		</view>
@@ -146,32 +145,32 @@
 <script>
 const app = getApp();
 import helper from '../common/helper.js';
-import uniPopup from '@/components/uni-popup.vue';
+// import uniPopup from '@/components/uni-popup.vue';
 export default {
 	data() {
 		return {
-			tableData: [
-				{ name: '大锤', age: '17777777777', address: '2019-10-25' }, 
-				{ name: '张三', age: '21', address: '成都' }, 
-				{ name: '李四', age: '16', address: '南京' },
-			],
-			columns: [
-				{ title: '用户名', key: 'name' }, 
-				{ title: '手机号', key: 'age' }, 
-				{ title: '时间', key: 'address' },
-			],
-			bottomData: [
-				{
-					text: '微信好友',
-					type: 'WXSceneSession',
-					icon: 'iconweixin'
-				},
-				{
-					text: '微信朋友圈',
-					type: 'WXSenceTimeline',
-					icon: 'iconpengyouquan'
-				}
-			],
+			// tableData: [
+			// 	{ name: '大锤', age: '17777777777', address: '2019-10-25' }, 
+			// 	{ name: '张三', age: '21', address: '成都' }, 
+			// 	{ name: '李四', age: '16', address: '南京' },
+			// ],
+			// columns: [
+			// 	{ title: '用户名', key: 'name' }, 
+			// 	{ title: '手机号', key: 'age' }, 
+			// 	{ title: '时间', key: 'address' },
+			// ],
+			// bottomData: [
+			// 	{
+			// 		text: '微信好友',
+			// 		type: 'WXSceneSession',
+			// 		icon: 'iconweixin'
+			// 	},
+			// 	{
+			// 		text: '微信朋友圈',
+			// 		type: 'WXSenceTimeline',
+			// 		icon: 'iconpengyouquan'
+			// 	}
+			// ],
 			collectionList: {},
 			imgUrl: '',
 			isShow: true,
@@ -181,7 +180,7 @@ export default {
 	},
 	components: {
 		// wTable,
-		uniPopup
+		// uniPopup
 	},
 	onShow() {
 		this.content();
@@ -190,13 +189,13 @@ export default {
 		this.imgUrl = helper.imgUrl;
 	},
 	// 微信分享
-	onShareAppMessage() {
-		let url = this.getPageUrl()
-		return {
-			title: this.articleDetail.title,
-			path: url
-		}
-	},
+	// onShareAppMessage() {
+	// 	let url = this.getPageUrl()
+	// 	return {
+	// 		title: this.articleDetail.title,
+	// 		path: url
+	// 	}
+	// },
 	// shareFriend() {
 	// 	//分享到微信朋友
 	// 	this.goShare('WXSceneSession');
@@ -272,24 +271,24 @@ export default {
 			this.isShow = false
 		},
 		// 获取当前页路径及参数,用于分享
-		getPageUrl() {
-			// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
-			// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-			let pageNode = getCurrentPages()
-			pageNode = pageNode[pageNode.length - 1]
-			let url = pageNode.route
-			let options = pageNode.options
-			let optionsString = '?'
-			for( let key in options ){
-					optionsString += key
-					optionsString += '='
-					optionsString += options[key]
-					optionsString += '&'
-			}
-			optionsString = optionsString.substring(0, optionsString.length - 1)
-			url += optionsString
-			return url
-		},
+		// getPageUrl() {
+		// 	// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+		// 	// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
+		// 	let pageNode = getCurrentPages()
+		// 	pageNode = pageNode[pageNode.length - 1]
+		// 	let url = pageNode.route
+		// 	let options = pageNode.options
+		// 	let optionsString = '?'
+		// 	for( let key in options ){
+		// 			optionsString += key
+		// 			optionsString += '='
+		// 			optionsString += options[key]
+		// 			optionsString += '&'
+		// 	}
+		// 	optionsString = optionsString.substring(0, optionsString.length - 1)
+		// 	url += optionsString
+		// 	return url
+		// },
 		quickInlet(e) {
 			uni.navigateTo({
 				url: `/pages/shareCode?type=${e}`
@@ -314,7 +313,7 @@ export default {
 				success: res => {
 					// uni.hideLoading();
 					res = helper.null2str(res);
-					// console.log(res);
+					console.log(res,'++++');
 					if (res.data.status_code == 200) {
 						this.collectionList = res.data;
 					} else {

@@ -1,13 +1,13 @@
 
-.promptlyGetQr{
+.promptlyGetQr {
 	width: 690rpx;
 	padding: 30rpx;
 }
-.item{
+.item {
 	width: 630rpx;
 	height: 75rpx;
 	background: #ffffff;
-	box-shadow: 0rpx 1rpx 36rpx 0rpx rgba(212,212,212,0.6); 
+	box-shadow: 0rpx 1rpx 36rpx 0rpx rgba(212, 212, 212, 0.6);
 	border-radius: 36rpx;
 	margin-bottom: 30rpx;
 	display: -webkit-box;
@@ -18,22 +18,22 @@
 	        align-items: center;
 	padding: 0 30rpx;
 }
-.item input{
+.item input {
 	font-size: 24rpx;
 	font-weight: 700;
 	color: #b2b2b2;
 	width: 580rpx;
 }
-.item .iconfont{
+.item .iconfont {
 	font-size: 24rpx;
 	color: #19B7F8;
 	margin-right: 16rpx;
 }
-.item .code{
+.item .code {
 	/* width: 153rpx; */
-	background: rgba(101,179,233,0.8);
-	box-shadow: 0rpx 1rpx 36rpx 0rpx rgba(212,212,212,0.6); 
-	font-size: 28rpx;
+	background: rgba(101, 179, 233, 0.8);
+	box-shadow: 0rpx 1rpx 36rpx 0rpx rgba(212, 212, 212, 0.6);
+	font-size: 26rpx;
 	font-weight: 700;
 	color: #ffffff;
 	border-radius: 60rpx;
@@ -41,7 +41,7 @@
 	padding: 6rpx 24rpx;
 	letter-spacing: 4rpx;
 }
-.determine{
+.determine {
 	position: fixed;
 	border: none;
 	color: #fff;
@@ -55,6 +55,6 @@
 	line-height: 62rpx;
 	text-align: center;
 	border-radius: 60rpx;
-	box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(78,158,216,0.6);
+	box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(78, 158, 216, 0.6);
 }
 

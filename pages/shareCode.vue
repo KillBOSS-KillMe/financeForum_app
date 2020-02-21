@@ -4,9 +4,10 @@
 		<view class="content">
 			<text class="head">新微金推广二维码</text>
 			<view class="con">
-				<image src="../static/card0.png" mode=""></image>
+				<!-- <uni-icon type="" class="iconfont iconerweima2"></uni-icon> -->
+				<image src="../static/1.png" mode=""></image>
 				<text>注:推广二维码仅限一次，分享后需要刷新</text>
-				<button type="" class="submit" v-if="codeType == '1'">提交开通申请</button>
+				<button type="" class="submit" v-if="codeType == '1'" @tap="quickInlet(1)">提交开通申请</button>
 				<button type="" class="submit" v-if="codeType == '2'" @tap="quickInlet(2)">分享</button>
 			</view>
 			<!-- 底部分享弹窗 立即邀请 -->
@@ -48,6 +49,8 @@
 </template>
 
 <script>
+	const app = getApp();
+	import helper from '../common/helper.js';
 	import uniPopup from '@/components/uni-popup.vue';
 	export default {
 		data() {
@@ -74,7 +77,10 @@
 		onLoad(option) {
 			console.log(option)
 			this.codeType = option.type
-			// this.imgUrl = helper.imgUrl;
+			this.imgUrl = helper.imgUrl;
+			if(this.codeType == '2'){
+				this.getCode()
+			}
 		},
 		// 微信分享
 		onShareAppMessage() {
@@ -89,9 +95,69 @@
 				if (e == 2) {
 					this.$refs.showshare.open();
 				} else if (e == 1) {
-					this.$refs.center.open();
+					this.getList()
 				}
 				console.log(e);
+			},
+			// 分享获取数据
+			getCode(){
+				uni.request({
+					url: `${helper.requestUrl}/promote-showmycode`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res,'---');
+						if (res.data.code == -1) {
+							
+							uni.showToast({
+								title: res.data.tip_msg,
+								icon: 'none'
+							});
+							setTimeout( e =>{
+								uni.navigateBack({
+									delta: 1
+								})
+							},2000)
+						} else {
+							
+							
+						}
+					}
+				});
+			},
+			// 提交申请
+			getList(){
+				uni.request({
+					url: `${helper.requestUrl}/promote-getmycode`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res,'++++');
+						if (res.data.code == 0) {
+							uni.navigateTo({
+								url: '/pages/getQrCode'
+							})
+						} else {
+							uni.showToast({
+								title: res.data.tip_msg,
+								icon: 'none'
+							});
+							setTimeout( e =>{
+								uni.navigateBack({
+									delta: 1
+								})
+							},2000)
+						}
+					}
+				});
 			},
 			cancel(type) {
 				this.$refs['show' + type].close();
@@ -189,6 +255,7 @@
 	height: 420rpx;
 	border: 1px solid #ffffff;
 }
+
 .con text{
 	font-size: 20rpx;
 	font-weight: 700;

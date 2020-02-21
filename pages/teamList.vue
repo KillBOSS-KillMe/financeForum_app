@@ -26,6 +26,8 @@
 </template>
 
 <script>
+	const app = getApp();
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
@@ -36,8 +38,35 @@
 				]
 			}
 		},
+		onLoad() {
+			console.log(111)
+			this.getList()
+		},
+		
 		methods: {
-			
+			// 获取数据
+			getList(){
+				console.log(123)
+				uni.request({
+					url: `${helper.requestUrl}/promote-teamlist`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res,'****');
+						if (res.data.status_code == 200) {
+							this.collectionList = res.data;
+						} else {
+							// uni.showToast({
+							// 	title: res.data.message
+							// });
+						}
+					}
+				});
+			}
 		}
 	}
 </script>

@@ -5,39 +5,82 @@
 			<block v-for="(item,index) in list" :key="index">
 				<view class="item">
 					<view class="head">
-						<image :src="item.img" mode=""></image>
-						<text>{{item.type}}</text>
+						<image src="../static/user.png" mode=""></image>
+						<text>系统通知</text>
 					</view>
-					<text class="font">您提交的二维码申请已通过，请输入以下账号及密码获取推广二维码</text>
-					<view class="content">
-						<text>账号：</text><text>{{item.number}}</text>
-					</view>
-					<view class="content">
-						<text>密码：</text><text>{{item.password}}</text>
-					</view>
-					<text class="button" @tap="link">点击立即输入账号密码获取二维码</text>
+					<view class="font">{{item.content}}</view>
+					<!-- <view>
+						<text class="font">您提交的二维码申请已通过，请输入以下账号及密码获取推广二维码</text>
+						<view class="content">
+							<text>账号：</text><text>{{item.number}}</text>
+						</view>
+						<view class="content">
+							<text>密码：</text><text>{{item.password}}</text>
+						</view>
+						<text class="button" @tap="link">点击立即输入账号密码获取二维码</text>
+					</view> -->
 				</view>
 			</block>
+			<view class="null" v-if="list.length == 0">
+				暂无数据
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
 				list:[
-					{id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'},
-					{id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'}
-				]
+					// {id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'},
+					// {id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'}
+				],
+				page: '1'
 			}
 		},
+		onLoad() {
+			this.getList()
+		},
 		methods: {
+			getList(){
+				console.log(1)
+				uni.request({
+					url: `${helper.requestUrl}/user/news-list`,
+					method: 'GET',
+					header: {
+						authorization: app.globalData.token
+					},
+					data:{
+						page: this.page,
+						page_size: '20',
+					},
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res,'++++');
+						if (res.data.status_code == 200) {
+							this.list = res.data.data
+						} else {
+							// uni.showToast({
+							// 	title: res.data.tip_msg,
+							// 	icon: 'none'
+							// });
+						}
+					}
+				});
+			},
 			link(){
 				console.log('***********')
 				uni.navigateTo({
 					url:'/pages/promptlyGetQr'
 				})
+			},
+			onReachBottom(){
+				this.page ++;
+				this.getList()()
 			}
 		}
 	}

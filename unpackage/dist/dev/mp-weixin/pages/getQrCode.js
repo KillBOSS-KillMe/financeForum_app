@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -181,7 +181,58 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return {};}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { formNode: { user_setting_account: '', user_setting_passwd: '', post_type: 'post' } };}, onLoad: function onLoad() {}, methods: { getValue: function getValue(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode;}, determine: function determine() {if (this.formNode.user_setting_account == '') {
+        uni.showToast({
+          title: '请输入账号',
+          icon: 'none' });
+
+        return false;
+      }
+      if (this.formNode.user_setting_passwd == '') {
+        uni.showToast({
+          title: '请输入密码',
+          icon: 'none' });
+
+        return false;
+      }
+      if (this.formNode.user_setting_passwd.length < '6') {
+        uni.showToast({
+          title: '请输入6位数密码',
+          icon: 'none' });
+
+        return false;
+      }
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/promote-getmycode"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: this.formNode,
+        success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '**');
+          if (res.data.code == 0) {
+            uni.showToast({
+              title: res.data.tip_msg,
+              icon: 'none' });
+
+            setTimeout(function (e) {
+              uni.navigateBack({
+                delta: 2 });
+
+            }, 2000);
+          } else {
+            uni.showToast({
+              title: res.data.tip_msg,
+              icon: 'none' });
+
+          }
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
