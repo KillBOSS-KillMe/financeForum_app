@@ -1,17 +1,23 @@
 <template>
 	<view class="teamList">
-		<view class="team">
-			<text class="title">一级代理</text>
-			<view class="list">
-				<block v-for="(item,index) in list" :key="index">
-					<view class="item">
-						<image :src="item.img" mode=""></image>
-						<text>{{item.name}}</text>
-					</view>
-				</block>
+		<block v-for="(item,index) in list" :key="index">
+			<view class="team">
+				<view class="head">
+					<text class="title" v-if="index == 'one'">一级代理</text>
+					<text class="title" v-if="index == 'two'">二级代理</text>
+					<view @tap="getMore(index)"> 查看更多 >></view>
+				</view>
+				<view class="list">
+					<block v-for="(itemList,indexList) in item.data" :key="indexList">
+						<view class="item" @tap="userDetail">
+							<image :src="imgUrl+itemList.avatar" mode=""></image>
+							<text>{{itemList.name}}</text>
+						</view>
+					</block>
+				</view>
 			</view>
-		</view>
-		<view class="team">
+		</block>
+		<!-- <view class="team">
 			<text class="title">二级代理</text>
 			<view class="list">
 				<block v-for="(item,index) in list" :key="index">
@@ -21,7 +27,7 @@
 					</view>
 				</block>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -32,21 +38,21 @@
 		data() {
 			return {
 				list:[
-					{id:'1',name:'例会',img:'../static/card1.png'},
-					{id:'1',name:'例会d',img:'../static/card1.png'},
-					{id:'1',name:'例会的',img:'../static/card1.png'},
-				]
+					// {id:'1',name:'例会',img:'../static/card1.png'},
+					// {id:'1',name:'例会d',img:'../static/card1.png'},
+					// {id:'1',name:'例会的',img:'../static/card1.png'},
+				],
+				imgUrl: ''
 			}
 		},
 		onLoad() {
-			console.log(111)
+			this.imgUrl = helper.imgUrl;
 			this.getList()
 		},
 		
 		methods: {
 			// 获取数据
 			getList(){
-				console.log(123)
 				uni.request({
 					url: `${helper.requestUrl}/promote-teamlist`,
 					method: 'GET',
@@ -58,7 +64,7 @@
 						res = helper.null2str(res);
 						console.log(res,'****');
 						if (res.data.status_code == 200) {
-							this.collectionList = res.data;
+							this.list = res.data.datas;
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message
@@ -66,6 +72,15 @@
 						}
 					}
 				});
+			},
+			getMore(e){
+				console.log(e)
+				uni.navigateTo({
+					url: `/pages/meTeamList?index=${e}`
+				})
+			},
+			userDetail(){
+				console.log(1)
 			}
 		}
 	}
@@ -88,9 +103,20 @@
 	font-size: 28rpx;
 	font-weight: 700;
 	color: #666666;
+
+}
+.head{
+	display: flex;
+	justify-content: space-between;
 	border-bottom: 2rpx solid #eee;
 	padding: 10rpx 0;
 	margin-bottom: 20rpx;
+	
+}
+.head view{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #999;
 }
 .list{
 	display: flex;
@@ -101,9 +127,9 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	width: 100rpx;
+	width: 134rpx;
 }
-.list .item:nth-child(6n){
+.list .item:nth-child(5n){
 	margin-right: 0;
 }
 .list .item image{

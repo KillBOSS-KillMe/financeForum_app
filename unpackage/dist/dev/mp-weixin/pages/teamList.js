@@ -162,6 +162,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -189,18 +195,27 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', name: '例会', img: '../static/card1.png' }, { id: '1', name: '例会d', img: '../static/card1.png' }, { id: '1', name: '例会的', img: '../static/card1.png' }] };}, onLoad: function onLoad() {console.log(111);this.getList();}, methods: { // 获取数据
-    getList: function getList() {var _this = this;console.log(123);uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-teamlist"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res, '****');
-          if (res.data.status_code == 200) {
-            _this.collectionList = res.data;
-          } else {
-            // uni.showToast({
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { list: [// {id:'1',name:'例会',img:'../static/card1.png'},
+        // {id:'1',name:'例会d',img:'../static/card1.png'},
+        // {id:'1',name:'例会的',img:'../static/card1.png'},
+      ], imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 获取数据
+    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-teamlist"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
+          res = _helper.default.null2str(res);console.log(res, '****');if (res.data.status_code == 200) {_this.list = res.data.datas;} else {// uni.showToast({
             // 	title: res.data.message
             // });
-          }
-        } });
+          }} });}, getMore: function getMore(e) {console.log(e);
+      uni.navigateTo({
+        url: "/pages/meTeamList?index=".concat(e) });
 
+    },
+    userDetail: function userDetail() {
+      console.log(1);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

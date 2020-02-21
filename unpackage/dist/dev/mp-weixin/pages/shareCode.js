@@ -235,7 +235,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 500));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '' };}, components: { // wTable,
+var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 506));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '' };}, components: { // wTable,
     uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '2') {this.getCode();}}, // 微信分享
   onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}console.log(e);}, // 分享获取数据
     getCode: function getCode() {uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-showmycode"), method: 'GET',
