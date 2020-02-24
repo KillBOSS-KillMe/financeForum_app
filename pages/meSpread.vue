@@ -351,30 +351,30 @@ export default {
 		// 		},
 		// 	});
 		// },
-		goShare(e) {
-			console.log(e)
-			let sceneType = ''
-			if(e == 'WXSceneSession'){
-				sceneType = 'WXSceneSession'
-			} else if(e == 'WXSenceTimeline'){
-				sceneType = 'WXSenceTimeline'
-			}
-			uni.share({
-			    provider: "weixin",
-			    scene: sceneType,
-			    type: 0,
-			    href: this.collectionList.share_link,
-			    title: "新微金论坛",
-			    summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
-			    imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
-			    success: function (res) {
-			        console.log("success:" + JSON.stringify(res));
-			    },
-			    fail: function (err) {
-			        console.log("fail:" + JSON.stringify(err));
-			    }
-			});
-		},
+		// goShare(e) {
+		// 	console.log(e)
+		// 	let sceneType = ''
+		// 	if(e == 'WXSceneSession'){
+		// 		sceneType = 'WXSceneSession'
+		// 	} else if(e == 'WXSenceTimeline'){
+		// 		sceneType = 'WXSenceTimeline'
+		// 	}
+		// 	uni.share({
+		// 	    provider: "weixin",
+		// 	    scene: sceneType,
+		// 	    type: 0,
+		// 	    href: this.collectionList.share_link,
+		// 	    title: "新微金论坛",
+		// 	    summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
+		// 	    imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+		// 	    success: function (res) {
+		// 	        console.log("success:" + JSON.stringify(res));
+		// 	    },
+		// 	    fail: function (err) {
+		// 	        console.log("fail:" + JSON.stringify(err));
+		// 	    }
+		// 	});
+		// },
 		// 团队列表
 		goTeam(e){
 			// console.log(e)

@@ -84,7 +84,7 @@
 		onLoad() {
 			this.imgUrl = helper.imgUrl
 			// this.getUserInfo()
-			this.getListMore()
+			// this.getListMore()
 			this.getList()
 			if (app.globalData.token == "") {
 				// 获取缓存中用于登录的用户名和密码
@@ -171,7 +171,7 @@
 					})
 				} else{
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${id}&name=${name}`
+						url: `/pages/indexAccurate?id=${bind_board}&name=${name}`
 					})
 				}
 			},
@@ -237,6 +237,7 @@
 							if (pageNode.board_data.length > 0){
 								// this.boardId = pageNode.board_data[0].block_id
 								this.boardId = pageNode.board_data[0].id
+								console.log(this.boardId,'999')
 								this.getListMore()
 							}
 						} else {

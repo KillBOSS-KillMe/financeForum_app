@@ -210,12 +210,32 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
       console.log(e);
     },
     next: function next(e) {
-      if (this.codeInput != this.arrCode) {
+      if (this.formNode.user_setting_account == '') {
+        uni.showToast({
+          title: '请输入用户名',
+          icon: 'none' });
+
+        return false;
+      } else if (this.formNode.user_setting_passwd == '') {
+        uni.showToast({
+          title: '请输入密码',
+          icon: 'none' });
+
+        return false;
+      } else if (this.codeInput == '') {
         uni.showToast({
           title: '验证码不正确',
           icon: 'none' });
 
         this.tapCode();
+        return false;
+      } else if (this.codeInput != this.arrCode) {
+        uni.showToast({
+          title: '验证码不正确',
+          icon: 'none' });
+
+        this.tapCode();
+        return false;
       }
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/promote-createmycode"),
@@ -227,20 +247,30 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
         success: function success(res) {
           // uni.hideLoading();
           res = _helper.default.null2str(res);
-          uni.showToast({
-            title: res.data.tip_msg,
-            icon: "none" });
+          if (res.data.code == '0') {
+            uni.showToast({
+              title: res.data.tip_msg,
+              icon: "none" });
 
-          setTimeout(function (e) {
-            uni.navigateBack({
-              delta: 1 });
+            setTimeout(function (e) {
+              uni.navigateTo({
+                url: "/pages/shareCode?type=".concat(2) });
 
-          }, 2000);
+            }, 2000);
+          } else {
+            uni.showToast({
+              title: res.data.tip_msg,
+              icon: "none" });
+
+            // setTimeout( e =>{
+            // 	uni.navigateBack({
+            // 		delta: 1
+            // 	})
+            // },2000)
+          }
+
         } });
 
-      // uni.navigateTo({
-      // 	url: '/pages/shareCode?type=${e}'
-      // })
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

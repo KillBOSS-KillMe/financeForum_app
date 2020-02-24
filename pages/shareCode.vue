@@ -5,10 +5,14 @@
 			<text class="head">新微金推广二维码</text>
 			<view class="con">
 				<!-- <uni-icon type="" class="iconfont iconerweima2"></uni-icon> -->
-				<image src="../static/1.png" mode=""></image>
+				<image v-if="codeList.msg_log == '显示二维码'" :src="codeList.face" mode=""></image>
+				<image v-else src="../static/1.png" mode=""></image>
 				<text>注:推广二维码仅限一次，分享后需要刷新</text>
 				<button type="" class="submit" v-if="codeType == '1'" @tap="quickInlet(1)">提交开通申请</button>
-				<button type="" class="submit" v-if="codeType == '2'" @tap="quickInlet(2)">分享</button>
+				<view v-if="codeType == '2'">
+					<button type="" v-if="showIs == '0'" class="submit"  @tap="quickInlet(2)">分享</button>
+					<button type="" class="submit" v-if="showIs == '1'" style="background: #DCDCDC;" @tap="des">分享</button>
+				</view>
 			</view>
 			<!-- 底部分享弹窗 立即邀请 -->
 			<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
@@ -24,8 +28,8 @@
 									<text class="uni-share-content-text">微信好友</text>
 								</view>
 							</button>
-						<!-- #endif -->
-						<!-- #ifdef APP-PLUS || H5 -->
+						 <!-- #endif -->
+						 <!-- #ifdef APP-PLUS -->
 							<block v-for="(item, index) in bottomData" :key="index">
 								<view class="uni-share-content-box" @tap="goShare(item.type)">
 									<view class="uni-share-content-image">
@@ -34,15 +38,19 @@
 									<text class="uni-share-content-text">{{ item.text }}</text>
 								</view>
 							</block>
-						<!-- #endif -->
+							<!-- #endif -->
 					</view>
-					<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
+					<text class="uni-share-btn" @tap="cancel('share')">取消分享</text>
 				</view>
 			</uni-popup>
 			<!-- 遮罩 -->
-			<view class="modelShow">
+			<view class="modelShow" v-if="codeList.msg_log != '显示二维码'">
 				<view class="zhezhao"></view>
 				<text>请获取二维码</text>
+			</view>
+			<view class="modelShow" v-if="showIs == '1'">
+				<view class="zhezhao"></view>
+				<text @tap="again">请重新获取二维码</text>
 			</view>
 		</view>
 	</view>
@@ -67,7 +75,9 @@
 						icon: 'iconpengyouquan'
 					}
 				],
-				codeType: ''
+				codeType: '',
+				codeList: {},
+				showIs: '0',
 			}
 		},
 		components: {
@@ -82,6 +92,7 @@
 				this.getCode()
 			}
 		},
+		
 		// 微信分享
 		onShareAppMessage() {
 			let url = this.getPageUrl()
@@ -89,6 +100,17 @@
 				title: this.articleDetail.title,
 				path: url
 			}
+			// setTimeout( e =>{
+			// 	this.showIs = '1'
+			// },3000)
+		},
+		shareFriend() {
+			//分享到微信朋友
+			this.goShare('WXSceneSession');
+		},
+		shareFriendcricle() {
+			//分享到微信朋友圈
+			this.goShare('WXSenceTimeline');
 		},
 		methods: {
 			quickInlet(e) {
@@ -97,7 +119,6 @@
 				} else if (e == 1) {
 					this.getList()
 				}
-				console.log(e);
 			},
 			// 分享获取数据
 			getCode(){
@@ -112,7 +133,6 @@
 						res = helper.null2str(res);
 						console.log(res,'---');
 						if (res.data.code == -1) {
-							
 							uni.showToast({
 								title: res.data.tip_msg,
 								icon: 'none'
@@ -123,8 +143,9 @@
 								})
 							},2000)
 						} else {
-							
-							
+							this.codeList = res.data
+							this.showIs = '0'
+							console.log(this.codeList.face,'*')
 						}
 					}
 				});
@@ -162,6 +183,12 @@
 			cancel(type) {
 				this.$refs['show' + type].close();
 			},
+			des(){
+				uni.showToast({
+					title: '请重新获取二维码',
+					icon: 'none'
+				})
+			},
 			goShare(e) {
 				console.log(e)
 				let sceneType = ''
@@ -174,18 +201,50 @@
 				    provider: "weixin",
 				    scene: sceneType,
 				    type: 0,
-				    href: this.collectionList.share_link,
+				    href: this.codeList.share_link,
 				    title: "新微金论坛",
 				    summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
-				    imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
-				    success: function (res) {
-				        console.log("success:" + JSON.stringify(res));
+						// summary: this.codeList.share_link,
+				    imageUrl: ' ',
+				    success: res => { 
+							// console.log(123)
+							// uni.showToast({
+							// 	title: '123',
+							// 	icon:'none'
+							// })
+							this.showIs = '1'
 				    },
-				    fail: function (err) {
-				        console.log("fail:" + JSON.stringify(err));
+				    fail:err  =>{
+							// uni.showToast({
+							// 	title: '321',
+							// 	icon:'none'
+							// })
+				   //      console.log("fail:" + JSON.stringify(err));
 				    }
 				});
 			},
+			// 获取当前页路径及参数,用于分享
+			getPageUrl() {
+				// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+				// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
+				let pageNode = getCurrentPages()
+				pageNode = pageNode[pageNode.length - 1]
+				let url = pageNode.route
+				let options = pageNode.options
+				let optionsString = '?'
+				for( let key in options ){
+						optionsString += key
+						optionsString += '='
+						optionsString += options[key]
+						optionsString += '&'
+				}
+				optionsString = optionsString.substring(0, optionsString.length - 1)
+				url += optionsString
+				return url
+			},
+			again(){
+				this.getCode()
+			}
 		}
 	}
 </script>
@@ -355,29 +414,29 @@ button::after {
 }
 /* 遮罩 */
 .modelShow{
-	width: 418rpx;
-	height: 430rpx;
+	width: 420rpx;
+	height: 440rpx;
 	position: absolute;
-	top: 130rpx;
+	top: 126rpx;
 	left: 50%;
 	margin-left: -210rpx;
 	z-index: 5;
 }
 .zhezhao{
-	width: 418rpx;
-	height: 430rpx;
+	width: 420rpx;
+	height: 440rpx;
 	background-color: #fff;
-	opacity: .5;
+	opacity: .7;
 	position: absolute;
 }
 .modelShow text{
-	width: 418rpx;
+	width: 420rpx;
 	font-size: 24rpx;
 	font-weight: 700;
 	color: #333333;
 	letter-spacing: 1px;
-	height: 430rpx;
-	line-height: 430rpx;
+	height: 440rpx;
+	line-height: 440rpx;
 	position: absolute;
 	left: 50%;
 	margin-left: -70rpx;

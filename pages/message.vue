@@ -8,7 +8,9 @@
 						<image src="../static/user.png" mode=""></image>
 						<text>系统通知</text>
 					</view>
-					<view class="font">{{item.content}}</view>
+					<rich-text :nodes="item.content" class="font"></rich-text>
+					<text v-if="item.type == ' system_tips'" class="button" @tap="link">点击立即输入账号密码获取二维码</text>
+					<!-- <view class="font">{{item.content}}</view> -->
 					<!-- <view>
 						<text class="font">您提交的二维码申请已通过，请输入以下账号及密码获取推广二维码</text>
 						<view class="content">
@@ -17,7 +19,7 @@
 						<view class="content">
 							<text>密码：</text><text>{{item.password}}</text>
 						</view>
-						<text class="button" @tap="link">点击立即输入账号密码获取二维码</text>
+						
 					</view> -->
 				</view>
 			</block>
@@ -37,8 +39,7 @@
 				list:[
 					// {id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'},
 					// {id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'}
-				],
-				page: '1'
+				]
 			}
 		},
 		onLoad() {
@@ -46,16 +47,11 @@
 		},
 		methods: {
 			getList(){
-				console.log(1)
 				uni.request({
 					url: `${helper.requestUrl}/user/news-list`,
 					method: 'GET',
 					header: {
 						authorization: app.globalData.token
-					},
-					data:{
-						page: this.page,
-						page_size: '20',
 					},
 					success: res => {
 						// uni.hideLoading();
@@ -78,10 +74,10 @@
 					url:'/pages/promptlyGetQr'
 				})
 			},
-			onReachBottom(){
-				this.page ++;
-				this.getList()()
-			}
+			// onReachBottom(){
+			// 	this.page ++;
+			// 	this.getList()()
+			// }
 		}
 	}
 </script>

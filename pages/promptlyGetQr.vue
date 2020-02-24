@@ -75,12 +75,32 @@
 				console.log(e)
 			},
 			next(e) {
-				if(this.codeInput != this.arrCode){
+				if(this.formNode.user_setting_account == ''){
+					uni.showToast({
+						title: '请输入用户名',
+						icon: 'none'
+					})
+					return false
+				}else if(this.formNode.user_setting_passwd == ''){
+					uni.showToast({
+						title: '请输入密码',
+						icon: 'none'
+					})
+					return false
+				}else if(this.codeInput == ''){
 					uni.showToast({
 						title: '验证码不正确',
 						icon: 'none'
 					})
 					this.tapCode()
+					return false
+				}else if(this.codeInput != this.arrCode){
+					uni.showToast({
+						title: '验证码不正确',
+						icon: 'none'
+					})
+					this.tapCode()
+					return false
 				}
 				uni.request({
 					url: `${helper.requestUrl}/promote-createmycode`,
@@ -92,20 +112,30 @@
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res);
-						uni.showToast({
-							title: res.data.tip_msg,
-							icon: "none"
-						});
-						setTimeout( e =>{
-							uni.navigateBack({
-								delta: 1
-							})
-						},2000)
+						if(res.data.code == '0'){
+							uni.showToast({
+								title: res.data.tip_msg,
+								icon: "none"
+							});
+							setTimeout( e =>{
+								uni.navigateTo({
+									url: `/pages/shareCode?type=${2}`
+								})
+							},2000)
+						}else{
+							uni.showToast({
+								title: res.data.tip_msg,
+								icon: "none"
+							});
+							// setTimeout( e =>{
+							// 	uni.navigateBack({
+							// 		delta: 1
+							// 	})
+							// },2000)
+						}
+						
 					}
 				})
-				// uni.navigateTo({
-				// 	url: '/pages/shareCode?type=${e}'
-				// })
 			}
 		}
 	}

@@ -119,6 +119,7 @@ export default {
 						this.pageData = res.data.data;
 						this.boardId = res.data.data.board_data[0].id
 						console.log(this.boardId,'88')
+						
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -138,7 +139,7 @@ export default {
 				});
 			}else if(id== '2'){
 				uni.navigateTo({
-					url: `/pages/indexAccurate?id=${8}&name=拒贷汇总`
+					url: `/pages/indexAccurate?id=${14}&name=拒贷汇总`
 				});
 			}
 		},

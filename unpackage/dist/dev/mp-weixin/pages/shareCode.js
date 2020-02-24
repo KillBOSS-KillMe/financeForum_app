@@ -185,6 +185,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -235,10 +243,23 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 506));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '' };}, components: { // wTable,
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 506));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '', codeList: {}, showIs: '0' };}, components: { // wTable,
     uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '2') {this.getCode();}}, // 微信分享
-  onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}console.log(e);}, // 分享获取数据
-    getCode: function getCode() {uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-showmycode"), method: 'GET',
+  onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url // setTimeout( e =>{
+      // 	this.showIs = '1'
+      // },3000)
+    };}, shareFriend: function shareFriend() {//分享到微信朋友
+    this.goShare('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
+    this.goShare('WXSenceTimeline');}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}}, // 分享获取数据
+    getCode: function getCode() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-showmycode"), method: 'GET',
         header: {
           authorization: app.globalData.token },
 
@@ -247,7 +268,6 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
           res = _helper.default.null2str(res);
           console.log(res, '---');
           if (res.data.code == -1) {
-
             uni.showToast({
               title: res.data.tip_msg,
               icon: 'none' });
@@ -258,8 +278,9 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
 
             }, 2000);
           } else {
-
-
+            _this.codeList = res.data;
+            _this.showIs = '0';
+            console.log(_this.codeList.face, '*');
           }
         } });
 
@@ -297,7 +318,13 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
     cancel: function cancel(type) {
       this.$refs['show' + type].close();
     },
-    goShare: function goShare(e) {
+    des: function des() {
+      uni.showToast({
+        title: '请重新获取二维码',
+        icon: 'none' });
+
+    },
+    goShare: function goShare(e) {var _this2 = this;
       console.log(e);
       var sceneType = '';
       if (e == 'WXSceneSession') {
@@ -309,17 +336,49 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
         provider: "weixin",
         scene: sceneType,
         type: 0,
-        href: this.collectionList.share_link,
+        href: this.codeList.share_link,
         title: "新微金论坛",
         summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
-        imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+        // summary: this.codeList.share_link,
+        imageUrl: ' ',
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res));
+          // console.log(123)
+          // uni.showToast({
+          // 	title: '123',
+          // 	icon:'none'
+          // })
+          _this2.showIs = '1';
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err));
+          // uni.showToast({
+          // 	title: '321',
+          // 	icon:'none'
+          // })
+          //      console.log("fail:" + JSON.stringify(err));
         } });
 
+    },
+    // 获取当前页路径及参数,用于分享
+    getPageUrl: function getPageUrl() {
+      // pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+      // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
+      var pageNode = getCurrentPages();
+      pageNode = pageNode[pageNode.length - 1];
+      var url = pageNode.route;
+      var options = pageNode.options;
+      var optionsString = '?';
+      for (var key in options) {
+        optionsString += key;
+        optionsString += '=';
+        optionsString += options[key];
+        optionsString += '&';
+      }
+      optionsString = optionsString.substring(0, optionsString.length - 1);
+      url += optionsString;
+      return url;
+    },
+    again: function again() {
+      this.getCode();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

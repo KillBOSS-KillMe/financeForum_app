@@ -214,8 +214,14 @@ var app = getApp();var _default = { data: function data() {return { list: [// {i
         url: "/pages/meTeamList?index=".concat(e) });
 
     },
-    userDetail: function userDetail() {
-      console.log(1);
+    userDetail: function userDetail(i) {
+      console.log(i);
+
+      var index = i.currentTarget.dataset.index;
+      var itemNew = JSON.stringify(i.currentTarget.dataset.item);
+      uni.navigateTo({
+        url: "/pages/teamPeopleDetail?itemDetail=".concat(itemNew, "&index=").concat(index) });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

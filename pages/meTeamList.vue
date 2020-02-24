@@ -1,17 +1,17 @@
 <template>
 	<view class="meTeamList">
 		<block v-for="(item,index) in list" :key="index">
-			<view class="item">
+			<view class="item" @tap="getDetail" :data-index='indexType' :data-item="item">
 				<view class="left">
 					<image v-if="item.avatar != ''" :src="imgUrl + item.avatar" mode=""></image>
 					<image v-else src="../static/user.png" mode=""></image>
 					<view class="info">
 						<text class="title">{{item.name}}</text>
-						<view>
+						<!-- <view>
 							<text v-if="item.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
 							<text style="background-color: #C6A25D;" v-if="item.type == 'member'">{{item.deploy.vipuserlevel.level_name}}</text>
 							<text v-show="item.invitees_level == 0">团队长</text>
-						</view>
+						</view> -->
 						<text class="time">加入时间：{{item.created_at}}</text>
 					</view>
 				</view>
@@ -35,21 +35,24 @@
 				list: [],
 				imgUrl: '',
 				page: '1',
-				is_get_leader: ''   //0所有 1团队长
+				indexType: ''
 			}
 		},
 		onLoad(e) {
 			console.log(e)
-			uni.setNavigationBarTitle({
-			    title: e.name
-			});
-			if(e.name == '团队长列表'){
-				this.is_get_leader = '0'
-			}else{
-				this.is_get_leader = '1'
-			}
-			this.getTeam()
 			this.imgUrl = helper.imgUrl;
+			this.indexType = e.index
+			let name = ''
+			if(this.indexType == 'one'){
+				name = '一级代理',
+				this.getTeamOne()
+			} else if(this.indexType == 'two'){
+				name = '二级代理',
+				this.getTeamTwo()
+			}
+			uni.setNavigationBarTitle({
+			    title: name
+			});
 		},
 		methods: {
 			// 打电话
@@ -58,25 +61,55 @@
 				    phoneNumber: e //仅为示例
 				});
 			},
-			// 获取团队总人数
-			getTeam(){
+			getDetail(i){
+				let index = i.currentTarget.dataset.index
+				let itemNew = JSON.stringify(i.currentTarget.dataset.item)
+				uni.navigateTo({
+					url:`/pages/teamPeopleDetail?itemDetail=${itemNew}&index=${index}`
+				})
+			},
+			getTeamOne(){
 				uni.request({
-					url: `${helper.requestUrl}/user/team-list`,
-					method: 'GET',
+					url: `${helper.requestUrl}/user/team-list-one`,
+					method: 'POST',
 					header: {
 						authorization: app.globalData.token
 					},
 					data: {
 						page: this.page,
-						page_size: '20',
-						is_get_leader: this.is_get_leader
+						page_size: '20'
 					},
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res);
-						console.log(res);
-						if (res.data.status_code == 200) {
-							this.list = res.data.data
+						console.log(res,'8');
+						if (res.statusCode == 200) {
+							this.list = res.data.datas.one.data
+						} else {
+							// uni.showToast({
+							// 	title: res.data.message
+							// });
+						}
+					}
+				});
+			},
+			getTeamTwo(){
+				uni.request({
+					url: `${helper.requestUrl}/user/team-list-two`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data: {
+						page: this.page,
+						page_size: '20'
+					},
+					success: res => {
+						// uni.hideLoading();
+						res = helper.null2str(res);
+						console.log(res,'8');
+						if (res.statusCode == 200) {
+							this.list = res.data.datas.two.data
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message
@@ -87,7 +120,8 @@
 			},
 			onReachBottom(){
 				this.page ++;
-				this.getTeam()
+				this.getTeamOne()
+				this.getTeamTwo()
 			}
 		}
 	}
@@ -150,6 +184,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	margin-top: 15rpx;
 }
 .item .tel{
 	width: 62rpx;

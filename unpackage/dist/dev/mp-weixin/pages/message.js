@@ -165,7 +165,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
 //
 //
 //
@@ -197,25 +201,13 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var _default = { data: function data() {return { list: [// {id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'},
         // {id:'1',img:'../static/card0.png',type:'系统通知',number:'1xzj',password:'123456'}
-      ], page: '1' };}, onLoad: function onLoad() {this.getList();}, methods: { getList: function getList() {var _this = this;console.log(1);uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: app.globalData.token }, data: { page: this.page, page_size: '20' }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {_this.list = res.data.data;} else {
-            // uni.showToast({
+      ] };}, onLoad: function onLoad() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
+          res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {_this.list = res.data.data;} else {// uni.showToast({
             // 	title: res.data.tip_msg,
             // 	icon: 'none'
             // });
-          }
-        } });
+          }} });}, link: function link() {console.log('***********');uni.navigateTo({ url: '/pages/promptlyGetQr' });
 
-    },
-    link: function link() {
-      console.log('***********');
-      uni.navigateTo({
-        url: '/pages/promptlyGetQr' });
-
-    },
-    onReachBottom: function onReachBottom() {
-      this.page++;
-      this.getList()();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

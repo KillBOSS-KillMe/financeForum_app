@@ -2,44 +2,57 @@
 	<view class="teamPeopleDetail">
 		<view class="bg"></view>
 		<view class="head">
-			<image class="headImg" :src="info.img" mode=""></image>
+			<image class="headImg" :src="imgUrl+info.avatar" mode=""></image>
 			<view class="headInfo">
 				<text class="name">{{info.name}}</text>
 				<view class="infoTip">
-					<text>{{info.vip}}</text>
-					<text>{{info.dl}}</text>
+					<text v-if="info.deploy == ''" style="display: none;"></text>
+					<text v-else-if="info.vip_id == '1'">{{info.deploy.vipuserlevel.level_name}}</text>
+					<text v-else="info.vip_id == '0'">{{info.deploy.userlevel.level_name}}</text>
+					<text v-if="index == 'one'">一级代理</text>
+					<text v-if="index == 'two'">二级代理</text>
 				</view>
 			</view>
 		</view>
 		<view class="form">
 			<view class="item">
 				<text>电话:</text>
-				<text>{{info.tel}}</text>
+				<text>{{info.mobile}}</text>
 			</view>
 			<view class="item">
-				<text>加入时间：:</text>
-				<text>{{info.tel}}</text>
+				<text>加入时间:</text>
+				<text>{{info.created_at}}</text>
 			</view>
 			<view class="item">
 				<text>微信号:</text>
-				<text>{{info.tel}}</text>
+				<text>{{info.name}}</text>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	const app = getApp()
+	import helper from '../common/helper.js';
 	export default {
 		data() {
 			return {
 				info:{
-					img:'../static/card0.png',
-					name:'hhh',
-					vip:'vip1',
-					dl: '一级代理',
-					tel: '13000000000'
-				}
+					// img:'../static/card0.png',
+					// name:'hhh',
+					// vip:'vip1',
+					// dl: '一级代理',
+					// tel: '13000000000'
+				},
+				imgUrl: '',
+				index: ''
 			}
+		},
+		onLoad(option) {
+			this.imgUrl = helper.imgUrl;
+			console.log(option)
+			this.index = option.index
+			this.info = JSON.parse(decodeURIComponent(option.itemDetail));
 		},
 		methods: {
 			
@@ -98,7 +111,7 @@
 	/* width: 460rpx; */
 	display: flex;
 	justify-content: space-between;
-	height: 40rpx;
+	/* height: 40rpx; */
 	margin:6rpx 0 30rpx;
 }
 .infoTip text{

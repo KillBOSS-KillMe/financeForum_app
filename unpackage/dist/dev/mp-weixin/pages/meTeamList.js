@@ -191,27 +191,60 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: '1', is_get_leader: '' //0所有 1团队长
-    };}, onLoad: function onLoad(e) {console.log(e);uni.setNavigationBarTitle({ title: e.name });if (e.name == '团队长列表') {this.is_get_leader = '0';} else {this.is_get_leader = '1';}this.getTeam();this.imgUrl = _helper.default.imgUrl;}, methods: { // 打电话
-    getTel: function getTel(e) {uni.makePhoneCall({ phoneNumber: e //仅为示例
-      });}, // 获取团队总人数
-    getTeam: function getTeam() {var _this = this;uni.request({
-        url: "".concat(_helper.default.requestUrl, "/user/team-list"),
-        method: 'GET',
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: '1', indexType: '' };}, onLoad: function onLoad(e) {console.log(e);this.imgUrl = _helper.default.imgUrl;this.indexType = e.index;var name = '';if (this.indexType == 'one') {name = '一级代理', this.getTeamOne();} else if (this.indexType == 'two') {name = '二级代理', this.getTeamTwo();}uni.setNavigationBarTitle({ title: name });}, methods: { // 打电话
+    getTel: function getTel(e) {uni.makePhoneCall({
+        phoneNumber: e //仅为示例
+      });
+    },
+    getDetail: function getDetail(i) {
+      var index = i.currentTarget.dataset.index;
+      var itemNew = JSON.stringify(i.currentTarget.dataset.item);
+      uni.navigateTo({
+        url: "/pages/teamPeopleDetail?itemDetail=".concat(itemNew, "&index=").concat(index) });
+
+    },
+    getTeamOne: function getTeamOne() {var _this = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/team-list-one"),
+        method: 'POST',
         header: {
           authorization: app.globalData.token },
 
         data: {
           page: this.page,
-          page_size: '20',
-          is_get_leader: this.is_get_leader },
+          page_size: '20' },
 
         success: function success(res) {
           // uni.hideLoading();
           res = _helper.default.null2str(res);
-          console.log(res);
-          if (res.data.status_code == 200) {
-            _this.list = res.data.data;
+          console.log(res, '8');
+          if (res.statusCode == 200) {
+            _this.list = res.data.datas.one.data;
+          } else {
+            // uni.showToast({
+            // 	title: res.data.message
+            // });
+          }
+        } });
+
+    },
+    getTeamTwo: function getTeamTwo() {var _this2 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/team-list-two"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          page: this.page,
+          page_size: '20' },
+
+        success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res, '8');
+          if (res.statusCode == 200) {
+            _this2.list = res.data.datas.two.data;
           } else {
             // uni.showToast({
             // 	title: res.data.message
@@ -222,7 +255,8 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
     },
     onReachBottom: function onReachBottom() {
       this.page++;
-      this.getTeam();
+      this.getTeamOne();
+      this.getTeamTwo();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

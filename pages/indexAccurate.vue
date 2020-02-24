@@ -43,6 +43,7 @@
 			this.imgUrl = helper.imgUrl
 			console.log(this.imgUrl)
 			this.boardId = e.id
+			console.log(e.id,'**')
 			this.getList()
 			uni.setNavigationBarTitle({
 				title: e.name

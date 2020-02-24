@@ -151,15 +151,15 @@
 					})
 				}else if(url == 'rejection'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${8}&name=${'拒贷汇总'}`
+						url: `/pages/indexAccurate?id=${14}&name=${'拒贷汇总'}`
 					})
 				}else if(url == 'risk'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${8}&name=${'风险把控'}`
+						url: `/pages/indexAccurate?id=${15}&name=${'风险把控'}`
 					})
 				}else if(url == 'loan'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${8}&name=${'贷款流程'}`
+						url: `/pages/indexAccurate?id=${16}&name=${'贷款流程'}`
 					})
 				}else if(url == 'meSpread'){
 					console.log(url)

@@ -255,15 +255,15 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
   }, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
-    this.getListMore();this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
+    // this.getListMore()
+    this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
       // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
       var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd');console.log(loginName + '---===---' + loginPwd);if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
           uni.reLaunch({ url: './login' });}, 3000);} else {// 执行登录操作
         this.runLogin(loginName, loginPwd);}} else {// 获取用户信息
       this.getUserInfo(); // this.getList()
     }}, methods: { // 进行登录操作
-    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({
-        title: '登录中...',
+    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({ title: '登录中...',
         duration: 1000000 });
 
       uni.request({
@@ -316,7 +316,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
       } else {
         uni.navigateTo({
-          url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });
+          url: "/pages/indexAccurate?id=".concat(bind_board, "&name=").concat(name) });
 
       }
     },
@@ -382,6 +382,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             if (pageNode.board_data.length > 0) {
               // this.boardId = pageNode.board_data[0].block_id
               _this3.boardId = pageNode.board_data[0].id;
+              console.log(_this3.boardId, '999');
               _this3.getListMore();
             }
           } else {

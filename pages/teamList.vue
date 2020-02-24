@@ -9,7 +9,7 @@
 				</view>
 				<view class="list">
 					<block v-for="(itemList,indexList) in item.data" :key="indexList">
-						<view class="item" @tap="userDetail">
+						<view class="item" @tap="userDetail" :data-item='itemList' :data-index='index'>
 							<image :src="imgUrl+itemList.avatar" mode=""></image>
 							<text>{{itemList.name}}</text>
 						</view>
@@ -79,8 +79,14 @@
 					url: `/pages/meTeamList?index=${e}`
 				})
 			},
-			userDetail(){
-				console.log(1)
+			userDetail(i){
+				console.log(i)
+				
+				let index = i.currentTarget.dataset.index
+				let itemNew = JSON.stringify(i.currentTarget.dataset.item)
+				uni.navigateTo({
+					url:`/pages/teamPeopleDetail?itemDetail=${itemNew}&index=${index}`
+				})
 			}
 		}
 	}
