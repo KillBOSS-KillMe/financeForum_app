@@ -7,7 +7,7 @@
 					<uni-icon type="" class="iconfont iconhuabanfuben"></uni-icon>
 					<text class="itemTitle">请输入账号</text>
 				</view>
-				<input type="number" class="itemInput" @input="getValue" data-name='user_setting_account' value="" placeholder="请输入账号" />
+				<input type="number" class="itemInput" @input="getValue" data-name='user_setting_account' :value="formNode.user_setting_account" placeholder="请输入账号" />
 			</view>
 			<view class="item">
 				<view class="headItem">
@@ -34,8 +34,9 @@
 				}
 			}
 		},
-		onLoad() {
-			
+		onLoad(e) {
+			console.log(e,'n')
+			this.formNode.user_setting_account = e.item
 		},
 		methods: {
 			getValue(e){

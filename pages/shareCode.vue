@@ -163,9 +163,17 @@
 						res = helper.null2str(res);
 						console.log(res,'++++');
 						if (res.data.code == 0) {
-							uni.navigateTo({
-								url: '/pages/getQrCode'
-							})
+							if(res.data.tip_msg == '恭喜您,审核通过!'){
+								let itemNew = res.data.memberinfos.user_setting_account
+								console.log(itemNew,'m')
+								uni.navigateTo({
+									url: `/pages/getQrCode?item=${itemNew}`
+								})
+							}else{
+								uni.navigateTo({
+									url: '/pages/getQrCode'
+								})
+							}
 						} else {
 							uni.showToast({
 								title: res.data.tip_msg,

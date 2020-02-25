@@ -265,12 +265,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { navList: [{ id: '1', img: 'iconxiepinglun', title: '实战心得' }, { id: '2', img: 'iconliebiao', title: '拒贷汇总' }, { id: '3', img: 'iconbulletin', title: '微金公告' }, { id: '4', img: 'iconyonghu', title: '从业感悟' }, { id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }], Inv: 0, pageData: '', imgUrl: '', page: '1', boardId: '' };}, onLoad: function onLoad() {// 加载微金交流首页数据
+var app = getApp();var _default = { data: function data() {return { navList: [// { id: '1', img: 'iconxiepinglun', title: '实战心得' },
+      // { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
+      { id: '3', img: 'iconbulletin', title: '微金公告' }, { id: '4', img: 'iconyonghu', title: '从业感悟' }, { id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }], Inv: 0, pageData: '', imgUrl: '', page: '1', boardId: '' };}, onLoad: function onLoad() {// 加载微金交流首页数据
     this.getIndexData();this.imgUrl = _helper.default.imgUrl;}, methods: { selListType: function selListType(e) {this.Inv = e.currentTarget.dataset.index;this.boardId = e.currentTarget.dataset.block_id;this.page = '1';}, goDetail: function goDetail(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e) });}, // 数据
     getIndexData: function getIndexData() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/forum/index"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.pageData = res.data.data;_this.boardId = res.data.data.board_data[0].id;console.log(_this.boardId, '88');} else {uni.showToast({ title: res.data.message, icon: 'none' });}} });}, // 导航子页面跳转
-    getNav: function getNav(e) {console.log(e);var id = e;if (id == '1') {
-        uni.navigateTo({
-          url: "/pages/experience" });
+    getNav: function getNav(e) {console.log(e);var id = e;if (id == '1') {uni.navigateTo({ url: "/pages/experience" });
 
       } else if (id == '2') {
         uni.navigateTo({

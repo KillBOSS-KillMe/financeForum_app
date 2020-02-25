@@ -143,23 +143,23 @@
 					
 				}else if(url == 'meReserve'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${9}&name=${'备用金打造'}`
+						url: `/pages/indexA?id=${9}&name=${'备用金打造'}`
 					})
 				}else if(url == 'meAllProduct'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
+						url: `/pages/indexA?id=${11}&name=${'各省产品汇总'}`
 					})
 				}else if(url == 'rejection'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${14}&name=${'拒贷汇总'}`
+						url: `/pages/indexA?id=${14}&name=${'拒贷汇总'}`
 					})
 				}else if(url == 'risk'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${15}&name=${'风险把控'}`
+						url: `/pages/indexA?id=${15}&name=${'风险把控'}`
 					})
 				}else if(url == 'loan'){
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${16}&name=${'贷款流程'}`
+						url: `/pages/indexA?id=${16}&name=${'贷款流程'}`
 					})
 				}else if(url == 'meSpread'){
 					console.log(url)

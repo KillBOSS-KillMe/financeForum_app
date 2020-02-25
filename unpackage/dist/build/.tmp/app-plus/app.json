@@ -36,6 +36,7 @@
     "pages/meService",
     "pages/meSetting",
     "pages/indexAccurate",
+    "pages/indexA",
     "pages/meCertificationConfirm",
     "pages/meEditSet",
     "pages/meEdit",

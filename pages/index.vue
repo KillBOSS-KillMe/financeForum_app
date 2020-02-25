@@ -171,7 +171,7 @@
 					})
 				} else{
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${bind_board}&name=${name}`
+						url: `/pages/indexA?id=${bind_board}&name=${name}`
 					})
 				}
 			},

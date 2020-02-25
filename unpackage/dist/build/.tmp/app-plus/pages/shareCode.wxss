@@ -190,29 +190,29 @@ button::after {
 }
 /* 遮罩 */
 .modelShow{
-	width: 418rpx;
-	height: 430rpx;
+	width: 420rpx;
+	height: 440rpx;
 	position: absolute;
-	top: 130rpx;
+	top: 126rpx;
 	left: 50%;
 	margin-left: -210rpx;
 	z-index: 5;
 }
 .zhezhao{
-	width: 418rpx;
-	height: 430rpx;
+	width: 420rpx;
+	height: 440rpx;
 	background-color: #fff;
-	opacity: .5;
+	opacity: .7;
 	position: absolute;
 }
 .modelShow text{
-	width: 418rpx;
+	width: 420rpx;
 	font-size: 24rpx;
 	font-weight: 700;
 	color: #333333;
 	letter-spacing: 1px;
-	height: 430rpx;
-	line-height: 430rpx;
+	height: 440rpx;
+	line-height: 440rpx;
 	position: absolute;
 	left: 50%;
 	margin-left: -70rpx;

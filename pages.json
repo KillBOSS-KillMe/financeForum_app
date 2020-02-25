@@ -219,6 +219,12 @@
 			}
 		},
 		{
+			"path": "pages/indexA",
+			"style": {
+				// "navigationBarTitleText": "精准匹配"
+			}
+		},
+		{
 			"path": "pages/meCertificationConfirm",
 			"style": {
 				"navigationBarTitleText": "实名认证"

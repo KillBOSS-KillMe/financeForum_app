@@ -63,7 +63,7 @@
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
-	height: 40rpx;
+	/* height: 40rpx; */
 	margin:6rpx 0 30rpx;
 }
 .infoTip text{

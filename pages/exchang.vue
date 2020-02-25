@@ -70,8 +70,8 @@ export default {
 	data() {
 		return {
 			navList: [
-				{ id: '1', img: 'iconxiepinglun', title: '实战心得' },
-				{ id: '2', img: 'iconliebiao', title: '拒贷汇总' },
+				// { id: '1', img: 'iconxiepinglun', title: '实战心得' },
+				// { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
 				{ id: '3', img: 'iconbulletin', title: '微金公告' },
 				{ id: '4', img: 'iconyonghu', title: '从业感悟' },
 				{ id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }

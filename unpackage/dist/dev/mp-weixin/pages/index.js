@@ -316,7 +316,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
       } else {
         uni.navigateTo({
-          url: "/pages/indexAccurate?id=".concat(bind_board, "&name=").concat(name) });
+          url: "/pages/indexA?id=".concat(bind_board, "&name=").concat(name) });
 
       }
     },

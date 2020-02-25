@@ -41,13 +41,7 @@
 		onLoad(e) {
 			// console.log(this.boardId)
 			this.imgUrl = helper.imgUrl
-			console.log(this.imgUrl)
-			this.boardId = e.id
-			console.log(e.id,'**')
 			this.getList()
-			uni.setNavigationBarTitle({
-				title: e.name
-			})
 		},
 		onLaunch(){
 			
@@ -61,7 +55,7 @@
 						authorization: app.globalData.token
 					},
 					data:{
-						board_id: this.boardId,
+						board_id: '5',
 						page_size: this.page_size,
 						page: this.page
 					},
