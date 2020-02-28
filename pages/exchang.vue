@@ -139,7 +139,15 @@ export default {
 				});
 			}else if(id== '2'){
 				uni.navigateTo({
-					url: `/pages/indexAccurate?id=${14}&name=拒贷汇总`
+					url: `/pages/indexA?id=${14}&name=拒贷汇总`
+				});
+			}else if(id== '3'){
+				uni.navigateTo({
+					url: `/pages/indexA?id=${23}&name=微金公告`
+				});
+			}else if(id== '4'){
+				uni.navigateTo({
+					url: `/pages/indexA?id=${24}&name=从业感悟`
 				});
 			}
 		},
@@ -207,7 +215,7 @@ export default {
 	width: 690rpx;
 	padding: 30rpx;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-wrap: wrap;
 }
 .exchang .nav .item{

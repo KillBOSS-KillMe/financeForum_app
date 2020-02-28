@@ -274,7 +274,15 @@ var app = getApp();var _default = { data: function data() {return { navList: [//
 
       } else if (id == '2') {
         uni.navigateTo({
-          url: "/pages/indexAccurate?id=".concat(14, "&name=\u62D2\u8D37\u6C47\u603B") });
+          url: "/pages/indexA?id=".concat(14, "&name=\u62D2\u8D37\u6C47\u603B") });
+
+      } else if (id == '3') {
+        uni.navigateTo({
+          url: "/pages/indexA?id=".concat(23, "&name=\u5FAE\u91D1\u516C\u544A") });
+
+      } else if (id == '4') {
+        uni.navigateTo({
+          url: "/pages/indexA?id=".concat(24, "&name=\u4ECE\u4E1A\u611F\u609F") });
 
       }
     },

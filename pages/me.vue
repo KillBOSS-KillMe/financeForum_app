@@ -44,6 +44,17 @@
 					</view>
 					<text>贷款流程</text>
 			</view>
+			<view class="item" data-name="house" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/exchangeCur.png" mode=""></image>
+					</view>
+					<text>玩转房产</text>
+			</view><view class="item" data-name="cashMode" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/hz.png" mode=""></image>
+					</view>
+					<text>变现模式</text>
+			</view>
 			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meCgx.png" mode=""></image>
@@ -160,6 +171,14 @@
 				}else if(url == 'loan'){
 					uni.navigateTo({
 						url: `/pages/indexA?id=${16}&name=${'贷款流程'}`
+					})
+				}else if(url == 'house'){
+					uni.navigateTo({
+						url: `/pages/indexA?id=${21}&name=${'玩转房产'}`
+					})
+				}else if(url == 'cashMode'){
+					uni.navigateTo({
+						url: `/pages/indexA?id=${22}&name=${'变现模式'}`
 					})
 				}else if(url == 'meSpread'){
 					console.log(url)
