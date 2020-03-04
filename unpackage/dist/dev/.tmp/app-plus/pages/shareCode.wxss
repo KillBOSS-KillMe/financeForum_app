@@ -1,16 +1,16 @@
 
-.shareCode{
+.shareCode {
 	width: 750rpx;
 	height: 100vh;
 	overflow: hidden;
 	position: relative;
 }
-.bg{
+.bg {
 	width: 750rpx;
 	height: 100vh;
 	overflow: hidden;
 }
-.content{
+.content {
 	position: absolute;
 	top: 80rpx;
 	left: 50%;
@@ -22,37 +22,37 @@
 	border-radius: 14rpx;
 	padding: 0 0 60rpx 0;
 }
-.content .head{
+.content .head {
 	font-size: 28rpx;
 	font-weight: 700;
 	color: #333333;
 	text-align: center;
-	border-bottom: 2rpx dashed #DCDCDC;
+	border-bottom: 2rpx dashed #dcdcdc;
 	padding: 24rpx 0;
 }
-.content .head::after{
+.content .head::after {
 	content: '';
 	display: block;
 	width: 20rpx;
 	height: 40rpx;
-	background: #2390DC;
+	background: #2390dc;
 	border-radius: 0 50rpx 50rpx 0;
 	position: absolute;
-	top:66rpx;
+	top: 66rpx;
 	left: -2rpx;
 }
-.content .head::before{
+.content .head::before {
 	content: '';
 	display: block;
 	width: 20rpx;
 	height: 40rpx;
-	background: #2390DC;
+	background: #2390dc;
 	border-radius: 50rpx 0 0 50rpx;
 	position: absolute;
 	top: 66rpx;
 	right: -2rpx;
 }
-.con{
+.con {
 	margin-top: 50rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -63,23 +63,23 @@
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.con image{
+.con image {
 	width: 416rpx;
 	height: 420rpx;
 	border: 1px solid #ffffff;
 }
-.con text{
+.con text {
 	font-size: 20rpx;
 	font-weight: 700;
 	color: #666666;
 	margin: 30rpx 0 40rpx;
 }
-.con .submit{
+.con .submit {
 	width: 420rpx;
 	height: 50rpx;
 	line-height: 50rpx;
 	background: #2390dc;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6); 
+	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	border: none;
 	color: #fff;
 	font-size: 24rpx;
@@ -179,9 +179,9 @@
 	text-align: center;
 	color: #fff;
 	font-weight: 700;
-	background: #2390DC;
+	background: #2390dc;
 }
-.share-btn{
+.share-btn {
 	border: none;
 	background: none;
 }
@@ -189,7 +189,7 @@ button::after {
 	border: none;
 }
 /* 遮罩 */
-.modelShow{
+.modelShow {
 	width: 420rpx;
 	height: 440rpx;
 	position: absolute;
@@ -198,14 +198,14 @@ button::after {
 	margin-left: -210rpx;
 	z-index: 5;
 }
-.zhezhao{
+.zhezhao {
 	width: 420rpx;
 	height: 440rpx;
 	background-color: #fff;
-	opacity: .7;
+	opacity: 0.7;
 	position: absolute;
 }
-.modelShow text{
+.modelShow text {
 	width: 420rpx;
 	font-size: 24rpx;
 	font-weight: 700;
@@ -217,5 +217,15 @@ button::after {
 	left: 50%;
 	margin-left: -70rpx;
 	z-index: 6;
+}
+.purple_btn {
+	font-size: 28rpx;
+	margin-top: 35rpx;
+	text-align: center;
+	width: 300rpx;
+	margin: 50rpx auto 0;
+	height: 60rpx;
+	line-height: 60rpx;
+	/* border: 1rpx solid #C0C0C0; */
 }
 

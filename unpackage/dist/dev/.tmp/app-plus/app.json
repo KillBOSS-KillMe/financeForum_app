@@ -36,6 +36,7 @@
     "pages/meService",
     "pages/meSetting",
     "pages/indexAccurate",
+    "pages/indexA",
     "pages/meCertificationConfirm",
     "pages/meEditSet",
     "pages/meEdit",
@@ -111,7 +112,7 @@
     "autoclose": false
   },
   "appname": "新微金论坛",
-  "compilerVersion": "2.5.1",
+  "compilerVersion": "2.6.1",
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"

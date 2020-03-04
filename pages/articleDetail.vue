@@ -29,7 +29,7 @@
 				</view>
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
-				<rich-text :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
+				<rich-text selectable='true' :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
 			</block>
 <!-- 
 			<view class="tip"  @tap="goVip">

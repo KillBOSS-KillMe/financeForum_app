@@ -55,6 +55,12 @@
 					</view>
 					<text>变现模式</text>
 			</view>
+			<view class="item" data-name="siwei" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/lc.png" mode=""></image>
+					</view>
+					<text>顶级思维</text>
+			</view>
 			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meCgx.png" mode=""></image>
@@ -179,6 +185,10 @@
 				}else if(url == 'cashMode'){
 					uni.navigateTo({
 						url: `/pages/indexA?id=${22}&name=${'变现模式'}`
+					})
+				}else if(url == 'siwei'){
+					uni.navigateTo({
+						url: `/pages/indexA?id=${26}&name=${'顶级思维'}`
 					})
 				}else if(url == 'meSpread'){
 					console.log(url)
