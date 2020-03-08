@@ -19,18 +19,24 @@
 		</view>
 		<view class="line"></view>
 		<view class="contentList">
+			<view class="item" data-name="loan" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/lc.png" mode=""></image>
+					</view>
+					<text>贷款流程</text>
+			</view>
 			<view class="item" data-name="rejection" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/hz.png" mode=""></image>
 					</view>
-					<text>拒贷汇总</text>
+					<text>拒贷原因</text>
 			</view>
 			
 			<view class="item" data-name="experience" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/xd.png" mode=""></image>
 					</view>
-					<text>实战心得</text>
+					<text>从业感悟</text>
 			</view>
 			<view class="item" data-name="risk" @tap="goPageNavigateTo">
 					<view>
@@ -38,12 +44,12 @@
 					</view>
 					<text>风险把控</text>
 			</view>
-			<view class="item" data-name="loan" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/lc.png" mode=""></image>
-					</view>
-					<text>贷款流程</text>
-			</view>
+		<view class="item" data-name="meAllProduct" @tap="goPageNavigateTo">
+				<view>
+					<image src="../static/meBk.png" mode=""></image>
+				</view>
+				<text>办卡提额</text>
+		</view>
 			<view class="item" data-name="house" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/exchangeCur.png" mode=""></image>
@@ -57,57 +63,16 @@
 			</view>
 			<view class="item" data-name="siwei" @tap="goPageNavigateTo">
 					<view>
-						<image src="../static/lc.png" mode=""></image>
+						<image src="../static/meJzpp.png" mode=""></image>
 					</view>
-					<text>顶级思维</text>
+					<text>精准匹配</text>
 			</view>
-			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meCgx.png" mode=""></image>
-					</view>
-					<text>我的草稿</text>
-			</view>
-			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
-					<view style="width: 46rpx;">
-						<image src="../static/meSj.png" mode=""></image>
-					</view>
-					<text>我的手机</text>
-			</view>
-			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meXx.png" mode=""></image>
-					</view>
-					<text>我的消息</text>
-			</view>
-			<view class="item" data-name="meCertification" @tap="goPageNavigateTo">
-				<view>
-					<image src="../static/meRead.png" mode=""></image>
-				</view>
-					<text>用户认证</text>
-			</view>
-			<view class="item" data-name="meVIP" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meHy.png" mode=""></image>
-					</view>
-					<text>开通会员</text>
-			</view>
-			<view class="item" data-name="meAllProduct" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meHz.png" mode=""></image>
-					</view>
-					<text>各省产品</text>
-			</view>
+			
 			<view class="item" data-name="meReserve" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meByj.png" mode=""></image>
 					</view>
-					<text>备用金打造</text>
-			</view>
-			<view class="item" data-name="meNewbieRead" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meUser.png" mode=""></image>
-					</view>
-					<text>新手必读</text>
+					<text>白户打造</text>
 			</view>
 			<view class="item" data-name="meSpread" @tap="goPageNavigateTo">
 					<view>
@@ -121,11 +86,48 @@
 					</view>
 					<text>联系客服</text>
 			</view>
+			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meCgx.png" mode=""></image>
+					</view>
+					<text>我的草稿</text>
+			</view>
+			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meXx.png" mode=""></image>
+					</view>
+					<text>我的消息</text>
+			</view>
 			<view class="item" data-name="meSetting" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meSz.png" mode=""></image>
 					</view>
 					<text>个人设置</text>
+			</view>
+			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
+					<view style="width: 46rpx;">
+						<image src="../static/meSj.png" mode=""></image>
+					</view>
+					<text>我的手机</text>
+			</view>
+			
+			<view class="item" data-name="meCertification" @tap="goPageNavigateTo">
+				<view>
+					<image src="../static/meRead.png" mode=""></image>
+				</view>
+					<text>用户认证</text>
+			</view>
+			<view class="item" data-name="meVIP" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meHy.png" mode=""></image>
+					</view>
+					<text>开通会员</text>
+			</view>
+			<view class="item" data-name="meNewbieRead" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meUser.png" mode=""></image>
+					</view>
+					<text>新手必读</text>
 			</view>
 		</view>
 	</view>
@@ -160,15 +162,15 @@
 					
 				}else if(url == 'meReserve'){
 					uni.navigateTo({
-						url: `/pages/indexA?id=${9}&name=${'备用金打造'}`
+						url: `/pages/indexA?id=${9}&name=${'白户打造'}`
 					})
 				}else if(url == 'meAllProduct'){
 					uni.navigateTo({
-						url: `/pages/indexA?id=${11}&name=${'各省产品汇总'}`
+						url: `/pages/indexA?id=${7}&name=${'办卡提额'}`
 					})
 				}else if(url == 'rejection'){
 					uni.navigateTo({
-						url: `/pages/indexA?id=${14}&name=${'拒贷汇总'}`
+						url: `/pages/indexA?id=${14}&name=${'拒贷原因'}`
 					})
 				}else if(url == 'risk'){
 					uni.navigateTo({
@@ -186,10 +188,15 @@
 					uni.navigateTo({
 						url: `/pages/indexA?id=${22}&name=${'变现模式'}`
 					})
+				}else if(url == 'experience'){
+					uni.navigateTo({
+						url: `/pages/indexA?id=${24}&name=${'从业感悟'}`
+					});
 				}else if(url == 'siwei'){
 					uni.navigateTo({
-						url: `/pages/indexA?id=${26}&name=${'顶级思维'}`
+						url: `/pages/indexA?id=${5}&name=${'精准匹配'}`
 					})
+					
 				}else if(url == 'meSpread'){
 					console.log(url)
 					console.log(this.userInfo.type)

@@ -73,7 +73,7 @@ export default {
 				// { id: '1', img: 'iconxiepinglun', title: '实战心得' },
 				// { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
 				{ id: '3', img: 'iconbulletin', title: '微金公告' },
-				{ id: '4', img: 'iconyonghu', title: '从业感悟' },
+				// { id: '4', img: 'iconyonghu', title: '从业感悟' },
 				{ id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }
 			],
 			Inv: 0,
@@ -144,10 +144,6 @@ export default {
 			}else if(id== '3'){
 				uni.navigateTo({
 					url: `/pages/indexA?id=${23}&name=微金公告`
-				});
-			}else if(id== '4'){
-				uni.navigateTo({
-					url: `/pages/indexA?id=${24}&name=从业感悟`
 				});
 			}
 		},

@@ -65,9 +65,16 @@
 				console.log(type, extra, id, name)
 				if(type == 'block'){
 					if (extra != '') {
-						uni.navigateTo({
-							url:`/pages/${extra}`
-						})
+						if(name == '会员区别'){
+							uni.navigateTo({
+								url:`/pages/articleDetail?id=189`
+							})
+						}else{
+							uni.navigateTo({
+								url:`/pages/${extra}`
+							})
+						}
+						
 					} else {
 						uni.showToast({
 							title: '此页面不存在'
