@@ -36,6 +36,7 @@
     "pages/meService",
     "pages/meSetting",
     "pages/indexAccurate",
+    "pages/indexA",
     "pages/meCertificationConfirm",
     "pages/meEditSet",
     "pages/meEdit",
@@ -51,7 +52,15 @@
     "pages/tel",
     "pages/payType",
     "pages/search",
-    "pages/meTeamList"
+    "pages/meTeamList",
+    "pages/commissionSet",
+    "pages/getQrCode",
+    "pages/cashOut",
+    "pages/promptlyGetQr",
+    "pages/teamPeopleDetail",
+    "pages/message",
+    "pages/teamList",
+    "pages/shareCode"
   ],
   "subPackages": [],
   "window": {
@@ -100,5 +109,6 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

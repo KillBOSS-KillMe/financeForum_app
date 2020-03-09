@@ -64,21 +64,28 @@
 		<view class="apply">
 			<text>申请攻略</text>
 			<view class="applyInfo">
-				<text>申请条件:</text>
-				<text>1、年龄在22-40周岁</text>
+				<text>{{listInfo.raiders}}</text>
+				<!-- <text>申请条件:</text> -->
+				<!-- <block v-for="(item, index) in list" :key="index"> -->
+					<!-- <text>1、年龄在22-40周岁</text>
+					<text>2、有本人的名下信用卡和借记卡</text>
+					<text>3、本人手机号码需实名认证</text>
+					<text>4、暂时不支持新疆和西藏地区的申请</text> -->
+				<!-- </block> -->
+				<!-- <text>1、年龄在22-40周岁</text>
 				<text>2、有本人的名下信用卡和借记卡</text>
 				<text>3、本人手机号码需实名认证</text>
-				<text>4、暂时不支持新疆和西藏地区的申请</text>
-				<text>友情提示:</text>
+				<text>4、暂时不支持新疆和西藏地区的申请</text> -->
+			<!-- 	<text>友情提示:</text>
 				<text>1、不需要网查征信</text>
 				<text>2、审核下款速度快、强烈推荐</text>
 				<text>3、授权你手中用的最好的那张信用卡</text>
 				<text>4、服务费5-10%、月管理费0.3%</text>
 				<text>#有关征信#你我贷不查不上征信</text>
-				<text>#有关回访#全程无电话回访</text>
+				<text>#有关回访#全程无电话回访</text> -->
 			</view>
 		</view>
-		<view class="productList">
+		<view class="productList" v-if="listInfo.identical_holes.length > 0">
 			<text>同类产品</text>
 			<view class="head" v-for="(item,index) in listInfo.identical_holes" :key="index">
 				<!-- <image :src="item.img" mode="aspectFill"></image> -->
@@ -173,7 +180,7 @@
 						console.log(res);
 						if (res.data.status_code == 200) {
 							this.listInfo = res.data.data
-							// console.log(this.listInfo,'++++')
+							console.log(this.listInfo,'++++')
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -214,14 +221,20 @@
 	justify-content: space-between;
 }
 .productDetail .head .itemRight .productInfo > text {
-	font-size: 32rpx;
+	font-size: 28rpx;
 	color: #333333;
 	font-weight: 600;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	width: 310rpx;
 }
 .productDetail .head .itemRight .productInfo > view {
 	display: flex;
-	align-content: center;
-	align-items: center;
+	align-content: flex-start;
+	align-items: flex-start;
 }
 .productDetail .head .itemRight .productInfo > view text {
 	font-size: 28rpx;
@@ -246,9 +259,12 @@
 }
 .money {
 	display: flex;
-	font-size: 28rpx;
+	font-size: 26rpx;
 	color: #999;
 	margin-right: 20rpx;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .money > text {
 	color: #f69522;
@@ -293,6 +309,9 @@
 	font-size: 28rpx;
 	color: #333;
 	margin-bottom: 20rpx;
+}
+.channel .channelItem text:first-child{
+	white-space:nowrap
 }
 .apply>text{
 	font-size: 32rpx;

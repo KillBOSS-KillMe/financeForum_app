@@ -253,8 +253,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 10, page: 1 };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
   }, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
+    // this.getListMore()
     this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
       // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
       var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd');console.log(loginName + '---===---' + loginPwd);if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
@@ -315,7 +316,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
       } else {
         uni.navigateTo({
-          url: "/pages/indexAccurate?id=".concat(id, "&name=").concat(name) });
+          url: "/pages/indexA?id=".concat(bind_board, "&name=").concat(name) });
 
       }
     },
@@ -323,7 +324,10 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     selListType: function selListType(e) {
       this.Inv = e.currentTarget.dataset.index;
       this.boardId = e.currentTarget.dataset.block_id;
+      console.log(this.boardId, '222');
       this.page = '1';
+      this.listNode = [];
+      this.getListMore();
     },
     // 轮播跳转
     goBanner: function goBanner(e) {
@@ -376,7 +380,10 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             var pageNode = res.data.data;
             _this3.pageNode = pageNode;
             if (pageNode.board_data.length > 0) {
-              _this3.boardId = pageNode.board_data[0].block_id;
+              // this.boardId = pageNode.board_data[0].block_id
+              _this3.boardId = pageNode.board_data[0].id;
+              console.log(_this3.boardId, '999');
+              _this3.getListMore();
             }
           } else {
             uni.showToast({
@@ -388,14 +395,18 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
     },
     //加载更多
-    onReachBottom: function onReachBottom() {var _this4 = this;
+    onReachBottom: function onReachBottom() {
       console.log(this.boardId);
       this.page++;
+      console.log(this.page);
       // console.log(this.pageNode.board_data[Inv].block_id)
       uni.showLoading({
         title: '加载中...',
         duration: 1000000 });
 
+      this.getListMore();
+    },
+    getListMore: function getListMore() {var _this4 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
         method: 'GET',
@@ -411,8 +422,16 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
           uni.hideLoading();
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
+            console.log('888', res.data.data);
+            console.log(_this4.pageNode.board_data[_this4.Inv].posts, '*****');
             if (res.data.data.length > 0) {
-              _this4.pageNode = _this4.pageNode.concat(res.data.data);
+              _this4.listNode = _this4.listNode.concat(res.data.data);
+              // this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
+
+              // console.log('//',this.pageNode)
+              // console.log(res.data.data)
+              // this.pageNode = this.pageNode.concat(res.data.data)
+              // console.log(this.pageNode)
             } else {
               uni.showToast({
                 title: "没有更多数据了",

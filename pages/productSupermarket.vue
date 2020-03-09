@@ -191,8 +191,8 @@ export default {
 }
 .banner {
 	width: 690rpx;
-	height: 352rpx;
-	padding: 30rpx 30rpx;
+	height: 370rpx;
+	padding: 30rpx 30rpx 10rpx;
 }
 .banner .swiper {
 	width: 100%;
@@ -332,14 +332,20 @@ export default {
 	justify-content: space-between;
 }
 .content .contentList .item .itemRight .productInfo > text {
-	font-size: 32rpx;
+	font-size: 30rpx;
 	color: #333333;
 	font-weight: 600;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	width: 320rpx;
 }
 .content .contentList .item .itemRight .productInfo > view {
 	display: flex;
-	align-content: center;
-	align-items: center;
+	align-content: flex-start;
+	align-items: flex-start;
 }
 .content .contentList .item .itemRight .productInfo > view text {
 	font-size: 28rpx;
@@ -364,9 +370,10 @@ export default {
 }
 .content .money {
 	display: flex;
-	font-size: 28rpx;
+	font-size: 26rpx;
 	color: #999;
 	margin-right: 20rpx;
+	white-space: nowrap;
 }
 .content .money > text {
 	color: #f69522;

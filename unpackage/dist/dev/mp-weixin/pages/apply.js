@@ -200,8 +200,22 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
       console.log(type, extra, id, name);
       if (type == 'block') {
         if (extra != '') {
-          uni.navigateTo({
-            url: "/pages/".concat(extra) });
+          if (name == '会员区别') {
+            uni.navigateTo({
+              url: "/pages/articleDetail?id=189" });
+
+          } else if (name == '推广返佣') {
+            uni.navigateTo({
+              url: "/pages/".concat(extra) });
+
+            // uni.navigateTo({
+            // 	url:`/pages/articleDetail?id=189`
+            // })
+          } else {
+            uni.navigateTo({
+              url: "/pages/".concat(extra) });
+
+          }
 
         } else {
           uni.showToast({

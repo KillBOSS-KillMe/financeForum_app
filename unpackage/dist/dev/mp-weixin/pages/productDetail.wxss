@@ -37,19 +37,25 @@
 	        justify-content: space-between;
 }
 .productDetail .head .itemRight .productInfo > text {
-	font-size: 32rpx;
+	font-size: 28rpx;
 	color: #333333;
 	font-weight: 600;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	width: 310rpx;
 }
 .productDetail .head .itemRight .productInfo > view {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	-webkit-align-content: center;
-	        align-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	-webkit-align-content: flex-start;
+	        align-content: flex-start;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	        align-items: flex-start;
 }
 .productDetail .head .itemRight .productInfo > view text {
 	font-size: 28rpx;
@@ -78,9 +84,12 @@
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	font-size: 28rpx;
+	font-size: 26rpx;
 	color: #999;
 	margin-right: 20rpx;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .money > text {
 	color: #f69522;
@@ -134,6 +143,9 @@
 	font-size: 28rpx;
 	color: #333;
 	margin-bottom: 20rpx;
+}
+.channel .channelItem text:first-child{
+	white-space:nowrap
 }
 .apply>text{
 	font-size: 32rpx;

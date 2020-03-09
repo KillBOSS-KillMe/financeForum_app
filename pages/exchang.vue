@@ -23,7 +23,7 @@
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageData.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
 				</block>
 			</view>
 			<view class="contentList">
@@ -70,16 +70,17 @@ export default {
 	data() {
 		return {
 			navList: [
-				{ id: '1', img: 'iconxiepinglun', title: '实战心得' },
-				{ id: '2', img: 'iconliebiao', title: '拒贷汇总' },
+				// { id: '1', img: 'iconxiepinglun', title: '实战心得' },
+				// { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
 				{ id: '3', img: 'iconbulletin', title: '微金公告' },
-				{ id: '4', img: 'iconyonghu', title: '从业感悟' },
+				// { id: '4', img: 'iconyonghu', title: '从业感悟' },
 				{ id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }
 			],
 			Inv: 0,
 			pageData: '',
 			imgUrl:'',
-			page: '1'
+			page: '1',
+			boardId:''
 		};
 	},
 	onLoad() {
@@ -91,6 +92,7 @@ export default {
 		selListType(e) {
 			this.Inv = e.currentTarget.dataset.index
 			this.boardId = e.currentTarget.dataset.block_id
+			this.page = '1'
 		},
 		goDetail(e){
 			uni.navigateTo({
@@ -115,6 +117,9 @@ export default {
 					console.log(res);
 					if (res.data.status_code == '200') {
 						this.pageData = res.data.data;
+						this.boardId = res.data.data.board_data[0].id
+						console.log(this.boardId,'88')
+						
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -134,7 +139,11 @@ export default {
 				});
 			}else if(id== '2'){
 				uni.navigateTo({
-					url: `/pages/indexAccurate?id=${8}&name=拒贷汇总`
+					url: `/pages/indexA?id=${14}&name=拒贷汇总`
+				});
+			}else if(id== '3'){
+				uni.navigateTo({
+					url: `/pages/indexA?id=${23}&name=微金公告`
 				});
 			}
 		},
@@ -164,7 +173,7 @@ export default {
 					res = helper.null2str(res);
 					console.log(res);
 					if (res.data.status_code == '200') {
-						this.pageData = this.pageData.concat(res.data.data);
+						this.pageData.board_data[this.Inv].posts = this.pageData.board_data[this.Inv].posts.concat(res.data.data);
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -202,7 +211,7 @@ export default {
 	width: 690rpx;
 	padding: 30rpx;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-wrap: wrap;
 }
 .exchang .nav .item{

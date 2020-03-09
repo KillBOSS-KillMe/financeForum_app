@@ -113,32 +113,24 @@ button::after {
 	border-radius: 10rpx;
 }
 .read {
-	width: 100rpx;
+	/* width: 150rpx; */
 	height: 90rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-content: space-between;
-	        align-content: space-between;
-	-webkit-flex-wrap: wrap;
-	        flex-wrap: wrap;
+/* 	display: flex;
+	align-content: space-between;
+	flex-wrap: wrap; */
 }
 .read view {
-	width: 100rpx;
+	/* width: 150rpx; */
 	font-size: 20rpx;
 	color: #333333;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
-	-webkit-box-pack: end;
-	-webkit-justify-content: flex-end;
-	        justify-content: flex-end;
+	overflow: hidden;
+	margin-bottom: 10rpx;
+/* 	display: flex;
+	align-items: center;
+	justify-content: flex-end; */
 }
 .read view .iconfont{
-	margin-right: 6rpx;
+	margin-right: 16rpx;
 }
 .postCom {
 	display: -webkit-box;

@@ -70,6 +70,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	margin-top: 15rpx;
 }
 .item .tel{
 	width: 62rpx;

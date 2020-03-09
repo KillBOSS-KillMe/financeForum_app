@@ -29,7 +29,7 @@
 				</view>
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
-				<rich-text :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
+				<rich-text selectable='true' :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
 			</block>
 <!-- 
 			<view class="tip"  @tap="goVip">
@@ -687,23 +687,25 @@ export default {
 }
 
 .read {
-	width: 100rpx;
+	/* width: 150rpx; */
 	height: 90rpx;
-	display: flex;
+/* 	display: flex;
 	align-content: space-between;
-	flex-wrap: wrap;
+	flex-wrap: wrap; */
 }
 
 .read view {
-	width: 100rpx;
+	/* width: 150rpx; */
 	font-size: 20rpx;
 	color: #333333;
-	display: flex;
+	overflow: hidden;
+	margin-bottom: 10rpx;
+/* 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: flex-end; */
 }
 .read view .iconfont{
-	margin-right: 6rpx;
+	margin-right: 16rpx;
 }
 .postCom {
 	display: flex;

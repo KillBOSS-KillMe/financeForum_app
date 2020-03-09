@@ -24,13 +24,13 @@
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageNode.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.block_id">{{ item.title }}</view>
+					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
 				</block>
 				<!-- <view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
 				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
 			</view>
 			<view class="contentList">
-				<block v-for="(item, index) in pageNode.board_data[Inv].posts" :key="index">
+				<block v-for="(item, index) in listNode" :key="index">
 					<view class="item" @tap="goDetail" :data-id="item.id">
 						<!-- {{item.photoalbums[0].path}} -->
 						<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
@@ -66,8 +66,9 @@
 				boardId: '',
 				pageNode: [],
 				imgUrl: '',
-				page_size: 10,
-				page:1
+				page_size: 5,
+				page:1,
+				listNode: []
 			};
 		},
 		onLaunch() {
@@ -83,7 +84,7 @@
 		onLoad() {
 			this.imgUrl = helper.imgUrl
 			// this.getUserInfo()
-			
+			// this.getListMore()
 			this.getList()
 			if (app.globalData.token == "") {
 				// 获取缓存中用于登录的用户名和密码
@@ -170,7 +171,7 @@
 					})
 				} else{
 					uni.navigateTo({
-						url: `/pages/indexAccurate?id=${id}&name=${name}`
+						url: `/pages/indexA?id=${bind_board}&name=${name}`
 					})
 				}
 			},
@@ -178,7 +179,10 @@
 			selListType(e) {
 				this.Inv = e.currentTarget.dataset.index
 				this.boardId = e.currentTarget.dataset.block_id
+				console.log(this.boardId,'222')
 				this.page = '1'
+				this.listNode = []
+				this.getListMore()
 			},
 			// 轮播跳转
 			goBanner(e) {
@@ -231,7 +235,10 @@
 							let pageNode = res.data.data
 							this.pageNode = pageNode
 							if (pageNode.board_data.length > 0){
-								this.boardId = pageNode.board_data[0].block_id
+								// this.boardId = pageNode.board_data[0].block_id
+								this.boardId = pageNode.board_data[0].id
+								console.log(this.boardId,'999')
+								this.getListMore()
 							}
 						} else {
 							uni.showToast({
@@ -246,11 +253,15 @@
 			onReachBottom() {
 				console.log(this.boardId)
 				this.page ++;
+				console.log(this.page)
 				// console.log(this.pageNode.board_data[Inv].block_id)
 				uni.showLoading({
 				  title: '加载中...',
 					duration: 1000000
 				});
+				this.getListMore()
+			},
+			getListMore(){
 				uni.request({
 					url: `${helper.requestUrl}/index-board-posts`,
 					method: 'GET',
@@ -266,8 +277,16 @@
 						uni.hideLoading();
 						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
+							console.log('888',res.data.data)
+							console.log(this.pageNode.board_data[this.Inv].posts,'*****')
 							if (res.data.data.length > 0) {
-								this.pageNode = this.pageNode.concat(res.data.data)
+								this.listNode = this.listNode.concat(res.data.data)
+								// this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
+								
+								// console.log('//',this.pageNode)
+								// console.log(res.data.data)
+								// this.pageNode = this.pageNode.concat(res.data.data)
+								// console.log(this.pageNode)
 							} else {
 								uni.showToast({
 									title:"没有更多数据了",
@@ -279,13 +298,12 @@
 								title: res.data.message
 							});
 						}
-
+				
 					}
 				})
-			},
-			
+			}
 		}
-	};
+	}
 </script>
 
 <style>

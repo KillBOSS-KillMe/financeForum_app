@@ -252,6 +252,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -369,12 +387,38 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var app = getApp();var _default = { data: function data() {return { userInfo: {}, imgUrl: '', imageUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
-    goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;if (url == 'meNewbieRead') {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(21) });} else if (url == 'meReserve') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(9, "&name=", '备用金打造') });} else if (url == 'meAllProduct') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(11, "&name=", '各省产品汇总') });} else if (url == 'rejection') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(8, "&name=", '拒贷汇总') });} else if (url == 'risk') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(8, "&name=", '风险把控') });} else if (url == 'loan') {uni.navigateTo({ url: "/pages/indexAccurate?id=".concat(8, "&name=", '贷款流程') });} else if (url == 'meSpread') {console.log(url);console.log(this.userInfo.type);if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });setTimeout(function (e) {uni.navigateTo({ url: "/pages/meVIP" });}, 1600);} else {uni.navigateTo({ url: "/pages/meSpread" });} // uni.navigateTo({
+    goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;if (url == 'meNewbieRead') {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(21) });} else if (url == 'meReserve') {uni.navigateTo({ url: "/pages/indexA?id=".concat(9, "&name=", '白户打造') });} else if (url == 'meAllProduct') {uni.navigateTo({ url: "/pages/indexA?id=".concat(7, "&name=", '办卡提额') });} else if (url == 'rejection') {uni.navigateTo({ url: "/pages/indexA?id=".concat(14, "&name=", '拒贷原因') });} else if (url == 'risk') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });} else {uni.navigateTo({ url: "/pages/indexA?id=".concat(15, "&name=", '风险把控') });}} else if (url == 'loan') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });} else {uni.navigateTo({ url: "/pages/indexA?id=".concat(16, "&name=", '贷款流程') });}} else if (url == 'house') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });} else {uni.navigateTo({ url: "/pages/indexA?id=".concat(21, "&name=", '玩转房产') });}} else if (url == 'cashMode') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });} else {uni.navigateTo({ url: "/pages/indexA?id=".concat(22, "&name=", '变现模式') });}} else if (url == 'experience') {uni.navigateTo({ url: "/pages/indexA?id=".concat(24, "&name=", '从业感悟') });} else if (url == 'siwei') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });} else {uni.navigateTo({ url: "/pages/indexA?id=".concat(5, "&name=", '精准匹配') });}} else if (url == 'meSpread') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });setTimeout(function (e) {uni.navigateTo({ url: "/pages/meVIP" });}, 1600);} else {uni.navigateTo({ url: "/pages/meSpread" });} // uni.navigateTo({
         // 	url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
         // })
       } else {uni.navigateTo({ url: "/pages/".concat(url) });}}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
-      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.userInfo = res.data;_this.imageUrl = _this.imgUrl + _this.userInfo.avatar;}} });} } };exports.default = _default;
+      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();
+          res = _helper.default.null2str(res);
+          if (res.statusCode == 200) {
+            _this.userInfo = res.data;
+            _this.imageUrl = _this.imgUrl + _this.userInfo.avatar;
+          }
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

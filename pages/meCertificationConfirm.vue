@@ -204,9 +204,11 @@
 								title: res.data.message,
 								icon: 'none'
 							});
-							uni.reLaunch({
-								url:'/pages/me'
-							})
+							setTimeout( e =>{
+								uni.reLaunch({
+									url:'/pages/me'
+								})
+							},2000)
 						} else {
 							uni.showToast({
 								title: res.data.message,

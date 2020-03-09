@@ -260,7 +260,7 @@ export default {
 	flex-wrap: wrap;
 }
 .result .content .item {
-	width: 160rpx;
+	width: 155rpx;
 	margin: 0 20rpx 30rpx 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -277,13 +277,15 @@ export default {
 .result .content .item text {
 	/* text-align: center; */
 	color: #333;
-	font-size: 28rpx;
+	font-size: 24rpx;
 	font-weight: 600;
 	margin-top: 10rpx;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	display: flex;
-	justify-content: center;
+/* 	display: flex;
+	justify-content: center; */
+	width: 155rpx;
+	text-align: center;
 }
 </style>

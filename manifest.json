@@ -93,7 +93,8 @@
                         "UniversalLinks" : ""
                     }
                 },
-                "oauth" : {}
+                "oauth" : {},
+                "ad" : null
             },
             "icons" : {
                 "android" : {
@@ -152,6 +153,9 @@
     },
     "h5" : {
         "title" : "新微金论坛",
-        "domain" : "http://jinrong.beaconway.cn/"
+        "domain" : "http://jinrong.beaconway.cn/",
+        "router" : {
+            "mode" : "history"
+        }
     }
 }

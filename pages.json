@@ -219,6 +219,12 @@
 			}
 		},
 		{
+			"path": "pages/indexA",
+			"style": {
+				// "navigationBarTitleText": "精准匹配"
+			}
+		},
+		{
 			"path": "pages/meCertificationConfirm",
 			"style": {
 				"navigationBarTitleText": "实名认证"
@@ -309,7 +315,55 @@
 		{
 			"path": "pages/meTeamList",
 			"style": {
-				
+
+			}
+		},
+		{
+			"path": "pages/commissionSet",
+			"style": {
+				"navigationBarTitleText": "返佣设置"
+			}
+		},
+		{
+			"path": "pages/getQrCode",
+			"style": {
+				"navigationBarTitleText": "获取二维码"
+			}
+		},
+		{
+			"path": "pages/cashOut",
+			"style": {
+				"navigationBarTitleText": "提现"
+			}
+		},
+		{
+			"path": "pages/promptlyGetQr",
+			"style": {
+				"navigationBarTitleText": "获取二维码"
+			}
+		},
+		{
+			"path": "pages/teamPeopleDetail",
+			"style": {
+				"navigationBarTitleText": "用户信息"
+			}
+		},
+		{
+			"path": "pages/message",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/teamList",
+			"style": {
+				"navigationBarTitleText": "团队列表"
+			}
+		},
+		{
+			"path": "pages/shareCode",
+			"style": {
+				"navigationBarTitleText": "获取二维码"
 			}
 		}
 	],

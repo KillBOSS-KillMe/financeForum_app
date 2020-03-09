@@ -166,9 +166,16 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: 'iconat', title: '提到我的' }, { id: '2', img: 'iconxiaoxi1', title: '评论' }, { id: '3', img: 'iconxitongpeizhi', title: '系统消息' }] };}, methods: { goMessageDetails: function goMessageDetails(e) {console.log(e);var type = e.currentTarget.dataset.type;var title = e.currentTarget.dataset.title;
-      uni.navigateTo({
-        url: "/pages/meApplyMessage?type=".concat(type, "&title=").concat(title) });
 
+      if (type == '3') {
+        uni.navigateTo({
+          url: '/pages/message' });
+
+      } else {
+        uni.navigateTo({
+          url: "/pages/meApplyMessage?type=".concat(type, "&title=").concat(title) });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

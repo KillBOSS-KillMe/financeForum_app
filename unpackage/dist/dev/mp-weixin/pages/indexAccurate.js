@@ -182,12 +182,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 var app = getApp();var _default = { data: function data() {return { list: [], page: '1', page_size: '10', boardId: '1', imgUrl: '' };}, onShow: function onShow(e) {// console.log(e)
     // this.board_id == e
   }, onLoad: function onLoad(e) {// console.log(this.boardId)
-    this.imgUrl = _helper.default.imgUrl;console.log(this.imgUrl);this.boardId = e.id;this.getList();uni.setNavigationBarTitle({ title: e.name });},
-  onLaunch: function onLaunch() {
-
-  },
-  methods: {
-    getList: function getList() {var _this = this;
+    this.imgUrl = _helper.default.imgUrl;this.getList();}, onLaunch: function onLaunch() {}, methods: { getList: function getList() {var _this = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
         method: 'GET',
@@ -195,7 +190,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], pa
           authorization: app.globalData.token },
 
         data: {
-          board_id: this.boardId,
+          board_id: '5',
           page_size: this.page_size,
           page: this.page },
 

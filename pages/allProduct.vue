@@ -293,9 +293,10 @@
 
 	.content .money {
 		display: flex;
-		font-size: 28rpx;
+		font-size: 26rpx;
 		color: #999;
 		margin-right: 20rpx;
+		white-space: nowrap;
 	}
 
 	.content .money>text {
