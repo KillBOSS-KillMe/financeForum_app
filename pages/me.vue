@@ -19,30 +19,6 @@
 		</view>
 		<view class="line"></view>
 		<view class="contentList">
-			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meCgx.png" mode=""></image>
-					</view>
-					<text>我的草稿</text>
-			</view>
-			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
-					<view style="width: 46rpx;">
-						<image src="../static/meSj.png" mode=""></image>
-					</view>
-					<text>我的手机</text>
-			</view>
-			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meXx.png" mode=""></image>
-					</view>
-					<text>我的消息</text>
-			</view>
-			<view class="item" data-name="meCertification" @tap="goPageNavigateTo">
-				<view>
-					<image src="../static/meRead.png" mode=""></image>
-				</view>
-					<text>用户认证</text>
-			</view>
 			<view class="item" data-name="meVIP" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meHy.png" mode=""></image>
@@ -61,30 +37,13 @@
 					</view>
 					<text>备用金打造</text>
 			</view>
-			<view class="item" data-name="meNewbieRead" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meUser.png" mode=""></image>
-					</view>
-					<text>新手必读</text>
-			</view>
 			<view class="item" data-name="meSpread" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meTgfy.png" mode=""></image>
 					</view>
 					<text>推广返佣</text>
 			</view>
-			<view class="item" data-name="meService" @tap="goPageNavigateTo">
-					<view style="width: 60rpx;height: 50rpx;">
-						<image src="../static/meKf.png" mode=""></image>
-					</view>
-					<text>联系客服</text>
-			</view>
-			<view class="item" data-name="meSetting" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meSz.png" mode=""></image>
-					</view>
-					<text>个人设置</text>
-			</view>
+			
 			<view class="item" data-name="rejection" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/hz.png" mode=""></image>
@@ -109,6 +68,48 @@
 						<image src="../static/lc.png" mode=""></image>
 					</view>
 					<text>贷款流程</text>
+			</view>
+			<view class="item" data-name="meMyDraft" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meCgx.png" mode=""></image>
+					</view>
+					<text>我的草稿</text>
+			</view>
+			<view class="item" data-name="meMyMobile" @tap="goPageNavigateTo">
+					<view style="width: 46rpx;">
+						<image src="../static/meSj.png" mode=""></image>
+					</view>
+					<text>我的手机</text>
+			</view>
+			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meXx.png" mode=""></image>
+					</view>
+					<text>我的消息</text>
+			</view>
+			<view class="item" data-name="meCertification" @tap="goPageNavigateTo">
+				<view>
+					<image src="../static/meRead.png" mode=""></image>
+				</view>
+					<text>用户认证</text>
+			</view>
+			<view class="item" data-name="meNewbieRead" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meUser.png" mode=""></image>
+					</view>
+					<text>新手必读</text>
+			</view>
+			<view class="item" data-name="meService" @tap="goPageNavigateTo">
+					<view style="width: 60rpx;height: 50rpx;">
+						<image src="../static/meKf.png" mode=""></image>
+					</view>
+					<text>联系客服</text>
+			</view>
+			<view class="item" data-name="meSetting" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meSz.png" mode=""></image>
+					</view>
+					<text>个人设置</text>
 			</view>
 		</view>
 	</view>

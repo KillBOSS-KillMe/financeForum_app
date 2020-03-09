@@ -149,5 +149,9 @@
     },
     "mp-toutiao" : {
         "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "新微金论坛",
+        "domain" : "http://jinrong.beaconway.cn/"
     }
 }
