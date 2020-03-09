@@ -29,7 +29,14 @@
 				</view>
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
-				<rich-text selectable='true' :nodes="item.content" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></rich-text>
+				<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'">
+					<jyf-parser :html="item.content" ref="article" ></jyf-parser>
+				</view>
+				<view class="" v-else>
+					<jyf-parser :html="item.content" ref="article" ></jyf-parser>
+				</view>
+				<!-- <jyf-parser :html="item.content" ref="article" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></jyf-parser> -->
+				<!-- <rich-text selectable='true' :nodes="item.content" ></rich-text> -->
 			</block>
 <!-- 
 			<view class="tip"  @tap="goVip">
@@ -116,6 +123,7 @@
 <script>
 const app = getApp();
 import helper from '../common/helper.js';
+import parser from "@/components/jyf-parser";
 export default {
 	data() {
 		return {
@@ -133,13 +141,18 @@ export default {
 			postContent: '',
 			just_landlord: '',
 			comment_id: '',
-			isSex: '0'
+			isSex: '0',
+			type: ''
 		};
+	},
+  components: {
+		"jyf-parser": parser
 	},
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
 		this.userInfo = app.globalData.userInfo
+		this.type =this.userInfo.type
 		console.log(this.userInfo)
 	},
 	onShow() {
@@ -158,8 +171,9 @@ export default {
 	methods: {
 		goVIPPage(e) {
 			// 判断当前用户是否为普通用户
-			if (this.userInfo.type == 'normal') {
-				let content_type = e.currentTarget.dataset.content_type
+			console.log(this.type,'8888')
+			if (this.type == 'normal') {
+				let content_type = e
 				// 判断当前点击文本是否为会员可看
 				if (content_type == 'member') {
 					uni.showModal({

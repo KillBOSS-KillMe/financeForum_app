@@ -8877,6 +8877,767 @@ main();
 /***/ }),
 
 /***/ 514:
+/*!**************************************************************!*\
+  !*** D:/work/financeForum_app/components/libs/CssHandler.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             解析和匹配 Css 的选择器
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             github：https://github.com/jin-yufeng/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             docs：https://jin-yufeng.github.io/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             author：JinYufeng
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
+var config = __webpack_require__(/*! ./config.js */ 515);var
+CssHandler = /*#__PURE__*/function () {
+  function CssHandler() {var tagStyle = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};_classCallCheck(this, CssHandler);
+    this.styles = Object.assign({}, tagStyle);
+  }_createClass(CssHandler, [{ key: "getStyle", value: function getStyle(
+    data) {
+      var style = '';
+      data = data.replace(/<[sS][tT][yY][lL][eE][\s\S]*?>([\s\S]*?)<\/[sS][tT][yY][lL][eE][\s\S]*?>/g, function ($, $1) {return style +=
+        $1, '';});
+      this.styles = new CssParser(style, this.styles).parse();
+      return data;
+    } }, { key: "match", value: function match(
+    name, attrs) {
+      var tmp,matched = (tmp = this.styles[name]) ? tmp + ';' : '';
+      if (attrs.class) {
+        var classes = attrs.class.split(' ');
+        for (var i = 0; i < classes.length; i++) {
+          if (tmp = this.styles['.' + classes[i]])
+          matched += tmp + ';';}
+      }
+      if (tmp = this.styles['#' + attrs.id])
+      matched += tmp + ';';
+      return matched;
+    } }]);return CssHandler;}();
+
+module.exports = CssHandler;var
+CssParser = /*#__PURE__*/function () {
+  function CssParser(data, tagStyle) {_classCallCheck(this, CssParser);
+    this.data = data;
+    this.res = tagStyle;
+    for (var item in config.userAgentStyles) {
+      if (tagStyle[item]) tagStyle[item] = config.userAgentStyles[item] + ';' + tagStyle[item];else
+      tagStyle[item] = config.userAgentStyles[item];
+    }
+    this._comma = false;
+    this._floor = 0;
+    this._i = 0;
+    this._list = [];
+    this._start = 0;
+    this._state = this.Space;
+  }_createClass(CssParser, [{ key: "parse", value: function parse()
+    {
+      for (; this._i < this.data.length; this._i++) {
+        this._state(this.data[this._i]);}
+      return this.res;
+    } }, { key: "Space",
+    // 状态机
+    value: function Space(c) {
+      if (c == '.' || c == '#' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
+        this._start = this._i;
+        this._state = this.StyleName;
+      } else if (c == '/' && this.data[this._i + 1] == '*')
+      this.Comment();else
+      if (!config.blankChar[c] && c != ';')
+      this._state = this.Ignore;
+    } }, { key: "Comment", value: function Comment()
+    {
+      this._i = this.data.indexOf("*/", this._i) + 1;
+      if (!this._i) this._i = this.data.length;
+      this._state = this.Space;
+    } }, { key: "Ignore", value: function Ignore(
+    c) {
+      if (c == '{') this._floor++;else
+      if (c == '}' && ! --this._floor) {
+        this._list = [];
+        this._state = this.Space;
+      }
+    } }, { key: "StyleName", value: function StyleName(
+    c) {
+      if (config.blankChar[c]) {
+        if (this._start != this._i)
+        this._list.push(this.data.substring(this._start, this._i));
+        this._state = this.NameSpace;
+      } else if (c == '{') {
+        this._list.push(this.data.substring(this._start, this._i));
+        this._start = this._i + 1;
+        this.Content();
+      } else if (c == ',') {
+        this._list.push(this.data.substring(this._start, this._i));
+        this._start = this._i + 1;
+        this._comma = true;
+      } else if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < '0' || c > '9') && c != '.' && c != '#' && c != '-' &&
+      c != '_')
+      this._state = this.Ignore;
+    } }, { key: "NameSpace", value: function NameSpace(
+    c) {
+      if (c == '{') {
+        this._start = this._i + 1;
+        this.Content();
+      } else if (c == ',') {
+        this._comma = true;
+        this._start = this._i + 1;
+        this._state = this.StyleName;
+      } else if (!config.blankChar[c]) {
+        if (this._comma) {
+          this._state = this.StyleName;
+          this._start = this._i--;
+          this._comma = false;
+        } else this._state = this.Ignore;
+      }
+    } }, { key: "Content", value: function Content()
+    {
+      this._i = this.data.indexOf('}', this._i);
+      if (this._i == -1) this._i = this.data.length;
+      var content = this.data.substring(this._start, this._i);
+      for (var i = this._list.length; i--;) {
+        this.res[this._list[i]] = (this.res[this._list[i]] || '') + content;}
+      this._list = [];
+      this._state = this.Space;
+    } }]);return CssParser;}();
+
+/***/ }),
+
+/***/ 515:
+/*!**********************************************************!*\
+  !*** D:/work/financeForum_app/components/libs/config.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+ /* 配置文件 */
+function makeMap(str) {var obj = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var map = obj,
+  list = str.split(',');
+  for (var i = list.length; i--;) {
+    map[list[i]] = true;}
+  return map;
+}
+// 信任的属性列表，不在列表中的属性将被移除 
+var trustAttrs = makeMap(
+"align,allowfullscreen,alt,app-id,appid,apid,author,autoplay,border,cellpadding,cellspacing,class,color,colspan,controls,data-src,dir,face,frameborder,height,href,id,ignore,loop,media,muted,name,path,poster,rowspan,size,span,src,start,style,type,unit-id,unitId,width,xmlns");
+
+// 信任的标签，将保持标签名不变 
+var trustTags = makeMap(
+"a,abbr,ad,audio,b,blockquote,br,code,col,colgroup,dd,del,dl,dt,div,em,fieldset,h1,h2,h3,h4,h5,h6,hr,i,img,ins,label,legend,li,ol,p,q,source,span,strong,sub,sup,table,tbody,td,tfoot,th,thead,tr,title,u,ul,video");
+
+
+
+
+
+// 块级标签，将被转为 div
+var blockTags = makeMap("address,article,aside,body,center,cite,footer,header,html,nav,pre,section");
+// 被移除的标签（其中 svg 系列标签会被转为图片） 
+var ignoreTags = makeMap(
+"area,base,basefont,canvas,circle,command,ellipse,frame,head,input,isindex,keygen,line,link,map,meta,param,path,polygon,rect,script,source,svg,textarea,track,use,wbr" +
+
+
+",embed,iframe");
+
+
+// 只能用 rich-text 显示的标签（其中图片不能预览、不能显示视频、音频等） 
+var richOnlyTags = makeMap("a,colgroup,fieldset,legend,picture,table,tbody,td,tfoot,th,thead,tr");
+// 自闭合标签
+var selfClosingTags = makeMap(
+"area,base,basefont,br,col,circle,ellipse,embed,frame,hr,img,input,isindex,keygen,line,link,meta,param,path,polygon,rect,source,track,use,wbr");
+
+// 空白字符
+var blankChar = makeMap(" ,\xA0,\t,\r,\n,\f");
+// 默认的标签样式
+var userAgentStyles = {
+  a: "color:#366092;word-break:break-all;padding:1.5px 0 1.5px 0",
+  address: "font-style:italic",
+  big: "display:inline;font-size:1.2em",
+  blockquote: "background-color:#f6f6f6;border-left:3px solid #dbdbdb;color:#6c6c6c;padding:5px 0 5px 10px",
+  center: "text-align:center",
+  cite: "font-style:italic",
+  dd: "margin-left:40px",
+  img: "max-width:100%",
+  mark: "background-color:yellow",
+  picture: "max-width:100%",
+  pre: "font-family:monospace;white-space:pre;overflow:scroll",
+  s: "text-decoration:line-through",
+  small: "display:inline;font-size:0.8em",
+  u: "text-decoration:underline" };
+
+var screenWidth = wx.getSystemInfoSync().screenWidth;
+
+// 版本兼容
+if (wx.canIUse("editor")) {
+  makeMap("bdi,bdo,caption,rt,ruby,pre", trustTags);
+  makeMap("bdi,bdo,caption,rt,ruby,pre", richOnlyTags);
+  ignoreTags.rp = true;
+  blockTags.pre = undefined;
+} else
+
+blockTags.caption = true;
+
+function bubbling(Parser) {
+  for (var i = Parser._STACK.length; i--;) {
+    if (!richOnlyTags[Parser._STACK[i].name])
+    Parser._STACK[i].c = 1;else
+    return false;
+  }
+  return true;
+}
+module.exports = {
+  // 高亮处理函数
+  highlight: null,
+  // 处理标签的属性，需要通过组件递归方式显示的标签需要调用 bubbling(Parser)
+  LabelHandler: function LabelHandler(node, Parser) {
+    var attrs = node.attrs,
+    style = Parser.CssHandler.match(node.name, attrs, node) + (attrs.style || '');
+    switch (node.name) {
+      case "div":
+      case 'p':
+        if (attrs.align) {
+          style = "text-align:".concat(attrs.align, ";").concat(style);
+          attrs.align = void 0;
+        }
+        break;
+      case "img":
+        if (attrs["data-src"]) {
+          attrs.src = attrs.src || attrs["data-src"];
+          attrs["data-src"] = void 0;
+        }
+        if (attrs.width && parseInt(attrs.width) > screenWidth)
+        style += ";height:auto !important";
+        if (attrs.src && !attrs.ignore) {
+          if (bubbling(Parser)) attrs.i = (Parser._imgNum++).toString();else
+          attrs.ignore = 'T';
+        }
+        break;
+      case 'a':
+      case "ad":
+
+
+
+
+        bubbling(Parser);
+        break;
+      case "font":
+        if (attrs.color) {
+          style = "color:".concat(attrs.color, ";").concat(style);
+          attrs.color = void 0;
+        }
+        if (attrs.face) {
+          style = "font-family:".concat(attrs.face, ";").concat(style);
+          attrs.face = void 0;
+        }
+        if (attrs.size) {
+          var size = parseInt(attrs.size);
+          if (size < 1) size = 1;else
+          if (size > 7) size = 7;
+          var map = ["xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large"];
+          style = "font-size:".concat(map[size - 1], ";").concat(style);
+          attrs.size = void 0;
+        }
+        break;
+      case "video":
+      case "audio":
+        if (attrs.id) Parser["_".concat(node.name, "Num")]++;else
+        attrs.id = node.name + ++Parser["_".concat(node.name, "Num")];
+        if (node.name == "video") {
+          if (attrs.width) {
+            style = "width:".concat(parseFloat(attrs.width) + attrs.width.includes('%') ? '%' : "px", ";").concat(style);
+            attrs.width = void 0;
+          }
+          if (attrs.height) {
+            style = "height:".concat(parseFloat(attrs.height) + attrs.height.includes('%') ? '%' : "px", ";").concat(style);
+            attrs.height = void 0;
+          }
+          if (Parser._videoNum > 3) node.lazyLoad = true;
+        }
+        attrs.source = [];
+        if (attrs.src) attrs.source.push(attrs.src);
+        if (!attrs.controls && !attrs.autoplay)
+        console.warn("\u5B58\u5728\u6CA1\u6709 controls \u5C5E\u6027\u7684 ".concat(node.name, " \u6807\u7B7E\uFF0C\u53EF\u80FD\u5BFC\u81F4\u65E0\u6CD5\u64AD\u653E"), node);
+        bubbling(Parser);
+        break;
+      case "source":
+        var i,parent = Parser._STACK[Parser._STACK.length - 1];
+        if (!parent || !attrs.src) break;
+        if (parent.name == "video" || parent.name == "audio")
+        parent.attrs.source.push(attrs.src);else
+        {
+          var i,media = attrs.media;
+          if (parent.name == "picture" && !parent.attrs.src && (!media || media.includes("px") && (
+          (i = media.indexOf("min-width")) != -1 && (i = media.indexOf(':', i + 8)) != -1 &&
+          screenWidth > parseInt(media.substring(i + 1)) ||
+          (i = media.indexOf("max-width")) != -1 && (i = media.indexOf(':', i + 8)) != -1 &&
+          screenWidth < parseInt(media.substring(i + 1)))))
+          parent.attrs.src = attrs.src;
+        }}
+
+    // 压缩 style
+    var styles = style.split(';'),
+    compressed = {};
+    style = '';
+    for (var i = 0, len = styles.length; i < len; i++) {
+      var info = styles[i].split(':');
+      if (info.length < 2) continue;
+      var key = info[0].trim().toLowerCase(),
+      value = info.slice(1).join(':').trim();
+      // 填充链接
+      if (value.includes("url")) {
+        var j = value.indexOf('(');
+        if (j++ != -1) {
+          while (value[j] == '"' || value[j] == "'" || blankChar[value[j]]) {j++;}
+          if (value[j] == '/') {
+            if (value[j + 1] == '/') value = value.substring(0, j) + Parser._protocol + ':' + value.substring(j);else
+            if (Parser._domain) value = value.substring(0, j) + Parser._domain + value.substring(j);
+          }
+        }
+      }
+      // 转换 rpx
+      else if (value.includes("rpx"))
+        value = value.replace(/[0-9.]*rpx/g, function ($) {return parseFloat($) * screenWidth / 750 + "px";});
+      if (value.includes("-webkit") || value.includes("-moz") || value.includes("-ms") || value.includes("-o") || value.includes(
+      "safe"))
+      style += ";".concat(key, ":").concat(value);else
+      if (!compressed[key] || value.includes("import") || !compressed[key].includes("import"))
+      compressed[key] = value;
+    }
+    if (node.name == "img" && compressed.width && compressed.width.includes("%") && parseInt(compressed.width) >
+    screenWidth)
+    compressed.height = "auto !important";
+    for (var key in compressed) {
+      style += ";".concat(key, ":").concat(compressed[key]);}
+    style = style.substr(1);
+    if (style) attrs.style = style;
+    if (Parser._useAnchor && attrs.id) bubbling(Parser);
+  },
+  trustAttrs: trustAttrs,
+  trustTags: trustTags,
+  blockTags: blockTags,
+  ignoreTags: ignoreTags,
+  selfClosingTags: selfClosingTags,
+  blankChar: blankChar,
+  userAgentStyles: userAgentStyles,
+  screenWidth: screenWidth };
+
+/***/ }),
+
+/***/ 516:
+/*!****************************************************************!*\
+  !*** D:/work/financeForum_app/components/libs/MpHtmlParser.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             将 html 解析为适用于小程序 rich-text 的 DOM 结构
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             github：https://github.com/jin-yufeng/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             docs：https://jin-yufeng.github.io/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             author：JinYufeng
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
+var config = __webpack_require__(/*! ./config.js */ 515);
+var blankChar = config.blankChar;
+var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 514);
+var emoji; // emoji 补丁包 https://jin-yufeng.github.io/Parser/#/instructions?id=emoji
+var MpHtmlParser = /*#__PURE__*/function () {
+  function MpHtmlParser(data) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};_classCallCheck(this, MpHtmlParser);
+    this.CssHandler = new CssHandler(options.tagStyle);
+    this.data = data;
+    this.DOM = [];
+    this._attrName = '';
+    this._attrValue = '';
+    this._attrs = {};
+    this._domain = options.domain;
+    this._protocol = this._domain && this._domain.includes("://") ? this._domain.split("://")[0] : "http";
+    this._i = 0;
+    this._start = 0;
+    this._state = this.Text;
+    this._STACK = [];
+    this._tagName = '';
+    this._audioNum = 0;
+    this._imgNum = 0;
+    this._videoNum = 0;
+    this._useAnchor = options.useAnchor;
+    this._pre = false;
+  }_createClass(MpHtmlParser, [{ key: "parse", value: function parse()
+    {
+      if (emoji) this.data = emoji.parseEmoji(this.data);
+      // 高亮处理
+      if (config.highlight)
+      this.data = this.data.replace(/<[pP][rR][eE]([\s\S]*?)>([\s\S]+?)<\/[pP][rR][eE][\s\S]*?>/g, function ($, $1, $2) {return "<pre".concat(
+        $1, ">").concat(config.highlight($2, $1), "</pre>");});
+      this.data = this.CssHandler.getStyle(this.data);
+      for (var len = this.data.length; this._i < len; this._i++) {
+        this._state(this.data[this._i]);}
+      if (this._state == this.Text) this.setText();
+      while (this._STACK.length) {this.popNode(this._STACK.pop());}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      if (this.DOM.length) this.DOM[0].PoweredBy = "Parser";
+      return this.DOM;
+    } }, { key: "setAttr",
+    // 设置属性
+    value: function setAttr() {
+      if (config.trustAttrs[this._attrName]) {
+        if (this._attrName == "src" && this._attrValue[0] == '/') {
+          if (this._attrValue[1] == '/') this._attrValue = this._protocol + ':' + this._attrValue;else
+          if (this._domain) this._attrValue = this._domain + this._attrValue;
+        }
+        this._attrs[this._attrName] = this._attrValue ? this._attrValue : this._attrName == "src" || this._attrName ==
+        "alt" ? '' : 'T';
+      }
+      this._attrValue = '';
+      while (blankChar[this.data[this._i]]) {this._i++;}
+      if (this.checkClose()) this.setNode();else
+      this._state = this.AttrName;
+    } }, { key: "setText",
+    // 设置文本节点
+    value: function setText() {
+      var text = this.getSelection();
+      if (!text) return;
+      if (!this._pre) {
+        // 移除空白符
+        for (var tmp = [], i = text.length, has = false, c; c = text[--i];) {
+          if (!blankChar[c] && (has = true) || !blankChar[tmp[0]] && (c = ' ')) tmp.unshift(c);}
+        if (!has) return;
+        text = tmp.join('');
+      }
+      // 处理实体
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      var i = text.indexOf('&'),
+      j,u,decode;
+      while (i != -1) {
+        j = text.indexOf(';', i + 2);
+        if (j == -1) break;
+        if (text[i + 1] == '#') {
+          u = parseInt((text[i + 2] == 'x' ? '0' : '') + text.substring(i + 2, j));
+          if (!isNaN(u)) text = text.substring(0, i) + String.fromCharCode(u) + text.substring(j + 1);
+        } else {
+          u = text.substring(i + 1, j);
+
+          if (u == "nbsp") text = text.substring(0, i) + "\xA0" + text.substring(j + 1); // 解决连续 &nbsp; 失效的问题
+          else if (u != "lt" && u != "gt" && u != "amp" && u != "ensp" && u != "emsp") decode = true;
+
+
+
+
+        }
+        i = text.indexOf('&', i + 1);
+      }
+      var slibings = this._STACK.length ? this._STACK[this._STACK.length - 1].children : this.DOM;
+      if (slibings.length && slibings[slibings.length - 1].type == "text") {
+        slibings[slibings.length - 1].text += text;
+        if (decode) slibings[slibings.length - 1].decode = true;
+      } else
+      slibings.push({
+        type: "text",
+        text: text,
+        decode: decode });
+
+    } }, { key: "setNode",
+    // 设置元素节点
+    value: function setNode() {
+      var slibings = this._STACK.length ? this._STACK[this._STACK.length - 1].children : this.DOM;
+      var node = {
+        name: this._tagName.toLowerCase(),
+        attrs: this._attrs };
+
+      config.LabelHandler(node, this);
+      this._attrs = {};
+      if (this.data[this._i] == '>') {
+        if (!config.selfClosingTags[this._tagName]) {
+          if (config.ignoreTags[node.name]) {
+            var j = this._i;
+            // 处理要被移除的标签
+            while (this._i < this.data.length) {
+              (this._i = this.data.indexOf("</", this._i + 1)) == -1 ? this._i = this.data.length : null;
+              this._i += 2;
+              this._start = this._i;
+              while (!blankChar[this.data[this._i]] && this.data[this._i] != '>' && this.data[this._i] != '/') {this._i++;}
+              if (this.data.substring(this._start, this._i).toLowerCase() == node.name) {
+                this._i = this.data.indexOf('>', this._i);
+                if (this._i == -1) this._i = this.data.length;else
+                this._start = this._i + 1;
+                this._state = this.Text;
+                // 处理 svg 
+                if (node.name == "svg") {
+                  var src = this.data.substring(j, this._i + 1);
+                  if (!node.attrs.xmlns) src = " xmlns=\"http://www.w3.org/2000/svg\"" + src;
+                  this._i = j;
+                  while (this.data[j] != '<') {j--;}
+                  src = this.data.substring(j, this._i) + src;
+                  this._i = this._start - 1;
+                  node.name = "img";
+                  node.attrs = {
+                    src: "data:image/svg+xml;utf8," + src.replace(/#/g, "%23"),
+                    ignore: 'T' };
+
+                  slibings.push(node);
+                }
+                break;
+              }
+            }
+            return;
+          } else this._STACK.push(node);
+          node.children = [];
+        }
+      } else this._i++;
+      this._start = this._i + 1;
+      this._state = this.Text;
+      if (!config.ignoreTags[node.name]) {
+        // 检查空白符是否有效
+        if (node.name == "pre" || node.attrs.style && node.attrs.style.includes("white-space") && node.attrs.style.includes(
+        "pre")) {
+          this._pre = true;
+          node.pre = true;
+        }
+        slibings.push(node);
+      }
+    } }, { key: "popNode",
+    // 标签出栈处理
+    value: function popNode(node) {
+      // 替换一些标签名
+      if (node.name == "picture") {
+        node.name = "img";
+        if (!node.attrs.src && node.children.length && node.children[0].name == "img")
+        node.attrs.src = node.children[0].attrs.src;
+        if (node.attrs.src && !node.attrs.ignore)
+        node.attrs.i = (this._imgNum++).toString();
+        return node.children = void 0;
+      }
+      if (config.blockTags[node.name]) node.name = "div";else
+      if (!config.trustTags[node.name]) node.name = "span";
+      // 空白符处理
+      if (node.pre) {
+        this._pre = false;
+        node.pre = undefined;
+        for (var i = this._STACK.length; i--;) {
+          if (this._STACK[i].pre)
+          this._pre = true;}
+      }
+      // 处理列表
+      if (node.c) {
+        if (node.name == "ul") {
+          var floor = 1;
+          for (var i = this._STACK.length; i--;) {
+            if (this._STACK[i].name == "ul") floor++;}
+          if (floor != 1)
+          for (i = node.children.length; i--;) {
+            node.children[i].floor = floor;}
+        } else if (node.name == "ol") {var
+          convert = function convert(num, type) {
+            if (type == 'a') return String.fromCharCode(97 + (num - 1) % 26);
+            if (type == 'A') return String.fromCharCode(65 + (num - 1) % 26);
+            if (type == 'i' || type == 'I') {
+              num = (num - 1) % 99 + 1;
+              var one = ['I', "II", "III", "IV", 'V', "VI", "VII", "VIII", "IX"],
+              ten = ['X', "XX", "XXX", "XL", 'L', "LX", "LXX", "LXXX", "XC"],
+              res = (ten[Math.floor(num / 10) - 1] || '') + (one[num % 10 - 1] || '');
+              if (type == 'i') return res.toLowerCase();
+              return res;
+            }
+            return num;
+          };
+          for (var i = 0, num = 1, child; child = node.children[i++];) {
+            if (child.name == "li") {
+              child.type = "ol";
+              child.num = convert(num++, node.attrs.type) + '.';
+            }}
+        }
+      }
+      // 处理表格的边框
+      if (node.name == "table") {var
+
+
+
+
+
+        setBorder = function setBorder(elem) {
+          if (elem.name == "th" || elem.name == "td") {
+            if (node.attrs.border)
+            elem.attrs.style = "border:".concat(node.attrs.border, "px solid gray;").concat(elem.attrs.style || '');
+            if (node.attrs.hasOwnProperty("cellpadding"))
+            elem.attrs.style = "padding:".concat(node.attrs.cellpadding, "px;").concat(elem.attrs.style || '');
+            return;
+          }
+          if (elem.type == "text") return;
+          for (var i = 0; i < (elem.children || []).length; i++) {
+            setBorder(elem.children[i]);}
+        };if (node.attrs.border) node.attrs.style = "border:".concat(node.attrs.border, "px solid gray;").concat(node.attrs.style || '');if (node.attrs.hasOwnProperty("cellspacing")) node.attrs.style = "border-spacing:".concat(node.attrs.cellspacing, "px;").concat(node.attrs.style || '');
+        if (node.attrs.border || node.attrs.hasOwnProperty("cellpadding"))
+        for (var i = 0; i < node.children.length; i++) {
+          setBorder(node.children[i]);}
+      }
+      // 后代选择器处理
+      this.CssHandler.pop && this.CssHandler.pop(node);
+    } }, { key: "checkClose",
+    // 工具函数
+    value: function checkClose() {
+      if (this.data[this._i] == '>' || this.data[this._i] == '/' && this.data[this._i + 1] == '>')
+      return true;
+      return false;
+    } }, { key: "getSelection", value: function getSelection(
+    trim) {
+      var str = this._start == this._i ? '' : this.data.substring(this._start, this._i);
+      while (trim && (blankChar[this.data[++this._i]] || (this._i--, false))) {;}
+      this._start = this._i + 1;
+      return str;
+    } }, { key: "Text",
+    // 状态机
+    value: function Text(c) {
+      if (c == '<') {
+        var next = this.data[this._i + 1];
+        if (next >= 'a' && next <= 'z' || next >= 'A' && next <= 'Z') {
+          this.setText();
+          this._state = this.TagName;
+        } else if (next == '/') {
+          this.setText();
+          this._i++;
+          next = this.data[this._i + 1];
+          if (next >= 'a' && next <= 'z' || next >= 'A' && next <= 'Z') {
+            this._start = this._i + 1;
+            this._state = this.EndTag;
+          } else
+          this._state = this.Comment;
+        } else if (next == '!') {
+          this.setText();
+          this._state = this.Comment;
+        }
+      }
+    } }, { key: "Comment", value: function Comment()
+    {
+      if (this.data.substring(this._i + 1, this._i + 3) == "--" || this.data.substring(this._i + 1, this._i + 7) ==
+      "[CDATA[") {
+        this._i = this.data.indexOf("-->", this._i + 1);
+        if (this._i == -1) return this._i = this.data.length;else
+        this._i = this._i + 2;
+      } else
+      (this._i = this.data.indexOf('>', this._i + 1)) == -1 ? this._i = this.data.length : null;
+      this._start = this._i + 1;
+      this._state = this.Text;
+    } }, { key: "TagName", value: function TagName(
+    c) {
+      if (blankChar[c]) {
+        this._tagName = this.getSelection(true);
+        if (this.checkClose()) this.setNode();else
+        this._state = this.AttrName;
+      } else if (this.checkClose()) {
+        this._tagName = this.getSelection();
+        this.setNode();
+      }
+    } }, { key: "AttrName", value: function AttrName(
+    c) {
+      if (blankChar[c]) {
+        this._attrName = this.getSelection(true).toLowerCase();
+        if (this.data[this._i] == '=') {
+          while (blankChar[this.data[++this._i]]) {;}
+          this._start = this._i--;
+          this._state = this.AttrValue;
+        } else this.setAttr();
+      } else if (c == '=') {
+        this._attrName = this.getSelection().toLowerCase();
+        while (blankChar[this.data[++this._i]]) {;}
+        this._start = this._i--;
+        this._state = this.AttrValue;
+      } else if (this.checkClose()) {
+        this._attrName = this.getSelection().toLowerCase();
+        this.setAttr();
+      }
+    } }, { key: "AttrValue", value: function AttrValue(
+    c) {
+      if (c == '"' || c == "'") {
+        this._start++;
+        if ((this._i = this.data.indexOf(c, this._i + 1)) == -1) return this._i = this.data.length;
+      } else
+      for (; !blankChar[this.data[this._i]] && this.data[this._i] != '>'; this._i++) {;}
+      this._attrValue = this.getSelection();
+      while (this._attrValue.includes("&quot;")) {this._attrValue = this._attrValue.replace("&quot;", '"');}
+      this.setAttr();
+    } }, { key: "EndTag", value: function EndTag(
+    c) {
+      if (blankChar[c] || c == '>' || c == '/') {
+        var name = this.getSelection().toLowerCase();
+        var flag = false;
+        for (var i = this._STACK.length; i--;) {
+          if (this._STACK[i].name == name) {
+            flag = true;
+            break;
+          }}
+        if (flag) {
+          var node;
+          while (flag) {
+            node = this._STACK.pop();
+            if (node.name == name) flag = false;
+            this.popNode(node);
+          }
+        } else if (name == 'p' || name == "br") {
+          var slibings = this._STACK.length ? this._STACK[this._STACK.length - 1].children : this.DOM;
+          slibings.push({
+            name: name,
+            attrs: {} });
+
+        }
+        this._i = this.data.indexOf('>', this._i);
+        if (this._i == -1) this._i = this.data.length;else
+        this._state = this.Text;
+      }
+    } }]);return MpHtmlParser;}();
+;
+module.exports = MpHtmlParser;
+
+/***/ }),
+
+/***/ 524:
 /*!***************************************************!*\
   !*** D:/work/financeForum_app/components/data.js ***!
   \***************************************************/
@@ -13815,7 +14576,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "新微金论坛", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/login": { "navigationBarTitleText": "登录", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/registered": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/collection": { "navigationBarTitleText": "精准匹配", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/apply": { "navigationBarTitleText": "系统应用", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/exchang": { "navigationBarTitleText": "子诺交流区", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/me": { "navigationBarTitleText": "个人中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/articleDetail": { "navigationBarTitleText": "文章详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/queryTool": { "navigationBarTitleText": "查询工具", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/post": { "navigationBarTitleText": "发帖", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/experience": { "navigationBarTitleText": "选择模块", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFollow": { "navigationBarTitleText": "我的关注", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFriend": { "navigationBarTitleText": "我的好友", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mePost": { "navigationBarTitleText": "我的发表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMessage": { "navigationBarTitleText": "我的消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertification": { "navigationBarTitleText": "用户认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meVIP": { "navigationBarTitleText": "开通会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/joinMember": { "navigationBarTitleText": "加入会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meVIPDiff": { "navigationBarTitleText": "会员区别", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meAllProduct": { "navigationBarTitleText": "各省产品汇总", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meReserve": { "navigationBarTitleText": "备用金打造", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meNewbieRead": { "navigationBarTitleText": "新手必读", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSpread": { "navigationBarTitleText": "推广返佣", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meService": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSetting": { "navigationBarTitleText": "个人设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/indexAccurate": { "navigationBarTitleText": "精准匹配", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/indexA": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meEditSet": { "navigationBarTitleText": "信息录入", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meEdit": { "navigationBarTitleText": "编辑", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTreaty": { "navigationBarTitleText": "相关协议", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/paySuccess": { "navigationBarTitleText": "支付成功", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productDetail": { "navigationBarTitleText": "产品详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/searchNetloan": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/allProduct": { "navigationBarTitleText": "所有产品", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/applyShow": { "navigationBarTitleText": "分类", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/iframe": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFan": { "navigationBarTitleText": "我的粉丝", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/payType": { "navigationBarTitleText": "支付方式", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/search": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTeamList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/commissionSet": { "navigationBarTitleText": "返佣设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/getQrCode": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/cashOut": { "navigationBarTitleText": "提现", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/promptlyGetQr": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamPeopleDetail": { "navigationBarTitleText": "用户信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/message": { "navigationBarTitleText": "消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamList": { "navigationBarTitleText": "团队列表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/shareCode": { "navigationBarTitleText": "获取二维码", "usingComponents": { "uni-popup": "/components/uni-popup" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "新微金论坛", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/login": { "navigationBarTitleText": "登录", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/registered": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/collection": { "navigationBarTitleText": "精准匹配", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/apply": { "navigationBarTitleText": "系统应用", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/exchang": { "navigationBarTitleText": "子诺交流区", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/me": { "navigationBarTitleText": "个人中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/articleDetail": { "navigationBarTitleText": "文章详情", "usingComponents": { "jyf-parser": "/components/jyf-parser" }, "usingAutoImportComponents": {} }, "pages/queryTool": { "navigationBarTitleText": "查询工具", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/post": { "navigationBarTitleText": "发帖", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/experience": { "navigationBarTitleText": "选择模块", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFollow": { "navigationBarTitleText": "我的关注", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFriend": { "navigationBarTitleText": "我的好友", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mePost": { "navigationBarTitleText": "我的发表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMessage": { "navigationBarTitleText": "我的消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertification": { "navigationBarTitleText": "用户认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meVIP": { "navigationBarTitleText": "开通会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/joinMember": { "navigationBarTitleText": "加入会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meVIPDiff": { "navigationBarTitleText": "会员区别", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meAllProduct": { "navigationBarTitleText": "各省产品汇总", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meReserve": { "navigationBarTitleText": "备用金打造", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meNewbieRead": { "navigationBarTitleText": "新手必读", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSpread": { "navigationBarTitleText": "推广返佣", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meService": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSetting": { "navigationBarTitleText": "个人设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/indexAccurate": { "navigationBarTitleText": "精准匹配", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/indexA": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meEditSet": { "navigationBarTitleText": "信息录入", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meEdit": { "navigationBarTitleText": "编辑", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTreaty": { "navigationBarTitleText": "相关协议", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/paySuccess": { "navigationBarTitleText": "支付成功", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productDetail": { "navigationBarTitleText": "产品详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/searchNetloan": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/allProduct": { "navigationBarTitleText": "所有产品", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/applyShow": { "navigationBarTitleText": "分类", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/iframe": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFan": { "navigationBarTitleText": "我的粉丝", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/payType": { "navigationBarTitleText": "支付方式", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/search": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTeamList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/commissionSet": { "navigationBarTitleText": "返佣设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/getQrCode": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/cashOut": { "navigationBarTitleText": "提现", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/promptlyGetQr": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamPeopleDetail": { "navigationBarTitleText": "用户信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/message": { "navigationBarTitleText": "消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamList": { "navigationBarTitleText": "团队列表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/shareCode": { "navigationBarTitleText": "获取二维码", "usingComponents": { "uni-popup": "/components/uni-popup" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

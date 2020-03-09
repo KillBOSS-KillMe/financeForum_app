@@ -72,6 +72,7 @@ button,.item text{
 	font-weight: 600;
 	margin: 0 !important;
 	text-align: left;
+	background-color: transparent !important;
 }
 uni-button:after{
 	border: none;

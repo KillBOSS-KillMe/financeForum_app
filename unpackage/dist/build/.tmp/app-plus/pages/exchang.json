@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "子诺交流区",
+  "usingComponents": {
+    "page-search": "/components/pageSearch"
+  }
+}

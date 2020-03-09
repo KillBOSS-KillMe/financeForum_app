@@ -236,7 +236,6 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
           url: "/pages/applyShow?id=".concat(id, "&name=").concat(name) });
 
       } else if (type == 'ex_link') {
-        console.log(extra, '+++++');
         if (extra == '') {
           uni.showToast({
             title: '此页面不存在',
@@ -247,6 +246,7 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
           uni.showToast({
             title: '该小程序在不支持，请下载App',
             icon: 'none' });
+
 
 
 

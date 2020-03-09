@@ -113,10 +113,11 @@
 								})
 						// #endif
 						// #ifdef APP-PLUS || H5
+							 app.globalData.link = extra
 								uni.navigateTo({
 									url:`/pages/iframe?name=${name}`
 								})
-								app.globalData.link = extra
+							
 						// #endif
 					}
 					// plus.runtime.openURL(extra)

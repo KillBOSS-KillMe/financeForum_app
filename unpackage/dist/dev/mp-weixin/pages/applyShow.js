@@ -253,6 +253,7 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
 
 
 
+
         }
         // plus.runtime.openURL(extra)
         // window.location.href = extra

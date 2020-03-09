@@ -15,6 +15,7 @@ export default {
 	},
 	onLoad(e) {
 		console.log(e,'****')
+		console.log(app.globalData.link,'------------------------')
 		this.url = app.globalData.link
 		uni.setNavigationBarTitle({
 			title: e.name
