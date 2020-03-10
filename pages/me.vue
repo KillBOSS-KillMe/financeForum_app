@@ -19,7 +19,7 @@
 		</view>
 		<view class="line"></view>
 		<view class="contentList">
-			<view class="item" data-name="loan" @tap="goPageNavigateTo">
+	<!-- 		<view class="item" data-name="loan" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/lc.png" mode=""></image>
 					</view>
@@ -73,6 +73,12 @@
 						<image src="../static/meByj.png" mode=""></image>
 					</view>
 					<text>白户打造</text>
+			</view> -->
+			<view class="item" data-name="meApply" @tap="goPageNavigateTo">
+					<view>
+						<image src="../static/meByj.png" mode=""></image>
+					</view>
+					<text>系统应用</text>
 			</view>
 			<view class="item" data-name="meSpread" @tap="goPageNavigateTo">
 					<view>

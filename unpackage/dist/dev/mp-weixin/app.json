@@ -60,7 +60,8 @@
     "pages/teamPeopleDetail",
     "pages/message",
     "pages/teamList",
-    "pages/shareCode"
+    "pages/shareCode",
+    "pages/meApply"
   ],
   "subPackages": [],
   "window": {
@@ -88,7 +89,7 @@
       },
       {
         "pagePath": "pages/apply",
-        "text": "系统应用",
+        "text": "资讯",
         "iconPath": "static/apply.png",
         "selectedIconPath": "static/applyCur.png"
       },
@@ -109,6 +110,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap64.json"
+  }
 }

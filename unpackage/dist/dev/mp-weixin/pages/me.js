@@ -270,7 +270,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -410,13 +422,7 @@ var app = getApp();var _default = { data: function data() {return { userInfo: {}
         // 	url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
         // })
       } else {uni.navigateTo({ url: "/pages/".concat(url) });}}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
-      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();
-          res = _helper.default.null2str(res);
-          if (res.statusCode == 200) {
-            _this.userInfo = res.data;
-            _this.imageUrl = _this.imgUrl + _this.userInfo.avatar;
-          }
-        } });
+      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.userInfo = res.data;_this.imageUrl = _this.imgUrl + _this.userInfo.avatar;}} });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

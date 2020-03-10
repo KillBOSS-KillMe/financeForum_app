@@ -255,11 +255,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
 //
 //
 //
@@ -393,7 +389,9 @@ var app = getApp();var parser = function parser() {return Promise.all(/*! import
       this.share('WXSenceTimeline');}, // 获取当前页路径及参数,用于分享
     getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';
+      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;
+      var options = pageNode.options;
+      var optionsString = '?';
       for (var key in options) {
         optionsString += key;
         optionsString += '=';

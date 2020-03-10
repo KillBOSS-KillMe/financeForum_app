@@ -133,21 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -161,112 +147,33 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
-    getList: function getList() {var _this = this;console.log(app.globalData.token);uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', header: { authorization: app.globalData.token },
-        success: function success(res) {
-          // uni.hideLoading();
-          res = _helper.default.null2str(res);
-          console.log(res);
-          if (res.data.status_code == 200) {
-            _this.collectionList = res.data.data;
-          } else {
-            // uni.showToast({
-            // 	title: res.data.message
-            // });
-          }
+var app = getApp();var category = function category() {return __webpack_require__.e(/*! import() | components/qiyue-category */ "components/qiyue-category").then(__webpack_require__.bind(null, /*! ../components/qiyue-category.vue */ 620));};var _default = { components: { category: category }, data: function data() {
+    return {
+      categoryList: [],
+      subCategoryList: [],
+      imgUrl: '' };
 
-        } });
-
-    },
-    go: function go(e) {
-      var type = e.currentTarget.dataset.type;
-      var extra = e.currentTarget.dataset.extra;
-      var id = e.currentTarget.dataset.id;
-      var name = e.currentTarget.dataset.name;
-      console.log(type, extra, id, name);
-      if (type == 'block') {
-        if (extra != '') {
-          if (name == '会员区别') {
-            uni.navigateTo({
-              url: "/pages/articleDetail?id=189" });
-
-          } else if (name == '推广返佣') {
-            uni.navigateTo({
-              url: "/pages/".concat(extra) });
-
-            // uni.navigateTo({
-            // 	url:`/pages/articleDetail?id=189`
-            // })
-          } else {
-            uni.navigateTo({
-              url: "/pages/".concat(extra) });
-
-          }
-
-        } else {
-          uni.showToast({
-            title: '此页面不存在' });
-
-        }
-      } else if (type == 'series') {
-
-      } else if (type == 'post') {
-        uni.navigateTo({
-          url: "/pages/articleDetail?id=".concat(id) });
-
-        // 帖子
-      } else if (type == 'child') {
-        // 应用子
-        console.log(id);
-        uni.navigateTo({
-          url: "/pages/applyShow?id=".concat(id, "&name=").concat(name) });
-
-      } else if (type == 'ex_link') {
-        if (extra == '') {
-          uni.showToast({
-            title: '此页面不存在',
-            icon: 'none' });
-
-        } else {
-
-          uni.showToast({
-            title: '该小程序在不支持，请下载App',
-            icon: 'none' });
-
-
-
-
-
-
-
-
-
-        }
-        // plus.runtime.openURL(extra)
-        // window.location.href = extra
-        // 外联
-      } else if (type == 'category') {
-        uni.navigateTo({
-          url: "/pages/applyShow?id=".concat(id, "&name=").concat(name) });
-
+  },
+  onLoad: function onLoad() {
+    this.imgUrl = _helper.default.imgUrl;
+  },
+  mounted: function mounted() {
+    for (var i = 0; i < 20; i++) {
+      var subList = [];
+      for (var j = 0; j < 30; j++) {
+        subList.push({ "name": "分类" + i + ":商品" + j, "logo": "http://placehold.it/50x50" });
       }
-      console.log(e);
+      this.categoryList.push({ "name": "分类" + i, "subCategoryList": subList });
+    }
+    this.subCategoryList = this.categoryList[0].subCategoryList;
+  },
+  methods: {
+    categoryMainClick: function categoryMainClick(category) {
+      this.subCategoryList = category.subCategoryList;
+    },
+    categorySubClick: function categorySubClick(category) {
+      console.log(category);
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

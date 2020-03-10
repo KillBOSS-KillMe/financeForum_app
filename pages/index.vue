@@ -26,13 +26,10 @@
 				<block v-for="(item, index) in pageNode.board_data" :key="index">
 					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
 				</block>
-				<!-- <view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="Inv = 0">最新产品解析</view>
-				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="Inv = 1">办卡提额技术</view> -->
 			</view>
 			<view class="contentList">
 				<block v-for="(item, index) in listNode" :key="index">
 					<view class="item" @tap="goDetail" :data-id="item.id">
-						<!-- {{item.photoalbums[0].path}} -->
 						<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
 						<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
 						<view class="itemRight">
@@ -46,7 +43,6 @@
 					</view>
 				</block>
 				<view class="null" v-if="pageNode.board_data[Inv].posts.length == 0">暂无数据</view>
-				<!-- <uni-load-more  :loadingType="loadingType" :contentText="contentText" ></uni-load-more> -->
 			</view>
 		</view>
 	</view>

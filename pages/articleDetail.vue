@@ -35,8 +35,6 @@
 				<view class="" v-else>
 					<jyf-parser :html="item.content" ref="article" ></jyf-parser>
 				</view>
-				<!-- <jyf-parser :html="item.content" ref="article" v-if="item.need_reply == 0" :data-content_type="item.content_type" @tap="goVIPPage"></jyf-parser> -->
-				<!-- <rich-text selectable='true' :nodes="item.content" ></rich-text> -->
 			</block>
 <!-- 
 			<view class="tip"  @tap="goVip">

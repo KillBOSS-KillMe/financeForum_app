@@ -34,7 +34,7 @@
 		{
 			"path": "pages/apply",
 			"style": {
-				"navigationBarTitleText": "系统应用"
+				"navigationBarTitleText": "资讯"
 			}
 		},
 		{
@@ -365,6 +365,11 @@
 			"style": {
 				"navigationBarTitleText": "获取二维码"
 			}
+		}, {
+			"path": "pages/meApply",
+			"style": {
+			  "navigationBarTitleText": "系统应用"
+			}
 		}
 	],
 	"globalStyle": {
@@ -400,7 +405,7 @@
 			},
 			{
 				"pagePath": "pages/apply",
-				"text": "系统应用",
+				"text": "资讯",
 				"iconPath": "static/apply.png",
 				"selectedIconPath": "static/applyCur.png"
 			},

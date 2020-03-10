@@ -20,7 +20,6 @@
 					</block>
 				</view>
 			</view>
-			<!-- <view class="line"></view> -->
 		</block>
 	</view>
 </template>
@@ -36,7 +35,6 @@
 			}
 		},
 		onLoad(e) {
-			console.log(e,'****')
 			this.ItemId = e.id
 			this.getList();
 			this.imgUrl = helper.imgUrl
@@ -56,26 +54,20 @@
 						tool_id: this.ItemId
 					},
 					success: res => {
-						// uni.hideLoading();
 						res = helper.null2str(res)
-						console.log(res)
 						if (res.data.status_code == 200) {
 							this.collectionList = res.data.children
-							console.log(this.collectionList,'+++++++++')
 						} else {
 							
 						}
-				
 					}
 				})
 			},
 			getData(e){
-				console.log(e)
 				let type = e.currentTarget.dataset.type
 				let extra = e.currentTarget.dataset.link
 				let id = e.currentTarget.dataset.id
 				let name = e.currentTarget.dataset.name
-				console.log(type, extra, id, name)
 				if(type == 'block'){
 					if (extra != '') {
 						uni.navigateTo({
@@ -120,8 +112,6 @@
 							
 						// #endif
 					}
-					// plus.runtime.openURL(extra)
-					// window.location.href = extra
 					// 外联
 				} else if(type == 'category'){
 					uni.navigateTo({

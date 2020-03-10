@@ -160,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -186,31 +185,24 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', ItemId: '' };}, onLoad: function onLoad(e) {console.log(e, '****');this.ItemId = e.id;this.getList();this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.name });}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/category-tool"), method: 'GET', header: { authorization: app.globalData.token }, data: {
+var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', ItemId: '' };}, onLoad: function onLoad(e) {this.ItemId = e.id;this.getList();this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.name });}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/category-tool"), method: 'GET', header: { authorization: app.globalData.token }, data: {
           tool_id: this.ItemId },
 
         success: function success(res) {
-          // uni.hideLoading();
           res = _helper.default.null2str(res);
-          console.log(res);
           if (res.data.status_code == 200) {
             _this.collectionList = res.data.children;
-            console.log(_this.collectionList, '+++++++++');
           } else {
 
           }
-
         } });
 
     },
     getData: function getData(e) {
-      console.log(e);
       var type = e.currentTarget.dataset.type;
       var extra = e.currentTarget.dataset.link;
       var id = e.currentTarget.dataset.id;
       var name = e.currentTarget.dataset.name;
-      console.log(type, extra, id, name);
       if (type == 'block') {
         if (extra != '') {
           uni.navigateTo({
@@ -255,8 +247,6 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
 
 
         }
-        // plus.runtime.openURL(extra)
-        // window.location.href = extra
         // 外联
       } else if (type == 'category') {
         uni.navigateTo({

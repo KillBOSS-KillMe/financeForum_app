@@ -195,15 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
 //
 //
 //
@@ -262,8 +254,12 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
           uni.reLaunch({ url: './login' });}, 3000);} else {// 执行登录操作
         this.runLogin(loginName, loginPwd);}} else {// 获取用户信息
       this.getUserInfo(); // this.getList()
-    }}, methods: { // 进行登录操作
-    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.showLoading({ title: '登录中...',
+    }},
+  methods: {
+    // 进行登录操作
+    runLogin: function runLogin(loginName, loginPwd) {var _this = this;
+      uni.showLoading({
+        title: '登录中...',
         duration: 1000000 });
 
       uni.request({

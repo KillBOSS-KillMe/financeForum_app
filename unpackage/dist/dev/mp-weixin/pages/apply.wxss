@@ -1,17 +1,17 @@
 
-.apply{
+.apply {
 	width: 750rpx;
 }
-.collection{
+.collection {
 	width: 690rpx;
 	padding: 30rpx 30rpx 0;
 }
-.collection .title{
+.collection .title {
 	color: #333333;
 	font-size: 32rpx;
 	font-weight: 600;
 }
-.collectionList{
+.collectionList {
 	margin: 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -22,10 +22,10 @@
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.collectionList .item{
+.collectionList .item {
 	/* margin-right: ; */
 	width: 131rpx;
-	margin:0 8rpx 30rpx 0;
+	margin: 0 8rpx 30rpx 0;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -35,16 +35,16 @@
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.collectionList .item:nth-child(5n){
+.collectionList .item:nth-child(5n) {
 	margin-right: 0;
 }
-.collectionList .item image{
+.collectionList .item image {
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 50rpx;
 	display: block;
 }
-.collectionList .item text{
+.collectionList .item text {
 	display: block;
 	font-size: 28rpx;
 	color: #333333;
@@ -54,9 +54,9 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.line{
+.line {
 	width: 750rpx;
-	background: #F9F9F9;
+	background: #f9f9f9;
 	height: 6rpx;
 }
 
