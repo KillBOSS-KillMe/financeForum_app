@@ -6,59 +6,75 @@
 					<swiper-item>
 						<view class="navs">
 							<block v-for="(sonItem, sonIndex) in itemAll" :key="sonIndex">
-							<!-- {{sonIndex}} -->
-							<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9" @tap="navsHead">
-								<image src="../static/imgLost.png" mode="" v-if="sonItem.icon == ''"></image>
-								<image :src="imgUrl+sonItem.icon" mode="" v-else></image>
-								<text>{{ sonItem.title }}</text>
-							</view>
+								<!-- {{sonIndex}} -->
+								<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9" @tap="navsHead">
+									<image src="../static/imgLost.png" mode="" v-if="sonItem.icon == ''"></image>
+									<image :src="imgUrl + sonItem.icon" mode="" v-else></image>
+									<text>{{ sonItem.title }}</text>
+								</view>
 							</block>
 						</view>
 					</swiper-item>
 				</block>
-				
 			</swiper>
 		</view>
 		<view class="line"></view>
-		<view class="query"  @tap="getSearch">
-			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled"/>
+		<view class="query" @tap="getSearch">
+			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled" />
 			<text>查网贷</text>
 		</view>
 		<view class="line"></view>
 		<view class="content">
-			<view class="inv-h-w">
-				<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="changeTab(0)">最新产品</view>
-				<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="changeTab(1)">热门产品</view>
-				<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
-			</view>
-			<view class="contentList">
-				<block  v-for="(item, index) in list" :key="index">
-					<view class="item" @tap="goProduct" :data-id="item.id">
-						<image :src="imgUrl + item.icon" mode="aspectFill"></image>
-						<view class="itemRight">
-							<view class="productInfo">
-								<text>{{ item.name }}</text>
-								<view>
-									<text>申请人数:</text>
-									<text class="cur">{{ item.apply_sum }}</text>
-								</view>
-							</view>
-							<view class="moneyBox">
-								<view class="money">
-									额度：
-									<text>{{ item.quota }}</text>
-								</view>
-								<view class="money">
-									费用：
-									<text>{{ item.fee_ratio }}</text>
-								</view>
-							</view>
-							<text class="title">{{ item.introduction }}</text>
+			<view class="nav-left">
+				<scroll-view scroll-y>	
+					<block v-for="(item, index) in content" :key="index">
+						<view class="nav-left-item" @tap="leftNav" :class="['colorD', active == index ? 'color' : '']">
+							{{item.title}}
 						</view>
-					</view>
-				</block>
-				
+					</block>
+				</scroll-view>
 			</view>
+			<view class="nav_left">
+				<view class="inv-h-w">
+					<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="changeTab(0)">最新产品</view>
+					<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="changeTab(1)">热门产品</view>
+					<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
+				</view>
+				<view class="navLeftNav" >
+					<block v-for="(item, index) in content" :key="index">
+						<text @tap="headNav" :style="index==activeHead?'color:'+activeTextColor+';background-color:'+activeBackgroundColor:''">{{item.title}}{{index}}</text>
+					</block>
+					
+				</view>
+				<view class="contentList">
+					<scroll-view scroll-y>	
+					<block  v-for="(item, index) in list" :key="index">
+						<view class="item" @tap="goProduct" :data-id="item.id">
+							<image :src="imgUrl + item.icon" mode="aspectFill"></image>
+							<view class="itemRight">
+								<view class="productInfo">
+									<text>{{ item.name }}</text>
+									<text class="money" style="font-size: 20rpx;">申请人{{ item.apply_sum }}</text>
+								</view>
+								<view class="moneyBox">
+									<view class="money">
+										额度：
+										<text>{{ item.quota }}</text>
+									</view>
+									<view class="money">
+										费用：
+										<text>{{ item.fee_ratio }}</text>
+									</view>
+								</view>
+								<text class="title">{{ item.introduction }}</text>
+							
+							</view>
+						</view>
+					</block>
+					</scroll-view>
+				</view>
+			</view>
+			
 		</view>
 	</view>
 </template>
@@ -76,9 +92,35 @@ export default {
 			navList: [],
 			tabType: 'is_new',
 			page_size: '10',
-			page:'1',
-			imgUrl: ''
+			page: '1',
+			imgUrl: '',
+			content:[
+				{id:'1',title:'银行贷款',type:[
+					{typeOf: '全部'}
+				]},
+				{id:'2',title:'中国银行'},
+			],
+			active: '0',
+			activeStyle: {
+				color: this.activeTextColor,
+				backgroundColor: this.activeBackgroundColor
+			},
+			activeHead: '0'
 		};
+	},
+	props: {
+		defaultActive: {
+			type: Number,
+			default: 0
+		},
+		activeTextColor: {
+			type: String,
+			default: '#333'
+		},
+		activeBackgroundColor: {
+			type: String,
+			default: '#ffffff'
+		},
 	},
 	onLoad() {
 		this.getNav();
@@ -88,30 +130,34 @@ export default {
 	methods: {
 		navsHead() {
 			uni.navigateTo({
-				url:'/pages/allProduct'
-			})
+				url: '/pages/allProduct'
+			});
 		},
-		changeTab(e){
-			console.log(e)
+		// 左边导航
+		leftNav(index){
+			this.active = index;
+		},
+		changeTab(e) {
+			console.log(e);
 			this.Inv = e;
-			this.page = '1'
-			if(this.Inv == 0){
+			this.page = '1';
+			if (this.Inv == 0) {
 				// 最新
-				this.tabType = 'is_new'
-			} else if(this.Inv == 1){
+				this.tabType = 'is_new';
+			} else if (this.Inv == 1) {
 				// 热门
-				this.tabType = 'is_hot'
-			} else if(this.Inv == 3){
+				this.tabType = 'is_hot';
+			} else if (this.Inv == 3) {
 				// 推荐
-				this.tabType = 'is_romend'
+				this.tabType = 'is_romend';
 			}
-			this.list = []
-			this.getTab()
+			this.list = [];
+			this.getTab();
 		},
 		getSearch() {
 			uni.navigateTo({
-				url:'/pages/searchNetloan'
-			})
+				url: '/pages/searchNetloan'
+			});
 		},
 		//导航
 		getNav() {
@@ -127,12 +173,12 @@ export default {
 					if (res.data.status_code == 200) {
 						let arr = res.data.data;
 						let result = [];
-						let num = 10
+						let num = 10;
 						for (let i = 0; i < arr.length; i += num) {
-							result.push(arr.slice(i,i+num))
+							result.push(arr.slice(i, i + num));
 						}
-						console.log(result)
-						this.navList = result
+						console.log(result);
+						this.navList = result;
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -150,16 +196,16 @@ export default {
 				header: {
 					authorization: app.globalData.token
 				},
-				data:{
+				data: {
 					type: this.tabType,
-					page_size:this.page_size,
-					page:this.page
+					page_size: this.page_size,
+					page: this.page
 				},
 				success: res => {
 					res = helper.null2str(res);
 					console.log(res);
 					if (res.data.status_code == 200) {
-						this.list = this.list.concat(res.data.data)
+						this.list = this.list.concat(res.data.data);
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -169,16 +215,16 @@ export default {
 				}
 			});
 		},
-		goProduct(e){
-			console.log(e)
-			let id = e.currentTarget.dataset.id
+		goProduct(e) {
+			console.log(e);
+			let id = e.currentTarget.dataset.id;
 			uni.navigateTo({
-				url:`/pages/productDetail?id=${id}`
-			})
+				url: `/pages/productDetail?id=${id}`
+			});
 		},
 		onReachBottom() {
-			this.page ++;
-			this.getTab()
+			this.page++;
+			this.getTab();
 		}
 	}
 };
@@ -220,7 +266,7 @@ export default {
 	width: 66rpx;
 	height: 66rpx;
 }
-.uni-swiper-dots-horizontal{
+.uni-swiper-dots-horizontal {
 	bottom: 0 !important;
 }
 .navs .bannerItem > text {
@@ -284,18 +330,19 @@ export default {
 	border-radius: 10rpx;
 }
 .content {
-	width: 690rpx;
-	padding: 0 30rpx;
+	width: 750rpx;
+	/* padding: 0 30rpx; */
+	display: flex;
 }
 .content .inv-h-w {
 	display: flex;
+	width: 510rpx;
 }
 .content .inv-h {
 	font-size: 32rpx;
 	flex: 1;
 	text-align: center;
 	color: #999999;
-	padding: 30rpx 0;
 	font-weight: 600;
 }
 .content .inv-h-se {
@@ -307,8 +354,12 @@ export default {
 	display: block;
 	border-bottom: 6rpx solid #2390dc;
 	width: 46rpx;
-	margin: 26rpx auto 0;
+	margin: 10rpx auto 0;
 	border-radius: 3rpx;
+}
+.content .contentList{
+	width: 510rpx;
+	/* background-color: #0066CC; */
 }
 .content .contentList .item {
 	display: flex;
@@ -316,26 +367,27 @@ export default {
 	margin-bottom: 40rpx;
 }
 .content .contentList .item image {
-	width: 130rpx;
-	height: 130rpx;
-	border-radius: 10rpx;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 6rpx;
 }
 .content .contentList .item .itemRight {
-	width: 530rpx;
+	/* width: 530rpx; */
 	display: flex;
 	align-content: space-between;
 	flex-wrap: wrap;
+	width: 389rpx;
 }
 .content .contentList .item .itemRight .productInfo {
-	width: 530rpx;
+	/* width: 530rpx; */
 	display: flex;
 	justify-content: space-between;
 }
 .content .contentList .item .itemRight .productInfo > text {
-	font-size: 30rpx;
+	font-size: 26rpx;
 	color: #333333;
 	font-weight: 600;
-	overflow : hidden;
+	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -348,7 +400,7 @@ export default {
 	align-items: flex-start;
 }
 .content .contentList .item .itemRight .productInfo > view text {
-	font-size: 28rpx;
+	font-size: 26rpx;
 	color: #999;
 }
 .content .contentList .item .itemRight .productInfo > view .cur {
@@ -356,7 +408,7 @@ export default {
 	margin-left: 6rpx;
 }
 .content .contentList .item .itemRight .title {
-	font-size: 28rpx;
+	font-size: 26rpx;
 	color: #999;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -365,12 +417,12 @@ export default {
 	-webkit-box-orient: vertical;
 }
 .content .moneyBox {
-	width: 530rpx;
+	width: 400rpx;
 	display: flex;
 }
 .content .money {
 	display: flex;
-	font-size: 26rpx;
+	font-size: 24rpx;
 	color: #999;
 	margin-right: 20rpx;
 	white-space: nowrap;
@@ -381,4 +433,40 @@ export default {
 	margin-left: 10rpx;
 }
 
+scroll-view {
+	height: 100%;
+}
+.nav-left {
+	width: 190rpx;
+	margin-right: 20rpx;
+}
+.nav-left-item {
+	height: 92rpx;
+	font-size: 26rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.colorD{
+	background: #2390dc;
+	color: #fff;
+}
+.color{
+	background: #fff;
+	color: #333;
+}
+.navLeftNav{
+	width: 510rpx;
+	display: flex;
+	justify-content: flex-start;
+	margin: 10rpx 0;
+}
+.navLeftNav text{
+	opacity: 0.8;
+	font-size: 28rpx;
+	font-weight: 400;
+	text-align: center;
+	color: #676767;
+	margin-right: 14rpx;
+}
 </style>

@@ -1,6 +1,5 @@
 <template>
 	<view class="apply">
-		<!-- <category :categoryList="categoryList" :name="name" :subCategoryList="subCategoryList" @categoryMainClick="categoryMainClick" @categorySubClick="categorySubClick"></category> -->
 		<view class="nav">
 			<view class="nav-left">
 				<scroll-view scroll-y>
@@ -153,10 +152,10 @@ export default {
 </script>
 
 <style>
-.apply {
-	width: 750rpx;
-}
-.nav {
+	.apply {
+		width: 750rpx;
+	}
+ .nav {
 		display: flex;
 		height: calc(100vh - 9px);
 		width: 750rpx;
