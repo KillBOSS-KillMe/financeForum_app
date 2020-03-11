@@ -26,10 +26,6 @@
 					}
 				});
 			},
-			// getSearchKey(e) {
-			// 	console.log(e.detail.value)
-			// 	this.searchKey = e.detail.value
-			// },
 			goSearch() {
 				// 进入搜索页
 				uni.navigateTo({

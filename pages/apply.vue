@@ -16,28 +16,103 @@ export default {
 		return {
 			categoryList:[],
 			subCategoryList:[],
-			imgUrl:''
+			imgUrl:'',
+			page: '1',
+			page_size: '10',
+			boardId: ''
 		}
 	},
 	onLoad() {
 		this.imgUrl = helper.imgUrl
+		this.getNav()
 	},
 	mounted() {
-		for(var i=0;i<20;i++){
-				var subList = [];
-				for(var j=0;j<30;j++){
-						subList.push({"name":"分类"+i+":商品"+j,"logo":"http://placehold.it/50x50"})
-				}
-				this.categoryList.push({"name":"分类"+i,"subCategoryList":subList})
-		}
-		this.subCategoryList = this.categoryList[0].subCategoryList;
+		// for(var i=0;i<20;i++){
+		// 		var subList = [];
+		// 		for(var j=0;j<30;j++){
+		// 				subList.push({"name":"分类"+i+":商品"+j,"logo":"http://placehold.it/50x50"})
+		// 		}
+		// 		this.categoryList.push({"name":"分类"+i,"subCategoryList":subList})
+		// }
+		// this.subCategoryList = this.categoryList[0].subCategoryList;
 	},
 	methods: {
-		categoryMainClick(category){
-			this.subCategoryList = category.subCategoryList;
+		categoryMainClick(e){
+			console.log(e)
+			this.boardId = e
+			this.page = '1'
+			this.page_size = '10'
+			this.subCategoryList = []
+			// this.subCategoryList = category.subCategoryList;
+			this.getList()
 		},
-		categorySubClick(category){
-			console.log(category);
+		categorySubClick(e){
+			console.log(e);
+			uni.navigateTo({
+				url:`/pages/articleDetail?id=${e.id}`
+			})
+		},
+		// 获取导航
+		getNav(){
+			uni.request({
+				url: `${helper.requestUrl}/board/boards`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				success: res => {
+					res = helper.null2str(res)
+					console.log(res)
+					if (res.data.status_code == 200) {
+						this.categoryList = res.data.data
+						this.boardId = res.data.data[0].id
+						this.getList()
+						console.log(this.boardId)
+					} else {
+						uni.showToast({
+							title: res.data.message
+						});
+					}
+			
+				}
+			})
+		},
+		//获取数据
+		getList(){
+			uni.request({
+				url: `${helper.requestUrl}/posts/board-posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data:{
+					board_id: this.boardId,
+					page_size: this.page_size,
+					page: this.page
+				},
+				success: res => {
+					res = helper.null2str(res)
+					console.log(res)
+					if (res.data.status_code == 200) {
+						 this.subCategoryList = this.subCategoryList.concat(res.data.data)
+						 if(res.data.data == 0){
+						 	uni.showToast({
+						 		title:'暂无更多数据',
+						 		icon:"none"
+						 	})
+						 }
+					} else {
+						uni.showToast({
+							title: res.data.message
+						});
+					}
+			
+				}
+			})
+		},
+		onReachBottom() {
+			this.page ++;
+			this.getList()
 		}
 	}
 }

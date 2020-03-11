@@ -3,17 +3,25 @@
 		<view class="nav">
 			<view class="nav-left">
 				<scroll-view scroll-y :style="'height:'+height+'px'">
-					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryClickMain(item,index)" :key="index"
+					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryClickMain(item.id,index)" :key="index"
 					 :style="index==categoryActive?'color:'+activeTextColor+';background-color:'+activeBackgroundColor:''">
-						{{item[label]}}
+						{{item.title}}
 					</view>
 				</scroll-view>
 			</view>
 			<view class="nav-right">
 				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" :style="'height:'+height+'px'" scroll-with-animation>
 					<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categoryClickSub(item)">
-						<image :src="item[imgSrc]" />
-						<view>{{item[label]}}</view>
+						<image :src="'http://jinrong.beaconway.cn/uploads/'+item.photoalbums[0].path" />
+						<view class="navRightContent">
+							<text>{{item.title}}</text>
+							<view class="applyInfo">
+								<text class="time">{{item.created_at}}</text>
+								<text class="name">{{item.user.name}}</text>
+								<text>评{{item.comments_count}}</text>
+							</view>
+						</view>
+						<view class="null" v-if="subCategoryList.length == 0">暂无数据</view>
 					</view>
 				</scroll-view>
 			</view>
@@ -33,7 +41,8 @@
 				activeStyle: {
 					color: this.activeTextColor,
 					backgroundColor: this.activeBackgroundColor
-				}
+				},
+				imgUrl: ''
 			}
 		},
 		props: {
@@ -58,19 +67,11 @@
 			},
 			activeTextColor: {
 				type: String,
-				default: '#F24544'
+				default: '#2390DC'
 			},
 			activeBackgroundColor: {
 				type: String,
 				default: '#e5e5e5'
-			},
-			label: {
-				type: String,
-				default: 'name'
-			},
-			imgSrc: {
-				type: String,
-				default: 'logo'
 			},
 			//主分类点击事件
 			categoryMainClick: {},
@@ -109,44 +110,80 @@
 <style scoped>
 	.nav {
 		display: flex;
-		width: 100%;
+		width: 750rpx;
 	}
 
 	.nav-left {
-		width: 30%;
+		width: 190rpx;
 	}
 
 	.nav-left-item {
-		height: 50px;
+		height: 92rpx;
 		border-right: solid 1px #E0E0E0;
 		border-bottom: solid 1px #E0E0E0;
-		font-size: 14px;
+		font-size: 26rpx;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.nav-right {
-		width: 70%;
-		padding-top: 11px;
+		width: 510rpx;
+		padding: 22rpx 0 22rpx 22rpx;
 	}
 
 	.nav-right-item {
-		width: 28%;
-		height: 100px;
-		float: left;
-		text-align: center;
-		padding: 5px;
-		font-size: 13px;
+		display: flex;
+		justify-content: flex-start;
+		margin: 0 0 30rpx;
+		width: 504rpx;
 	}
-
+	.navRightContent{
+		width: 440rpx;
+		display: flex;
+		align-content: space-between;
+		flex-wrap: wrap;
+	}
+	.navRightContent>text{
+		font-size: 26rpx;
+		color: #333333;
+		font-weight: 600;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
 	.nav-right-item image {
-		width: 50px;
-		height: 50px;
+		width: 130rpx;
+		height: 110rpx;
+		border-radius: 8rpx;
+		margin-right: 16rpx;
 	}
-
+	.applyInfo{
+		display: flex;
+		justify-content: space-between;
+		width: 354rpx;
+	}
+	.applyInfo>text{
+		display: block;
+		font-size: 22rpx;
+		color: #999999;
+	}
+	.name{
+		width: 90rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.time{
+		width: 150rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
 	.active {
-		color: #F24544;
+		color: #2390DC;
 	}
 
 	.padding {

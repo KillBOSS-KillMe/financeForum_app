@@ -191,8 +191,8 @@ export default {
 }
 .banner {
 	width: 690rpx;
-	height: 370rpx;
-	padding: 30rpx 30rpx 10rpx;
+	height: 360rpx;
+	padding: 30rpx 30rpx 20rpx;
 }
 .banner .swiper {
 	width: 100%;

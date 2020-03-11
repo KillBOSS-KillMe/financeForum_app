@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -147,33 +147,109 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var category = function category() {return __webpack_require__.e(/*! import() | components/qiyue-category */ "components/qiyue-category").then(__webpack_require__.bind(null, /*! ../components/qiyue-category.vue */ 620));};var _default = { components: { category: category }, data: function data() {
+var app = getApp();var category = function category() {return __webpack_require__.e(/*! import() | components/qiyue-category */ "components/qiyue-category").then(__webpack_require__.bind(null, /*! ../components/qiyue-category.vue */ 517));};var _default = { components: { category: category }, data: function data() {
     return {
       categoryList: [],
       subCategoryList: [],
-      imgUrl: '' };
+      imgUrl: '',
+      page: '1',
+      page_size: '10',
+      boardId: '' };
 
   },
   onLoad: function onLoad() {
     this.imgUrl = _helper.default.imgUrl;
+    this.getNav();
   },
   mounted: function mounted() {
-    for (var i = 0; i < 20; i++) {
-      var subList = [];
-      for (var j = 0; j < 30; j++) {
-        subList.push({ "name": "分类" + i + ":商品" + j, "logo": "http://placehold.it/50x50" });
-      }
-      this.categoryList.push({ "name": "分类" + i, "subCategoryList": subList });
-    }
-    this.subCategoryList = this.categoryList[0].subCategoryList;
+    // for(var i=0;i<20;i++){
+    // 		var subList = [];
+    // 		for(var j=0;j<30;j++){
+    // 				subList.push({"name":"分类"+i+":商品"+j,"logo":"http://placehold.it/50x50"})
+    // 		}
+    // 		this.categoryList.push({"name":"分类"+i,"subCategoryList":subList})
+    // }
+    // this.subCategoryList = this.categoryList[0].subCategoryList;
   },
   methods: {
-    categoryMainClick: function categoryMainClick(category) {
-      this.subCategoryList = category.subCategoryList;
+    categoryMainClick: function categoryMainClick(e) {
+      console.log(e);
+      this.boardId = e;
+      this.page = '1';
+      this.page_size = '10';
+      this.subCategoryList = [];
+      // this.subCategoryList = category.subCategoryList;
+      this.getList();
     },
-    categorySubClick: function categorySubClick(category) {
-      console.log(category);
+    categorySubClick: function categorySubClick(e) {
+      console.log(e);
+      uni.navigateTo({
+        url: "/pages/articleDetail?id=".concat(e.id) });
+
+    },
+    // 获取导航
+    getNav: function getNav() {var _this = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/board/boards"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            _this.categoryList = res.data.data;
+            _this.boardId = res.data.data[0].id;
+            _this.getList();
+            console.log(_this.boardId);
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    },
+    //获取数据
+    getList: function getList() {var _this2 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          board_id: this.boardId,
+          page_size: this.page_size,
+          page: this.page },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            _this2.subCategoryList = _this2.subCategoryList.concat(res.data.data);
+            if (res.data.data == 0) {
+              uni.showToast({
+                title: '暂无更多数据',
+                icon: "none" });
+
+            }
+          } else {
+            uni.showToast({
+              title: res.data.message });
+
+          }
+
+        } });
+
+    },
+    onReachBottom: function onReachBottom() {
+      this.page++;
+      this.getList();
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
