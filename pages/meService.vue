@@ -2,12 +2,12 @@
 	<view class="meMessage">
 		<view class="item">
 			<view class="iconFont"><uni-icons type="" class="iconfont iconweixin1"></uni-icons></view>
-			<button type="" open-type="contact" hover-class="btn-hover">联系客服微信 bn154896547</button>
+			<button type="" open-type="contact" hover-class="btn-hover">联系客服微信 1718444444</button>
 			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 		</view>
-		<view class="item" @tap="get(2)">
+		<view class="item">
 			<view class="iconFont"><uni-icons type="" class="iconfont icondianhua"></uni-icons></view>
-			<button type=""  hover-class="btn-hover">联系客服电话 18535464004</button>
+			<button type=""  hover-class="btn-hover">联系客服QQ 1071076818</button>
 			<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 		</view>
 	</view>
@@ -23,16 +23,7 @@
 			}
 		},
 		methods: {
-			get(e){
-				console.log(e)
-				if(e == '2'){
-					uni.makePhoneCall({
-					    phoneNumber: '18535464004' //仅为示例
-					});
-				} else{
-					
-				}
-			}
+
 		}
 	}
 </script>

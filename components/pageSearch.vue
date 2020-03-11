@@ -1,3 +1,4 @@
+<!-- 商品分类一级导航 -->
 <template>
 	<view class="pageSearch">
 		<uni-icon type="" @tap="goCode" class="iconfont iconsaoyisao"></uni-icon>

@@ -1,17 +1,39 @@
 <template>
 	<view class="apply">
-		<category :categoryList="categoryList" :subCategoryList="subCategoryList" @categoryMainClick="categoryMainClick" @categorySubClick="categorySubClick"></category>
+		<!-- <category :categoryList="categoryList" :name="name" :subCategoryList="subCategoryList" @categoryMainClick="categoryMainClick" @categorySubClick="categorySubClick"></category> -->
+		<view class="nav">
+			<view class="nav-left">
+				<scroll-view scroll-y>
+					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryMainClick(item.id,index,item.title)" :key="index"
+					 :style="index==categoryActive?'color:'+activeTextColor+';background-color:'+activeBackgroundColor:''">
+						{{item.title}}
+					</view>
+				</scroll-view>
+			</view>
+			<view class="nav-right">
+				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" scroll-with-animation>
+					<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item)">
+						<image :src="'http://jinrong.beaconway.cn/uploads/'+item.photoalbums[0].path" />
+						<view class="navRightContent">
+							<text>{{item.title}}</text>
+							<view class="applyInfo">
+								<text class="time">{{item.created_at}}</text>
+								<text class="name">{{item.user.name}}</text>
+								<text>评{{item.comments_count}}</text>
+							</view>
+						</view>
+						<view class="null" v-if="subCategoryList.length == 0">暂无数据</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
 const app = getApp()
 import helper from '../common/helper.js';
-import category from "../components/qiyue-category.vue"
 export default {
-	components:{
-		category
-	},
 	data() {
 		return {
 			categoryList:[],
@@ -19,31 +41,43 @@ export default {
 			imgUrl:'',
 			page: '1',
 			page_size: '10',
-			boardId: ''
+			boardId: '',
+			categoryActive: 0,
+			activeStyle: {
+				color: this.activeTextColor,
+				backgroundColor: this.activeBackgroundColor
+			},
 		}
+	},
+	props: {
+		//主分类激活索引
+		defaultActive: {
+			type: Number,
+			default: 0
+		},
+		activeTextColor: {
+			type: String,
+			default: '#333'
+		},
+		activeBackgroundColor: {
+			type: String,
+			default: '#ffffff'
+		},
 	},
 	onLoad() {
 		this.imgUrl = helper.imgUrl
 		this.getNav()
 	},
 	mounted() {
-		// for(var i=0;i<20;i++){
-		// 		var subList = [];
-		// 		for(var j=0;j<30;j++){
-		// 				subList.push({"name":"分类"+i+":商品"+j,"logo":"http://placehold.it/50x50"})
-		// 		}
-		// 		this.categoryList.push({"name":"分类"+i,"subCategoryList":subList})
-		// }
-		// this.subCategoryList = this.categoryList[0].subCategoryList;
+		
 	},
 	methods: {
-		categoryMainClick(e){
-			console.log(e)
-			this.boardId = e
+		categoryMainClick(id,index,name){
+			this.boardId = id
 			this.page = '1'
 			this.page_size = '10'
 			this.subCategoryList = []
-			// this.subCategoryList = category.subCategoryList;
+			this.categoryActive = index;
 			this.getList()
 		},
 		categorySubClick(e){
@@ -122,51 +156,91 @@ export default {
 .apply {
 	width: 750rpx;
 }
-.collection {
-	width: 690rpx;
-	padding: 30rpx 30rpx 0;
-}
-.collection .title {
-	color: #333333;
-	font-size: 32rpx;
-	font-weight: 600;
-}
-.collectionList {
-	margin: 30rpx 0;
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
-}
-.collectionList .item {
-	/* margin-right: ; */
-	width: 131rpx;
-	margin: 0 8rpx 30rpx 0;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-.collectionList .item:nth-child(5n) {
-	margin-right: 0;
-}
-.collectionList .item image {
-	width: 96rpx;
-	height: 96rpx;
-	border-radius: 50rpx;
-	display: block;
-}
-.collectionList .item text {
-	display: block;
-	font-size: 28rpx;
-	color: #333333;
-	font-weight: 600;
-	margin-top: 16rpx;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-.line {
-	width: 750rpx;
-	background: #f9f9f9;
-	height: 6rpx;
-}
+.nav {
+		display: flex;
+		height: calc(100vh - 9px);
+		width: 750rpx;
+	}
+	scroll-view {
+		height: 100%;
+	}
+	.nav-left {
+		width: 190rpx;
+	
+	}
+	.nav-left-item {
+		height: 92rpx;
+		font-size: 26rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+			background: #2390dc;
+			color: #fff;
+	}
+	.nav-right {
+		width: 510rpx;
+		padding: 22rpx 0 22rpx 22rpx;
+	}
+
+	.nav-right-item {
+		display: flex;
+		justify-content: flex-start;
+		margin: 0 0 30rpx;
+		width: 504rpx;
+	}
+	.navRightContent{
+		width: 440rpx;
+		display: flex;
+		align-content: space-between;
+		flex-wrap: wrap;
+	}
+	.navRightContent>text{
+		font-size: 26rpx;
+		color: #333333;
+		font-weight: 600;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	.nav-right-item image {
+		width: 130rpx;
+		height: 110rpx;
+		border-radius: 8rpx;
+		margin-right: 16rpx;
+	}
+	.applyInfo{
+		display: flex;
+		justify-content: space-between;
+		width: 354rpx;
+	}
+	.applyInfo>text{
+		display: block;
+		font-size: 22rpx;
+		color: #999999;
+	}
+	.name{
+		width: 90rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.time{
+		width: 150rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.active {
+		color: #2390DC;
+	}
+
+	.padding {
+		height: var(--status-bar-height);
+		width: 100%;
+		top: 0;
+		position: fixed;
+		background-color: #F24544;
+	}
 </style>

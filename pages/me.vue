@@ -19,61 +19,6 @@
 		</view>
 		<view class="line"></view>
 		<view class="contentList">
-	<!-- 		<view class="item" data-name="loan" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/lc.png" mode=""></image>
-					</view>
-					<text>贷款流程</text>
-			</view>
-			<view class="item" data-name="rejection" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/hz.png" mode=""></image>
-					</view>
-					<text>拒贷原因</text>
-			</view>
-			
-			<view class="item" data-name="experience" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/xd.png" mode=""></image>
-					</view>
-					<text>从业感悟</text>
-			</view>
-			<view class="item" data-name="risk" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/fx.png" mode=""></image>
-					</view>
-					<text>风险把控</text>
-			</view>
-		<view class="item" data-name="meAllProduct" @tap="goPageNavigateTo">
-				<view>
-					<image src="../static/meBk.png" mode=""></image>
-				</view>
-				<text>办卡提额</text>
-		</view>
-			<view class="item" data-name="house" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/exchangeCur.png" mode=""></image>
-					</view>
-					<text>玩转房产</text>
-			</view><view class="item" data-name="cashMode" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/hz.png" mode=""></image>
-					</view>
-					<text>变现模式</text>
-			</view>
-			<view class="item" data-name="siwei" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meJzpp.png" mode=""></image>
-					</view>
-					<text>精准匹配</text>
-			</view>
-			
-			<view class="item" data-name="meReserve" @tap="goPageNavigateTo">
-					<view>
-						<image src="../static/meByj.png" mode=""></image>
-					</view>
-					<text>白户打造</text>
-			</view> -->
 			<view class="item" data-name="meApply" @tap="goPageNavigateTo">
 					<view>
 						<image src="../static/meByj.png" mode=""></image>
@@ -166,83 +111,6 @@
 						url: `/pages/articleDetail?id=${21}`
 					})
 					
-				}else if(url == 'meReserve'){
-					uni.navigateTo({
-						url: `/pages/indexA?id=${9}&name=${'白户打造'}`
-					})
-				}else if(url == 'meAllProduct'){
-					uni.navigateTo({
-						url: `/pages/indexA?id=${7}&name=${'办卡提额'}`
-					})
-				}else if(url == 'rejection'){
-					uni.navigateTo({
-						url: `/pages/indexA?id=${14}&name=${'拒贷原因'}`
-					})
-				}else if(url == 'risk'){
-					if(this.userInfo.type == 'normal'){
-						uni.showToast({
-							title: '您不是会员，暂无此权限',
-							icon: 'none',
-							duration: 1000
-						})
-					}else{
-						uni.navigateTo({
-							url: `/pages/indexA?id=${15}&name=${'风险把控'}`
-						})
-					}
-				}else if(url == 'loan'){
-					if(this.userInfo.type == 'normal'){
-						uni.showToast({
-							title: '您不是会员，暂无此权限',
-							icon: 'none',
-							duration: 1000
-						})
-					}else{
-						uni.navigateTo({
-							url: `/pages/indexA?id=${16}&name=${'贷款流程'}`
-						})
-					}
-				}else if(url == 'house'){
-					if(this.userInfo.type == 'normal'){
-						uni.showToast({
-							title: '您不是会员，暂无此权限',
-							icon: 'none',
-							duration: 1000
-						})
-					}else{
-						uni.navigateTo({
-							url: `/pages/indexA?id=${21}&name=${'玩转房产'}`
-						})
-					}
-				}else if(url == 'cashMode'){
-					if(this.userInfo.type == 'normal'){
-						uni.showToast({
-							title: '您不是会员，暂无此权限',
-							icon: 'none',
-							duration: 1000
-						})
-					}else{
-						uni.navigateTo({
-							url: `/pages/indexA?id=${22}&name=${'变现模式'}`
-						})
-					}
-				}else if(url == 'experience'){
-					uni.navigateTo({
-						url: `/pages/indexA?id=${24}&name=${'从业感悟'}`
-					});
-				}else if(url == 'siwei'){
-					if(this.userInfo.type == 'normal'){
-						uni.showToast({
-							title: '您不是会员，暂无此权限',
-							icon: 'none',
-							duration: 1000
-						})
-					}else{
-						uni.navigateTo({
-							url: `/pages/indexA?id=${5}&name=${'精准匹配'}`
-						})
-					}
-					
 				}else if(url == 'meSpread'){
 					if(this.userInfo.type == 'normal'){
 						uni.showToast({
@@ -260,9 +128,6 @@
 							url: `/pages/meSpread`
 						})
 					}
-					// uni.navigateTo({
-					// 	url: `/pages/indexAccurate?id=${11}&name=${'各省产品汇总'}`
-					// })
 				}else{
 					uni.navigateTo({
 						url: `/pages/${url}`

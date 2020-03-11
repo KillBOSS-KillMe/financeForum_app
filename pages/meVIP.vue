@@ -16,56 +16,37 @@
 					</swiper>
 				</view>
 			</view>
-			<view class="list">
+			<view class="list" current='current'>
 				<text>会员可享受一以下功能权限</text>
-				<view class="listItem" v-if="bannerIndex == '1'">
-					<block v-for="(item,index) in list" :key="index">
-						<view class="item">
-							<view class="icon blue"><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
-							<text>{{item.title}}</text>
-						</view>
-					</block>
-				</view>
-				<view class="listItem" v-if="bannerIndex == '0'">
-					<block v-for="(item,index) in list" :key="index">
-						<view class="item"  v-if="item.icon == '1'">
-							<view class="icon" :class="['blue', item.icon == bannerIndex ? 'cur' : '']"><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
-							<text>{{item.title}}</text>
-						</view>
-					</block>
+				<view class="listItem">
+						<block v-for="(itemL,indexL) in vip.data[current].permission" :key="indexL">
+							<view class="item">
+								<image :src="imgUrl + itemL.icon" mode=""></image>
+								<text>{{itemL.name}}</text>
+							</view>
+						</block>
 				</view>
 			</view>
-			<view class="longVip"  v-if="bannerIndex == '0'">
+			<view class="longVip">
 				<view class="money">
 					￥
-					<text>{{vip.data[0].vip_price}}</text>
+					<text>{{vip.data[current].vip_price}}</text>
 					/年
 				</view>
 				<view class="time">
-					<text class="long">普通会员超价值</text>
-					<text>普通会员专享受价￥{{vip.data[0].vip_price}}</text>
+					<text class="long">{{vip.data[current].level}}</text>
+					<text>{{vip.data[current].level}}专享受价￥{{vip.data[current].vip_price}}</text>
 				</view>
 			</view>
-			<view class="longVip"  v-if="bannerIndex == '1'">
-				<view class="money">
-					￥
-					<text>{{vip.data[1].vip_price}}</text>
-					/年
-				</view>
-				<view class="time">
-					<text class="long">永久会员超价值</text>
-					<text>永久会员专享受价￥{{vip.data[1].vip_price}}</text>
-				</view>
-			</view>
+
 		</view>
 		<button type="" class="off" v-if="isCheck == false" @tap="goVip">立即开通，尽享权益</button>
-		<button type="" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip.data[bannerIndex].id" :data-money="vip.data[bannerIndex].vip_price">立即开通，尽享权益</button>
+		<button type="" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip.data[current].id" :data-money="vip.data[current].vip_price">立即开通，尽享权益</button>
 		<view class="radio">
 			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange(isCheck)" :checked="isCheck" /></label>
 			<view>
 				我已阅读开通
-				<text v-if="bannerIndex == '0'">普通会员</text>
-				<text v-if="bannerIndex == '1'">永久会员</text>
+				<text>{{vip.data[current].level}}</text>
 				vip
 				<text @tap="meTreaty">相关协议</text>
 			</view>
@@ -82,18 +63,6 @@
 				isCheck: false,
 				bannerIndex: '0',
 				current: '0',
-				list:[
-					{id:'1',img:'iconchanpin_yonghuzhifu',title:'产品超市',icon:'1'},
-					{id:'2',img:'iconqian_',title:'信贷技术',icon:'1'},
-					{id:'3',img:'iconweixin1',title:'最新资讯',icon:'1'},
-					{id:'4',img:'iconqiyegongchangjianzhu',title:'小微企业',icon:'1'},
-					{id:'5',img:'iconqunfengjingzhunyinliu',title:'精准匹配',icon:'0'},
-					{id:'6',img:'iconxiepinglun',title:'实站心得',icon:'0'},
-					{id:'7',img:'iconliebiao',title:'拒贷汇总',icon:'0'},
-					{id:'8',img:'iconhongbaoguanli',title:'备用金打造',icon:'0'},
-					{id:'9',img:'iconfengxian',title:'风险把控',icon:'1'},
-					{id:'10',img:'icondaikuan1',title:'贷款流程',icon:'1'},
-				],
 				vip: [],
 				imgUrl: ''
 			}
@@ -115,7 +84,7 @@
 				})
 			},
 			banner(e){
-				this.bannerIndex = e.detail.current
+				this.current = e.detail.current
 				console.log(e)
 			},
 			checkboxChange(e){
@@ -255,28 +224,13 @@ uni-swiper{
 .listItem .item:nth-child(4n) {
 	margin-right: 0;
 }
-.listItem .item .icon {
+.listItem image {
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 96rpx;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	align-items: center;
+	overflow: hidden;
 }
-.blue{
-	border: 1rpx solid #2390DC;
-}
-.listItem .item .iconfont{
-	font-size: 44rpx;
-}
-.listItem .item .iconfont{
-	color: #2390DC;
-}
-/* .cur{
-		border: 1rpx solid #D6D6D6;
-		color: #D6D6D6;
-} */
+
 .listItem .item > text {
 	font-size: 28rpx;
 	font-weight: 600;

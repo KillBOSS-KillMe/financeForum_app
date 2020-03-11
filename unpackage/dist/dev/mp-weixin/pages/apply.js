@@ -141,44 +141,78 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
 //
 //
-var app = getApp();var category = function category() {return __webpack_require__.e(/*! import() | components/qiyue-category */ "components/qiyue-category").then(__webpack_require__.bind(null, /*! ../components/qiyue-category.vue */ 517));};var _default = { components: { category: category }, data: function data() {
-    return {
-      categoryList: [],
-      subCategoryList: [],
-      imgUrl: '',
-      page: '1',
-      page_size: '10',
-      boardId: '' };
-
-  },
-  onLoad: function onLoad() {
-    this.imgUrl = _helper.default.imgUrl;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { categoryList: [], subCategoryList: [], imgUrl: '', page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor } };}, props: { //主分类激活索引
+    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } }, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;
     this.getNav();
   },
   mounted: function mounted() {
-    // for(var i=0;i<20;i++){
-    // 		var subList = [];
-    // 		for(var j=0;j<30;j++){
-    // 				subList.push({"name":"分类"+i+":商品"+j,"logo":"http://placehold.it/50x50"})
-    // 		}
-    // 		this.categoryList.push({"name":"分类"+i,"subCategoryList":subList})
-    // }
-    // this.subCategoryList = this.categoryList[0].subCategoryList;
+
   },
   methods: {
-    categoryMainClick: function categoryMainClick(e) {
-      console.log(e);
-      this.boardId = e;
+    categoryMainClick: function categoryMainClick(id, index, name) {
+      this.boardId = id;
       this.page = '1';
       this.page_size = '10';
       this.subCategoryList = [];
-      // this.subCategoryList = category.subCategoryList;
+      this.categoryActive = index;
       this.getList();
     },
     categorySubClick: function categorySubClick(e) {

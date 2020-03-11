@@ -5,6 +5,7 @@
   插件市场：https://ext.dcloud.net.cn/plugin?id=805
   author：JinYufeng
 -->
+<!-- 解析富文本 -->
 <template>
 	<view style="display:inherit;">
 		<slot v-if="!nodes.length"></slot>

@@ -60,7 +60,8 @@
     "pages/teamPeopleDetail",
     "pages/message",
     "pages/teamList",
-    "pages/shareCode"
+    "pages/shareCode",
+    "pages/meApply"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -87,7 +88,7 @@
       },
       {
         "pagePath": "pages/apply",
-        "text": "系统应用",
+        "text": "资讯",
         "iconPath": "static/apply.png",
         "selectedIconPath": "static/applyCur.png"
       },
