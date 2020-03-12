@@ -136,7 +136,9 @@ export default {
 						 }
 					} else {
 						uni.showToast({
-							title: res.data.message
+							title: res.data.message,
+							icon:'none',
+							duration:2000
 						});
 					}
 			

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "精准匹配",
-  "usingComponents": {
-    "page-search": "/components/pageSearch"
-  }
-}

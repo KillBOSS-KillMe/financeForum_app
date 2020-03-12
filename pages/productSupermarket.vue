@@ -23,58 +23,63 @@
 			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled" />
 			<text>查网贷</text>
 		</view>
-		<view class="line"></view>
+		<view class="line" style="margin-bottom: 18rpx;"></view>
 		<view class="content">
-			<view class="nav-left">
-				<scroll-view scroll-y>	
-					<block v-for="(item, index) in content" :key="index">
-						<view class="nav-left-item" @tap="leftNav" :class="['colorD', active == index ? 'color' : '']">
-							{{item.title}}
-						</view>
-					</block>
-				</scroll-view>
+			<view>
+				<view class="nav-left">
+					<scroll-view scroll-y class="oneScroll">
+						<block v-for="(item, index) in content" :key="index">
+							<view class="nav-left-item" @tap="leftNav(index)" :class="['colorD', active == index ? 'color' : '']">{{ item.title }}</view>
+						</block>
+					</scroll-view>
+				</view>
+				<uni-drawer :visible="showLeft" @close="closeDrawer">
+				    <view style="padding:30rpx;">
+				        <view class="uni-title" @tap="clickItem">抽屉式导航</view>
+				    </view>
+				</uni-drawer>
 			</view>
+			
 			<view class="nav_left">
 				<view class="inv-h-w">
 					<view :class="['inv-h', Inv == 0 ? 'inv-h-se' : '']" @tap="changeTab(0)">最新产品</view>
 					<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="changeTab(1)">热门产品</view>
 					<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
 				</view>
-				<view class="navLeftNav" >
-					<block v-for="(item, index) in content" :key="index">
-						<text @tap="headNav" :style="index==activeHead?'color:'+activeTextColor+';background-color:'+activeBackgroundColor:''">{{item.title}}{{index}}</text>
-					</block>
-					
+				<view class="navLeftNav">
+					<!-- <block v-for="(item, index) in content" :key="index">
+						<text @tap="headNav(index)" :class="['navColor', activeHead == index ? 'navA' : '']">{{ item.title }}</text>
+					</block> -->
+					<text @tap="headNav(0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
+					<text @tap="headNav(1)" :class="['navColor', activeHead == 1 ? 'navA' : '']">车贷</text>
 				</view>
 				<view class="contentList">
-					<scroll-view scroll-y>	
-					<block  v-for="(item, index) in list" :key="index">
-						<view class="item" @tap="goProduct" :data-id="item.id">
-							<image :src="imgUrl + item.icon" mode="aspectFill"></image>
-							<view class="itemRight">
-								<view class="productInfo">
-									<text>{{ item.name }}</text>
-									<text class="money" style="font-size: 20rpx;">申请人{{ item.apply_sum }}</text>
-								</view>
-								<view class="moneyBox">
-									<view class="money">
-										额度：
-										<text>{{ item.quota }}</text>
+					<scroll-view scroll-y class="twoScroll">
+						<block v-for="(item, index) in list" :key="index">
+							<view class="item" @tap="goProduct" :data-id="item.id">
+								<image :src="imgUrl + item.icon" mode="aspectFill"></image>
+								<view class="itemRight">
+									<view class="productInfo">
+										<text>{{ item.name }}</text>
+										<text style="font-size: 20rpx;">申请人{{ item.apply_sum }}</text>
 									</view>
-									<view class="money">
-										费用：
-										<text>{{ item.fee_ratio }}</text>
+									<view class="moneyBox">
+										<view class="money">
+											额度：
+											<text>{{ item.quota }}</text>
+										</view>
+										<view class="money">
+											费用：
+											<text>{{ item.fee_ratio }}</text>
+										</view>
 									</view>
+									<text class="title">{{ item.introduction }}</text>
 								</view>
-								<text class="title">{{ item.introduction }}</text>
-							
 							</view>
-						</view>
-					</block>
+						</block>
 					</scroll-view>
 				</view>
 			</view>
-			
 		</view>
 	</view>
 </template>
@@ -82,6 +87,7 @@
 <script>
 const app = getApp();
 import helper from '../common/helper.js';
+import uniDrawer from '@/components/uni-drawer.vue'
 export default {
 	data() {
 		return {
@@ -94,34 +100,17 @@ export default {
 			page_size: '10',
 			page: '1',
 			imgUrl: '',
-			content:[
-				{id:'1',title:'银行贷款',type:[
-					{typeOf: '全部'}
-				]},
-				{id:'2',title:'中国银行'},
-			],
+			content: [{ id: '1', title: '银行贷款'}, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }],
 			active: '0',
 			activeStyle: {
 				color: this.activeTextColor,
 				backgroundColor: this.activeBackgroundColor
 			},
-			activeHead: '0'
+			activeHead: '0',
+			showLeft: false
 		};
 	},
-	props: {
-		defaultActive: {
-			type: Number,
-			default: 0
-		},
-		activeTextColor: {
-			type: String,
-			default: '#333'
-		},
-		activeBackgroundColor: {
-			type: String,
-			default: '#ffffff'
-		},
-	},
+	components: {uniDrawer},
 	onLoad() {
 		this.getNav();
 		this.getTab();
@@ -133,9 +122,23 @@ export default {
 				url: '/pages/allProduct'
 			});
 		},
+		
 		// 左边导航
-		leftNav(index){
+		leftNav(index) {
 			this.active = index;
+			this.showLeft = true;
+			console.log(this.showLeft)
+		},
+		closeDrawer() {
+			this.showLeft = false
+		},
+		clickItem(){
+			this.showLeft = false
+		},
+		// 右边头部导航
+		headNav(index) {
+			console.log(index);
+			this.activeHead = index;
 		},
 		changeTab(e) {
 			console.log(e);
@@ -233,7 +236,6 @@ export default {
 <style>
 .productSupermarket {
 	width: 750rpx;
-	/* background: #F0AD4E; */
 }
 .banner {
 	width: 690rpx;
@@ -333,6 +335,7 @@ export default {
 	width: 750rpx;
 	/* padding: 0 30rpx; */
 	display: flex;
+	height: 40vh;
 }
 .content .inv-h-w {
 	display: flex;
@@ -357,7 +360,7 @@ export default {
 	margin: 10rpx auto 0;
 	border-radius: 3rpx;
 }
-.content .contentList{
+.content .contentList {
 	width: 510rpx;
 	/* background-color: #0066CC; */
 }
@@ -384,15 +387,13 @@ export default {
 	justify-content: space-between;
 }
 .content .contentList .item .itemRight .productInfo > text {
-	font-size: 26rpx;
+	font-size: 24rpx;
 	color: #333333;
 	font-weight: 600;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	width: 320rpx;
+	white-space: nowrap;
+	width: 270rpx;
 }
 .content .contentList .item .itemRight .productInfo > view {
 	display: flex;
@@ -408,7 +409,7 @@ export default {
 	margin-left: 6rpx;
 }
 .content .contentList .item .itemRight .title {
-	font-size: 26rpx;
+	font-size: 22rpx;
 	color: #999;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -422,19 +423,23 @@ export default {
 }
 .content .money {
 	display: flex;
-	font-size: 24rpx;
+	font-size: 20rpx;
 	color: #999;
 	margin-right: 20rpx;
 	white-space: nowrap;
+	margin-top: 6rpx;
 }
 .content .money > text {
 	color: #f69522;
 	font-weight: 600;
-	margin-left: 10rpx;
+	/* margin-left: 10rpx; */
 }
 
-scroll-view {
-	height: 100%;
+.oneScroll{
+	height: 100vh;
+}
+.twoScroll{
+	height: 88vh;
 }
 .nav-left {
 	width: 190rpx;
@@ -447,26 +452,35 @@ scroll-view {
 	align-items: center;
 	justify-content: center;
 }
-.colorD{
+.colorD {
 	background: #2390dc;
 	color: #fff;
 }
-.color{
+.navColor {
+	opacity: 0.6;
+}
+.navA {
+	opacity: 1;
+}
+.color {
 	background: #fff;
 	color: #333;
 }
-.navLeftNav{
+.navLeftNav {
 	width: 510rpx;
 	display: flex;
 	justify-content: flex-start;
-	margin: 10rpx 0;
+	margin: 20rpx 0 30rpx;
 }
-.navLeftNav text{
-	opacity: 0.8;
-	font-size: 28rpx;
+.navLeftNav text {
+	font-size: 24rpx;
 	font-weight: 400;
 	text-align: center;
-	color: #676767;
 	margin-right: 14rpx;
+}
+.uni-title{
+	font-size: 28rpx;
+	text-align: center;
+	margin-bottom: 10rpx;
 }
 </style>

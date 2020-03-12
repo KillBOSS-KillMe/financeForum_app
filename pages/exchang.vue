@@ -39,7 +39,7 @@
 								</view>
 							</view>
 							<text class="title">{{ item.title }}</text>
-							<text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text>
+							<!-- <text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text> -->
 							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="imgUrl+item1.image" mode=""></image></block>
 							<view class="itemCon">
 								<text>{{ item.created_at }}</text>

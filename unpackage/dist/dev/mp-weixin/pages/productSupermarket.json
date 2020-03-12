@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "产品超市",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-drawer": "/components/uni-drawer"
+  }
 }

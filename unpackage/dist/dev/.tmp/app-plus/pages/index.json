@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "新微金论坛",
-  "usingComponents": {
-    "page-search": "/components/pageSearch"
-  }
-}

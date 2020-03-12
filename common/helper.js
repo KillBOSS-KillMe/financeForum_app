@@ -3,8 +3,8 @@ const requestUrl = 'http://jinrong.beaconway.cn/api';
 const imgUrl = 'http://jinrong.beaconway.cn/uploads/';
 // 修改图片路径时候同时修改components中的qiyue-category图片路径
 
-// const requestUrl = 'http://47.105.95.48/api';
-// const imgUrl = 'http://47.105.95.48/uploads/';
+// const requestUrl = 'http://192.168.1.168/api';
+// const imgUrl = 'http://192.168.1.168/uploads/';
 
 // 时间戳转时间
 const transformTime = new Date() || function() {

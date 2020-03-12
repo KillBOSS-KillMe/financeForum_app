@@ -367,8 +367,8 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         url: "".concat(_helper.default.requestUrl, "/index"),
         method: 'GET',
         header: {
-          // authorization: app.globalData.token
-        },
+          authorization: app.globalData.token },
+
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);

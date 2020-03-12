@@ -222,7 +222,7 @@
 					url: `${helper.requestUrl}/index`,
 					method: 'GET',
 					header: {
-						// authorization: app.globalData.token
+						authorization: app.globalData.token
 					},
 					success: res => {
 						uni.hideLoading();

@@ -271,7 +271,9 @@ var app = getApp();var _default = { data: function data() {return { categoryList
             }
           } else {
             uni.showToast({
-              title: res.data.message });
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000 });
 
           }
 

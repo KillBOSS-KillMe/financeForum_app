@@ -216,6 +216,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -297,20 +302,18 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, Inv: 0, list: [], keywords: '', navList: [], tabType: 'is_new', page_size: '10', page: '1', imgUrl: '', content: [{ id: '1', title: '银行贷款', type: [{ typeOf: '全部' }] }, { id: '2', title: '中国银行' }], active: '0', activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, activeHead: '0' };}, props: { defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } }, onLoad: function onLoad() {this.getNav();this.getTab();this.imgUrl = _helper.default.imgUrl;}, methods: { navsHead: function navsHead() {uni.navigateTo({ url: '/pages/allProduct' });}, // 左边导航
-    leftNav: function leftNav(index) {this.active = index;}, changeTab: function changeTab(e) {console.log(e);this.Inv = e;this.page = '1';if (this.Inv == 0) {// 最新
+//
+//
+//
+//
+//
+var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_require__.e(/*! import() | components/uni-drawer */ "components/uni-drawer").then(__webpack_require__.bind(null, /*! @/components/uni-drawer.vue */ 527));};var _default = { data: function data() {return { indicatorDots: true, Inv: 0, list: [], keywords: '', navList: [], tabType: 'is_new', page_size: '10', page: '1', imgUrl: '', content: [{ id: '1', title: '银行贷款' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }], active: '0', activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, activeHead: '0', showLeft: false };}, components: { uniDrawer: uniDrawer }, onLoad: function onLoad() {this.getNav();this.getTab();this.imgUrl = _helper.default.imgUrl;}, methods: { navsHead: function navsHead() {uni.navigateTo({ url: '/pages/allProduct' });}, // 左边导航
+    leftNav: function leftNav(index) {this.active = index;this.showLeft = true;console.log(this.showLeft);}, closeDrawer: function closeDrawer() {this.showLeft = false;}, clickItem: function clickItem() {this.showLeft = false;}, // 右边头部导航
+    headNav: function headNav(index) {console.log(index);this.activeHead = index;}, changeTab: function changeTab(e) {console.log(e);this.Inv = e;this.page = '1';if (this.Inv == 0) {// 最新
         this.tabType = 'is_new';} else if (this.Inv == 1) {// 热门
         this.tabType = 'is_hot';} else if (this.Inv == 3) {// 推荐
         this.tabType = 'is_romend';}this.list = [];this.getTab();}, getSearch: function getSearch() {uni.navigateTo({ url: '/pages/searchNetloan' });}, //导航
-    getNav: function getNav() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/categories"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
-          res = _helper.default.null2str(res);
-          console.log(res);
-          if (res.data.status_code == 200) {
-            var arr = res.data.data;
-            var result = [];
-            var num = 10;
-            for (var i = 0; i < arr.length; i += num) {
-              result.push(arr.slice(i, i + num));
+    getNav: function getNav() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/categories"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {var arr = res.data.data;var result = [];var num = 10;for (var i = 0; i < arr.length; i += num) {result.push(arr.slice(i, i + num));
             }
             console.log(result);
             _this.navList = result;

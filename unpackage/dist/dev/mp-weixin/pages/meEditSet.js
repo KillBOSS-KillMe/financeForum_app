@@ -153,7 +153,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 527));};var _default = { data: function data() {return { setData: '' };}, components: { pickerAddress: pickerAddress },
+var app = getApp();var pickerAddress = function pickerAddress() {return Promise.all(/*! import() | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then(__webpack_require__.bind(null, /*! ../components/wangding-pickerAddress.vue */ 534));};var _default = { data: function data() {return { setData: '' };}, components: { pickerAddress: pickerAddress },
 
   onLoad: function onLoad(options) {
     this.options = options;
