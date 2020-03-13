@@ -1,5 +1,6 @@
 <template>
 	<view class="apply">
+		
 		<view class="nav">
 			<view class="nav-left">
 				<scroll-view scroll-y>

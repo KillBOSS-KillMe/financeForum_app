@@ -40,6 +40,9 @@
 					</view>
 				</view>
 			</block>
+			<view class="null">
+				暂无数据
+			</view>
 		</view>
 		<view class="modelShow" @tap="hideModal" v-if="mask"></view>
 		<view class="modelShowText" v-if="mask">
@@ -90,7 +93,10 @@
 				top: '0'
 			};
 		},
-		onLoad() {
+		onLoad(e) {
+			console.log(e)
+			this.typeText2 = e.title
+			this.category_id = e.id
 			this.imgUrl = helper.imgUrl;
 			this.getList()
 		},
@@ -255,9 +261,14 @@
 	}
 
 	.content .contentList .item .itemRight .productInfo>text {
-		font-size: 32rpx;
+		font-size: 28rpx;
 		color: #333333;
 		font-weight: 600;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
 	}
 
 	.content .contentList .item .itemRight .productInfo>view {

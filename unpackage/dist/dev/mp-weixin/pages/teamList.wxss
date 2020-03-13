@@ -1,0 +1,71 @@
+
+.teamList{
+	width: 690rpx;
+	padding: 30rpx;
+}
+.team{
+	width: 650rpx;
+	/* height: 238rpx; */
+	background: #ffffff;
+	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	padding: 20rpx;
+	margin-bottom: 30rpx;
+}
+.title{
+	font-size: 28rpx;
+	font-weight: 700;
+	color: #666666;
+}
+.head{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	border-bottom: 2rpx solid #eee;
+	padding: 10rpx 0;
+	margin-bottom: 20rpx;
+}
+.head view{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #999;
+}
+.list{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.list .item{
+	margin:0 10rpx 16rpx 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	width: 134rpx;
+}
+.list .item:nth-child(5n){
+	margin-right: 0;
+}
+.list .item image{
+	width: 86rpx;
+	height: 86rpx;
+	border-radius: 86rpx;
+}
+.list .item text{
+	font-size: 24rpx;
+	font-weight: 700;
+	color: #666666;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-top: 6rpx;
+}
+

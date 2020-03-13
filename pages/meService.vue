@@ -27,7 +27,6 @@
 		}
 	}
 </script>
-
 <style>
 .meMessage{
 	width: 690rpx;

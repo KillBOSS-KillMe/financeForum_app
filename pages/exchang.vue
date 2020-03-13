@@ -1,6 +1,6 @@
 <template>
 	<view class="exchang">
-		<pageSearch></pageSearch>
+		<!-- <pageSearch></pageSearch> -->
 		<view class="banner">
 			<swiper class="swiper">
 				<block v-for="(item,index) in pageData.ad.aditems" :key='index'>
@@ -60,6 +60,10 @@
 				<view class="null" v-if="pageData.board_data[Inv].posts.length == 0">暂无数据</view>
 			</view>
 		</view>
+		<view v-if="isShow">
+			<view class="showModel" @touchmove.stop = ""></view>
+			<view class="showText">您还不是会员暂无此权限！</view>
+		</view>
 	</view>
 </template>
 
@@ -70,7 +74,7 @@ export default {
 	data() {
 		return {
 			navList: [
-				// { id: '1', img: 'iconxiepinglun', title: '实战心得' },
+				{ id: '1', img: 'iconxiepinglun', title: '网友交流' },
 				// { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
 				{ id: '3', img: 'iconbulletin', title: '微金公告' },
 				// { id: '4', img: 'iconyonghu', title: '从业感悟' },
@@ -80,10 +84,12 @@ export default {
 			pageData: '',
 			imgUrl:'',
 			page: '1',
-			boardId:''
+			boardId:'',
+			isShow: false
 		};
 	},
 	onLoad() {
+		this.getUserInfo()
 		// 加载微金交流首页数据
 		this.getIndexData();
 		this.imgUrl = helper.imgUrl
@@ -97,6 +103,28 @@ export default {
 		goDetail(e){
 			uni.navigateTo({
 				url:`/pages/articleDetail?id=${e}`
+			})
+		},
+		// 获取用户信息
+		getUserInfo(){
+			uni.request({
+				url: `${helper.requestUrl}/me`,
+				method: 'POST',
+				header: {
+					authorization: app.globalData.token
+				},
+				success: res => {
+					uni.hideLoading();
+					res = helper.null2str(res)
+					console.log(res,'++++++++')
+					let user = res.data.type
+					if(user != 'member'){
+						this.isShow = true
+					}else{
+						this.isShow = false
+					}
+					// this.userInfo = res.data
+				}
 			})
 		},
 		// 数据
@@ -378,5 +406,31 @@ export default {
 	color: #999;
 	font-size: 28rpx;
 	margin-right: 10rpx;
+}
+.showModel{
+	width: 750rpx;
+	height: 100vh;
+	position: absolute;
+	z-index: 8;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	opacity: .4;
+}
+.showText{
+	width: 400rpx;
+	height: 200rpx;
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	margin-top: -100rpx;
+	left: 50%;
+	margin-left: -200rpx;
+	background-color: #fff;
+	text-align: center;
+	font-size: 28rpx;
+	line-height: 200rpx;
+	color: #000000;
+	border-radius: 10rpx;
 }
 </style>

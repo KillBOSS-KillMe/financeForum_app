@@ -7,7 +7,7 @@
 						<view class="navs">
 							<block v-for="(sonItem, sonIndex) in itemAll" :key="sonIndex">
 								<!-- {{sonIndex}} -->
-								<view class="bannerItem" :data-id="sonItem.id" v-if="sonIndex <= 9" @tap="navsHead">
+								<view class="bannerItem" v-if="sonIndex <= 9" @tap="navsHead" :data-id='sonItem.id' :data-title='sonItem.title'>
 									<image src="../static/imgLost.png" mode="" v-if="sonItem.icon == ''"></image>
 									<image :src="imgUrl + sonItem.icon" mode="" v-else></image>
 									<text>{{ sonItem.title }}</text>
@@ -28,8 +28,8 @@
 			<view>
 				<view class="nav-left">
 					<scroll-view scroll-y class="oneScroll">
-						<block v-for="(item, index) in content" :key="index">
-							<view class="nav-left-item" @tap="leftNav(index)" :class="['colorD', active == index ? 'color' : '']">{{ item.title }}</view>
+						<block v-for="(item, index) in navLeft" :key="index">
+							<view class="nav-left-item" @tap="leftNav(index)" :class="['colorD', active == index ? 'color' : '']">{{ item.bank }}</view>
 						</block>
 					</scroll-view>
 				</view>
@@ -47,11 +47,11 @@
 					<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
 				</view>
 				<view class="navLeftNav">
-					<!-- <block v-for="(item, index) in content" :key="index">
-						<text @tap="headNav(index)" :class="['navColor', activeHead == index ? 'navA' : '']">{{ item.title }}</text>
-					</block> -->
-					<text @tap="headNav(0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
-					<text @tap="headNav(1)" :class="['navColor', activeHead == 1 ? 'navA' : '']">车贷</text>
+					<block v-for="(item, index) in navReft" :key="index">
+						<text @tap="headNav(index)" :class="['navColor', activeHead == index ? 'navA' : '']">{{ item.class_name }}</text>
+					</block>
+				<!-- 	<text @tap="headNav(0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
+					<text @tap="headNav(1)" :class="['navColor', activeHead == 1 ? 'navA' : '']">车贷</text> -->
 				</view>
 				<view class="contentList">
 					<scroll-view scroll-y class="twoScroll">
@@ -100,7 +100,8 @@ export default {
 			page_size: '10',
 			page: '1',
 			imgUrl: '',
-			content: [{ id: '1', title: '银行贷款'}, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }, { id: '2', title: '中国银行' }],
+			navLeft: [],
+			navReft: [],
 			active: '0',
 			activeStyle: {
 				color: this.activeTextColor,
@@ -115,19 +116,66 @@ export default {
 		this.getNav();
 		this.getTab();
 		this.imgUrl = helper.imgUrl;
+		this.getNavLeft()
+		this.getReftNav()
 	},
 	methods: {
-		navsHead() {
+		// 轮播跳转
+		navsHead(e) {
+			console.log(e)
 			uni.navigateTo({
-				url: '/pages/allProduct'
+				url: `/pages/allProduct?id=${e.currentTarget.dataset.id}&title=${e.currentTarget.dataset.title}`
 			});
 		},
-		
 		// 左边导航
 		leftNav(index) {
 			this.active = index;
 			this.showLeft = true;
 			console.log(this.showLeft)
+		},
+		// 左边导航数据
+		getNavLeft(){
+			uni.request({
+				url: `${helper.requestUrl}/holes/banks`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res,'左边导航数据');
+					if (res.data.status_code == 200) {
+						this.navLeft = res.data.data;
+					} else {
+						// uni.showToast({
+						// 	title: res.data.message,
+						// 	icon: 'none'
+						// });
+					}
+				}
+			});
+		},
+		// 右边导航数据
+		getReftNav(){
+			uni.request({
+				url: `${helper.requestUrl}/holes/loan_class`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res,'右边导航数据');
+					if (res.data.status_code == 200) {
+						this.navReft = res.data.data;
+					} else {
+						// uni.showToast({
+						// 	title: res.data.message,
+						// 	icon: 'none'
+						// });
+					}
+				}
+			});
 		},
 		closeDrawer() {
 			this.showLeft = false
@@ -162,7 +210,7 @@ export default {
 				url: '/pages/searchNetloan'
 			});
 		},
-		//导航
+		//轮播导航
 		getNav() {
 			uni.request({
 				url: `${helper.requestUrl}/holes/categories`,

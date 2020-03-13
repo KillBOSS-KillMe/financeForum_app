@@ -1,6 +1,6 @@
 <template>
 	<view class="index">
-		<pageSearch></pageSearch>
+	<!-- 	<pageSearch></pageSearch> -->
 		<!-- 轮播 -->
 		<view class="page-section-spacing banner">
 			<swiper class="swiper" :indicator-dots="indicatorDots" indicator-color="rgba(255,255,255,.3)" indicator-active-color="#fff"
