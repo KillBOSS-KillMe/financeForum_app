@@ -35,7 +35,6 @@
     "pages/meSpread",
     "pages/meService",
     "pages/meSetting",
-    "pages/indexAccurate",
     "pages/indexA",
     "pages/meCertificationConfirm",
     "pages/meEditSet",
@@ -111,5 +110,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap2.json"
 }

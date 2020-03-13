@@ -28,8 +28,10 @@
 				list:[],
 				page: '1',
 				page_size:'10',
-				boardId: '1',
-				imgUrl: ''
+				boardId: '0',
+				imgUrl: '',
+				bank_id: '0',
+				child_id: '0'
 			}
 		},
 		onShow(e) {
@@ -38,11 +40,14 @@
 			
 		},
 		onLoad(e) {
-			// console.log(this.boardId)
+			console.log(e.id)
+			console.log(e.bankId)
 			this.imgUrl = helper.imgUrl
 			console.log(this.imgUrl)
-			this.boardId = e.id
-			console.log(e.id,'**')
+			this.boardId = e.id || 0
+
+			this.bank_id =e.bankId || 0
+			this.child_id = e.childId || 0
 			this.getList()
 			uni.setNavigationBarTitle({
 				title: e.name
@@ -52,6 +57,7 @@
 			
 		},
 		methods: {
+			
 			getList(){
 				uni.request({
 					url: `${helper.requestUrl}/posts/board-posts`,
@@ -61,6 +67,8 @@
 					},
 					data:{
 						board_id: this.boardId,
+						bank_id: this.bank_id,
+						child_id: this.child_id,
 						page_size: this.page_size,
 						page: this.page
 					},

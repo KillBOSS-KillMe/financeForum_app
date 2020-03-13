@@ -20,7 +20,28 @@
 			</block>
 		</view>
 		<view class="line"></view>
-		<view class="content">
+		<view class="leftNav">
+			<view class="nav-left">
+				<scroll-view scroll-y>
+					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryMainClick(item.id,index)" :key="index"
+					 :class="['colorD', categoryActive == index ? 'color' : '']">
+						{{item.title}}
+					</view>
+				</scroll-view>
+			</view>
+			<view class="nav-right">
+				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" scroll-with-animation>
+					<view class="contentList">
+						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item)">
+							<image :src="item.img" />
+							<text>{{item.title}}</text>
+						</view>
+					</view>
+					<view class="null" v-if="subCategoryList.length == 0">暂无数据</view>
+				</scroll-view>
+			</view>
+		</view>
+<!-- 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageData.board_data" :key="index">
 					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
@@ -39,8 +60,8 @@
 								</view>
 							</view>
 							<text class="title">{{ item.title }}</text>
-							<!-- <text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text> -->
-							<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="imgUrl+item1.image" mode=""></image></block>
+						 <text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text> -->
+			<!-- 				<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="imgUrl+item1.image" mode=""></image></block>
 							<view class="itemCon">
 								<text>{{ item.created_at }}</text>
 								<view class="itemBottom">
@@ -59,7 +80,7 @@
 				</block>
 				<view class="null" v-if="pageData.board_data[Inv].posts.length == 0">暂无数据</view>
 			</view>
-		</view>
+		</view> -->
 		<view v-if="isShow">
 			<view class="showModel" @touchmove.stop = ""></view>
 			<view class="showText">您还不是会员暂无此权限！</view>
@@ -74,18 +95,37 @@ export default {
 	data() {
 		return {
 			navList: [
-				{ id: '1', img: 'iconxiepinglun', title: '网友交流' },
-				// { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
 				{ id: '3', img: 'iconbulletin', title: '微金公告' },
-				// { id: '4', img: 'iconyonghu', title: '从业感悟' },
-				{ id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }
+				{ id: '6', img: 'iconqiapiansousuo', title: '论坛搜索' },
+				{ id: '2', img: 'iconliebiao', title: '贷款产品交流' },
+				
+				{ id: '4', img: 'iconyonghu', title: '信用卡交流' },
+				{ id: '5', img: 'iconqiapiansousuo', title: '推荐热帖' },
+				{ id: '1', img: 'iconxiepinglun', title: '网友交流' },
+				// { id: '1', img: 'iconxiepinglun', title: '网友交流' },
+				// // { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
+				// { id: '3', img: 'iconbulletin', title: '微金公告' },
+				// // { id: '4', img: 'iconyonghu', title: '从业感悟' },
+				// { id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }
 			],
 			Inv: 0,
 			pageData: '',
 			imgUrl:'',
 			page: '1',
 			boardId:'',
-			isShow: false
+			isShow: false,
+			categoryList:[
+				{id:1,title:'直辖市'},
+				{id:2,title:'华东地区'},
+				{id:3,title:'华北地区'}
+			],
+			subCategoryList:[
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+			],
+			categoryActive: 0,
 		};
 	},
 	onLoad() {
@@ -95,6 +135,14 @@ export default {
 		this.imgUrl = helper.imgUrl
 	},
 	methods: {
+		// 左边导航点击事件
+		categoryMainClick(e,index){
+			console.log(e,index);
+			this.categoryActive = index;
+			// uni.navigateTo({
+			// 	url:`/pages/articleDetail?id=${e.id}`
+			// })
+		},
 		selListType(e) {
 			this.Inv = e.currentTarget.dataset.index
 			this.boardId = e.currentTarget.dataset.block_id
@@ -161,15 +209,7 @@ export default {
 		getNav(e) {
 			console.log(e);
 			let id = e;
-			if (id == '1') {
-				uni.navigateTo({
-					url: `/pages/experience`
-				});
-			}else if(id== '2'){
-				uni.navigateTo({
-					url: `/pages/indexA?id=${14}&name=拒贷汇总`
-				});
-			}else if(id== '3'){
+			if(id== '3'){
 				uni.navigateTo({
 					url: `/pages/indexA?id=${23}&name=微金公告`
 				});
@@ -237,12 +277,14 @@ export default {
 }
 .exchang .nav {
 	width: 690rpx;
-	padding: 30rpx;
+	padding: 0 30rpx;
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
 .exchang .nav .item{
+	width: 210rpx;
+	margin: 30rpx 0;
 	/* display: flex;
 	justify-content: center;
 	flex-wrap: wrap; */
@@ -282,155 +324,77 @@ export default {
 	font-weight: 600;
 	margin-top: 10rpx;
 }
-.content {
-	width: 690rpx;
-	padding: 0 30rpx;
-}
-.content .inv-h-w {
-	display: flex;
-}
-.content .inv-h {
-	font-size: 32rpx;
-	flex: 1;
-	text-align: center;
-	color: #999999;
-	padding: 30rpx 0;
-	font-weight: 600;
-}
-.content .inv-h-se {
-	color: #2390dc;
-	font-weight: 600;
-}
-.content .inv-h-se:after {
-	content: ' ';
-	display: block;
-	border-bottom: 6rpx solid #2390dc;
-	width: 46rpx;
-	margin: 26rpx auto 0;
-	border-radius: 3rpx;
-}
-.content .contentList .item {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 40rpx;
-}
-.content .contentList .item > image {
-	width: 85rpx;
-	height: 85rpx;
-	border-radius: 85rpx;
-}
-.content .contentList .item .itemRight {
-	width: 580rpx;
-	display: flex;
-	align-content: flex-start;
-	flex-wrap: wrap;
-}
-.content .contentList .item .itemRight .title {
-	font-size: 28rpx;
-	color: #333333;
-	font-weight: 600;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
-	margin: 10rpx 0;
-}
-.content .itemCon {
-	width: 580rpx;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+ .leftNav {
+		display: flex;
+		height: calc(100vh - 9px);
+		width: 750rpx;
 		margin-top: 16rpx;
-	/* justify-content: flex-end; */
-}
-.content .itemCon text {
-	display: block;
-	font-size: 24rpx;
-	color: #999999;
-}
-.itemRightHead {
-	width: 580rpx;
-	display: flex;
-	justify-content: space-between;
-}
-.itemRightHead text {
-	color: #333333;
-	font-size: 28rpx;
-	font-weight: 600;
-}
-.itemRightHead > view,
-.itemRightHead > view > text {
-	color: #2390dc;
-	font-size: 28rpx;
-	font-weight: 600;
-}
-.itemRightHead view {
-	color: #2390dc;
-	font-size: 28rpx;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.itemRightHead view text {
-	padding-left: 20rpx;
-}
-.itemContent {
-	width: 580rpx;
-	font-size: 28rpx;
-	color: #666666;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-}
-.imgList {
-	width: 140rpx;
-	height: 140rpx;
-	display: block;
-	margin: 16rpx 10rpx 16rpx 0;
-}
-.imgList:nth-child(3n) {
-	margin-right: 0;
-}
-.itemBottom {
-	display: flex;
-}
-.itemBottom > view {
-	display: flex;
-	margin-left: 18rpx;
-	align-content: center;
-}
-.itemBottom .exchangIcon{
-	color: #999;
-	font-size: 28rpx;
-	margin-right: 10rpx;
-}
-.showModel{
-	width: 750rpx;
-	height: 100vh;
-	position: absolute;
-	z-index: 8;
-	top: 0;
-	left: 0;
-	background-color: #000000;
-	opacity: .4;
-}
-.showText{
-	width: 400rpx;
-	height: 200rpx;
-	position: absolute;
-	z-index: 10;
-	top: 50%;
-	margin-top: -100rpx;
-	left: 50%;
-	margin-left: -200rpx;
-	background-color: #fff;
-	text-align: center;
-	font-size: 28rpx;
-	line-height: 200rpx;
-	color: #000000;
-	border-radius: 10rpx;
-}
+	}
+	scroll-view {
+		height: 100%;
+	}
+	.nav-left {
+		width: 190rpx;
+	
+	}
+	.contentList{
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+	.nav-left-item {
+		height: 92rpx;
+		font-size: 26rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+			background: #2390dc;
+			color: #fff;
+	}
+	.nav-right {
+		width: 510rpx;
+		padding: 22rpx 0 22rpx 22rpx;
+	}
+
+	.nav-right-item {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin: 0 20rpx 30rpx 0;
+		width: 148rpx;
+	}
+	.nav-right-item:nth-of-type(3n){
+		margin: 0 0 30rpx 0;
+	}
+	.nav-right-item image {
+		width: 130rpx;
+		height: 110rpx;
+		border-radius: 8rpx;
+		/* margin-right: 16rpx; */
+	}
+ .nav-right-item text{
+	 font-size: 26rpx;
+	 text-align: center;
+	 overflow: hidden;
+	 -webkit-line-clamp: 1;
+	 color: #333;
+	 display: -webkit-box;
+	 -webkit-box-orient: vertical;
+	 text-overflow: ellipsis;
+ }
+	.padding {
+		height: var(--status-bar-height);
+		width: 100%;
+		top: 0;
+		position: fixed;
+		background-color: #F24544;
+	}
+	.colorD {
+		background: #2390dc;
+		color: #fff;
+	}
+	.color {
+		background: #fff;
+		color: #333;
+	}
 </style>

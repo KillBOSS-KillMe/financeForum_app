@@ -221,6 +221,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -307,21 +315,68 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_require__.e(/*! import() | components/uni-drawer */ "components/uni-drawer").then(__webpack_require__.bind(null, /*! @/components/uni-drawer.vue */ 527));};var _default = { data: function data() {return { indicatorDots: true, Inv: 0, list: [], keywords: '', navList: [], tabType: 'is_new', page_size: '10', page: '1', imgUrl: '', navLeft: [], navReft: [], active: '0', activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, activeHead: '0', showLeft: false };}, components: { uniDrawer: uniDrawer }, onLoad: function onLoad() {this.getNav();this.getTab();this.imgUrl = _helper.default.imgUrl;this.getNavLeft();this.getReftNav();}, methods: { // 轮播跳转
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_require__.e(/*! import() | components/uni-drawer */ "components/uni-drawer").then(__webpack_require__.bind(null, /*! @/components/uni-drawer.vue */ 519));};var _default = { data: function data() {return { indicatorDots: true, Inv: 0, list: [], keywords: '', navList: [], tabType: 'is_new', page_size: '10', page: '1', imgUrl: '', navLeft: [], navReft: [], active: '0', activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, activeHead: '0', showLeft: false, classType: '0', bankId: '', letfNavChild: [] };}, components: { uniDrawer: uniDrawer }, onLoad: function onLoad() {this.getNav(); // this.getTab();
+    this.imgUrl = _helper.default.imgUrl;this.getNavLeft();this.getReftNav();}, methods: { // 轮播跳转
     navsHead: function navsHead(e) {console.log(e);uni.navigateTo({ url: "/pages/allProduct?id=".concat(e.currentTarget.dataset.id, "&title=").concat(e.currentTarget.dataset.title) });}, // 左边导航
-    leftNav: function leftNav(index) {this.active = index;this.showLeft = true;console.log(this.showLeft);}, // 左边导航数据
-    getNavLeft: function getNavLeft() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/banks"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '左边导航数据');if (res.data.status_code == 200) {_this.navLeft = res.data.data;} else {// uni.showToast({
+    leftNav: function leftNav(index, id) {this.active = index;this.showLeft = true;this.bankId = id;this.page = '1';this.getLeftNavChild();console.log(id);console.log(this.showLeft);}, // 左边导航数据
+    getNavLeft: function getNavLeft() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/banks"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '左边导航数据');if (res.data.status_code == 200) {_this.navLeft = res.data.data;_this.bankId = res.data.data[0].id; // this.page = '1'
+            // this.list = [];
+            // this.getTab();
+          } else {// uni.showToast({
+              // 	title: res.data.message,
+              // 	icon: 'none'
+              // });
+            }} });}, childItem: function childItem(bankId, childId, name) {this.showLeft = false;uni.navigateTo({ url: "/pages/indexA?bankId=".concat(bankId, "&name=").concat(name, "&childId=").concat(childId) });}, // 获取银行子类
+    getLeftNavChild: function getLeftNavChild() {var _this2 = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/bank_child"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '右边导航数据');if (res.data.status_code == 200) {_this2.letfNavChild = res.data.data;} else {}} });}, // 右边导航数据
+    getReftNav: function getReftNav() {var _this3 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/holes/loan_class"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res, '右边导航数据');
+          if (res.data.status_code == 200) {
+            _this3.navReft = res.data.data;
+            _this3.list = [];
+            _this3.getTab();
+          } else {
+            // uni.showToast({
             // 	title: res.data.message,
             // 	icon: 'none'
             // });
-          }} });}, // 右边导航数据
-    getReftNav: function getReftNav() {var _this2 = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/loan_class"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '右边导航数据');if (res.data.status_code == 200) {_this2.navReft = res.data.data;} else {// uni.showToast({
-            // 	title: res.data.message,
-            // 	icon: 'none'
-            // });
-          }} });}, closeDrawer: function closeDrawer() {this.showLeft = false;}, clickItem: function clickItem() {this.showLeft = false;}, // 右边头部导航
-    headNav: function headNav(index) {console.log(index);
+          }
+        } });
+
+    },
+    closeDrawer: function closeDrawer() {
+      this.showLeft = false;
+    },
+    clickItem: function clickItem(bankId) {
+      this.showLeft = false;
+      this.bankId = bankId;
+      this.page = '1';
+      this.list = [];
+      this.getTab();
+    },
+    // 右边头部导航
+    headNav: function headNav(index, id) {
+      console.log(index, id);
       this.activeHead = index;
+      this.classType = id;
+      this.list = [];
+      this.page = '1';
+      this.getTab();
     },
     changeTab: function changeTab(e) {
       console.log(e);
@@ -346,7 +401,7 @@ var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_requir
 
     },
     //轮播导航
-    getNav: function getNav() {var _this3 = this;
+    getNav: function getNav() {var _this4 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/holes/categories"),
         method: 'GET',
@@ -364,7 +419,7 @@ var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_requir
               result.push(arr.slice(i, i + num));
             }
             console.log(result);
-            _this3.navList = result;
+            _this4.navList = result;
           } else {
             uni.showToast({
               title: res.data.message,
@@ -375,7 +430,7 @@ var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_requir
 
     },
     // 最新
-    getTab: function getTab() {var _this4 = this;
+    getTab: function getTab() {var _this5 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/holes/index-recommends"),
         method: 'GET',
@@ -384,6 +439,8 @@ var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_requir
 
         data: {
           type: this.tabType,
+          bank_id: this.bankId,
+          class_id: this.classType,
           page_size: this.page_size,
           page: this.page },
 
@@ -391,12 +448,12 @@ var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_requir
           res = _helper.default.null2str(res);
           console.log(res);
           if (res.data.status_code == 200) {
-            _this4.list = _this4.list.concat(res.data.data);
+            _this5.list = _this5.list.concat(res.data.data);
           } else {
-            uni.showToast({
-              title: res.data.message,
-              icon: 'none' });
-
+            // uni.showToast({
+            // 	title: res.data.message,
+            // 	icon: 'none'
+            // });
           }
         } });
 

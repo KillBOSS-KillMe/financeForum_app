@@ -212,12 +212,12 @@
 				"navigationBarTitleText": "个人设置"
 			}
 		},
-		{
-			"path": "pages/indexAccurate",
-			"style": {
-				"navigationBarTitleText": "精准匹配"
-			}
-		},
+		// {
+		// 	"path": "pages/indexAccurate",
+		// 	"style": {
+		// 		"navigationBarTitleText": "精准匹配"
+		// 	}
+		// },
 		{
 			"path": "pages/indexA",
 			"style": {

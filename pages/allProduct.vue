@@ -40,7 +40,7 @@
 					</view>
 				</view>
 			</block>
-			<view class="null">
+			<view class="null" v-if="list.length == 0">
 				暂无数据
 			</view>
 		</view>
@@ -237,7 +237,7 @@
 	.content .contentList .item {
 		display: flex;
 		justify-content: space-between;
-		padding-bottom: 40rpx;
+		padding: 40rpx 0;
 		border-bottom: 1rpx solid #E8E8E8;
 	}
 
@@ -261,14 +261,13 @@
 	}
 
 	.content .contentList .item .itemRight .productInfo>text {
-		font-size: 28rpx;
+		font-size: 26rpx;
 		color: #333333;
 		font-weight: 600;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 1;
-		-webkit-box-orient: vertical;
+		white-space: nowrap;
+		width: 295rpx;
 	}
 
 	.content .contentList .item .itemRight .productInfo>view {
