@@ -150,7 +150,7 @@
           }
         },
         "oauth": {},
-        "ad": null,
+        "ad": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"
@@ -166,7 +166,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.6.1",
+      "compilerVersion": "2.6.5",
       "control": "v8",
       "nvueCompiler": "uni-app",
       "renderer": "auto",
@@ -193,7 +193,7 @@
         },
         {
           "pagePath": "pages/apply",
-          "text": "资讯",
+          "text": "极品干货",
           "iconPath": "static/apply.png",
           "selectedIconPath": "static/applyCur.png"
         },

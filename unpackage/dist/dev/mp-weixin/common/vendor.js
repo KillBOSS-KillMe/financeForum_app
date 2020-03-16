@@ -1561,12 +1561,12 @@ uni$1;exports.default = _default;
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-// const requestUrl = 'http://jinrong.beaconway.cn/api';
-// const imgUrl = 'http://jinrong.beaconway.cn/uploads/';
+var requestUrl = 'http://jinrong.beaconway.cn/api';
+var imgUrl = 'http://jinrong.beaconway.cn/uploads/';
 // 修改图片路径时候同时修改components中的qiyue-category图片路径
 
-var requestUrl = 'http://192.168.1.168/api';
-var imgUrl = 'http://192.168.1.168/uploads/';
+// const requestUrl = 'http://192.168.1.168/api';
+// const imgUrl = 'http://192.168.1.168/uploads/';
 
 // 时间戳转时间
 var transformTime = new Date() || function () {

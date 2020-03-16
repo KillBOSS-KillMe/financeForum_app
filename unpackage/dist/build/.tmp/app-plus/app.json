@@ -60,7 +60,8 @@
     "pages/message",
     "pages/teamList",
     "pages/shareCode",
-    "pages/meApply"
+    "pages/meApply",
+    "pages/exchangList"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -87,7 +88,7 @@
       },
       {
         "pagePath": "pages/apply",
-        "text": "资讯",
+        "text": "极品干货",
         "iconPath": "static/apply.png",
         "selectedIconPath": "static/applyCur.png"
       },
@@ -112,7 +113,7 @@
     "autoclose": false
   },
   "appname": "新微金论坛",
-  "compilerVersion": "2.6.1",
+  "compilerVersion": "2.6.5",
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"

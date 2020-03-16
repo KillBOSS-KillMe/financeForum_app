@@ -32,7 +32,8 @@ scroll-view {
 }
 .nav-right {
 		width: 510rpx;
-		padding: 22rpx 0 22rpx 22rpx;
+		padding: 22rpx 0 0 22rpx;
+		height: 100vh;
 }
 .nav-right-item {
 		display: -webkit-box;
