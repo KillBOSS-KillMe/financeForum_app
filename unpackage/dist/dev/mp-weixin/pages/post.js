@@ -248,10 +248,15 @@ var _default = { data: function data() {return { formNode: { title: '', content:
           title: this.title, // 帖子标题
           content: this.htmlCon, // 帖子内容
           voice: this.voicePath // 录音的文件路径
-        }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == 200) {uni.showToast({ title: res.data.message }); // 返回上一页
-            uni.navigateBack();} else {uni.showToast({ title: res.data.message });}} });}, // 获取帖子标题
+        }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == 200) {uni.showToast({ title: res.data.message, icon: 'none' });setTimeout(function () {// 返回上一页
+              uni.navigateBack({ delta: 2 });}, 3000);} else {uni.showToast({ title: res.data.message });}} });}, // 获取帖子标题
     getTitle: function getTitle(e) {this.title = e.detail.value;}, // |||||||||||||||||||||录音部分--开始|||||||||||||||||||||
-    startRecord: function startRecord() {console.log('开始录音');uni.showToast({ title: "录音中...", duration: 99999999, icon: 'loading' });recorderManager.start();}, endRecord: function endRecord() {console.log('录音结束');uni.hideToast();uni.showToast({
+    startRecord: function startRecord() {console.log('开始录音');uni.showToast({ title: "录音中...", duration: 99999999, icon: 'loading' });recorderManager.start();
+    },
+    endRecord: function endRecord() {
+      console.log('录音结束');
+      uni.hideToast();
+      uni.showToast({
         title: "结束录音",
         duration: 2000,
         icon: 'success' });

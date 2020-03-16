@@ -315,22 +315,31 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告' }, { id: '6', img: 'iconqiapiansousuo', title: '论坛搜索' }, { id: '2', img: 'iconliebiao', title: '贷款产品交流' }, { id: '4', img: 'iconyonghu', title: '信用卡交流' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖' }, { id: '1', img: 'iconxiepinglun', title: '网友交流' }], Inv: 0, pageData: '', imgUrl: '', page: '1', boardId: '', isShow: false, categoryList: [{ id: 1, title: '直辖市' }, { id: 2, title: '华东地区' }, { id: 3, title: '华北地区' }], subCategoryList: [{ id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }], categoryActive: 0 };}, onLoad: function onLoad() {this.getUserInfo(); // 加载微金交流首页数据
-    this.getIndexData();this.imgUrl = _helper.default.imgUrl;}, methods: { // 左边导航点击事件
-    categoryMainClick: function categoryMainClick(e, index) {console.log(e, index);this.categoryActive = index; // uni.navigateTo({
-      // 	url:`/pages/articleDetail?id=${e.id}`
-      // })
-    }, selListType: function selListType(e) {this.Inv = e.currentTarget.dataset.index;this.boardId = e.currentTarget.dataset.block_id;this.page = '1';}, goDetail: function goDetail(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e) });}, // 获取用户信息
-    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');var user = res.data.type;if (user != 'member') {_this.isShow = true;} else {_this.isShow = false;} // this.userInfo = res.data
-        } });}, // 数据
-    getIndexData: function getIndexData() {var _this2 = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/forum/index"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();
+var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告', type: '23' }, { id: '6', img: 'iconqiapiansousuo', title: '论坛搜索', type: '' }, { id: '2', img: 'iconliebiao', title: '贷款产品交流', type: '1' }, { id: '4', img: 'iconyonghu', title: '信用卡交流', type: '2' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖', type: '3' }, { id: '1', img: 'iconxiepinglun', title: '网友交流', type: '' }], imgUrl: '', isShow: false, categoryList: [], subCategoryList: [{ id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }], categoryActive: 0, area_id: '' };}, onLoad: function onLoad() {this.getUserInfo(); // 加载微金交流首页数据
+    this.getRegion();this.imgUrl = _helper.default.imgUrl;}, methods: { // 左边导航点击事件
+    categoryMainClick: function categoryMainClick(e, index) {console.log(e, index);this.categoryActive = index;this.area_id = e;this.subCategoryList = [];this.getList();}, // 详情
+    categorySubClick: function categorySubClick(title) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title) });}, // 获取用户信息
+    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');var user = res.data.type;if (user != 'member') {_this.isShow = true;} else {_this.isShow = false;}
+          // this.userInfo = res.data
+        } });
+
+    },
+    // 数据
+    getRegion: function getRegion() {var _this2 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/areas/area-list"),
+        method: 'GET',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
           if (res.data.status_code == '200') {
-            _this2.pageData = res.data.data;
-            _this2.boardId = res.data.data.board_data[0].id;
-            console.log(_this2.boardId, '88');
-
+            _this2.categoryList = res.data.data;
+            _this2.area_id = _this2.categoryList[0].id;
+            _this2.getList();
           } else {
             uni.showToast({
               title: res.data.message,
@@ -341,42 +350,42 @@ var app = getApp();var _default = { data: function data() {return { navList: [{ 
 
     },
     // 导航子页面跳转
-    getNav: function getNav(e) {
-      console.log(e);
-      var id = e;
-      if (id == '3') {
+    getNav: function getNav(id, title) {
+      if (id != '') {
         uni.navigateTo({
-          url: "/pages/indexA?id=".concat(23, "&name=\u5FAE\u91D1\u516C\u544A") });
+          url: "/pages/indexA?id=".concat(id, "&name=").concat(title) });
+
+      } else {
+        if (title == '网友交流') {
+          uni.navigateTo({
+            url: "/pages/exchangList?title=".concat(title) });
+
+        }
 
       }
+
     },
     // 加载下一页
-    onReachBottom: function onReachBottom() {
-      this.page++;
-      this.getList();
-    },
     getList: function getList() {var _this3 = this;
       uni.showLoading({
         title: '加载中...',
         duration: 1000000 });
 
       uni.request({
-        url: "".concat(_helper.default.requestUrl, "/forum/posts"),
-        method: 'GET',
+        url: "".concat(_helper.default.requestUrl, "/areas/city-list"),
+        method: 'POST',
         header: {
           authorization: app.globalData.token },
 
         data: {
-          board_id: this.boardId,
-          page: this.page,
-          page_size: '10' },
+          area_id: this.area_id },
 
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
           if (res.data.status_code == '200') {
-            _this3.pageData.board_data[_this3.Inv].posts = _this3.pageData.board_data[_this3.Inv].posts.concat(res.data.data);
+            _this3.subCategoryList = res.data.data;
           } else {
             uni.showToast({
               title: res.data.message,

@@ -281,7 +281,11 @@ var app = getApp();var _default = { data: function data() {return { categoryList
         } });
 
     },
-    onReachBottom: function onReachBottom() {
+    // scroll() {
+    // 	this.page ++;
+    // 	this.getList()
+    // }
+    toLowFun: function toLowFun() {
       this.page++;
       this.getList();
     } } };exports.default = _default;

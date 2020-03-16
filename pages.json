@@ -34,7 +34,7 @@
 		{
 			"path": "pages/apply",
 			"style": {
-				"navigationBarTitleText": "资讯"
+				"navigationBarTitleText": "极品干货"
 			}
 		},
 		{
@@ -368,8 +368,11 @@
 		}, {
 			"path": "pages/meApply",
 			"style": {
-			  "navigationBarTitleText": "系统应用"
+				"navigationBarTitleText": "系统应用"
 			}
+		}, {
+			"path": "pages/exchangList",
+			"style": {}
 		}
 	],
 	"globalStyle": {
@@ -405,7 +408,7 @@
 			},
 			{
 				"pagePath": "pages/apply",
-				"text": "资讯",
+				"text": "极品干货",
 				"iconPath": "static/apply.png",
 				"selectedIconPath": "static/applyCur.png"
 			},

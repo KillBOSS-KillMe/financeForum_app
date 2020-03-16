@@ -195,10 +195,15 @@
 						res = helper.null2str(res)
 						if (res.data.status_code == 200) {
 							uni.showToast({
-								title: res.data.message
+								title: res.data.message,
+								icon: 'none'
 							});
-							// 返回上一页
-							uni.navigateBack()
+							setTimeout(() => {
+								// 返回上一页
+								uni.navigateBack({
+								    delta: 2
+								});
+							},3000);
 						} else {
 							uni.showToast({
 								title: res.data.message

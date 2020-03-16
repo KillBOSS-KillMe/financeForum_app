@@ -13,7 +13,7 @@
 		</view>
 		<view class="nav">
 			<block v-for="(item, index) in navList" :key="index">
-				<view class="item" @tap="getNav(item.id)">
+				<view class="item" @tap="getNav(item.type,item.title)">
 					<view><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
 					<text>{{ item.title }}</text>
 				</view>
@@ -25,16 +25,16 @@
 				<scroll-view scroll-y>
 					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryMainClick(item.id,index)" :key="index"
 					 :class="['colorD', categoryActive == index ? 'color' : '']">
-						{{item.title}}
+						{{item.area_name}}
 					</view>
 				</scroll-view>
 			</view>
 			<view class="nav-right">
 				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" scroll-with-animation>
 					<view class="contentList">
-						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item)">
-							<image :src="item.img" />
-							<text>{{item.title}}</text>
+						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item.city_name)">
+							<image :src="imgUrl+item.icon" />
+							<text>{{item.city_name}}</text>
 						</view>
 					</view>
 					<view class="null" v-if="subCategoryList.length == 0">暂无数据</view>
@@ -95,43 +95,61 @@ export default {
 	data() {
 		return {
 			navList: [
-				{ id: '3', img: 'iconbulletin', title: '微金公告' },
-				{ id: '6', img: 'iconqiapiansousuo', title: '论坛搜索' },
-				{ id: '2', img: 'iconliebiao', title: '贷款产品交流' },
-				
-				{ id: '4', img: 'iconyonghu', title: '信用卡交流' },
-				{ id: '5', img: 'iconqiapiansousuo', title: '推荐热帖' },
-				{ id: '1', img: 'iconxiepinglun', title: '网友交流' },
-				// { id: '1', img: 'iconxiepinglun', title: '网友交流' },
-				// // { id: '2', img: 'iconliebiao', title: '拒贷汇总' },
-				// { id: '3', img: 'iconbulletin', title: '微金公告' },
-				// // { id: '4', img: 'iconyonghu', title: '从业感悟' },
-				// { id: '5', img: 'iconqiapiansousuo', title: '论坛搜索' }
+				{ id: '3', img: 'iconbulletin', title: '微金公告',type: '23'},
+				{ id: '6', img: 'iconqiapiansousuo', title: '论坛搜索',type: '' },
+				{ id: '2', img: 'iconliebiao', title: '贷款产品交流',type: '1'},	
+				{ id: '4', img: 'iconyonghu', title: '信用卡交流',type: '2' },
+				{ id: '5', img: 'iconqiapiansousuo', title: '推荐热帖',type: '3' },
+				{ id: '1', img: 'iconxiepinglun', title: '网友交流',type: ''},
 			],
-			Inv: 0,
-			pageData: '',
 			imgUrl:'',
-			page: '1',
-			boardId:'',
 			isShow: false,
-			categoryList:[
-				{id:1,title:'直辖市'},
-				{id:2,title:'华东地区'},
-				{id:3,title:'华北地区'}
-			],
+			categoryList:[],
 			subCategoryList:[
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
+				{id:'1',img: '../static/imgLost.png',title:'北京'},
 				{id:'1',img: '../static/imgLost.png',title:'北京'},
 				{id:'1',img: '../static/imgLost.png',title:'北京'},
 				{id:'1',img: '../static/imgLost.png',title:'北京'},
 				{id:'1',img: '../static/imgLost.png',title:'北京'},
 			],
 			categoryActive: 0,
+			area_id: ''
 		};
 	},
 	onLoad() {
 		this.getUserInfo()
 		// 加载微金交流首页数据
-		this.getIndexData();
+		this.getRegion();
 		this.imgUrl = helper.imgUrl
 	},
 	methods: {
@@ -139,18 +157,14 @@ export default {
 		categoryMainClick(e,index){
 			console.log(e,index);
 			this.categoryActive = index;
-			// uni.navigateTo({
-			// 	url:`/pages/articleDetail?id=${e.id}`
-			// })
+			this.area_id = e
+			this.subCategoryList =[]
+			this.getList()
 		},
-		selListType(e) {
-			this.Inv = e.currentTarget.dataset.index
-			this.boardId = e.currentTarget.dataset.block_id
-			this.page = '1'
-		},
-		goDetail(e){
+		// 详情
+		categorySubClick(title){
 			uni.navigateTo({
-				url:`/pages/articleDetail?id=${e}`
+				url:`/pages/exchangList?title=${title}`
 			})
 		},
 		// 获取用户信息
@@ -176,13 +190,9 @@ export default {
 			})
 		},
 		// 数据
-		getIndexData() {
-			uni.showLoading({
-				title: '加载中...',
-				duration: 1000000
-			});
+		getRegion() {
 			uni.request({
-				url: `${helper.requestUrl}/forum/index`,
+				url: `${helper.requestUrl}/areas/area-list`,
 				method: 'GET',
 				header: {
 					authorization: app.globalData.token
@@ -192,10 +202,9 @@ export default {
 					res = helper.null2str(res);
 					console.log(res);
 					if (res.data.status_code == '200') {
-						this.pageData = res.data.data;
-						this.boardId = res.data.data.board_data[0].id
-						console.log(this.boardId,'88')
-						
+						this.categoryList = res.data.data;
+						this.area_id = this.categoryList[0].id
+						this.getList()
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -206,42 +215,42 @@ export default {
 			});
 		},
 		// 导航子页面跳转
-		getNav(e) {
-			console.log(e);
-			let id = e;
-			if(id== '3'){
+		getNav(id,title) {
+			if(id != ''){
 				uni.navigateTo({
-					url: `/pages/indexA?id=${23}&name=微金公告`
+					url: `/pages/indexA?id=${id}&name=${title}`
 				});
+			}else{
+				if(title == '网友交流'){
+					uni.navigateTo({
+						url:`/pages/exchangList?title=${title}`
+					})
+				}
+				
 			}
+			
 		},
 		// 加载下一页
-		onReachBottom(){
-			this.page ++;
-			this.getList()
-		},
 		getList() {
 			uni.showLoading({
 				title: '加载中...',
 				duration: 1000000
 			});
 			uni.request({
-				url: `${helper.requestUrl}/forum/posts`,
-				method: 'GET',
+				url: `${helper.requestUrl}/areas/city-list`,
+				method: 'POST',
 				header: {
 					authorization: app.globalData.token
 				},
 				data:{
-					board_id: this.boardId,
-					page: this.page,
-					page_size: '10'
+					area_id: this.area_id
 				},
 				success: res => {
 					uni.hideLoading();
 					res = helper.null2str(res);
 					console.log(res);
 					if (res.data.status_code == '200') {
-						this.pageData.board_data[this.Inv].posts = this.pageData.board_data[this.Inv].posts.concat(res.data.data);
+						this.subCategoryList = res.data.data;
 					} else {
 						uni.showToast({
 							title: res.data.message,

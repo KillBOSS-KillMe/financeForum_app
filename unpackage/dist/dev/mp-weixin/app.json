@@ -60,7 +60,8 @@
     "pages/message",
     "pages/teamList",
     "pages/shareCode",
-    "pages/meApply"
+    "pages/meApply",
+    "pages/exchangList"
   ],
   "subPackages": [],
   "window": {
@@ -88,7 +89,7 @@
       },
       {
         "pagePath": "pages/apply",
-        "text": "资讯",
+        "text": "极品干货",
         "iconPath": "static/apply.png",
         "selectedIconPath": "static/applyCur.png"
       },
@@ -110,5 +111,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap2.json"
+  "sitemapLocation": "sitemap58.json"
 }

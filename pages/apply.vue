@@ -11,9 +11,9 @@
 				</scroll-view>
 			</view>
 			<view class="nav-right">
-				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" scroll-with-animation>
+				<scroll-view  scroll-y="true"  @scrolltolower="toLowFun" @scroll="scroll">
 					<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item)">
-						<image :src="'http://jinrong.beaconway.cn/uploads/'+item.photoalbums[0].path" />
+						<image :src="imgUrl+item.photoalbums[0].path" />
 						<view class="navRightContent">
 							<text>{{item.title}}</text>
 							<view class="applyInfo">
@@ -146,8 +146,12 @@ export default {
 				}
 			})
 		},
-		onReachBottom() {
-			this.page ++;
+		// scroll() {
+		// 	this.page ++;
+		// 	this.getList()
+		// }
+		toLowFun() {
+			this.page++;
 			this.getList()
 		}
 	}
@@ -181,7 +185,8 @@ export default {
 	}
 	.nav-right {
 		width: 510rpx;
-		padding: 22rpx 0 22rpx 22rpx;
+		padding: 22rpx 0 0 22rpx;
+		height: 100vh;
 	}
 
 	.nav-right-item {
