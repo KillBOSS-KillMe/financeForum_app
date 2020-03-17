@@ -1,6 +1,5 @@
 <template>
 	<view class="apply">
-		
 		<view class="nav">
 			<view class="nav-left">
 				<scroll-view scroll-y>
@@ -22,8 +21,9 @@
 								<text>评{{item.comments_count}}</text>
 							</view>
 						</view>
-						<view class="null" v-if="subCategoryList.length == 0">暂无数据</view>
 					</view>
+					<view class="null" v-if="isShow">暂无数据</view>
+					<view class="null" v-if="isShow1">{{vip}}</view>
 				</scroll-view>
 			</view>
 		</view>
@@ -47,6 +47,9 @@ export default {
 				color: this.activeTextColor,
 				backgroundColor: this.activeBackgroundColor
 			},
+			vip:'',
+			isShow: true,
+			isShow1: false
 		}
 	},
 	props: {
@@ -134,8 +137,19 @@ export default {
 						 		title:'暂无更多数据',
 						 		icon:"none"
 						 	})
+							this.isShow = true
+							console.log(this.isShow )
+							this.isShow1 = false
+						 }else{
+							 this.isShow =false
+							 this.isShow1 = false
 						 }
-					} else {
+						
+					} else if(res.data.status_code == 202) {
+						this.vip = res.data.message
+						this.isShow1 = true
+						this.isShow = false
+					}else{
 						uni.showToast({
 							title: res.data.message,
 							icon:'none',

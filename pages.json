@@ -372,9 +372,11 @@
 			}
 		}, {
 			"path": "pages/exchangList",
-			"style": {}
+			"style": {
+				"enablePullDownRefresh": true
+			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",

@@ -315,50 +315,16 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告', type: '23' }, { id: '6', img: 'iconqiapiansousuo', title: '论坛搜索', type: '' }, { id: '2', img: 'iconliebiao', title: '贷款产品交流', type: '1' }, { id: '4', img: 'iconyonghu', title: '信用卡交流', type: '2' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖', type: '3' }, { id: '1', img: 'iconxiepinglun', title: '网友交流', type: '' }], imgUrl: '', isShow: false, categoryList: [], subCategoryList: [{ id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }, { id: '1', img: '../static/imgLost.png', title: '北京' }], categoryActive: 0, area_id: '' };}, onLoad: function onLoad() {this.getUserInfo(); // 加载微金交流首页数据
-    this.getRegion();this.imgUrl = _helper.default.imgUrl;}, methods: { // 左边导航点击事件
+var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告', type: '23' }, { id: '6', img: 'iconqiapiansousuo', title: '论坛搜索', type: '' }, { id: '2', img: 'iconliebiao', title: '贷款产品交流', type: '1' }, { id: '4', img: 'iconyonghu', title: '信用卡交流', type: '2' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖', type: '3' }, { id: '1', img: 'iconxiepinglun', title: '网友交流', type: '' }], imgUrl: '', isShow: false, categoryList: [], subCategoryList: [], categoryActive: 0, area_id: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo(); // 加载微金交流首页数据
+    this.getRegion();}, methods: { // 左边导航点击事件
     categoryMainClick: function categoryMainClick(e, index) {console.log(e, index);this.categoryActive = index;this.area_id = e;this.subCategoryList = [];this.getList();}, // 详情
-    categorySubClick: function categorySubClick(title) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title) });}, // 获取用户信息
-    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');var user = res.data.type;if (user != 'member') {_this.isShow = true;} else {_this.isShow = false;}
-          // this.userInfo = res.data
-        } });
-
-    },
-    // 数据
-    getRegion: function getRegion() {var _this2 = this;
-      uni.request({
-        url: "".concat(_helper.default.requestUrl, "/areas/area-list"),
-        method: 'GET',
-        header: {
-          authorization: app.globalData.token },
-
-        success: function success(res) {
-          uni.hideLoading();
-          res = _helper.default.null2str(res);
-          console.log(res);
-          if (res.data.status_code == '200') {
-            _this2.categoryList = res.data.data;
-            _this2.area_id = _this2.categoryList[0].id;
-            _this2.getList();
-          } else {
-            uni.showToast({
-              title: res.data.message,
-              icon: 'none' });
-
-          }
-        } });
-
-    },
-    // 导航子页面跳转
-    getNav: function getNav(id, title) {
-      if (id != '') {
-        uni.navigateTo({
-          url: "/pages/indexA?id=".concat(id, "&name=").concat(title) });
-
-      } else {
-        if (title == '网友交流') {
+    categorySubClick: function categorySubClick(title, id, img) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img) });}, // 获取用户信息
+    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');var user = res.data.type;if (user != 'member') {_this.isShow = true;} else {_this.isShow = false;} // this.userInfo = res.data
+        } });}, // 数据
+    getRegion: function getRegion() {var _this2 = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/areas/area-list"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this2.categoryList = res.data.data;_this2.area_id = _this2.categoryList[0].id;_this2.getList();} else {uni.showToast({ title: res.data.message, icon: 'none' });}} });}, // 导航子页面跳转
+    getNav: function getNav(id, title, img) {if (id != '') {uni.navigateTo({ url: "/pages/indexA?id=".concat(id, "&name=").concat(title) });} else {if (title == '网友交流') {
           uni.navigateTo({
-            url: "/pages/exchangList?title=".concat(title) });
+            url: "/pages/exchangList?title=".concat(title, "&id=", 38, "&img=").concat(img) });
 
         }
 

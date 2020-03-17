@@ -1,6 +1,6 @@
 
 page {
-	background-color: #F8F8F8;
+	background-color: #f8f8f8;
 }
 .head {
 	padding: 18rpx;
@@ -32,7 +32,7 @@ page {
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.post{
+.post {
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 96rpx;
@@ -48,15 +48,15 @@ page {
 	-webkit-align-items: center;
 	        align-items: center;
 	margin: 0 auto;
-	background-image: -webkit-linear-gradient(#A1DDF9, #6BD2F4);
-	background-image: linear-gradient(#A1DDF9, #6BD2F4);
+	background-image: -webkit-linear-gradient(#a1ddf9, #6bd2f4);
+	background-image: linear-gradient(#a1ddf9, #6bd2f4);
 	position: fixed;
 	z-index: 9;
 	right: 0;
 	top: 60vh;
 }
-.exchang .nav .iconfont{
-	color: #fff;
+.post .iconfont {
+	color: #ffffff !important;
 	font-size: 46rpx;
 }
 .headInfo .headLeft image {
@@ -82,7 +82,7 @@ page {
 	color: #ffffff;
 	font-size: 26rpx;
 }
-.headList .headItem{
+.headList .headItem {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -94,16 +94,16 @@ page {
 	        align-items: center;
 	margin-top: 16rpx;
 }
-.headList .headItem .tip{
-	color: #E22929;
+.headList .headItem .tip {
+	color: #e22929;
 	font-size: 22rpx;
-	border: 1rpx solid #E22929;
+	border: 1rpx solid #e22929;
 	padding: 0 10rpx;
 	border-radius: 8rpx;
 	margin-right: 12rpx;
 }
-.headList .headItem .text{
-	width: 300rpx;
+.headList .headItem .text {
+	width: 542rpx;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -111,11 +111,11 @@ page {
 	text-align: left;
 	color: #333333;
 }
-.more{
+.more {
 	font-size: 26rpx;
 	text-align: center;
 	color: #999;
-	border-top: 1rpx solid #E8E8E8;
+	border-top: 1rpx solid #e8e8e8;
 	padding-top: 16rpx;
 	margin-top: 16rpx;
 }
@@ -137,6 +137,7 @@ page {
 	-webkit-box-align: start;
 	-webkit-align-items: flex-start;
 	        align-items: flex-start;
+	margin-bottom: 40rpx;
 }
 .contentItem > image {
 	width: 80rpx;
@@ -174,7 +175,7 @@ page {
 	white-space: nowrap;
 	font-size: 28rpx;
 	font-weight: 700;
-	text-align: left;
+	text-align: right;
 }
 .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
@@ -194,6 +195,7 @@ page {
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
+	margin-top: 8rpx;
 }
 .contentItem .right .icon .iconRight,
 .contentItem .right .icon .iconRight > view {

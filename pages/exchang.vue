@@ -1,7 +1,7 @@
 <template>
 	<view class="exchang">
 		<!-- <pageSearch></pageSearch> -->
-		<view class="banner">
+<!-- 		<view class="banner">
 			<swiper class="swiper">
 				<block v-for="(item,index) in pageData.ad.aditems" :key='index'>
 					<swiper-item>
@@ -10,10 +10,10 @@
 				</block>
 				
 			</swiper>
-		</view>
+		</view> -->
 		<view class="nav">
 			<block v-for="(item, index) in navList" :key="index">
-				<view class="item" @tap="getNav(item.type,item.title)">
+				<view class="item" @tap="getNav(item.type,item.title,item.img)">
 					<view><uni-icon type="" class="iconfont" :class="item.img"></uni-icon></view>
 					<text>{{ item.title }}</text>
 				</view>
@@ -32,7 +32,7 @@
 			<view class="nav-right">
 				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" scroll-with-animation>
 					<view class="contentList">
-						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item.city_name)">
+						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item.city_name,item.id,item.icon)">
 							<image :src="imgUrl+item.icon" />
 							<text>{{item.city_name}}</text>
 						</view>
@@ -105,52 +105,18 @@ export default {
 			imgUrl:'',
 			isShow: false,
 			categoryList:[],
-			subCategoryList:[
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-				{id:'1',img: '../static/imgLost.png',title:'北京'},
-			],
+			subCategoryList:[],
 			categoryActive: 0,
 			area_id: ''
 		};
 	},
-	onLoad() {
+	onLoad() {	
+		this.imgUrl = helper.imgUrl
+	},
+	onShow(){
 		this.getUserInfo()
 		// 加载微金交流首页数据
 		this.getRegion();
-		this.imgUrl = helper.imgUrl
 	},
 	methods: {
 		// 左边导航点击事件
@@ -162,9 +128,9 @@ export default {
 			this.getList()
 		},
 		// 详情
-		categorySubClick(title){
+		categorySubClick(title,id,img){
 			uni.navigateTo({
-				url:`/pages/exchangList?title=${title}`
+				url:`/pages/exchangList?title=${title}&id=${id}&img=${img}`
 			})
 		},
 		// 获取用户信息
@@ -215,7 +181,7 @@ export default {
 			});
 		},
 		// 导航子页面跳转
-		getNav(id,title) {
+		getNav(id,title,img) {
 			if(id != ''){
 				uni.navigateTo({
 					url: `/pages/indexA?id=${id}&name=${title}`
@@ -223,7 +189,7 @@ export default {
 			}else{
 				if(title == '网友交流'){
 					uni.navigateTo({
-						url:`/pages/exchangList?title=${title}`
+						url:`/pages/exchangList?title=${title}&id=${38}&img=${img}`
 					})
 				}
 				
@@ -405,5 +371,31 @@ export default {
 	.color {
 		background: #fff;
 		color: #333;
+	}
+	.showModel{
+		width: 750rpx;
+		height: 100vh;
+		position: absolute;
+		z-index: 8;
+		top: 0;
+		left: 0;
+		background-color: #000000;
+		opacity: .4;
+	}
+	.showText{
+		width: 400rpx;
+		height: 200rpx;
+		position: absolute;
+		z-index: 10;
+		top: 50%;
+		margin-top: -100rpx;
+		left: 50%;
+		margin-left: -200rpx;
+		background-color: #fff;
+		text-align: center;
+		font-size: 28rpx;
+		line-height: 200rpx;
+		color: #000000;
+		border-radius: 10rpx;
 	}
 </style>

@@ -11,8 +11,8 @@
 							<text v-if="articleDetail.user.type == 'member'" style="color: #ceb277;">VIP</text>
 							<text>{{ articleDetail.user.created_at }}</text>
 							<view>
-								<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
-								<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 1">已关注</text>
+								<text class="follow" @tap="addFollow('user')" v-if="articleDetail.is_follow == 0">关注</text>
+								<text class="follow" @tap="addFollow('user')" v-if="articleDetail.is_follow == 1">已关注</text>
 							</view>
 						</view>
 					</view>
@@ -386,7 +386,7 @@ export default {
 				}
 			});
 		},
-		addFollow() {
+		addFollow(type) {
 			// 关注用户
 			uni.showLoading({
 				title: '加载中...',
@@ -399,13 +399,14 @@ export default {
 					authorization: app.globalData.token
 				},
 				data: {
-					follow_id: this.articleDetail.user_id
+					follow_id: this.articleDetail.user_id,
+					type: type
 				},
 				success: res => {
 					uni.hideLoading();
 					res = helper.null2str(res);
 					console.log(res);
-					if (res.data.status_code == '1') {
+					if (res.data.status_code == 200) {
 						uni.showToast({
 							title: res.data.message
 						});

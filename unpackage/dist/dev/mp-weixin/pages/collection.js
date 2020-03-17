@@ -163,6 +163,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -191,7 +195,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { autoplay: true, interval: 2000, bannerList: [], list: [], page: '1', imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.getAd();this.getList();}, methods: { // 加载轮播图
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { autoplay: true, interval: 2000, bannerList: [], list: [], page: '1', imgUrl: '', vip: '', isShow: false };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getAd();this.getList();}, methods: { // 加载轮播图
     getAd: function getAd() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/board/info"), method: 'GET', header: { authorization: app.globalData.token },
         data: {
           board_id: '5',
@@ -241,9 +249,14 @@ var app = getApp();var _default = { data: function data() {return { autoplay: tr
                 icon: "none" });
 
             }
+          } else if (res.data.status_code == 202) {
+            _this2.vip = res.data.message;
+            _this2.isShow = true;
           } else {
             uni.showToast({
-              title: res.data.message });
+              title: res.data.message,
+              icon: 'none',
+              duration: 3000 });
 
           }
 
@@ -252,7 +265,6 @@ var app = getApp();var _default = { data: function data() {return { autoplay: tr
     },
     // 跳转详情
     goDetail: function goDetail(e) {
-      console.log(e + '||||||||||||||||||||');
       uni.navigateTo({
         url: "/pages/articleDetail?id=".concat(e) });
 

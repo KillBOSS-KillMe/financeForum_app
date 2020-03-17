@@ -167,6 +167,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -199,22 +227,40 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '' };}, onLoad: function onLoad() {// 加载关注列表
-    this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this; // 加载关注列表
-      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/follows"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message,
-              icon: 'none' });
-
-          }
-        } });
-
-    },
-    delFollows: function delFollows(e) {var _this2 = this;
-      var id = e.currentTarget.dataset.id;
-      var index = e.currentTarget.dataset.index;
-      uni.showLoading({
-        title: '执行中...',
-        duration: 1000000 });
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', Inv: '0', tabType: 'board' };}, onLoad: function onLoad() {// 加载关注列表
+    this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;this.page = '1';if (this.Inv == 0) {// 最新
+        this.tabType = 'board';} else if (this.Inv == 1) {// 热门
+        this.tabType = 'city';} else if (this.Inv == 2) {// 推荐
+        this.tabType = 'user';}this.list = [];this.getList();}, getList: function getList() {var _this = this; // 加载关注列表
+      uni.request({ url: "".concat(_helper.default.requestUrl, "/user/follows"), method: 'GET', header: { authorization: app.globalData.token }, data: { type: this.tabType }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message, icon: 'none' });}} });}, delFollows: function delFollows(e) {var _this2 = this;var id = e.currentTarget.dataset.id;var index = e.currentTarget.dataset.index;uni.showLoading({ title: '执行中...', duration: 1000000 });
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/user/del_follow"),
         method: 'POST',

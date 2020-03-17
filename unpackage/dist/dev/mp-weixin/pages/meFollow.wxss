@@ -1,5 +1,35 @@
 
-.search{
+.meFollow {
+	width: 690rpx;
+	padding: 30rpx;
+}
+.inv-h-w {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.inv-h {
+	font-size: 32rpx;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	text-align: center;
+	color: #999999;
+	font-weight: 600;
+}
+.inv-h-se {
+	color: #2390dc;
+	font-weight: 600;
+}
+.inv-h-se:after {
+	content: ' ';
+	display: block;
+	border-bottom: 6rpx solid #2390dc;
+	width: 46rpx;
+	margin: 10rpx auto 0;
+	border-radius: 3rpx;
+}
+.search {
 	width: 650rpx;
 	height: 70rpx;
 	margin: 0 30rpx;
@@ -13,9 +43,9 @@
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
-	background-color: #F9F9F9;
+	background-color: #f9f9f9;
 }
-.search .iconfont{
+.search .iconfont {
 	width: 40rpx;
 	height: 40rpx;
 	font-size: 40rpx;
@@ -29,20 +59,20 @@
 	-webkit-justify-content: center;
 	        justify-content: center;
 }
-.search input{
+.search input {
 	width: 640rpx;
 	height: 40rpx;
 	font-size: 30rpx;
 }
-.list{
-	width: 750rpx;
+.list {
+	width: 690rpx;
 	height: auto;
 }
-.item{
+.item {
 	width: 690rpx;
 	height: 170rpx;
 	border-radius: 10rpx;
-	background-color: #F9F9F9;
+	background-color: #f9f9f9;
 	margin: 20rpx 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -54,13 +84,13 @@
 	-webkit-justify-content: flex-start;
 	        justify-content: flex-start;
 }
-.item image{
+.item image {
 	width: 118rpx;
 	height: 118rpx;
 	border-radius: 118rpx;
 	margin: 20rpx;
 }
-.item .con{
+.item .con {
 	width: 390rpx;
 	height: 118rpx;
 	border-radius: 118rpx;
@@ -78,7 +108,7 @@
 	-webkit-flex-direction: column;
 	        flex-direction: column;
 }
-.item .con view{
+.item .con view {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -96,12 +126,12 @@
 	font-weight: 600;
 	color: #333333;
 }
-.item .label{
+.item .label {
 	font-size: 18rpx;
 	padding: 5rpx 10rpx;
 	border-radius: 30rpx;
 	color: #fff;
-	background-color: #D2BF8E;
+	background-color: #d2bf8e;
 }
 .item .iconfont {
 	font-size: 22rpx;
@@ -116,16 +146,16 @@
 	-webkit-justify-content: center;
 	        justify-content: center;
 }
-.item .con .info{
+.item .con .info {
 	color: #666666;
 	font-size: 26rpx;
-	overflow : hidden;
+	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
 }
-.operating{
+.operating {
 	width: 100rpx;
 	height: 118rpx;
 	display: -webkit-box;
@@ -143,12 +173,12 @@
 	        flex-direction: column;
 	padding-left: 20rpx;
 }
-.operating view{
+.operating view {
 	width: 100rpx;
 	height: 60rpx;
 	font-size: 26rpx;
 	color: #fff;
-	background-color: #B8B8B8;
+	background-color: #b8b8b8;
 	border-radius: 10rpx;
 	display: -webkit-box;
 	display: -webkit-flex;

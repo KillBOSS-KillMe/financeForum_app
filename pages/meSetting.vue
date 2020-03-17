@@ -19,16 +19,18 @@
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
 			</view>
 		</view>
-		<view class="item">
-			<view class="left">
-				<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
-				<text>关于</text>
+		<!-- #ifdef APP-PLUS -->
+			<view class="item" @tap="getNew">
+				<view class="left">
+					<!-- <uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon> -->
+					<text>关于</text>
+				</view>
+				<view>
+					<text>V{{version}}</text>
+					<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
+				</view>
 			</view>
-			<view>
-				<text>V1.0</text>
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-			</view>
-		</view>
+		<!-- #endif -->
 		<view class="login" @tap="outLogin">
 			<view>退出登录</view>
 		</view>
@@ -41,13 +43,21 @@
 	export default {
 		data() {
 			return {
-				num: ''
+				num: '',
+				version: ''
 			};
 		},
 		onLoad() {
 			const loginName = uni.getStorageSync('login_name');
 			console.log(loginName)
 			const loginPwd = uni.getStorageSync('login_pwd');
+			// #ifdef APP-PLUS
+			plus.runtime.getProperty(plus.runtime.appid,(wgtinfo)=>{
+				console.log(wgtinfo);
+				console.log(wgtinfo.version);   //版本号
+				this.version = wgtinfo.version
+			})
+			// #endif
 		},
 		onShow() {
 			uni.getStorageInfo({
@@ -63,6 +73,11 @@
 			});
 		},
 		methods: {
+			// #ifdef APP-PLUS
+			// getNew(){
+				
+			// },
+			// #endif
 			modifyPassword() {
 				// 修改密码
 				// 进入修改密码页

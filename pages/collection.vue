@@ -22,6 +22,10 @@
 					</view>
 				</view>
 			</block>
+			<view v-if="isShow">
+				<view class="showModel" @touchmove.stop = ""></view>
+				<view class="showText">{{vip}}</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -37,11 +41,15 @@
 				bannerList:[],
 				list: [],
 				page: '1',
-				imgUrl: ''
+				imgUrl: '',
+				vip: '',
+				isShow: false,
 			}
 		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl
+		},
+		onShow() {
 			this.getAd()
 			this.getList()
 		},
@@ -106,9 +114,14 @@
 							 		icon:"none"
 							 	})
 							 }
-						} else {
+						} else if(res.data.status_code == 202) {
+							this.vip = res.data.message
+							this.isShow = true
+						}else{
 							uni.showToast({
-								title: res.data.message
+								title: res.data.message,
+								icon: 'none',
+								duration: 3000
 							});
 						}
 				
@@ -117,7 +130,6 @@
 			},
 			// 跳转详情
 			goDetail(e){
-				console.log(e + '||||||||||||||||||||')
 				uni.navigateTo({
 					url:`/pages/articleDetail?id=${e}`
 				})
@@ -194,5 +206,34 @@ swiper-item {
 	display: block;
 	font-size: 24rpx;
 	color: #999999;
+}
+.showModel{
+	width: 750rpx;
+	height: 100vh;
+	position: absolute;
+	z-index: 8;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	opacity: .4;
+}
+.showText{
+	width: 340rpx;
+	height: 140rpx;
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	margin-top: -100rpx;
+	left: 50%;
+	margin-left: -200rpx;
+	background-color: #fff;
+	text-align: center;
+	font-size: 28rpx;
+	color: #000000;
+	border-radius: 10rpx;
+	padding: 30rpx;
+	display: flex;
+	align-content: center;
+	align-items: center;
 }
 </style>

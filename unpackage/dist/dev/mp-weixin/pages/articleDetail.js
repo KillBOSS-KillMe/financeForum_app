@@ -521,7 +521,7 @@ var app = getApp();var parser = function parser() {return Promise.all(/*! import
         } });
 
     },
-    addFollow: function addFollow() {var _this6 = this;
+    addFollow: function addFollow(type) {var _this6 = this;
       // 关注用户
       uni.showLoading({
         title: '加载中...',
@@ -534,13 +534,14 @@ var app = getApp();var parser = function parser() {return Promise.all(/*! import
           authorization: app.globalData.token },
 
         data: {
-          follow_id: this.articleDetail.user_id },
+          follow_id: this.articleDetail.user_id,
+          type: type },
 
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
-          if (res.data.status_code == '1') {
+          if (res.data.status_code == 200) {
             uni.showToast({
               title: res.data.message });
 

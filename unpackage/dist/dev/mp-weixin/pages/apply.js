@@ -199,8 +199,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { categoryList: [], subCategoryList: [], imgUrl: '', page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor } };}, props: { //主分类激活索引
-    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } }, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;
+var app = getApp();var _default = { data: function data() {return { categoryList: [], subCategoryList: [], imgUrl: '', page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, vip: '', isShow: true, isShow1: false };}, props: { //主分类激活索引
+    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } },
+
+  onLoad: function onLoad() {
+    this.imgUrl = _helper.default.imgUrl;
     this.getNav();
   },
   mounted: function mounted() {
@@ -269,7 +272,18 @@ var app = getApp();var _default = { data: function data() {return { categoryList
                 title: '暂无更多数据',
                 icon: "none" });
 
+              _this2.isShow = true;
+              console.log(_this2.isShow);
+              _this2.isShow1 = false;
+            } else {
+              _this2.isShow = false;
+              _this2.isShow1 = false;
             }
+
+          } else if (res.data.status_code == 202) {
+            _this2.vip = res.data.message;
+            _this2.isShow1 = true;
+            _this2.isShow = false;
           } else {
             uni.showToast({
               title: res.data.message,

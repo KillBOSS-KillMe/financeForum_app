@@ -1,41 +1,93 @@
 <template>
-	<view class="exchangList">
+	<view class="exchangList" v-if="cityInfo.id == '38'">
 		<view class="head">
 			<view class="headInfo">
 				<view class="headLeft">
-					<image src="../static/imgLost.png" mode=""></image>
-					<text></text>
+					<uni-icon type="" class="iconfont" :class="item.img"></uni-icon>
+					<text>{{ cityInfo.title }}</text>
 				</view>
-				<text>关注</text>
+				<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
+				<text class="follow" @tap="cutFollow" v-if="articleDetail.is_follow == 1">已关注</text>
 			</view>
 			<view class="headList">
-				<view class="headItem">
-					<text class="tip">置顶</text>
-					<text class="text">123</text>
-				</view>
-				<text class="more" @tap="getMore">查看更多</text>
+				<block v-for="(item, index) in tipList" :key="index">
+					<view class="headItem" @tap="getDateil(item.id)">
+						<text class="tip">置顶</text>
+						<text class="text">{{ item.title }}</text>
+					</view>
+				</block>
+				<text class="more" @tap="getMore" v-if="tipList.length < total">查看更多</text>
 			</view>
 		</view>
 		<view class="content">
-			<block v-for="(item,index) in list" :key='index'>
-				<view class="contentItem">
-					<image src="../static/1.png" mode=""></image>
+			<block v-for="(item, index) in list" :key="index">
+				<view class="contentItem" @tap="getDateil(item.id)">
+					<image :src="imgUrl + item.user.avatar" mode=""></image>
 					<view class="right">
 						<view class="title">
-							<text class="headTitle">999999999999999999999999999999999999</text>
-							<text class="form">来自 222222222222222222222222</text>
+							<text class="headTitle">{{ item.user.name }}</text>
+							<text class="form">来自 {{ item.from_board }}</text>
 						</view>
-						<view class="itemContent">123</view>
+						<view class="itemContent">{{ item.title }}</view>
 						<view class="icon">
-							<text>2012</text>
+							<text>{{ item.created_at }}</text>
 							<view class="iconRight">
 								<view>
 									<uni-icon type="" class="iconfont icondianzan"></uni-icon>
-									<text>12</text>
+									<text>{{ item.like }}</text>
 								</view>
 								<view>
 									<uni-icon type="" class="iconfont iconhuifu"></uni-icon>
-									<text>12</text>
+									<text>{{ item.comments_count }}</text>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconxiepinglun"></uni-icon></view>
+	</view>
+	<view class="exchangList" v-else>
+		<view class="head">
+			<view class="headInfo">
+				<view class="headLeft">
+					<image :src="imgUrl + cityInfo.img" mode=""></image>
+					<text>{{ cityInfo.title }}</text>
+				</view>
+				<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
+				<text class="follow" @tap="cutFollow" v-if="articleDetail.is_follow == 1">已关注</text>
+			</view>
+			<view class="headList">
+				<block v-for="(item, index) in tipList" :key="index">
+					<view class="headItem" @tap="getDateil(item.id)">
+						<text class="tip">置顶</text>
+						<text class="text">{{ item.title }}</text>
+					</view>
+				</block>
+				<text class="more" @tap="getMore" v-if="tipList.length < total">查看更多</text>
+			</view>
+		</view>
+		<view class="content">
+			<block v-for="(item, index) in list" :key="index">
+				<view class="contentItem" @tap="getDateil(item.id)">
+					<image :src="imgUrl + item.user.avatar" mode=""></image>
+					<view class="right">
+						<view class="title">
+							<text class="headTitle">{{ item.user.name }}</text>
+							<text class="form">来自 {{ item.from_board }}</text>
+						</view>
+						<view class="itemContent">{{ item.title }}</view>
+						<view class="icon">
+							<text>{{ item.created_at }}</text>
+							<view class="iconRight">
+								<view>
+									<uni-icon type="" class="iconfont icondianzan"></uni-icon>
+									<text>{{ item.like }}</text>
+								</view>
+								<view>
+									<uni-icon type="" class="iconfont iconhuifu"></uni-icon>
+									<text>{{ item.comments_count }}</text>
 								</view>
 							</view>
 						</view>
@@ -53,25 +105,158 @@ import helper from '../common/helper.js';
 export default {
 	data() {
 		return {
-			imgUrl: ''
+			imgUrl: '',
+			cityInfo: {},
+			see_sticky: '',
+			list: [],
+			page: '1',
+			pageList: '1',
+			tipList: [],
+			total: ''
 		};
 	},
 	onLoad(e) {
-		this.imgUrl = helper.imgUrl
+		console.log(e);
+		this.imgUrl = helper.imgUrl;
 		uni.setNavigationBarTitle({
 			title: e.title
 		});
+		this.cityInfo = e;
+		if(this.cityInfo.id == '38'){
+			console.log(this.cityInfo)
+			this.getBordList()
+			this.getSee_stickyList()
+		}else{
+			this.getList();
+			this.see_stickyList();
+		}
 	},
 	methods: {
 		// 发布
-		getPost(){
+		getPost() {
 			uni.navigateTo({
 				url: `/pages/experience`
 			});
 		},
 		// 置顶加载更多
-		getMore(){
-			this.page = '1'
+		getMore() {
+			this.page++;
+			if(this.cityInfo.id == '38'){
+				this.getSee_stickyList()
+			}else{
+				this.see_stickyList();
+			}
+		},
+		onReachBottom(){
+			this.pageList++;
+			if(this.cityInfo.id == '38'){
+				this.getBordList()
+			}else if(this.cityInfo.id != '38'){
+				this.getList()
+			}
+			
+		},
+		// 跳转帖子详情
+		getDateil(e) {
+			uni.navigateTo({
+				url: `/pages/articleDetail?id=${e}`
+			});
+		},
+		// 帖子列表
+		getList() {
+			uni.request({
+				url: `${helper.requestUrl}/posts/city-posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data: {
+					city_id: this.cityInfo.id,
+					see_sticky: '0', //帖子
+					page: this.pageList,
+					page_size: '10'
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res, '++++++++');
+					if (res.data.status_code == 200) {
+						this.list = this.list.concat(res.data.data);
+					}
+				}
+			});
+		},
+		see_stickyList() {
+			uni.request({
+				url: `${helper.requestUrl}/posts/city-posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data: {
+					city_id: this.cityInfo.id,
+					see_sticky: '1', //置顶
+					page: this.page,
+					page_size: '3'
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res, '++++++++');
+					if (res.data.status_code == 200) {
+						this.total = res.data.total;
+						this.tipList = this.tipList.concat(res.data.data);
+					}
+				}
+			});
+		},
+		getBordList() {
+			uni.request({
+				url: `${helper.requestUrl}/posts/board-posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data: {
+					see_sticky: '0', //帖子
+					board_id: this.cityInfo.id,
+					bank_id: '0',
+					child_id: '0',
+					page: this.pageList,
+					page_size: '10'
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res, '++++++++');
+					if (res.data.status_code == 200) {
+						this.list = this.list.concat(res.data.data);
+					}
+				}
+			});
+		},
+		// 网友交流
+		getSee_stickyList() {
+			uni.request({
+				url: `${helper.requestUrl}/posts/board-posts`,
+				method: 'GET',
+				header: {
+					authorization: app.globalData.token
+				},
+				data: {
+					board_id: this.cityInfo.id,
+					bank_id: '0',
+					child_id: '0',
+					see_sticky: '1', //置顶
+					page: this.page,
+					page_size: '3',
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res, '++++++++');
+					if (res.data.status_code == 200) {
+						this.total = res.data.total;
+						this.tipList = this.tipList.concat(res.data.data);
+					}
+				}
+			});
 		}
 	}
 };
@@ -79,7 +264,7 @@ export default {
 
 <style>
 page {
-	background-color: #F8F8F8;
+	background-color: #f8f8f8;
 }
 .head {
 	padding: 18rpx;
@@ -100,9 +285,8 @@ page {
 .headInfo .headLeft {
 	display: flex;
 	align-items: center;
-	
 }
-.post{
+.post {
 	width: 96rpx;
 	height: 96rpx;
 	border-radius: 96rpx;
@@ -111,14 +295,14 @@ page {
 	align-content: center;
 	align-items: center;
 	margin: 0 auto;
-	background-image: linear-gradient(#A1DDF9, #6BD2F4);
+	background-image: linear-gradient(#a1ddf9, #6bd2f4);
 	position: fixed;
 	z-index: 9;
 	right: 0;
 	top: 60vh;
 }
-.exchang .nav .iconfont{
-	color: #fff;
+.post .iconfont {
+	color: #ffffff !important;
 	font-size: 46rpx;
 }
 .headInfo .headLeft image {
@@ -144,22 +328,22 @@ page {
 	color: #ffffff;
 	font-size: 26rpx;
 }
-.headList .headItem{
+.headList .headItem {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	margin-top: 16rpx;
 }
-.headList .headItem .tip{
-	color: #E22929;
+.headList .headItem .tip {
+	color: #e22929;
 	font-size: 22rpx;
-	border: 1rpx solid #E22929;
+	border: 1rpx solid #e22929;
 	padding: 0 10rpx;
 	border-radius: 8rpx;
 	margin-right: 12rpx;
 }
-.headList .headItem .text{
-	width: 300rpx;
+.headList .headItem .text {
+	width: 542rpx;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -167,11 +351,11 @@ page {
 	text-align: left;
 	color: #333333;
 }
-.more{
+.more {
 	font-size: 26rpx;
 	text-align: center;
 	color: #999;
-	border-top: 1rpx solid #E8E8E8;
+	border-top: 1rpx solid #e8e8e8;
 	padding-top: 16rpx;
 	margin-top: 16rpx;
 }
@@ -186,6 +370,7 @@ page {
 	justify-content: space-between;
 	align-content: flex-start;
 	align-items: flex-start;
+	margin-bottom: 40rpx;
 }
 .contentItem > image {
 	width: 80rpx;
@@ -219,7 +404,7 @@ page {
 	white-space: nowrap;
 	font-size: 28rpx;
 	font-weight: 700;
-	text-align: left;
+	text-align: right;
 }
 .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
@@ -235,6 +420,7 @@ page {
 .contentItem .right .icon {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 8rpx;
 }
 .contentItem .right .icon .iconRight,
 .contentItem .right .icon .iconRight > view {
