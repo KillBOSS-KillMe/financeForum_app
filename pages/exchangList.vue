@@ -81,7 +81,7 @@ export default {
 		// 发布
 		getPost() {
 			uni.navigateTo({
-				url: `/pages/experience`
+				url: `/pages/post?id=${this.cityInfo.id}`
 			});
 		},
 		// 置顶加载更多

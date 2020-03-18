@@ -32,7 +32,7 @@
 			<view class="nav-right">
 				<scroll-view scroll-y :scroll-top="scrollTop" @scroll="scroll" scroll-with-animation>
 					<view class="contentList">
-						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item.city_name,item.id,item.icon)">
+						<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item.city_name,item.id,item.icon,area_id)">
 							<image :src="imgUrl+item.icon" />
 							<text>{{item.city_name}}</text>
 						</view>
@@ -88,9 +88,9 @@ export default {
 			this.getList()
 		},
 		// 详情
-		categorySubClick(title,id,img){
+		categorySubClick(title,id,img,fatheId){
 			uni.navigateTo({
-				url:`/pages/exchangList?title=${title}&id=${id}&img=${img}`
+				url:`/pages/exchangList?title=${title}&id=${id}&img=${img}&fatheId=${fatheId}`
 			})
 		},
 		// 获取用户信息

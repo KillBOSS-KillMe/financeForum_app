@@ -81,7 +81,7 @@ export default {
 		// 发布
 		getPost() {
 			uni.navigateTo({
-				url: `/pages/experience`
+				url: `/pages/post?id=${38}&type=${'网友交流'}`
 			});
 		},
 		// 置顶加载更多

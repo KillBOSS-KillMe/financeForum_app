@@ -116,7 +116,8 @@
 					title: '',
 					content: '',
 					board_id: '',
-					topic_id: ''
+					topic_id: '',
+					city_id: ''
 				},
 				readOnly: false,
 				formats: {},
@@ -128,7 +129,11 @@
 		},
 		onLoad(options) {
 			console.log(options);
-			this.formNode.board_id = options.id;
+			if(options.type == '网友交流'){
+				this.formNode.board_id = options.id;
+			}else if(options.type != '网友交流'){
+				this.formNode.city_id = options.id
+			}
 			this.options = options;
 			// 富文本部分
 			uni.loadFontFace({
@@ -184,11 +189,12 @@
 						authorization: app.globalData.token
 					},
 					data: {
-						board_id: this.options.id,  // 模块ID
+						board_id: this.formNode.board_id,  // 模块ID
 						topic_id: '',  // 主体ID
 						title: this.title,  // 帖子标题
 						content: this.htmlCon,  // 帖子内容
-						voice: this.voicePath  // 录音的文件路径
+						voice: this.voicePath,  // 录音的文件路径
+						city_id: this.formNode.city_id
 					},
 					success: res => {
 						uni.hideLoading();

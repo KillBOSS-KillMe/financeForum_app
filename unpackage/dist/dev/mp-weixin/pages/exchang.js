@@ -238,7 +238,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告', type: '23' }, { id: '6', img: 'iconqiapiansousuo', title: '论坛搜索', type: '' }, { id: '2', img: 'iconliebiao', title: '贷款产品交流', type: '1' }, { id: '4', img: 'iconyonghu', title: '信用卡交流', type: '2' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖', type: '3' }, { id: '1', img: 'iconxiepinglun', title: '网友交流', type: '' }], imgUrl: '', isShow: false, categoryList: [], subCategoryList: [], categoryActive: 0, area_id: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo(); // 加载微金交流首页数据
     this.getRegion();}, methods: { // 左边导航点击事件
     categoryMainClick: function categoryMainClick(e, index) {console.log(e, index);this.categoryActive = index;this.area_id = e;this.subCategoryList = [];this.getList();}, // 详情
-    categorySubClick: function categorySubClick(title, id, img) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img) });}, // 获取用户信息
+    categorySubClick: function categorySubClick(title, id, img, fatheId) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img, "&fatheId=").concat(fatheId) });}, // 获取用户信息
     getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');
           var user = res.data.type;
           if (user != 'member') {

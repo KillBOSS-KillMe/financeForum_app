@@ -234,7 +234,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp(); // 录音部分--开始
 var recorderManager = uni.getRecorderManager();var innerAudioContext = uni.createInnerAudioContext();innerAudioContext.autoplay = true; // 录音部分--结束
-var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '' }, readOnly: false, formats: {}, title: '', voicePath: '', htmlCon: '', options: null };}, onLoad: function onLoad(options) {var _this = this;console.log(options);this.formNode.board_id = options.id;this.options = options; // 富文本部分
+var _default = { data: function data() {return { formNode: { title: '', content: '', board_id: '', topic_id: '', city_id: '' }, readOnly: false, formats: {}, title: '', voicePath: '', htmlCon: '', options: null };}, onLoad: function onLoad(options) {var _this = this;console.log(options);if (options.type == '网友交流') {this.formNode.board_id = options.id;} else if (options.type != '网友交流') {this.formNode.city_id = options.id;}this.options = options; // 富文本部分
     uni.loadFontFace({ family: 'Pacifico', source: 'url("https://sungd.github.io/Pacifico.ttf")' }); // 录音部分
     recorderManager.onStop(function (res) {// 获取音频文件地址
       console.log('recorder stop' + JSON.stringify(res));_this.voicePath = res.tempFilePath; // 上传音频文件
@@ -243,15 +243,21 @@ var _default = { data: function data() {return { formNode: { title: '', content:
           // console.log(data)
           // 获取富文本中的内容
           console.log(data.html);_this2.htmlCon = data.html; // 上传数据
-          _this2.upData();} });}, upData: function upData() {if (this.title == '') {uni.showToast({ title: '请输入标题' });return false;}if (this.htmlCon == '') {uni.showToast({ title: '请编辑帖子内容' });return false;}uni.showLoading({ title: '发布中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/send"), method: 'POST', header: { authorization: app.globalData.token }, data: { board_id: this.options.id, // 模块ID
+          _this2.upData();} });}, upData: function upData() {if (this.title == '') {uni.showToast({ title: '请输入标题' });return false;}if (this.htmlCon == '') {uni.showToast({ title: '请编辑帖子内容' });return false;}uni.showLoading({ title: '发布中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/send"), method: 'POST', header: { authorization: app.globalData.token }, data: { board_id: this.formNode.board_id, // 模块ID
           topic_id: '', // 主体ID
           title: this.title, // 帖子标题
           content: this.htmlCon, // 帖子内容
-          voice: this.voicePath // 录音的文件路径
-        }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == 200) {uni.showToast({ title: res.data.message, icon: 'none' });setTimeout(function () {// 返回上一页
+          voice: this.voicePath, // 录音的文件路径
+          city_id: this.formNode.city_id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == 200) {uni.showToast({ title: res.data.message, icon: 'none' });setTimeout(function () {// 返回上一页
               uni.navigateBack({ delta: 2 });}, 3000);} else {uni.showToast({ title: res.data.message });}} });}, // 获取帖子标题
     getTitle: function getTitle(e) {this.title = e.detail.value;}, // |||||||||||||||||||||录音部分--开始|||||||||||||||||||||
-    startRecord: function startRecord() {console.log('开始录音');uni.showToast({ title: "录音中...", duration: 99999999, icon: 'loading' });recorderManager.start();
+    startRecord: function startRecord() {console.log('开始录音');
+      uni.showToast({
+        title: "录音中...",
+        duration: 99999999,
+        icon: 'loading' });
+
+      recorderManager.start();
     },
     endRecord: function endRecord() {
       console.log('录音结束');
