@@ -175,14 +175,16 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
+var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', is_member: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
     getList: function getList() {var _this = this;console.log(app.globalData.token);uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', header: { authorization: app.globalData.token },
+
         success: function success(res) {
           // uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
           if (res.data.status_code == 200) {
             _this.collectionList = res.data.data;
+            _this.is_member = res.data.is_member;
           } else {
             // uni.showToast({
             // 	title: res.data.message
@@ -205,12 +207,18 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
               url: "/pages/articleDetail?id=189" });
 
           } else if (name == '推广返佣') {
-            uni.navigateTo({
-              url: "/pages/".concat(extra) });
+            if (this.is_member == 1) {
+              // 会员
+              uni.navigateTo({
+                url: "/pages/".concat(extra) });
 
-            // uni.navigateTo({
-            // 	url:`/pages/articleDetail?id=189`
-            // })
+            } else {
+              uni.showToast({
+                title: '您不是会员，暂无此权限',
+                icon: "none",
+                duration: 2000 });
+
+            }
           } else {
             uni.navigateTo({
               url: "/pages/".concat(extra) });

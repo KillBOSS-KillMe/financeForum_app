@@ -25,7 +25,8 @@
 		data() {
 			return {
 				collectionList:[],
-				imgUrl:''
+				imgUrl:'',
+				is_member: ''
 			}
 		},
 		onLoad() {
@@ -48,6 +49,7 @@
 						console.log(res)
 						if (res.data.status_code == 200) {
 							this.collectionList = res.data.data
+							this.is_member = res.data.is_member
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message
@@ -70,12 +72,18 @@
 								url:`/pages/articleDetail?id=189`
 							})
 						} else if(name == '推广返佣'){
-							uni.navigateTo({
-								url:`/pages/${extra}`
-							})
-							// uni.navigateTo({
-							// 	url:`/pages/articleDetail?id=189`
-							// })
+							if(this.is_member == 1){
+								// 会员
+								uni.navigateTo({
+									url:`/pages/${extra}`
+								})
+							}else{
+								uni.showToast({
+									title: '您不是会员，暂无此权限',
+									icon: "none",
+									duration: 2000
+								})
+							}
 						}else{
 							uni.navigateTo({
 								url:`/pages/${extra}`
