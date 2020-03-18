@@ -376,6 +376,10 @@
 				"enablePullDownRefresh": true
 			}
 		}
+        ,{
+            "path" : "pages/boardData",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

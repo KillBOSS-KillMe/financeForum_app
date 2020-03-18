@@ -20,7 +20,7 @@
 				<text>会员可享受一以下功能权限</text>
 				<view class="listItem">
 						<block v-for="(itemL,indexL) in vip.data[current].permission" :key="indexL">
-							<view class="item">
+							<view class="item" v-if="itemL.icon != ''">
 								<image :src="imgUrl + itemL.icon" mode=""></image>
 								<text>{{itemL.name}}</text>
 							</view>

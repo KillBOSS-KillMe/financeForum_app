@@ -895,7 +895,7 @@ export default {
 
 .itemListHeadLeft {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .rightMember {

@@ -118,6 +118,10 @@
 		<!-- #ifdef MP-WEIXIN -->
 			<button type=""  hover-class="btn-hover" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
 		<!-- #endif -->
+		<view v-if="isShow">
+			<view class="showModel" @touchmove.stop = ""></view>
+			<view class="showText">{{vip}}</view>
+		</view>
 	</view>
 </template>
 
@@ -129,7 +133,9 @@
 			return {
 				productId: '',
 				listInfo: [],
-				imgUrl:''
+				imgUrl:'',
+				isShow: false,
+				vip: ''
 			}
 		},
 		onLoad(e) {
@@ -181,6 +187,9 @@
 						if (res.data.status_code == 200) {
 							this.listInfo = res.data.data
 							console.log(this.listInfo,'++++')
+						} else if(res.data.status_code == 202) {
+							this.vip = res.data.message
+							this.isShow = true
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -346,5 +355,34 @@ button{
 	font-weight: 600;
 	margin-top: 30rpx;
 	
+}
+.showModel{
+	width: 750rpx;
+	height: 100vh;
+	position: absolute;
+	z-index: 8;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	opacity: .4;
+}
+.showText{
+	width: 340rpx;
+	height: 140rpx;
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	margin-top: -100rpx;
+	left: 50%;
+	margin-left: -200rpx;
+	background-color: #fff;
+	text-align: center;
+	font-size: 28rpx;
+	color: #000000;
+	border-radius: 10rpx;
+	padding: 30rpx;
+	display: flex;
+	align-content: center;
+	align-items: center;
 }
 </style>

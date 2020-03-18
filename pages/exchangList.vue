@@ -1,62 +1,13 @@
 <template>
-	<view class="exchangList" v-if="cityInfo.id == '38'">
-		<view class="head">
-			<view class="headInfo">
-				<view class="headLeft">
-					<uni-icon type="" class="iconfont" :class="item.img"></uni-icon>
-					<text>{{ cityInfo.title }}</text>
-				</view>
-				<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
-				<text class="follow" @tap="cutFollow" v-if="articleDetail.is_follow == 1">已关注</text>
-			</view>
-			<view class="headList">
-				<block v-for="(item, index) in tipList" :key="index">
-					<view class="headItem" @tap="getDateil(item.id)">
-						<text class="tip">置顶</text>
-						<text class="text">{{ item.title }}</text>
-					</view>
-				</block>
-				<text class="more" @tap="getMore" v-if="tipList.length < total">查看更多</text>
-			</view>
-		</view>
-		<view class="content">
-			<block v-for="(item, index) in list" :key="index">
-				<view class="contentItem" @tap="getDateil(item.id)">
-					<image :src="imgUrl + item.user.avatar" mode=""></image>
-					<view class="right">
-						<view class="title">
-							<text class="headTitle">{{ item.user.name }}</text>
-							<text class="form">来自 {{ item.from_board }}</text>
-						</view>
-						<view class="itemContent">{{ item.title }}</view>
-						<view class="icon">
-							<text>{{ item.created_at }}</text>
-							<view class="iconRight">
-								<view>
-									<uni-icon type="" class="iconfont icondianzan"></uni-icon>
-									<text>{{ item.like }}</text>
-								</view>
-								<view>
-									<uni-icon type="" class="iconfont iconhuifu"></uni-icon>
-									<text>{{ item.comments_count }}</text>
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-			</block>
-		</view>
-		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconxiepinglun"></uni-icon></view>
-	</view>
-	<view class="exchangList" v-else>
+	<view class="exchangList">
 		<view class="head">
 			<view class="headInfo">
 				<view class="headLeft">
 					<image :src="imgUrl + cityInfo.img" mode=""></image>
 					<text>{{ cityInfo.title }}</text>
 				</view>
-				<text class="follow" @tap="addFollow" v-if="articleDetail.is_follow == 0">关注</text>
-				<text class="follow" @tap="cutFollow" v-if="articleDetail.is_follow == 1">已关注</text>
+				<text class="follow" @tap="addFollow('city')" v-if="is_follow == 0">关注</text>
+				<text class="follow" @tap="addFollow('city')" v-if="is_follow == 1">已关注</text>
 			</view>
 			<view class="headList">
 				<block v-for="(item, index) in tipList" :key="index">
@@ -112,7 +63,8 @@ export default {
 			page: '1',
 			pageList: '1',
 			tipList: [],
-			total: ''
+			total: '',
+			is_follow: ''
 		};
 	},
 	onLoad(e) {
@@ -122,14 +74,8 @@ export default {
 			title: e.title
 		});
 		this.cityInfo = e;
-		if(this.cityInfo.id == '38'){
-			console.log(this.cityInfo)
-			this.getBordList()
-			this.getSee_stickyList()
-		}else{
-			this.getList();
-			this.see_stickyList();
-		}
+		this.getList();
+		this.see_stickyList();
 	},
 	methods: {
 		// 发布
@@ -141,20 +87,11 @@ export default {
 		// 置顶加载更多
 		getMore() {
 			this.page++;
-			if(this.cityInfo.id == '38'){
-				this.getSee_stickyList()
-			}else{
-				this.see_stickyList();
-			}
+			this.see_stickyList();
 		},
 		onReachBottom(){
 			this.pageList++;
-			if(this.cityInfo.id == '38'){
-				this.getBordList()
-			}else if(this.cityInfo.id != '38'){
-				this.getList()
-			}
-			
+			this.getList()
 		},
 		// 跳转帖子详情
 		getDateil(e) {
@@ -181,6 +118,7 @@ export default {
 					console.log(res, '++++++++');
 					if (res.data.status_code == 200) {
 						this.list = this.list.concat(res.data.data);
+						this.is_follow = res.data.is_follow
 					}
 				}
 			});
@@ -208,56 +146,38 @@ export default {
 				}
 			});
 		},
-		getBordList() {
+		addFollow(type) {
+			// 关注用户
 			uni.request({
-				url: `${helper.requestUrl}/posts/board-posts`,
-				method: 'GET',
+				url: `${helper.requestUrl}/user/add_follow`,
+				method: 'POST',
 				header: {
 					authorization: app.globalData.token
 				},
 				data: {
-					see_sticky: '0', //帖子
-					board_id: this.cityInfo.id,
-					bank_id: '0',
-					child_id: '0',
-					page: this.pageList,
-					page_size: '10'
+					follow_id: this.cityInfo.id,
+					type: type
 				},
 				success: res => {
+					uni.hideLoading();
 					res = helper.null2str(res);
-					console.log(res, '++++++++');
+					console.log(res);
 					if (res.data.status_code == 200) {
-						this.list = this.list.concat(res.data.data);
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none',
+							duration: 2000
+						});
+						this.is_follow = 1
+					} else {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						});
 					}
 				}
 			});
 		},
-		// 网友交流
-		getSee_stickyList() {
-			uni.request({
-				url: `${helper.requestUrl}/posts/board-posts`,
-				method: 'GET',
-				header: {
-					authorization: app.globalData.token
-				},
-				data: {
-					board_id: this.cityInfo.id,
-					bank_id: '0',
-					child_id: '0',
-					see_sticky: '1', //置顶
-					page: this.page,
-					page_size: '3',
-				},
-				success: res => {
-					res = helper.null2str(res);
-					console.log(res, '++++++++');
-					if (res.data.status_code == 200) {
-						this.total = res.data.total;
-						this.tipList = this.tipList.concat(res.data.data);
-					}
-				}
-			});
-		}
 	}
 };
 </script>

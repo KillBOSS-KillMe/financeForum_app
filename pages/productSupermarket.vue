@@ -128,7 +128,6 @@ export default {
 		// this.getTab();
 		this.imgUrl = helper.imgUrl;
 		this.getNavLeft()
-		this.getReftNav()
 	},
 	methods: {
 		// 轮播跳转
@@ -162,6 +161,8 @@ export default {
 					if (res.data.status_code == 200) {
 						this.navLeft = res.data.data;
 						this.bankId = res.data.data[0].id
+						console.log(this.bankId,'银行')
+						this.getReftNav()
 						// this.page = '1'
 						// this.list = [];
 						// this.getTab();

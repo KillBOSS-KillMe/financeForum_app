@@ -1,0 +1,92 @@
+
+.login {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	margin-top: 100rpx;
+}
+.item {
+	width: 670rpx;
+	height: auto;
+	padding: 0 40rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-align-content: center;
+	        align-content: center;
+}
+input {
+	width: 630rpx;
+	height: 80rpx;
+	border-radius: 10rpx;
+	border: 1rpx solid #f8f8f8;
+	color: #999999;
+	font-size: 30rpx;
+	padding: 0 20rpx;
+	margin-bottom: 60rpx;
+}
+.getCode {
+	margin-bottom: 60rpx;
+}
+.getCode text {
+	color: #2390dc;
+	font-size: 30rpx;
+	border: 1rpx solid #2390dc;
+	height: 78rpx;
+	line-height: 78rpx;
+	border-radius: 10rpx;
+	padding: 0 16rpx;
+}
+.submit {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	width: 670rpx;
+	height: 80rpx;
+	border-radius: 10rpx;
+	background-color: #2390dc;
+	color: #ffffff;
+	font-size: 30rpx;
+	font-weight: 600;
+}
+.registered {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	width: 670rpx;
+	height: 80rpx;
+	border-radius: 10rpx;
+	background-color: #ffffff;
+	color: #666666;
+	font-size: 30rpx;
+	font-weight: 600;
+}
+

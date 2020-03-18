@@ -187,55 +187,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -288,73 +239,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', cityInfo: {}, see_sticky: '', list: [], page: '1', pageList: '1', tipList: [], total: '' };}, onLoad: function onLoad(e) {console.log(e);this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.title });this.cityInfo = e;if (this.cityInfo.id == '38') {console.log(this.cityInfo);this.getBordList();this.getSee_stickyList();} else {this.getList();this.see_stickyList();}}, methods: { // 发布
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', cityInfo: {}, see_sticky: '', list: [], page: '1', pageList: '1', tipList: [], total: '', is_follow: '' };}, onLoad: function onLoad(e) {console.log(e);this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.title });this.cityInfo = e;this.getList();this.see_stickyList();}, methods: { // 发布
     getPost: function getPost() {uni.navigateTo({ url: "/pages/experience" });}, // 置顶加载更多
-    getMore: function getMore() {this.page++;if (this.cityInfo.id == '38') {this.getSee_stickyList();} else {this.see_stickyList();}}, onReachBottom: function onReachBottom() {this.pageList++;if (this.cityInfo.id == '38') {this.getBordList();} else if (this.cityInfo.id != '38') {this.getList();}}, // 跳转帖子详情
+    getMore: function getMore() {this.page++;this.see_stickyList();}, onReachBottom: function onReachBottom() {this.pageList++;this.getList();}, // 跳转帖子详情
     getDateil: function getDateil(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e) });}, // 帖子列表
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/city-posts"), method: 'GET', header: { authorization: app.globalData.token }, data: { city_id: this.cityInfo.id, see_sticky: '0', //帖子
-          page: this.pageList, page_size: '10' }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '++++++++');if (res.data.status_code == 200) {_this.list = _this.list.concat(res.data.data);}} });}, see_stickyList: function see_stickyList() {var _this2 = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/city-posts"), method: 'GET', header: { authorization: app.globalData.token }, data: { city_id: this.cityInfo.id, see_sticky: '1', //置顶
-          page: this.page, page_size: '3' }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '++++++++');if (res.data.status_code == 200) {_this2.total = res.data.total;_this2.tipList = _this2.tipList.concat(res.data.data);}} });}, getBordList: function getBordList() {var _this3 = this;
-      uni.request({
-        url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
-        method: 'GET',
-        header: {
-          authorization: app.globalData.token },
-
-        data: {
+    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/city-posts"), method: 'GET', header: { authorization: app.globalData.token }, data: { city_id: this.cityInfo.id,
           see_sticky: '0', //帖子
-          board_id: this.cityInfo.id,
-          bank_id: '0',
-          child_id: '0',
           page: this.pageList,
           page_size: '10' },
 
@@ -362,23 +252,21 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
           res = _helper.default.null2str(res);
           console.log(res, '++++++++');
           if (res.data.status_code == 200) {
-            _this3.list = _this3.list.concat(res.data.data);
+            _this.list = _this.list.concat(res.data.data);
+            _this.is_follow = res.data.is_follow;
           }
         } });
 
     },
-    // 网友交流
-    getSee_stickyList: function getSee_stickyList() {var _this4 = this;
+    see_stickyList: function see_stickyList() {var _this2 = this;
       uni.request({
-        url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
+        url: "".concat(_helper.default.requestUrl, "/posts/city-posts"),
         method: 'GET',
         header: {
           authorization: app.globalData.token },
 
         data: {
-          board_id: this.cityInfo.id,
-          bank_id: '0',
-          child_id: '0',
+          city_id: this.cityInfo.id,
           see_sticky: '1', //置顶
           page: this.page,
           page_size: '3' },
@@ -387,8 +275,40 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
           res = _helper.default.null2str(res);
           console.log(res, '++++++++');
           if (res.data.status_code == 200) {
-            _this4.total = res.data.total;
-            _this4.tipList = _this4.tipList.concat(res.data.data);
+            _this2.total = res.data.total;
+            _this2.tipList = _this2.tipList.concat(res.data.data);
+          }
+        } });
+
+    },
+    addFollow: function addFollow(type) {var _this3 = this;
+      // 关注用户
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/add_follow"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          follow_id: this.cityInfo.id,
+          type: type },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000 });
+
+            _this3.is_follow = 1;
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
           }
         } });
 

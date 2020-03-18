@@ -61,7 +61,8 @@
     "pages/teamList",
     "pages/shareCode",
     "pages/meApply",
-    "pages/exchangList"
+    "pages/exchangList",
+    "pages/boardData"
   ],
   "subPackages": [],
   "window": {
@@ -111,5 +112,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap76.json"
+  "sitemapLocation": "sitemap62.json"
 }

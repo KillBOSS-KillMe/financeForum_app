@@ -7,7 +7,7 @@
 		</view>
 		<view class="list" v-if="Inv == 0">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="item">
+				<view class="item" @tap="getDetail(item.board_id,item.title,item.icon,'板块')">
 					<image :src="imgUrl + item.icon" v-if="item.icon != ''"></image>
 					<image src="../static/imgLost.png" v-else></image>
 					<view class="con">
@@ -16,13 +16,13 @@
 						</view>
 						<view class="info">{{ item.introduction }}</view>
 					</view>
-					<view class="operating"><view :data-id="item.follow_id" :data-index="index" @tap="delFollows">取消</view></view>
+					<view class="operating"><view :data-id="item.id" :data-index="index" @tap.stop="delFollows">取消</view></view>
 				</view>
 			</block>
 		</view>
 		<view class="list" v-if="Inv == 1">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="item">
+				<view class="item" @tap="getDetail(item.city_id,item.city_name,item.icon,'城市')">
 					<image :src="imgUrl + item.icon" v-if="item.icon != ''"></image>
 					<image src="../static/imgLost.png" v-else></image>
 					<view class="con">
@@ -30,7 +30,7 @@
 							<text class="title">{{ item.city_name }}</text>
 						</view>
 					</view>
-					<view class="operating"><view :data-id="item.follow_id" :data-index="index" @tap="delFollows">取消</view></view>
+					<view class="operating"><view :data-id="item.id" :data-index="index" @tap.stop="delFollows">取消</view></view>
 				</view>
 			</block>
 		</view>
@@ -50,11 +50,11 @@
 						</view>
 						<view class="info">{{ item.signature }}</view>
 					</view>
-					<view class="operating"><view :data-id="item.follow_id" :data-index="index" @tap="delFollows">取消</view></view>
+					<view class="operating"><view :data-id="item.id" :data-index="index" @tap="delFollows">取消</view></view>
 				</view>
 			</block>
 		</view>
-		
+		<view class="null" v-if="list.length == 0">暂无数据</view>
 	</view>
 </template>
 
@@ -93,7 +93,19 @@ export default {
 			this.list = [];
 			this.getList();
 		},
-
+		// 跳转详情
+		getDetail(id,title,img,type){
+			if(type == '城市'){
+				uni.navigateTo({
+					url:`/pages/exchangList?title=${title}&id=${id}&img=${img}`
+				})
+			}else{
+				uni.navigateTo({
+					url:`/pages/boardData?title=${title}&id=${id}&img=${img}`
+				})
+			}
+			
+		},
 		getList() {
 			// 加载关注列表
 			uni.request({
@@ -122,10 +134,6 @@ export default {
 		delFollows(e) {
 			let id = e.currentTarget.dataset.id;
 			let index = e.currentTarget.dataset.index;
-			uni.showLoading({
-				title: '执行中...',
-				duration: 1000000
-			});
 			uni.request({
 				url: `${helper.requestUrl}/user/del_follow`,
 				method: 'POST',
@@ -133,13 +141,13 @@ export default {
 					authorization: app.globalData.token
 				},
 				data: {
-					follow_id: id
+					id: id
 				},
 				success: res => {
 					uni.hideLoading();
 					res = helper.null2str(res);
 					console.log(res);
-					if (res.data.status_code == '1') {
+					if (res.data.status_code == '200') {
 						this.list.splice(index, 1);
 						uni.showToast({
 							title: res.data.message
@@ -214,7 +222,6 @@ export default {
 	height: auto;
 }
 .item {
-	width: 690rpx;
 	height: 170rpx;
 	border-radius: 10rpx;
 	background-color: #f9f9f9;

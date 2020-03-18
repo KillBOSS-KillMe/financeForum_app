@@ -259,8 +259,16 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
     this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;this.page = '1';if (this.Inv == 0) {// 最新
         this.tabType = 'board';} else if (this.Inv == 1) {// 热门
         this.tabType = 'city';} else if (this.Inv == 2) {// 推荐
-        this.tabType = 'user';}this.list = [];this.getList();}, getList: function getList() {var _this = this; // 加载关注列表
-      uni.request({ url: "".concat(_helper.default.requestUrl, "/user/follows"), method: 'GET', header: { authorization: app.globalData.token }, data: { type: this.tabType }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message, icon: 'none' });}} });}, delFollows: function delFollows(e) {var _this2 = this;var id = e.currentTarget.dataset.id;var index = e.currentTarget.dataset.index;uni.showLoading({ title: '执行中...', duration: 1000000 });
+        this.tabType = 'user';}this.list = [];this.getList();}, // 跳转详情
+    getDetail: function getDetail(id, title, img, type) {if (type == '城市') {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img) });} else {uni.navigateTo({ url: "/pages/boardData?title=".concat(title, "&id=").concat(id, "&img=").concat(img) });}}, getList: function getList() {var _this = this; // 加载关注列表
+      uni.request({ url: "".concat(_helper.default.requestUrl, "/user/follows"), method: 'GET', header: { authorization: app.globalData.token }, data: { type: this.tabType }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message, icon: 'none' });
+          }
+        } });
+
+    },
+    delFollows: function delFollows(e) {var _this2 = this;
+      var id = e.currentTarget.dataset.id;
+      var index = e.currentTarget.dataset.index;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/user/del_follow"),
         method: 'POST',
@@ -268,13 +276,13 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
           authorization: app.globalData.token },
 
         data: {
-          follow_id: id },
+          id: id },
 
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
-          if (res.data.status_code == '1') {
+          if (res.data.status_code == '200') {
             _this2.list.splice(index, 1);
             uni.showToast({
               title: res.data.message });

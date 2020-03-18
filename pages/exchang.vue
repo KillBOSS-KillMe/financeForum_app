@@ -41,46 +41,6 @@
 				</scroll-view>
 			</view>
 		</view>
-<!-- 		<view class="content">
-			<view class="inv-h-w">
-				<block v-for="(item, index) in pageData.board_data" :key="index">
-					<view :class="['inv-h', Inv == index ? 'inv-h-se' : '']" @tap="selListType" :data-index="index" :data-block_id="item.id">{{ item.title }}</view>
-				</block>
-			</view>
-			<view class="contentList">
-				<block v-for="(item, index) in pageData.board_data[Inv].posts" :key="index">
-					<view class="item" @tap="goDetail(item.id)">
-						<image :src="imgUrl+item.user.avatar" mode="aspectFill"></image>
-						<view class="itemRight">
-							<view class="itemRightHead">
-								<text>{{item.user.name}}</text>
-								<view>
-									来自
-									<text>{{item.from_board}}</text>
-								</view>
-							</view>
-							<text class="title">{{ item.title }}</text>
-						 <text class="itemContent">贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流贷款产品交流</text> -->
-			<!-- 				<block v-for="(item1, index) in item.photoalbums" :key="index"><image class="imgList" :src="imgUrl+item1.image" mode=""></image></block>
-							<view class="itemCon">
-								<text>{{ item.created_at }}</text>
-								<view class="itemBottom">
-									<view>
-										<uni-icon type="" class="iconfont icondianzan exchangIcon"></uni-icon>
-										<text>{{ item.like }}</text>
-									</view>
-									<view>
-										<uni-icon type="" class="iconfont iconhuifu exchangIcon"></uni-icon>
-										<text>{{ item.comments_count }}</text>
-									</view>
-								</view>
-							</view>
-						</view>
-					</view>
-				</block>
-				<view class="null" v-if="pageData.board_data[Inv].posts.length == 0">暂无数据</view>
-			</view>
-		</view> -->
 		<view v-if="isShow">
 			<view class="showModel" @touchmove.stop = ""></view>
 			<view class="showText">您还不是会员暂无此权限！</view>
@@ -189,7 +149,7 @@ export default {
 			}else{
 				if(title == '网友交流'){
 					uni.navigateTo({
-						url:`/pages/exchangList?title=${title}&id=${38}&img=${img}`
+						url:`/pages/boardData?title=${title}&id=${38}&img=${img}`
 					})
 				}
 				

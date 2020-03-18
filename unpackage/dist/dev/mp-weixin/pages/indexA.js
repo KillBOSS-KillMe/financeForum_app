@@ -156,6 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -177,9 +178,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], page: '1', page_size: '10', boardId: '0', imgUrl: '', bank_id: '0', child_id: '0' };}, onShow: function onShow(e) {// console.log(e)
+//
+var app = getApp();var _default = { data: function data() {return { list: [], page: '1', page_size: '10', boardId: '0', imgUrl: '', bank_id: '0', child_id: '0', vip: '', isShow: true, isShow1: false };}, onShow: function onShow(e) {// console.log(e)
     // this.board_id == e
-  }, onLoad: function onLoad(e) {console.log(e.id);console.log(e.bankId);this.imgUrl = _helper.default.imgUrl;console.log(this.imgUrl);this.boardId = e.id || 0;
+  }, onLoad: function onLoad(e) {console.log(e.id);console.log(e.bankId);this.imgUrl = _helper.default.imgUrl;console.log(this.imgUrl);
+    this.boardId = e.id || 0;
 
     this.bank_id = e.bankId || 0;
     this.child_id = e.childId || 0;
@@ -188,11 +191,8 @@ var app = getApp();var _default = { data: function data() {return { list: [], pa
       title: e.name });
 
   },
-  onLaunch: function onLaunch() {
-
-  },
+  onLaunch: function onLaunch() {},
   methods: {
-
     getList: function getList() {var _this = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
@@ -215,15 +215,24 @@ var app = getApp();var _default = { data: function data() {return { list: [], pa
             if (res.data.data == 0) {
               uni.showToast({
                 title: '暂无更多数据',
-                icon: "none" });
+                icon: 'none' });
 
+              _this.isShow = true;
+              console.log(_this.isShow);
+              _this.isShow1 = false;
+            } else {
+              _this.isShow = false;
+              _this.isShow1 = false;
             }
+          } else if (res.data.status_code == 202) {
+            _this.vip = res.data.message;
+            _this.isShow1 = true;
+            _this.isShow = false;
           } else {
             uni.showToast({
               title: res.data.message });
 
           }
-
         } });
 
     },

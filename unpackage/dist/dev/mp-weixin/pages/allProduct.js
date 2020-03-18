@@ -189,7 +189,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -244,9 +243,13 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', type: '', typeText1: '所有额度', typeText2: '所有贷款分类', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ title: '所有额度' }, { title: '100-5000' }, { title: '5000-2万' }, { title: '2万-5万' }, { title: '5万-10万' }, { title: '10万以上' }], typeList: [], category_id: '', down: "0", top: '0' };}, onLoad: function onLoad(e) {console.log(e);this.typeText2 = e.title;this.category_id = e.id;this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { goProduct: function goProduct(e) {var id = e.currentTarget.dataset.id;uni.navigateTo({ url: "/pages/productDetail?id=".concat(id) });}, // 标签列表显示
-    getTap: function getTap(e) {this.type = e;if (e == 1) {this.keyShow = this.moneyList;
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', type: '', typeText1: '所有额度', typeText2: '所有贷款分类', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ title: '所有额度' }, { title: '100-5000' }, { title: '5000-2万' }, { title: '2万-5万' }, { title: '5万-10万' }, { title: '10万以上' }], typeList: [], category_id: '', down: '0', top: '0', vip: '', isShow: true, isShow1: false };}, onLoad: function onLoad(e) {console.log(e);this.typeText2 = e.title;this.category_id = e.id;this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { goProduct: function goProduct(e) {var id = e.currentTarget.dataset.id;uni.navigateTo({ url: "/pages/productDetail?id=".concat(id) });
+    },
+    // 标签列表显示
+    getTap: function getTap(e) {
+      this.type = e;
+      if (e == 1) {
+        this.keyShow = this.moneyList;
         this.down = 1;
       } else {
         this.keyShow = this.typeList;
@@ -293,7 +296,6 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
           if (res.data.status_code == 200) {
             _this.keyShow = res.data.data;
           } else {
-
           }
         } });
 
@@ -317,7 +319,26 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
           console.log(res);
           if (res.data.status_code == 200) {
             _this2.list = _this2.list.concat(res.data.data);
+            if (res.data.data == 0) {
+              uni.showToast({
+                title: '暂无更多数据',
+                icon: 'none' });
+
+              _this2.isShow = true;
+              console.log(_this2.isShow);
+              _this2.isShow1 = false;
+            } else {
+              _this2.isShow = false;
+              _this2.isShow1 = false;
+            }
+          } else if (res.data.status_code == 202) {
+            _this2.vip = res.data.message;
+            _this2.isShow1 = true;
+            _this2.isShow = false;
           } else {
+            uni.showToast({
+              title: res.data.message });
+
           }
         } });
 
