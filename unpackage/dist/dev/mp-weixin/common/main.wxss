@@ -16,10 +16,6 @@ uni-tabbar .uni-tabbar__icon {
 	width: 43rpx !important;
 	height: 43rpx !important;
 }
-
-/* button[type=primary]{
-	background: none;
-} */
 .nullList {
 	width: 750rpx;
 	height: 300rpx;
@@ -51,62 +47,11 @@ uni-tabbar .uni-tabbar__icon {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.iconerweima2:before {
-  content: "\E6D7";
-}
 .iconsuo:before {
   content: "\E65B";
 }
-.iconhuabanfuben:before {
-  content: "\E65C";
-}
-.iconfangzi-copy:before {
-  content: "\E600";
-}
-.iconedu:before {
-  content: "\E61E";
-}
-.iconfengxian:before {
-  content: "\E602";
-}
-.icondaikuan1:before {
-  content: "\E608";
-}
 .iconxianxiazhifu:before {
   content: "\E629";
-}
-.iconbianji:before {
-  content: "\E60D";
-}
-.iconshanchu:before {
-  content: "\E623";
-}
-.iconfengxian2:before {
-  content: "\E609";
-}
-.iconicon:before {
-  content: "\E658";
-}
-.iconshezhi:before {
-  content: "\E61B";
-}
-.iconqiandai:before {
-  content: "\E626";
-}
-.icon54:before {
-  content: "\E68C";
-}
-.iconshouji1:before {
-  content: "\E63E";
-}
-.icontubiaozhizuomoban-:before {
-  content: "\E62D";
-}
-.icontianchongxing-:before {
-  content: "\E636";
-}
-.iconxiaoxi2:before {
-  content: "\E648";
 }
 .iconxiaoxi1:before {
   content: "\E618";

@@ -32,7 +32,6 @@ export default {
 		link: ''
 	},
 	onLoad(options) {
-		
 		this.getToken()
 	},
 	methods: {
@@ -48,9 +47,6 @@ export default {
 							header: {
 								authorization: this.$options.globalData.token
 							},
-							// data: {
-							// 	code: res.code
-							// },
 							success: data => {
 								data = helper.null2str(data);
 								console.log(data);
@@ -88,9 +84,6 @@ uni-tabbar .uni-tabbar__icon {
 	width: 43rpx !important;
 	height: 43rpx !important;
 }
-/* button[type=primary]{
-	background: none;
-} */
 .nullList {
 	width: 750rpx;
 	height: 300rpx;
@@ -118,80 +111,12 @@ uni-tabbar .uni-tabbar__icon {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.iconerweima2:before {
-  content: "\e6d7";
-}
-
 .iconsuo:before {
   content: "\e65b";
 }
 
-.iconhuabanfuben:before {
-  content: "\e65c";
-}
-
-.iconfangzi-copy:before {
-  content: "\e600";
-}
-
-.iconedu:before {
-  content: "\e61e";
-}
-
-.iconfengxian:before {
-  content: "\e602";
-}
-
-.icondaikuan1:before {
-  content: "\e608";
-}
-
 .iconxianxiazhifu:before {
   content: "\e629";
-}
-
-.iconbianji:before {
-  content: "\e60d";
-}
-
-.iconshanchu:before {
-  content: "\e623";
-}
-
-.iconfengxian2:before {
-  content: "\e609";
-}
-
-.iconicon:before {
-  content: "\e658";
-}
-
-.iconshezhi:before {
-  content: "\e61b";
-}
-
-.iconqiandai:before {
-  content: "\e626";
-}
-
-.icon54:before {
-  content: "\e68c";
-}
-
-.iconshouji1:before {
-  content: "\e63e";
-}
-
-.icontubiaozhizuomoban-:before {
-  content: "\e62d";
-}
-
-.icontianchongxing-:before {
-  content: "\e636";
-}
-
-.iconxiaoxi2:before {
-  content: "\e648";
 }
 
 .iconxiaoxi1:before {

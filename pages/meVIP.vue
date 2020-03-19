@@ -165,7 +165,6 @@ uni-swiper{
 }
 .banner {
 	width: 750rpx;
-	/* height: auto; */
 	margin-top: -60rpx;
 	display: flex;
 	justify-content: center;
@@ -180,9 +179,7 @@ uni-swiper{
 	height: 360rpx;
 }
 .banner .bannerBox image{
-	/* width: 100%;
-	height: 100%; */
-	width: 630rpx;
+	width: 610rpx;
 	height: 360rpx;
 	border-radius: 10rpx;
 }

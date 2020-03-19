@@ -106,7 +106,7 @@ export default {
 					res = helper.null2str(res)
 					console.log(res,'++++++++')
 					let user = res.data.type
-					if(user != 'member'){
+					if(user == 'normal'){
 						this.isShow = true
 					}else{
 						this.isShow = false

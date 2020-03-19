@@ -241,7 +241,7 @@ var app = getApp();var _default = { data: function data() {return { navList: [{ 
     categorySubClick: function categorySubClick(title, id, img, fatheId) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img, "&fatheId=").concat(fatheId) });}, // 获取用户信息
     getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');
           var user = res.data.type;
-          if (user != 'member') {
+          if (user == 'normal') {
             _this.isShow = true;
           } else {
             _this.isShow = false;

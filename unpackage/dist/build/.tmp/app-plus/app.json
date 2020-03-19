@@ -61,7 +61,8 @@
     "pages/teamList",
     "pages/shareCode",
     "pages/meApply",
-    "pages/exchangList"
+    "pages/exchangList",
+    "pages/boardData"
   ],
   "window": {
     "navigationBarTextStyle": "white",

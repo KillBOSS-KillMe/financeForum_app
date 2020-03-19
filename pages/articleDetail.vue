@@ -149,9 +149,9 @@ export default {
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
-		this.userInfo = app.globalData.userInfo
-		this.type =this.userInfo.type
-		console.log(this.userInfo)
+		// this.userInfo = app.globalData.userInfo
+		// this.type =this.userInfo.type
+		// console.log(this.userInfo)
 	},
 	onShow() {
 		// 文章详情加载
@@ -169,8 +169,7 @@ export default {
 	methods: {
 		goVIPPage(e) {
 			// 判断当前用户是否为普通用户
-			console.log(this.type,'8888')
-			if (this.type == 'normal') {
+			if (this.articleDetail.user.type == 'normal') {
 				let content_type = e
 				// 判断当前点击文本是否为会员可看
 				if (content_type == 'member') {

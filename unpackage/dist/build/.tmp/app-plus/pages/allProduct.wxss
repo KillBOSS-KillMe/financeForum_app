@@ -31,7 +31,7 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	        justify-content: center;
-	color: #2390DC;
+	color: #2390dc;
 	font-size: 30rpx;
 	font-weight: 600;
 }
@@ -40,7 +40,7 @@
 	margin-left: 6rpx;
 }
 .content .screen .left {
-	border-right: 1rpx solid #E8E8E8;
+	border-right: 1rpx solid #e8e8e8;
 }
 .content .contentList {
 	margin-top: 100rpx;
@@ -53,7 +53,7 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	padding: 40rpx 0;
-	border-bottom: 1rpx solid #E8E8E8;
+	border-bottom: 1rpx solid #e8e8e8;
 }
 .content .contentList .item image {
 	width: 130rpx;
@@ -79,7 +79,7 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 }
-.content .contentList .item .itemRight .productInfo>text {
+.content .contentList .item .itemRight .productInfo > text {
 	font-size: 26rpx;
 	color: #333333;
 	font-weight: 600;
@@ -88,7 +88,7 @@
 	white-space: nowrap;
 	width: 295rpx;
 }
-.content .contentList .item .itemRight .productInfo>view {
+.content .contentList .item .itemRight .productInfo > view {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -98,11 +98,11 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.content .contentList .item .itemRight .productInfo>view text {
+.content .contentList .item .itemRight .productInfo > view text {
 	font-size: 28rpx;
 	color: #999;
 }
-.content .contentList .item .itemRight .productInfo>view .cur {
+.content .contentList .item .itemRight .productInfo > view .cur {
 	color: #f69522;
 	margin-left: 6rpx;
 }
@@ -130,7 +130,7 @@
 	margin-right: 20rpx;
 	white-space: nowrap;
 }
-.content .money>text {
+.content .money > text {
 	color: #f69522;
 	font-weight: 600;
 	margin-left: 10rpx;
@@ -178,10 +178,10 @@
 }
 .cor {
 	background: #eee;
-	color: #0A0000;
+	color: #0a0000;
 }
 .active {
-	background: #2390DC;
+	background: #2390dc;
 	color: #fff;
 }
 .modelShowText text:nth-child(3n) {

@@ -130,6 +130,9 @@
 	border-radius: 96rpx;
 	margin-right: 20rpx;
 }
+.right{
+	width: 540rpx;
+}
 .right .title{
 	font-size: 30rpx;
 	font-weight: 700;
