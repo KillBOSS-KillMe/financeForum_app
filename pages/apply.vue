@@ -178,7 +178,7 @@ export default {
 	}
  .nav {
 		display: flex;
-		height: calc(100vh - 9px);
+		height: calc(100vh - 0px);
 		width: 750rpx;
 	}
 	scroll-view {
@@ -200,7 +200,7 @@ export default {
 	.nav-right {
 		width: 510rpx;
 		padding: 22rpx 0 0 22rpx;
-		height: 100vh;
+		height: 97vh;
 	}
 
 	.nav-right-item {
