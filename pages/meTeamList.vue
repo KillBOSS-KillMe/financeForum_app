@@ -34,7 +34,7 @@
 			}
 		},
 		onLoad(e) {
-			console.log(e)
+			// console.log(e)
 			this.imgUrl = helper.imgUrl;
 			this.indexType = e.index
 			let name = ''

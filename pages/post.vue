@@ -78,23 +78,6 @@
 				<uni-icon class="iconfont iconzanting" type="" @tap="playVoice"></uni-icon>
 			</view>
 		</view>
-		<!-- 	<view class="postAttach">
-			<uni-icon class="iconfont iconzanzan" type=""></uni-icon>
-			<text class="address">显示所在位置</text>
-		</view> -->
-		<!-- 当前无好友列表，暂时不做 -->
-		<!-- <view class="postAttach">
-			<view>
-				<uni-icon class="iconfont iconat" type=""></uni-icon>
-				<text class="address">通知好友</text>
-			</view>
-		</view> -->
-		<!-- 	<view class="postAttach">
-			<uni-icon class="iconfont iconbiaoqing" type=""></uni-icon>
-			<uni-icon class="iconfont iconzhaopian" type="" @tap="getPhoto"></uni-icon>
-			<uni-icon class="iconfont iconshipin" @tap="getPhoto" type=""></uni-icon>
-			<uni-icon class="iconfont iconat" type=""></uni-icon>
-		</view> -->
 		<view class="submit">
 			<view @tap="submit">发布</view>
 		</view>
@@ -128,7 +111,6 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options);
 			if(options.type == '网友交流'){
 				this.formNode.board_id = options.id;
 			}else if(options.type != '网友交流'){
@@ -155,10 +137,8 @@
 			submit() {
 				this.editorCtx.getContents({
 					success: data => {
-						// console.log('insert divider success')
-						// console.log(data)
 						// 获取富文本中的内容
-						console.log(data.html)
+						// console.log(data.html)
 						this.htmlCon = data.html
 						// 上传数据
 						this.upData()
@@ -234,7 +214,7 @@
 				recorderManager.start();
 			},
 			endRecord() {
-				console.log('录音结束');
+				// console.log('录音结束');
 				uni.hideToast()
 				uni.showToast({
 					title: "结束录音",
@@ -252,8 +232,8 @@
 			},
 			// 音频上传
 			upVoice() {
-				console.log('=========================================')
-				console.log(this.voicePath)
+				// console.log('=========================================')
+				// console.log(this.voicePath)
 				uni.showLoading({
 				  title: '语音上传中...',
 					duration: 1000000

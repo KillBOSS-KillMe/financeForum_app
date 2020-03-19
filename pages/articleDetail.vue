@@ -189,7 +189,7 @@ export default {
 		//获取发布内容
 		getContent(e) {
 			this.postContent = e.detail.value;
-			console.log(e);
+			// console.log(e);
 		},
 		// 文章详情加载
 		getArticleDetail() {
@@ -208,7 +208,7 @@ export default {
 				success: res => {
 					uni.hideLoading();
 					res = helper.null2str(res);
-					console.log(res);
+					// console.log(res);
 					if (res.data.status_code == 200) {
 						this.articleDetail = res.data;
 						if (this.articleDetail.user.sex == 'f') {

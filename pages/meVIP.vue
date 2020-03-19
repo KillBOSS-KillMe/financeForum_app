@@ -72,7 +72,7 @@
 			this.imgUrl = helper.imgUrl
 		},
 		onShow() {
-			console.log(app.globalData.vipIndex)
+			// console.log(app.globalData.vipIndex)
 			if(app.globalData.vipIndex == 1){
 				this.isCheck = true
 			}
@@ -85,7 +85,7 @@
 			},
 			banner(e){
 				this.current = e.detail.current
-				console.log(e)
+				// console.log(e)
 			},
 			checkboxChange(e){
 				this.isCheck = !this.isCheck
@@ -115,7 +115,7 @@
 			goVip(e){
 				console.log(this.isCheck)
 				if (this.isCheck) {
-					console.log(e)
+					// console.log(e)
 					uni.navigateTo({
 						url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${e.currentTarget.dataset.money}`
 					})

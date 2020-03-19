@@ -181,8 +181,8 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: '1', indexType: '' };}, onLoad: function onLoad(e) {console.log(e);this.imgUrl = _helper.default.imgUrl;this.indexType = e.index;var name = '';if (this.indexType == 'one') {name = '一级代理', this.getTeamOne();} else if (this.indexType == 'two') {name = '二级代理', this.getTeamTwo();}uni.setNavigationBarTitle({ title: name });
-
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: '1', indexType: '' };}, onLoad: function onLoad(e) {// console.log(e)
+    this.imgUrl = _helper.default.imgUrl;this.indexType = e.index;var name = '';if (this.indexType == 'one') {name = '一级代理', this.getTeamOne();} else if (this.indexType == 'two') {name = '二级代理', this.getTeamTwo();}uni.setNavigationBarTitle({ title: name });
   },
   methods: {
     // 打电话

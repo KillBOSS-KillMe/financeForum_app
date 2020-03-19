@@ -46,12 +46,12 @@
 		},
 		onLoad() {
 			const loginName = uni.getStorageSync('login_name');
-			console.log(loginName)
+			// console.log(loginName)
 			const loginPwd = uni.getStorageSync('login_pwd');
 			// #ifdef APP-PLUS
 			plus.runtime.getProperty(plus.runtime.appid,(wgtinfo)=>{
-				console.log(wgtinfo);
-				console.log(wgtinfo.version);   //版本号
+				// console.log(wgtinfo);
+				// console.log(wgtinfo.version);   //版本号
 				this.version = wgtinfo.version
 			})
 			// #endif
@@ -59,13 +59,13 @@
 		onShow() {
 			uni.getStorageInfo({
 				success: res =>  {
-					console.log(res.keys);
-					console.log(res.currentSize,'999');
+					// console.log(res.keys);
+					// console.log(res.currentSize,'999');
 					// this.num = res.currentSize
 					let currentSize = res.currentSize
-					console.log(currentSize)
+					// console.log(currentSize)
 					this.num = currentSize
-					console.log(res.limitSize);
+					// console.log(res.limitSize);
 				}
 			});
 		},

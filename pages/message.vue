@@ -42,7 +42,7 @@
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res);
-						console.log(res,'++++');
+						// console.log(res,'++++');
 						if (res.data.status_code == 200) {
 							this.list = res.data.data
 						} else {
@@ -52,7 +52,7 @@
 				});
 			},
 			link(){
-				console.log('***********')
+				// console.log('***********')
 				uni.navigateTo({
 					url:'/pages/promptlyGetQr'
 				})

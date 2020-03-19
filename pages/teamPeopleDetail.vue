@@ -37,13 +37,7 @@
 	export default {
 		data() {
 			return {
-				info:{
-					// img:'../static/card0.png',
-					// name:'hhh',
-					// vip:'vip1',
-					// dl: '一级代理',
-					// tel: '13000000000'
-				},
+				info:{},
 				imgUrl: '',
 				index: ''
 			}
@@ -86,7 +80,6 @@
 }
 .head .headInfo{
 	width: 690px;
-	/* height: 160rpx; */
 	background: #ffffff;
 	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	margin-top: -60rpx;
@@ -108,10 +101,8 @@
 	text-align: center;
 }
 .infoTip{
-	/* width: 460rpx; */
 	display: flex;
 	justify-content: space-between;
-	/* height: 40rpx; */
 	margin:6rpx 0 30rpx;
 }
 .infoTip text{
@@ -126,7 +117,6 @@
 .form{
 	width: 650rpx;
 	margin: 0 auto;
-	/* height: 195rpx; */
 	background: #ffffff;
 	box-shadow: 0px 10px 44px 0px rgba(205,205,205,0.45); 
 	padding: 0 20rpx;

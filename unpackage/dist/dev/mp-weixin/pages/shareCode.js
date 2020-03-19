@@ -200,7 +200,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));
 
 var _index = __webpack_require__(/*! ../components/index.js */ 460);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
@@ -268,10 +267,8 @@ var _index = __webpack_require__(/*! ../components/index.js */ 460);function _in
 //
 //
 //
-//
 var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 524));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '', codeList: {}, showIs: '0', openSettingBtnHidden: true, //是否授权,
-      imgUrl: '', canvasWidth: '', canvasHeight: '' };}, components: { // wTable,
-    uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '2') {this.getCode();}}, // 微信分享
+      imgUrl: '', canvasWidth: '', canvasHeight: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '2') {this.getCode();}}, // 微信分享
   onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url }; // setTimeout( e =>{
     // 	this.showIs = '1'
     // },3000)
@@ -279,7 +276,8 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
     this.goShare('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
     this.goShare('WXSenceTimeline');}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}}, // 保存二维码
     //微信小程序保存到相册
-    handleSetting: function handleSetting(e) {console.log(e);if (!e.detail.authSetting['scope.writePhotosAlbum']) {this.openSettingBtnHidden = false;} else {this.openSettingBtnHidden = true;}}, saveEwm: function saveEwm() {var that = this;
+    handleSetting: function handleSetting(e) {console.log(e);if (!e.detail.authSetting['scope.writePhotosAlbum']) {this.openSettingBtnHidden = false;} else {this.openSettingBtnHidden = true;}}, saveEwm: function saveEwm() {
+      var that = this;
       //获取相册授权
       uni.getSetting({
         success: function success(res) {
@@ -371,7 +369,6 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
           authorization: app.globalData.token },
 
         success: function success(res) {
-          // uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res, '---');
           if (res.data.code == -1) {

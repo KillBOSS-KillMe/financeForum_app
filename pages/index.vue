@@ -87,7 +87,7 @@
 				// 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
 				const loginName = uni.getStorageSync('login_name');
 				const loginPwd = uni.getStorageSync('login_pwd');
-				console.log(loginName + '---===---' + loginPwd)
+				// console.log(loginName + '---===---' + loginPwd)
 				if (loginName == '' || loginPwd == '') {
 					uni.showToast({
 						title: '未检测到用户的登录记录，请进行登录',
@@ -160,7 +160,7 @@
 				let bind_board = e.currentTarget.dataset.bind_board
 				let id = e.currentTarget.dataset.id
 				let name = e.currentTarget.dataset.name
-				console.log(bind_board)
+				// console.log(bind_board)
 				if (bind_board == '0') {
 					uni.navigateTo({
 						url: `/pages/${link}`
@@ -175,18 +175,18 @@
 			selListType(e) {
 				this.Inv = e.currentTarget.dataset.index
 				this.boardId = e.currentTarget.dataset.block_id
-				console.log(this.boardId,'222')
+				// console.log(this.boardId,'222')
 				this.page = '1'
 				this.listNode = []
 				this.getListMore()
 			},
 			// 轮播跳转
 			goBanner(e) {
-				console.log(e)
+				// console.log(e)
 			},
 			// 文章详情
 			goDetail(e) {
-				console.log(e)
+				// console.log(e)
 				uni.navigateTo({
 					url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 				})
@@ -247,9 +247,9 @@
 			},
 			//加载更多
 			onReachBottom() {
-				console.log(this.boardId)
+				// console.log(this.boardId)
 				this.page ++;
-				console.log(this.page)
+				// console.log(this.page)
 				// console.log(this.pageNode.board_data[Inv].block_id)
 				uni.showLoading({
 				  title: '加载中...',

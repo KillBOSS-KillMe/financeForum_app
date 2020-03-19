@@ -19,7 +19,6 @@
 					</block>
 				</view>
 			</view>
-			<!-- <view class="line"></view> -->
 		</block>
 	</view>
 </template>
@@ -44,16 +43,11 @@
 					url: `${helper.requestUrl}/system-tools/query-tools`,
 					method: 'GET',
 					success: res => {
-						// uni.hideLoading();
 						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == 200) {
 							this.collectionList = res.data.data
-							console.log(this.collectionList,'+++++++++')
 						} else {
-							// uni.showToast({
-							// 	title: res.data.message
-							// });
 						}
 				
 					}
@@ -109,8 +103,6 @@
 								})
 						// #endif
 					}
-					// plus.runtime.openURL(extra)
-					// window.location.href = extra
 					// 外联
 				} else if(type == 'category'){
 					uni.navigateTo({

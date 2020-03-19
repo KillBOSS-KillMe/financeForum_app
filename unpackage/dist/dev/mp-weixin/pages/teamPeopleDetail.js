@@ -201,12 +201,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { info: {// img:'../static/card0.png',
-        // name:'hhh',
-        // vip:'vip1',
-        // dl: '一级代理',
-        // tel: '13000000000'
-      }, imgUrl: '', index: '' };}, onLoad: function onLoad(option) {this.imgUrl = _helper.default.imgUrl;console.log(option);this.index = option.index;this.info = JSON.parse(decodeURIComponent(option.itemDetail));}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { info: {}, imgUrl: '', index: '' };}, onLoad: function onLoad(option) {this.imgUrl = _helper.default.imgUrl;console.log(option);this.index = option.index;this.info = JSON.parse(decodeURIComponent(option.itemDetail));}, methods: {} };exports.default = _default;
 
 /***/ }),
 

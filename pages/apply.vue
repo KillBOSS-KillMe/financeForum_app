@@ -84,7 +84,7 @@ export default {
 			this.getList()
 		},
 		categorySubClick(e){
-			console.log(e);
+			// console.log(e);
 			uni.navigateTo({
 				url:`/pages/articleDetail?id=${e.id}`
 			})
@@ -104,7 +104,7 @@ export default {
 						this.categoryList = res.data.data
 						this.boardId = res.data.data[0].id
 						this.getList()
-						console.log(this.boardId)
+						// console.log(this.boardId)
 					} else {
 						uni.showToast({
 							title: res.data.message
@@ -138,7 +138,7 @@ export default {
 						 		icon:"none"
 						 	})
 							this.isShow = true
-							console.log(this.isShow )
+							// console.log(this.isShow )
 							this.isShow1 = false
 						 }else{
 							 this.isShow =false

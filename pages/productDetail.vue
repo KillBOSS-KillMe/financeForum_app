@@ -146,8 +146,6 @@
 		methods: {
 			// 微信小程序除服
 			MP_WEIXIN_apply(e) {
-				// console.log(e)
-				// console.log('MP-WEIXIN')
 				uni.showToast({
 					title: '该小程序不支持，请下载APP',
 					icon: 'none'
@@ -158,8 +156,6 @@
 				console.log('APP-PLUS')
 				let link = e.currentTarget.dataset.link
 				let name = e.currentTarget.dataset.name
-				console.log(link)
-				console.log(name)
 				if(link == ''){
 					uni.showToast({
 						title: '该模块正在维修站',
@@ -186,7 +182,6 @@
 						console.log(res);
 						if (res.data.status_code == 200) {
 							this.listInfo = res.data.data
-							console.log(this.listInfo,'++++')
 						} else if(res.data.status_code == 202) {
 							this.vip = res.data.message
 							this.isShow = true

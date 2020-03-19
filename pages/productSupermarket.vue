@@ -56,8 +56,6 @@
 					<block v-for="(item, index) in navReft" :key="index">
 						<text @tap="headNav(index + 1,item.id)" :class="['navColor', activeHead == index + 1 ? 'navA' : '']">{{ item.class_name }}</text>
 					</block>
-				<!-- 	<text @tap="headNav(0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
-					<text @tap="headNav(1)" :class="['navColor', activeHead == 1 ? 'navA' : '']">车贷</text> -->
 				</view>
 				<view class="contentList">
 					<scroll-view scroll-y class="twoScroll">

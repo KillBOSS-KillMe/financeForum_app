@@ -178,8 +178,8 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { list: [] };}, onLoad: function onLoad() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {
-            _this.list = res.data.data;
+          res = _helper.default.null2str(res); // console.log(res,'++++');
+          if (res.data.status_code == 200) {_this.list = res.data.data;
           } else {
 
           }
@@ -187,7 +187,7 @@ var app = getApp();var _default = { data: function data() {return { list: [] };}
 
     },
     link: function link() {
-      console.log('***********');
+      // console.log('***********')
       uni.navigateTo({
         url: '/pages/promptlyGetQr' });
 

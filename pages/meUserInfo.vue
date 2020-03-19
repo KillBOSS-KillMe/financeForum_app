@@ -117,7 +117,7 @@
 		},
 		methods: {
 			changeTab(e) {
-				console.log(e)
+				// console.log(e)
 				this.Inv = e;
 			},
 			// 编辑
@@ -180,7 +180,7 @@
 						uni.hideLoading();
 						res = helper.null2str(res)
 						// console.log(res,'++++++')
-						console.log(res.data, '+++++++++')
+						// console.log(res.data, '+++++++++')
 						this.userInfo = res.data
 						if(this.userInfo.credit_card == 0){
 							this.userInfo.credit_card = '无'

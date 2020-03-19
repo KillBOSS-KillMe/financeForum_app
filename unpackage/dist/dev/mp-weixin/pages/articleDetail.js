@@ -370,13 +370,13 @@ var app = getApp();var parser = function parser() {return Promise.all(/*! import
                 // 进入开通会员页
                 _this.goVip();} else if (res.cancel) {// console.log('用户点击取消');
               }} });}}}, goVip: function goVip() {uni.navigateTo({ url: '/pages/meVIP' });}, //获取发布内容
-    getContent: function getContent(e) {this.postContent = e.detail.value;console.log(e);}, // 文章详情加载
-    getArticleDetail: function getArticleDetail() {var _this2 = this;uni.showLoading({ title: '加载中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: app.globalData.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this2.articleDetail = res.data;if (_this2.articleDetail.user.sex == 'f') {_this2.isSex = '1';}} else {uni.showToast({ title: res.data.message, icon: 'none', duration: 2000 });setTimeout(function (e) {uni.navigateBack({ delta: 1 });}, 2000);}} });}, shareFriend: function shareFriend() {//分享到微信朋友
+    getContent: function getContent(e) {this.postContent = e.detail.value; // console.log(e);
+    }, // 文章详情加载
+    getArticleDetail: function getArticleDetail() {var _this2 = this;uni.showLoading({ title: '加载中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: app.globalData.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res); // console.log(res);
+          if (res.data.status_code == 200) {_this2.articleDetail = res.data;if (_this2.articleDetail.user.sex == 'f') {_this2.isSex = '1';}} else {uni.showToast({ title: res.data.message, icon: 'none', duration: 2000 });setTimeout(function (e) {uni.navigateBack({ delta: 1 });}, 2000);}} });}, shareFriend: function shareFriend() {//分享到微信朋友
       this.share('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
-      this.share('WXSenceTimeline');},
-    // 获取当前页路径及参数,用于分享
-    getPageUrl: function getPageUrl() {
-      // pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+      this.share('WXSenceTimeline');}, // 获取当前页路径及参数,用于分享
+    getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
       var pageNode = getCurrentPages();
       pageNode = pageNode[pageNode.length - 1];

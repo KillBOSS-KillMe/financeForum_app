@@ -110,7 +110,6 @@
 					},
 					data: this.formNode,
 					success: res => {
-						// uni.hideLoading();
 						res = helper.null2str(res);
 						if(res.data.code == '0'){
 							uni.showToast({
@@ -127,11 +126,6 @@
 								title: res.data.tip_msg,
 								icon: "none"
 							});
-							// setTimeout( e =>{
-							// 	uni.navigateBack({
-							// 		delta: 1
-							// 	})
-							// },2000)
 						}
 						
 					}

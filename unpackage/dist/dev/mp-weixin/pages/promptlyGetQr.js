@@ -245,7 +245,6 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
 
         data: this.formNode,
         success: function success(res) {
-          // uni.hideLoading();
           res = _helper.default.null2str(res);
           if (res.data.code == '0') {
             uni.showToast({
@@ -262,11 +261,6 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
               title: res.data.tip_msg,
               icon: "none" });
 
-            // setTimeout( e =>{
-            // 	uni.navigateBack({
-            // 		delta: 1
-            // 	})
-            // },2000)
           }
 
         } });

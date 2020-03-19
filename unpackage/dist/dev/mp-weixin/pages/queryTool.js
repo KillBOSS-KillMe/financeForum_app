@@ -160,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -186,12 +185,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/query-tools"), method: 'GET', success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.collectionList = res.data.data;console.log(_this.collectionList, '+++++++++');} else {// uni.showToast({
-            // 	title: res.data.message
-            // });
-          }} });
+var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/query-tools"), method: 'GET', success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.collectionList = res.data.data;} else {}} });
 
     },
     getData: function getData(e) {
@@ -244,8 +238,6 @@ var app = getApp();var _default = { data: function data() {return { collectionLi
 
 
         }
-        // plus.runtime.openURL(extra)
-        // window.location.href = extra
         // 外联
       } else if (type == 'category') {
         uni.navigateTo({

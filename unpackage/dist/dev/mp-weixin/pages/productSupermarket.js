@@ -227,11 +227,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
 //
 //
 //
@@ -335,7 +331,9 @@ var app = getApp();var uniDrawer = function uniDrawer() {return __webpack_requir
               // 	icon: 'none'
               // });
             }} });}, childItem: function childItem(bankId, childId, name) {this.showLeft = false;uni.navigateTo({ url: "/pages/indexA?bankId=".concat(bankId, "&name=").concat(name, "&childId=").concat(childId) });}, // 获取银行子类
-    getLeftNavChild: function getLeftNavChild() {var _this2 = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/bank_child"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '右边导航数据');if (res.data.status_code == 200) {_this2.letfNavChild = res.data.data;} else {}} });},
+    getLeftNavChild: function getLeftNavChild() {var _this2 = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/holes/bank_child"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);console.log(res, '右边导航数据');if (res.data.status_code == 200) {_this2.letfNavChild = res.data.data;} else {}} });
+
+    },
     // 右边导航数据
     getReftNav: function getReftNav() {var _this3 = this;
       uni.request({

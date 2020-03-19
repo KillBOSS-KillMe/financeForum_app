@@ -60,7 +60,7 @@
 		},
 		methods: {
 			radioChange(e) {
-				console.log(e);
+				// console.log(e);
 				this.payType = e.detail.value;
 			},
 			wxAppletPay() {
@@ -136,7 +136,7 @@
 				});
 			},
 			iAgree() {
-				console.log(this.payType);
+				// console.log(this.payType);
 				// uni.showToast({
 				// 	title: this.payType
 				// })

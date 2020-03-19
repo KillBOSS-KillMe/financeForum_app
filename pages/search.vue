@@ -35,14 +35,12 @@
 							<!-- 性别（m 男 f 女 no_set 未设置） -->
 							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'm'"></uni-icon>
 							<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-" v-if="item.sex == 'f'"></uni-icon>
-							<!-- <text class="label" v-if="item.vip > 1">管理员VIP{{item.vip}}级</text> -->
 							<text class="label">{{item.type}}</text>
 						</view>
 						<view class="info">{{item.signature}}</view>
 					</view>
 					<view class="operating">
 						<!-- 关注，取消关注 -->
-						<!-- <view :data-id="item.user_id" :data-index="index" @tap="delFollows">取消</view> -->
 					</view>
 				</view>
 			</block>
@@ -83,12 +81,6 @@ export default {
 				url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 			})
 		},
-		// 跳转详情
-		// goDetail(e){
-		// 	uni.navigateTo({
-		// 		url:`/pages/productDetail?id=${e}`
-		// 	})
-		// },
 		// 获取输入框的输入信息
 		bindInput(e) {
 			this.inputValue = e.detail.value;
@@ -112,7 +104,6 @@ export default {
 				success: res => {
 					uni.hideLoading();
 					res = helper.null2str(res)
-					// console.log(res,'++++++++')
 					if (res.data.status_code == 200) {
 						if (type == 'user') {
 							// 用户列表
@@ -121,11 +112,6 @@ export default {
 							// 帖子
 							this.postList = res.data.data
 						}
-						// this.itemList = this.itemList.concat(res.data.data);
-						// // 当前页码
-						// this.current_page = res.data.current_page;
-						// // 总页码
-						// this.last_page = res.data.last_page;
 					} else {
 						uni.showToast({
 							title: res.data.message,

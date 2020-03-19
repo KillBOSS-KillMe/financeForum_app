@@ -45,15 +45,12 @@
 						authorization: app.globalData.token
 					},
 					success: res => {
-						// uni.hideLoading();
 						res = helper.null2str(res);
 						console.log(res,'****');
 						if (res.data.status_code == 200) {
 							this.list = res.data.datas;
 						} else {
-							// uni.showToast({
-							// 	title: res.data.message
-							// });
+
 						}
 					}
 				});
@@ -84,7 +81,6 @@
 }
 .team{
 	width: 650rpx;
-	/* height: 238rpx; */
 	background: #ffffff;
 	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	padding: 20rpx;

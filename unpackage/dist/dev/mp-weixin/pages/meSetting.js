@@ -207,15 +207,15 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { num: '', version: '' };}, onLoad: function onLoad() {var loginName = uni.getStorageSync('login_name');console.log(loginName);var loginPwd = uni.getStorageSync('login_pwd');}, onShow: function onShow() {var _this = this;uni.getStorageInfo({ success: function success(res) {console.log(res.keys);console.log(res.currentSize, '999'); // this.num = res.currentSize
-        var currentSize = res.currentSize;console.log(currentSize);_this.num = currentSize;console.log(res.limitSize);} });}, methods: {
-
-    modifyPassword: function modifyPassword() {
-      // 修改密码
+var app = getApp();var _default = { data: function data() {return { num: '', version: '' };}, onLoad: function onLoad() {var loginName = uni.getStorageSync('login_name'); // console.log(loginName)
+    var loginPwd = uni.getStorageSync('login_pwd');}, onShow: function onShow() {var _this = this;uni.getStorageInfo({ success: function success(res) {// console.log(res.keys);
+        // console.log(res.currentSize,'999');
+        // this.num = res.currentSize
+        var currentSize = res.currentSize; // console.log(currentSize)
+        _this.num = currentSize; // console.log(res.limitSize);
+      } });}, methods: { modifyPassword: function modifyPassword() {// 修改密码
       // 进入修改密码页
-      uni.navigateTo({
-        url: '/pages/forgetPassword' });
-
+      uni.navigateTo({ url: '/pages/forgetPassword' });
     },
     delCaching: function delCaching() {var _this2 = this;
       // 删除系统缓存

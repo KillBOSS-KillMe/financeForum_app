@@ -4,7 +4,6 @@
 		<view class="content">
 			<text class="head">新微金推广二维码</text>
 			<view class="con">
-				<!-- <uni-icon type="" class="iconfont iconerweima2"></uni-icon> -->
 				<image v-if="codeList.msg_log == '显示二维码'" :src="codeList.face" mode=""></image>
 				<image v-else src="../static/1.png" mode=""></image>
 				<text>注:推广二维码仅限一次，分享后需要刷新</text>
@@ -94,7 +93,6 @@ export default {
 		};
 	},
 	components: {
-		// wTable,
 		uniPopup
 	},
 	onLoad(option) {
@@ -236,7 +234,6 @@ export default {
 					authorization: app.globalData.token
 				},
 				success: res => {
-					// uni.hideLoading();
 					res = helper.null2str(res);
 					console.log(res, '---');
 					if (res.data.code == -1) {

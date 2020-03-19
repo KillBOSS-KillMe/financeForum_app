@@ -219,10 +219,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var _default = { data: function data() {return { options: {}, userInfo: {}, index: '0', payType: 'wechat' };}, onLoad: function onLoad(options) {this.userInfo = app.globalData.userInfo; // console.log(this.userInfo)
     // console.log(options)
-    this.options = options;con;}, methods: { radioChange: function radioChange(e) {console.log(e);this.payType = e.detail.value;}, wxAppletPay: function wxAppletPay() {var _this = this; // 微信小程序支付
+    this.options = options;con;}, methods: { radioChange: function radioChange(e) {// console.log(e);
+      this.payType = e.detail.value;}, wxAppletPay: function wxAppletPay() {var _this = this; // 微信小程序支付
       uni.showLoading({ title: '支付信息加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/buy-vip"), method: 'POST', header: { authorization: app.globalData.token }, data: { member_id: this.options.id, app_type: 'miniapp', pay_type: 'wechat' }, success: function success(res) {// console.log(res);
-          uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.runRecharge(res.data);} else {
-            uni.showToast({
+          uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.runRecharge(res.data);} else {uni.showToast({
               title: res.data.message,
               icon: 'none',
               duration: 2000 });
@@ -271,7 +271,7 @@ var app = getApp();var _default = { data: function data() {return { options: {},
 
     },
     iAgree: function iAgree() {var _this2 = this;
-      console.log(this.payType);
+      // console.log(this.payType);
       // uni.showToast({
       // 	title: this.payType
       // })

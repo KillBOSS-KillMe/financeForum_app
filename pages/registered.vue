@@ -41,11 +41,6 @@ export default {
 			console.log(qrUrl);
 			this.formNode.invitation = helper.getQueryString(qrUrl, 'invitation')
 			console.log(this.formNode.invitation,'999')
-			// this.setData({
-			// 	//获取链接中的参数信息
-			// 	actId: utils.getQueryString(qrUrl, 'actId'),
-			// 	shareUserId: utils.getQueryString(qrUrl, 'shareUserId')
-			// });
 		}else{
 			this.formNode.invitation = ''
 		}

@@ -31,7 +31,6 @@
 				</block>
 			</view>
 			<view v-if="itemList.length == 0" class="none">
-				<!-- <icon class="iconfont iconc-kongzhuangtai"></icon> -->
 				<text>没有找到相关信息</text>
 			</view>
 		</view>

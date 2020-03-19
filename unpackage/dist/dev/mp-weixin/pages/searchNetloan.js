@@ -174,9 +174,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}} //
-//
 //
 //
 //
@@ -220,7 +218,8 @@ var app = getApp();var _default = { data: function data() {return { inputValue: 
     goDetail: function goDetail(e) {uni.navigateTo({ url: "/pages/productDetail?id=".concat(e) });}, // 获取输入框的输入信息
     bindInput: function bindInput(e) {this.inputValue = e.detail.value;if (this.inputValue == '') {this.mask = true;}}, // // 清楚历史记录单条
     clearList: function clearList(e) {console.log(e, '++++');var index = e;this.sercherStorage.splice(index, 1); //将搜索记录更新到缓存
-      var searchData = this.sercherStorage;uni.setStorageSync('searchData', searchData);if (this.sercherStorage.length == 0) {this.storageFlag = false;} else {this.storageFlag = true;}
+      var searchData = this.sercherStorage;uni.setStorageSync('searchData', searchData);if (this.sercherStorage.length == 0) {this.storageFlag = false;} else {this.storageFlag = true;
+      }
     },
     // // 清楚缓存历史并关闭历史搜索框
     clearSearchStorage: function clearSearchStorage() {

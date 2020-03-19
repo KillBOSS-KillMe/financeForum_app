@@ -219,7 +219,7 @@ var app = getApp();var _default = { data: function data() {return { categoryList
       this.getList();
     },
     categorySubClick: function categorySubClick(e) {
-      console.log(e);
+      // console.log(e);
       uni.navigateTo({
         url: "/pages/articleDetail?id=".concat(e.id) });
 
@@ -239,7 +239,7 @@ var app = getApp();var _default = { data: function data() {return { categoryList
             _this.categoryList = res.data.data;
             _this.boardId = res.data.data[0].id;
             _this.getList();
-            console.log(_this.boardId);
+            // console.log(this.boardId)
           } else {
             uni.showToast({
               title: res.data.message });
@@ -273,7 +273,7 @@ var app = getApp();var _default = { data: function data() {return { categoryList
                 icon: "none" });
 
               _this2.isShow = true;
-              console.log(_this2.isShow);
+              // console.log(this.isShow )
               _this2.isShow1 = false;
             } else {
               _this2.isShow = false;

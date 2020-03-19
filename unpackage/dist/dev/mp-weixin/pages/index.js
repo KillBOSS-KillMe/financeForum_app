@@ -250,12 +250,12 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     // this.getListMore()
     this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
       // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
-      var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd');console.log(loginName + '---===---' + loginPwd);if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
+      var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd'); // console.log(loginName + '---===---' + loginPwd)
+      if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
           uni.reLaunch({ url: './login' });}, 3000);} else {// 执行登录操作
         this.runLogin(loginName, loginPwd);}} else {// 获取用户信息
       this.getUserInfo(); // this.getList()
-    }},
-  methods: {
+    }}, methods: {
     // 进行登录操作
     runLogin: function runLogin(loginName, loginPwd) {var _this = this;
       uni.showLoading({
@@ -305,7 +305,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       var bind_board = e.currentTarget.dataset.bind_board;
       var id = e.currentTarget.dataset.id;
       var name = e.currentTarget.dataset.name;
-      console.log(bind_board);
+      // console.log(bind_board)
       if (bind_board == '0') {
         uni.navigateTo({
           url: "/pages/".concat(link) });
@@ -320,18 +320,18 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     selListType: function selListType(e) {
       this.Inv = e.currentTarget.dataset.index;
       this.boardId = e.currentTarget.dataset.block_id;
-      console.log(this.boardId, '222');
+      // console.log(this.boardId,'222')
       this.page = '1';
       this.listNode = [];
       this.getListMore();
     },
     // 轮播跳转
     goBanner: function goBanner(e) {
-      console.log(e);
+      // console.log(e)
     },
     // 文章详情
     goDetail: function goDetail(e) {
-      console.log(e);
+      // console.log(e)
       uni.navigateTo({
         url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
 
@@ -392,9 +392,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     },
     //加载更多
     onReachBottom: function onReachBottom() {
-      console.log(this.boardId);
+      // console.log(this.boardId)
       this.page++;
-      console.log(this.page);
+      // console.log(this.page)
       // console.log(this.pageNode.board_data[Inv].block_id)
       uni.showLoading({
         title: '加载中...',
