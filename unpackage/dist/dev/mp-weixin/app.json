@@ -27,11 +27,7 @@
     "pages/meCertification",
     "pages/meVIP",
     "pages/joinMember",
-    "pages/meVIPDiff",
-    "pages/meAllProduct",
-    "pages/meReserve",
     "pages/contactCustomer",
-    "pages/meNewbieRead",
     "pages/meSpread",
     "pages/meService",
     "pages/meSetting",
@@ -112,5 +108,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap80.json"
+  "sitemapLocation": "sitemap63.json"
 }

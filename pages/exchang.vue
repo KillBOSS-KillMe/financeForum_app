@@ -75,6 +75,7 @@ export default {
 	},
 	onShow(){
 		this.getUserInfo()
+		this.categoryActive = 0,
 		// 加载微金交流首页数据
 		this.getRegion();
 	},

@@ -1,18 +1,5 @@
 <template>
 	<view class="meMessage">
-	<!-- 	<view v-if="type == '3'">
-			<block v-for="(item,index) in list" :key="index">
-				<view class="item">
-					<view>
-						<image :src="imgUrl+item.img" mode=""></image>
-						<view class="right">
-							<text class="title">{{item.title}}</text>
-							<text>{{item.content}}</text>
-						</view>
-					</view>
-				</view>
-			</block>
-		</view> -->
 		<view v-if="type == '2'">
 			<block v-for="(item,index) in list" :key="index">
 				<view class="comment">

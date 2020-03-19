@@ -2,7 +2,6 @@
 <template>
 	<view class="queryTool">
 		<block v-for="(item,index) in collectionList" :key="index">
-			<!-- <text>{{item.title}}</text> -->
 			<view class="headList" v-if="item.type != 'category'" @tap="getData" :data-id="item.id" :data-name="item.title" :data-type="item.type"  :data-link="item.extra">
 				<view class="head">
 					<image :src="imgUrl+item.icon" mode=""></image>

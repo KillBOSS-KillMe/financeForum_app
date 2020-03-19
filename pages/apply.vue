@@ -10,7 +10,7 @@
 				</scroll-view>
 			</view>
 			<view class="nav-right">
-				<scroll-view  scroll-y="true"  @scrolltolower="toLowFun" @scroll="scroll">
+				<scroll-view  scroll-y="true"  @scrolltolower="toLowFun">
 					<view class="nav-right-item" v-for="(item,index2) in subCategoryList" :key="index2" @click="categorySubClick(item)">
 						<image :src="imgUrl+item.photoalbums[0].path" />
 						<view class="navRightContent">

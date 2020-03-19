@@ -237,12 +237,7 @@ export default {
 .none {
 	margin-top: 100rpx;
 }
-/* .iconc-kongzhuangtai{
-	width: 160rpx;
-	display: block;
-	font-size: 150rpx;
-	margin: 0 auto;
-} */
+
 .none text {
 	text-align: center;
 	color: #454545;

@@ -247,14 +247,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -367,15 +359,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-var app = getApp();var parser = function parser() {return Promise.all(/*! import() | components/jyf-parser */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/jyf-parser")]).then(__webpack_require__.bind(null, /*! @/components/jyf-parser */ 525));};var _default = { data: function data() {return { userInfo: {}, focus: false, isShow: '0', isHide: '0', info: {}, nodes: [], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '', isSex: '0', type: '' };}, components: { "jyf-parser": parser }, onLoad: function onLoad(options) {this.options = options;this.imgUrl = _helper.default.imgUrl; // this.userInfo = app.globalData.userInfo
+var app = getApp();var parser = function parser() {return Promise.all(/*! import() | components/jyf-parser */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/jyf-parser")]).then(__webpack_require__.bind(null, /*! @/components/jyf-parser */ 501));};var _default = { data: function data() {return { userInfo: {}, focus: false, isShow: '0', isHide: '0', info: {}, nodes: [], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '', isSex: '0', type: '' };}, components: { "jyf-parser": parser }, onLoad: function onLoad(options) {this.options = options;this.imgUrl = _helper.default.imgUrl; // this.userInfo = app.globalData.userInfo
     // this.type =this.userInfo.type
     // console.log(this.userInfo)
   }, onShow: function onShow() {// 文章详情加载
@@ -389,10 +373,18 @@ var app = getApp();var parser = function parser() {return Promise.all(/*! import
     getContent: function getContent(e) {this.postContent = e.detail.value;console.log(e);}, // 文章详情加载
     getArticleDetail: function getArticleDetail() {var _this2 = this;uni.showLoading({ title: '加载中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: app.globalData.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this2.articleDetail = res.data;if (_this2.articleDetail.user.sex == 'f') {_this2.isSex = '1';}} else {uni.showToast({ title: res.data.message, icon: 'none', duration: 2000 });setTimeout(function (e) {uni.navigateBack({ delta: 1 });}, 2000);}} });}, shareFriend: function shareFriend() {//分享到微信朋友
       this.share('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
-      this.share('WXSenceTimeline');}, // 获取当前页路径及参数,用于分享
-    getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
+      this.share('WXSenceTimeline');},
+    // 获取当前页路径及参数,用于分享
+    getPageUrl: function getPageUrl() {
+      // pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;var options = pageNode.options;var optionsString = '?';for (var key in options) {optionsString += key;
+      var pageNode = getCurrentPages();
+      pageNode = pageNode[pageNode.length - 1];
+      var url = pageNode.route;
+      var options = pageNode.options;
+      var optionsString = '?';
+      for (var key in options) {
+        optionsString += key;
         optionsString += '=';
         optionsString += options[key];
         optionsString += '&';

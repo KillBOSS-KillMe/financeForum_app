@@ -1,18 +1,5 @@
 <template>
 	<view class="meSpread">
-		<!-- <view class="head">
-			<image :src="imgUrl+collectionList.member.avatar" v-if="collectionList.member.avatar != ''" mode="" ></image>
-			<image v-else src="../static/user.png" mode=""></image>
-		</view>
-		<view class="info">
-			<text>{{collectionList.member.name}}</text>
-			<view class="sign">
-				<text v-if="collectionList.member.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
-				<text style="background-color: #C6A25D;" v-if="collectionList.member.type == 'member'">{{item.deploy.vipuserlevel.level_name}}</text> -->
-			<!-- 	<text v-if="collectionList.member.invitees_level == 0">团队长</text>
-				<text v-else>团员</text>
-			</view>
-		</view> --> 
 		<view class="bg"></view>
 		<view class="user">
 			<view class="left">
@@ -55,8 +42,6 @@
 		</view>
 		<view class="bottom">
 			<view class="invite">
-				<!-- <text class="quickInlet" @tap="quickInlet(1)">立即邀请</text>
-				<text class="faceInlet" @tap="quickInlet(2)">面对面邀请</text> -->
 				<text class="quickInlet" @tap="quickInlet(1)">立即获取推广二维码</text>
 				<text class="faceInlet" @tap="quickInlet(2)">查看我的推广二维码</text>
 			</view>
@@ -70,107 +55,15 @@
 				<text>7、如有其它的疑问请咨询子诺论坛官方客服Tel:18535464004;</text>
 			</view>
 		</view>
-		
-		<!-- <view class="hr"></view> -->
-	<!-- 	<view class="list">
-			<text class="listInlet">我的邀请</text>
-			<view class="meTable">
-				<view class="item headTab">
-					<block v-for="(item,index) in columns" :key="index">
-						<text>{{item.title}}</text>
-					</block>
-				</view>
-				<block v-for="(item,index) in collectionList.member.invitees" :key="index">
-					<view class="item">
-						<text>{{item.user.name}}</text>
-						<text>{{item.user.mobile}}</text>
-						<text>{{item.created_at}}</text>
-					</view>
-				</block>
-			</view>
-			<view class="model" @tap="goMore" v-show="isShow">
-				更多用户
-				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
-			</view>
-		</view> -->
-		<!-- 底部分享弹窗 立即邀请 -->
-<!-- 		<uni-popup ref="showshare" type="bottom" class="meShare" @touchmove.stop.prevent>
-			<view class="uni-share">
-				<text class="uni-share-title">分享到</text>
-				<view class="uni-share-content">
-					 #ifdef MP-WEIXIN -->
-				<!-- 		<button class="share-btn" open-type="share">
-							<view class="uni-share-content-box">
-								<view class="uni-share-content-image">
-									<uni-icon type="" class="iconfont iconweixin"></uni-icon>
-								</view>
-								<text class="uni-share-content-text">微信好友</text>
-							</view>
-					 #endif -->
-					<!-- #ifdef APP-PLUS || H5
-						<block v-for="(item, index) in bottomData" :key="index">
-							<view class="uni-share-content-box" @tap="goShare(item.type)">
-								<view class="uni-share-content-image">
-									<uni-icon type="" class="iconfont" :class="item.icon"></uni-icon>
-								</view>
-								<text class="uni-share-content-text">{{ item.text }}</text>
-							</view>
-						</block>
-					 #endif -->
-			<!-- 	</view>
-				<text class="uni-share-btn" @click="cancel('share')">取消分享</text>
-			</view>
-		</uni-popup> -->
-		<!-- 面对面邀请 -->
-		<!-- <uni-popup ref="center" type="center" class="meShare" @touchmove.stop.prevent>
-			<view class="fase">
-				<image :src="collectionList.face" mode=""></image>
-				<text>邀请领现金</text>
-			</view>
-		</uni-popup>
-		<view class="modelMoney" v-if="cancelShow == false" @touchmove.stop.prevent>
-			<view class="modelBg"></view>
-			<view class="contentModel">
-				<text>请输入提现金额</text>
-				<input type="number" value="" placeholder="请输入提现金额" @input="getInput"/>
-				<view>
-					<text @tap="cancelModel(1)">确认提现</text>
-					<text @tap="cancelModel(2)">取消提现</text>
-				</view>
-			</view>
-		</view> -->
 	</view>
 </template>
 
 <script>
 const app = getApp();
 import helper from '../common/helper.js';
-// import uniPopup from '@/components/uni-popup.vue';
 export default {
 	data() {
 		return {
-			// tableData: [
-			// 	{ name: '大锤', age: '17777777777', address: '2019-10-25' }, 
-			// 	{ name: '张三', age: '21', address: '成都' }, 
-			// 	{ name: '李四', age: '16', address: '南京' },
-			// ],
-			// columns: [
-			// 	{ title: '用户名', key: 'name' }, 
-			// 	{ title: '手机号', key: 'age' }, 
-			// 	{ title: '时间', key: 'address' },
-			// ],
-			// bottomData: [
-			// 	{
-			// 		text: '微信好友',
-			// 		type: 'WXSceneSession',
-			// 		icon: 'iconweixin'
-			// 	},
-			// 	{
-			// 		text: '微信朋友圈',
-			// 		type: 'WXSenceTimeline',
-			// 		icon: 'iconpengyouquan'
-			// 	}
-			// ],
 			collectionList: {},
 			imgUrl: '',
 			isShow: true,
@@ -179,8 +72,7 @@ export default {
 		};
 	},
 	components: {
-		// wTable,
-		// uniPopup
+		
 	},
 	onShow() {
 		this.content();
@@ -188,117 +80,21 @@ export default {
 	onLoad() {
 		this.imgUrl = helper.imgUrl;
 	},
-	// 微信分享
-	// onShareAppMessage() {
-	// 	let url = this.getPageUrl()
-	// 	return {
-	// 		title: this.articleDetail.title,
-	// 		path: url
-	// 	}
-	// },
-	// shareFriend() {
-	// 	//分享到微信朋友
-	// 	this.goShare('WXSceneSession');
-	// },
-	// shareFriendcricle() {
-	// 	//分享到微信朋友圈
-	// 	this.goShare('WXSenceTimeline');
-	// },
 	methods: {
 		withdraw(){
 			uni.navigateTo({
 				url: `/pages/cashOut`
 			})
-			// this.cancelShow = false
 		},
-		// cancelModel(e){
-		// 	console.log(e,'888')
-		// 	if(e == '2'){
-		// 		this.cancelShow = true
-		// 	}else if(e == "1"){
-		// 		this.getWithdraw()
-		// 	}
-		// },
-		// getWithdraw(){
-		// 	if(this.inputValue == ''){
-		// 		uni.showToast({
-		// 			title: '请输入提现金额',
-		// 			icon: 'none'
-		// 		})
-		// 	}
-		// 	if(this.inputValue > this.collectionList.user_blance){
-		// 		uni.showToast({
-		// 			title: '输入提现金额不能大于余额',
-		// 			icon: 'none'
-		// 		})
-		// 	}
-		// 	uni.request({
-		// 		url: `${helper.requestUrl}/user/cash-withdrawals-apply`,
-		// 		method: 'POST',
-		// 		header: {
-		// 			authorization: app.globalData.token
-		// 		},
-		// 		data:{
-		// 			money: this.inputValue
-		// 		},
-		// 		success: res => {
-		// 			// uni.hideLoading();
-		// 			res = helper.null2str(res);
-		// 			console.log(res);
-		// 			if (res.data.status_code == 200) {
-		// 				this.cancelShow = true
-		// 				uni.showToast({
-		// 					title: '提现成功',
-		// 					icon: 'success'
-		// 				})
-		// 				this.content();
-		// 				// setTimeout(() => {
-							
-		// 				// }, 1000)
-		// 			} else {
-		// 				// uni.showToast({
-		// 				// 	title: res.data.message
-		// 				// });
-		// 			}
-		// 		}
-		// 	});
-		// },
-		// getInput(e){
-		// 	console.log(e,'999')
-		// 	this.inputValue = e.detail.value
-		// },
+
 		goMore(){
 			this.isShow = false
 		},
-		// 获取当前页路径及参数,用于分享
-		// getPageUrl() {
-		// 	// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
-		// 	// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-		// 	let pageNode = getCurrentPages()
-		// 	pageNode = pageNode[pageNode.length - 1]
-		// 	let url = pageNode.route
-		// 	let options = pageNode.options
-		// 	let optionsString = '?'
-		// 	for( let key in options ){
-		// 			optionsString += key
-		// 			optionsString += '='
-		// 			optionsString += options[key]
-		// 			optionsString += '&'
-		// 	}
-		// 	optionsString = optionsString.substring(0, optionsString.length - 1)
-		// 	url += optionsString
-		// 	return url
-		// },
 		quickInlet(e) {
 			uni.navigateTo({
 				url: `/pages/shareCode?type=${e}`
 			})
-			// if (e == 1) {
-			// 	this.$refs.showshare.open();
-			// } else if (e == 2) {
-			// 	this.$refs.center.open();
-			// }
-			// console.log(e);
+
 		},
 		cancel(type) {
 			this.$refs['show' + type].close();
@@ -317,76 +113,13 @@ export default {
 					if (res.data.status_code == 200) {
 						this.collectionList = res.data;
 					} else {
-						// uni.showToast({
-						// 	title: res.data.message
-						// });
+
 					}
 				}
 			});
 		},
-		// goShare(WXSenceType) {
-		// 	// 获取页面路径
-		// 	console.log(this.collectionList,'**')
-		// 	uni.showToast({
-		// 		title: this.collectionList.share_link,
-		// 				icon: 'none',
-		// 				duration: 300000000
-		// 	});
-		// 	return false
-		// 	// let url = this.getPageUrl()
-		// 	console.log(url)
-		// 	uni.share({
-		// 		provider: 'weixin',
-		// 		scene: WXSenceType,
-		// 		type: 0,
-		// 		href: url,
-		// 		title: '新微金论坛',
-		// 		summary: this.collectionList.share_link,
-		// 		imageUrl: '',
-		// 		success: function(res) {
-		// 			console.log('success:' + JSON.stringify(res));
-		// 		},
-		// 		fail: function(err) {
-		// 			console.log('fail:' + JSON.stringify(err));
-		// 		},
-		// 	});
-		// },
-		// goShare(e) {
-		// 	console.log(e)
-		// 	let sceneType = ''
-		// 	if(e == 'WXSceneSession'){
-		// 		sceneType = 'WXSceneSession'
-		// 	} else if(e == 'WXSenceTimeline'){
-		// 		sceneType = 'WXSenceTimeline'
-		// 	}
-		// 	uni.share({
-		// 	    provider: "weixin",
-		// 	    scene: sceneType,
-		// 	    type: 0,
-		// 	    href: this.collectionList.share_link,
-		// 	    title: "新微金论坛",
-		// 	    summary: "我正在使用新微金论坛，赶紧跟我一起来体验！",
-		// 	    imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
-		// 	    success: function (res) {
-		// 	        console.log("success:" + JSON.stringify(res));
-		// 	    },
-		// 	    fail: function (err) {
-		// 	        console.log("fail:" + JSON.stringify(err));
-		// 	    }
-		// 	});
-		// },
 		// 团队列表
 		goTeam(e){
-			// console.log(e)
-			// let name = ''
-			// if(e == 1){
-			// 	name = '团队长列表'
-			// }else{
-			// 	name = '团队列表'
-			// }
-			// uni.navigateTo({
-			// 	url: `/pages/meTeamList?name=${name}`
-			// })
 			uni.navigateTo({
 				url: `/pages/teamList`
 			})

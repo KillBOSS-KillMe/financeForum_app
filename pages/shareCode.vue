@@ -322,26 +322,14 @@ export default {
 				// summary: this.codeList.share_link,
 				imageUrl: ' ',
 				success: res => {
-					// console.log(123)
-					// uni.showToast({
-					// 	title: '123',
-					// 	icon:'none'
-					// })
 					this.showIs = '1';
 				},
 				fail: err => {
-					// uni.showToast({
-					// 	title: '321',
-					// 	icon:'none'
-					// })
-					//      console.log("fail:" + JSON.stringify(err));
 				}
 			});
 		},
 		// 获取当前页路径及参数,用于分享
 		getPageUrl() {
-			// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
-			// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
 			let pageNode = getCurrentPages();
 			pageNode = pageNode[pageNode.length - 1];
 			let url = pageNode.route;

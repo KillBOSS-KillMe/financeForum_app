@@ -241,10 +241,6 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         header: {
           authorization: app.globalData.token },
 
-        // data:{
-        // 	page_size: 10,
-        // 	page: this.page
-        // },
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);

@@ -7,11 +7,6 @@
 					<image v-else src="../static/user.png" mode=""></image>
 					<view class="info">
 						<text class="title">{{item.name}}</text>
-						<!-- <view>
-							<text v-if="item.type == 'normal'">{{item.deploy.userlevel.level_name}}</text>
-							<text style="background-color: #C6A25D;" v-if="item.type == 'member'">{{item.deploy.vipuserlevel.level_name}}</text>
-							<text v-show="item.invitees_level == 0">团队长</text>
-						</view> -->
 						<text class="time">加入时间：{{item.created_at}}</text>
 					</view>
 				</view>

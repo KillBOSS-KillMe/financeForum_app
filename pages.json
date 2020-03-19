@@ -165,33 +165,9 @@
 			}
 		},
 		{
-			"path": "pages/meVIPDiff",
-			"style": {
-				"navigationBarTitleText": "会员区别"
-			}
-		},
-		{
-			"path": "pages/meAllProduct",
-			"style": {
-				"navigationBarTitleText": "各省产品汇总"
-			}
-		},
-		{
-			"path": "pages/meReserve",
-			"style": {
-				"navigationBarTitleText": "备用金打造"
-			}
-		},
-		{
 			"path": "pages/contactCustomer",
 			"style": {
 				"navigationBarTitleText": "联系客服"
-			}
-		},
-		{
-			"path": "pages/meNewbieRead",
-			"style": {
-				"navigationBarTitleText": "新手必读"
 			}
 		},
 		{
@@ -212,12 +188,6 @@
 				"navigationBarTitleText": "个人设置"
 			}
 		},
-		// {
-		// 	"path": "pages/indexAccurate",
-		// 	"style": {
-		// 		"navigationBarTitleText": "精准匹配"
-		// 	}
-		// },
 		{
 			"path": "pages/indexA",
 			"style": {
@@ -287,7 +257,7 @@
 		{
 			"path": "pages/iframe",
 			"style": {
-				// "navigationBarTitleText": "分类"
+
 			}
 		}, {
 			"path": "pages/meFan",

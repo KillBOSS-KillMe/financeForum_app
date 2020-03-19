@@ -163,24 +163,8 @@ uni-tabbar .uni-tabbar__icon {
   content: "\e610";
 }
 
-.iconqunfengjingzhunyinliu:before {
-  content: "\e70f";
-}
-
-.iconqiyegongchangjianzhu:before {
-  content: "\e802";
-}
-
 .iconweixin1:before {
   content: "\e659";
-}
-
-.iconqian_:before {
-  content: "\e61a";
-}
-
-.iconchanpin_yonghuzhifu:before {
-  content: "\e603";
 }
 
 .iconyonghu:before {
@@ -327,32 +311,13 @@ uni-tabbar .uni-tabbar__icon {
   content: "\e61c";
 }
 
-.iconhuiyuan1:before {
-  content: "\e65f";
-}
-
-.iconhongbaoguanli:before {
-  content: "\e628";
-}
 
 .iconsaoyisao:before {
   content: "\e605";
 }
 
-.iconshujuhuizong:before {
-  content: "\e63b";
-}
-
 .iconzanzan:before {
   content: "\e65a";
-}
-
-.iconfenxiang:before {
-  content: "\e613";
-}
-
-.iconico_zuo:before {
-  content: "\e601";
 }
 
 .iconchangyongtubiao-xianxingdaochu-zhuanqu-:before {

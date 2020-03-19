@@ -19,7 +19,6 @@
 					<image src="../static/imgLost.png" mode="" v-if="item.icon == ''"></image>
 					<view class="itemRight">
 						<view class="productInfo">
-							<!-- {{ item.name }} {{ item.apply_sum }} {{ item.quota }} {{ item.fee_ratio }} {{ item.introduction }}-->
 							<text>{{ item.name }}-{{ item.arrival_way }}</text>
 							<view>
 								<text>申请人数:</text>

@@ -7,7 +7,7 @@
 		<view class="content">
 			<view class="banner">
 				<view class="bannerBox">
-					<swiper class="swiper"  next-margin='50rpx' :current="current"  @change="banner">
+					<swiper class="swiper"  next-margin='60rpx' :current="current"  @change="banner">
 						<block v-for="(item,index) in vip.data" :key="index">
 							<swiper-item>
 								<image class="bannerImg" :src="imgUrl+item.title_pic" @tap="goBanner" data-id="item.id"></image>

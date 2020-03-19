@@ -86,20 +86,8 @@ uni-tabbar .uni-tabbar__icon {
 .iconzhifubao:before {
   content: "\E610";
 }
-.iconqunfengjingzhunyinliu:before {
-  content: "\E70F";
-}
-.iconqiyegongchangjianzhu:before {
-  content: "\E802";
-}
 .iconweixin1:before {
   content: "\E659";
-}
-.iconqian_:before {
-  content: "\E61A";
-}
-.iconchanpin_yonghuzhifu:before {
-  content: "\E603";
 }
 .iconyonghu:before {
   content: "\E652";
@@ -209,26 +197,11 @@ uni-tabbar .uni-tabbar__icon {
 .iconzaixiankefu:before {
   content: "\E61C";
 }
-.iconhuiyuan1:before {
-  content: "\E65F";
-}
-.iconhongbaoguanli:before {
-  content: "\E628";
-}
 .iconsaoyisao:before {
   content: "\E605";
 }
-.iconshujuhuizong:before {
-  content: "\E63B";
-}
 .iconzanzan:before {
   content: "\E65A";
-}
-.iconfenxiang:before {
-  content: "\E613";
-}
-.iconico_zuo:before {
-  content: "\E601";
 }
 .iconchangyongtubiao-xianxingdaochu-zhuanqu-:before {
   content: "\E74B";

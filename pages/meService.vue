@@ -71,10 +71,6 @@ button::after{
 	border: none;
 	background: none;
 }
-/* button:hover{ 
-	border: none;
-	background: none;
-} */
 .iconFont{
 	width: 100rpx;
 	height: 100rpx;

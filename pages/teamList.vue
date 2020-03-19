@@ -17,17 +17,6 @@
 				</view>
 			</view>
 		</block>
-		<!-- <view class="team">
-			<text class="title">二级代理</text>
-			<view class="list">
-				<block v-for="(item,index) in list" :key="index">
-					<view class="item">
-						<image :src="item.img" mode=""></image>
-						<text>{{item.name}}</text>
-					</view>
-				</block>
-			</view>
-		</view> -->
 	</view>
 </template>
 
@@ -37,11 +26,7 @@
 	export default {
 		data() {
 			return {
-				list:[
-					// {id:'1',name:'例会',img:'../static/card1.png'},
-					// {id:'1',name:'例会d',img:'../static/card1.png'},
-					// {id:'1',name:'例会的',img:'../static/card1.png'},
-				],
+				list:[],
 				imgUrl: ''
 			}
 		},

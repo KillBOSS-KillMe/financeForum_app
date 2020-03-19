@@ -106,10 +106,6 @@
 					header: {
 						authorization: app.globalData.token
 					},
-					// data:{
-					// 	page_size: 10,
-					// 	page: this.page
-					// },
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
