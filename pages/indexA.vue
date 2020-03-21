@@ -16,7 +16,9 @@
 				</view>
 			</block>
 			<view class="null" v-if="isShow">暂无数据</view>
-			<view class="null" v-if="isShow1">{{ vip }}</view>
+			<view v-if="isShow1">
+				<image class="showModel" src="../static/no.png" mode="" @touchmove.stop = "" ></image>
+			</view>
 		</view>
 	</view>
 </template>
@@ -164,5 +166,13 @@ export default {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	text-align: center;
+}
+.showModel{
+	width: 750rpx;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
 }
 </style>

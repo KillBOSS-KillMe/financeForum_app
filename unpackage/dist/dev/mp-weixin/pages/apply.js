@@ -167,6 +167,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -199,10 +201,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
 var app = getApp();var _default = { data: function data() {return { categoryList: [], subCategoryList: [], imgUrl: '', page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, vip: '', isShow: true, isShow1: false };}, props: { //主分类激活索引
-    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } },
-
-  onLoad: function onLoad() {
+    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } }, onLoad: function onLoad() {
     this.imgUrl = _helper.default.imgUrl;
     this.getNav();
   },

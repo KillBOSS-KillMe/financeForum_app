@@ -23,7 +23,9 @@
 						</view>
 					</view>
 					<view class="null" v-if="isShow">暂无数据</view>
-					<view class="null" v-if="isShow1">{{vip}}</view>
+					<view v-if="isShow1">
+						<image class="showModel" @touchmove.stop = "" src="../static/no.png" mode=""></image>
+					</view>
 				</scroll-view>
 			</view>
 		</view>
@@ -263,5 +265,14 @@ export default {
 		top: 0;
 		position: fixed;
 		background-color: #F24544;
+	}
+	.showModel{
+		width: 510rpx;
+		padding: 22rpx 0 0 22rpx;
+		height: 97vh;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 9;
 	}
 </style>

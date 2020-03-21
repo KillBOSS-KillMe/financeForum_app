@@ -46,7 +46,7 @@
 				<text class="tip" v-else-if="types == '0'">请上传微信收款码</text>
 				<text class="tip" v-else>请选择提现方式</text>
 			</view>
-			<button type="" class="cashButton" @tap="cashOut">预计3个工作日到账，确认体现</button>
+			<button type="" class="cashButton" @tap="cashOut">预计3个工作日到账，确认提现</button>
 		</view>
 	</view>
 </template>

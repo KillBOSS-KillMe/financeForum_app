@@ -199,6 +199,8 @@ var app = getApp();var _default = { data: function data() {return { list: { team
       this.list = formNode;
     },
     determine: function determine() {
+      var add = parseFloat(this.list.team_relate_1) + parseFloat(this.list.team_relate_2);
+      console.log(add);
       if (this.list.team_relate_1 == '') {
         uni.showToast({
           title: '请输入奖励比例',
@@ -213,13 +215,13 @@ var app = getApp();var _default = { data: function data() {return { list: { team
 
         return false;
       }
-      if (this.list.team_relate_1 > '100' && this.list.team_relate_1 > '0') {
-        uni.showToast({
-          title: '请输入奖励比例0-100',
-          icon: 'none' });
-
-        return false;
-      }
+      // if (this.list.team_relate_1 + this.list.team_relate_2) {
+      // 	uni.showToast({
+      // 		title: '请输入奖励比例0-100',
+      // 		icon: 'none'
+      // 	})
+      // 	return false
+      // }
       if (this.list.team_relate_2 == '') {
         uni.showToast({
           title: '请输入奖励比例',
@@ -234,7 +236,7 @@ var app = getApp();var _default = { data: function data() {return { list: { team
 
         return false;
       }
-      if (this.list.team_relate_2 > '100' && this.list.team_relate_2 > '0') {
+      if (add > 100) {
         uni.showToast({
           title: '请输入奖励比例0-100',
           icon: 'none' });

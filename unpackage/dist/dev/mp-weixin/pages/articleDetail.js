@@ -247,6 +247,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -359,10 +363,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var parser = function parser() {return Promise.all(/*! import() | components/jyf-parser */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/jyf-parser")]).then(__webpack_require__.bind(null, /*! @/components/jyf-parser */ 501));};var _default = { data: function data() {return { userInfo: {}, focus: false, isShow: '0', isHide: '0', info: {}, nodes: [], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '', isSex: '0', type: '' };}, components: { "jyf-parser": parser }, onLoad: function onLoad(options) {this.options = options;this.imgUrl = _helper.default.imgUrl; // this.userInfo = app.globalData.userInfo
-    // this.type =this.userInfo.type
-    // console.log(this.userInfo)
-  }, onShow: function onShow() {// 文章详情加载
+//
+//
+//
+//
+var app = getApp();var parser = function parser() {return Promise.all(/*! import() | components/jyf-parser */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/jyf-parser")]).then(__webpack_require__.bind(null, /*! @/components/jyf-parser */ 501));};var _default = { data: function data() {return { userInfo: {}, focus: false, isShow: '0', isHide: '0', info: {}, nodes: [], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '', isSex: '0', type: '' };}, components: { "jyf-parser": parser }, onLoad: function onLoad(options) {this.options = options;this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {// 文章详情加载
     this.getArticleDetail(); //评论列表
     this.getComment();}, onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, methods: { goVIPPage: function goVIPPage(e) {var _this = this; // 判断当前用户是否为普通用户
       if (this.articleDetail.user.type == 'normal') {var content_type = e; // 判断当前点击文本是否为会员可看
@@ -378,9 +383,7 @@ var app = getApp();var parser = function parser() {return Promise.all(/*! import
       this.share('WXSenceTimeline');}, // 获取当前页路径及参数,用于分享
     getPageUrl: function getPageUrl() {// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
       // let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-      var pageNode = getCurrentPages();
-      pageNode = pageNode[pageNode.length - 1];
-      var url = pageNode.route;
+      var pageNode = getCurrentPages();pageNode = pageNode[pageNode.length - 1];var url = pageNode.route;
       var options = pageNode.options;
       var optionsString = '?';
       for (var key in options) {

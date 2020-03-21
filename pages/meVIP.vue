@@ -11,6 +11,7 @@
 						<block v-for="(item,index) in vip.data" :key="index">
 							<swiper-item>
 								<image class="bannerImg" :src="imgUrl+item.title_pic" @tap="goBanner" data-id="item.id"></image>
+								<text class="vipTip">{{vip.data[current].level}}</text>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -151,6 +152,14 @@
 	height: 124rpx;
 	border-radius: 124rpx;
 	box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(40, 148, 223, 0.6);
+}
+.vipTip{
+	z-index: 999;
+	position: absolute;
+	top: 172rpx;
+	left: 61rpx;
+	color: #fff;
+	font-size: 30rpx;
 }
 .head text {
 	width: 640rpx;

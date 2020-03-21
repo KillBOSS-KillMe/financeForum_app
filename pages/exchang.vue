@@ -42,8 +42,9 @@
 			</view>
 		</view>
 		<view v-if="isShow">
-			<view class="showModel" @touchmove.stop = ""></view>
-			<view class="showText">您还不是会员暂无此权限！</view>
+			<image class="showModel"  @touchmove.stop = "" src="../static/no.png" mode=""></image>
+			<!-- <view class="showModel" @touchmove.stop = ""></view>
+			<view class="showText">您还不是会员暂无此权限！</view> -->
 		</view>
 	</view>
 </template>
@@ -340,23 +341,5 @@ export default {
 		z-index: 8;
 		top: 0;
 		left: 0;
-		background-color: #000000;
-		opacity: .4;
-	}
-	.showText{
-		width: 400rpx;
-		height: 200rpx;
-		position: absolute;
-		z-index: 10;
-		top: 50%;
-		margin-top: -100rpx;
-		left: 50%;
-		margin-left: -200rpx;
-		background-color: #fff;
-		text-align: center;
-		font-size: 28rpx;
-		line-height: 200rpx;
-		color: #000000;
-		border-radius: 10rpx;
 	}
 </style>

@@ -166,9 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
 //
 //
 //
@@ -201,6 +199,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var _default = { data: function data() {return { autoplay: true, interval: 2000, bannerList: [], list: [], page: '1', imgUrl: '', vip: '', isShow: false };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getAd();this.getList();}, methods: { // 加载轮播图
     getAd: function getAd() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/board/info"), method: 'GET', header: { authorization: app.globalData.token },
+
         data: {
           board_id: '5',
           page_size: '10',

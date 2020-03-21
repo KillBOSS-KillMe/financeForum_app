@@ -9,7 +9,7 @@
 						<text>{{ articleDetail.user.name }}</text>
 						<view class="leftTitleBottom">
 							<text v-if="articleDetail.user.type == 'member'" style="color: #ceb277;">VIP</text>
-							<text>{{ articleDetail.user.created_at }}</text>
+							<text>{{ articleDetail.created_at }}</text>
 							<view>
 								<text class="follow" @tap="addFollow('user')" v-if="articleDetail.is_follow == 0">关注</text>
 								<text class="follow" @tap="addFollow('user')" v-if="articleDetail.is_follow == 1">已关注</text>
@@ -18,13 +18,17 @@
 					</view>
 				</view>
 				<view class="read">
-					<view>
+					<view v-if="articleDetail.reading == undefined">
 						<uni-icon class="iconfont iconiconset0207 icon" type=""></uni-icon>
-						{{ articleDetail.reading }}
+						0
+					</view>
+					<view v-else>
+						<uni-icon class="iconfont iconiconset0207 icon" type=""></uni-icon>
+						{{articleDetail.reading}}
 					</view>
 					<view>
 						<uni-icon class="iconfont icondianzan icon" type=""></uni-icon>
-						{{ articleDetail.like }}
+						{{ articleDetail.like  || 0}}
 					</view>
 				</view>
 			</view>
@@ -132,7 +136,8 @@ export default {
 			just_landlord: '',
 			comment_id: '',
 			isSex: '0',
-			type: ''
+			type: '',
+			
 		};
 	},
   components: {
@@ -141,9 +146,7 @@ export default {
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
-		// this.userInfo = app.globalData.userInfo
-		// this.type =this.userInfo.type
-		// console.log(this.userInfo)
+		
 	},
 	onShow() {
 		// 文章详情加载

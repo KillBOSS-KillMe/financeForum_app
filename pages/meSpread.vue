@@ -8,11 +8,11 @@
 					<image v-else src="../static/user.png" mode=""></image>
 				</view>
 				<view class="userInfo">
-					<text class="name">{{collectionList.member.name}}</text>
+					<text class="name">{{collectionList.member.name || '未定义'}}</text>
 					<view class="tip">
 						<view class="">
-							<text style="background-color: #C6A25D;" v-if="collectionList.member.vip_id == '1'">{{collectionList.member.integral_des}}</text>
-							<text v-else>{{collectionList.member.integral_des}}</text>
+							<text style="background-color: #C6A25D;">{{collectionList.member.integral_des}}</text>
+							<!-- <text v-else>{{collectionList.member.integral_des}}</text> -->
 						</view>
 						<view class="">
 							<text v-if="collectionList.member.team_des != ''">{{collectionList.member.team_des}}</text>
@@ -26,17 +26,17 @@
 		<view class="meMoney">
 			<text>我的余额</text>
 			<view>
-				<text>￥{{collectionList.user_blance}}</text>
+				<text>￥{{collectionList.user_blance || 0}}</text>
 				<button type="" hover-class="none" @tap="withdraw">提现</button>
 			</view>
 		</view>
 		<view class="team">
 			<view @tap="goTeam(1)">
-				<text>{{collectionList.invitees_count}}</text>
+				<text>{{collectionList.invitees_count || 0}}</text>
 				<text>团队个数(个)</text>
 			</view>
 			<view @tap="goTeam(2)">
-				<text>{{collectionList.people_sum_total}}</text>
+				<text>{{collectionList.people_sum_total || 0}}</text>
 				<text>团队总人数</text>
 			</view>
 		</view>
@@ -94,7 +94,6 @@ export default {
 			uni.navigateTo({
 				url: `/pages/shareCode?type=${e}`
 			})
-
 		},
 		cancel(type) {
 			this.$refs['show' + type].close();

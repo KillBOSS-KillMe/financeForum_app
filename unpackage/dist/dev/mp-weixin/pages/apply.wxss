@@ -107,4 +107,13 @@ scroll-view {
 		position: fixed;
 		background-color: #F24544;
 }
+.showModel{
+		width: 510rpx;
+		padding: 22rpx 0 0 22rpx;
+		height: 97vh;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 9;
+}
 

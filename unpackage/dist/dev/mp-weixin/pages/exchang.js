@@ -185,7 +185,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -239,8 +241,7 @@ var app = getApp();var _default = { data: function data() {return { navList: [{ 
     this.getRegion();}, methods: { // 左边导航点击事件
     categoryMainClick: function categoryMainClick(e, index) {console.log(e, index);this.categoryActive = index;this.area_id = e;this.subCategoryList = [];this.getList();}, // 详情
     categorySubClick: function categorySubClick(title, id, img, fatheId) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img, "&fatheId=").concat(fatheId) });}, // 获取用户信息
-    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);
-          console.log(res, '++++++++');
+    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res, '++++++++');
           var user = res.data.type;
           if (user == 'normal') {
             _this.isShow = true;
