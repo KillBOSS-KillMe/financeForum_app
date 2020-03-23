@@ -241,9 +241,9 @@ export default {
 							icon: 'none'
 						});
 						setTimeout(e => {
-							uni.navigateBack({
-								delta: 1
-							});
+							uni.navigateTo({
+								url:'/pages/message'
+							})
 						}, 2000);
 					} else {
 						this.codeList = res.data;

@@ -248,8 +248,9 @@ var app = getApp();var _default = { data: function data() {return { autoplay: tr
                 icon: "none" });
 
             }
+            _this2.isShow = false;
           } else if (res.data.status_code == 202) {
-            _this2.vip = res.data.message;
+            // this.vip = res.data.message
             _this2.isShow = true;
           } else {
             uni.showToast({

@@ -271,17 +271,11 @@ export default {
 							title: res.data.tip_msg,
 							icon: 'none'
 						});
-						// if (res.data.tip_msg == '恭喜您,审核通过!') {
-						// 	let itemNew = res.data.memberinfos.user_setting_account;
-						// 	console.log(itemNew, 'm');
-						// 	uni.navigateTo({
-						// 		url: `/pages/getQrCode?item=${itemNew}`
-						// 	});
-						// } else {
-						// 	// uni.navigateTo({
-						// 	// 	url: '/pages/getQrCode'
-						// 	// });
-						// }
+						
+					}else if(res.data.code == 2){
+						uni.navigateTo({
+							url:'/pages/message'
+						})
 					} else {
 						uni.showToast({
 							title: res.data.tip_msg,

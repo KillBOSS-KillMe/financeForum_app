@@ -175,7 +175,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { code: '', arrCode: '', formNode: { user_setting_account: '', user_setting_passwd: '' }, codeInput: '' };}, onLoad: function onLoad() {this.tapCode();}, random: function random(a, b) {return Math.round(Math.random() * (a - b) + b);}, methods: {
+var app = getApp();var _default = { data: function data() {return { code: '', arrCode: '', formNode: { user_setting_account: '', user_setting_passwd: '' }, codeInput: '', userInfo: {} };}, onLoad: function onLoad() {this.tapCode(), this.getUserInfo();}, random: function random(a, b) {return Math.round(Math.random() * (a - b) + b);},
+
+  methods: {
     tapCode: function tapCode() {
       this.code = '';
       var arr = [];
@@ -210,13 +212,7 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
       console.log(e);
     },
     next: function next(e) {
-      if (this.formNode.user_setting_account == '') {
-        uni.showToast({
-          title: '请输入用户名',
-          icon: 'none' });
-
-        return false;
-      } else if (this.formNode.user_setting_passwd == '') {
+      if (this.formNode.user_setting_passwd == '') {
         uni.showToast({
           title: '请输入密码',
           icon: 'none' });
@@ -263,6 +259,27 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
 
           }
 
+        } });
+
+    },
+    getUserInfo: function getUserInfo() {var _this = this;
+      // 用户信息获取
+      uni.showLoading({
+        title: '用户信息获取中...' });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/me"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
+          if (res.statusCode == 200) {
+            _this.userInfo = res.data;
+            _this.formNode.user_setting_account = _this.userInfo.user_setting_account;
+          }
         } });
 
     } } };exports.default = _default;

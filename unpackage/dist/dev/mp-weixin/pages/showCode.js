@@ -376,8 +376,8 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
               icon: 'none' });
 
             setTimeout(function (e) {
-              uni.navigateBack({
-                delta: 1 });
+              uni.navigateTo({
+                url: '/pages/message' });
 
             }, 2000);
           } else {

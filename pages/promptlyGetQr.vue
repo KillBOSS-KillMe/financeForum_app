@@ -3,7 +3,7 @@
 		<view>
 			<view class="item">
 				<uni-icon type="" class="iconfont iconhuabanfuben"></uni-icon>
-				<input type="text" value="" @input="getValue" data-name="user_setting_account" placeholder="请输入用户名" />
+				<input type="text" :value="userInfo.user_setting_account" @input="getValue" data-name="user_setting_account" placeholder="请输入用户名" disabled="disabled"/>
 			</view>
 			<view class="item">
 				<uni-icon type="" class="iconfont iconsuo"></uni-icon>
@@ -30,11 +30,13 @@
 					user_setting_account: '',
 					user_setting_passwd: ''
 				},
-				codeInput: ''
+				codeInput: '',
+				userInfo: {}
 			}
 		},
 		onLoad() {
-			this.tapCode()
+			this.tapCode(),
+			this.getUserInfo()
 		},
 		random(a, b) {
 			return Math.round(Math.random() * (a - b) + b)
@@ -75,13 +77,7 @@
 				console.log(e)
 			},
 			next(e) {
-				if(this.formNode.user_setting_account == ''){
-					uni.showToast({
-						title: '请输入用户名',
-						icon: 'none'
-					})
-					return false
-				}else if(this.formNode.user_setting_passwd == ''){
+				if(this.formNode.user_setting_passwd == ''){
 					uni.showToast({
 						title: '请输入密码',
 						icon: 'none'
@@ -128,6 +124,27 @@
 							});
 						}
 						
+					}
+				})
+			},
+			getUserInfo() {
+				// 用户信息获取
+				uni.showLoading({
+				  title: '用户信息获取中...'
+				});
+				uni.request({
+					url: `${helper.requestUrl}/me`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					success: res => {
+						uni.hideLoading();
+						res = helper.null2str(res)
+						if (res.statusCode == 200) {
+							this.userInfo = res.data
+							this.formNode.user_setting_account = this.userInfo.user_setting_account
+						}
 					}
 				})
 			}

@@ -113,8 +113,9 @@
 							 		icon:"none"
 							 	})
 							 }
+							 this.isShow = false
 						} else if(res.data.status_code == 202) {
-							this.vip = res.data.message
+							// this.vip = res.data.message
 							this.isShow = true
 						}else{
 							uni.showToast({

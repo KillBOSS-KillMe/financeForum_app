@@ -114,7 +114,8 @@
 							this.list = res.data.data
 						} else {
 							uni.showToast({
-								title: res.data.message
+								title: res.data.message,
+								icon:'none'
 							});
 						}
 				

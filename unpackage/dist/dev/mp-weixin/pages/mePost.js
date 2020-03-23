@@ -249,7 +249,8 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
             _this3.list = res.data.data;
           } else {
             uni.showToast({
-              title: res.data.message });
+              title: res.data.message,
+              icon: 'none' });
 
           }
 
