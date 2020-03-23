@@ -134,4 +134,16 @@
 	font-size: 30rpx;
 	display: inline-block;
 }
+.meInfo{
+	position: relative;
+}
+.meInfo .curRead{
+	width: 14rpx;
+	height: 14rpx;
+	background: red;
+	border-radius: 14rpx;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
 

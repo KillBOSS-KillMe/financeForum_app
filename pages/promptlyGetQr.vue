@@ -117,10 +117,10 @@
 								icon: "none"
 							});
 							setTimeout( e =>{
-								uni.navigateTo({
-									url: `/pages/shareCode?type=${2}`
+								uni.redirectTo({
+									url: `/pages/showCode`
 								})
-							},2000)
+							},1000)
 						}else{
 							uni.showToast({
 								title: res.data.tip_msg,

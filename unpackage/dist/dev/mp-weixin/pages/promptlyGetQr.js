@@ -252,10 +252,10 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
               icon: "none" });
 
             setTimeout(function (e) {
-              uni.navigateTo({
-                url: "/pages/shareCode?type=".concat(2) });
+              uni.redirectTo({
+                url: "/pages/showCode" });
 
-            }, 2000);
+            }, 1000);
           } else {
             uni.showToast({
               title: res.data.tip_msg,

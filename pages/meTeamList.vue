@@ -10,7 +10,7 @@
 						<text class="time">加入时间：{{item.created_at}}</text>
 					</view>
 				</view>
-				<view class="tel" @tap="getTel(item.mobile)">
+				<view class="tel" @tap.stop="getTel(item.mobile)">
 					<uni-icons type="" class="iconfont icondianhua"></uni-icons>
 				</view>
 			</view>

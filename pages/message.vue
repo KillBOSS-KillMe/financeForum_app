@@ -3,13 +3,16 @@
 		<view class="bg"></view>
 		<view class="list">
 			<block v-for="(item,index) in list" :key="index">
-				<view class="item">
+				<view class="item" @tap="getDetail(index)">
 					<view class="head">
 						<image src="../static/user.png" mode=""></image>
 						<text>系统通知</text>
 					</view>
-					<rich-text :nodes="item.content" class="font"></rich-text>
-					<text v-if="item.type == ' system_tips'" class="button" @tap="link">点击立即输入账号密码获取二维码</text>
+					<view class="contentItem">
+						<text class="font">{{item.title}}</text>
+						<view class="cur" v-if="item.is_read == '0'"></view>
+					</view>
+					<!-- <rich-text :nodes="item.title" class="font"></rich-text> -->
 				</view>
 			</block>
 			<view class="null" v-if="list.length == 0">
@@ -25,10 +28,11 @@
 	export default {
 		data() {
 			return {
-				list:[]
+				list:[],
+				page: '1'
 			}
 		},
-		onLoad() {
+		onShow() {
 			this.getList()
 		},
 		methods: {
@@ -39,24 +43,51 @@
 					header: {
 						authorization: app.globalData.token
 					},
+					data:{
+						page_size: '20',
+						page: this.page,
+						
+					},
 					success: res => {
 						// uni.hideLoading();
 						res = helper.null2str(res);
 						// console.log(res,'++++');
 						if (res.data.status_code == 200) {
-							this.list = res.data.data
+							this.list = res.data.data.data
+							console.log(this.list)
 						} else {
 
 						}
 					}
 				});
 			},
-			link(){
-				// console.log('***********')
+			getDetail(e){
+				let obj = JSON.stringify(this.list[e])
+				console.log(obj)
 				uni.navigateTo({
-					url:'/pages/promptlyGetQr'
+					url:`/pages/messageDetail?obj=${obj}`
 				})
+				this.getType(this.list[e].id)
 			},
+			getType(typeId){
+				uni.request({
+					url: `${helper.requestUrl}/user/change_news_status`,
+					method: 'POST',
+					header: {
+						authorization: app.globalData.token
+					},
+					data:{
+						id: typeId
+					},
+					success: res => {
+						res = helper.null2str(res);
+					}
+				});
+			},
+			onReachBottom() {
+				this.page++;
+				this.getList();
+			}
 		}
 	}
 </script>
@@ -104,6 +135,10 @@
 	font-size: 20rpx;
 	font-weight: 500;
 	color: #666666;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 630rpx;
 }
 .list .item .content{
 	display: flex;
@@ -120,4 +155,18 @@
 	color: #2390DC;
 	margin-top: 13rpx;
 }
+.cur{
+	width: 14rpx;
+	height: 14rpx;
+	border-radius: 14rpx;
+	background-color: red;
+	content: '';
+	display: block;
+}
+.contentItem{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 </style>

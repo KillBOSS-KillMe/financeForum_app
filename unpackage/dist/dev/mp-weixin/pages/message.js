@@ -156,6 +156,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -177,20 +180,48 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [] };}, onLoad: function onLoad() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res); // console.log(res,'++++');
-          if (res.data.status_code == 200) {_this.list = res.data.data;
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { list: [], page: '1' };}, onShow: function onShow() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: app.globalData.token }, data: { page_size: '20', page: this.page }, success: function success(res) {
+          // uni.hideLoading();
+          res = _helper.default.null2str(res);
+          // console.log(res,'++++');
+          if (res.data.status_code == 200) {
+            _this.list = res.data.data.data;
+            console.log(_this.list);
           } else {
 
           }
         } });
 
     },
-    link: function link() {
-      // console.log('***********')
+    getDetail: function getDetail(e) {
+      var obj = JSON.stringify(this.list[e]);
+      console.log(obj);
       uni.navigateTo({
-        url: '/pages/promptlyGetQr' });
+        url: "/pages/messageDetail?obj=".concat(obj) });
 
+      this.getType(this.list[e].id);
+    },
+    getType: function getType(typeId) {
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/user/change_news_status"),
+        method: 'POST',
+        header: {
+          authorization: app.globalData.token },
+
+        data: {
+          id: typeId },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+        } });
+
+    },
+    onReachBottom: function onReachBottom() {
+      this.page++;
+      this.getList();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

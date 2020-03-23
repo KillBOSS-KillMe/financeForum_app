@@ -255,9 +255,15 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { collectionList: {}, imgUrl: '', isShow: true, cancelShow: true, inputValue: '' };}, components: {}, onShow: function onShow() {this.content();}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, methods: { withdraw: function withdraw() {uni.navigateTo({ url: "/pages/cashOut" });}, goMore: function goMore() {this.isShow = false;}, quickInlet: function quickInlet(e) {uni.navigateTo({ url: "/pages/shareCode?type=".concat(e) });}, cancel: function cancel(type) {this.$refs['show' + type].close();}, content: function content() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-rebates"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
-          res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {_this.collectionList = res.data;} else {}} });}, // 团队列表
-    goTeam: function goTeam(e) {uni.navigateTo({ url: "/pages/teamList" });},
+var app = getApp();var _default = { data: function data() {return { collectionList: {}, imgUrl: '', isShow: true, cancelShow: true, inputValue: '' };}, components: {}, onShow: function onShow() {this.content();}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, methods: { withdraw: function withdraw() {uni.navigateTo({ url: "/pages/cashOut" });}, goMore: function goMore() {this.isShow = false;}, quickInlet: function quickInlet(e) {console.log(e);uni.navigateTo({ url: "/pages/shareCode?type=".concat(e) });}, showCode: function showCode(e) {uni.navigateTo({ url: "/pages/showCode?type=".concat(e) });}, cancel: function cancel(type) {this.$refs['show' + type].close();}, content: function content() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-rebates"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
+          res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {_this.collectionList = res.data;} else {}} });
+    },
+    // 团队列表
+    goTeam: function goTeam(e) {
+      uni.navigateTo({
+        url: "/pages/teamList" });
+
+    },
     // 返佣设置
     cashSet: function cashSet() {
       uni.navigateTo({

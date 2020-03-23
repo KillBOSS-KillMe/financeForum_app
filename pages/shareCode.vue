@@ -7,8 +7,8 @@
 				<image v-if="codeList.msg_log == '显示二维码'" :src="codeList.face" mode=""></image>
 				<image v-else src="../static/1.png" mode=""></image>
 				<text>注:推广二维码仅限一次，分享后需要刷新</text>
-				<button type="" class="submit" v-if="codeType == '1'" @tap="quickInlet(1)">提交开通申请</button>
-				<view v-if="codeType == '2'">
+				<button type="" class="submit" v-if="codeType == '0'" @tap="quickInlet(1)">提交开通申请</button>
+				<view v-if="codeType == '1'">
 					<view>
 						<button type="" v-if="showIs == '0'" class="submit" @tap="quickInlet(2)">分享</button>
 						<button type="" class="submit" v-if="showIs == '1'" style="background: #DCDCDC;" @tap="des">分享</button>
@@ -99,7 +99,7 @@ export default {
 		console.log(option);
 		this.codeType = option.type;
 		this.imgUrl = helper.imgUrl;
-		if (this.codeType == '2') {
+		if (this.codeType == '1') {
 			this.getCode();
 		}
 	},

@@ -150,6 +150,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -165,8 +168,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: 'iconat', title: '提到我的' }, { id: '2', img: 'iconxiaoxi1', title: '评论' }, { id: '3', img: 'iconxitongpeizhi', title: '系统消息' }] };}, methods: { goMessageDetails: function goMessageDetails(e) {console.log(e);var type = e.currentTarget.dataset.type;var title = e.currentTarget.dataset.title;
-
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { list: [{ id: '1', img: 'iconat', title: '提到我的', isType: '	' }, { id: '2', img: 'iconxiaoxi1', title: '评论', isType: ' ' }, { id: '3', img: 'iconxitongpeizhi', title: '系统消息', isType: ' ' }] };}, onLoad: function onLoad(e) {console.log(e);this.list[2].isType = e.isType; // console.log(this.list.isType)
+  }, methods: { goMessageDetails: function goMessageDetails(e) {console.log(e);var type = e.currentTarget.dataset.type;
+      var title = e.currentTarget.dataset.title;
       if (type == '3') {
         uni.navigateTo({
           url: '/pages/message' });

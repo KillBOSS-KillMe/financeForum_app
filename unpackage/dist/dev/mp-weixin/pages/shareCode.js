@@ -267,8 +267,8 @@ var _index = __webpack_require__(/*! ../components/index.js */ 460);function _in
 //
 //
 //
-var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 524));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '', codeList: {}, showIs: '0', openSettingBtnHidden: true, //是否授权,
-      imgUrl: '', canvasWidth: '', canvasHeight: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '2') {this.getCode();}}, // 微信分享
+var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 540));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '', codeList: {}, showIs: '0', openSettingBtnHidden: true, //是否授权,
+      imgUrl: '', canvasWidth: '', canvasHeight: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;if (this.codeType == '1') {this.getCode();}}, // 微信分享
   onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url }; // setTimeout( e =>{
     // 	this.showIs = '1'
     // },3000)

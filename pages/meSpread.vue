@@ -42,8 +42,8 @@
 		</view>
 		<view class="bottom">
 			<view class="invite">
-				<text class="quickInlet" @tap="quickInlet(1)">立即获取推广二维码</text>
-				<text class="faceInlet" @tap="quickInlet(2)">查看我的推广二维码</text>
+				<text class="quickInlet" @tap="quickInlet(collectionList.member.is_show_face)">立即获取推广二维码</text>
+				<text class="faceInlet" @tap="showCode(collectionList.member.is_show_face)">查看我的推广二维码</text>
 			</view>
 			<view class="content">
 				<text>1、分享邀请链接给您的好友，用户下载安装app您将获得3现金奖励；</text>
@@ -91,8 +91,14 @@ export default {
 			this.isShow = false
 		},
 		quickInlet(e) {
+			console.log(e)
 			uni.navigateTo({
 				url: `/pages/shareCode?type=${e}`
+			})
+		},
+		showCode(e){
+			uni.navigateTo({
+				url: `/pages/showCode?type=${e}`
 			})
 		},
 		cancel(type) {

@@ -44,7 +44,8 @@
 					<text>我的草稿</text>
 			</view>
 			<view class="item" data-name="meMessage" @tap="goPageNavigateTo">
-					<view>
+					<view class="meInfo">
+						<view class="curRead" v-if="userInfo.news == '1'"></view>
 						<image src="../static/meXx.png" mode=""></image>
 					</view>
 					<text>我的消息</text>
@@ -128,7 +129,11 @@
 							url: `/pages/meSpread`
 						})
 					}
-				}else{
+				}else if(url == 'meMessage'){
+					uni.navigateTo({
+						url: `/pages/${url}?isType=${this.userInfo.news }`
+					})
+				} else{
 					uni.navigateTo({
 						url: `/pages/${url}`
 					})
@@ -273,5 +278,17 @@
 		color: #333333;
 		font-size: 30rpx;
 		display: inline-block;
+	}
+	.meInfo{
+		position: relative;
+	}
+	.meInfo .curRead{
+		width: 14rpx;
+		height: 14rpx;
+		background: red;
+		border-radius: 14rpx;
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 </style>

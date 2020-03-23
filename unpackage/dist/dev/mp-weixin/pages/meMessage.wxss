@@ -54,4 +54,16 @@
 .iconxitongpeizhi{
 	color: #6cd3f4;
 }
+.iconType{
+	position: relative;
+}
+.isType{
+	width: 14rpx;
+	height: 14rpx;
+	background: red;
+	border-radius: 14rpx;
+	position: absolute;
+	top: 15rpx;
+	right: 33rpx;
+}
 

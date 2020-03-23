@@ -345,12 +345,21 @@
 			"style": {
 				"enablePullDownRefresh": true
 			}
+		}, {
+			"path": "pages/boardData",
+			"style": {}
+		}, {
+			"path": "pages/showCode",
+			"style": {
+				"navigationBarTitleText": "推广二维码"
+			}
+		}, {
+			"path": "pages/messageDetail",
+			"style": {
+				"navigationBarTitleText": "系统消息详情"
+			}
 		}
-        ,{
-            "path" : "pages/boardData",
-            "style" : {}
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",

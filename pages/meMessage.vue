@@ -3,7 +3,10 @@
 		<block v-for="(item,index) in list" :key="index">
 			<view class="item" :data-title="item.title" :data-type="item.id" @tap="goMessageDetails">
 				<view>
-					<uni-icons type="" class="iconfont" :class="item.img"></uni-icons>
+					<view class="iconType">
+						<uni-icons type="" class="iconfont" :class="item.img"></uni-icons>
+						<view class="isType" v-if="item.isType == '1'"></view>
+					</view>
 					<text>{{item.title}}</text>
 				</view>
 				<uni-icon type="" class="iconfont iconchangyongtubiao-xianxingdaochu-zhuanqu-"></uni-icon>
@@ -20,18 +23,22 @@
 		data() {
 			return {
 				list:[
-					{id:'1',img:'iconat',title:'提到我的'},
-					{id:'2',img:'iconxiaoxi1',title:'评论'},
-					{id:'3',img:'iconxitongpeizhi',title:'系统消息'}
+					{id:'1',img:'iconat',title:'提到我的',isType:'	'},
+					{id:'2',img:'iconxiaoxi1',title:'评论',isType:' '},
+					{id:'3',img:'iconxitongpeizhi',title:'系统消息',isType:' '}
 				]
 			}
+		},
+		onLoad(e) {
+			console.log(e)
+			this.list[2].isType = e.isType
+			// console.log(this.list.isType)
 		},
 		methods: {
 			goMessageDetails(e) {
 				console.log(e)
 				let type = e.currentTarget.dataset.type
 				let title = e.currentTarget.dataset.title
-				
 				if(type == '3'){
 					uni.navigateTo({
 						url: '/pages/message'
@@ -87,5 +94,17 @@
 }
 .iconxitongpeizhi{
 	color: #6cd3f4;
+}
+.iconType{
+	position: relative;
+}
+.isType{
+	width: 14rpx;
+	height: 14rpx;
+	background: red;
+	border-radius: 14rpx;
+	position: absolute;
+	top: 15rpx;
+	right: 33rpx;
 }
 </style>
