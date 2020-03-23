@@ -119,8 +119,7 @@
 			<button type=""  hover-class="btn-hover" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
 		<!-- #endif -->
 		<view v-if="isShow">
-			<view class="showModel" @touchmove.stop = ""></view>
-			<view class="showText">{{vip}}</view>
+			<image class="showModel" @touchmove.stop = "" src="../static/no.png" mode=""></image>
 		</view>
 	</view>
 </template>
@@ -358,26 +357,5 @@ button{
 	z-index: 8;
 	top: 0;
 	left: 0;
-	background-color: #000000;
-	opacity: .4;
-}
-.showText{
-	width: 340rpx;
-	height: 140rpx;
-	position: absolute;
-	z-index: 10;
-	top: 50%;
-	margin-top: -100rpx;
-	left: 50%;
-	margin-left: -200rpx;
-	background-color: #fff;
-	text-align: center;
-	font-size: 28rpx;
-	color: #000000;
-	border-radius: 10rpx;
-	padding: 30rpx;
-	display: flex;
-	align-content: center;
-	align-items: center;
 }
 </style>
