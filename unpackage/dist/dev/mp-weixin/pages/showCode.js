@@ -268,7 +268,7 @@ var _index = __webpack_require__(/*! ../components/index.js */ 460);function _in
 //
 //
 var app = getApp();var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup */ "components/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup.vue */ 540));};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '', codeList: {}, showIs: '0', openSettingBtnHidden: true, //是否授权,
-      imgUrl: '', canvasWidth: '', canvasHeight: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getCode();}, // 微信分享
+      imgUrl: '', bj: '../static/erweimaImg.png', wWidth: '', wHeight: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {var _this = this;console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;uni.getSystemInfo({ success: function success(res) {_this.wWidth = res.windowWidth;console.log(_this.wWidth);_this.wHeight = res.windowHeight;} });}, onShow: function onShow() {this.getCode();}, // 微信分享
   onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url }; // setTimeout( e =>{
     // 	this.showIs = '1'
     // },3000)
@@ -276,7 +276,15 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
     this.goShare('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
     this.goShare('WXSenceTimeline');}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}}, // 保存二维码
     //微信小程序保存到相册
-    handleSetting: function handleSetting(e) {console.log(e);if (!e.detail.authSetting['scope.writePhotosAlbum']) {this.openSettingBtnHidden = false;} else {this.openSettingBtnHidden = true;}}, saveEwm: function saveEwm() {var that = this;
+    handleSetting: function handleSetting(e) {console.log(e);
+      if (!e.detail.authSetting['scope.writePhotosAlbum']) {
+        this.openSettingBtnHidden = false;
+      } else {
+        this.openSettingBtnHidden = true;
+      }
+    },
+    saveEwm: function saveEwm() {
+      var that = this;
       //获取相册授权
       uni.getSetting({
         success: function success(res) {
@@ -299,13 +307,13 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
         } });
 
     },
-    saveImgToLocal: function saveImgToLocal() {var _this = this;
+    saveImgToLocal: function saveImgToLocal() {var _this2 = this;
       uni.showModal({
         title: '提示',
         content: '确定保存到相册吗',
         success: function success(res) {
           if (res.confirm) {
-            var that = _this;
+            var that = _this2;
             // this.qr_path = path;
             var system_info = uni.getSystemInfoSync();
             var ctx = uni.createCanvasContext('mycanvas');
@@ -313,18 +321,16 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
               src: that.codeList.faceurl,
               success: function success(res) {
                 console.log(res);
-                ctx.fillStyle = '#FFFFFF';
-                ctx.fillRect(0, 0, 218, 218);
-                ctx.drawImage(res.path, 0, 0, 203, 203);
-                // ctx.fillStyle = '#FFFFFF';
+                ctx.drawImage(that.bj, 0, 0, that.wWidth, that.wHeight);
+                ctx.drawImage(res.path, that.wWidth / 2 - 160 / 2, that.wHeight / 2 - 160, 160, 160);
                 ctx.draw(true, function () {
                   uni.canvasToTempFilePath({
                     x: 0,
                     y: 0,
-                    width: 203,
-                    height: 203,
-                    destWidth: 203,
-                    destHeight: 203,
+                    width: that.wWidth,
+                    height: that.wHeight,
+                    destWidth: that.wWidth,
+                    destHeight: that.wHeight,
                     canvasId: 'mycanvas',
                     success: function success(res) {
                       uni.saveImageToPhotosAlbum({
@@ -360,7 +366,7 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
 
     },
     // 分享获取数据
-    getCode: function getCode() {var _this2 = this;
+    getCode: function getCode() {var _this3 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/promote-showmycode"),
         method: 'GET',
@@ -381,9 +387,9 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
 
             }, 2000);
           } else {
-            _this2.codeList = res.data;
-            _this2.showIs = '0';
-            console.log(_this2.codeList.face, '*');
+            _this3.codeList = res.data;
+            _this3.showIs = '0';
+            console.log(_this3.codeList.face, '*');
           }
         } });
 
@@ -439,7 +445,7 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
         icon: 'none' });
 
     },
-    goShare: function goShare(e) {var _this3 = this;
+    goShare: function goShare(e) {var _this4 = this;
       console.log(e);
       var sceneType = '';
       if (e == 'WXSceneSession') {
@@ -457,10 +463,9 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
         // summary: this.codeList.share_link,
         imageUrl: ' ',
         success: function success(res) {
-          _this3.showIs = '1';
+          _this4.showIs = '1';
         },
-        fail: function fail(err) {
-        } });
+        fail: function fail(err) {} });
 
     },
     // 获取当前页路径及参数,用于分享

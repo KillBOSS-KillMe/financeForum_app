@@ -9,18 +9,18 @@
 				<text>注:推广二维码仅限一次，分享后需要刷新</text>
 				<!-- <button type="" class="submit" v-if="codeType == '1'" @tap="quickInlet(1)">提交开通申请</button> -->
 				<view>
-					<view>
+					<!-- <view>
 						<button type="" v-if="showIs == '0'" class="submit" @tap="quickInlet(2)">分享</button>
 						<button type="" class="submit" v-else style="background: #DCDCDC;" @tap="des">分享</button>
-					</view>
+					</view> -->
 					<!-- #ifdef APP-PLUS -->
-					<view class="purple_btn btn_box" @click="saveImgToLocal">保存到相册</view>
+					<view class="purple_btn btn_box submit" @click="saveImgToLocal">保存到相册</view>
 					<!-- #endif -->
 
 					<!-- #ifdef MP-WEIXIN -->
-					<view v-if="openSettingBtnHidden" class="purple_btn btn_box" @click="saveEwm">保存到相册</view>
+					<view v-if="openSettingBtnHidden" class="purple_btn btn_box submit" @click="saveEwm">保存到相册</view>
 
-					<button v-else class="purple_btn btn_box" hover-class="none" open-type="openSetting" @opensetting="handleSetting">保存到相册</button>
+					<button v-else class="purple_btn btn_box submit" hover-class="none" open-type="openSetting" @opensetting="handleSetting">保存到相册</button>
 					<!-- #endif -->
 				</view>
 			</view>
@@ -59,7 +59,7 @@
 				<text @tap="again">请重新获取二维码</text>
 			</view>
 		</view>
-		<canvas style="width: 416rpx;height: 420rpx;background-color: #FFFFFF;" canvas-id="mycanvas" class="test" />
+		<canvas :style="'width:' + wWidth + 'px;height:' + wHeight + 'px'" canvas-id="mycanvas" class="test" />
 	</view>
 </template>
 
@@ -88,8 +88,9 @@ export default {
 			showIs: '0',
 			openSettingBtnHidden: true, //是否授权,
 			imgUrl: '',
-			canvasWidth: '',
-			canvasHeight: ''
+			bj: '../static/erweimaImg.png',
+			wWidth: '',
+			wHeight: ''
 		};
 	},
 	components: {
@@ -99,6 +100,13 @@ export default {
 		console.log(option);
 		this.codeType = option.type;
 		this.imgUrl = helper.imgUrl;
+		uni.getSystemInfo({
+			success: res => {
+				this.wWidth = res.windowWidth;
+				console.log(this.wWidth);
+				this.wHeight = res.windowHeight;
+			}
+		});
 	},
 	onShow() {
 		this.getCode();
@@ -178,18 +186,16 @@ export default {
 							src: that.codeList.faceurl,
 							success(res) {
 								console.log(res);
-							  ctx.fillStyle = '#FFFFFF';
-								ctx.fillRect(0, 0, 218, 218);
-								ctx.drawImage(res.path, 0, 0, 203, 203);
-								// ctx.fillStyle = '#FFFFFF';
+								ctx.drawImage(that.bj, 0, 0, that.wWidth, that.wHeight);
+								ctx.drawImage(res.path, that.wWidth/2-160/2, that.wHeight/2-160, 160, 160);
 								ctx.draw(true, () => {
 									uni.canvasToTempFilePath({
 										x: 0,
 										y: 0,
-										width: 203,
-										height: 203,
-										destWidth: 203,
-										destHeight: 203,
+										width: that.wWidth,
+										height: that.wHeight,
+										destWidth: that.wWidth,
+										destHeight: that.wHeight,
 										canvasId: 'mycanvas',
 										success: function(res) {
 											uni.saveImageToPhotosAlbum({
@@ -219,10 +225,10 @@ export default {
 						uni.showToast({
 							title: '取消成功',
 							icon: 'none'
-						})
+						});
 					}
 				}
-			})
+			});
 		},
 		// 分享获取数据
 		getCode() {
@@ -242,8 +248,8 @@ export default {
 						});
 						setTimeout(e => {
 							uni.navigateTo({
-								url:'/pages/message'
-							})
+								url: '/pages/message'
+							});
 						}, 2000);
 					} else {
 						this.codeList = res.data;
@@ -324,8 +330,7 @@ export default {
 				success: res => {
 					this.showIs = '1';
 				},
-				fail: err => {
-				}
+				fail: err => {}
 			});
 		},
 		// 获取当前页路径及参数,用于分享

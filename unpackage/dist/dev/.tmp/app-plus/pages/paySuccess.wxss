@@ -1,0 +1,46 @@
+
+.paySuccess{
+	width: 690rpx;
+	padding: 50rpx 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.paySuccess image{
+	width: 258rpx;
+	height: 274rpx;
+}
+.paySuccess text{
+	width: 600rpx;
+	text-align: center;
+	font-size: 28rpx;
+	font-weight: 700;
+	color: #737373;
+	margin: 20rpx 0;
+}
+.paySuccess view{
+	width: 600rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	margin-top: 40rpx;
+}
+.paySuccess view button{
+	width: 258rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color: #fff;
+	background: #2390DC;
+	border:none;
+}
+

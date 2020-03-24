@@ -71,6 +71,8 @@ export default {
 	},
 	onLoad() {
 		this.imgUrl = helper.imgUrl
+	},
+	onShow() {
 		this.getNav()
 	},
 	mounted() {

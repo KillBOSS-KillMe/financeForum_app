@@ -10,17 +10,17 @@
 				<button type="" class="submit" v-if="codeType == '0'" @tap="quickInlet(1)">提交开通申请</button>
 				<view v-if="codeType == '1'">
 					<view>
-						<button type="" v-if="showIs == '0'" class="submit" @tap="quickInlet(2)">分享</button>
-						<button type="" class="submit" v-if="showIs == '1'" style="background: #DCDCDC;" @tap="des">分享</button>
+						<!-- <button type="" v-if="showIs == '0'" class="submit" @tap="quickInlet(2)">分享</button>
+						<button type="" class="submit" v-if="showIs == '1'" style="background: #DCDCDC;" @tap="des">分享</button> -->
 					</view>
 					<!-- #ifdef APP-PLUS -->
-					<view class="purple_btn btn_box" @click="saveImgToLocal">保存到相册</view>
+					<view class="purple_btn btn_box submit" @click="saveImgToLocal">保存到相册</view>
 					<!-- #endif -->
 
 					<!-- #ifdef MP-WEIXIN -->
-					<view v-if="openSettingBtnHidden" class="purple_btn btn_box" @click="saveEwm">保存到相册</view>
+					<view v-if="openSettingBtnHidden" class="purple_btn btn_box submit" @click="saveEwm">保存到相册</view>
 
-					<button v-else class="purple_btn btn_box" hover-class="none" open-type="openSetting" @opensetting="handleSetting">保存到相册</button>
+					<button v-else class="purple_btn btn_box submit" hover-class="none" open-type="openSetting" @opensetting="handleSetting">保存到相册</button>
 					<!-- #endif -->
 				</view>
 			</view>
@@ -59,7 +59,7 @@
 				<text @tap="again">请重新获取二维码</text>
 			</view>
 		</view>
-		<canvas style="width: 416rpx;height: 420rpx;background-color: #FFFFFF;" canvas-id="mycanvas" class="test" />
+		<canvas :style="'width:'+wWidth+'px;height:'+wHeight+'px'" canvas-id="mycanvas" class="test" />
 	</view>
 </template>
 
@@ -88,8 +88,9 @@ export default {
 			showIs: '0',
 			openSettingBtnHidden: true, //是否授权,
 			imgUrl: '',
-			canvasWidth: '',
-			canvasHeight: ''
+			bj:'../static/erweimaImg.png',
+			wWidth: '',
+			wHeight: ''
 		};
 	},
 	components: {
@@ -102,15 +103,22 @@ export default {
 		if (this.codeType == '1') {
 			this.getCode();
 		}
+		uni.getSystemInfo({
+		    success:res => {
+					this.wWidth =res.windowWidth
+					console.log(this.wWidth);
+					this.wHeight = res.windowHeight
+		    }
+		});
 	},
-
 	// 微信分享
 	onShareAppMessage() {
-		let url = this.getPageUrl();
-		return {
-			title: this.articleDetail.title,
-			path: url
-		};
+		console.log(123)
+		// let url = this.getPageUrl();
+		// return {
+		// 	title: this.articleDetail.title,
+		// 	path: url
+		// };
 		// setTimeout( e =>{
 		// 	this.showIs = '1'
 		// },3000)
@@ -177,20 +185,24 @@ export default {
 						let ctx = uni.createCanvasContext('mycanvas');
 						uni.getImageInfo({
 							src: that.codeList.faceurl,
+							// src:that.bj,
 							success(res) {
 								console.log(res);
-							  ctx.fillStyle = '#FFFFFF';
-								ctx.fillRect(0, 0, 218, 218);
-								ctx.drawImage(res.path, 0, 0, 203, 203);
+								// ctx.fillStyle = '#FFFFFF';
+								ctx.drawImage(that.bj, 0,0, that.wWidth, that.wHeight);
+								
+							 //  ctx.fillStyle = '#FFFFFF';
+								// ctx.fillRect(0, 0, 218, 218);
+								ctx.drawImage(res.path, that.wWidth/2-160/2, that.wHeight/2-160, 160, 160);
 								// ctx.fillStyle = '#FFFFFF';
 								ctx.draw(true, () => {
 									uni.canvasToTempFilePath({
 										x: 0,
 										y: 0,
-										width: 203,
-										height: 203,
-										destWidth: 203,
-										destHeight: 203,
+										width: that.wWidth,
+										height: that.wHeight,
+										destWidth: that.wWidth,
+										destHeight: that.wHeight,
 										canvasId: 'mycanvas',
 										success: function(res) {
 											uni.saveImageToPhotosAlbum({
@@ -542,10 +554,9 @@ button::after {
 }
 .purple_btn {
 	font-size: 28rpx;
-	margin-top: 35rpx;
 	text-align: center;
 	width: 300rpx;
-	margin: 50rpx auto 0;
+	margin: 0 auto 0;
 	height: 60rpx;
 	line-height: 60rpx;
 	/* border: 1rpx solid #C0C0C0; */

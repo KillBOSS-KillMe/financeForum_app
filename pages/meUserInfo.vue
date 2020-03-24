@@ -11,7 +11,8 @@
 				<!-- <view><text class="login">请点击登录/注册</text></view> -->
 				<view>
 					<text class="tip" v-if="userInfo.type == 'normal'">{{userInfo.deploy.userlevel.level_name}}</text>
-				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text>					
+				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text>		
+				  <text class="tip" style="background-color: #00a65a;" v-if="userInfo.type == 'manager'">超级管理员</text>
 				</view>
 				<view class="meHeadList">
 					<text>参与</text>

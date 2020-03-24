@@ -198,7 +198,8 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
 
       }
       var arr2 = arr1.join("");
-      this.arrCode = arr2.toString();
+      var str = arr2.toString();
+      this.arrCode = str;
     },
     getValue: function getValue(e) {
       var formNode = this.formNode;
@@ -208,7 +209,7 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
       this.formNode = formNode;
     },
     codeValue: function codeValue(e) {
-      this.codeInput = e.detail.value;
+      this.codeInput = e.detail.value.toLowerCase();
       console.log(e);
     },
     next: function next(e) {
@@ -225,7 +226,7 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
 
         this.tapCode();
         return false;
-      } else if (this.codeInput != this.arrCode) {
+      } else if (this.codeInput != this.arrCode.toLowerCase()) {
         uni.showToast({
           title: '验证码不正确',
           icon: 'none' });

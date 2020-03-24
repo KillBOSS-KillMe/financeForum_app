@@ -9,6 +9,7 @@
 					<text class="login">{{userInfo.name}}</text>
 					<text class="tip" v-if="userInfo.type == 'normal'">{{userInfo.deploy.userlevel.level_name}}</text>
 				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text>
+					<text class="tip" style="background-color: #00a65a;" v-if="userInfo.type == 'manager'">超级管理员</text>
 				</view>
 				<view class="meHeadList">
 					<text data-name="meFavorite" @tap="goPageNavigateTo">我的收藏</text>
