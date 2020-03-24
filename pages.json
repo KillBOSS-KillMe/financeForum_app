@@ -191,6 +191,7 @@
 		{
 			"path": "pages/indexA",
 			"style": {
+				"enablePullDownRefresh": true
 				// "navigationBarTitleText": "精准匹配"
 			}
 		},

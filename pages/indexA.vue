@@ -16,9 +16,7 @@
 				</view>
 			</block>
 			<view class="null" v-if="isShow">暂无数据</view>
-			<view v-if="isShow1">
-				<image class="showModel" src="../static/no.png" mode="" @touchmove.stop = "" ></image>
-			</view>
+			<view v-if="isShow1"><image class="showModel" src="../static/no.png" mode="" @touchmove.stop=""></image></view>
 		</view>
 	</view>
 </template>
@@ -109,11 +107,16 @@ export default {
 				url: `/pages/articleDetail?id=${e}`
 			});
 		},
-		onReachBottom() {
-			this.page++;
-			this.getList();
-		}
-	}
+	},
+	onReachBottom() {
+		this.page++;
+		this.getList();
+	},
+	// onPullDownRefresh() {
+	// 	setTimeout(function() {
+	// 		uni.stopPullDownRefresh();
+	// 	}, 1000);
+	// }
 };
 </script>
 
@@ -167,7 +170,7 @@ export default {
 	white-space: nowrap;
 	text-align: center;
 }
-.showModel{
+.showModel {
 	width: 750rpx;
 	height: 100vh;
 	position: absolute;

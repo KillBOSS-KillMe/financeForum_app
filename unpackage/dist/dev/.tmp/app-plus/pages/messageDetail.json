@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "系统消息详情",
-  "usingComponents": {
-    "jyf-parser": "/components/jyf-parser"
-  }
-}

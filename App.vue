@@ -22,7 +22,7 @@ export default {
 	},
 	onShow: function() {
 		console.log('App Show');
-		this.getToken()
+		// this.getToken()
 	},
 	onHide: function() {
 		console.log('App Hide');
