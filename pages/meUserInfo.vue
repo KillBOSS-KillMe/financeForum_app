@@ -14,6 +14,7 @@
 				  <text class="tip" style="background-color: #C6A25D;" v-if="userInfo.type == 'member'">{{userInfo.deploy.vipuserlevel.level_name}}</text>		
 				  <text class="tip" style="background-color: #00a65a;" v-if="userInfo.type == 'manager'">超级管理员</text>
 				</view>
+				<text  class="vipTime" v-if="userInfo.type != 'normal'">会员到期日：{{userInfo.expired_time}}</text>
 				<view class="meHeadList">
 					<text>参与</text>
 					<text @tap="meFollow">关注</text>
@@ -46,9 +47,10 @@
 					<text>性别</text>
 					<!-- 性别（m 男 f 女 no_set 未设置） -->
 					<!-- <text>{{userInfo.sex}}</text> -->
-					<text v-if="userInfo.sex == 'm'">男</text>
-					<text v-if="userInfo.sex == 'f'">女</text>
-					<text v-if="userInfo.sex == 'no_set'">未设置</text>
+					<!-- <text v-if="userInfo.sex == 'm'">男</text>
+					<text v-if="userInfo.sex == 'f'">女</text> -->
+					<text>{{userInfo.sex}}</text>
+					<!-- <text v-if="userInfo.sex == 'no_set'">未设置</text> -->
 				</view>
 				<view class="itemList">
 					<text>居住地</text>
@@ -104,7 +106,8 @@
 				Inv: 0,
 				imgUrl: '',
 				publishList: [],
-				userInfo: {}
+				userInfo: {},
+				page: '1'
 			}
 		},
 		onLoad() {
@@ -151,12 +154,16 @@
 					header: {
 						authorization: app.globalData.token
 					},
+					data:{
+						page_size: '20',
+						page: this.page,
+					},
 					success: res => {
 						console.log(res);
 						uni.hideLoading();
 						res = helper.null2str(res)
 						if (res.data.status_code == '1') {
-							this.publishList = res.data.data
+							this.publishList = this.publishList.concat(res.data.data)
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -221,7 +228,11 @@
 					}
 				})
 			}
-		}
+		},
+		onReachBottom() {
+			this.page++;
+			this.getPublish();
+		},
 	}
 </script>
 
@@ -255,10 +266,15 @@
 	.me .meHead .iconxinshoubangzhu{
 		color: #fff;
 	}
+	.vipTime{
+		color: #999999;
+		text-align: center;
+		font-size: 28rpx;
+	}
 	.me .meHead .meHeadCon {
 		background: #fff;
 		border-radius: 10rpx;
-		height: 200rpx;
+		height: 217rpx;
 		z-index: 3;
 		width: 670rpx;
 		box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
@@ -303,7 +319,7 @@
 		padding: 0 40rpx;
 		display: flex;
 		justify-content: space-between !important;
-		margin-top: 45rpx !important;
+		margin-top: 20rpx !important;
 	}
 
 	.me .meHeadList text {

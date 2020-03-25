@@ -52,10 +52,12 @@
 					<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
 				</view>
 				<view class="navLeftNav">
-					<text @tap="headNav(0,0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
-					<block v-for="(item, index) in navReft" :key="index">
-						<text @tap="headNav(index + 1,item.id)" :class="['navColor', activeHead == index + 1 ? 'navA' : '']">{{ item.class_name }}</text>
-					</block>
+					<scroll-view scroll-x="true">
+						<text @tap="headNav(0,0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
+						<block v-for="(item, index) in navReft" :key="index">
+							<text @tap="headNav(index + 1,item.id)" :class="['navColor', activeHead == index + 1 ? 'navA' : '']">{{ item.class_name }}</text>
+						</block>
+					</scroll-view>
 				</view>
 				<view class="contentList">
 					<scroll-view scroll-y class="twoScroll">
@@ -570,17 +572,24 @@ export default {
 	background: #fff;
 	color: #333;
 }
-.navLeftNav {
+.navLeftNav >scroll-view{
 	width: 510rpx;
 	display: flex;
 	justify-content: flex-start;
 	margin: 20rpx 0 30rpx;
+	white-space: nowrap; 
 }
 .navLeftNav text {
 	font-size: 24rpx;
 	font-weight: 400;
 	text-align: center;
 	margin-right: 14rpx;
+	display: inline-block;
+}
+ .navLeftNav ::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+	background-color: transparent;
 }
 .uni-title{
 	font-size: 28rpx;

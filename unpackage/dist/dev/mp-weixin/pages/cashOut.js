@@ -336,7 +336,7 @@ var app = getApp();var _default = { data: function data() {return { types: '', c
           if (res.statusCode == 200) {
             uni.showToast({
               title: res.data.msg,
-              icon: 'success' });
+              icon: 'none' });
 
             // this.getList();
             setTimeout(function (e) {
@@ -346,7 +346,8 @@ var app = getApp();var _default = { data: function data() {return { types: '', c
             }, 2000);
           } else {
             uni.showToast({
-              title: res.data.msg });
+              title: res.data.msg,
+              icon: 'none' });
 
           }
         } });

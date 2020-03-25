@@ -232,6 +232,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -329,17 +331,22 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { Inv: 0, imgUrl: '', publishList: [], userInfo: {} };}, onLoad: function onLoad() {// 获取我的发布
+//
+//
+var app = getApp();var _default = { data: function data() {return { Inv: 0, imgUrl: '', publishList: [], userInfo: {}, page: '1' };}, onLoad: function onLoad() {// 获取我的发布
     this.getPublish();this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {// 获取用户信息
     this.getUserInfo();}, methods: { changeTab: function changeTab(e) {// console.log(e)
       this.Inv = e;}, // 编辑
     edit: function edit() {uni.navigateTo({ url: "/pages/meEdit" });}, // 粉丝
     meFan: function meFan() {uni.navigateTo({ url: "/pages/meFan" });}, // 关注
     meFollow: function meFollow() {uni.navigateTo({ url: "/pages/meFollow" });}, // 获取我的发布列表
-    getPublish: function getPublish() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/publish"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == '1') {_this.publishList = res.data.data;} else {uni.showToast({ title: res.data.message, icon: "none" });}} });}, getUserInfo: function getUserInfo() {var _this2 = this; // 用户信息获取
+    getPublish: function getPublish() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/publish"), method: 'GET', header: { authorization: app.globalData.token }, data: { page_size: '20', page: this.page }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);if (res.data.status_code == '1') {_this.publishList = _this.publishList.concat(res.data.data);} else {uni.showToast({ title: res.data.message, icon: "none" });}} });}, getUserInfo: function getUserInfo() {var _this2 = this; // 用户信息获取
       uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res); // console.log(res,'++++++')
           // console.log(res.data, '+++++++++')
-          _this2.userInfo = res.data;if (_this2.userInfo.credit_card == 0) {_this2.userInfo.credit_card = '无';} else {_this2.userInfo.credit_card = '有';};if (_this2.userInfo.social_security == 0) {_this2.userInfo.social_security = '无';} else {_this2.userInfo.social_security = '有';}if (_this2.userInfo.provident_fund == 0) {_this2.userInfo.provident_fund = '无';} else {_this2.userInfo.provident_fund = '有';}if (_this2.userInfo.education == 1) {_this2.userInfo.education = '小学';} else if (_this2.userInfo.education == 2) {_this2.userInfo.education = '初中';} else if (_this2.userInfo.education == 3) {_this2.userInfo.education = '高中';} else if (_this2.userInfo.education == 4) {
+          _this2.userInfo = res.data;if (_this2.userInfo.credit_card == 0) {_this2.userInfo.credit_card = '无';} else {_this2.userInfo.credit_card = '有';};if (_this2.userInfo.social_security == 0) {_this2.userInfo.social_security = '无';} else {_this2.userInfo.social_security = '有';}if (_this2.userInfo.provident_fund == 0) {_this2.userInfo.provident_fund = '无';} else {_this2.userInfo.provident_fund = '有';}if (_this2.userInfo.education == 1) {_this2.userInfo.education = '小学';} else if (_this2.userInfo.education == 2) {_this2.userInfo.education = '初中';
+          } else if (_this2.userInfo.education == 3) {
+            _this2.userInfo.education = '高中';
+          } else if (_this2.userInfo.education == 4) {
             _this2.userInfo.education = '大专';
           } else if (_this2.userInfo.education == 5) {
             _this2.userInfo.education = '本科';
@@ -355,7 +362,12 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, imgU
 
         } });
 
-    } } };exports.default = _default;
+    } },
+
+  onReachBottom: function onReachBottom() {
+    this.page++;
+    this.getPublish();
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

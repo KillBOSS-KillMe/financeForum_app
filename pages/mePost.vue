@@ -106,12 +106,16 @@
 					header: {
 						authorization: app.globalData.token
 					},
+					data:{
+						page_size: '20',
+						page: this.page,
+					},
 					success: res => {
 						uni.hideLoading();
 						res = helper.null2str(res)
 						console.log(res)
 						if (res.data.status_code == '1') {
-							this.list = res.data.data
+							this.list = this.list.concat(res.data.data)
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -128,9 +132,10 @@
 					url:`/pages/articleDetail?id=${e.currentTarget.dataset.id}`
 				})
 			},
-			// onReachBottom() {
-			// 	this.page ++;
-			// }
+			onReachBottom() {
+				this.page ++;
+				this.getList()
+			}
 		}
 	}
 </script>

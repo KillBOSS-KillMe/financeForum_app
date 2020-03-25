@@ -101,9 +101,9 @@
 					})
 					return false
 				}
-				if (add>100) {
+				if (add != 100) {
 					uni.showToast({
-						title: '请输入奖励比例0-100',
+						title: '请输入奖励比例100',
 						icon: 'none'
 					})
 					return false

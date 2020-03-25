@@ -241,12 +241,16 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         header: {
           authorization: app.globalData.token },
 
+        data: {
+          page_size: '20',
+          page: this.page },
+
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);
           if (res.data.status_code == '1') {
-            _this3.list = res.data.data;
+            _this3.list = _this3.list.concat(res.data.data);
           } else {
             uni.showToast({
               title: res.data.message,
@@ -262,6 +266,10 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
       uni.navigateTo({
         url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
 
+    },
+    onReachBottom: function onReachBottom() {
+      this.page++;
+      this.getList();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

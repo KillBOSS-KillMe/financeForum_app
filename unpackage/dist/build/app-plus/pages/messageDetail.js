@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"message{ width: ",[0,690],"; padding: ",[0,30],"; }\n.",[1],"title{ font-weight: 600; font-size: ",[0,30],"; color: #000000; }\n.",[1],"font{ font-size: ",[0,26],"; color: #000000; }\n.",[1],"button{ font-size: ",[0,20],"; font-weight: 500; color: #2390DC; margin-top: ",[0,13],"; }\n",],undefined,{path:"./pages/messageDetail.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/messageDetail.wxml') } }));

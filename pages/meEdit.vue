@@ -344,7 +344,7 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	padding: 30rpx 0;
-	border-bottom: 2rpx dashed #000000;
+	border-bottom: 2rpx dashed #F7F7F7;
 }
 .edit .itemList .right {
 	display: flex;
@@ -363,7 +363,7 @@ export default {
 .right text,
 .uni-input {
 	font-size: 30rpx;
-	color: #333333;
+	color: #898989;
 	white-space: nowrap;
 	margin-right: 20rpx;
 }
@@ -381,6 +381,8 @@ export default {
 } */
 .edit .itemList > text:first-child,.edit .itemList .moon > text:first-child {
 	font-weight: 600;
+	color: #454545;
+	font-size: 30rpx;
 }
 .edit .itemList:last-of-type {
 	border: none;
@@ -400,6 +402,7 @@ export default {
 	display: flex;
 	align-content: center;
 	justify-content: space-between;
+	align-items: center;
 	text-align: right;
 }
 .moon > view > text {
@@ -408,5 +411,8 @@ export default {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	text-align: right;
+}
+.iconfont{
+	color: #DBDBDB;
 }
 </style>

@@ -4,7 +4,7 @@
 			<text class="cashMoney">提现金额</text>
 			<view class="cashInput">
 				<label for="">￥</label>
-				<input type="number" value="" @input="inputValue" placeholder="请输入提现金额" />
+				<input type="digit" value="" @input="inputValue" placeholder="请输入提现金额" />
 			</view>
 			<view class="displayCash">
 				<view class="item">
@@ -201,7 +201,7 @@
 						if (res.statusCode == 200) {
 							uni.showToast({
 								title: res.data.msg,
-								icon: 'success'
+								icon: 'none'
 							})
 							// this.getList();
 							setTimeout( e =>{
@@ -211,7 +211,8 @@
 							},2000)
 						} else {
 							uni.showToast({
-								title: res.data.msg
+								title: res.data.msg,
+								icon: 'none'
 							});
 						}
 					}
