@@ -201,7 +201,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { info: {}, imgUrl: '', index: '' };}, onLoad: function onLoad(option) {this.imgUrl = _helper.default.imgUrl;console.log(option);this.index = option.index;this.info = JSON.parse(decodeURIComponent(option.itemDetail));}, methods: {} };exports.default = _default;
+var app = getApp();var _default = { data: function data() {return { info: {}, imgUrl: '' };}, onLoad: function onLoad(option) {this.imgUrl = _helper.default.imgUrl;console.log(option);this.info = JSON.parse(decodeURIComponent(option.itemDetail));}, methods: {} };exports.default = _default;
 
 /***/ }),
 

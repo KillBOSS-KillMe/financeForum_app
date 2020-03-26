@@ -200,9 +200,26 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
       console.log(i);
 
       var index = i.currentTarget.dataset.index;
-      var itemNew = JSON.stringify(i.currentTarget.dataset.item);
+      var itemNew = i.currentTarget.dataset.item;
+      var level = '';
+      if (itemNew.type == 'normal') {
+        level = itemNew.deploy.userlevel.level_name;
+      } else {
+        level = itemNew.deploy.vipuserlevel.level_name;
+      }
+      var itemNewObj = {
+        name: itemNew.name,
+        mobile: itemNew.mobile,
+        level_name: level,
+        index: index,
+        avatar: itemNew.avatar,
+        created_at: itemNew.created_at,
+        type: itemNew.type };
+
+      var obj = JSON.stringify(itemNewObj);
+      console.log(itemNew);
       uni.navigateTo({
-        url: "/pages/teamPeopleDetail?itemDetail=".concat(itemNew, "&index=").concat(index) });
+        url: "/pages/teamPeopleDetail?itemDetail=".concat(obj) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

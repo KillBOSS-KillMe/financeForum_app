@@ -150,12 +150,11 @@ scroll-view {
 .nav-right-item text{
 	 font-size: 26rpx;
 	 text-align: center;
-	 overflow: hidden;
-	 -webkit-line-clamp: 1;
 	 color: #333;
-	 display: -webkit-box;
-	 -webkit-box-orient: vertical;
-	 text-overflow: ellipsis;
+	 width: 130rpx;
+	 white-space: nowrap;
+	 text-overflow: ellipsis;
+	 overflow: hidden;
 }
 .padding {
 		height: var(--status-bar-height);

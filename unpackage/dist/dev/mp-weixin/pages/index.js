@@ -245,7 +245,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {// this.getToken()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {uni.hideHomeButton(); // this.getToken()
   }, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
     // this.getListMore()
     this.getList();if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码

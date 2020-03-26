@@ -31,7 +31,7 @@
 			</view>
 			<view class="timeInfoItem">
 				<text class="top">期限</text>
-				<text>{{listInfo.fee_ratio}}</text>
+				<text>{{listInfo.deadline}}</text>
 			</view>
 			<view class="timeInfoItem">
 				<text class="top">费用</text>

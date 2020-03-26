@@ -71,7 +71,7 @@
 			
 		},
 		onShow() {
-			
+			uni.hideHomeButton()
 			// this.getToken()
 		},
 		onHide() {

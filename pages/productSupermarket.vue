@@ -21,7 +21,7 @@
 		<view class="line"></view>
 		<view class="query" @tap="getSearch">
 			<input type="text" value="" @input="onInput" placeholder="请输入需要查询的贷款工具" disabled="disabled" />
-			<text>查网贷</text>
+			<text>搜贷款</text>
 		</view>
 		<view class="line" style="margin-bottom: 18rpx;"></view>
 		<view class="content">

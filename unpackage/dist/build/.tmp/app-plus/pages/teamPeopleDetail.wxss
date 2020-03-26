@@ -26,6 +26,7 @@
 	height: 116rpx;
 	border: 4rpx solid #fff;
 	border-radius: 116rpx;
+	z-index: 99;
 }
 .head .headInfo{
 	width: 690px;

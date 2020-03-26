@@ -65,9 +65,26 @@
 				console.log(i)
 				
 				let index = i.currentTarget.dataset.index
-				let itemNew = JSON.stringify(i.currentTarget.dataset.item)
+				let itemNew = i.currentTarget.dataset.item
+				let level = ''
+				if(itemNew.type == 'normal'){
+					level = itemNew.deploy.userlevel.level_name
+				}else{
+					level = itemNew.deploy.vipuserlevel.level_name
+				}
+				let itemNewObj = {
+					name: itemNew.name,
+					mobile:itemNew.mobile,
+					level_name: level,
+					index: index,
+					avatar: itemNew.avatar,
+					created_at: itemNew.created_at,
+					type:itemNew.type
+				}
+				let obj = JSON.stringify(itemNewObj)
+				console.log(itemNew)
 				uni.navigateTo({
-					url:`/pages/teamPeopleDetail?itemDetail=${itemNew}&index=${index}`
+					url:`/pages/teamPeopleDetail?itemDetail=${obj}`
 				})
 			}
 		}

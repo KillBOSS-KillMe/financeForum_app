@@ -34,6 +34,9 @@
 				loginName: ''
 			}
 		},
+		onShow() {
+			uni.hideHomeButton()
+		},
 		onLoad() {
 			console.log(helper.requestUrl)
 		},

@@ -30,10 +30,15 @@
 .me .meHead .iconxinshoubangzhu{
 	color: #fff;
 }
+.vipTime{
+	color: #999999;
+	text-align: center;
+	font-size: 28rpx;
+}
 .me .meHead .meHeadCon {
 	background: #fff;
 	border-radius: 10rpx;
-	height: 200rpx;
+	height: 217rpx;
 	z-index: 3;
 	width: 670rpx;
 	box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
@@ -81,7 +86,7 @@
 	-webkit-box-pack: justify !important;
 	-webkit-justify-content: space-between !important;
 	        justify-content: space-between !important;
-	margin-top: 45rpx !important;
+	margin-top: 20rpx !important;
 }
 .me .meHeadList text {
 	font-weight: 600;

@@ -6,11 +6,11 @@
 			<view class="headInfo">
 				<text class="name">{{info.name}}</text>
 				<view class="infoTip">
-					<text v-if="info.deploy == ''" style="display: none;"></text>
-					<text v-else-if="info.vip_id == '1'">{{info.deploy.vipuserlevel.level_name}}</text>
-					<text v-else="info.vip_id == '0'">{{info.deploy.userlevel.level_name}}</text>
-					<text v-if="index == 'one'">一级代理</text>
-					<text v-if="index == 'two'">二级代理</text>
+					<text v-if="info.type == 'normal'">{{info.level_name}}</text>
+					<text v-if="info.type == 'member'" style="background-color: #C6A25D;">{{info.level_name}}</text>
+					<text v-if="info.type == 'manager'" style="background-color: #00a65a;">{{info.level_name}}</text>
+					<text v-if="info.index == 'one'">一级代理</text>
+					<text v-if="info.index == 'two'">二级代理</text>
 				</view>
 			</view>
 		</view>
@@ -39,13 +39,11 @@
 			return {
 				info:{},
 				imgUrl: '',
-				index: ''
 			}
 		},
 		onLoad(option) {
 			this.imgUrl = helper.imgUrl;
 			console.log(option)
-			this.index = option.index
 			this.info = JSON.parse(decodeURIComponent(option.itemDetail));
 		},
 		methods: {
@@ -77,6 +75,7 @@
 	height: 116rpx;
 	border: 4rpx solid #fff;
 	border-radius: 116rpx;
+	z-index: 99;
 }
 .head .headInfo{
 	width: 690px;
