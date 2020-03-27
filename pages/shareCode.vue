@@ -2,7 +2,7 @@
 	<view class="shareCode">
 		<image class="bg" src="../static/QRBg.png" mode=""></image>
 		<view class="content">
-			<text class="head">新微金推广二维码</text>
+			<text class="head">子诺新微金推广二维码</text>
 			<view class="con">
 				<image v-if="codeList.msg_log == '显示二维码'" :src="codeList.face" mode=""></image>
 				<image v-else src="../static/1.png" mode=""></image>
@@ -324,8 +324,8 @@ export default {
 				scene: sceneType,
 				type: 0,
 				href: this.codeList.share_link,
-				title: '新微金论坛',
-				summary: '我正在使用新微金论坛，赶紧跟我一起来体验！',
+				title: '子诺新微金',
+				summary: '我正在使用子诺新微金，赶紧跟我一起来体验！',
 				// summary: this.codeList.share_link,
 				imageUrl: ' ',
 				success: res => {

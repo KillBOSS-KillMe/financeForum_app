@@ -458,8 +458,8 @@ var app = getApp();var uniPopup = function uniPopup() {return __webpack_require_
         scene: sceneType,
         type: 0,
         href: this.codeList.share_link,
-        title: '新微金论坛',
-        summary: '我正在使用新微金论坛，赶紧跟我一起来体验！',
+        title: '子诺新微金',
+        summary: '我正在使用子诺新微金，赶紧跟我一起来体验！',
         // summary: this.codeList.share_link,
         imageUrl: ' ',
         success: function success(res) {

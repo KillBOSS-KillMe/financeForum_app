@@ -192,7 +192,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
 //
 //
 //
@@ -251,7 +255,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 var app = getApp();var _default = { data: function data() {return { isCheck: false, bannerIndex: '0', current: '0', vip: [], imgUrl: '' };}, onLoad: function onLoad() {this.vipList();this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {// console.log(app.globalData.vipIndex)
     if (app.globalData.vipIndex == 1) {this.isCheck = true;}}, methods: { meTreaty: function meTreaty() {uni.navigateTo({ url: '/pages/meTreaty' });}, banner: function banner(e) {this.current = e.detail.current; // console.log(e)
-    }, checkboxChange: function checkboxChange(e) {this.isCheck = !this.isCheck;}, vipList: function vipList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/vips"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.vip = res.data;} else {uni.showToast({ title: res.data.message });}} });}, goVip: function goVip(e) {console.log(this.isCheck);if (this.isCheck) {// console.log(e)
+    }, checkboxChange: function checkboxChange(e) {console.log(123);console.log(e, '复选框');this.isCheck = !this.isCheck;}, vipList: function vipList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/vips"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.vip = res.data;} else {uni.showToast({ title: res.data.message });}} });}, goVip: function goVip(e) {console.log(this.isCheck);if (this.isCheck) {// console.log(e)
         uni.navigateTo({
           url: "/pages/payType?id=".concat(e.currentTarget.dataset.id, "&money=").concat(e.currentTarget.dataset.money) });
 

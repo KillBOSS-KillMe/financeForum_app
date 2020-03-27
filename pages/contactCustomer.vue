@@ -27,7 +27,7 @@
 			</view>
 		</view>
 		<view class="list">
-			<text>嘉合骏论坛</text>
+			<text>嘉合骏交流</text>
 			<view class="item">
 				<text>联系QQ</text>
 				<view>123456789</view>

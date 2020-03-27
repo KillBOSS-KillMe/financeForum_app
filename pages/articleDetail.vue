@@ -612,7 +612,9 @@ export default {
 	button::after {
 	  border: none;
 	}
-	
+	.share-btn{
+		background-color: transparent !important;
+	}
 	
 	
 .articleDetail {

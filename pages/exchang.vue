@@ -57,7 +57,7 @@ export default {
 		return {
 			navList: [
 				{ id: '3', img: 'iconbulletin', title: '微金公告',type: '23'},
-				{ id: '6', img: 'iconqiapiansousuo', title: '论坛搜索',type: '' },
+				{ id: '6', img: 'iconqiapiansousuo', title: '交流搜索',type: '' },
 				{ id: '2', img: 'iconliebiao', title: '贷款产品交流',type: '1'},	
 				{ id: '4', img: 'iconyonghu', title: '信用卡交流',type: '2' },
 				{ id: '5', img: 'iconqiapiansousuo', title: '推荐热帖',type: '3' },
@@ -109,10 +109,15 @@ export default {
 					res = helper.null2str(res)
 					console.log(res,'++++++++')
 					let user = res.data.type
+					let vipType = res.data.vip_id
 					if(user == 'normal'){
 						this.isShow = true
 					}else{
-						this.isShow = false
+						if(vipType == '2' || vipType == '3'){
+							this.isShow = false
+						}else{
+							this.isShow = true
+						}
 					}
 					// this.userInfo = res.data
 				}

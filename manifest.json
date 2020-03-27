@@ -1,5 +1,5 @@
 {
-    "name" : "新微金论坛",
+    "name" : "子诺新微金",
     "appid" : "__UNI__F2BA9AA",
     "description" : "",
     "versionName" : "1.0.0",
@@ -162,8 +162,8 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "新微金论坛",
-        "domain" : "http://jinrong.beaconway.cn/",
+        "title" : "子诺新微金",
+        "domain" : "https://jinrong.beaconway.cn/",
         "router" : {
             "mode" : "history"
         }

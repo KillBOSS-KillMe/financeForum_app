@@ -209,6 +209,8 @@ var app = getApp();var _default = { data: function data() {return { categoryList
   },
   onShow: function onShow() {
     this.getNav();
+    this.categoryActive = 0;
+    this.subCategoryList = [];
   },
   mounted: function mounted() {
 

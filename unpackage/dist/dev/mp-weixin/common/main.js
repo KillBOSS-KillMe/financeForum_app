@@ -130,9 +130,30 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ./common/helper.js 
 //
 //
 //
-var _default = { onLaunch: function onLaunch() {console.log('App Launch');}, onShow: function onShow() {console.log('App Show'); // this.getToken()
-  }, onHide: function onHide() {console.log('App Hide');}, globalData: { token: '', vipIndex: '', link: '' }, onLoad: function onLoad(options) {
-    this.getToken();
+var _default = { onLaunch: function onLaunch() {console.log('App Launch');}, onShow: function onShow() {// if (this.$options.globalData.token == "") {
+    // 	// 获取缓存中用于登录的用户名和密码
+    // 	// 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
+    // 	const loginName = uni.getStorageSync('login_name');
+    // 	const loginPwd = uni.getStorageSync('login_pwd');
+    // 	console.log(loginName + '---===---' + loginPwd)
+    // 	if (loginName == '' || loginPwd == '') {
+    // 		uni.showToast({
+    // 			title: '未检测到用户的登录记录，请进行登录',
+    // 			icon: 'none',
+    // 			duration: 3000
+    // 		});
+    // 		setTimeout(() => {
+    // 			// 进入登录页
+    // 			uni.reLaunch({
+    // 				url: './login'
+    // 			});
+    // 		}, 3000)
+    // 	} else {
+    // 		// 执行登录操作
+    // 		// this.runLogin(loginName, loginPwd)
+    // 	}
+    // }
+  }, onHide: function onHide() {console.log('App Hide');}, globalData: { token: '', vipIndex: '', link: '' }, onLoad: function onLoad(options) {this.getToken();
   },
   methods: {
     // 获取Token

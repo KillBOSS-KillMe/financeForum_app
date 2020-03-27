@@ -74,6 +74,8 @@ export default {
 	},
 	onShow() {
 		this.getNav()
+		this.categoryActive = 0
+		this.subCategoryList = []
 	},
 	mounted() {
 		

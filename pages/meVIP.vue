@@ -44,7 +44,9 @@
 		<button type="" class="off" v-if="isCheck == false" @tap="goVip">立即开通，尽享权益</button>
 		<button type="" class="off" style="background: #2390DC;" v-else @tap="goVip" :data-id="vip.data[current].id" :data-money="vip.data[current].vip_price">立即开通，尽享权益</button>
 		<view class="radio">
-			<label><checkbox value="cb" style="transform: scale(0.6);" @tap="checkboxChange(isCheck)" :checked="isCheck" /></label>
+			<checkbox-group @change="checkboxChange(isCheck)">
+				<label><checkbox value="cb" style="transform: scale(0.6);" :checked="isCheck" /></label>
+			</checkbox-group>
 			<view>
 				我已阅读开通
 				<text>{{vip.data[current].level}}</text>
@@ -89,6 +91,8 @@
 				// console.log(e)
 			},
 			checkboxChange(e){
+				console.log(123)
+				console.log(e,'复选框')
 				this.isCheck = !this.isCheck
 			},
 			vipList(){	
