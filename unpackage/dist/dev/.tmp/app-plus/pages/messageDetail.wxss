@@ -1,0 +1,21 @@
+
+.message{
+		width: 690rpx;
+		padding: 30rpx;
+}
+.title{
+		font-weight: 600;
+		font-size: 30rpx;
+		color: #000000;
+}
+.font{
+		font-size: 26rpx;
+		color: #000000;
+}
+.button{
+	font-size: 20rpx;
+	font-weight: 500;
+	color: #2390DC;
+	margin-top: 13rpx;
+}
+

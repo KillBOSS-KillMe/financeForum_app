@@ -35,7 +35,7 @@
 			}
 		},
 		onShow() {
-			uni.hideHomeButton()
+			// uni.hideHomeButton()
 		},
 		onLoad() {
 			console.log(helper.requestUrl)
@@ -100,7 +100,7 @@
 				}
 				uni.showLoading({
 				  title: '登录中...',
-					duration: 1000000
+					duration: 10000
 				});
 				console.log(code)
 				uni.request({
@@ -124,9 +124,12 @@
 								icon: "none"
 							});
 							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
-							uni.reLaunch({
-								url: './index'
-							});
+							setTimeout(() => {
+								// 进入登录页
+								uni.reLaunch({
+									url: './index'
+								});
+							}, 1000)
 						} else {
 							uni.showToast({
 								title: res.data.message,

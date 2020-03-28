@@ -187,12 +187,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { loginPaw: '', loginName: '' };}, onShow: function onShow() {uni.hideHomeButton();}, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { // 获取登录名
+var app = getApp();var _default = { data: function data() {return { loginPaw: '', loginName: '' };}, onShow: function onShow() {// uni.hideHomeButton()
+  }, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { // 获取登录名
     getLoginName: function getLoginName(e) {this.loginName = e.detail.value;}, // 获取密码
     getLoginPaw: function getLoginPaw(e) {this.loginPaw = e.detail.value;}, // 进入忘记密码页
     goForgetPassword: function goForgetPassword() {uni.navigateTo({ url: '/pages/forgetPassword' });}, // 进入注册页
-    goRegistered: function goRegistered() {
-      uni.navigateTo({
+    goRegistered: function goRegistered() {uni.navigateTo({
         url: "/pages/registered" });
 
     },
@@ -235,7 +235,7 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: ''
       }
       uni.showLoading({
         title: '登录中...',
-        duration: 1000000 });
+        duration: 10000 });
 
       console.log(code);
       uni.request({
@@ -259,9 +259,12 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: ''
               icon: "none" });
 
             app.globalData.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
-            uni.reLaunch({
-              url: './index' });
+            setTimeout(function () {
+              // 进入登录页
+              uni.reLaunch({
+                url: './index' });
 
+            }, 1000);
           } else {
             uni.showToast({
               title: res.data.message,

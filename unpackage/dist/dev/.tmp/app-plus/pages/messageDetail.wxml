@@ -1,0 +1,1 @@
+<view class="message"><text class="title">系统消息</text><jyf-parser class="font vue-ref" vue-id="3bd9e152-1" html="{{news.content}}" data-ref="article" bind:__l="__l"></jyf-parser><block wx:if="{{news.type=='QR'}}"><text data-event-opts="{{[['tap',[['link',['$event']]]]]}}" class="button" bindtap="__e">点击立即输入账号密码获取二维码</text></block></view>

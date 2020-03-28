@@ -71,8 +71,7 @@
 			
 		},
 		onShow() {
-			uni.hideHomeButton()
-			// this.getToken()
+			
 		},
 		onHide() {
 			
@@ -82,41 +81,45 @@
 			// this.getUserInfo()
 			// this.getListMore()
 			this.getList()
-			if (app.globalData.token == "") {
-				// 获取缓存中用于登录的用户名和密码
-				// 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
-				const loginName = uni.getStorageSync('login_name');
-				const loginPwd = uni.getStorageSync('login_pwd');
-				// console.log(loginName + '---===---' + loginPwd)
-				if (loginName == '' || loginPwd == '') {
-					uni.showToast({
-						title: '未检测到用户的登录记录，请进行登录',
-						icon: 'none',
-						duration: 3000
-					});
-					setTimeout(() => {
-						// 进入登录页
-						uni.reLaunch({
-							url: './login'
-						});
-					}, 3000)
-				} else {
-					// 执行登录操作
-					this.runLogin(loginName, loginPwd)
-				}
-			} else {
-				// 获取用户信息
-				this.getUserInfo()
-				// this.getList()
-			}
 		},
 		methods: {
+			// 是否获取过token
+			getIsToken(){
+				if (app.globalData.token == "") {
+					// 获取缓存中用于登录的用户名和密码
+					// 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
+					const loginName = uni.getStorageSync('login_name');
+					const loginPwd = uni.getStorageSync('login_pwd');
+					// console.log(loginName + '---===---' + loginPwd)
+					if (loginName == '' || loginPwd == '') {
+						uni.showToast({
+							title: '未检测到用户的登录记录，请进行登录',
+							icon: 'none',
+							duration: 3000
+						});
+						setTimeout(() => {
+							// 进入登录页
+							uni.reLaunch({
+								url: './login'
+							});
+						}, 3000)
+						
+					} else {
+						// 执行登录操作
+						this.runLogin(loginName, loginPwd)
+					}
+				} else {
+					// 获取用户信息
+					this.getUserInfo()
+					// this.getList()
+				}
+			},
 			// 进行登录操作
 			runLogin(loginName, loginPwd) {
-				uni.showLoading({
-				  title: '登录中...',
-					duration: 1000000
-				});
+				// uni.showLoading({
+				//   title: '登录中...',
+				// 	duration: 1000000
+				// });
 				uni.request({
 					url: `${helper.requestUrl}/login`,
 					method: 'POST',
@@ -132,10 +135,10 @@
 							// 登录的账号和密码存入缓存
 							uni.setStorageSync('login_name', this.loginName);
 							uni.setStorageSync('login_pwd', this.loginPaw);
-							uni.showToast({
-								title: '登录成功',
-								icon: "none"
-							});
+							// uni.showToast({
+							// 	title: '登录成功',
+							// 	icon: "none"
+							// });
 							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
 						} else {
 							uni.showToast({
@@ -155,21 +158,54 @@
 			},
 			// 导航详情
 			goNavs(e) {
-				// console.log(e.currentTarget.dataset.id)
 				let link = e.currentTarget.dataset.link
 				let bind_board = e.currentTarget.dataset.bind_board
 				let id = e.currentTarget.dataset.id
 				let name = e.currentTarget.dataset.name
-				// console.log(bind_board)
-				if (bind_board == '0') {
-					uni.navigateTo({
-						url: `/pages/${link}`
-					})
-				} else{
-					uni.navigateTo({
-						url: `/pages/indexA?id=${bind_board}&name=${name}`
-					})
+				if (app.globalData.token == "") {
+					const loginName = uni.getStorageSync('login_name');
+					const loginPwd = uni.getStorageSync('login_pwd');
+					// console.log(loginName + '---===---' + loginPwd)
+					if (loginName == '' || loginPwd == '') {
+						uni.showToast({
+							title: '未检测到用户的登录记录，请进行登录',
+							icon: 'none',
+							duration: 3000
+						});
+						setTimeout(() => {
+							// 进入登录页
+							uni.reLaunch({
+								url: './login'
+							});
+						}, 3000)
+						
+					} else {
+						// 执行登录操作
+						this.runLogin(loginName, loginPwd)
+						if (bind_board == '0') {
+							uni.navigateTo({
+								url: `/pages/${link}`
+							})
+						} else{
+							uni.navigateTo({
+								url: `/pages/indexA?id=${bind_board}&name=${name}`
+							})
+						}
+					}
+				}else{
+					if (bind_board == '0') {
+						uni.navigateTo({
+							url: `/pages/${link}`
+						})
+					} else{
+						uni.navigateTo({
+							url: `/pages/indexA?id=${bind_board}&name=${name}`
+						})
+					}
 				}
+				// console.log(e.currentTarget.dataset.id)
+				
+				// console.log(bind_board)
 			},
 			//
 			selListType(e) {
@@ -186,10 +222,33 @@
 			},
 			// 文章详情
 			goDetail(e) {
-				// console.log(e)
-				uni.navigateTo({
-					url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
-				})
+				if (app.globalData.token == "") {
+					const loginName = uni.getStorageSync('login_name');
+					const loginPwd = uni.getStorageSync('login_pwd');
+					// console.log(loginName + '---===---' + loginPwd)
+					if (loginName == '' || loginPwd == '') {
+						uni.showToast({
+							title: '未检测到用户的登录记录，请进行登录',
+							icon: 'none',
+							duration: 3000
+						});
+						setTimeout(() => {
+							// 进入登录页
+							uni.reLaunch({
+								url: './login'
+							});
+						}, 3000)
+						
+					} else {
+						// 执行登录操作
+						this.runLogin(loginName, loginPwd)
+					}
+				}else{
+					uni.navigateTo({
+						url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
+					})
+				}
+				
 			},
 			getUserInfo() {
 				// 用户信息获取

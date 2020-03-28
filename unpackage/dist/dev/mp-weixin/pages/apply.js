@@ -247,9 +247,25 @@ var app = getApp();var _default = { data: function data() {return { categoryList
             _this.getList();
             // console.log(this.boardId)
           } else {
-            uni.showToast({
-              title: res.data.message });
+            if (res.data.message == '用户不存在或登陆已过期') {
+              uni.showToast({
+                title: '未检测到用户的登录记录，请进行登录',
+                icon: 'none',
+                duration: 3000 });
 
+              setTimeout(function () {
+                // 进入登录页
+                uni.reLaunch({
+                  url: './login' });
+
+              }, 3000);
+            } else {
+              uni.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 3000 });
+
+            }
           }
 
         } });

@@ -4,7 +4,7 @@
 			<text class="title">{{ articleDetail.title }}</text>
 			<view class="info">
 				<view class="left">
-					<image :src="imgUrl+articleDetail.user.avatar" mode=""></image>
+					<image :src="imgUrl + articleDetail.user.avatar" mode=""></image>
 					<view class="leftTitle">
 						<text>{{ articleDetail.user.name }}</text>
 						<view class="leftTitleBottom">
@@ -24,34 +24,31 @@
 					</view>
 					<view v-else>
 						<uni-icon class="iconfont iconiconset0207 icon" type=""></uni-icon>
-						{{articleDetail.reading}}
+						{{ articleDetail.reading }}
 					</view>
 					<view>
 						<uni-icon class="iconfont icondianzan icon" type=""></uni-icon>
-						{{ articleDetail.like  || 0}}
+						{{ articleDetail.like || 0 }}
 					</view>
 				</view>
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
-				<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'">
-					<jyf-parser :html="item.content" ref="article" ></jyf-parser>
-				</view>
-				<view class="" v-else>
-					<jyf-parser :html="item.content" ref="article" ></jyf-parser>
-				</view>
+				<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'"><jyf-parser :html="item.content" ref="article"></jyf-parser></view>
+				<view class="" v-else><jyf-parser :html="item.content" ref="article"></jyf-parser></view>
 			</block>
+			<view class="docUrl" v-if="articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
+				https://jinrong.beaconway.cn/uploads/{{articleDetail.docx}}
+			</view>
 			<view class="share">
 				<text>分享至</text>
 				<!-- #ifdef MP-WEIXIN -->
-					<button class="share-btn" open-type="share">
-						<uni-icon class="iconfont iconweixin" type=""></uni-icon>
-					</button>
+				<button class="share-btn" open-type="share"><uni-icon class="iconfont iconweixin" type=""></uni-icon></button>
 				<!-- #endif -->
 				<!-- #ifdef APP-PLUS -->
-					<!-- 分享到微信好友 -->
-					<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
-					<!-- 分享到微信朋友圈 -->
-					<uni-icon class="iconfont iconpengyouquan" @tap="shareFriendcricle" type=""></uni-icon>
+				<!-- 分享到微信好友 -->
+				<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
+				<!-- 分享到微信朋友圈 -->
+				<uni-icon class="iconfont iconpengyouquan" @tap="shareFriendcricle" type=""></uni-icon>
 				<!-- #endif -->
 			</view>
 		</view>
@@ -59,7 +56,7 @@
 		<view class="reward">
 			<view class="iconText" @tap="postReward">赏</view>
 			<text>觉得不错，打个赏~</text>
-			<view class="money">{{articleDetail.rewards_count}}人已经打赏</view>
+			<view class="money">{{ articleDetail.rewards_count }}人已经打赏</view>
 		</view>
 		<view class="line"></view>
 		<view class="comment">
@@ -70,14 +67,14 @@
 			<view class="list">
 				<block v-for="(item, index) in commentList" :key="index">
 					<view class="item">
-						<image :src="imgUrl+item.user.avatar" mode=""></image>
+						<image :src="imgUrl + item.user.avatar" mode=""></image>
 						<view class="right">
 							<view class="itemListHead">
 								<view class="itemListHeadLeft">
 									<text class="rightName">{{ item.user.name }}</text>
 									<uni-icon class="iconfont iconnan" :class="['active', isSex == '1' ? 'curRed' : '']" type=""></uni-icon>
-									<text class="rightMember" v-if="item.user.type == 'member'">{{ item.user.deploy.vipuserlevel.level_name}}</text>
-									<text class="rightMember" style="background: #2390DC;" v-else>{{ item.user.deploy.userlevel.level_name}}</text>
+									<text class="rightMember" v-if="item.user.type == 'member'">{{ item.user.deploy.vipuserlevel.level_name }}</text>
+									<text class="rightMember" style="background: #2390DC;" v-else>{{ item.user.deploy.userlevel.level_name }}</text>
 								</view>
 								<uni-icon class="iconfont icondiandian icon" type=""></uni-icon>
 							</view>
@@ -97,7 +94,7 @@
 									<text>{{ item.floor }}楼</text>
 									<text>{{ item.created_at }}</text>
 								</view>
-								<uni-icon class="iconfont iconhuifu active" type="" @tap="reply(item.id,1)"></uni-icon>
+								<uni-icon class="iconfont iconhuifu active" type="" @tap="reply(item.id, 1)"></uni-icon>
 							</view>
 						</view>
 					</view>
@@ -117,7 +114,7 @@
 <script>
 const app = getApp();
 import helper from '../common/helper.js';
-import parser from "@/components/jyf-parser";
+import parser from '@/components/jyf-parser';
 export default {
 	data() {
 		return {
@@ -137,16 +134,14 @@ export default {
 			comment_id: '',
 			isSex: '0',
 			type: '',
-			
 		};
 	},
-  components: {
-		"jyf-parser": parser
+	components: {
+		'jyf-parser': parser
 	},
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
-		
 	},
 	onShow() {
 		// 文章详情加载
@@ -155,17 +150,77 @@ export default {
 		this.getComment();
 	},
 	onShareAppMessage() {
-		let url = this.getPageUrl()
+		let url = this.getPageUrl();
 		return {
 			title: this.articleDetail.title,
 			path: url
-		}
+		};
 	},
 	methods: {
+		// 下载doc
+		linkUrl(extra) {
+			console.log(extra);
+			// #ifdef APP-PLUS
+			const downloadTask = uni.downloadFile({
+				url:extra, //仅为示例，并非真实的资源
+				success: res => {
+					if (res.statusCode === 200) {
+						// console.log('下载成功');
+					}
+					// this.dd = res.tempFilePath;
+					console.log(res.tempFilePath);
+					let that = this;
+					uni.saveFile({
+							tempFilePath: res.tempFilePath,
+							success: function(red) {
+									uni.showToast({
+										title: '已保存内部存储/Android/data/io.dcloud.HBuilder/apps/HBuilder/doc/uniapp_save',
+										icon:'none',
+										duration:3000
+									})
+									var savedFilePath = red.savedFilePath;
+									console.log(red)
+							}
+					});
+				}
+			});
+			// #endif
+			// #ifdef MP-WEIXIN
+			uni.setClipboardData({
+			    data: extra,
+			    success: function () {
+			        uni.showToast({
+			        	title: '复制成功,粘贴到浏览器下载',
+			        	icon: 'none'
+			        })
+			    }
+			});
+			// #endif
+			// uni.downloadFile({
+			//     url: extra, //仅为示例，并非真实的资源
+			//     success: (res) => {
+			//         if (res.statusCode === 200) {
+			// 					console.log(res)
+			//           uni.saveFile({
+			//             tempFilePath: res.tempFilePath,
+			//             success: function (res) {
+			// 							console.log(res)
+			//               var savedFilePath = res.savedFilePath;
+			//             }
+			//           });
+			//         }
+			//     }
+			// });
+			// app.globalData.link = extra
+			// let name = '下载'
+			// uni.navigateTo({
+			// 	url:`/pages/iframe?name=${name}`
+			// })
+		},
 		goVIPPage(e) {
 			// 判断当前用户是否为普通用户
 			if (this.articleDetail.user.type == 'normal') {
-				let content_type = e
+				let content_type = e;
 				// 判断当前点击文本是否为会员可看
 				if (content_type == 'member') {
 					uni.showModal({
@@ -175,7 +230,7 @@ export default {
 							if (res.confirm) {
 								// console.log('用户点击确定');
 								// 进入开通会员页
-								this.goVip()
+								this.goVip();
 							} else if (res.cancel) {
 								// console.log('用户点击取消');
 							}
@@ -184,10 +239,10 @@ export default {
 				}
 			}
 		},
-		goVip(){
+		goVip() {
 			uni.navigateTo({
-				url:'/pages/meVIP'
-			})
+				url: '/pages/meVIP'
+			});
 		},
 		//获取发布内容
 		getContent(e) {
@@ -197,7 +252,7 @@ export default {
 		// 文章详情加载
 		getArticleDetail() {
 			uni.showLoading({
-			  title: '加载中...'
+				title: '加载中...'
 			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/show`,
@@ -214,6 +269,27 @@ export default {
 					// console.log(res);
 					if (res.data.status_code == 200) {
 						this.articleDetail = res.data;
+						console.log('----------------')
+						console.log(this.articleDetail.extras)
+						// let extrasListNode = this.articleDetail.extras
+						// let i = 0
+						// console.clear()
+						// console.log(extrasListNode)
+						// for (i in extrasListNode) {
+						// 	console.log(extrasListNode[i].content)
+						// 	// extrasListNode[i].content = extrasListNode[i].content.split("\"")[1]
+						// 	// extrasListNode[i].content.replace(/iframe/g, 'video')
+						// 	extrasListNode[i].content.replace(iframe/g, 'video')
+						// }
+						// console.log('-----------------')
+						// console.log(extrasListNode)
+						// console.log(extrasListNode.content)
+						// let a = this.articleDetail.extras[0].content
+						
+						// console.log(a.match(/<iframe[^>]+>/g))
+						// let str = a.match(/<iframe[^>]+>/g)[0].split("\"")
+						
+						// console.log(str)
 						if (this.articleDetail.user.sex == 'f') {
 							this.isSex = '1';
 						}
@@ -226,14 +302,13 @@ export default {
 						setTimeout(e => {
 							uni.navigateBack({
 								delta: 1
-							})
-						}, 2000)
-						
+							});
+						}, 2000);
 					}
 				}
 			});
 		},
-		
+
 		shareFriend() {
 			//分享到微信朋友
 			this.share('WXSceneSession');
@@ -246,24 +321,24 @@ export default {
 		getPageUrl() {
 			// pages/articleDetail?id=5&name=222&aaa=2344asfdasdf
 			// let options = {id: '5', name: '222', aaa: '2344asfdasdf'}
-			let pageNode = getCurrentPages()
-			pageNode = pageNode[pageNode.length - 1]
-			let url = pageNode.route
-			let options = pageNode.options
-			let optionsString = '?'
-			for( let key in options ){
-					optionsString += key
-					optionsString += '='
-					optionsString += options[key]
-					optionsString += '&'
+			let pageNode = getCurrentPages();
+			pageNode = pageNode[pageNode.length - 1];
+			let url = pageNode.route;
+			let options = pageNode.options;
+			let optionsString = '?';
+			for (let key in options) {
+				optionsString += key;
+				optionsString += '=';
+				optionsString += options[key];
+				optionsString += '&';
 			}
-			optionsString = optionsString.substring(0, optionsString.length - 1)
-			url += optionsString
-			return url
+			optionsString = optionsString.substring(0, optionsString.length - 1);
+			url += optionsString;
+			return url;
 		},
 		share(WXSenceType) {
 			// 获取页面路径
-			let url = this.getPageUrl()
+			let url = this.getPageUrl();
 			uni.share({
 				provider: 'weixin',
 				scene: WXSenceType,
@@ -281,9 +356,9 @@ export default {
 			});
 		},
 		//打赏
-		postReward(){
+		postReward() {
 			uni.showLoading({
-			  title: '打赏中...'
+				title: '打赏中...'
 			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/reward`,
@@ -302,7 +377,7 @@ export default {
 						uni.showToast({
 							title: '打赏成功'
 						});
-						this.articleDetail.rewards_count += 1
+						this.articleDetail.rewards_count += 1;
 					} else {
 						uni.showToast({
 							title: '打赏失败',
@@ -404,7 +479,7 @@ export default {
 						uni.showToast({
 							title: res.data.message
 						});
-						this.articleDetail.is_follow = 1
+						this.articleDetail.is_follow = 1;
 					} else {
 						uni.showToast({
 							title: res.data.message,
@@ -435,7 +510,6 @@ export default {
 					if (res.data.status_code == '200') {
 						this.commentList = this.commentList.concat(res.data.data);
 					} else {
-					
 					}
 				}
 			});
@@ -458,7 +532,7 @@ export default {
 		// 评论
 		getPost() {
 			uni.showLoading({
-			  title: '评论提交中...'
+				title: '评论提交中...'
 			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/send-comment`,
@@ -490,15 +564,15 @@ export default {
 			});
 		},
 		// 回复评论
-		reply(e,i) {
-			console.log(e,i);
+		reply(e, i) {
+			console.log(e, i);
 			this.comment_id = e;
 			this.isShow = i;
 			this.focus = true;
 		},
 		postReply() {
 			uni.showLoading({
-			  title: '评论发布中...'
+				title: '评论发布中...'
 			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/send-reply`,
@@ -542,7 +616,7 @@ export default {
 		clickZan(e) {
 			this.isHide = '1';
 			uni.showLoading({
-			  title: '点赞中...'
+				title: '点赞中...'
 			});
 			uni.request({
 				url: `${helper.requestUrl}/posts/like`,
@@ -562,8 +636,8 @@ export default {
 							title: '点赞成功',
 							icon: 'none'
 						});
-						this.articleDetail.like += 1
-						this.articleDetail.is_collections = 1
+						this.articleDetail.like += 1;
+						this.articleDetail.is_collections = 1;
 					} else {
 						uni.showToast({
 							title: '点赞失败',
@@ -582,41 +656,39 @@ export default {
 </script>
 
 <style>
-	
-	button {
-		background: #fff;
-		position:relative;
-		display:block;
-		margin-left:auto;
-		margin-right:auto;
-		padding-left:14px;
-		padding-right:14px;
-		box-sizing:border-box;
-		font-size:18px;
-		text-align:center;
-		text-decoration:none;
-		line-height:2.55555556;
-		border-radius:5px;
-		-webkit-tap-highlight-color:transparent;
-		overflow:hidden;
-		color:#000000;
-		background-color:#F8F8F8;
-		margin: 0;
-	}
-	button {
-	  border-radius:0;
-	}
-	button {
-	  background-color: #fff;
-	}
-	button::after {
-	  border: none;
-	}
-	.share-btn{
-		background-color: transparent !important;
-	}
-	
-	
+button {
+	background: #fff;
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	font-size: 18px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 2.55555556;
+	border-radius: 5px;
+	-webkit-tap-highlight-color: transparent;
+	overflow: hidden;
+	color: #000000;
+	background-color: #f8f8f8;
+	margin: 0;
+}
+button {
+	border-radius: 0;
+}
+button {
+	background-color: #fff;
+}
+button::after {
+	border: none;
+}
+.share-btn {
+	background-color: transparent !important;
+}
+
 .articleDetail {
 	width: 750rpx;
 }
@@ -692,13 +764,12 @@ export default {
 	line-height: 48rpx;
 	text-align: center;
 	border-radius: 10rpx;
-
 }
 
 .read {
 	/* width: 150rpx; */
 	height: 90rpx;
-/* 	display: flex;
+	/* 	display: flex;
 	align-content: space-between;
 	flex-wrap: wrap; */
 }
@@ -709,11 +780,11 @@ export default {
 	color: #333333;
 	overflow: hidden;
 	margin-bottom: 10rpx;
-/* 	display: flex;
+	/* 	display: flex;
 	align-items: center;
 	justify-content: flex-end; */
 }
-.read view .iconfont{
+.read view .iconfont {
 	margin-right: 16rpx;
 }
 .postCom {
@@ -755,7 +826,7 @@ export default {
 	font-size: 28rpx;
 	color: #333333;
 }
-.content .share .iconfont{
+.content .share .iconfont {
 	width: 60rpx;
 	font-size: 60rpx;
 	color: green;
@@ -829,7 +900,12 @@ export default {
 	width: 690rpx;
 	padding: 0 30rpx;
 }
-
+.docUrl{
+	font-size: 30rpx;
+	color: #333;
+	word-break:break-all;
+	width: 690rpx;
+}
 .comment .item {
 	display: flex;
 	justify-content: space-between;
@@ -951,11 +1027,11 @@ export default {
 .curRed {
 	color: #d4237a;
 }
-.iconText{
+.iconText {
 	width: 140rpx;
 	height: 140rpx;
 	border-radius: 140rpx;
-	background: #2390DC;
+	background: #2390dc;
 	color: #fff;
 }
 </style>

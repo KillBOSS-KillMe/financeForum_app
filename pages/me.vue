@@ -157,6 +157,26 @@
 						if (res.statusCode == 200) {
 							this.userInfo = res.data
 							this.imageUrl = this.imgUrl+this.userInfo.avatar
+						}else{
+							if(res.data.message == 'Unauthenticated.'){
+								uni.showToast({
+									title: '未检测到用户的登录记录，请进行登录',
+									icon: 'none',
+									duration: 3000
+								});
+								setTimeout(() => {
+									// 进入登录页
+									uni.reLaunch({
+										url: './login'
+									});
+								}, 3000)
+							}else{
+								uni.showToast({
+									title: res.data.message,
+									icon: 'none',
+									duration: 3000
+								});
+							}
 						}
 					}
 				})
