@@ -116,10 +116,6 @@
 			},
 			// 进行登录操作
 			runLogin(loginName, loginPwd) {
-				// uni.showLoading({
-				//   title: '登录中...',
-				// 	duration: 1000000
-				// });
 				uni.request({
 					url: `${helper.requestUrl}/login`,
 					method: 'POST',
@@ -135,10 +131,6 @@
 							// 登录的账号和密码存入缓存
 							uni.setStorageSync('login_name', this.loginName);
 							uni.setStorageSync('login_pwd', this.loginPaw);
-							// uni.showToast({
-							// 	title: '登录成功',
-							// 	icon: "none"
-							// });
 							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
 						} else {
 							uni.showToast({
@@ -177,8 +169,7 @@
 							uni.reLaunch({
 								url: './login'
 							});
-						}, 3000)
-						
+						}, 2000)
 					} else {
 						// 执行登录操作
 						this.runLogin(loginName, loginPwd)
@@ -237,11 +228,14 @@
 							uni.reLaunch({
 								url: './login'
 							});
-						}, 3000)
+						}, 2000)
 						
 					} else {
 						// 执行登录操作
 						this.runLogin(loginName, loginPwd)
+						uni.navigateTo({
+							url: `/pages/articleDetail?id=${e.currentTarget.dataset.id}`
+						})
 					}
 				}else{
 					uni.navigateTo({
@@ -390,7 +384,7 @@
 	}
 	.nav {
 		width: 690rpx;
-		padding: 30rpx;
+		padding: 30rpx 30rpx 0;
 		/* background: #007AFF; */
 		display: flex;
 		flex-wrap: wrap;
@@ -438,7 +432,7 @@
 		flex: 1;
 		text-align: center;
 		color: #999999;
-		padding: 30rpx 0;
+		padding: 0 0 30rpx;
 	}
 
 	.content .inv-h-se {

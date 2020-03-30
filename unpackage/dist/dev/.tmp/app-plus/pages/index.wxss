@@ -25,7 +25,7 @@ swiper-item{
 }
 .nav {
 	width: 690rpx;
-	padding: 30rpx;
+	padding: 30rpx 30rpx 0;
 	/* background: #007AFF; */
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -80,7 +80,7 @@ swiper-item{
 	        flex: 1;
 	text-align: center;
 	color: #999999;
-	padding: 30rpx 0;
+	padding: 0 0 30rpx;
 }
 .content .inv-h-se {
 	color: #2390dc;

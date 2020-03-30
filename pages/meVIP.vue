@@ -31,12 +31,12 @@
 			<view class="longVip">
 				<view class="money">
 					￥
-					<text>{{vip.data[current].vip_price}}</text>
+					<text>{{vip.data[current].vip_price  || 0}}</text>
 					/年
 				</view>
 				<view class="time">
 					<text class="long">{{vip.data[current].level}}</text>
-					<text>{{vip.data[current].level}}专享受价￥{{vip.data[current].vip_price}}</text>
+					<text>{{vip.data[current].level}}专享受价￥{{vip.data[current].vip_price || 0}}</text>
 				</view>
 			</view>
 
@@ -54,6 +54,7 @@
 				<text @tap="meTreaty">相关协议</text>
 			</view>
 		</view>
+		<text class="tipVip">会员升级请联系客服1071076818</text>
 	</view>
 </template>
 
@@ -91,8 +92,6 @@
 				// console.log(e)
 			},
 			checkboxChange(e){
-				console.log(123)
-				console.log(e,'复选框')
 				this.isCheck = !this.isCheck
 			},
 			vipList(){	
@@ -300,7 +299,7 @@ uni-swiper{
 }
 .radio {
 	width: 690rpx;
-	padding: 30rpx;
+	padding: 30rpx 0 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -318,5 +317,9 @@ uni-swiper{
 	width: 26rpx;
 	height: 26rpx;
 } */
-
+.tipVip{
+	font-size: 26rpx;
+	padding-bottom: 30rpx;
+	text-align: center;
+}
 </style>

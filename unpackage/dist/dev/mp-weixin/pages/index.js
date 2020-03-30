@@ -261,10 +261,6 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     },
     // 进行登录操作
     runLogin: function runLogin(loginName, loginPwd) {var _this = this;
-      // uni.showLoading({
-      //   title: '登录中...',
-      // 	duration: 1000000
-      // });
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/login"),
         method: 'POST',
@@ -280,10 +276,6 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             // 登录的账号和密码存入缓存
             uni.setStorageSync('login_name', _this.loginName);
             uni.setStorageSync('login_pwd', _this.loginPaw);
-            // uni.showToast({
-            // 	title: '登录成功',
-            // 	icon: "none"
-            // });
             app.globalData.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
           } else {
             uni.showToast({
@@ -322,8 +314,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             uni.reLaunch({
               url: './login' });
 
-          }, 3000);
-
+          }, 2000);
         } else {
           // 执行登录操作
           this.runLogin(loginName, loginPwd);
@@ -382,11 +373,14 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             uni.reLaunch({
               url: './login' });
 
-          }, 3000);
+          }, 2000);
 
         } else {
           // 执行登录操作
           this.runLogin(loginName, loginPwd);
+          uni.navigateTo({
+            url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
+
         }
       } else {
         uni.navigateTo({

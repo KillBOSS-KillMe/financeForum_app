@@ -21,7 +21,6 @@
 		<image v-for="(item, index) in imgs" v-bind:key="index" :id="index" :src="item" hidden @load="_load" />
 	</view>
 </template>
-
 <script>
 	// #ifndef H5
 	import trees from "./libs/trees";

@@ -33,12 +33,25 @@
 				</view>
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
-				<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'"><jyf-parser :html="item.content" ref="article"></jyf-parser></view>
-				<view class="" v-else><jyf-parser :html="item.content" ref="article"></jyf-parser></view>
+				<view>
+					<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'">
+						<jyf-parser :html="item.content" ref="article"></jyf-parser>
+					</view>
+					<view class="" v-else>
+						<jyf-parser :html="item.content" ref="article"></jyf-parser>
+					</view>
+				</view>
+					<video v-if="item.video != '' && articleDetail.user.type != 'normal'" style="width: 690rpx;" :src="item.video" controls></video>
 			</block>
-			<view class="docUrl" v-if="articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
-				https://jinrong.beaconway.cn/uploads/{{articleDetail.docx}}
+			<view class="docUrl" v-if="articleDetail.docx != undefined && articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
+				{{imgUrl+articleDetail.docx}} {{articleDetail.docx}}
 			</view>
+		<!-- 	<view class="docUrl" v-if="articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
+				1
+			</view>
+			<view class="docUrl" v-if="articleDetail.docx != undefined " @tap="linkUrl(imgUrl + articleDetail.docx)">
+				2
+			</view> -->
 			<view class="share">
 				<text>分享至</text>
 				<!-- #ifdef MP-WEIXIN -->
@@ -56,7 +69,7 @@
 		<view class="reward">
 			<view class="iconText" @tap="postReward">赏</view>
 			<text>觉得不错，打个赏~</text>
-			<view class="money">{{ articleDetail.rewards_count }}人已经打赏</view>
+			<view class="money">{{ articleDetail.rewards_count || 0}}人已经打赏</view>
 		</view>
 		<view class="line"></view>
 		<view class="comment">
@@ -102,7 +115,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<input type="text" :value="postContent" :focus="focus" @input="getContent" placeholder="发表评论..." />
+			<input type="text" :value="postContent" :focus="focus" @input="getContent" placeholder="写评论..." />
 			<uni-icon class="iconfont iconziyuan icon" type="" @tap="postDiscuss"></uni-icon>
 			<!-- 收藏/收藏 -->
 			<uni-icon class="iconfont iconzanzan" @tap="clickZan" type="" v-if="articleDetail.is_collections == 0"></uni-icon>
@@ -271,39 +284,27 @@ export default {
 						this.articleDetail = res.data;
 						console.log('----------------')
 						console.log(this.articleDetail.extras)
-						// let extrasListNode = this.articleDetail.extras
-						// let i = 0
-						// console.clear()
-						// console.log(extrasListNode)
-						// for (i in extrasListNode) {
-						// 	console.log(extrasListNode[i].content)
-						// 	// extrasListNode[i].content = extrasListNode[i].content.split("\"")[1]
-						// 	// extrasListNode[i].content.replace(/iframe/g, 'video')
-						// 	extrasListNode[i].content.replace(iframe/g, 'video')
-						// }
-						// console.log('-----------------')
-						// console.log(extrasListNode)
-						// console.log(extrasListNode.content)
-						// let a = this.articleDetail.extras[0].content
-						
-						// console.log(a.match(/<iframe[^>]+>/g))
-						// let str = a.match(/<iframe[^>]+>/g)[0].split("\"")
-						
-						// console.log(str)
 						if (this.articleDetail.user.sex == 'f') {
 							this.isSex = '1';
 						}
+					}else if(res.data.status_code == 202){
+						this.articleDetail = null
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none',
+							duration: 2000
+						})
+						setTimeout(e => {
+							uni.redirectTo({
+								url:"./meVIP"
+							})
+						}, 2000);
 					} else {
 						uni.showToast({
 							title: res.data.message,
 							icon: 'none',
 							duration: 2000
 						});
-						setTimeout(e => {
-							uni.navigateBack({
-								delta: 1
-							});
-						}, 2000);
 					}
 				}
 			});

@@ -754,7 +754,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7291,7 +7291,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7312,14 +7312,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7395,7 +7395,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7832,7 +7832,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 460:
+/***/ 452:
 /*!****************************************************!*\
   !*** D:/work/financeForum_app/components/index.js ***!
   \****************************************************/
@@ -8877,7 +8877,7 @@ main();
 
 /***/ }),
 
-/***/ 522:
+/***/ 514:
 /*!**************************************************************!*\
   !*** D:/work/financeForum_app/components/libs/CssHandler.js ***!
   \**************************************************************/
@@ -8891,7 +8891,7 @@ function _classCallCheck(instance, Constructor) {if (!(instance instanceof Const
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              docs：https://jin-yufeng.github.io/Parser
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              author：JinYufeng
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
-var config = __webpack_require__(/*! ./config.js */ 523);var
+var config = __webpack_require__(/*! ./config.js */ 515);var
 CssHandler = /*#__PURE__*/function () {
   function CssHandler() {var tagStyle = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};_classCallCheck(this, CssHandler);
     this.styles = Object.assign({}, tagStyle);
@@ -9004,7 +9004,7 @@ CssParser = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 523:
+/***/ 515:
 /*!**********************************************************!*\
   !*** D:/work/financeForum_app/components/libs/config.js ***!
   \**********************************************************/
@@ -9225,7 +9225,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 524:
+/***/ 516:
 /*!****************************************************************!*\
   !*** D:/work/financeForum_app/components/libs/MpHtmlParser.js ***!
   \****************************************************************/
@@ -9239,9 +9239,9 @@ function _classCallCheck(instance, Constructor) {if (!(instance instanceof Const
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              docs：https://jin-yufeng.github.io/Parser
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              author：JinYufeng
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
-var config = __webpack_require__(/*! ./config.js */ 523);
+var config = __webpack_require__(/*! ./config.js */ 515);
 var blankChar = config.blankChar;
-var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 522);
+var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 514);
 var emoji; // emoji 补丁包 https://jin-yufeng.github.io/Parser/#/instructions?id=emoji
 var MpHtmlParser = /*#__PURE__*/function () {
   function MpHtmlParser(data) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};_classCallCheck(this, MpHtmlParser);
@@ -9638,7 +9638,7 @@ module.exports = MpHtmlParser;
 
 /***/ }),
 
-/***/ 539:
+/***/ 531:
 /*!***************************************************!*\
   !*** D:/work/financeForum_app/components/data.js ***!
   \***************************************************/
@@ -14577,7 +14577,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "子诺新微金", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/login": { "navigationBarTitleText": "登录", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/registered": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/collection": { "navigationBarTitleText": "精准匹配", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/apply": { "navigationBarTitleText": "极品干货", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/exchang": { "navigationBarTitleText": "子诺交流区", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/me": { "navigationBarTitleText": "个人中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/articleDetail": { "navigationBarTitleText": "文章详情", "usingComponents": { "jyf-parser": "/components/jyf-parser" }, "usingAutoImportComponents": {} }, "pages/queryTool": { "navigationBarTitleText": "查询工具", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/post": { "navigationBarTitleText": "发帖", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/experience": { "navigationBarTitleText": "选择模块", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市", "usingComponents": { "uni-drawer": "/components/uni-drawer" }, "usingAutoImportComponents": {} }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFollow": { "navigationBarTitleText": "我的关注", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFriend": { "navigationBarTitleText": "我的好友", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mePost": { "navigationBarTitleText": "我的发表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMessage": { "navigationBarTitleText": "我的消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertification": { "navigationBarTitleText": "用户认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meVIP": { "navigationBarTitleText": "开通会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/joinMember": { "navigationBarTitleText": "加入会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSpread": { "navigationBarTitleText": "推广返佣", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meService": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSetting": { "navigationBarTitleText": "个人设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/indexA": { "enablePullDownRefresh": true, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meEditSet": { "navigationBarTitleText": "信息录入", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meEdit": { "navigationBarTitleText": "编辑", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTreaty": { "navigationBarTitleText": "相关协议", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/paySuccess": { "navigationBarTitleText": "支付成功", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productDetail": { "navigationBarTitleText": "产品详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/searchNetloan": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/allProduct": { "navigationBarTitleText": "所有产品", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/applyShow": { "navigationBarTitleText": "分类", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/iframe": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFan": { "navigationBarTitleText": "我的粉丝", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/payType": { "navigationBarTitleText": "支付方式", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/search": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTeamList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/commissionSet": { "navigationBarTitleText": "返佣设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/getQrCode": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/cashOut": { "navigationBarTitleText": "提现", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/promptlyGetQr": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamPeopleDetail": { "navigationBarTitleText": "用户信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/message": { "navigationBarTitleText": "消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamList": { "navigationBarTitleText": "团队列表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/shareCode": { "navigationBarTitleText": "获取二维码", "usingComponents": { "uni-popup": "/components/uni-popup" }, "usingAutoImportComponents": {} }, "pages/meApply": { "navigationBarTitleText": "系统应用", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/exchangList": { "enablePullDownRefresh": true, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/boardData": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/showCode": { "navigationBarTitleText": "推广二维码", "usingComponents": { "uni-popup": "/components/uni-popup" }, "usingAutoImportComponents": {} }, "pages/messageDetail": { "navigationBarTitleText": "系统消息详情", "usingComponents": { "jyf-parser": "/components/jyf-parser" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "子诺新微金" }, "pages/login": { "navigationBarTitleText": "登录" }, "pages/registered": { "navigationBarTitleText": "注册" }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码" }, "pages/collection": { "navigationBarTitleText": "精准匹配" }, "pages/apply": { "navigationBarTitleText": "极品干货" }, "pages/exchang": { "navigationBarTitleText": "子诺交流区" }, "pages/me": { "navigationBarTitleText": "个人中心" }, "pages/articleDetail": { "navigationBarTitleText": "文章详情" }, "pages/queryTool": { "navigationBarTitleText": "查询工具" }, "pages/experience": { "navigationBarTitleText": "选择模块" }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市" }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息" }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏" }, "pages/meFollow": { "navigationBarTitleText": "我的关注" }, "pages/meFriend": { "navigationBarTitleText": "我的好友" }, "pages/mePost": { "navigationBarTitleText": "我的发表" }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿" }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机" }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号" }, "pages/meMessage": { "navigationBarTitleText": "我的消息" }, "pages/meCertification": { "navigationBarTitleText": "用户认证" }, "pages/meVIP": { "navigationBarTitleText": "开通会员" }, "pages/joinMember": { "navigationBarTitleText": "加入会员" }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服" }, "pages/meSpread": { "navigationBarTitleText": "推广返佣" }, "pages/meService": { "navigationBarTitleText": "联系客服" }, "pages/meSetting": { "navigationBarTitleText": "个人设置" }, "pages/indexA": { "enablePullDownRefresh": true }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证" }, "pages/meEditSet": { "navigationBarTitleText": "信息录入" }, "pages/meEdit": { "navigationBarTitleText": "编辑" }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息" }, "pages/meTreaty": { "navigationBarTitleText": "相关协议" }, "pages/paySuccess": { "navigationBarTitleText": "支付成功" }, "pages/productDetail": { "navigationBarTitleText": "产品详情" }, "pages/searchNetloan": { "navigationBarTitleText": "搜索" }, "pages/allProduct": { "navigationBarTitleText": "所有产品" }, "pages/applyShow": { "navigationBarTitleText": "分类" }, "pages/iframe": {}, "pages/meFan": { "navigationBarTitleText": "我的粉丝" }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市" }, "pages/payType": { "navigationBarTitleText": "支付方式" }, "pages/search": { "navigationBarTitleText": "搜索" }, "pages/meTeamList": {}, "pages/commissionSet": { "navigationBarTitleText": "返佣设置" }, "pages/getQrCode": { "navigationBarTitleText": "获取二维码" }, "pages/cashOut": { "navigationBarTitleText": "提现" }, "pages/promptlyGetQr": { "navigationBarTitleText": "获取二维码" }, "pages/teamPeopleDetail": { "navigationBarTitleText": "用户信息" }, "pages/message": { "navigationBarTitleText": "消息" }, "pages/teamList": { "navigationBarTitleText": "团队列表" }, "pages/shareCode": { "navigationBarTitleText": "获取二维码" }, "pages/meApply": { "navigationBarTitleText": "系统应用" }, "pages/exchangList": { "enablePullDownRefresh": true }, "pages/boardData": {}, "pages/showCode": { "navigationBarTitleText": "推广二维码" }, "pages/messageDetail": { "navigationBarTitleText": "系统消息详情" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

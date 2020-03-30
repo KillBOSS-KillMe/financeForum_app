@@ -41,11 +41,11 @@
 				</scroll-view>
 			</view>
 		</view>
-		<view v-if="isShow">
+		<!-- <view v-if="isShow">
 			<image class="showModel"  @touchmove.stop = "" src="../static/no.png" mode=""></image>
-			<!-- <view class="showModel" @touchmove.stop = ""></view>
+			<! <view class="showModel" @touchmove.stop = ""></view>
 			<view class="showText">您还不是会员暂无此权限！</view> -->
-		</view>
+		<!-- </view> -->
 	</view>
 </template>
 

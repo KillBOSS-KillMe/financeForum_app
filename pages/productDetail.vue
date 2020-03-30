@@ -118,9 +118,9 @@
 		<!-- #ifdef MP-WEIXIN -->
 			<button type=""  hover-class="btn-hover" :data-link="listInfo.link" @tap="MP_WEIXIN_apply">立即申请</button>
 		<!-- #endif -->
-		<view v-if="isShow">
+		<!-- <view v-if="isShow">
 			<image class="showModel" @touchmove.stop = "" src="../static/no.png" mode=""></image>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -133,7 +133,7 @@
 				productId: '',
 				listInfo: [],
 				imgUrl:'',
-				isShow: false,
+				// isShow: false,
 				vip: ''
 			}
 		},
@@ -183,7 +183,17 @@
 							this.listInfo = res.data.data
 						} else if(res.data.status_code == 202) {
 							this.vip = res.data.message
-							this.isShow = true
+							uni.showToast({
+								title: res.data.message,
+								icon: 'none',
+								duration: 2000
+							})
+							setTimeout(() => {
+								uni.redirectTo({
+									url: "meVIP"
+								})
+							}, 2000)
+							// this.isShow = true
 						} else {
 							uni.showToast({
 								title: res.data.message,

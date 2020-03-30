@@ -22,9 +22,9 @@
 					</view>
 				</view>
 			</block>
-			<view v-if="isShow">
+			<!-- <view v-if="isShow">
 				<image class="showModel"  @touchmove.stop = "" src="../static/no.png" mode=""></image>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
