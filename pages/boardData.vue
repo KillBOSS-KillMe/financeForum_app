@@ -46,7 +46,7 @@
 				</view>
 			</block>
 		</view>
-		<!-- <view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view> -->
+		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view>
 	</view>
 </template>
 

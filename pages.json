@@ -61,12 +61,12 @@
 				"navigationBarTitleText": "查询工具"
 			}
 		},
-		// {
-		// 	"path": "pages/post",
-		// 	"style": {
-		// 		"navigationBarTitleText": "发帖"
-		// 	}
-		// },
+		{
+			"path": "pages/post",
+			"style": {
+				"navigationBarTitleText": "发布内容"
+			}
+		},
 		// // 实战心得-选择模块
 		{
 			"path": "pages/experience",

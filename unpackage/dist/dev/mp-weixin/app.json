@@ -10,6 +10,7 @@
     "pages/me",
     "pages/articleDetail",
     "pages/queryTool",
+    "pages/post",
     "pages/experience",
     "pages/productSupermarket",
     "pages/meUserInfo",
@@ -108,6 +109,5 @@
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
-  },
-  "sitemapLocation": "sitemap2.json"
+  }
 }
