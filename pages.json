@@ -40,7 +40,7 @@
 		{
 			"path": "pages/exchang",
 			"style": {
-				"navigationBarTitleText": "子诺交流区"
+				"navigationBarTitleText": "信贷员互动"
 			}
 		},
 		{
@@ -61,12 +61,12 @@
 				"navigationBarTitleText": "查询工具"
 			}
 		},
-		{
-			"path": "pages/post",
-			"style": {
-				"navigationBarTitleText": "发布内容"
-			}
-		},
+		// {
+		// 	"path": "pages/post",
+		// 	"style": {
+		// 		"navigationBarTitleText": "发布内容"
+		// 	}
+		// },
 		// // 实战心得-选择模块
 		{
 			"path": "pages/experience",
@@ -400,7 +400,7 @@
 			},
 			{
 				"pagePath": "pages/exchang",
-				"text": "子诺交流区",
+				"text": "信贷员互动",
 				"iconPath": "static/exchange.png",
 				"selectedIconPath": "static/exchangeCur.png"
 			},

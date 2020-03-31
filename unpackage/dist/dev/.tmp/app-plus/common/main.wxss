@@ -48,163 +48,163 @@ uni-tabbar .uni-tabbar__icon {
   -moz-osx-font-smoothing: grayscale;
 }
 .iconsuo:before {
-  content: "\E65B";
+  content: "\e65b";
 }
 .iconxianxiazhifu:before {
-  content: "\E629";
+  content: "\e629";
 }
 .iconxiaoxi1:before {
-  content: "\E618";
+  content: "\e618";
 }
 .iconxitongpeizhi:before {
-  content: "\E644";
+  content: "\e644";
 }
 .iconshangjiantou:before {
-  content: "\E64A";
+  content: "\e64a";
 }
 .iconjiantou:before {
-  content: "\E617";
+  content: "\e617";
 }
 .icondianhua:before {
-  content: "\E6F9";
+  content: "\e6f9";
 }
 .iconzhizhang5:before {
-  content: "\E64F";
+  content: "\e64f";
 }
 .iconhongbao1:before {
-  content: "\E657";
+  content: "\e657";
 }
 .iconxiaoxi:before {
-  content: "\E62C";
+  content: "\e62c";
 }
 .iconshouji:before {
-  content: "\E616";
+  content: "\e616";
 }
 .iconshoujihaomaguizheng:before {
-  content: "\E6FC";
+  content: "\e6fc";
 }
 .iconzhifubao:before {
-  content: "\E610";
+  content: "\e610";
 }
 .iconweixin1:before {
-  content: "\E659";
+  content: "\e659";
 }
 .iconyonghu:before {
-  content: "\E652";
+  content: "\e652";
 }
 .iconqiapiansousuo:before {
-  content: "\E6B2";
+  content: "\e6b2";
 }
 .iconbulletin:before {
-  content: "\E6DF";
+  content: "\e6df";
 }
 .iconliebiao:before {
-  content: "\E60A";
+  content: "\e60a";
 }
 .iconxiepinglun:before {
-  content: "\E668";
+  content: "\e668";
 }
 .iconbiaoqing:before {
-  content: "\E615";
+  content: "\e615";
 }
 .iconweixin:before {
-  content: "\E6B3";
+  content: "\e6b3";
 }
 .iconpengyouquan:before {
-  content: "\E73B";
+  content: "\e73b";
 }
 .iconnan:before {
-  content: "\E832";
+  content: "\e832";
 }
 .iconiconset0207:before {
-  content: "\E66A";
+  content: "\e66a";
 }
 .icondianzan:before {
-  content: "\E60C";
+  content: "\e60c";
 }
 .iconhuifu:before {
-  content: "\E66F";
+  content: "\e66f";
 }
 .icondiandian:before {
-  content: "\E653";
+  content: "\e653";
 }
 .iconziyuan:before {
-  content: "\E61D";
+  content: "\e61d";
 }
 .iconzhaopian:before {
-  content: "\E640";
+  content: "\e640";
 }
 .iconlocation:before {
-  content: "\E611";
+  content: "\e611";
 }
 .iconat:before {
-  content: "\E71C";
+  content: "\e71c";
 }
 .icongongwenbao:before {
-  content: "\E70B";
+  content: "\e70b";
 }
 .iconzanting:before {
-  content: "\E63D";
+  content: "\e63d";
 }
 .iconshouye:before {
-  content: "\E606";
+  content: "\e606";
 }
 .iconshipin:before {
-  content: "\E663";
+  content: "\e663";
 }
 .iconyuyin:before {
-  content: "\E6A3";
+  content: "\e6a3";
 }
 .iconjurassic_apply:before {
-  content: "\E697";
+  content: "\e697";
 }
 .iconhuiyuan2:before {
-  content: "\E64E";
+  content: "\e64e";
 }
 .icontihuoguanli:before {
-  content: "\E6A4";
+  content: "\e6a4";
 }
 .icontihuoguanli1:before {
-  content: "\E6A9";
+  content: "\e6a9";
 }
 .iconbuoumaotubiao20:before {
-  content: "\E612";
+  content: "\e612";
 }
 .iconlishijilu:before {
-  content: "\E64D";
+  content: "\e64d";
 }
 .iconrenshu:before {
-  content: "\E63C";
+  content: "\e63c";
 }
 .iconicon7:before {
-  content: "\E667";
+  content: "\e667";
 }
 .iconrenzheng:before {
-  content: "\E60F";
+  content: "\e60f";
 }
 .iconsousuo:before {
-  content: "\E614";
+  content: "\e614";
 }
 .iconxinshoubangzhu:before {
-  content: "\E64C";
+  content: "\e64c";
 }
 .iconyonghuguanli:before {
-  content: "\E620";
+  content: "\e620";
 }
 .iconhuiyuan:before {
-  content: "\E619";
+  content: "\e619";
 }
 .iconzaixiankefu:before {
-  content: "\E61C";
+  content: "\e61c";
 }
 .iconsaoyisao:before {
-  content: "\E605";
+  content: "\e605";
 }
 .iconzanzan:before {
-  content: "\E65A";
+  content: "\e65a";
 }
 .iconchangyongtubiao-xianxingdaochu-zhuanqu-:before {
-  content: "\E74B";
+  content: "\e74b";
 }
 
 

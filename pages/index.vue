@@ -68,7 +68,7 @@
 			};
 		},
 		onLaunch() {
-			
+			  
 		},
 		onShow() {
 			
@@ -432,7 +432,7 @@
 		flex: 1;
 		text-align: center;
 		color: #999999;
-		padding: 0 0 30rpx;
+		padding: 20rpx 0 30rpx;
 	}
 
 	.content .inv-h-se {

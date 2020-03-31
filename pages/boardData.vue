@@ -46,7 +46,7 @@
 				</view>
 			</block>
 		</view>
-		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view>
+		<!-- <view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view> -->
 	</view>
 </template>
 
@@ -81,7 +81,7 @@ export default {
 		// 发布
 		getPost() {
 			uni.navigateTo({
-				url: `/pages/post?id=${38}&type=${'网友交流'}`
+				url: `/pages/post?id=${38}&type=${'网友互动'}`
 			});
 		},
 		// 置顶加载更多
@@ -124,7 +124,7 @@ export default {
 				}
 			});
 		},
-		// 网友交流
+		// 网友互动
 		getSee_stickyList() {
 			uni.request({
 				url: `${helper.requestUrl}/posts/board-posts`,

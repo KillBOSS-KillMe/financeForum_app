@@ -10,7 +10,6 @@
     "pages/me",
     "pages/articleDetail",
     "pages/queryTool",
-    "pages/post",
     "pages/experience",
     "pages/productSupermarket",
     "pages/meUserInfo",
@@ -93,7 +92,7 @@
       },
       {
         "pagePath": "pages/exchang",
-        "text": "子诺交流区",
+        "text": "信贷员互动",
         "iconPath": "static/exchange.png",
         "selectedIconPath": "static/exchangeCur.png"
       },
@@ -112,7 +111,7 @@
     "autoclose": false
   },
   "appname": "子诺新微金",
-  "compilerVersion": "2.6.5",
+  "compilerVersion": "2.6.8",
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"

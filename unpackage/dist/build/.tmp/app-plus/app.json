@@ -10,7 +10,6 @@
     "pages/me",
     "pages/articleDetail",
     "pages/queryTool",
-    "pages/post",
     "pages/experience",
     "pages/productSupermarket",
     "pages/meUserInfo",
@@ -111,8 +110,8 @@
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "新微金论坛",
-  "compilerVersion": "2.6.5",
+  "appname": "子诺新微金",
+  "compilerVersion": "2.6.8",
   "usingComponents": {
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"

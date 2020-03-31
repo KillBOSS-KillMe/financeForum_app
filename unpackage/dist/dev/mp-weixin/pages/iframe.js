@@ -51,8 +51,6 @@ var component = Object(_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_c
   renderjs
 )
 
-/* hot reload */
-if (false) { var api; }
 component.options.__file = "work/financeForum_app/pages/iframe.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 

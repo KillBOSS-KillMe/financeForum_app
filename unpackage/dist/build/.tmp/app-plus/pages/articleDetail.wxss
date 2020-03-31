@@ -1,32 +1,35 @@
 
 button {
-		background: #fff;
-		position:relative;
-		display:block;
-		margin-left:auto;
-		margin-right:auto;
-		padding-left:14px;
-		padding-right:14px;
-		box-sizing:border-box;
-		font-size:18px;
-		text-align:center;
-		text-decoration:none;
-		line-height:2.55555556;
-		border-radius:5px;
-		-webkit-tap-highlight-color:transparent;
-		overflow:hidden;
-		color:#000000;
-		background-color:#F8F8F8;
-		margin: 0;
+	background: #fff;
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	font-size: 18px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 2.55555556;
+	border-radius: 5px;
+	-webkit-tap-highlight-color: transparent;
+	overflow: hidden;
+	color: #000000;
+	background-color: #f8f8f8;
+	margin: 0;
 }
 button {
-	  border-radius:0;
+	border-radius: 0;
 }
 button {
-	  background-color: #fff;
+	background-color: #fff;
 }
 button::after {
-	  border: none;
+	border: none;
+}
+.share-btn {
+	background-color: transparent !important;
 }
 .articleDetail {
 	width: 750rpx;
@@ -115,7 +118,7 @@ button::after {
 .read {
 	/* width: 150rpx; */
 	height: 90rpx;
-/* 	display: flex;
+	/* 	display: flex;
 	align-content: space-between;
 	flex-wrap: wrap; */
 }
@@ -125,11 +128,11 @@ button::after {
 	color: #333333;
 	overflow: hidden;
 	margin-bottom: 10rpx;
-/* 	display: flex;
+	/* 	display: flex;
 	align-items: center;
 	justify-content: flex-end; */
 }
-.read view .iconfont{
+.read view .iconfont {
 	margin-right: 16rpx;
 }
 .postCom {
@@ -176,7 +179,7 @@ button::after {
 	font-size: 28rpx;
 	color: #333333;
 }
-.content .share .iconfont{
+.content .share .iconfont {
 	width: 60rpx;
 	font-size: 60rpx;
 	color: green;
@@ -258,6 +261,12 @@ button::after {
 .comment .list {
 	width: 690rpx;
 	padding: 0 30rpx;
+}
+.docUrl{
+	font-size: 30rpx;
+	color: #333;
+	word-break:break-all;
+	width: 690rpx;
 }
 .comment .item {
 	display: -webkit-box;
@@ -391,11 +400,11 @@ button::after {
 .curRed {
 	color: #d4237a;
 }
-.iconText{
+.iconText {
 	width: 140rpx;
 	height: 140rpx;
 	border-radius: 140rpx;
-	background: #2390DC;
+	background: #2390dc;
 	color: #fff;
 }
 

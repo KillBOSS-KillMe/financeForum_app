@@ -111,9 +111,9 @@
 			}
 		},
 		onLoad(options) {
-			if(options.type == '网友交流'){
+			if(options.type == '网友互动'){
 				this.formNode.board_id = options.id;
-			}else if(options.type != '网友交流'){
+			}else if(options.type != '网友互动'){
 				this.formNode.city_id = options.id
 			}
 			this.options = options;

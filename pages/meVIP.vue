@@ -10,7 +10,7 @@
 					<swiper class="swiper"  next-margin='60rpx' :current="current"  @change="banner">
 						<block v-for="(item,index) in vip.data" :key="index">
 							<swiper-item>
-								<image class="bannerImg" :src="imgUrl+item.title_pic" @tap="goBanner" data-id="item.id"></image>
+								<image class="bannerImg" :src="imgUrl+item.title_pic" data-id="item.id"></image>
 								<text class="vipTip">{{vip.data[current].level}}</text>
 							</swiper-item>
 						</block>

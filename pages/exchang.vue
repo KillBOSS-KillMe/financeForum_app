@@ -57,11 +57,11 @@ export default {
 		return {
 			navList: [
 				{ id: '3', img: 'iconbulletin', title: '微金公告',type: '23'},
-				{ id: '6', img: 'iconqiapiansousuo', title: '交流搜索',type: '' },
-				{ id: '2', img: 'iconliebiao', title: '贷款产品交流',type: '1'},	
-				{ id: '4', img: 'iconyonghu', title: '信用卡交流',type: '2' },
+				{ id: '6', img: 'iconqiapiansousuo', title: '互动搜索',type: '' },
+				{ id: '2', img: 'iconliebiao', title: '贷款产品互动',type: '1'},	
+				{ id: '4', img: 'iconyonghu', title: '信用卡互动',type: '2' },
 				{ id: '5', img: 'iconqiapiansousuo', title: '推荐热帖',type: '3' },
-				{ id: '1', img: 'iconxiepinglun', title: '网友交流',type: ''},
+				{ id: '1', img: 'iconxiepinglun', title: '网友互动',type: ''},
 			],
 			imgUrl:'',
 			isShow: false,
@@ -170,7 +170,7 @@ export default {
 					url: `/pages/indexA?id=${id}&name=${title}`
 				});
 			}else{
-				if(title == '网友交流'){
+				if(title == '网友互动'){
 					uni.navigateTo({
 						url:`/pages/boardData?title=${title}&id=${38}&img=${img}`
 					})

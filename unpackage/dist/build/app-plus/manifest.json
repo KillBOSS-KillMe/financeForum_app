@@ -5,9 +5,9 @@
     "iPad"
   ],
   "id": "__UNI__F2BA9AA",
-  "name": "新微金论坛",
+  "name": "子诺新微金",
   "version": {
-    "name": "1.0.0",
+    "name": "1.0.3",
     "code": "100"
   },
   "description": "",
@@ -166,7 +166,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.6.5",
+      "compilerVersion": "2.6.8",
       "control": "v8",
       "nvueCompiler": "uni-app",
       "renderer": "auto",
