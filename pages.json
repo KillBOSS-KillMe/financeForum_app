@@ -61,12 +61,14 @@
 				"navigationBarTitleText": "查询工具"
 			}
 		},
-		// {
-		// 	"path": "pages/post",
-		// 	"style": {
-		// 		"navigationBarTitleText": "发布内容"
-		// 	}
-		// },
+		// #ifndef MP-WEIXIN
+		{
+			"path": "pages/post",
+			"style": {
+				"navigationBarTitleText": "发布内容"
+			}
+		},
+		// #endif
 		// // 实战心得-选择模块
 		{
 			"path": "pages/experience",
@@ -191,8 +193,7 @@
 		{
 			"path": "pages/indexA",
 			"style": {
-				"enablePullDownRefresh": true
-				// "navigationBarTitleText": "精准匹配"
+				// "navigationBarTitleText": ""
 			}
 		},
 		{
@@ -366,6 +367,7 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#2390DC",
 		"backgroundColor": "#F8F8F8"
+		
 	},
 	"condition": { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)

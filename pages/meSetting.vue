@@ -93,23 +93,23 @@ export default {
 							content: res.data.message,
 							success: res => {
 								if (res.confirm) {
-									uni.showToast({
-										title: '更新中...',
-										icon: 'none',
-										duration: 2000
-									})
+									// uni.showToast({
+									// 	title: '更新中...',
+									// 	icon: 'l',
+									// 	duration: 1000
+									// })
+									uni.showLoading({
+									    title: '下载中'
+									});
 									uni.downloadFile({
 											url: this.imgUrl + url,
 											success: (downloadResult) => {
 													if (downloadResult.statusCode === 200) {
+														  uni.hideLoading();
 															plus.runtime.install(downloadResult.tempFilePath, {
 																	force: false
 															}, function() {
 																	plus.runtime.restart();
-																	uni.showToast({
-																		title: '更新成功',
-																		icon: 'none'
-																	})
 															}, function(e) {
 																	uni.showToast({
 																		title: '更新失败',

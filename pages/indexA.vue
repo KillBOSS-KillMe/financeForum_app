@@ -1,29 +1,33 @@
 <template>
 	<view class="indexAccurate">
 		<view class="contentList">
-			<block v-for="(item, index) in list" :key="index">
-				<view class="item" @tap="goDetail(item.id)">
-					<view class="itemRight">
-						<text class="title">{{ item.title }}</text>
-						<view class="itemCon">
-							<text>{{ item.created_at }}</text>
-							<text>{{ item.user.name }}</text>
-							<text>{{ item.comments_count }}评</text>
-						</view>
-					</view>
-					<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
-					<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
-				</view>
-			</block>
-			<view class="null" v-if="isShow">暂无数据</view>
-			<view v-if="isShow1"><image class="showModel" src="../static/no.png" mode="" @touchmove.stop=""></image></view>
+			<mescroll-body ref="mescrollRef" @init="mescrollInit" :down="downOption" :up="upOption" @down="downCallback" @up="upCallback" @emptyclick='emptyClick'>
+					 <block v-for="(item, index) in list" :key="index">
+					 	<view class="item" @tap="goDetail(item.id)">
+					 		<view class="itemRight">
+					 			<text class="title">{{ item.title }}</text>
+					 			<view class="itemCon">
+					 				<text>{{ item.created_at }}</text>
+					 				<text>{{ item.user.name }}</text>
+					 				<text>{{ item.comments_count }}评</text>
+					 			</view>
+					 		</view>
+					 		<image :src="imgUrl + item.photoalbums[0].path" mode="aspectFill" v-if="item.photoalbums.length > 0"></image>
+					 		<image src="../static/imgLost.png" mode="aspectFill" v-else></image>
+					 	</view>
+					 </block>
+			</mescroll-body>
+			
+			<!-- <view class="null" v-if="isShow">暂无数据</view> -->
 		</view>
 	</view>
 </template>
 <script>
 const app = getApp();
 import helper from '../common/helper.js';
+import MescrollMixin from "@/components/mescroll-uni/mescroll-mixins.js";
 export default {
+	mixins: [MescrollMixin], // 使用mixin
 	data() {
 		return {
 			list: [],
@@ -35,7 +39,21 @@ export default {
 			child_id: '0',
 			vip: '',
 			isShow: true,
-			isShow1: false
+			isShow1: false,
+			downOption: {
+				auto: false //是否在初始化后,自动执行downCallback; 默认true
+			},
+			upOption: {
+				page: {
+					num: 0, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
+					size: 10 // 每页数据的数量,默认10
+				},
+				noMoreSize: 1, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
+				empty: {
+					tip: '暂无相关数据'
+				},
+				textNoMore: '没有更多数据了'
+			}
 		};
 	},
 	onShow(e) {
@@ -43,7 +61,7 @@ export default {
 		// this.board_id == e
 	},
 	onLoad(e) {
-		console.log(e.id);
+		console.log(e,'*******************');
 		console.log(e.bankId);
 		this.imgUrl = helper.imgUrl;
 		console.log(this.imgUrl);
@@ -51,14 +69,25 @@ export default {
 
 		this.bank_id = e.bankId || 0;
 		this.child_id = e.childId || 0;
-		this.getList();
+		// this.getList();
 		uni.setNavigationBarTitle({
 			title: e.name
 		});
 	},
 	onLaunch() {},
 	methods: {
-		getList() {
+		/*下拉刷新的回调 */
+		downCallback() {
+			this.mescroll.resetUpScroll()
+		},
+		 // 上拉回调 page = {num:1, size:10}; num:当前页 ,默认从1开始; size:每页数据条数,默认10
+		upCallback (page) {
+			this.getList(page)
+		},
+		getList(page) {
+			console.log(page,'-----------------------')
+			let pageNum = page.num; // 页码, 默认从1开始
+			let pageSize = page.size; // 页长, 默认每页10条
 			uni.request({
 				url: `${helper.requestUrl}/posts/board-posts`,
 				method: 'GET',
@@ -69,26 +98,18 @@ export default {
 					board_id: this.boardId,
 					bank_id: this.bank_id,
 					child_id: this.child_id,
-					page_size: this.page_size,
-					page: this.page
+					page_size: pageSize,
+					page: pageNum
 				},
 				success: res => {
 					res = helper.null2str(res);
 					console.log(res);
 					if (res.data.status_code == 200) {
-						this.list = this.list.concat(res.data.data);
-						if (res.data.data == 0) {
-							uni.showToast({
-								title: '暂无更多数据',
-								icon: 'none'
-							});
-							this.isShow = true;
-							console.log(this.isShow);
-							this.isShow1 = false;
-						} else {
-							this.isShow = false;
-							this.isShow1 = false;
-						}
+						let curPageData = res.data.data
+						let totalPage = res.data.total
+						if(page.num == 1) this.list = []; 
+						this.list = this.list.concat(curPageData);
+						this.mescroll.endByPage(curPageData.length, totalPage); 
 					} else if (res.data.status_code == 202) {
 						this.vip = res.data.message;
 						this.isShow1 = true;
@@ -108,15 +129,6 @@ export default {
 			});
 		},
 	},
-	onReachBottom() {
-		this.page++;
-		this.getList();
-	},
-	// onPullDownRefresh() {
-	// 	setTimeout(function() {
-	// 		uni.stopPullDownRefresh();
-	// 	}, 1000);
-	// }
 };
 </script>
 

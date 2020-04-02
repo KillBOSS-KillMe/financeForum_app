@@ -46,7 +46,9 @@
 				</view>
 			</block>
 		</view>
-		<!-- <view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconxiepinglun"></uni-icon></view> -->
+		<!-- #ifndef MP-WEIXIN -->
+		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconxiepinglun"></uni-icon></view>
+		<!-- #endif -->
 	</view>
 </template>
 

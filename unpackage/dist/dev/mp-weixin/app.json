@@ -106,8 +106,10 @@
     ]
   },
   "usingComponents": {
+    "mescroll-body": "/components/mescroll-uni/mescroll-body",
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap99.json"
+  "sitemapLocation": "sitemap.json"
 }

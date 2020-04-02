@@ -10,6 +10,7 @@
     "pages/me",
     "pages/articleDetail",
     "pages/queryTool",
+    "pages/post",
     "pages/experience",
     "pages/productSupermarket",
     "pages/meUserInfo",
@@ -113,6 +114,8 @@
   "appname": "子诺新微金",
   "compilerVersion": "2.6.8",
   "usingComponents": {
+    "mescroll-body": "/components/mescroll-uni/mescroll-body",
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni",
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   }
