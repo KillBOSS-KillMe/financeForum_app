@@ -93,11 +93,6 @@ export default {
 							content: res.data.message,
 							success: res => {
 								if (res.confirm) {
-									// uni.showToast({
-									// 	title: '更新中...',
-									// 	icon: 'l',
-									// 	duration: 1000
-									// })
 									uni.showLoading({
 									    title: '下载中'
 									});

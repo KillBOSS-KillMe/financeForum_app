@@ -261,11 +261,6 @@ var app = getApp();var _default = { data: function data() {return { num: '0', ve
 
 
 
-
-
-
-
-
     modifyPassword: function modifyPassword() {
       // 修改密码
       // 进入修改密码页
