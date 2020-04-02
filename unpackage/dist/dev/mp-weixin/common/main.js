@@ -17,9 +17,18 @@ _vue.default.config.productionTip = false;
 _vue.default.component('pageSearch', pageSearch);
 _vue.default.component('uniLoadMore', uniLoadMore);
 _App.default.mpType = 'app';
-
 var app = new _vue.default(_objectSpread({},
 _App.default));
+
+
+_vue.default.mixin({
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      title: '子诺新微金分享',
+      path: '/pages/index' };
+
+  } });
+
 
 createApp(app).$mount();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
@@ -138,6 +147,7 @@ var _default = { onLaunch: function onLaunch() {console.log('App Launch');var up
     updateManager.onUpdateFailed(function (res) {
       // 新的版本下载失败
     });
+
 
   },
   onShow: function onShow() {

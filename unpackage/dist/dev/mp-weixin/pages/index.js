@@ -243,15 +243,21 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, onShareAppMessage: function onShareAppMessage() {return { title: '子诺新微金分享', path: 'pages/index' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
     // this.getListMore()
     this.getList();}, methods: { // 是否获取过token
     getIsToken: function getIsToken() {if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
         // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
         var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd'); // console.log(loginName + '---===---' + loginPwd)
         if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
-            uni.reLaunch({ url: './login' });}, 3000);} else {// 执行登录操作
-          this.runLogin(loginName, loginPwd);}} else {
+            uni.reLaunch({ url: './login' });
+          }, 3000);
+
+        } else {
+          // 执行登录操作
+          this.runLogin(loginName, loginPwd);
+        }
+      } else {
         // 获取用户信息
         this.getUserInfo();
         // this.getList()

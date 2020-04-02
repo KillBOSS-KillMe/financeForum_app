@@ -245,6 +245,9 @@ uni-swiper{
 	font-weight: 600;
 	color: #333;
 	margin-top: 10rpx;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .longVip {
 	width: 690rpx;

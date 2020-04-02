@@ -76,6 +76,12 @@
 		onHide() {
 			
 		},
+		onShareAppMessage(){
+			return {
+				title: '子诺新微金分享',
+				path: 'pages/index'
+			}
+		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl
 			// this.getUserInfo()

@@ -135,6 +135,7 @@
 					}
 				});
 			},
+			// #ifdef APP-PLUS
 			iAgree() {
 				// console.log(this.payType);
 				// uni.showToast({
@@ -157,6 +158,7 @@
 					}
 				});
 			},
+			
 			appWxpay(payNode) {
 				let payTypeWxpay = ''
 				if(this.payType == 'wechat'){
@@ -184,6 +186,7 @@
 				    },
 				});
 			}
+			// #endif
 		}
 		
 	};

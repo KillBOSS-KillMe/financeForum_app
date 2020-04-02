@@ -41,6 +41,7 @@ export default {
 		updateManager.onUpdateFailed(function(res) {
 				// 新的版本下载失败
 		});
+		
 		// #endif
 	},
 	onShow: function() {

@@ -267,55 +267,6 @@ var app = getApp();var _default = { data: function data() {return { options: {},
 
         } });
 
-    },
-    iAgree: function iAgree() {var _this2 = this;
-      // console.log(this.payType);
-      // uni.showToast({
-      // 	title: this.payType
-      // })
-      uni.request({
-        url: "".concat(_helper.default.requestUrl, "/buy-vip"),
-        method: 'POST',
-        header: {
-          authorization: app.globalData.token },
-
-        data: {
-          member_id: this.options.id,
-          app_type: 'app',
-          pay_type: this.payType },
-
-        success: function success(res) {
-          // 调起支付
-          _this2.appWxpay(res.data);
-        } });
-
-    },
-    appWxpay: function appWxpay(payNode) {
-      var payTypeWxpay = '';
-      if (this.payType == 'wechat') {
-        payTypeWxpay = 'wxpay';
-      } else {
-        payTypeWxpay = 'alipay';
-      }
-      uni.requestPayment({
-        provider: payTypeWxpay,
-        orderInfo: payNode, //微信、支付宝订单数据
-        success: function success(res) {
-          // 两秒后返回上一页
-          setTimeout(function (e) {
-            uni.redirectTo({
-              url: '/pages/paySuccess' });
-
-          }, 2000);
-        },
-        fail: function fail(err) {
-          uni.showToast({
-            title: '支付失败',
-            icon: 'none',
-            duration: 2000 });
-
-        } });
-
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

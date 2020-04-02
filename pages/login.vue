@@ -21,6 +21,11 @@
 		<view class="item">
 			<view class="registered" @tap="goRegistered">注册</view>
 		</view>
+		<!-- #ifdef MP-WEIXIN -->
+		<view class="skip">
+			<text @tap="getSkip">取消</text>
+		</view>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -41,6 +46,12 @@
 			console.log(helper.requestUrl)
 		},
 		methods: {
+			getSkip() {
+				console.log(123)
+				uni.switchTab({
+					url: '/pages/index'
+				});
+			},
 			// 获取登录名
 			getLoginName(e) {
 				this.loginName = e.detail.value
@@ -185,7 +196,16 @@
 		font-size: 30rpx;
 		padding: 0 20rpx;
 	}
-
+	.skip{
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		width: 670rpx;
+		border-radius: 10rpx;
+		color: #666666;
+		font-size: 30rpx;
+		font-weight: 600;
+	}
 	.forget {
 		display: flex;
 		align-items: center;

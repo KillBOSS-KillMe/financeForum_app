@@ -159,6 +159,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -185,12 +190,18 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
+//
+//
+//
 var app = getApp();var _default = { data: function data() {return { loginPaw: '', loginName: '' };}, onShow: function onShow() {// uni.hideHomeButton()
-  }, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { // 获取登录名
+  }, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { getSkip: function getSkip() {console.log(123);uni.switchTab({ url: '/pages/index' });}, // 获取登录名
     getLoginName: function getLoginName(e) {this.loginName = e.detail.value;}, // 获取密码
     getLoginPaw: function getLoginPaw(e) {this.loginPaw = e.detail.value;}, // 进入忘记密码页
     goForgetPassword: function goForgetPassword() {uni.navigateTo({ url: '/pages/forgetPassword' });}, // 进入注册页
-    goRegistered: function goRegistered() {uni.navigateTo({
+    goRegistered: function goRegistered() {
+      uni.navigateTo({
         url: "/pages/registered" });
 
     },

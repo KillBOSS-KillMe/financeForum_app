@@ -92,7 +92,7 @@
       },
       {
         "pagePath": "pages/exchang",
-        "text": "子诺交流区",
+        "text": "信贷员互动",
         "iconPath": "static/exchange.png",
         "selectedIconPath": "static/exchangeCur.png"
       },
