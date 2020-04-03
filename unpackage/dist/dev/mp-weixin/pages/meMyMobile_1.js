@@ -190,12 +190,14 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 var app = getApp();var _default = { data: function data() {return { mobile: '', currentTime: 60, // 倒计时初始值
-      time: '获取验证码', noShow: 1, verification_key: '', mobileCode: '' };}, onLoad: function onLoad(e) {console.log(e);console.log(this.mobileCode);this.mobile = e.num;}, methods: { inputValue: function inputValue(e) {console.log(e);this.mobileCode = e.detail.value;}, goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;if (this.mobileCode == "") {uni.showToast({ title: '请获取验证码', icon: 'none' });} else {
+      time: '获取验证码', noShow: 1, verification_key: '', mobileCode: '', token: '' };}, onLoad: function onLoad(e) {console.log(e);console.log(this.mobileCode);this.token = uni.getStorageSync('token');this.mobile = e.num;}, methods: { inputValue: function inputValue(e) {console.log(e);this.mobileCode = e.detail.value;}, goMyMobile: function goMyMobile(e) {var url = e.target.dataset.name;if (this.mobileCode == "") {uni.showToast({ title: '请获取验证码', icon: 'none' });
+
+      } else {
         uni.request({
           url: "".concat(_helper.default.requestUrl, "/user/old-mobile-verification"),
           method: 'POST',
           header: {
-            authorization: app.globalData.token },
+            authorization: this.token },
 
           data: {
             code: this.mobileCode,

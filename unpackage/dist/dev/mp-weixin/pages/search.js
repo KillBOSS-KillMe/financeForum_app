@@ -233,8 +233,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { typeIndex: 0, inputValue: '', typeList: [{ name: '用户', key: 'user' }, { name: '帖子', key: 'post' }], postList: [], userList: [], itemList: [], current_page: 1, imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, methods: { selSearchType: function selSearchType(e) {console.log('picker发送选择改变，携带值为', e.target.value);this.typeIndex = e.target.value;}, goPostDetail: function goPostDetail(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });}, // 获取输入框的输入信息
-    bindInput: function bindInput(e) {this.inputValue = e.detail.value;}, runSearch: function runSearch(type) {var _this = this;uni.showLoading({ title: '搜索中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/search"), header: { authorization: app.globalData.token }, method: 'POST', data: { type: type, keywords: this.inputValue, page: this.current_page, page_size: 20 }, success: function success(res) {
+var app = getApp();var _default = { data: function data() {return { typeIndex: 0, inputValue: '', typeList: [{ name: '用户', key: 'user' }, { name: '帖子', key: 'post' }], postList: [], userList: [], itemList: [], current_page: 1, imgUrl: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;}, methods: { selSearchType: function selSearchType(e) {console.log('picker发送选择改变，携带值为', e.target.value);this.typeIndex = e.target.value;}, goPostDetail: function goPostDetail(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });}, // 获取输入框的输入信息
+    bindInput: function bindInput(e) {this.inputValue = e.detail.value;}, runSearch: function runSearch(type) {var _this = this;uni.showLoading({ title: '搜索中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/search"), header: { authorization: this.token }, method: 'POST', data: { type: type, keywords: this.inputValue, page: this.current_page, page_size: 20 },
+
+        success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {

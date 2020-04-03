@@ -266,15 +266,17 @@ var _index = __webpack_require__(/*! ../components/index.js */ 453);function _in
 //
 //
 var app = getApp();var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | components/uni-popup */ "components/uni-popup").then((function () {return resolve(__webpack_require__(/*! @/components/uni-popup.vue */ 549));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { bottomData: [{ text: '微信好友', type: 'WXSceneSession', icon: 'iconweixin' }, { text: '朋友圈', type: 'WXSenceTimeline', icon: 'iconpengyouquan' }], codeType: '', codeList: {}, showIs: '0', openSettingBtnHidden: true, //是否授权,
-      imgUrl: '', bj: '../static/erweimaImg.png', wWidth: '', wHeight: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {var _this = this;console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;uni.getSystemInfo({ success: function success(res) {_this.wWidth = res.windowWidth;console.log(_this.wWidth);_this.wHeight = res.windowHeight;} });}, onShow: function onShow() {this.getCode();}, // 微信分享
+      imgUrl: '', bj: '../static/erweimaImg.png', wWidth: '', wHeight: '', token: '' };}, components: { uniPopup: uniPopup }, onLoad: function onLoad(option) {var _this = this;this.token = uni.getStorageSync('token');console.log(option);this.codeType = option.type;this.imgUrl = _helper.default.imgUrl;uni.getSystemInfo({ success: function success(res) {_this.wWidth = res.windowWidth;console.log(_this.wWidth);_this.wHeight = res.windowHeight;} });}, onShow: function onShow() {this.getCode();}, // 微信分享
   onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url }; // setTimeout( e =>{
     // 	this.showIs = '1'
     // },3000)
   }, shareFriend: function shareFriend() {//分享到微信朋友
     this.goShare('WXSceneSession');}, shareFriendcricle: function shareFriendcricle() {//分享到微信朋友圈
-    this.goShare('WXSenceTimeline');}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}}, // 保存二维码
+    this.goShare('WXSenceTimeline');}, methods: { quickInlet: function quickInlet(e) {if (e == 2) {this.$refs.showshare.open();} else if (e == 1) {this.getList();}},
+    // 保存二维码
     //微信小程序保存到相册
-    handleSetting: function handleSetting(e) {console.log(e);
+    handleSetting: function handleSetting(e) {
+      console.log(e);
       if (!e.detail.authSetting['scope.writePhotosAlbum']) {
         this.openSettingBtnHidden = false;
       } else {
@@ -369,7 +371,7 @@ var app = getApp();var uniPopup = function uniPopup() {__webpack_require__.e(/*!
         url: "".concat(_helper.default.requestUrl, "/promote-showmycode"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           res = _helper.default.null2str(res);
@@ -398,7 +400,7 @@ var app = getApp();var uniPopup = function uniPopup() {__webpack_require__.e(/*!
         url: "".concat(_helper.default.requestUrl, "/promote-getmycode"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           // uni.hideLoading();

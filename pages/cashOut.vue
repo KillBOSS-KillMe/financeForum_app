@@ -64,10 +64,12 @@
 				imgShow: '',
 				imgAlipay: '',
 				imgAlipayShow: '',
-				imgList: ''
+				imgList: '',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.getList()
 		},
 		methods: {
@@ -81,7 +83,7 @@
 					url: `${helper.requestUrl}/promote-rebates`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						// uni.hideLoading();
@@ -123,7 +125,7 @@
 										filePath: item.path,
 										name: 'file',
 										header: {
-											authorization: app.globalData.token
+											authorization: this.token
 										},
 										success: res => {
 											console.log(res)
@@ -187,7 +189,7 @@
 					url: `${helper.requestUrl}/user/cash-withdrawals-apply`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						money: this.money,

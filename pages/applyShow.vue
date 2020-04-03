@@ -30,13 +30,15 @@
 			return {
 				collectionList:[],
 				imgUrl:'',
-				ItemId: ''
+				ItemId: '',
+				token: ''
 			}
 		},
 		onLoad(e) {
 			this.ItemId = e.id
 			this.getList();
 			this.imgUrl = helper.imgUrl
+			this.token = uni.getStorageSync('token')
 			uni.setNavigationBarTitle({
 				title: e.name
 			})
@@ -47,7 +49,7 @@
 					url: `${helper.requestUrl}/system-tools/category-tool`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						tool_id: this.ItemId

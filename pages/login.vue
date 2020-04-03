@@ -36,7 +36,8 @@
 		data() {
 			return {
 				loginPaw: '',
-				loginName: ''
+				loginName: '',
+				token: ''
 			}
 		},
 		onShow() {
@@ -130,11 +131,17 @@
 							// 登录的账号和密码存入缓存
 							uni.setStorageSync('login_name', this.loginName);
 							uni.setStorageSync('login_pwd', this.loginPaw);
+							console.log(res.data.token_type+res.data.access_token)
+							// let newToken=new Array(res.data.token_type, res.data.access_token);
+							// newToken.join('  ');
+							// console.log(newToken)
+							
 							uni.showToast({
 								title: '登录成功',
 								icon: "none"
 							});
-							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
+							this.token = `${res.data.token_type} ${res.data.access_token}`
+							uni.setStorageSync('token',this.token)
 							setTimeout(() => {
 								// 进入登录页
 								uni.reLaunch({

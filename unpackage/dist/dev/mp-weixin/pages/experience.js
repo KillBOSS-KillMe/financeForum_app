@@ -48,7 +48,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { type: [], imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.getType();},
+var app = getApp();var _default = { data: function data() {return { type: [], imgUrl: '', token: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token');
+    this.getType();
+  },
   methods: {
     //获取模块
     getType: function getType() {var _this = this;
@@ -56,7 +58,7 @@ var app = getApp();var _default = { data: function data() {return { type: [], im
         url: "".concat(_helper.default.requestUrl, "/posts/can-boards"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();

@@ -184,10 +184,11 @@ var _mescrollMixins = _interopRequireDefault(__webpack_require__(/*! @/component
 //
 var app = getApp();var _default = { mixins: [_mescrollMixins.default], // 使用mixin
   data: function data() {return { list: [], page: '1', page_size: '10', boardId: '0', imgUrl: '', bank_id: '0', child_id: '0', vip: '', isShow: true, isShow1: false, downOption: { auto: false //是否在初始化后,自动执行downCallback; 默认true
-      }, upOption: { page: { num: 0, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
+      }, token: '', upOption: { page: { num: 0, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
           size: 10 // 每页数据的数量,默认10
         }, noMoreSize: 1, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
         empty: { tip: '暂无相关数据' }, textNoMore: '没有更多数据了' } };
+
   },
   onShow: function onShow(e) {
     // console.log(e)
@@ -196,6 +197,7 @@ var app = getApp();var _default = { mixins: [_mescrollMixins.default], // 使用
   onLoad: function onLoad(e) {
     console.log(e, '*******************');
     console.log(e.bankId);
+    this.token = uni.getStorageSync('token');
     this.imgUrl = _helper.default.imgUrl;
     console.log(this.imgUrl);
     this.boardId = e.id || 0;
@@ -225,7 +227,7 @@ var app = getApp();var _default = { mixins: [_mescrollMixins.default], // 使用
         url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           board_id: this.boardId,

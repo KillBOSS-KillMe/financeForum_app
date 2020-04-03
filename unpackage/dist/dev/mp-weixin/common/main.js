@@ -188,6 +188,7 @@ var _default = { onLaunch: function onLaunch() {console.log('App Launch');var up
     link: '' },
 
   onLoad: function onLoad(options) {
+    // this.token = uni.getStorageSync('token')
     this.getToken();
   },
   methods: {
@@ -209,6 +210,7 @@ var _default = { onLaunch: function onLaunch() {console.log('App Launch');var up
                 if (data.statusCode == '200') {
                   var token = "".concat(data.data.token);
                   _this.$options.globalData.token = token;
+                  uni.setStorageSync('token', _this.$options.globalData.token);
                   console.log(_this.$options.globalData.token);
                 }
               } });

@@ -92,7 +92,8 @@ export default {
 			top: '0',
 			vip: '',
 			isShow: true,
-			isShow1: false
+			isShow1: false,
+			token: ''
 		};
 	},
 	onLoad(e) {
@@ -100,6 +101,7 @@ export default {
 		this.typeText2 = e.title;
 		this.category_id = e.id;
 		this.imgUrl = helper.imgUrl;
+		this.token = uni.getStorageSync('token') || this.token
 		this.getList();
 	},
 	methods: {
@@ -152,7 +154,7 @@ export default {
 				url: `${helper.requestUrl}/holes/categories`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -170,7 +172,7 @@ export default {
 				url: `${helper.requestUrl}/holes/categories-holes`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					category_id: this.category_id,

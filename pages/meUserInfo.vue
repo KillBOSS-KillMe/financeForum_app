@@ -107,10 +107,12 @@
 				imgUrl: '',
 				publishList: [],
 				userInfo: {},
-				page: '1'
+				page: '1',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			// 获取我的发布
 			this.getPublish()
 			this.imgUrl = helper.imgUrl
@@ -152,7 +154,7 @@
 					url: `${helper.requestUrl}/user/publish`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						page_size: '20',
@@ -182,7 +184,7 @@
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

@@ -68,13 +68,15 @@ export default {
 			categoryList:[],
 			subCategoryList:[],
 			categoryActive: 0,
-			area_id: ''
+			area_id: '',
+			token: ''
 		};
 	},
 	onLoad() {	
 		this.imgUrl = helper.imgUrl
+		this.token = uni.getStorageSync('token')
 	},
-	onShow(){
+	onShow(){	
 		this.getUserInfo()
 		this.categoryActive = 0,
 		this.subCategoryList =[]
@@ -102,7 +104,7 @@ export default {
 				url: `${helper.requestUrl}/me`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					uni.hideLoading();
@@ -129,7 +131,7 @@ export default {
 				url: `${helper.requestUrl}/areas/area-list`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					uni.hideLoading();
@@ -189,7 +191,7 @@ export default {
 				url: `${helper.requestUrl}/areas/city-list`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data:{
 					area_id: this.area_id

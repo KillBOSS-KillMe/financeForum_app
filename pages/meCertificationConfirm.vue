@@ -63,11 +63,13 @@
 					card_positive: '',  //身份证正面
 					card_peverse: '',
 				},
+				token: '',
 				isDisabled: false,
 				imgUrl: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.imgUrl = helper.imgUrl
 		},
 		methods: {
@@ -102,7 +104,7 @@
 										filePath: item.path,
 										name: 'file',
 										header: {
-											authorization: app.globalData.token
+											authorization: this.token
 										},
 										success: res => {
 											console.log(res)
@@ -191,7 +193,7 @@
 					url: `${helper.requestUrl}/user/real-check`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: this.formNode,
 					success: res => {

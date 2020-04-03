@@ -239,9 +239,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { types: '', collectionList: {}, money: '', imgNew: '', imgShow: '', imgAlipay: '', imgAlipayShow: '', imgList: '' };}, onLoad: function onLoad() {this.getList();}, methods: { radioChange: function radioChange(e) {console.log(e);this.types = e.detail.value;console.log(this.types);}, getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-rebates"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {// uni.hideLoading();
+var app = getApp();var _default = { data: function data() {return { types: '', collectionList: {}, money: '', imgNew: '', imgShow: '', imgAlipay: '', imgAlipayShow: '', imgList: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.getList();}, methods: { radioChange: function radioChange(e) {console.log(e);this.types = e.detail.value;console.log(this.types);}, getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-rebates"), method: 'GET', header: { authorization: this.token }, success: function success(res) {// uni.hideLoading();
           res = _helper.default.null2str(res);console.log(res, '++++');if (res.data.status_code == 200) {_this.collectionList = res.data;} else {}} });}, inputValue: function inputValue(e) {console.log(e, '999');this.money = e.detail.value;}, getCard: function getCard(e) {console.log(e);var type = e;this.getImg(type);}, //上传图片
-    getImg: function getImg(op) {var _this2 = this;uni.chooseImage({ count: 1, sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+    getImg: function getImg(op) {var _this2 = this;uni.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'],
         success: function success(res) {
           uni.showToast({
@@ -256,7 +258,7 @@ var app = getApp();var _default = { data: function data() {return { types: '', c
                 filePath: item.path,
                 name: 'file',
                 header: {
-                  authorization: app.globalData.token },
+                  authorization: _this2.token },
 
                 success: function success(res) {
                   console.log(res);
@@ -320,7 +322,7 @@ var app = getApp();var _default = { data: function data() {return { types: '', c
         url: "".concat(_helper.default.requestUrl, "/user/cash-withdrawals-apply"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           money: this.money,

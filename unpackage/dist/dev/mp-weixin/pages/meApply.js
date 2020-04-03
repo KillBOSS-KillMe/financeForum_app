@@ -173,8 +173,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', is_member: '' };}, onLoad: function onLoad() {this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
-    getList: function getList() {var _this = this;console.log(app.globalData.token);uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET', header: { authorization: app.globalData.token },
+var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', is_member: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { // collectionList
+    getList: function getList() {var _this = this;console.log(this.token);uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/apps"), method: 'GET',
+        header: {
+          authorization: this.token },
 
         success: function success(res) {
           // uni.hideLoading();

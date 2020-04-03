@@ -33,10 +33,12 @@ export default {
 			num: '0',
 			version: '',
 			imgUrl: '',
-			type: ''
+			type: '',
+			token: ''
 		};
 	},
 	onLoad() {
+		this.token = uni.getStorageSync('token')
 		this.imgUrl = helper.imgUrl
 		const loginName = uni.getStorageSync('login_name');
 		// console.log(loginName)
@@ -51,17 +53,17 @@ export default {
 	},
 	onShow() {
 		switch(uni.getSystemInfoSync().platform){
-	    case 'android':
+	    case 'android':
 				 this.type = 1
-	       console.log('运行Android上')
-	       break;
-	    case 'ios':
+	       console.log('运行Android上')
+	       break;
+	    case 'ios':
 				 this.type = 2
-	       console.log('运行iOS上')
-	       break;
-	    default:
-	       console.log('运行在开发者工具上')
-	       break;
+	       console.log('运行iOS上')
+	       break;
+	    default:
+	       console.log('运行在开发者工具上')
+	       break;
 		}
 		uni.getStorageInfo({
 			success: res => {
@@ -190,7 +192,7 @@ export default {
 				url: `${helper.requestUrl}/logout`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					uni.hideLoading();

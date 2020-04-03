@@ -179,7 +179,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: { team_relate_1: '', team_relate_2: '', post_type: 'post' } };}, onLoad: function onLoad() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-setting"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+var app = getApp();var _default = { data: function data() {return { list: { team_relate_1: '', team_relate_2: '', post_type: 'post', token: '' } };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-setting"), method: 'GET', header: { authorization: this.token },
+
+        success: function success(res) {
           // uni.hideLoading();
           res = _helper.default.null2str(res);
           _this.list.team_relate_1 = res.data.team_relate_1;
@@ -245,7 +247,7 @@ var app = getApp();var _default = { data: function data() {return { list: { team
         url: "".concat(_helper.default.requestUrl, "/promote-setting"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: this.list,
         success: function success(res) {

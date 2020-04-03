@@ -64,7 +64,8 @@
 				imgUrl: '',
 				page_size: 5,
 				page:1,
-				listNode: []
+				listNode: [],
+				token: ''
 			};
 		},
 		onLaunch() {
@@ -83,6 +84,7 @@
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.imgUrl = helper.imgUrl
 			// this.getUserInfo()
 			// this.getListMore()
@@ -91,7 +93,7 @@
 		methods: {
 			// 是否获取过token
 			getIsToken(){
-				if (app.globalData.token == "") {
+				if (this.token == "") {
 					// 获取缓存中用于登录的用户名和密码
 					// 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
 					const loginName = uni.getStorageSync('login_name');
@@ -137,7 +139,9 @@
 							// 登录的账号和密码存入缓存
 							uni.setStorageSync('login_name', this.loginName);
 							uni.setStorageSync('login_pwd', this.loginPaw);
-							app.globalData.token = `${res.data.token_type} ${res.data.access_token}`
+							this.token = `${res.data.token_type} ${res.data.access_token}`
+							uni.setStorageSync('token', this.token);
+							
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -160,7 +164,7 @@
 				let bind_board = e.currentTarget.dataset.bind_board
 				let id = e.currentTarget.dataset.id
 				let name = e.currentTarget.dataset.name
-				if (app.globalData.token == "") {
+				if (this.token == "") {
 					const loginName = uni.getStorageSync('login_name');
 					const loginPwd = uni.getStorageSync('login_pwd');
 					// console.log(loginName + '---===---' + loginPwd)
@@ -219,7 +223,7 @@
 			},
 			// 文章详情
 			goDetail(e) {
-				if (app.globalData.token == "") {
+				if (this.token == "") {
 					const loginName = uni.getStorageSync('login_name');
 					const loginPwd = uni.getStorageSync('login_pwd');
 					// console.log(loginName + '---===---' + loginPwd)
@@ -259,7 +263,7 @@
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();
@@ -281,7 +285,7 @@
 					url: `${helper.requestUrl}/index`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();
@@ -321,7 +325,7 @@
 					url: `${helper.requestUrl}/index-board-posts`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						board_id: this.boardId,

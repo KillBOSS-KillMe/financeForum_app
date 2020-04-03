@@ -177,8 +177,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 获取数据
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-teamlist"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {res = _helper.default.null2str(res);
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 获取数据
+    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/promote-teamlist"), method: 'GET', header: { authorization: this.token },
+        success: function success(res) {
+          res = _helper.default.null2str(res);
           console.log(res, '****');
           if (res.data.status_code == 200) {
             _this.list = res.data.datas;

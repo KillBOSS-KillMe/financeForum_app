@@ -78,6 +78,7 @@ export default {
 		link: ''
 	},
 	onLoad(options) {
+		// this.token = uni.getStorageSync('token')
 		this.getToken()
 	},
 	methods: {
@@ -99,6 +100,7 @@ export default {
 								if (data.statusCode == '200') {
 									let token = `${data.data.token}`;
 									this.$options.globalData.token = token;
+									uni.setStorageSync('token',this.$options.globalData.token)
 									console.log(this.$options.globalData.token);
 								}
 							}

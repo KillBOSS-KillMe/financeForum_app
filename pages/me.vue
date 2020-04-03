@@ -94,11 +94,14 @@
 			return {
 				userInfo: {},
 				imgUrl: '',
-				imageUrl: ''
+				imageUrl: '',
+				token: ''
 			}
 		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl
+			console.log(uni.getStorageSync('token'))
+			this.token = uni.getStorageSync('token')
 		},
 		onShow() {
 			this.getUserInfo()
@@ -149,7 +152,7 @@
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

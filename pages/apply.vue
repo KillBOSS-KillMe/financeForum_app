@@ -51,7 +51,8 @@ export default {
 			},
 			vip:'',
 			isShow: true,
-			isShow1: false
+			isShow1: false,
+			token: ''
 		}
 	},
 	props: {
@@ -71,6 +72,7 @@ export default {
 	},
 	onLoad() {
 		this.imgUrl = helper.imgUrl
+		this.token = uni.getStorageSync('token')
 	},
 	onShow() {
 		this.getNav()
@@ -101,7 +103,7 @@ export default {
 				url: `${helper.requestUrl}/board/boards`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res)
@@ -142,7 +144,7 @@ export default {
 				url: `${helper.requestUrl}/posts/board-posts`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data:{
 					board_id: this.boardId,

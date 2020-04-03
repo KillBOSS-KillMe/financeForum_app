@@ -201,9 +201,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { categoryList: [], subCategoryList: [], imgUrl: '', page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, vip: '', isShow: true, isShow1: false };}, props: { //主分类激活索引
-    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } }, onLoad: function onLoad() {
+var app = getApp();var _default = { data: function data() {return { categoryList: [], subCategoryList: [], imgUrl: '', page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, vip: '', isShow: true, isShow1: false, token: '' };}, props: { //主分类激活索引
+    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } },
+  onLoad: function onLoad() {
     this.imgUrl = _helper.default.imgUrl;
+    this.token = uni.getStorageSync('token');
   },
   onShow: function onShow() {
     this.getNav();
@@ -234,7 +236,7 @@ var app = getApp();var _default = { data: function data() {return { categoryList
         url: "".concat(_helper.default.requestUrl, "/board/boards"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           res = _helper.default.null2str(res);
@@ -275,7 +277,7 @@ var app = getApp();var _default = { data: function data() {return { categoryList
         url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           board_id: this.boardId,

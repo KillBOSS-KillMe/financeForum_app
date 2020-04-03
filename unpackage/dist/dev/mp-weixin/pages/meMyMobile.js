@@ -161,7 +161,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { mobile: '' };}, onLoad: function onLoad() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/old-mobile"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+var app = getApp();var _default = { data: function data() {return { mobile: '', token: '' };}, onLoad: function onLoad() {var _this = this;this.token = uni.getStorageSync('token');uni.request({ url: "".concat(_helper.default.requestUrl, "/user/old-mobile"), method: 'GET', header: { authorization: this.token },
+
+      success: function success(res) {
         res = _helper.default.null2str(res);
         console.log(res);
         if (res.data.status_code == 200) {

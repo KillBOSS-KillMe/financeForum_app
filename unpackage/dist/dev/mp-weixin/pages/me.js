@@ -309,10 +309,13 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { userInfo: {}, imgUrl: '', imageUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
+var app = getApp();var _default = { data: function data() {return { userInfo: {}, imgUrl: '', imageUrl: '', token: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;console.log(uni.getStorageSync('token'));this.token = uni.getStorageSync('token');}, onShow: function onShow() {this.getUserInfo();}, methods: { // 进入页面
     goPageNavigateTo: function goPageNavigateTo(e) {console.log(e);var url = e.currentTarget.dataset.name;if (url == 'meNewbieRead') {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(21) });} else if (url == 'meSpread') {if (this.userInfo.type == 'normal') {uni.showToast({ title: '您不是会员，暂无此权限', icon: 'none', duration: 1000 });setTimeout(function (e) {uni.navigateTo({ url: "/pages/meVIP" });}, 1600);} else {uni.navigateTo({ url: "/pages/meSpread" });}} else if (url == 'meMessage') {uni.navigateTo({ url: "/pages/".concat(url, "?isType=").concat(this.userInfo.news) });} else {uni.navigateTo({ url: "/pages/".concat(url) });}}, getUserInfo: function getUserInfo() {var _this = this; // 用户信息获取
-      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.userInfo = res.data;_this.imageUrl = _this.imgUrl + _this.userInfo.avatar;} else {if (res.data.message == 'Unauthenticated.') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
-                uni.reLaunch({ url: './login' });}, 3000);} else {uni.showToast({ title: res.data.message, icon: 'none', duration: 3000 });}}} });
+      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {_this.userInfo = res.data;_this.imageUrl = _this.imgUrl + _this.userInfo.avatar;} else {if (res.data.message == 'Unauthenticated.') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
+                uni.reLaunch({ url: './login' });}, 3000);} else {uni.showToast({ title: res.data.message, icon: 'none', duration: 3000 });}
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

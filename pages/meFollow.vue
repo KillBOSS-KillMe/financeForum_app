@@ -67,10 +67,12 @@ export default {
 			list: [],
 			imgUrl: '',
 			Inv: '0',
-			tabType: 'board'
+			tabType: 'board',
+			token: ''
 		};
 	},
 	onLoad() {
+		this.token = uni.getStorageSync('token')
 		// 加载关注列表
 		this.getList()
 		this.imgUrl = helper.imgUrl;
@@ -112,7 +114,7 @@ export default {
 				url: `${helper.requestUrl}/user/follows`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data:{
 					type: this.tabType
@@ -138,7 +140,7 @@ export default {
 				url: `${helper.requestUrl}/user/del_follow`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					id: id

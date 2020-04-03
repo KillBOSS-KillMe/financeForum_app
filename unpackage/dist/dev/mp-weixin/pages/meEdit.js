@@ -370,9 +370,11 @@ var app = getApp();var pickerAddress = function pickerAddress() {Promise.all(/*!
         provident_fund: '', //公积金
         education: '', //学历
         province: '', //省市区
-        city: '', district: '' }, array: ['男', '女', '无'], arrayCard: ['无', '有'], schoolList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'], index: 0, setData: '', options: '', imgUrl: '' };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getformNode();}, methods: { // 进入编辑页
+        city: '', district: '' }, array: ['男', '女', '无'], arrayCard: ['无', '有'], schoolList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'], index: 0, setData: '', options: '', imgUrl: '', token: '' };}, components: { pickerAddress: pickerAddress }, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getformNode();}, methods: { // 进入编辑页
     goEditSet: function goEditSet(e) {console.log(e);var type = e.currentTarget.dataset.type;var name = e.currentTarget.dataset.name;var title = e.currentTarget.dataset.title;uni.navigateTo({ url: "/pages/meEditSet?name=".concat(name, "&title=").concat(title, "&type=").concat(type) });}, bindPickerChange: function bindPickerChange(e) {this.index = e.target.value;if (e.currentTarget.dataset.name == 'sex') {this.setData = this.array[this.index];this.formNode.sex == this.setData;} else if (e.currentTarget.dataset.name == 'credit_card') {this.setData = this.index;this.formNode.credit_card == this.arrayCard[this.index];} else if (e.currentTarget.dataset.name == 'social_security') {this.setData = this.index;this.formNode.social_security == this.arrayCard[this.index];} else if (e.currentTarget.dataset.name == 'provident_fund') {this.setData = this.index;this.formNode.provident_fund == this.arrayCard[this.index];} else if (e.currentTarget.dataset.name == 'education') {this.setData = ++this.index;this.formNode.education == this.schoolList[this.index];}this.options = e.currentTarget.dataset.name;this.submit();}, goAddress: function goAddress(e) {console.log(e);this.txt = e.data.join('');for (var i = 0; i < e.data.length; i++) {this.setData = e.data[i];if (i == '0') {this.options = 'province';} else if (i == '1') {this.options = 'city';} else if (i == '2') {this.options = 'district';}this.submit();}}, getformNode: function getformNode() {var _this = this; // 用户信息获取
-      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.formNode = res.data;if (_this.formNode.credit_card == 0) {_this.formNode.credit_card = '无';} else {_this.formNode.credit_card = '有';};if (_this.formNode.social_security == 0) {_this.formNode.social_security = '无';} else {_this.formNode.social_security = '有';}if (_this.formNode.provident_fund == 0) {_this.formNode.provident_fund = '无';} else {_this.formNode.provident_fund = '有';}if (_this.formNode.education == 1) {_this.formNode.education = '小学';} else if (_this.formNode.education == 2) {_this.formNode.education = '初中';} else if (_this.formNode.education == 3) {_this.formNode.education = '高中';} else if (_this.formNode.education == 4) {_this.formNode.education = '大专';} else if (_this.formNode.education == 5) {_this.formNode.education = '本科';} else if (_this.formNode.education == 6) {_this.formNode.education = '硕士';
+      uni.showLoading({ title: '用户信息获取中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.formNode = res.data;if (_this.formNode.credit_card == 0) {_this.formNode.credit_card = '无';} else {_this.formNode.credit_card = '有';};if (_this.formNode.social_security == 0) {_this.formNode.social_security = '无';} else {_this.formNode.social_security = '有';}if (_this.formNode.provident_fund == 0) {_this.formNode.provident_fund = '无';} else {_this.formNode.provident_fund = '有';}if (_this.formNode.education == 1) {_this.formNode.education = '小学';} else if (_this.formNode.education == 2) {_this.formNode.education = '初中';} else if (_this.formNode.education == 3) {_this.formNode.education = '高中';} else if (_this.formNode.education == 4) {_this.formNode.education = '大专';} else if (_this.formNode.education == 5) {_this.formNode.education = '本科';
+          } else if (_this.formNode.education == 6) {
+            _this.formNode.education = '硕士';
           } else if (_this.formNode.education == 7) {
             _this.formNode.education = '博士';
           }
@@ -396,7 +398,7 @@ var app = getApp();var pickerAddress = function pickerAddress() {Promise.all(/*!
         url: "".concat(_helper.default.requestUrl, "/user/edit"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           field: this.options,
@@ -441,7 +443,7 @@ var app = getApp();var pickerAddress = function pickerAddress() {Promise.all(/*!
                 filePath: item.path,
                 name: 'file',
                 header: {
-                  authorization: app.globalData.token },
+                  authorization: _this3.token },
 
                 success: function success(res) {
                   console.log(res);

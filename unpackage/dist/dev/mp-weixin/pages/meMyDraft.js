@@ -205,18 +205,20 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', nextPageUrl: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // 加载查稿列表
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', nextPageUrl: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl; // 加载查稿列表
     this.myDraftPosts();}, onReachBottom: function onReachBottom() {// 页面上拉触底事件的处理函数
     if (this.nextPageUrl != '') {this.getMore();}}, methods: { deleteItem: function deleteItem(e) {var _this = this; // 点击删除
       uni.showModal({ title: '提示', content: '确认删除?', success: function success(res) {if (res.confirm) {// console.log('用户点击确定');
             var index = e.currentTarget.dataset.index;_this.runDeleteItem(index);} else if (res.cancel) {// console.log('用户点击取消');
           }} });}, runDeleteItem: function runDeleteItem(index) {var _this2 = this; // 执行草稿删除
-      uni.showLoading({ title: '删除中...' });var list = this.list;
+      uni.showLoading({ title: '删除中...' });
+
+      var list = this.list;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/posts/del"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: list[index].id },
@@ -262,7 +264,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/my-draft-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();
@@ -288,7 +290,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/my-draft-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();

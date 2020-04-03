@@ -195,11 +195,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { loginPaw: '', loginName: '' };}, onShow: function onShow() {// uni.hideHomeButton()
+var app = getApp();var _default = { data: function data() {return { loginPaw: '', loginName: '', token: '' };}, onShow: function onShow() {// uni.hideHomeButton()
   }, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { getSkip: function getSkip() {console.log(123);uni.switchTab({ url: '/pages/index' });}, // 获取登录名
     getLoginName: function getLoginName(e) {this.loginName = e.detail.value;}, // 获取密码
     getLoginPaw: function getLoginPaw(e) {this.loginPaw = e.detail.value;}, // 进入忘记密码页
-    goForgetPassword: function goForgetPassword() {uni.navigateTo({ url: '/pages/forgetPassword' });}, // 进入注册页
+    goForgetPassword: function goForgetPassword() {uni.navigateTo({ url: '/pages/forgetPassword' });},
+    // 进入注册页
     goRegistered: function goRegistered() {
       uni.navigateTo({
         url: "/pages/registered" });
@@ -263,11 +264,17 @@ var app = getApp();var _default = { data: function data() {return { loginPaw: ''
             // 登录的账号和密码存入缓存
             uni.setStorageSync('login_name', _this2.loginName);
             uni.setStorageSync('login_pwd', _this2.loginPaw);
+            console.log(res.data.token_type + res.data.access_token);
+            // let newToken=new Array(res.data.token_type, res.data.access_token);
+            // newToken.join('  ');
+            // console.log(newToken)
+
             uni.showToast({
               title: '登录成功',
               icon: "none" });
 
-            app.globalData.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
+            _this2.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
+            uni.setStorageSync('token', _this2.token);
             setTimeout(function () {
               // 进入登录页
               uni.reLaunch({

@@ -4,11 +4,11 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__F2BA9AA",
+  "id": "__UNI__EA9C27B",
   "name": "子诺新微金",
   "version": {
-    "name": "1.0.2",
-    "code": "100"
+    "name": "1.0.5",
+    "code": 110
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -47,6 +47,9 @@
       "immersed": "supportedDevice",
       "style": "light",
       "background": "#2390DC"
+    },
+    "compatible": {
+      "ignoreVersion": true
     },
     "usingComponents": true,
     "nvueCompiler": "uni-app",

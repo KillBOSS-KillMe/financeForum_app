@@ -173,7 +173,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { code: '', arrCode: '', formNode: { user_setting_account: '', user_setting_passwd: '' }, codeInput: '', userInfo: {} };}, onLoad: function onLoad() {this.tapCode(), this.getUserInfo();}, random: function random(a, b) {return Math.round(Math.random() * (a - b) + b);},
+var app = getApp();var _default = { data: function data() {return { code: '', arrCode: '', formNode: { user_setting_account: '', user_setting_passwd: '' }, codeInput: '', userInfo: {}, token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.tapCode(), this.getUserInfo();}, random: function random(a, b) {
+    return Math.round(Math.random() * (a - b) + b);
+  },
 
   methods: {
     tapCode: function tapCode() {
@@ -236,7 +238,7 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
         url: "".concat(_helper.default.requestUrl, "/promote-createmycode"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: this.formNode,
         success: function success(res) {
@@ -270,7 +272,7 @@ var app = getApp();var _default = { data: function data() {return { code: '', ar
         url: "".concat(_helper.default.requestUrl, "/me"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();

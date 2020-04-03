@@ -30,12 +30,14 @@
 				formNode: {
 					user_setting_account: '',
 					user_setting_passwd: '',
-					post_type: 'post'
+					post_type: 'post',
+					token: ''
 				}
 			}
 		},
 		onLoad(e) {
 			console.log(e,'n')
+			this.token = uni.getStorageSync('token')
 			this.formNode.user_setting_account = e.item
 		},
 		methods: {
@@ -72,7 +74,7 @@
 					url: `${helper.requestUrl}/promote-getmycode`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: this.formNode,
 					success: res => {

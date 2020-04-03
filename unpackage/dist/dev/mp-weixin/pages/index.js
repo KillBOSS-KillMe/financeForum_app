@@ -243,14 +243,16 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [] };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, onShareAppMessage: function onShareAppMessage() {return { title: '子诺新微金分享', path: 'pages/index' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, onShareAppMessage: function onShareAppMessage() {return { title: '子诺新微金分享', path: 'pages/index' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
     // this.getListMore()
     this.getList();}, methods: { // 是否获取过token
-    getIsToken: function getIsToken() {if (app.globalData.token == "") {// 获取缓存中用于登录的用户名和密码
+    getIsToken: function getIsToken() {if (this.token == "") {// 获取缓存中用于登录的用户名和密码
         // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
         var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd'); // console.log(loginName + '---===---' + loginPwd)
         if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
-            uni.reLaunch({ url: './login' });
+            uni.reLaunch({
+              url: './login' });
+
           }, 3000);
 
         } else {
@@ -280,7 +282,9 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
             // 登录的账号和密码存入缓存
             uni.setStorageSync('login_name', _this.loginName);
             uni.setStorageSync('login_pwd', _this.loginPaw);
-            app.globalData.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
+            _this.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
+            uni.setStorageSync('token', _this.token);
+
           } else {
             uni.showToast({
               title: res.data.message,
@@ -303,7 +307,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       var bind_board = e.currentTarget.dataset.bind_board;
       var id = e.currentTarget.dataset.id;
       var name = e.currentTarget.dataset.name;
-      if (app.globalData.token == "") {
+      if (this.token == "") {
         var loginName = uni.getStorageSync('login_name');
         var loginPwd = uni.getStorageSync('login_pwd');
         // console.log(loginName + '---===---' + loginPwd)
@@ -362,7 +366,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
     },
     // 文章详情
     goDetail: function goDetail(e) {
-      if (app.globalData.token == "") {
+      if (this.token == "") {
         var loginName = uni.getStorageSync('login_name');
         var loginPwd = uni.getStorageSync('login_pwd');
         // console.log(loginName + '---===---' + loginPwd)
@@ -402,7 +406,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         url: "".concat(_helper.default.requestUrl, "/me"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();
@@ -424,7 +428,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         url: "".concat(_helper.default.requestUrl, "/index"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();
@@ -464,7 +468,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           board_id: this.boardId,

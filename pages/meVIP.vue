@@ -68,10 +68,12 @@
 				bannerIndex: '0',
 				current: '0',
 				vip: [],
-				imgUrl: ''
+				imgUrl: '',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.vipList()
 			this.imgUrl = helper.imgUrl
 		},
@@ -99,7 +101,7 @@
 					url: `${helper.requestUrl}/vips`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

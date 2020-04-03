@@ -22,10 +22,12 @@
 	export default {
 		data() {
 			return {
-				userInfo: {}
+				userInfo: {},
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.getInfo()
 		},
 		methods: {
@@ -39,7 +41,7 @@
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

@@ -37,12 +37,14 @@
 				time: '获取验证码',
 				noShow: 1,
 				verification_key: '',
-				mobileCode: ''
+				mobileCode: '',
+				token: ''
 			}
 		},
 		onLoad(e) {
 			console.log(e)
 			console.log(this.mobileCode)
+			this.token = uni.getStorageSync('token')
 			this.mobile = e.num
 		},
 		methods: {
@@ -62,7 +64,7 @@
 						url: `${helper.requestUrl}/user/old-mobile-verification`,
 						method: 'POST',
 						header: {
-							authorization: app.globalData.token
+							authorization: this.token
 						},
 						data: {
 							code: this.mobileCode,

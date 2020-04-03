@@ -193,8 +193,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', friendsList: [] };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl; // 加载好友列表
-    this.getFriends();}, methods: { getFriends: function getFriends() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/friends"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {_this.friendsList = res.data.data;} else {
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', friendsList: [], token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl; // 加载好友列表
+    this.getFriends();}, methods: { getFriends: function getFriends() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/friends"), method: 'GET', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {
+            _this.friendsList = res.data.data;
+          } else {
             uni.showToast({
               title: res.data.message,
               icon: "none" });

@@ -181,7 +181,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], page: '1' };}, onShow: function onShow() {this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: app.globalData.token }, data: { page_size: '20', page: this.page }, success: function success(res) {
+var app = getApp();var _default = { data: function data() {return { list: [], page: '1', token: '' };}, onShow: function onShow() {this.token = uni.getStorageSync('token');this.getList();}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/user/news-list"), method: 'GET', header: { authorization: this.token }, data: { page_size: '20', page: this.page },
+
+        success: function success(res) {
           // uni.hideLoading();
           res = _helper.default.null2str(res);
           // console.log(res,'++++');
@@ -207,7 +209,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], pa
         url: "".concat(_helper.default.requestUrl, "/user/change_news_status"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           id: typeId },

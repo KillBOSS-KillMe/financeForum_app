@@ -241,12 +241,14 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', cityInfo: {}, see_sticky: '', list: [], page: '1', pageList: '1', tipList: [], total: '', is_follow: '' };}, onLoad: function onLoad(e) {console.log(e);this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.title });this.cityInfo = e;this.getList();this.see_stickyList();}, methods: { // 发布
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', cityInfo: {}, see_sticky: '', list: [], page: '1', pageList: '1', tipList: [], total: '', is_follow: '', token: '' };}, onLoad: function onLoad(e) {console.log(e);this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.title });this.cityInfo = e;this.getList();this.see_stickyList();}, methods: { // 发布
     getPost: function getPost() {uni.navigateTo({ url: "/pages/post?id=".concat(this.cityInfo.id) });}, // 置顶加载更多
     getMore: function getMore() {this.page++;this.see_stickyList();}, onReachBottom: function onReachBottom() {this.pageList++;this.getList();}, // 跳转帖子详情
     getDateil: function getDateil(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e) });}, // 帖子列表
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/city-posts"), method: 'GET', header: { authorization: app.globalData.token }, data: { city_id: this.cityInfo.id, see_sticky: '0', //帖子
-          page: this.pageList, page_size: '10' },
+    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/city-posts"), method: 'GET', header: { authorization: this.token }, data: { city_id: this.cityInfo.id,
+          see_sticky: '0', //帖子
+          page: this.pageList,
+          page_size: '10' },
 
         success: function success(res) {
           res = _helper.default.null2str(res);
@@ -263,7 +265,7 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
         url: "".concat(_helper.default.requestUrl, "/posts/city-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           city_id: this.cityInfo.id,
@@ -287,7 +289,7 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
         url: "".concat(_helper.default.requestUrl, "/user/add_follow"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           follow_id: this.cityInfo.id,

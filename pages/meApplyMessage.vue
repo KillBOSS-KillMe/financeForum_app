@@ -37,11 +37,13 @@
 			return {
 				list:[],
 				type: '',
-				imgUrl: ''
+				imgUrl: '',
+				token: ''
 			}
 		},
 		onLoad(options) {
 			console.log(options)
+			this.token = uni.getStorageSync('token')
 			uni.setNavigationBarTitle({
 				title: options.title
 			})
@@ -63,7 +65,7 @@
 					url: `${helper.requestUrl}/user/${url}`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					// data: {
 					// 	page: 1,

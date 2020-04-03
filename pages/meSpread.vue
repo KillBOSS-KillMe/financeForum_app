@@ -68,7 +68,8 @@ export default {
 			imgUrl: '',
 			isShow: true,
 			cancelShow: true,
-			inputValue: ''
+			inputValue: '',
+			token: ''
 		};
 	},
 	components: {
@@ -78,6 +79,7 @@ export default {
 		this.content();
 	},
 	onLoad() {
+		this.token = uni.getStorageSync('token')
 		this.imgUrl = helper.imgUrl;
 	},
 	methods: {
@@ -109,7 +111,7 @@ export default {
 				url: `${helper.requestUrl}/promote-rebates`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					// uni.hideLoading();

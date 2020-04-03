@@ -119,11 +119,13 @@ export default {
 			showLeft: false,
 			classType: '0',
 			bankId: '',
-			letfNavChild: []
+			letfNavChild: [],
+			token: ''
 		};
 	},
 	components: {uniDrawer},
 	onLoad() {
+		this.token = uni.getStorageSync('token')
 		this.getNav();
 		// this.getTab();
 		this.imgUrl = helper.imgUrl;
@@ -153,7 +155,7 @@ export default {
 				url: `${helper.requestUrl}/holes/banks`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -188,7 +190,7 @@ export default {
 				url: `${helper.requestUrl}/holes/bank_child`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -207,7 +209,7 @@ export default {
 				url: `${helper.requestUrl}/holes/loan_class`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -272,7 +274,7 @@ export default {
 				url: `${helper.requestUrl}/holes/categories`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -301,7 +303,7 @@ export default {
 				url: `${helper.requestUrl}/holes/index-recommends`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					type: this.tabType,

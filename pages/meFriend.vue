@@ -35,10 +35,12 @@
 		data() {
 			return {
 				imgUrl: '',
-				friendsList: []
+				friendsList: [],
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.imgUrl = helper.imgUrl
 			// 加载好友列表
 			this.getFriends()
@@ -53,7 +55,7 @@
 					url: `${helper.requestUrl}/user/friends`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

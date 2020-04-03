@@ -107,10 +107,12 @@
 				title: '',
 				voicePath: '',
 				htmlCon: '',
-				options: null
+				options: null,
+				token: ''
 			}
 		},
 		onLoad(options) {
+			this.token = uni.getStorageSync('token')
 			if(options.type == '网友互动'){
 				this.formNode.board_id = options.id;
 			}else if(options.type != '网友互动'){
@@ -166,7 +168,7 @@
 					url: `${helper.requestUrl}/posts/send`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						board_id: this.formNode.board_id,  // 模块ID
@@ -243,7 +245,7 @@
 					filePath: this.voicePath,
 					name: 'file',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						// console.log(res)
@@ -332,7 +334,7 @@
 										filePath: item.path,
 										name: 'file',
 										header: {
-											authorization: app.globalData.token
+											authorization: this.token
 										},
 										success: res => {
 											// console.log(res)

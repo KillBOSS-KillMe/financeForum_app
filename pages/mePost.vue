@@ -28,10 +28,12 @@
 			return {
 				list: [],
 				imgUrl: '',
-				page: 1
+				page: 1,
+				token: ''
 			};
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			// 获取收藏列表
 			this.getList()
 			this.imgUrl = helper.imgUrl
@@ -63,7 +65,7 @@
 					url: `${helper.requestUrl}/posts/del`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						post_id: list[index].post_id
@@ -104,7 +106,7 @@
 					url: `${helper.requestUrl}/user/publish`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						page_size: '20',

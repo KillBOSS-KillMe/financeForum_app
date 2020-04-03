@@ -185,8 +185,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { num: '0', version: '', imgUrl: '', type: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;var loginName = uni.getStorageSync('login_name'); // console.log(loginName)
-    var loginPwd = uni.getStorageSync('login_pwd');}, onShow: function onShow() {var _this = this;switch (uni.getSystemInfoSync().platform) {case 'android':this.type = 1;console.log('运行Android上');
+var app = getApp();var _default = { data: function data() {return { num: '0', version: '', imgUrl: '', type: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;var loginName = uni.getStorageSync('login_name'); // console.log(loginName)
+    var loginPwd = uni.getStorageSync('login_pwd');}, onShow: function onShow() {var _this = this;switch (uni.getSystemInfoSync().platform) {case 'android':
+        this.type = 1;
+        console.log('运行Android上');
         break;
       case 'ios':
         this.type = 2;
@@ -323,7 +325,7 @@ var app = getApp();var _default = { data: function data() {return { num: '0', ve
         url: "".concat(_helper.default.requestUrl, "/logout"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();

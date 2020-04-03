@@ -90,13 +90,15 @@ export default {
 			imgUrl: '',
 			bj:'../static/erweimaImg.png',
 			wWidth: '',
-			wHeight: ''
+			wHeight: '',
+			token: ''
 		};
 	},
 	components: {
 		uniPopup
 	},
 	onLoad(option) {
+		this.token = uni.getStorageSync('token')
 		console.log(option);
 		this.codeType = option.type;
 		this.imgUrl = helper.imgUrl;
@@ -243,7 +245,7 @@ export default {
 				url: `${helper.requestUrl}/promote-showmycode`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -272,7 +274,7 @@ export default {
 				url: `${helper.requestUrl}/promote-getmycode`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					// uni.hideLoading();

@@ -43,6 +43,7 @@ export default {
 			downOption: {
 				auto: false //是否在初始化后,自动执行downCallback; 默认true
 			},
+			token: '',
 			upOption: {
 				page: {
 					num: 0, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
@@ -63,6 +64,7 @@ export default {
 	onLoad(e) {
 		console.log(e,'*******************');
 		console.log(e.bankId);
+		this.token = uni.getStorageSync('token')
 		this.imgUrl = helper.imgUrl;
 		console.log(this.imgUrl);
 		this.boardId = e.id || 0;
@@ -92,7 +94,7 @@ export default {
 				url: `${helper.requestUrl}/posts/board-posts`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					board_id: this.boardId,

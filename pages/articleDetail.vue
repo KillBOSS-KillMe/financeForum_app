@@ -147,6 +147,7 @@ export default {
 			comment_id: '',
 			isSex: '0',
 			type: '',
+			token: ''
 		};
 	},
 	components: {
@@ -155,6 +156,7 @@ export default {
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
+		this.token = uni.getStorageSync('token')
 	},
 	onShow() {
 		// 文章详情加载
@@ -271,7 +273,7 @@ export default {
 				url: `${helper.requestUrl}/posts/show`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.options.id
@@ -365,7 +367,7 @@ export default {
 				url: `${helper.requestUrl}/posts/reward`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.articleDetail.id
@@ -398,7 +400,7 @@ export default {
 				url: `${helper.requestUrl}/user/add_collection`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.articleDetail.id
@@ -432,7 +434,7 @@ export default {
 				url: `${helper.requestUrl}/user/del_collection`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.articleDetail.id
@@ -466,7 +468,7 @@ export default {
 				url: `${helper.requestUrl}/user/add_follow`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					follow_id: this.articleDetail.user_id,
@@ -496,7 +498,7 @@ export default {
 				url: `${helper.requestUrl}/posts/post-comments`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.options.id,
@@ -539,7 +541,7 @@ export default {
 				url: `${helper.requestUrl}/posts/send-comment`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.options.id,
@@ -579,7 +581,7 @@ export default {
 				url: `${helper.requestUrl}/posts/send-reply`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					comment_id: this.comment_id,
@@ -623,7 +625,7 @@ export default {
 				url: `${helper.requestUrl}/posts/like`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					post_id: this.articleDetail.id

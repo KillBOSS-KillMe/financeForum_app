@@ -139,13 +139,15 @@ export default {
 			index: 0,
 			setData: '',
 			options: '',
-			imgUrl: ''
+			imgUrl: '',
+			token: ''
 		};
 	},
 	components: {
 		pickerAddress
 	},
 	onLoad() {
+		this.token = uni.getStorageSync('token')
 		this.imgUrl = helper.imgUrl
 	},
 	onShow() {
@@ -207,7 +209,7 @@ export default {
 				url: `${helper.requestUrl}/me`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					uni.hideLoading();
@@ -263,7 +265,7 @@ export default {
 				url: `${helper.requestUrl}/user/edit`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					field: this.options,
@@ -308,7 +310,7 @@ export default {
 									filePath: item.path,
 									name: 'file',
 									header: {
-										authorization: app.globalData.token
+										authorization: this.token
 									},
 									success: res => {
 										console.log(res)

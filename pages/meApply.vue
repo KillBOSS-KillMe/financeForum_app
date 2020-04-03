@@ -26,22 +26,24 @@
 			return {
 				collectionList:[],
 				imgUrl:'',
-				is_member: ''
+				is_member: '',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.getList();
 			this.imgUrl = helper.imgUrl
 		},
 		methods: {
 			// collectionList
 			getList(){
-				console.log(app.globalData.token)
+				console.log(this.token)
 				uni.request({
 					url: `${helper.requestUrl}/system-tools/apps`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						// uni.hideLoading();

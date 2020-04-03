@@ -177,10 +177,12 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: 1 };}, onLoad: function onLoad() {// 获取收藏列表
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: 1, token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token'); // 获取收藏列表
     this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { deleteItem: function deleteItem(e) {var _this = this; // 点击删除
       uni.showModal({ title: '提示', content: '确认删除?', success: function success(res) {if (res.confirm) {// console.log('用户点击确定');
-            var index = e.currentTarget.dataset.index;_this.runDeleteItem(index);} else if (res.cancel) {
+            var index = e.currentTarget.dataset.index;
+            _this.runDeleteItem(index);
+          } else if (res.cancel) {
             // console.log('用户点击取消');
           }
         } });
@@ -196,7 +198,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/posts/del"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: list[index].post_id },
@@ -237,7 +239,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/publish"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           page_size: '20',

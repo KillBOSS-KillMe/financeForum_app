@@ -30,11 +30,13 @@
 				list: {
 					team_relate_1: '',
 					team_relate_2: '',
-					post_type: 'post'
+					post_type: 'post',
+					token: ''
 				}
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.getList()
 		},
 		methods: {
@@ -44,7 +46,7 @@
 					url: `${helper.requestUrl}/promote-setting`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						// uni.hideLoading();
@@ -112,7 +114,7 @@
 					url: `${helper.requestUrl}/promote-setting`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: this.list,
 					success: res => {

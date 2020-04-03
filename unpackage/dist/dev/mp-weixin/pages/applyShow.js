@@ -181,7 +181,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', ItemId: '' };}, onLoad: function onLoad(e) {this.ItemId = e.id;this.getList();this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.name });}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/category-tool"), method: 'GET', header: { authorization: app.globalData.token },
+var app = getApp();var _default = { data: function data() {return { collectionList: [], imgUrl: '', ItemId: '', token: '' };}, onLoad: function onLoad(e) {this.ItemId = e.id;this.getList();this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token');uni.setNavigationBarTitle({ title: e.name });}, methods: { getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/system-tools/category-tool"), method: 'GET', header: {
+          authorization: this.token },
+
         data: {
           tool_id: this.ItemId },
 

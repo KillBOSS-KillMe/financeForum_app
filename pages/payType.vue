@@ -48,10 +48,12 @@
 				options: {},
 				userInfo: {},
 				index: '0',
-				payType: 'wechat'
+				payType: 'wechat',
+				token: ''
 			};
 		},
 		onLoad(options) {
+			this.token = uni.getStorageSync('token')
 			this.userInfo = app.globalData.userInfo
 			// console.log(this.userInfo)
 			// console.log(options)
@@ -60,7 +62,7 @@
 		},
 		methods: {
 			radioChange(e) {
-				// console.log(e);
+				console.log(e,'支付类型');
 				this.payType = e.detail.value;
 			},
 			wxAppletPay() {
@@ -73,7 +75,7 @@
 					url: `${helper.requestUrl}/buy-vip`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						member_id: this.options.id,
@@ -135,7 +137,7 @@
 					}
 				});
 			},
-			// #ifdef APP-PLUS
+			// #ifdef APP-PLUS || H5
 			iAgree() {
 				// console.log(this.payType);
 				// uni.showToast({
@@ -145,7 +147,7 @@
 					url: `${helper.requestUrl}/buy-vip`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						member_id: this.options.id,
@@ -154,12 +156,14 @@
 					},
 					success: res => {
 						// 调起支付
+						console.log(res.data,'zhifu')
 						this.appWxpay(res.data)
 					}
 				});
 			},
 			
 			appWxpay(payNode) {
+				console.log(payNode,'-------------------------------------')
 				let payTypeWxpay = ''
 				if(this.payType == 'wechat'){
 					payTypeWxpay = 'wxpay'
@@ -170,6 +174,7 @@
 				    provider: payTypeWxpay,
 				    orderInfo: payNode, //微信、支付宝订单数据
 				    success: function (res) {
+							console.log(res,'chenggong')
 							// 两秒后返回上一页
 							setTimeout(e => {
 								uni.redirectTo({
@@ -178,11 +183,12 @@
 							}, 2000)
 				    },
 				    fail: function (err) {
-							uni.showToast({
-								title: '支付失败',
-								icon: 'none',
-								duration: 2000
-							});
+							console.log(err)
+							// uni.showToast({
+							// 	title: '支付失败',
+							// 	icon: 'none',
+							// 	duration: 2000
+							// });
 				    },
 				});
 			}

@@ -16,11 +16,13 @@
 		data() {
 			return {
 				type: [],
-				imgUrl: ''
+				imgUrl: '',
+				token: ''
 			}
 		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl
+			this.token = uni.getStorageSync('token')
 			this.getType()
 		},
 		methods: {
@@ -30,7 +32,7 @@
 					url: `${helper.requestUrl}/posts/can-boards`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

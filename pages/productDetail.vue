@@ -134,10 +134,12 @@
 				listInfo: [],
 				imgUrl:'',
 				// isShow: false,
-				vip: ''
+				vip: '',
+				 token: ''
 			}
 		},
 		onLoad(e) {
+			this.token = uni.getStorageSync('token')
 			this.productId = e.id;
 			this.imgUrl = helper.imgUrl;
 			this.getInfo();
@@ -171,7 +173,7 @@
 					url: `${helper.requestUrl}/holes/detial`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						hole_id: this.productId

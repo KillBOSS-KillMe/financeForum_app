@@ -177,9 +177,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [] };}, onLoad: function onLoad() {// 获取收藏列表
+var app = getApp();var _default = { data: function data() {return { list: [], token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token'); // 获取收藏列表
     this.getList();}, methods: { getList: function getList() {var _this = this; // 获取收藏列表
-      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/collections"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {
+      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/collections"), method: 'GET', header: { authorization: this.token },
+
+        success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res);

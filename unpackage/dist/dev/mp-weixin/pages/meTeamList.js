@@ -179,8 +179,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: '1', indexType: '' };}, onLoad: function onLoad(e) {// console.log(e)
-    this.imgUrl = _helper.default.imgUrl;this.indexType = e.index;var name = '';if (this.indexType == 'one') {name = '一级代理', this.getTeamOne();} else if (this.indexType == 'two') {name = '二级代理', this.getTeamTwo();}uni.setNavigationBarTitle({ title: name });
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', page: '1', indexType: '', token: '' };}, onLoad: function onLoad(e) {// console.log(e)
+    this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.indexType = e.index;var name = '';if (this.indexType == 'one') {name = '一级代理', this.getTeamOne();} else if (this.indexType == 'two') {name = '二级代理', this.getTeamTwo();}uni.setNavigationBarTitle({
+      title: name });
+
   },
   methods: {
     // 打电话
@@ -201,7 +203,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/team-list-one"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           page: this.page,
@@ -226,7 +228,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/team-list-two"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           page: this.page,

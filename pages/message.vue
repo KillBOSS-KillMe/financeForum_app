@@ -29,10 +29,12 @@
 		data() {
 			return {
 				list:[],
-				page: '1'
+				page: '1',
+				token:''
 			}
 		},
 		onShow() {
+			this.token = uni.getStorageSync('token')
 			this.getList()
 		},
 		methods: {
@@ -41,7 +43,7 @@
 					url: `${helper.requestUrl}/user/news-list`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						page_size: '20',
@@ -74,7 +76,7 @@
 					url: `${helper.requestUrl}/user/change_news_status`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						id: typeId

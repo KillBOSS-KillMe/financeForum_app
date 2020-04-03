@@ -195,8 +195,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { autoplay: true, interval: 2000, bannerList: [], list: [], page: '1', imgUrl: '', vip: '', isShow: false };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getAd();this.getList();}, methods: { // 加载轮播图
-    getAd: function getAd() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/board/info"), method: 'GET', header: { authorization: app.globalData.token },
+var app = getApp();var _default = { data: function data() {return { autoplay: true, interval: 2000, bannerList: [], list: [], page: '1', imgUrl: '', vip: '', isShow: false, token: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token');}, onShow: function onShow() {this.getAd();this.getList();}, methods: { // 加载轮播图
+    getAd: function getAd() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/board/info"), method: 'GET',
+        header: {
+          authorization: this.token },
 
         data: {
           board_id: '5',
@@ -227,7 +229,7 @@ var app = getApp();var _default = { data: function data() {return { autoplay: tr
         url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           board_id: '5',

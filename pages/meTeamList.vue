@@ -30,11 +30,13 @@
 				list: [],
 				imgUrl: '',
 				page: '1',
-				indexType: ''
+				indexType: '',
+				token: ''
 			}
 		},
 		onLoad(e) {
 			// console.log(e)
+			this.token = uni.getStorageSync('token')
 			this.imgUrl = helper.imgUrl;
 			this.indexType = e.index
 			let name = ''
@@ -68,7 +70,7 @@
 					url: `${helper.requestUrl}/user/team-list-one`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						page: this.page,
@@ -93,7 +95,7 @@
 					url: `${helper.requestUrl}/user/team-list-two`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						page: this.page,

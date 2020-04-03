@@ -66,12 +66,14 @@ export default {
 			pageList: '1',
 			tipList: [],
 			total: '',
-			is_follow: ''
+			is_follow: '',
+			token: ''
 		};
 	},
 	onLoad(e) {
 		console.log(e);
 		this.imgUrl = helper.imgUrl;
+		this.token = uni.getStorageSync('token')
 		uni.setNavigationBarTitle({
 			title: e.title
 		});
@@ -106,7 +108,7 @@ export default {
 				url: `${helper.requestUrl}/posts/board-posts`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					see_sticky: '0', //帖子
@@ -132,7 +134,7 @@ export default {
 				url: `${helper.requestUrl}/posts/board-posts`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					board_id: this.cityInfo.id,
@@ -158,7 +160,7 @@ export default {
 				url: `${helper.requestUrl}/user/add_follow`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					follow_id: this.cityInfo.id,

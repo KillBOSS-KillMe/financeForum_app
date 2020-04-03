@@ -26,10 +26,12 @@
 	export default {
 		data() {
 			return {
-				list: []
+				list: [],
+				token: ''
 			};
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			// 获取收藏列表
 			this.getList()
 		},
@@ -44,7 +46,7 @@
 					url: `${helper.requestUrl}/user/collections`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

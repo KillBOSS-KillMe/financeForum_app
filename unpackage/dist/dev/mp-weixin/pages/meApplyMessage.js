@@ -195,8 +195,10 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], type: '', imgUrl: '' };}, onLoad: function onLoad(options) {console.log(options);uni.setNavigationBarTitle({ title: options.title });this.type = options.type;this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this;var url = '';if (this.type == '1') {url = 'abouts';} else if (this.type == '2') {url = 'comments';} else if (this.type == '3') {url = 'news-list';}uni.request({ url: "".concat(_helper.default.requestUrl, "/user/").concat(url), method: 'GET', header: {
-          authorization: app.globalData.token },
+var app = getApp();var _default = { data: function data() {return { list: [], type: '', imgUrl: '', token: '' };}, onLoad: function onLoad(options) {console.log(options);this.token = uni.getStorageSync('token');uni.setNavigationBarTitle({ title: options.title });this.type = options.type;this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this;var url = '';if (this.type == '1') {url = 'abouts';} else if (this.type == '2') {url = 'comments';} else if (this.type == '3') {url = 'news-list';}uni.request({ url: "".concat(_helper.default.requestUrl, "/user/").concat(url),
+        method: 'GET',
+        header: {
+          authorization: this.token },
 
         // data: {
         // 	page: 1,

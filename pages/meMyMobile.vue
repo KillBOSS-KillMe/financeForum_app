@@ -18,15 +18,17 @@
 	export default {
 		data() {
 			return {
-				mobile: ''
+				mobile: '',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			uni.request({
 				url: `${helper.requestUrl}/user/old-mobile`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res)

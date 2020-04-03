@@ -66,11 +66,13 @@ export default {
 			pageList: '1',
 			tipList: [],
 			total: '',
-			is_follow: ''
+			is_follow: '',
+			token: ''
 		};
 	},
 	onLoad(e) {
 		console.log(e);
+		this.token = uni.getStorageSync('token')
 		this.imgUrl = helper.imgUrl;
 		uni.setNavigationBarTitle({
 			title: e.title
@@ -107,7 +109,7 @@ export default {
 				url: `${helper.requestUrl}/posts/city-posts`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					city_id: this.cityInfo.id,
@@ -130,7 +132,7 @@ export default {
 				url: `${helper.requestUrl}/posts/city-posts`,
 				method: 'GET',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					city_id: this.cityInfo.id,
@@ -154,7 +156,7 @@ export default {
 				url: `${helper.requestUrl}/user/add_follow`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					follow_id: this.cityInfo.id,

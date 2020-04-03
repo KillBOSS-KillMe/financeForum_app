@@ -64,10 +64,12 @@ export default {
 			userList: [],
 			itemList: [],
 			current_page: 1,
-			imgUrl: ''
+			imgUrl: '',
+			token: ''
 		};
 	},
 	onLoad() {
+		this.token = uni.getStorageSync('token')
 		this.imgUrl = helper.imgUrl;
 	},
 
@@ -92,7 +94,7 @@ export default {
 			uni.request({
 				url: `${helper.requestUrl}/search`,
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				method: 'POST',
 				data: {

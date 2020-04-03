@@ -385,7 +385,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var parser = function parser() {Promise.all(/*! require.ensure | components/jyf-parser */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/jyf-parser")]).then((function () {return resolve(__webpack_require__(/*! @/components/jyf-parser */ 526));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { userInfo: {}, focus: false, isShow: '0', isHide: '0', info: {}, nodes: [], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '', isSex: '0', type: '' };}, components: { 'jyf-parser': parser }, onLoad: function onLoad(options) {this.options = options;this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {// 文章详情加载
+var app = getApp();var parser = function parser() {Promise.all(/*! require.ensure | components/jyf-parser */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/jyf-parser")]).then((function () {return resolve(__webpack_require__(/*! @/components/jyf-parser */ 526));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { userInfo: {}, focus: false, isShow: '0', isHide: '0', info: {}, nodes: [], commentList: [], articleDetail: null, options: null, imgUrl: '', page: '1', postContent: '', just_landlord: '', comment_id: '', isSex: '0', type: '', token: '' };}, components: { 'jyf-parser': parser }, onLoad: function onLoad(options) {this.options = options;this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token');}, onShow: function onShow() {// 文章详情加载
     this.getArticleDetail(); //评论列表
     this.getComment();}, onShareAppMessage: function onShareAppMessage() {var url = this.getPageUrl();return { title: this.articleDetail.title, path: url };}, methods: { // 下载doc
     linkUrl: function linkUrl(extra) {console.log(extra);uni.setClipboardData({ data: extra, success: function success() {uni.showToast({ title: '复制成功,粘贴到浏览器下载', icon: 'none' });} }); // uni.downloadFile({
@@ -416,8 +416,10 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
               }} });}}}, goVip: function goVip() {uni.navigateTo({ url: '/pages/meVIP' });}, //获取发布内容
     getContent: function getContent(e) {this.postContent = e.detail.value; // console.log(e);
     }, // 文章详情加载
-    getArticleDetail: function getArticleDetail() {var _this2 = this;uni.showLoading({ title: '加载中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: app.globalData.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res); // console.log(res);
-          if (res.data.status_code == 200) {_this2.articleDetail = res.data;console.log('----------------');console.log(_this2.articleDetail.extras);if (_this2.articleDetail.user.sex == 'f') {
+    getArticleDetail: function getArticleDetail() {var _this2 = this;uni.showLoading({ title: '加载中...' });uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/show"), method: 'GET', header: { authorization: this.token }, data: { post_id: this.options.id }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res); // console.log(res);
+          if (res.data.status_code == 200) {_this2.articleDetail = res.data;console.log('----------------');
+            console.log(_this2.articleDetail.extras);
+            if (_this2.articleDetail.user.sex == 'f') {
               _this2.isSex = '1';
             }
           } else if (res.data.status_code == 202) {
@@ -498,7 +500,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/posts/reward"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: this.articleDetail.id },
@@ -531,7 +533,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/user/add_collection"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: this.articleDetail.id },
@@ -565,7 +567,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/user/del_collection"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: this.articleDetail.id },
@@ -599,7 +601,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/user/add_follow"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           follow_id: this.articleDetail.user_id,
@@ -629,7 +631,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/posts/post-comments"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: this.options.id,
@@ -672,7 +674,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/posts/send-comment"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: this.options.id,
@@ -712,7 +714,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/posts/send-reply"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           comment_id: this.comment_id,
@@ -756,7 +758,7 @@ var app = getApp();var parser = function parser() {Promise.all(/*! require.ensur
         url: "".concat(_helper.default.requestUrl, "/posts/like"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           post_id: this.articleDetail.id },

@@ -1,9 +1,9 @@
 {
     "name" : "子诺新微金",
-    "appid" : "__UNI__F2BA9AA",
+    "appid" : "__UNI__EA9C27B",
     "description" : "",
-    "versionName" : "1.0.2",
-    "versionCode" : "100",
+    "versionName" : "1.0.5",
+    "versionCode" : 110,
     "transformPx" : false,
     "channel_list" : [
         {
@@ -17,6 +17,9 @@
     ],
     /* 5+App特有相关 */
     "app-plus" : {
+        "compatible" : {
+            "ignoreVersion" : true //true表示忽略版本检查提示框，HBuilderX1.9.0及以上版本支持  
+        },
         "usingComponents" : true,
         "nvueCompiler" : "uni-app",
         "splashscreen" : {

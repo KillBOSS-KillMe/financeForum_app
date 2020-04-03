@@ -289,7 +289,7 @@ var app = getApp();var _default = { data: function data() {return { formNode: { 
         url: "".concat(_helper.default.requestUrl, "/user/mobile-replace"), //仅为示例，并非真实接口地址。
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: this.formNode,
         success: function success(res) {

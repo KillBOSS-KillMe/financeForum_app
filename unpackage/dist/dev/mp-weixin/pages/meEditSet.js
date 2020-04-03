@@ -151,9 +151,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var pickerAddress = function pickerAddress() {Promise.all(/*! require.ensure | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then((function () {return resolve(__webpack_require__(/*! ../components/wangding-pickerAddress.vue */ 543));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { setData: '' };}, components: { pickerAddress: pickerAddress },
+var app = getApp();var pickerAddress = function pickerAddress() {Promise.all(/*! require.ensure | components/wangding-pickerAddress */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/wangding-pickerAddress")]).then((function () {return resolve(__webpack_require__(/*! ../components/wangding-pickerAddress.vue */ 543));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { setData: '', token: '' };}, components: {
+    pickerAddress: pickerAddress },
 
   onLoad: function onLoad(options) {
+    this.token = uni.getStorageSync('token');
     this.options = options;
     uni.setNavigationBarTitle({
       title: options.title });
@@ -199,7 +201,7 @@ var app = getApp();var pickerAddress = function pickerAddress() {Promise.all(/*!
         url: "".concat(_helper.default.requestUrl, "/user/edit"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           field: this.options.name,

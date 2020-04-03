@@ -179,7 +179,9 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { formNode: { user_setting_account: '', user_setting_passwd: '', post_type: 'post' } };}, onLoad: function onLoad(e) {console.log(e, 'n');this.formNode.user_setting_account = e.item;}, methods: { getValue: function getValue(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode;}, determine: function determine() {
+var app = getApp();var _default = { data: function data() {return { formNode: { user_setting_account: '', user_setting_passwd: '', post_type: 'post', token: '' } };}, onLoad: function onLoad(e) {console.log(e, 'n');this.token = uni.getStorageSync('token');this.formNode.user_setting_account = e.item;}, methods: { getValue: function getValue(e) {var formNode = this.formNode;var name = e.currentTarget.dataset.name;var value = e.detail.value;formNode[name] = value;this.formNode = formNode;
+    },
+    determine: function determine() {
       if (this.formNode.user_setting_account == '') {
         uni.showToast({
           title: '请输入账号',
@@ -205,7 +207,7 @@ var app = getApp();var _default = { data: function data() {return { formNode: { 
         url: "".concat(_helper.default.requestUrl, "/promote-getmycode"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: this.formNode,
         success: function success(res) {

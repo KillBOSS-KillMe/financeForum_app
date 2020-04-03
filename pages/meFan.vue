@@ -37,10 +37,12 @@
 		data() {
 			return {
 				list: [],
-				imgUrl: ''
+				imgUrl: '',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			// 加载关注列表
 			this.getList()
 			this.imgUrl = helper.imgUrl
@@ -56,7 +58,7 @@
 					url: `${helper.requestUrl}/user/fans`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();
@@ -84,7 +86,7 @@
 					url: `${helper.requestUrl}/user/del_follow`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						follow_id: id

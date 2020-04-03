@@ -31,10 +31,12 @@
 					user_setting_passwd: ''
 				},
 				codeInput: '',
-				userInfo: {}
+				userInfo: {},
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.tapCode(),
 			this.getUserInfo()
 		},
@@ -103,7 +105,7 @@
 					url: `${helper.requestUrl}/promote-createmycode`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: this.formNode,
 					success: res => {
@@ -137,7 +139,7 @@
 					url: `${helper.requestUrl}/me`,
 					method: 'POST',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

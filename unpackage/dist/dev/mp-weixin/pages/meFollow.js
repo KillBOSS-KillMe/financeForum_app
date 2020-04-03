@@ -253,13 +253,15 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', Inv: '0', tabType: 'board' };}, onLoad: function onLoad() {// 加载关注列表
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', Inv: '0', tabType: 'board', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token'); // 加载关注列表
     this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { changeTab: function changeTab(e) {console.log(e);this.Inv = e;this.page = '1';if (this.Inv == 0) {// 最新
         this.tabType = 'board';} else if (this.Inv == 1) {// 热门
         this.tabType = 'city';} else if (this.Inv == 2) {// 推荐
         this.tabType = 'user';}this.list = [];this.getList();}, // 跳转详情
     getDetail: function getDetail(id, title, img, type) {if (type == '城市') {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img) });} else {uni.navigateTo({ url: "/pages/boardData?title=".concat(title, "&id=").concat(id, "&img=").concat(img) });}}, getList: function getList() {var _this = this; // 加载关注列表
-      uni.request({ url: "".concat(_helper.default.requestUrl, "/user/follows"), method: 'GET', header: { authorization: app.globalData.token }, data: { type: this.tabType }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message, icon: 'none' });
+      uni.request({ url: "".concat(_helper.default.requestUrl, "/user/follows"), method: 'GET', header: { authorization: this.token }, data: { type: this.tabType }, success: function success(res) {res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '200') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message,
+              icon: 'none' });
+
           }
         } });
 
@@ -271,7 +273,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/del_follow"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           id: id },

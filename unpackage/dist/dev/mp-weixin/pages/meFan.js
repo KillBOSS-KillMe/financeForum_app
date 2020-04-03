@@ -197,9 +197,11 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '' };}, onLoad: function onLoad() {// 加载关注列表
+var app = getApp();var _default = { data: function data() {return { list: [], imgUrl: '', token: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token'); // 加载关注列表
     this.getList();this.imgUrl = _helper.default.imgUrl;}, methods: { getList: function getList() {var _this = this; // 加载关注列表
-      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/fans"), method: 'GET', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {_this.list = res.data.data;} else {uni.showToast({ title: res.data.message,
+      uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/user/fans"), method: 'GET', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == '1') {_this.list = res.data.data;} else {
+            uni.showToast({
+              title: res.data.message,
               icon: 'none' });
 
           }
@@ -217,7 +219,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
         url: "".concat(_helper.default.requestUrl, "/user/del_follow"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           follow_id: id },

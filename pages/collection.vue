@@ -43,10 +43,12 @@
 				imgUrl: '',
 				vip: '',
 				isShow: false,
+				token: ''
 			}
 		},
 		onLoad() {
 			this.imgUrl = helper.imgUrl
+			this.token = uni.getStorageSync('token')
 		},
 		onShow() {
 			this.getAd()
@@ -63,7 +65,7 @@
 					url: `${helper.requestUrl}/board/info`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						board_id: '5',
@@ -94,7 +96,7 @@
 					url: `${helper.requestUrl}/posts/board-posts`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data:{
 						board_id: '5',

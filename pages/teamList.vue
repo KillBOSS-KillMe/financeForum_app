@@ -27,10 +27,12 @@
 		data() {
 			return {
 				list:[],
-				imgUrl: ''
+				imgUrl: '',
+				token: ''
 			}
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.imgUrl = helper.imgUrl;
 			this.getList()
 		},
@@ -42,7 +44,7 @@
 					url: `${helper.requestUrl}/promote-teamlist`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						res = helper.null2str(res);

@@ -42,10 +42,12 @@
 			return {
 				list: [],
 				imgUrl: '',
-				nextPageUrl: ''
+				nextPageUrl: '',
+				token: ''
 			};
 		},
 		onLoad() {
+			this.token = uni.getStorageSync('token')
 			this.imgUrl = helper.imgUrl;
 			// 加载查稿列表
 			this.myDraftPosts()
@@ -83,7 +85,7 @@
 					url: `${helper.requestUrl}/posts/del`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					data: {
 						post_id: list[index].id
@@ -129,7 +131,7 @@
 					url: `${helper.requestUrl}/user/my-draft-posts`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();
@@ -155,7 +157,7 @@
 					url: `${helper.requestUrl}/user/my-draft-posts`,
 					method: 'GET',
 					header: {
-						authorization: app.globalData.token
+						authorization: this.token
 					},
 					success: res => {
 						uni.hideLoading();

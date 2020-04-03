@@ -235,11 +235,13 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告', type: '23' }, { id: '6', img: 'iconqiapiansousuo', title: '互动搜索', type: '' }, { id: '2', img: 'iconliebiao', title: '贷款产品互动', type: '1' }, { id: '4', img: 'iconyonghu', title: '信用卡互动', type: '2' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖', type: '3' }, { id: '1', img: 'iconxiepinglun', title: '网友互动', type: '' }], imgUrl: '', isShow: false, categoryList: [], subCategoryList: [], categoryActive: 0, area_id: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {this.getUserInfo();this.categoryActive = 0, this.subCategoryList = []; // 加载微金交流首页数据
+var app = getApp();var _default = { data: function data() {return { navList: [{ id: '3', img: 'iconbulletin', title: '微金公告', type: '23' }, { id: '6', img: 'iconqiapiansousuo', title: '互动搜索', type: '' }, { id: '2', img: 'iconliebiao', title: '贷款产品互动', type: '1' }, { id: '4', img: 'iconyonghu', title: '信用卡互动', type: '2' }, { id: '5', img: 'iconqiapiansousuo', title: '推荐热帖', type: '3' }, { id: '1', img: 'iconxiepinglun', title: '网友互动', type: '' }], imgUrl: '', isShow: false, categoryList: [], subCategoryList: [], categoryActive: 0, area_id: '', token: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token');}, onShow: function onShow() {this.getUserInfo();this.categoryActive = 0, this.subCategoryList = []; // 加载微金交流首页数据
     this.getRegion();}, methods: { // 左边导航点击事件
     categoryMainClick: function categoryMainClick(e, index) {console.log(e, index);this.categoryActive = index;this.area_id = e;this.subCategoryList = [];this.getList();}, // 详情
     categorySubClick: function categorySubClick(title, id, img, fatheId) {uni.navigateTo({ url: "/pages/exchangList?title=".concat(title, "&id=").concat(id, "&img=").concat(img, "&fatheId=").concat(fatheId) });}, // 获取用户信息
-    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: app.globalData.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);
+    getUserInfo: function getUserInfo() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: this.token }, success: function success(res) {
+          uni.hideLoading();
+          res = _helper.default.null2str(res);
           console.log(res, '++++++++');
           var user = res.data.type;
           var vipType = res.data.vip_id;
@@ -262,7 +264,7 @@ var app = getApp();var _default = { data: function data() {return { navList: [{ 
         url: "".concat(_helper.default.requestUrl, "/areas/area-list"),
         method: 'GET',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         success: function success(res) {
           uni.hideLoading();
@@ -322,7 +324,7 @@ var app = getApp();var _default = { data: function data() {return { navList: [{ 
         url: "".concat(_helper.default.requestUrl, "/areas/city-list"),
         method: 'POST',
         header: {
-          authorization: app.globalData.token },
+          authorization: this.token },
 
         data: {
           area_id: this.area_id },

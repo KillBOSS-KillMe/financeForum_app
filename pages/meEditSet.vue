@@ -14,13 +14,15 @@ import pickerAddress from '../components/wangding-pickerAddress.vue';
 export default {
 	data() {
 		return {
-			setData: ''
+			setData: '',
+			token: ''
 		};
 	},
 	components: {
 		pickerAddress
 	},
 	onLoad(options) {
+		this.token = uni.getStorageSync('token')
 		this.options = options
 		uni.setNavigationBarTitle({
 			title: options.title
@@ -66,7 +68,7 @@ export default {
 				url: `${helper.requestUrl}/user/edit`,
 				method: 'POST',
 				header: {
-					authorization: app.globalData.token
+					authorization: this.token
 				},
 				data: {
 					field: this.options.name,
