@@ -166,7 +166,7 @@
     },
     "h5" : {
         "title" : "子诺新微金",
-        "domain" : "https://jinrong.beaconway.cn/",
+        "domain" : "http://jinrong.beaconway.cn/",
         "router" : {
             "mode" : "history"
         }

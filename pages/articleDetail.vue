@@ -34,19 +34,15 @@
 			</view>
 			<block v-for="(item, index) in articleDetail.extras" :key="index">
 				<view>
-					<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'">
-						<jyf-parser :html="item.content" ref="article"></jyf-parser>
-					</view>
-					<view class="" v-else>
-						<jyf-parser :html="item.content" ref="article"></jyf-parser>
-					</view>
+					<view class="" @tap="goVIPPage(item.content_type)" v-if="type != 'member'"><jyf-parser :html="item.content" ref="article"></jyf-parser></view>
+					<view class="" v-else><jyf-parser :html="item.content" ref="article"></jyf-parser></view>
 				</view>
-					<video v-if="item.video != '' && articleDetail.user.type != 'normal'" style="width: 690rpx;" :src="item.video" controls></video>
+				<video v-if="item.video != '' && articleDetail.user.type != 'normal'" style="width: 690rpx;" :src="item.video" controls></video>
 			</block>
 			<view class="docUrl" v-if="articleDetail.docx != undefined && articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
-				{{imgUrl+articleDetail.docx}} {{articleDetail.docx}}
+				{{ imgUrl + articleDetail.docx }} {{ articleDetail.docx }}
 			</view>
-		<!-- 	<view class="docUrl" v-if="articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
+			<!-- 	<view class="docUrl" v-if="articleDetail.docx != ''" @tap="linkUrl(imgUrl + articleDetail.docx)">
 				1
 			</view>
 			<view class="docUrl" v-if="articleDetail.docx != undefined " @tap="linkUrl(imgUrl + articleDetail.docx)">
@@ -57,7 +53,7 @@
 				<!-- #ifdef MP-WEIXIN -->
 				<button class="share-btn" open-type="share"><uni-icon class="iconfont iconweixin" type=""></uni-icon></button>
 				<!-- #endif -->
-				<!-- #ifdef APP-PLUS -->
+				<!-- #ifdef APP-PLUS || H5 -->
 				<!-- 分享到微信好友 -->
 				<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
 				<!-- 分享到微信朋友圈 -->
@@ -69,7 +65,7 @@
 		<view class="reward">
 			<view class="iconText" @tap="postReward">赏</view>
 			<text>觉得不错，打个赏~</text>
-			<view class="money">{{ articleDetail.rewards_count || 0}}人已经打赏</view>
+			<view class="money">{{ articleDetail.rewards_count || 0 }}人已经打赏</view>
 		</view>
 		<view class="line"></view>
 		<view class="comment">
@@ -128,6 +124,9 @@
 const app = getApp();
 import helper from '../common/helper.js';
 import parser from '@/components/jyf-parser';
+// #ifdef H5
+import wxj from '../components/h5.js';
+// #endif
 export default {
 	data() {
 		return {
@@ -156,7 +155,7 @@ export default {
 	onLoad(options) {
 		this.options = options;
 		this.imgUrl = helper.imgUrl;
-		this.token = uni.getStorageSync('token')
+		this.token = uni.getStorageSync('token');
 	},
 	onShow() {
 		// 文章详情加载
@@ -175,62 +174,40 @@ export default {
 		// 下载doc
 		linkUrl(extra) {
 			console.log(extra);
-			// #ifdef APP-PLUS
+			// #ifdef APP-PLUS || H5
 			const downloadTask = uni.downloadFile({
-				url:extra, //仅为示例，并非真实的资源
+				url: extra, //仅为示例，并非真实的资源
 				success: res => {
 					if (res.statusCode === 200) {
-						// console.log('下载成功');
 					}
-					// this.dd = res.tempFilePath;
 					console.log(res.tempFilePath);
 					let that = this;
 					uni.saveFile({
-							tempFilePath: res.tempFilePath,
-							success: function(red) {
-									uni.showToast({
-										title: '已保存内部存储/Android/data/io.dcloud.HBuilder/apps/HBuilder/doc/uniapp_save',
-										icon:'none',
-										duration:3000
-									})
-									var savedFilePath = red.savedFilePath;
-									console.log(red)
-							}
+						tempFilePath: res.tempFilePath,
+						success: function(red) {
+							uni.showToast({
+								title: '已保存内部存储/Android/data/io.dcloud.HBuilder/apps/HBuilder/doc/uniapp_save',
+								icon: 'none',
+								duration: 3000
+							});
+							var savedFilePath = red.savedFilePath;
+							console.log(red);
+						}
 					});
 				}
 			});
 			// #endif
 			// #ifdef MP-WEIXIN
 			uni.setClipboardData({
-			    data: extra,
-			    success: function () {
-			        uni.showToast({
-			        	title: '复制成功,粘贴到浏览器下载',
-			        	icon: 'none'
-			        })
-			    }
+				data: extra,
+				success: function() {
+					uni.showToast({
+						title: '复制成功,粘贴到浏览器下载',
+						icon: 'none'
+					});
+				}
 			});
 			// #endif
-			// uni.downloadFile({
-			//     url: extra, //仅为示例，并非真实的资源
-			//     success: (res) => {
-			//         if (res.statusCode === 200) {
-			// 					console.log(res)
-			//           uni.saveFile({
-			//             tempFilePath: res.tempFilePath,
-			//             success: function (res) {
-			// 							console.log(res)
-			//               var savedFilePath = res.savedFilePath;
-			//             }
-			//           });
-			//         }
-			//     }
-			// });
-			// app.globalData.link = extra
-			// let name = '下载'
-			// uni.navigateTo({
-			// 	url:`/pages/iframe?name=${name}`
-			// })
 		},
 		goVIPPage(e) {
 			// 判断当前用户是否为普通用户
@@ -284,22 +261,22 @@ export default {
 					// console.log(res);
 					if (res.data.status_code == 200) {
 						this.articleDetail = res.data;
-						console.log('----------------')
-						console.log(this.articleDetail.extras)
+						console.log('----------------');
+						console.log(this.articleDetail.extras);
 						if (this.articleDetail.user.sex == 'f') {
 							this.isSex = '1';
 						}
-					}else if(res.data.status_code == 202){
-						this.articleDetail = null
+					} else if (res.data.status_code == 202) {
+						this.articleDetail = null;
 						uni.showToast({
 							title: res.data.message,
 							icon: 'none',
 							duration: 2000
-						})
+						});
 						setTimeout(e => {
 							uni.redirectTo({
-								url:"./meVIP"
-							})
+								url: './meVIP'
+							});
 						}, 2000);
 					} else {
 						uni.showToast({
@@ -307,18 +284,34 @@ export default {
 							icon: 'none',
 							duration: 2000
 						});
+						if (res.data.message == '用户不存在或登陆已过期') {
+							setTimeout(e => {
+								uni.redirectTo({
+									url: './login'
+								});
+							}, 2000);
+						}
 					}
 				}
 			});
 		},
-
 		shareFriend() {
 			//分享到微信朋友
+			// #ifdef APP-PLUS
 			this.share('WXSceneSession');
+			// #endif
+			// #ifdef H5
+			this.h5Share('朋友');
+			// #endif
 		},
 		shareFriendcricle() {
 			//分享到微信朋友圈
+			// #ifdef APP-PLUS
 			this.share('WXSenceTimeline');
+			// #endif
+			// #ifdef H5
+			this.h5Share('朋友圈');
+			// #endif
 		},
 		// 获取当前页路径及参数,用于分享
 		getPageUrl() {
@@ -339,6 +332,64 @@ export default {
 			url += optionsString;
 			return url;
 		},
+		h5Share(type) {
+			console.log(type);
+			let that = this
+			let url = that.getPageUrl();
+			
+			//获取微信公众号的配置
+			uni.request({
+				url: `${helper.requestUrl}/getSignPackage`,
+				dataType: 'text',
+				method:'POST',
+				data: {
+					url: window.location.href.split('#')[0]
+				},
+				success: res => {
+					var s = JSON.parse(res.data)
+					wxj.config({
+						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+						appId: s.appId, // 必填，公众号的唯一标识
+						timestamp: s.timestamp, // 必填，生成签名的时间戳
+						nonceStr: s.nonceStr, // 必填，生成签名的随机串
+						signature: s.signature, // 必填，签名，见附录1
+						jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','updateAppMessageShareData']
+					});
+					if(type == '朋友'){
+						console.log(type)
+						wxj.ready(function () {
+							wxj.updateAppMessageShareData({
+								title: that.articleDetail.title, // 分享标题
+								// desc: '', // 分享描述
+								link: "https://jinrong.beaconway.cn/" + url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+								// imgUrl: '', // 分享图标
+								type: '', // 分享类型,music、video或link，不填默认为link
+								dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+								success: function () {
+									// 用户点击了分享后执行的回调函数
+								},
+							})
+						})
+					}else if(type == '朋友圈'){
+						wxj.ready(function () {
+						  wxj.onMenuShareTimeline({ 
+						    title: that.articleDetail.title, // 分享标题
+						    link: 'https://jinrong.beaconway.cn/' + url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+						    // imgUrl: '', // 分享图标
+						    success: function () {
+						    // 用户点击了分享后执行的回调函数
+						    },
+								
+								
+						  })
+						})
+					}
+				},
+				fail: err => {
+					console.log('request fail', err);
+				}
+			});
+		},
 		share(WXSenceType) {
 			// 获取页面路径
 			let url = this.getPageUrl();
@@ -346,7 +397,7 @@ export default {
 				provider: 'weixin',
 				scene: WXSenceType,
 				type: 0,
-				href: url,
+				href: 'https://jinrong.beaconway.cn/#/' + url,
 				title: this.articleDetail.title,
 				summary: '',
 				imageUrl: '',
@@ -903,10 +954,10 @@ button::after {
 	width: 690rpx;
 	padding: 0 30rpx;
 }
-.docUrl{
+.docUrl {
 	font-size: 30rpx;
 	color: #333;
-	word-break:break-all;
+	word-break: break-all;
 	width: 690rpx;
 }
 .comment .item {

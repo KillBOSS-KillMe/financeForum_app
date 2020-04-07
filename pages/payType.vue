@@ -7,7 +7,7 @@
 				<text class="money">{{options.money}}</text>
 			</view>
 		</view>
-		<!-- #ifdef APP-PLUS || H5 -->
+		<!-- #ifdef APP-PLUS -->
 		<view class="content">
 			<radio-group @change="radioChange" :id="index" style="width: 690rpx;display: flex;">
 				<view class="item">
@@ -25,7 +25,27 @@
 				</view>
 			</radio-group>
 		</view>
-		<button type="primary" class="iAgree" @tap="iAgree">立即支付</button>
+		<button type="primary" class="iAgree" @tap="iAgree('app')">立即支付</button>
+		<!-- #endif -->
+		<!-- #ifdef H5 -->
+		<view class="content">
+			<radio-group @change="radioChange" :id="index" style="width: 690rpx;display: flex;">
+				<view class="item">
+					<label class="radio">
+						<radio value="wechat" checked="true" />
+					</label>
+					<uni-icon type="" class="iconfont iconweixin1"></uni-icon>
+					<text>微信支付</text>
+				</view>
+				<view class="item">
+					<label class="radio">
+						<radio value="aliply" /></label>
+					<uni-icon type="" class="iconfont iconzhifubao"></uni-icon>
+					<text>支付宝支付</text>
+				</view>
+			</radio-group>
+		</view>
+		<button type="primary" class="iAgree" @tap="iAgree('h5')">立即支付</button>
 		<!-- #endif -->
 		<!-- #ifdef MP-WEIXIN -->
 		<view class="content">
@@ -42,6 +62,9 @@
 <script>
 	const app = getApp()
 	import helper from '../common/helper.js';
+	// #ifdef H5
+	import wxj from '../components/h5.js';
+	// #endif
 	export default {
 		data() {
 			return {
@@ -55,10 +78,7 @@
 		onLoad(options) {
 			this.token = uni.getStorageSync('token')
 			this.userInfo = app.globalData.userInfo
-			// console.log(this.userInfo)
-			// console.log(options)
 			this.options = options
-			con
 		},
 		methods: {
 			radioChange(e) {
@@ -137,12 +157,7 @@
 					}
 				});
 			},
-			// #ifdef APP-PLUS || H5
-			iAgree() {
-				// console.log(this.payType);
-				// uni.showToast({
-				// 	title: this.payType
-				// })
+			iAgree(app_type) {
 				uni.request({
 					url: `${helper.requestUrl}/buy-vip`,
 					method: 'POST',
@@ -151,17 +166,27 @@
 					},
 					data: {
 						member_id: this.options.id,
-						app_type: 'app',
+						app_type: app_type,
 						pay_type: this.payType
 					},
 					success: res => {
 						// 调起支付
 						console.log(res.data,'zhifu')
+						// #ifdef APP-PLUS
 						this.appWxpay(res.data)
+						// #endif
+						// #ifdef H5
+						this.h5Wxpay(res.data)
+						// #endif
 					}
 				});
 			},
-			
+			// h5支付
+			h5Wxpay(payNode){
+				console.log(payNode,'h5')
+				
+			},
+			// app 支付
 			appWxpay(payNode) {
 				console.log(payNode,'-------------------------------------')
 				let payTypeWxpay = ''
@@ -184,15 +209,9 @@
 				    },
 				    fail: function (err) {
 							console.log(err)
-							// uni.showToast({
-							// 	title: '支付失败',
-							// 	icon: 'none',
-							// 	duration: 2000
-							// });
 				    },
 				});
 			}
-			// #endif
 		}
 		
 	};

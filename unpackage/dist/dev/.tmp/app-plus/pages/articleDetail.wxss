@@ -262,10 +262,10 @@ button::after {
 	width: 690rpx;
 	padding: 0 30rpx;
 }
-.docUrl{
+.docUrl {
 	font-size: 30rpx;
 	color: #333;
-	word-break:break-all;
+	word-break: break-all;
 	width: 690rpx;
 }
 .comment .item {
