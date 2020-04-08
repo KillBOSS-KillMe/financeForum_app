@@ -48,18 +48,21 @@
 			<view class="docUrl" v-if="articleDetail.docx != undefined " @tap="linkUrl(imgUrl + articleDetail.docx)">
 				2
 			</view> -->
-			<view class="share">
-				<text>分享至</text>
-				<!-- #ifdef MP-WEIXIN -->
-				<button class="share-btn" open-type="share"><uni-icon class="iconfont iconweixin" type=""></uni-icon></button>
-				<!-- #endif -->
-				<!-- #ifdef APP-PLUS || H5 -->
-				<!-- 分享到微信好友 -->
-				<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
-				<!-- 分享到微信朋友圈 -->
-				<uni-icon class="iconfont iconpengyouquan" @tap="shareFriendcricle" type=""></uni-icon>
-				<!-- #endif -->
-			</view>
+			// <!-- #ifndef H5 -->
+				<view class="share">
+					<text>分享至</text>
+					<!-- #ifdef MP-WEIXIN -->
+					<button class="share-btn" open-type="share"><uni-icon class="iconfont iconweixin" type=""></uni-icon></button>
+					<!-- #endif -->
+					<!-- #ifdef APP-PLUS -->
+					<!-- 分享到微信好友 -->
+					<uni-icon class="iconfont iconweixin" @tap="shareFriend" type=""></uni-icon>
+					<!-- 分享到微信朋友圈 -->
+					<uni-icon class="iconfont iconpengyouquan" @tap="shareFriendcricle" type=""></uni-icon>
+					<!-- #endif -->
+				</view>
+			<!-- #endif -->
+			
 		</view>
 		<view class="line"></view>
 		<view class="reward">
@@ -124,9 +127,6 @@
 const app = getApp();
 import helper from '../common/helper.js';
 import parser from '@/components/jyf-parser';
-// #ifdef H5
-import wxj from '../components/h5.js';
-// #endif
 export default {
 	data() {
 		return {

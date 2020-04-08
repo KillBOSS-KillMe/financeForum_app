@@ -29,10 +29,20 @@
 				</view>
 			</view>
 			<view class="longVip">
-				<view class="money">
+				<view class="money" v-if="current == '0'">
 					￥
-					<text>{{vip.data[current].vip_price  || 0}}</text>
+					<text>{{vip.data[0].vip_price  || 0}}</text>
+					/三个月
+				</view>
+				<view class="money" v-if="current == '1'">
+					￥
+					<text>{{vip.data[1].vip_price  || 0}}</text>
 					/年
+				</view>
+				<view class="money" v-if="current == '2'">
+					￥
+					<text>{{vip.data[2].vip_price  || 0}}</text>
+					/三年
 				</view>
 				<view class="time">
 					<text class="long">{{vip.data[current].level}}</text>
