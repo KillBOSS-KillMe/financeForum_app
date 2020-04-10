@@ -1,6 +1,8 @@
 
 .productSupermarket {
 	width: 750rpx;
+	height: 100vh;
+	overflow: hidden;
 }
 .banner {
 	width: 690rpx;
@@ -90,7 +92,7 @@
 }
 .query {
 	width: 690rpx;
-	padding: 30rpx;
+	padding: 20rpx 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -125,7 +127,8 @@
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	height: 40vh;
+	height: 53vh;
+	overflow: hidden;
 }
 .content .inv-h-w {
 	display: -webkit-box;

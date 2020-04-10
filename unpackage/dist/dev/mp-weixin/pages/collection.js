@@ -164,6 +164,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -195,22 +204,158 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { autoplay: true, interval: 2000, bannerList: [], list: [], page: '1', imgUrl: '', vip: '', isShow: false, token: '' };}, onLoad: function onLoad() {this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token');}, onShow: function onShow() {this.getAd();this.getList();}, methods: { // 加载轮播图
-    getAd: function getAd() {var _this = this;uni.showLoading({ title: '加载中...', duration: 1000000 });uni.request({ url: "".concat(_helper.default.requestUrl, "/board/info"), method: 'GET',
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, // onShareAppMessage(){
+  // 	return {
+  // 		title: '子诺新微金分享',
+  // 		path: 'pages/index'
+  // 	}
+  // },
+  onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 进行登录操作
+    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/login"), method: 'POST', data: { username: loginName, password: loginPwd }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);
+          if (res.statusCode == 200) {
+            // 登录的账号和密码存入缓存
+            uni.setStorageSync('login_name', _this.loginName);
+            uni.setStorageSync('login_pwd', _this.loginPaw);
+            _this.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
+            uni.setStorageSync('token', _this.token);
+
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 3000 });
+
+            setTimeout(function () {
+              // 进入登录页
+              uni.reLaunch({
+                url: './login' });
+
+            }, 3000);
+          }
+        } });
+
+    },
+    // 导航详情
+    goNavs: function goNavs(e) {
+      var link = e.currentTarget.dataset.link;
+      var bind_board = e.currentTarget.dataset.bind_board;
+      var id = e.currentTarget.dataset.id;
+      var name = e.currentTarget.dataset.name;
+      if (this.token == "") {
+        var loginName = uni.getStorageSync('login_name');
+        var loginPwd = uni.getStorageSync('login_pwd');
+        // console.log(loginName + '---===---' + loginPwd)
+        if (loginName == '' || loginPwd == '') {
+          uni.showToast({
+            title: '未检测到用户的登录记录，请进行登录',
+            icon: 'none',
+            duration: 3000 });
+
+          setTimeout(function () {
+            // 进入登录页
+            uni.reLaunch({
+              url: './login' });
+
+          }, 2000);
+        } else {
+          // 执行登录操作
+          this.runLogin(loginName, loginPwd);
+          if (bind_board == '0') {
+            uni.navigateTo({
+              url: "/pages/".concat(link) });
+
+          } else {
+            uni.navigateTo({
+              url: "/pages/indexA?id=".concat(bind_board, "&name=").concat(name) });
+
+          }
+        }
+      } else {
+        if (bind_board == '0') {
+          uni.navigateTo({
+            url: "/pages/".concat(link) });
+
+        } else {
+          uni.navigateTo({
+            url: "/pages/indexA?id=".concat(bind_board, "&name=").concat(name) });
+
+        }
+      }
+    },
+    //
+    selListType: function selListType(e) {
+      this.Inv = e.currentTarget.dataset.index;
+      this.boardId = e.currentTarget.dataset.block_id;
+      // console.log(this.boardId,'222')
+      this.page = '1';
+      this.listNode = [];
+      this.getListMore();
+    },
+    // 文章详情
+    goDetail: function goDetail(e) {
+      if (this.token == "") {
+        var loginName = uni.getStorageSync('login_name');
+        var loginPwd = uni.getStorageSync('login_pwd');
+        // console.log(loginName + '---===---' + loginPwd)
+        if (loginName == '' || loginPwd == '') {
+          uni.showToast({
+            title: '未检测到用户的登录记录，请进行登录',
+            icon: 'none',
+            duration: 3000 });
+
+          setTimeout(function () {
+            // 进入登录页
+            uni.reLaunch({
+              url: './login' });
+
+          }, 2000);
+
+        } else {
+          // 执行登录操作
+          this.runLogin(loginName, loginPwd);
+          uni.navigateTo({
+            url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
+
+        }
+      } else {
+        uni.navigateTo({
+          url: "/pages/articleDetail?id=".concat(e.currentTarget.dataset.id) });
+
+      }
+
+    },
+    //获取数据
+    getList: function getList() {var _this2 = this;
+      uni.showLoading({
+        title: '加载中...',
+        duration: 1000000 });
+
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/index"),
+        method: 'GET',
         header: {
           authorization: this.token },
-
-        data: {
-          board_id: '5',
-          page_size: '10',
-          page: 1 },
 
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
-          console.log(res);
           if (res.data.status_code == 200) {
-            _this.bannerList = res.data.board_ad.aditems;
+            var pageNode = res.data.data;
+            _this2.pageNode = pageNode;
+            if (pageNode.board_data.length > 0) {
+              _this2.boardId = pageNode.board_data[0].id;
+              console.log(_this2.boardId, '999');
+              _this2.getListMore();
+            }
           } else {
             uni.showToast({
               title: res.data.message });
@@ -220,72 +365,49 @@ var app = getApp();var _default = { data: function data() {return { autoplay: tr
         } });
 
     },
-    getList: function getList() {var _this2 = this;
+    //加载更多
+    onReachBottom: function onReachBottom() {
+      this.page++;
       uni.showLoading({
         title: '加载中...',
         duration: 1000000 });
 
+      this.getListMore();
+    },
+    getListMore: function getListMore() {var _this3 = this;
       uni.request({
-        url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
+        url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
         method: 'GET',
         header: {
           authorization: this.token },
 
         data: {
-          board_id: '5',
-          page_size: '10',
+          board_id: this.boardId,
+          page_size: this.page_size,
           page: this.page },
 
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
-          console.log(res);
           if (res.data.status_code == 200) {
-            _this2.list = _this2.list.concat(res.data.data);
-            if (res.data.data == 0) {
+            console.log('888', res.data.data);
+            console.log(_this3.pageNode.board_data[_this3.Inv].posts, '*****');
+            if (res.data.data.length > 0) {
+              _this3.listNode = _this3.listNode.concat(res.data.data);
+            } else {
               uni.showToast({
-                title: '暂无更多数据',
+                title: "没有更多数据了",
                 icon: "none" });
 
             }
-            _this2.isShow = false;
-          } else if (res.data.status_code == 202) {
-            // this.vip = res.data.message
-            _this2.isShow = true;
           } else {
-            if (res.data.message == '用户不存在或登陆已过期') {
-              uni.showToast({
-                title: '未检测到用户的登录记录，请进行登录',
-                icon: 'none',
-                duration: 3000 });
+            uni.showToast({
+              title: res.data.message });
 
-              setTimeout(function () {
-                // 进入登录页
-                uni.reLaunch({
-                  url: './login' });
-
-              }, 3000);
-            } else {
-              uni.showToast({
-                title: res.data.message,
-                icon: 'none',
-                duration: 3000 });
-
-            }
           }
 
         } });
 
-    },
-    // 跳转详情
-    goDetail: function goDetail(e) {
-      uni.navigateTo({
-        url: "/pages/articleDetail?id=".concat(e) });
-
-    },
-    onReachBottom: function onReachBottom() {
-      this.page++;
-      this.getList();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

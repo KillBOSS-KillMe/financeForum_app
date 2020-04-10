@@ -99,7 +99,7 @@ export default {
 	},
 	onLoad(option) {
 		this.token = uni.getStorageSync('token')
-		console.log(option);
+		console.log(option,'--------------------------------');
 		this.codeType = option.type;
 		this.imgUrl = helper.imgUrl;
 		if (this.codeType == '1') {
@@ -285,12 +285,12 @@ export default {
 							title: res.data.tip_msg,
 							icon: 'none'
 						});
-						
-					}else if(res.data.code == 2){
-						uni.navigateTo({
-							url:'/pages/message'
-						})
-					} else {
+						setTimeout(e => {
+							uni.navigateBack({
+								delta: 2
+							});
+						}, 2000);
+					}else {
 						uni.showToast({
 							title: res.data.tip_msg,
 							icon: 'none'

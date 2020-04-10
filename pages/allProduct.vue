@@ -93,13 +93,15 @@ export default {
 			vip: '',
 			isShow: true,
 			isShow1: false,
-			token: ''
+			token: '',
+			page:'1',
+			bank_id: ''
 		};
 	},
 	onLoad(e) {
 		console.log(e);
-		this.typeText2 = e.title;
-		this.category_id = e.id;
+		this.bank_id = e.id;
+		// this.category_id = e.id;
 		this.imgUrl = helper.imgUrl;
 		this.token = uni.getStorageSync('token') || this.token
 		this.getList();
@@ -176,9 +178,10 @@ export default {
 				},
 				data: {
 					category_id: this.category_id,
-					quota: this.quota
-					// page_size: this.page_size,
-					// page: this.page
+					quota: this.quota,
+					bank_id: this.bank_id,
+					page_size: '10',
+					page: this.page
 				},
 				success: res => {
 					res = helper.null2str(res);
@@ -208,6 +211,10 @@ export default {
 					}
 				}
 			});
+		},
+		onReachBottom() {
+			this.page ++;
+			this.getList()
 		}
 	}
 };

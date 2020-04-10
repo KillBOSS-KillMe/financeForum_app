@@ -186,13 +186,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -236,20 +229,43 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, onShareAppMessage: function onShareAppMessage() {return { title: '子诺新微金分享', path: 'pages/index' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl; // this.getUserInfo()
-    // this.getListMore()
-    this.getList();}, methods: { // 是否获取过token
-    getIsToken: function getIsToken() {if (this.token == "") {// 获取缓存中用于登录的用户名和密码
+var app = getApp();var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, pageNode: [], imgUrl: '', categoryList: [], subCategoryList: [], page: '1', page_size: '10', boardId: '', categoryActive: 0, activeStyle: { color: this.activeTextColor, backgroundColor: this.activeBackgroundColor }, vip: '', token: '', isShow: true };}, props: { //主分类激活索引
+    defaultActive: { type: Number, default: 0 }, activeTextColor: { type: String, default: '#333' }, activeBackgroundColor: { type: String, default: '#ffffff' } }, onLaunch: function onLaunch() {}, onShow: function onShow() {
+  },
+  onHide: function onHide() {
+
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    return {
+      title: '子诺新微金分享',
+      path: 'pages/index' };
+
+  },
+  onLoad: function onLoad() {
+    this.token = uni.getStorageSync('token');
+    this.imgUrl = _helper.default.imgUrl;
+    this.getNav();
+    this.categoryActive = 0;
+    this.subCategoryList = [];
+    this.getList();
+  },
+  methods: {
+    // 是否获取过token
+    getIsToken: function getIsToken() {
+      if (this.token == "") {
+        // 获取缓存中用于登录的用户名和密码
         // 如果没有缓存信息,不进行登录,用户点击操作时,提示进入登录页
-        var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd'); // console.log(loginName + '---===---' + loginPwd)
-        if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none', duration: 3000 });setTimeout(function () {// 进入登录页
+        var loginName = uni.getStorageSync('login_name');
+        var loginPwd = uni.getStorageSync('login_pwd');
+        // console.log(loginName + '---===---' + loginPwd)
+        if (loginName == '' || loginPwd == '') {
+          uni.showToast({
+            title: '未检测到用户的登录记录，请进行登录',
+            icon: 'none',
+            duration: 3000 });
+
+          setTimeout(function () {
+            // 进入登录页
             uni.reLaunch({
               url: './login' });
 
@@ -301,6 +317,135 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
         } });
 
     },
+    categoryMainClick: function categoryMainClick(id, index, name) {
+      this.boardId = id;
+      this.page = '1';
+      this.page_size = '10';
+      this.subCategoryList = [];
+      this.categoryActive = index;
+      this.getNavList();
+    },
+    categorySubClick: function categorySubClick(e) {
+      // console.log(e);
+      if (this.token == "") {
+        var loginName = uni.getStorageSync('login_name');
+        var loginPwd = uni.getStorageSync('login_pwd');
+        // console.log(loginName + '---===---' + loginPwd)
+        if (loginName == '' || loginPwd == '') {
+          uni.showToast({
+            title: '未检测到用户的登录记录，请进行登录',
+            icon: 'none',
+            duration: 3000 });
+
+          setTimeout(function () {
+            // 进入登录页
+            uni.reLaunch({
+              url: './login' });
+
+          }, 2000);
+
+        } else {
+          // 执行登录操作
+          this.runLogin(loginName, loginPwd);
+          uni.navigateTo({
+            url: "/pages/articleDetail?id=".concat(e.id) });
+
+        }
+      } else {
+
+        uni.navigateTo({
+          url: "/pages/articleDetail?id=".concat(e.id) });
+
+      }
+    },
+    // 获取导航
+    getNav: function getNav() {var _this2 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/board/boards"),
+        method: 'GET',
+        header: {
+          authorization: this.token },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            _this2.categoryList = res.data.data;
+            _this2.boardId = res.data.data[0].id;
+            _this2.getNavList();
+            // console.log(this.boardId)
+          } else {
+            if (res.data.message == '用户不存在或登陆已过期') {
+              uni.showToast({
+                title: '未检测到用户的登录记录，请进行登录',
+                icon: 'none',
+                duration: 3000 });
+
+              setTimeout(function () {
+                // 进入登录页
+                uni.reLaunch({
+                  url: './login' });
+
+              }, 3000);
+            } else {
+              uni.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 3000 });
+
+            }
+          }
+
+        } });
+
+    },
+    //获取数据
+    getNavList: function getNavList() {var _this3 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/posts/board-posts"),
+        method: 'GET',
+        header: {
+          authorization: this.token },
+
+        data: {
+          board_id: this.boardId,
+          page_size: this.page_size,
+          page: this.page },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res);
+          if (res.data.status_code == 200) {
+            _this3.subCategoryList = _this3.subCategoryList.concat(res.data.data);
+            if (res.data.data == 0) {
+              uni.showToast({
+                title: '暂无更多数据',
+                icon: "none" });
+
+              _this3.isShow = true;
+              // console.log(this.isShow )
+            } else {
+              _this3.isShow = false;
+            }
+
+          } else if (res.data.status_code == 202) {
+            _this3.vip = res.data.message;
+            _this3.isShow = false;
+          } else {
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none',
+              duration: 2000 });
+
+          }
+
+        } });
+
+    },
+    toLowFun: function toLowFun() {
+      this.page++;
+      this.getNavList();
+    },
     // 导航详情
     goNavs: function goNavs(e) {
       var link = e.currentTarget.dataset.link;
@@ -351,15 +496,6 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
 
       // console.log(bind_board)
     },
-    //
-    selListType: function selListType(e) {
-      this.Inv = e.currentTarget.dataset.index;
-      this.boardId = e.currentTarget.dataset.block_id;
-      // console.log(this.boardId,'222')
-      this.page = '1';
-      this.listNode = [];
-      this.getListMore();
-    },
     // 轮播跳转
     goBanner: function goBanner(e) {
       // console.log(e)
@@ -397,7 +533,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
       }
 
     },
-    getUserInfo: function getUserInfo() {var _this2 = this;
+    getUserInfo: function getUserInfo() {var _this4 = this;
       // 用户信息获取
       uni.showLoading({
         title: '用户信息获取中...' });
@@ -412,14 +548,14 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
           uni.hideLoading();
           res = _helper.default.null2str(res);
           console.log(res, '++++++++');
-          _this2.userInfo = res.data;
+          _this4.userInfo = res.data;
           app.globalData.userInfo = res.data;
-          console.log(_this2.userInfo.mobile);
+          console.log(_this4.userInfo.mobile);
         } });
 
     },
     //获取数据
-    getList: function getList() {var _this3 = this;
+    getList: function getList() {var _this5 = this;
       uni.showLoading({
         title: '加载中...',
         duration: 1000000 });
@@ -435,66 +571,7 @@ var app = getApp();var _default = { data: function data() {return { indicatorDot
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
             var pageNode = res.data.data;
-            _this3.pageNode = pageNode;
-            if (pageNode.board_data.length > 0) {
-              // this.boardId = pageNode.board_data[0].block_id
-              _this3.boardId = pageNode.board_data[0].id;
-              console.log(_this3.boardId, '999');
-              _this3.getListMore();
-            }
-          } else {
-            uni.showToast({
-              title: res.data.message });
-
-          }
-
-        } });
-
-    },
-    //加载更多
-    onReachBottom: function onReachBottom() {
-      // console.log(this.boardId)
-      this.page++;
-      // console.log(this.page)
-      // console.log(this.pageNode.board_data[Inv].block_id)
-      uni.showLoading({
-        title: '加载中...',
-        duration: 1000000 });
-
-      this.getListMore();
-    },
-    getListMore: function getListMore() {var _this4 = this;
-      uni.request({
-        url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
-        method: 'GET',
-        header: {
-          authorization: this.token },
-
-        data: {
-          board_id: this.boardId,
-          page_size: this.page_size,
-          page: this.page },
-
-        success: function success(res) {
-          uni.hideLoading();
-          res = _helper.default.null2str(res);
-          if (res.data.status_code == 200) {
-            console.log('888', res.data.data);
-            console.log(_this4.pageNode.board_data[_this4.Inv].posts, '*****');
-            if (res.data.data.length > 0) {
-              _this4.listNode = _this4.listNode.concat(res.data.data);
-              // this.pageNode.board_data[this.Inv].posts = this.pageNode.board_data[this.Inv].posts.concat(res.data.data)
-
-              // console.log('//',this.pageNode)
-              // console.log(res.data.data)
-              // this.pageNode = this.pageNode.concat(res.data.data)
-              // console.log(this.pageNode)
-            } else {
-              uni.showToast({
-                title: "没有更多数据了",
-                icon: "none" });
-
-            }
+            _this5.pageNode = pageNode;
           } else {
             uni.showToast({
               title: res.data.message });

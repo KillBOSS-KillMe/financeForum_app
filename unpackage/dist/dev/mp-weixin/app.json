@@ -25,7 +25,6 @@
     "pages/meMessage",
     "pages/meCertification",
     "pages/meVIP",
-    "pages/joinMember",
     "pages/contactCustomer",
     "pages/meSpread",
     "pages/meService",
@@ -111,5 +110,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap5.json"
+  "sitemapLocation": "sitemap10.json"
 }

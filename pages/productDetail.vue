@@ -85,7 +85,7 @@
 				<text>#有关回访#全程无电话回访</text> -->
 			</view>
 		</view>
-		<view class="productList" v-if="listInfo.identical_holes.length > 0">
+		<view class="productList" v-if="listInfo.identical_holes&&listInfo.identical_holes.length > 0">
 			<text>同类产品</text>
 			<view class="head" v-for="(item,index) in listInfo.identical_holes" :key="index">
 				<!-- <image :src="item.img" mode="aspectFill"></image> -->
@@ -131,7 +131,7 @@
 		data() {
 			return {
 				productId: '',
-				listInfo: [],
+				listInfo: {},
 				imgUrl:'',
 				// isShow: false,
 				vip: '',
@@ -139,6 +139,7 @@
 			}
 		},
 		onLoad(e) {
+			console.log(e,'///////////////')
 			this.token = uni.getStorageSync('token')
 			this.productId = e.id;
 			this.imgUrl = helper.imgUrl;

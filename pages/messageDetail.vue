@@ -2,7 +2,7 @@
 	<view class="message">
 		<text class="title">系统消息</text>
 		<jyf-parser :html="news.content" ref="article" class="font"></jyf-parser>
-		<text class="button" @tap="link" v-if="news.type == 'QR'">点击立即输入账号密码获取二维码</text>
+		<!-- <text class="button" @tap="link" v-if="news.type == 'QR'">点击立即输入账号密码获取二维码</text> -->
 	</view>
 </template>
 

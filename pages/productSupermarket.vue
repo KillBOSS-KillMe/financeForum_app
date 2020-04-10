@@ -10,7 +10,7 @@
 								<view class="bannerItem" v-if="sonIndex <= 9" @tap="navsHead" :data-id='sonItem.id' :data-title='sonItem.title'>
 									<image src="../static/imgLost.png" mode="" v-if="sonItem.icon == ''"></image>
 									<image :src="imgUrl + sonItem.icon" mode="" v-else></image>
-									<text>{{ sonItem.title }}</text>
+									<text>{{ sonItem.bank_name }}</text>
 								</view>
 							</block>
 						</view>
@@ -29,11 +29,11 @@
 				<view class="nav-left">
 					<scroll-view scroll-y class="oneScroll">
 						<block v-for="(item, index) in navLeft" :key="index">
-							<view class="nav-left-item" @tap="leftNav(index,item.id)" :class="['colorD', active == index ? 'color' : '']">{{ item.bank }}</view>
+							<view class="nav-left-item" @tap="leftNav(index,item.id)" :class="['colorD', active == index ? 'color' : '']">{{ item.title }}</view>
 						</block>
 					</scroll-view>
 				</view>
-				<uni-drawer :visible="showLeft" @close="closeDrawer">
+		<!-- 		<uni-drawer :visible="showLeft" @close="closeDrawer">
 				    <view style="padding:30rpx;">
 				        <view class="uni-title" @tap="clickItem(bankId)">全部产品</view>
 				    </view>
@@ -42,7 +42,7 @@
 							    <view class="uni-title" @tap="childItem(bankId,item.id,item.child )">{{ item.child }}</view>
 							</view>
 						</block>
-				</uni-drawer>
+				</uni-drawer> -->
 			</view>
 			
 			<view class="nav_left">
@@ -51,14 +51,14 @@
 					<view :class="['inv-h', Inv == 1 ? 'inv-h-se' : '']" @tap="changeTab(1)">热门产品</view>
 					<view :class="['inv-h', Inv == 3 ? 'inv-h-se' : '']" @tap="changeTab(3)">推荐产品</view>
 				</view>
-				<view class="navLeftNav">
+				<!-- <view class="navLeftNav">
 					<scroll-view scroll-x="true">
 						<text @tap="headNav(0,0)" :class="['navColor', activeHead == 0 ? 'navA' : '']">全部</text>
 						<block v-for="(item, index) in navReft" :key="index">
 							<text @tap="headNav(index + 1,item.id)" :class="['navColor', activeHead == index + 1 ? 'navA' : '']">{{ item.class_name }}</text>
 						</block>
 					</scroll-view>
-				</view>
+				</view> -->
 				<view class="contentList">
 					<scroll-view scroll-y class="twoScroll">
 						<block v-for="(item, index) in list" :key="index">
@@ -109,7 +109,7 @@ export default {
 			page: '1',
 			imgUrl: '',
 			navLeft: [],
-			navReft: [],
+			// navReft: [],
 			active: '0',
 			activeStyle: {
 				color: this.activeTextColor,
@@ -118,7 +118,7 @@ export default {
 			activeHead: '0',
 			showLeft: false,
 			classType: '0',
-			bankId: '',
+			category_id: '',
 			letfNavChild: [],
 			token: ''
 		};
@@ -142,110 +142,118 @@ export default {
 		// 左边导航
 		leftNav(index,id) {
 			this.active = index;
-			this.showLeft = true;
-			this.bankId = id;
+			// this.showLeft = true;
+			this.category_id = id;
 			this.page = '1';
-			this.getLeftNavChild()
+			// this.page = '1'
+			this.list = [];
+			this.getTab();
+			// this.getLeftNavChild()
 			console.log(id)
 			console.log(this.showLeft)
 		},
 		// 左边导航数据
 		getNavLeft(){
 			uni.request({
-				url: `${helper.requestUrl}/holes/banks`,
+				url: `${helper.requestUrl}/holes/categories`,
 				method: 'GET',
 				header: {
 					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
-					console.log(res,'左边导航数据');
+					console.log(res);
 					if (res.data.status_code == 200) {
 						this.navLeft = res.data.data;
-						this.bankId = res.data.data[0].id
-						console.log(this.bankId,'银行')
-						this.getReftNav()
-						// this.page = '1'
-						// this.list = [];
-						// this.getTab();
-						
-					} else {
-						// uni.showToast({
-						// 	title: res.data.message,
-						// 	icon: 'none'
-						// });
-					}
-				}
-			});
-		},
-		childItem(bankId,childId,name){
-			this.showLeft = false;
-			uni.navigateTo({
-				url: `/pages/indexA?bankId=${bankId}&name=${name}&childId=${childId}`
-			})
-		},
-		// 获取银行子类
-		getLeftNavChild(){
-			uni.request({
-				url: `${helper.requestUrl}/holes/bank_child`,
-				method: 'GET',
-				header: {
-					authorization: this.token
-				},
-				success: res => {
-					res = helper.null2str(res);
-					console.log(res,'右边导航数据');
-					if (res.data.status_code == 200) {
-						this.letfNavChild = res.data.data;
-					} else {
-						
-					}
-				}
-			});
-		},
-		// 右边导航数据
-		getReftNav(){
-			uni.request({
-				url: `${helper.requestUrl}/holes/loan_class`,
-				method: 'GET',
-				header: {
-					authorization: this.token
-				},
-				success: res => {
-					res = helper.null2str(res);
-					console.log(res,'右边导航数据');
-					if (res.data.status_code == 200) {
-						this.navReft = res.data.data;
+						this.category_id = res.data.data[0].id
+						this.page = '1';
 						this.list = [];
 						this.getTab();
+						// let arr = res.data.data;
+						// let result = [];
+						// let num = 10;
+						// for (let i = 0; i < arr.length; i += num) {
+						// 	result.push(arr.slice(i, i + num));
+						// }
+						// console.log(result);
+						// this.navList = result;
 					} else {
-						// uni.showToast({
-						// 	title: res.data.message,
-						// 	icon: 'none'
-						// });
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						});
 					}
 				}
 			});
 		},
+		// childItem(bankId,childId,name){
+		// 	this.showLeft = false;
+		// 	uni.navigateTo({
+		// 		url: `/pages/indexA?bankId=${bankId}&name=${name}&childId=${childId}`
+		// 	})
+		// },
+		// 获取银行子类
+		// getLeftNavChild(){
+		// 	uni.request({
+		// 		url: `${helper.requestUrl}/holes/bank_child`,
+		// 		method: 'GET',
+		// 		header: {
+		// 			authorization: this.token
+		// 		},
+		// 		success: res => {
+		// 			res = helper.null2str(res);
+		// 			console.log(res,'右边导航数据');
+		// 			if (res.data.status_code == 200) {
+		// 				this.letfNavChild = res.data.data;
+		// 			} else {
+						
+		// 			}
+		// 		}
+		// 	});
+		// },
+		// 右边导航数据
+		// getReftNav(){
+		// 	uni.request({
+		// 		url: `${helper.requestUrl}/holes/loan_class`,
+		// 		method: 'GET',
+		// 		header: {
+		// 			authorization: this.token
+		// 		},
+		// 		success: res => {
+		// 			res = helper.null2str(res);
+		// 			console.log(res,'右边导航数据');
+		// 			if (res.data.status_code == 200) {
+		// 				this.navReft = res.data.data;
+		// 				this.list = [];
+		// 				this.getTab();
+		// 			} else {
+		// 				// uni.showToast({
+		// 				// 	title: res.data.message,
+		// 				// 	icon: 'none'
+		// 				// });
+		// 			}
+		// 		}
+		// 	});
+		// },
 		closeDrawer() {
 			this.showLeft = false
 		},
-		clickItem(bankId){
+		clickItem(category_id){
 			this.showLeft = false
-			this.bankId = bankId
+			this.category_id = category_id
 			this.page = '1';
 			this.list = []
 			this.getTab()
 		},
 		// 右边头部导航
-		headNav(index,id) {
-			console.log(index,id);
-			this.activeHead = index;
-			this.classType = id
-			this.list = [];
-			this.page = '1';
-			this.getTab()
-		},
+		// headNav(index,id) {
+		// 	console.log(index,id);
+		// 	this.activeHead = index;
+		// 	this.classType = id
+		// 	this.list = [];
+		// 	this.page = '1';
+		// 	this.getTab()
+		// },
 		changeTab(e) {
 			console.log(e);
 			this.Inv = e;
@@ -271,14 +279,14 @@ export default {
 		//轮播导航
 		getNav() {
 			uni.request({
-				url: `${helper.requestUrl}/holes/categories`,
+				url: `${helper.requestUrl}/holes/banks`,
 				method: 'GET',
 				header: {
 					authorization: this.token
 				},
 				success: res => {
 					res = helper.null2str(res);
-					console.log(res);
+					console.log(res,'左边导航数据');
 					if (res.data.status_code == 200) {
 						let arr = res.data.data;
 						let result = [];
@@ -288,11 +296,12 @@ export default {
 						}
 						console.log(result);
 						this.navList = result;
+						// this.getReftNav()
+						// this.page = '1'
+						// this.list = [];
+						// this.getTab();
+						
 					} else {
-						uni.showToast({
-							title: res.data.message,
-							icon: 'none'
-						});
 					}
 				}
 			});
@@ -307,8 +316,8 @@ export default {
 				},
 				data: {
 					type: this.tabType,
-					bank_id: this.bankId,
-					class_id: this.classType,
+					category_id: this.category_id,
+					// class_id: this.classType,
 					page_size: this.page_size,
 					page: this.page
 				},
@@ -318,16 +327,13 @@ export default {
 					if (res.data.status_code == 200) {
 						this.list = this.list.concat(res.data.data);
 					} else {
-						// uni.showToast({
-						// 	title: res.data.message,
-						// 	icon: 'none'
-						// });
+
 					}
 				}
 			});
 		},
 		goProduct(e) {
-			console.log(e);
+			console.log(e,'*********************************');
 			let id = e.currentTarget.dataset.id;
 			uni.navigateTo({
 				url: `/pages/productDetail?id=${id}`
@@ -383,6 +389,9 @@ export default {
 	color: #333333;
 	font-weight: 600;
 	font-size: 28rpx;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 .quickInlet {
 	width: 690rpx;
@@ -448,6 +457,7 @@ export default {
 .content .inv-h-w {
 	display: flex;
 	width: 510rpx;
+	margin-bottom: 10rpx;
 }
 .content .inv-h {
 	font-size: 32rpx;
