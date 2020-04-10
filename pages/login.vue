@@ -35,8 +35,8 @@
 	export default {
 		data() {
 			return {
-				loginPaw: '123123',
-				loginName: '17696116171',
+				loginPaw: '',
+				loginName: '',
 				token: ''
 			}
 		},
