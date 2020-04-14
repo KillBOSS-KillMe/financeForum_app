@@ -11,8 +11,8 @@
 				</swiper-item>
 			</swiper>
 		</view>
-		
 		<view class="nav">
+			
 			<view class="nav-left">
 				<scroll-view scroll-y>
 					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryMainClick(item.id,index,item.title)" :key="index"

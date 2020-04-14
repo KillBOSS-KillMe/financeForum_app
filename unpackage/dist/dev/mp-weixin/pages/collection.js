@@ -219,45 +219,9 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, boar
   // 		path: 'pages/index'
   // 	}
   // },
-  onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 进行登录操作
-    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/login"), method: 'POST', data: { username: loginName, password: loginPwd }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);
-          if (res.statusCode == 200) {
-            // 登录的账号和密码存入缓存
-            uni.setStorageSync('login_name', _this.loginName);
-            uni.setStorageSync('login_pwd', _this.loginPaw);
-            _this.token = "".concat(res.data.token_type, " ").concat(res.data.access_token);
-            uni.setStorageSync('token', _this.token);
-
-          } else {
-            uni.showToast({
-              title: res.data.message,
-              icon: 'none',
-              duration: 3000 });
-
-            setTimeout(function () {
-              // 进入登录页
-              uni.reLaunch({
-                url: './login' });
-
-            }, 3000);
-          }
-        } });
-
-    },
-    // 导航详情
-    goNavs: function goNavs(e) {
-      var link = e.currentTarget.dataset.link;
-      var bind_board = e.currentTarget.dataset.bind_board;
-      var id = e.currentTarget.dataset.id;
-      var name = e.currentTarget.dataset.name;
-      if (this.token == "") {
-        var loginName = uni.getStorageSync('login_name');
-        var loginPwd = uni.getStorageSync('login_pwd');
-        // console.log(loginName + '---===---' + loginPwd)
-        if (loginName == '' || loginPwd == '') {
-          uni.showToast({
-            title: '未检测到用户的登录记录，请进行登录',
-            icon: 'none',
+  onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 导航详情
+    goNavs: function goNavs(e) {var link = e.currentTarget.dataset.link;var bind_board = e.currentTarget.dataset.bind_board;var id = e.currentTarget.dataset.id;var name = e.currentTarget.dataset.name;if (this.token == "") {var loginName = uni.getStorageSync('login_name');var loginPwd = uni.getStorageSync('login_pwd'); // console.log(loginName + '---===---' + loginPwd)
+        if (loginName == '' || loginPwd == '') {uni.showToast({ title: '未检测到用户的登录记录，请进行登录', icon: 'none',
             duration: 3000 });
 
           setTimeout(function () {
@@ -334,7 +298,7 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, boar
 
     },
     //获取数据
-    getList: function getList() {var _this2 = this;
+    getList: function getList() {var _this = this;
       uni.showLoading({
         title: '加载中...',
         duration: 1000000 });
@@ -345,16 +309,19 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, boar
         header: {
           authorization: this.token },
 
+        data: {
+          type: '1' },
+
         success: function success(res) {
           uni.hideLoading();
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
             var pageNode = res.data.data;
-            _this2.pageNode = pageNode;
+            _this.pageNode = pageNode;
             if (pageNode.board_data.length > 0) {
-              _this2.boardId = pageNode.board_data[0].id;
-              console.log(_this2.boardId, '999');
-              _this2.getListMore();
+              _this.boardId = pageNode.board_data[0].id;
+              console.log(_this.boardId, '999');
+              _this.getListMore();
             }
           } else {
             uni.showToast({
@@ -374,7 +341,7 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, boar
 
       this.getListMore();
     },
-    getListMore: function getListMore() {var _this3 = this;
+    getListMore: function getListMore() {var _this2 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/index-board-posts"),
         method: 'GET',
@@ -391,9 +358,9 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, boar
           res = _helper.default.null2str(res);
           if (res.data.status_code == 200) {
             console.log('888', res.data.data);
-            console.log(_this3.pageNode.board_data[_this3.Inv].posts, '*****');
+            console.log(_this2.pageNode.board_data[_this2.Inv].posts, '*****');
             if (res.data.data.length > 0) {
-              _this3.listNode = _this3.listNode.concat(res.data.data);
+              _this2.listNode = _this2.listNode.concat(res.data.data);
             } else {
               uni.showToast({
                 title: "没有更多数据了",

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "推广二维码",
-  "usingComponents": {
-    "uni-popup": "/components/uni-popup"
-  }
-}

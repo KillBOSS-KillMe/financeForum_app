@@ -10,6 +10,7 @@
 			</block>
 		</view>
 		<!-- 数据列表 -->
+		
 		<view class="content">
 			<view class="inv-h-w">
 				<block v-for="(item, index) in pageNode.board_data" :key="index">

@@ -452,7 +452,7 @@ export default {
 	width: 750rpx;
 	/* padding: 0 30rpx; */
 	display: flex;
-	height: 40vh;
+	/* height: 40vh; */
 }
 .content .inv-h-w {
 	display: flex;
@@ -554,10 +554,10 @@ export default {
 }
 
 .oneScroll{
-	height: 100vh;
+	height: 95vh;
 }
 .twoScroll{
-	height: 88vh;
+	height:95vh;
 }
 .nav-left {
 	width: 190rpx;

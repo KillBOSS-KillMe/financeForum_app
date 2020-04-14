@@ -1,16 +1,5 @@
 <template>
 	<view class="exchang">
-		<!-- <pageSearch></pageSearch> -->
-<!-- 		<view class="banner">
-			<swiper class="swiper">
-				<block v-for="(item,index) in pageData.ad.aditems" :key='index'>
-					<swiper-item>
-						<image :src="imgUrl+item.image" mode="aspectFill"></image>
-					</swiper-item>
-				</block>
-				
-			</swiper>
-		</view> -->
 		<view class="nav">
 			<block v-for="(item, index) in navList" :key="index">
 				<view class="item" @tap="getNav(item.type,item.title,item.img)">
@@ -23,6 +12,7 @@
 		<view class="leftNav">
 			<view class="nav-left">
 				<scroll-view scroll-y>
+					<view class="nav-left-item"  @tap="getAll(index)" :class="['colorD', categoryActive == index ? 'color' : '']">全国开放</view>
 					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryMainClick(item.id,index)" :key="index"
 					 :class="['colorD', categoryActive == index ? 'color' : '']">
 						{{item.area_name}}
@@ -69,7 +59,8 @@ export default {
 			subCategoryList:[],
 			categoryActive: 0,
 			area_id: '',
-			token: ''
+			token: '',
+			type: ''
 		};
 	},
 	onLoad() {	
@@ -78,10 +69,11 @@ export default {
 	},
 	onShow(){	
 		this.getUserInfo()
-		this.categoryActive = 0,
+		// this.categoryActive = 0,
 		this.subCategoryList =[]
 		// 加载微金交流首页数据
 		this.getRegion();
+		this.getAll()
 	},
 	methods: {
 		// 左边导航点击事件
@@ -89,7 +81,15 @@ export default {
 			console.log(e,index);
 			this.categoryActive = index;
 			this.area_id = e
+			this.type = ''
 			this.subCategoryList =[]
+			this.getList()
+		},
+		getAll(e){
+			this.area_id = ''
+			this.type = 'all'
+			this.subCategoryList =[]
+			this.categoryActive = e;
 			this.getList()
 		},
 		// 详情
@@ -139,8 +139,8 @@ export default {
 					console.log(res);
 					if (res.data.status_code == '200') {
 						this.categoryList = res.data.data;
-						this.area_id = this.categoryList[0].id
-						this.getList()
+						// this.area_id = this.categoryList[0].id
+						// this.getList()
 					} else {
 						if(res.data.message == '用户不存在或登陆已过期'){
 							uni.showToast({
@@ -194,7 +194,8 @@ export default {
 					authorization: this.token
 				},
 				data:{
-					area_id: this.area_id
+					area_id: this.area_id,
+					type: this.type
 				},
 				success: res => {
 					uni.hideLoading();

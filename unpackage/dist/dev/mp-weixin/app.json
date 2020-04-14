@@ -86,7 +86,7 @@
       },
       {
         "pagePath": "pages/apply",
-        "text": "极品干货",
+        "text": "会员专享",
         "iconPath": "static/apply.png",
         "selectedIconPath": "static/applyCur.png"
       },
@@ -110,5 +110,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap10.json"
+  "sitemapLocation": "sitemap6.json"
 }

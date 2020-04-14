@@ -173,6 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -213,15 +214,15 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {}, onHide: function onHide() {}, // onShareAppMessage(){
+//
+var app = getApp();var _default = { data: function data() {return { Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, onHide: function onHide() {}, // onShareAppMessage(){
   // 	return {
   // 		title: '子诺新微金分享',
   // 		path: 'pages/index'
   // 	}
   // },
-  onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, methods: { // 进行登录操作
-    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/login"), method: 'POST', data: { username: loginName, password: loginPwd }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);
-          if (res.statusCode == 200) {
+  onLoad: function onLoad() {}, methods: { // 进行登录操作
+    runLogin: function runLogin(loginName, loginPwd) {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/login"), method: 'POST', data: { username: loginName, password: loginPwd }, success: function success(res) {console.log(res);uni.hideLoading();res = _helper.default.null2str(res);if (res.statusCode == 200) {
             // 登录的账号和密码存入缓存
             uni.setStorageSync('login_name', _this.loginName);
             uni.setStorageSync('login_pwd', _this.loginPaw);
@@ -344,6 +345,9 @@ var app = getApp();var _default = { data: function data() {return { Inv: 0, boar
         method: 'GET',
         header: {
           authorization: this.token },
+
+        data: {
+          type: '2' },
 
         success: function success(res) {
           uni.hideLoading();

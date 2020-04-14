@@ -1,1 +1,0 @@
-<view class="message"><text class="title">系统消息</text><jyf-parser class="font vue-ref" vue-id="3bd9e152-1" html="{{news.content}}" data-ref="article" bind:__l="__l"></jyf-parser></view>

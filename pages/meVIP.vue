@@ -5,7 +5,7 @@
 			<text>{{vip.user.name}}</text>
 		</view>
 		<view class="content">
-			<view class="banner">
+		<!-- 	<view class="banner">
 				<view class="bannerBox">
 					<swiper class="swiper"  next-margin='60rpx' :current="current"  @change="banner">
 						<block v-for="(item,index) in vip.data" :key="index">
@@ -16,6 +16,15 @@
 						</block>
 					</swiper>
 				</view>
+			</view> -->
+			<view class="bannerI">
+				<block v-for="(item,index) in vip.data" :key="index">
+					<view class="bannerImg">
+						<image :src="imgUrl+item.title_pic" data-id="item.id"></image>
+						<text class="vipTip">{{item.level}}</text>
+					</view>
+						
+				</block>
 			</view>
 			<view class="list" current='current'>
 				<text>会员可享受一以下功能权限</text>
@@ -29,25 +38,26 @@
 				</view>
 			</view>
 			<view class="longVip">
-				<view class="money" v-if="current == '0'">
-					￥
-					<text>{{vip.data[0].vip_price  || 0}}</text>
-					/三个月
-				</view>
-				<view class="money" v-if="current == '1'">
-					￥
-					<text>{{vip.data[1].vip_price  || 0}}</text>
-					/年
-				</view>
-				<view class="money" v-if="current == '2'">
-					￥
-					<text>{{vip.data[2].vip_price  || 0}}</text>
-					/三年
-				</view>
-				<view class="time">
-					<text class="long">{{vip.data[current].level}}</text>
-					<text>{{vip.data[current].level}}专享受价￥{{vip.data[current].vip_price || 0}}</text>
-				</view>
+				<radio-group @change="getMony">
+					<block v-for="(item,index) in vip.data" :key="index">
+						<view class="radioList">
+							<radio :value="item.vip_price"/>
+							<view>
+								<view class="money">
+									￥
+									<text>{{item.vip_price  || 0}}</text>
+									/{{item.level}}
+								</view>
+								<view class="time">
+									<text class="long">{{item.level}}</text>
+									<text>{{item.level}}专享受价￥{{item.vip_price || 0}}</text>
+								</view>
+							</view>
+						</view>
+					</block>
+				</radio-group>
+				
+				
 			</view>
 
 		</view>
@@ -59,7 +69,6 @@
 			</checkbox-group>
 			<view>
 				我已阅读开通
-				<text>{{vip.data[current].level}}</text>
 				vip
 				<text @tap="meTreaty">相关协议</text>
 			</view>
@@ -79,7 +88,8 @@
 				current: '0',
 				vip: [],
 				imgUrl: '',
-				token: ''
+				token: '',
+				money: ''
 			}
 		},
 		onLoad() {
@@ -94,6 +104,10 @@
 			}
 		},
 		methods: {
+			getMony(e){
+				console.log(e,'************')
+				this.money =e.detail.value
+			},
 			meTreaty(){
 				uni.navigateTo({
 					url:'/pages/meTreaty'
@@ -130,14 +144,24 @@
 			},
 			goVip(e){
 				console.log(this.isCheck)
-				if (this.isCheck) {
+				
+				if (!this.isCheck) {
+					uni.showToast({
+						title: '请同意相关协议',
+						icon: 'none',
+						duration: 2000
+					});
+					return false
+				}
+				let money = this.money
+				if (money != '') {
 					// console.log(e)
 					uni.navigateTo({
-						url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${e.currentTarget.dataset.money}`
+						url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${money}`
 					})
 				} else {
 					uni.showToast({
-						title: '请同意相关协议',
+						title: '请选择价格',
 						icon: 'none',
 						duration: 2000
 					});
@@ -168,13 +192,13 @@
 	border-radius: 124rpx;
 	box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(40, 148, 223, 0.6);
 }
-.vipTip{
-	z-index: 999;
-	position: absolute;
-	top: 172rpx;
-	left: 61rpx;
-	color: #fff;
-	font-size: 30rpx;
+.radioList{
+	display: flex;
+	align-items: center;
+	padding: 10rpx 0;
+}
+.radioList radio {
+	margin-right: 20rpx;
 }
 .head text {
 	width: 640rpx;
@@ -184,16 +208,37 @@
 	font-size: 30rpx;
 	font-weight: 600;
 }
-uni-swiper{
-	height: 400rpx;
+.bannerI{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: relative;
 }
-.banner {
+.bannerImg{
+	position: relative;
+}
+.bannerImg text{
+	position: absolute;
+	top: 180rpx;
+	left: 60rpx;
+	color: #FFFFFF;
+	font-size: 30rpx;
+	z-index: 9;
+	
+}
+.bannerI image{
+	width: 610rpx;
+	height: 360rpx;
+	border-radius: 10rpx;
+}
+
+/* .banner {
 	width: 750rpx;
 	margin-top: -60rpx;
 	display: flex;
 	justify-content: center;
 	
-}
+} */
 .banner .bannerBox {
 	width:630rpx;
 	height: 360rpx;
@@ -266,6 +311,12 @@ uni-swiper{
 	padding: 30rpx;
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
+}
+.longVip >view{
+	width: 690rpx;
+	display: flex;
+	margin-bottom: 10rpx;
 }
 .money {
 	display: flex;

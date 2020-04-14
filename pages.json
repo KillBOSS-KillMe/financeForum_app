@@ -34,7 +34,7 @@
 		{
 			"path": "pages/apply",
 			"style": {
-				"navigationBarTitleText": "极品干货"
+				"navigationBarTitleText": "会员专享"
 			}
 		},
 		{
@@ -390,7 +390,7 @@
 			},
 			{
 				"pagePath": "pages/apply",
-				"text": "极品干货",
+				"text": "会员专享",
 				"iconPath": "static/apply.png",
 				"selectedIconPath": "static/applyCur.png"
 			},

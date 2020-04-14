@@ -48,7 +48,7 @@
 			<view class="docUrl" v-if="articleDetail.docx != undefined " @tap="linkUrl(imgUrl + articleDetail.docx)">
 				2
 			</view> -->
-			// <!-- #ifndef H5 -->
+			 <!-- #ifndef H5 -->
 				<view class="share">
 					<text>分享至</text>
 					<!-- #ifdef MP-WEIXIN -->

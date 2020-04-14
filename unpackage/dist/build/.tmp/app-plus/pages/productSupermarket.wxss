@@ -50,6 +50,9 @@
 	color: #333333;
 	font-weight: 600;
 	font-size: 28rpx;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 .quickInlet {
 	width: 690rpx;
@@ -125,13 +128,14 @@
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	height: 40vh;
+	/* height: 40vh; */
 }
 .content .inv-h-w {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
 	width: 510rpx;
+	margin-bottom: 10rpx;
 }
 .content .inv-h {
 	font-size: 32rpx;
@@ -250,10 +254,10 @@
 	/* margin-left: 10rpx; */
 }
 .oneScroll{
-	height: 100vh;
+	height: 95vh;
 }
 .twoScroll{
-	height: 88vh;
+	height:95vh;
 }
 .nav-left {
 	width: 190rpx;

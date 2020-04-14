@@ -239,7 +239,8 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', type: '', typeText1: '所有额度', typeText2: '所有贷款分类', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ title: '所有额度' }, { title: '100-5000' }, { title: '5000-2万' }, { title: '2万-5万' }, { title: '5万-10万' }, { title: '10万以上' }], typeList: [], category_id: '', down: '0', top: '0', vip: '', isShow: true, isShow1: false, token: '', page: '1' };}, onLoad: function onLoad(e) {console.log(e);this.typeText2 = e.title;this.category_id = e.id;this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token') || this.token;this.getList();}, methods: { goProduct: function goProduct(e) {
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', type: '', typeText1: '所有额度', typeText2: '所有贷款分类', list: [], currentIndex: 0, mask: false, quota: '', keyShow: [], moneyList: [{ title: '所有额度' }, { title: '100-5000' }, { title: '5000-2万' }, { title: '2万-5万' }, { title: '5万-10万' }, { title: '10万以上' }], typeList: [], category_id: '', down: '0', top: '0', vip: '', isShow: true, isShow1: false, token: '', page: '1', bank_id: '' };}, onLoad: function onLoad(e) {console.log(e);this.bank_id = e.id; // this.category_id = e.id;
+    this.imgUrl = _helper.default.imgUrl;this.token = uni.getStorageSync('token') || this.token;this.getList();}, methods: { goProduct: function goProduct(e) {
       var id = e.currentTarget.dataset.id;
       uni.navigateTo({
         url: "/pages/productDetail?id=".concat(id) });
@@ -311,6 +312,7 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
         data: {
           category_id: this.category_id,
           quota: this.quota,
+          bank_id: this.bank_id,
           page_size: '10',
           page: this.page },
 

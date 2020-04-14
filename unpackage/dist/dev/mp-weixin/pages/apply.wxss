@@ -17,7 +17,7 @@
 		border-bottom: 12rpx solid #f9f9f9;
 }
 .nav .navList {
-		width: 116rpx;
+		width: 150rpx;
 		margin-right: 27.99rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -29,7 +29,7 @@
 		        flex-wrap: wrap;
 		margin-bottom: 38rpx;
 }
-.nav .navList:nth-child(5n) {
+.nav .navList:nth-child(4n) {
 		margin-right: 0;
 }
 .nav .navList text {

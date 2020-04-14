@@ -195,7 +195,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { loginPaw: '123123', loginName: '17696116171', token: '' };}, onShow: function onShow() {// uni.hideHomeButton()
+var app = getApp();var _default = { data: function data() {return { loginPaw: '', loginName: '', token: '' };}, onShow: function onShow() {// uni.hideHomeButton()
   }, onLoad: function onLoad() {console.log(_helper.default.requestUrl);}, methods: { getSkip: function getSkip() {console.log(123);uni.switchTab({ url: '/pages/index' });}, // 获取登录名
     getLoginName: function getLoginName(e) {this.loginName = e.detail.value;}, // 获取密码
     getLoginPaw: function getLoginPaw(e) {this.loginPaw = e.detail.value;}, // 进入忘记密码页

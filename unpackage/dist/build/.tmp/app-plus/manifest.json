@@ -7,8 +7,8 @@
   "id": "__UNI__EA9C27B",
   "name": "子诺新微金",
   "version": {
-    "name": "1.0.9",
-    "code": 122
+    "name": "1.1.3",
+    "code": 126
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -196,7 +196,7 @@
         },
         {
           "pagePath": "pages/apply",
-          "text": "极品干货",
+          "text": "会员专享",
           "iconPath": "static/apply.png",
           "selectedIconPath": "static/applyCur.png"
         },

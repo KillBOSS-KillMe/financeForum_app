@@ -1319,11 +1319,7 @@ function gz$gwx_14(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_14)return __WXML_GLOBAL__.ops_cached.$gwx_14
 __WXML_GLOBAL__.ops_cached.$gwx_14=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__e'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'scrolltolower']],[[4],[[5],[[4],[[5],[[5],[1,'toLowFun']],[[4],[[5],[1,'$event']]]]]]]]]]])
-Z([3,'true'])
-Z([[7],[3,'isShow']])
-Z([[7],[3,'isShow1']])
+Z([[2,'=='],[[6],[[6],[[6],[[6],[[7],[3,'pageNode']],[3,'board_data']],[[7],[3,'Inv']]],[3,'posts']],[3,'length']],[1,0]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_14);return __WXML_GLOBAL__.ops_cached.$gwx_14
 }
 function gz$gwx_15(){
@@ -1396,6 +1392,7 @@ function gz$gwx_19(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_19)return __WXML_GLOBAL__.ops_cached.$gwx_19
 __WXML_GLOBAL__.ops_cached.$gwx_19=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([[2,'=='],[[6],[[6],[[6],[[6],[[7],[3,'pageNode']],[3,'board_data']],[[7],[3,'Inv']]],[3,'posts']],[3,'length']],[1,0]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_19);return __WXML_GLOBAL__.ops_cached.$gwx_19
 }
 function gz$gwx_20(){
@@ -1459,7 +1456,10 @@ function gz$gwx_28(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_28)return __WXML_GLOBAL__.ops_cached.$gwx_28
 __WXML_GLOBAL__.ops_cached.$gwx_28=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([[2,'=='],[[6],[[6],[[6],[[6],[[7],[3,'pageNode']],[3,'board_data']],[[7],[3,'Inv']]],[3,'posts']],[3,'length']],[1,0]])
+Z([3,'__e'])
+Z([[4],[[5],[[4],[[5],[[5],[1,'scrolltolower']],[[4],[[5],[[4],[[5],[[5],[1,'toLowFun']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([3,'true'])
+Z([[7],[3,'isShow']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_28);return __WXML_GLOBAL__.ops_cached.$gwx_28
 }
 function gz$gwx_29(){
@@ -1707,16 +1707,11 @@ function gz$gwx_55(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_55)return __WXML_GLOBAL__.ops_cached.$gwx_55
 __WXML_GLOBAL__.ops_cached.$gwx_55=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'content'])
 Z([3,'indexL'])
 Z([3,'itemL'])
 Z([[6],[[6],[[6],[[7],[3,'vip']],[3,'data']],[[7],[3,'current']]],[3,'permission']])
-Z(z[1])
+Z(z[0])
 Z([[2,'!='],[[6],[[7],[3,'itemL']],[3,'icon']],[1,'']])
-Z([3,'longVip'])
-Z([[2,'=='],[[7],[3,'current']],[1,'0']])
-Z([[2,'=='],[[7],[3,'current']],[1,'1']])
-Z([[2,'=='],[[7],[3,'current']],[1,'2']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_55);return __WXML_GLOBAL__.ops_cached.$gwx_55
 }
 function gz$gwx_56(){
@@ -1739,13 +1734,11 @@ function gz$gwx_57(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_57)return __WXML_GLOBAL__.ops_cached.$gwx_57
 __WXML_GLOBAL__.ops_cached.$gwx_57=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'message'])
 Z([3,'__l'])
 Z([3,'font vue-ref'])
 Z([3,'article'])
 Z([[6],[[7],[3,'news']],[3,'content']])
 Z([3,'3bd9e152-1'])
-Z([[2,'=='],[[6],[[7],[3,'news']],[3,'type']],[1,'QR']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_57);return __WXML_GLOBAL__.ops_cached.$gwx_57
 }
 function gz$gwx_58(){
@@ -1774,7 +1767,7 @@ Z([3,'productDetail'])
 Z([3,'channelItem'])
 Z([[2,'=='],[[6],[[7],[3,'listInfo']],[3,'credit_request']],[1,0]])
 Z([[2,'=='],[[6],[[7],[3,'listInfo']],[3,'credit_request']],[1,1]])
-Z([[2,'>'],[[6],[[6],[[7],[3,'listInfo']],[3,'identical_holes']],[3,'length']],[1,0]])
+Z([[2,'&&'],[[6],[[7],[3,'listInfo']],[3,'identical_holes']],[[2,'>'],[[6],[[6],[[7],[3,'listInfo']],[3,'identical_holes']],[3,'length']],[1,0]]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_61);return __WXML_GLOBAL__.ops_cached.$gwx_61
 }
 function gz$gwx_62(){
@@ -1791,13 +1784,6 @@ Z([3,'sonItem'])
 Z([[7],[3,'itemAll']])
 Z(z[5])
 Z([[2,'<='],[[7],[3,'sonIndex']],[1,9]])
-Z([3,'content'])
-Z([3,'__l'])
-Z([3,'__e'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'^close']],[[4],[[5],[[4],[[5],[1,'closeDrawer']]]]]]]]])
-Z([[7],[3,'showLeft']])
-Z([3,'107c29e5-1'])
-Z([[4],[[5],[1,'default']]])
 Z([[2,'=='],[[6],[[7],[3,'list']],[3,'length']],[1,0]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_62);return __WXML_GLOBAL__.ops_cached.$gwx_62
 }
@@ -2335,176 +2321,174 @@ e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
 d_[x[13]]={}
 var m13=function(e,s,r,gg){
 var z=gz$gwx_14()
-var o2C=_mz(z,'scroll-view',['bindscrolltolower',0,'data-event-opts',1,'scrollY',1],[],e,s,gg)
-var x3C=_v()
-_(o2C,x3C)
-if(_oz(z,3,e,s,gg)){x3C.wxVkey=1
-}
-var o4C=_v()
-_(o2C,o4C)
-if(_oz(z,4,e,s,gg)){o4C.wxVkey=1
-}
-x3C.wxXCkey=1
-o4C.wxXCkey=1
+var o2C=_v()
 _(r,o2C)
+if(_oz(z,0,e,s,gg)){o2C.wxVkey=1
+}
+o2C.wxXCkey=1
 return r
 }
 e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-var c6C=_v()
-_(r,c6C)
-var h7C=function(c9C,o8C,o0C,gg){
-var aBD=_v()
-_(o0C,aBD)
-if(_oz(z,4,c9C,o8C,gg)){aBD.wxVkey=1
+var o4C=_v()
+_(r,o4C)
+var f5C=function(h7C,c6C,o8C,gg){
+var o0C=_v()
+_(o8C,o0C)
+if(_oz(z,4,h7C,c6C,gg)){o0C.wxVkey=1
 }
-var tCD=_v()
-_(o0C,tCD)
-if(_oz(z,5,c9C,o8C,gg)){tCD.wxVkey=1
+var lAD=_v()
+_(o8C,lAD)
+if(_oz(z,5,h7C,c6C,gg)){lAD.wxVkey=1
 }
-aBD.wxXCkey=1
-tCD.wxXCkey=1
-return o0C
+o0C.wxXCkey=1
+lAD.wxXCkey=1
+return o8C
 }
-c6C.wxXCkey=2
-_2z(z,2,h7C,e,s,gg,c6C,'item','index','index')
+o4C.wxXCkey=2
+_2z(z,2,f5C,e,s,gg,o4C,'item','index','index')
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-var bED=_n('view')
-_rz(z,bED,'class',0,e,s,gg)
+var tCD=_n('view')
+_rz(z,tCD,'class',0,e,s,gg)
+var eDD=_n('view')
+_rz(z,eDD,'class',1,e,s,gg)
 var oFD=_n('view')
-_rz(z,oFD,'class',1,e,s,gg)
-var oHD=_n('view')
-_rz(z,oHD,'class',2,e,s,gg)
-var fID=_v()
-_(oHD,fID)
-if(_oz(z,3,e,s,gg)){fID.wxVkey=1
-}
-var cJD=_n('view')
-var hKD=_v()
-_(cJD,hKD)
-if(_oz(z,4,e,s,gg)){hKD.wxVkey=1
-}
-var oLD=_v()
-_(cJD,oLD)
-if(_oz(z,5,e,s,gg)){oLD.wxVkey=1
-}
-hKD.wxXCkey=1
-oLD.wxXCkey=1
-_(oHD,cJD)
-fID.wxXCkey=1
-_(oFD,oHD)
-var cMD=_v()
-_(oFD,cMD)
-var oND=function(aPD,lOD,tQD,gg){
-var oTD=_n('view')
-var xUD=_v()
-_(oTD,xUD)
-if(_oz(z,10,aPD,lOD,gg)){xUD.wxVkey=1
-var oVD=_mz(z,'view',['bindtap',11,'data-event-opts',1],[],aPD,lOD,gg)
-var fWD=_mz(z,'jyf-parser',['bind:__l',13,'class',1,'data-ref',2,'html',3,'vueId',4],[],aPD,lOD,gg)
-_(oVD,fWD)
-_(xUD,oVD)
-}
-else{xUD.wxVkey=2
-var cXD=_mz(z,'jyf-parser',['bind:__l',18,'class',1,'data-ref',2,'html',3,'vueId',4],[],aPD,lOD,gg)
-_(xUD,cXD)
-}
-xUD.wxXCkey=1
-xUD.wxXCkey=3
-xUD.wxXCkey=3
-_(tQD,oTD)
-var bSD=_v()
-_(tQD,bSD)
-if(_oz(z,23,aPD,lOD,gg)){bSD.wxVkey=1
-}
-bSD.wxXCkey=1
-return tQD
-}
-cMD.wxXCkey=4
-_2z(z,8,oND,e,s,gg,cMD,'item','index','index')
+_rz(z,oFD,'class',2,e,s,gg)
 var xGD=_v()
 _(oFD,xGD)
-if(_oz(z,24,e,s,gg)){xGD.wxVkey=1
+if(_oz(z,3,e,s,gg)){xGD.wxVkey=1
 }
+var oHD=_n('view')
+var fID=_v()
+_(oHD,fID)
+if(_oz(z,4,e,s,gg)){fID.wxVkey=1
+}
+var cJD=_v()
+_(oHD,cJD)
+if(_oz(z,5,e,s,gg)){cJD.wxVkey=1
+}
+fID.wxXCkey=1
+cJD.wxXCkey=1
+_(oFD,oHD)
 xGD.wxXCkey=1
-_(bED,oFD)
-var hYD=_n('view')
-_rz(z,hYD,'class',25,e,s,gg)
-var oZD=_v()
-_(hYD,oZD)
-if(_oz(z,26,e,s,gg)){oZD.wxVkey=1
+_(eDD,oFD)
+var hKD=_v()
+_(eDD,hKD)
+var oLD=function(oND,cMD,lOD,gg){
+var eRD=_n('view')
+var bSD=_v()
+_(eRD,bSD)
+if(_oz(z,10,oND,cMD,gg)){bSD.wxVkey=1
+var oTD=_mz(z,'view',['bindtap',11,'data-event-opts',1],[],oND,cMD,gg)
+var xUD=_mz(z,'jyf-parser',['bind:__l',13,'class',1,'data-ref',2,'html',3,'vueId',4],[],oND,cMD,gg)
+_(oTD,xUD)
+_(bSD,oTD)
 }
-var c1D=_v()
-_(hYD,c1D)
-if(_oz(z,27,e,s,gg)){c1D.wxVkey=1
+else{bSD.wxVkey=2
+var oVD=_mz(z,'jyf-parser',['bind:__l',18,'class',1,'data-ref',2,'html',3,'vueId',4],[],oND,cMD,gg)
+_(bSD,oVD)
 }
-oZD.wxXCkey=1
-c1D.wxXCkey=1
-_(bED,hYD)
-_(r,bED)
+bSD.wxXCkey=1
+bSD.wxXCkey=3
+bSD.wxXCkey=3
+_(lOD,eRD)
+var tQD=_v()
+_(lOD,tQD)
+if(_oz(z,23,oND,cMD,gg)){tQD.wxVkey=1
+}
+tQD.wxXCkey=1
+return lOD
+}
+hKD.wxXCkey=4
+_2z(z,8,oLD,e,s,gg,hKD,'item','index','index')
+var bED=_v()
+_(eDD,bED)
+if(_oz(z,24,e,s,gg)){bED.wxVkey=1
+}
+bED.wxXCkey=1
+_(tCD,eDD)
+var fWD=_n('view')
+_rz(z,fWD,'class',25,e,s,gg)
+var cXD=_v()
+_(fWD,cXD)
+if(_oz(z,26,e,s,gg)){cXD.wxVkey=1
+}
+var hYD=_v()
+_(fWD,hYD)
+if(_oz(z,27,e,s,gg)){hYD.wxVkey=1
+}
+cXD.wxXCkey=1
+hYD.wxXCkey=1
+_(tCD,fWD)
+_(r,tCD)
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
+var c1D=_n('view')
+_rz(z,c1D,'class',0,e,s,gg)
 var l3D=_n('view')
-_rz(z,l3D,'class',0,e,s,gg)
-var t5D=_n('view')
-_rz(z,t5D,'class',1,e,s,gg)
-var e6D=_v()
-_(t5D,e6D)
-if(_oz(z,2,e,s,gg)){e6D.wxVkey=1
-}
-var b7D=_v()
-_(t5D,b7D)
-if(_oz(z,3,e,s,gg)){b7D.wxVkey=1
-}
-e6D.wxXCkey=1
-b7D.wxXCkey=1
-_(l3D,t5D)
+_rz(z,l3D,'class',1,e,s,gg)
 var a4D=_v()
 _(l3D,a4D)
-if(_oz(z,4,e,s,gg)){a4D.wxVkey=1
+if(_oz(z,2,e,s,gg)){a4D.wxVkey=1
+}
+var t5D=_v()
+_(l3D,t5D)
+if(_oz(z,3,e,s,gg)){t5D.wxVkey=1
 }
 a4D.wxXCkey=1
-_(r,l3D)
+t5D.wxXCkey=1
+_(c1D,l3D)
+var o2D=_v()
+_(c1D,o2D)
+if(_oz(z,4,e,s,gg)){o2D.wxVkey=1
+}
+o2D.wxXCkey=1
+_(r,c1D)
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
 d_[x[17]]={}
 var m17=function(e,s,r,gg){
 var z=gz$gwx_18()
-var x9D=_n('view')
+var b7D=_n('view')
+var o8D=_v()
+_(b7D,o8D)
+if(_oz(z,0,e,s,gg)){o8D.wxVkey=1
+}
+var x9D=_v()
+_(b7D,x9D)
+if(_oz(z,1,e,s,gg)){x9D.wxVkey=1
+}
 var o0D=_v()
-_(x9D,o0D)
-if(_oz(z,0,e,s,gg)){o0D.wxVkey=1
+_(b7D,o0D)
+if(_oz(z,2,e,s,gg)){o0D.wxVkey=1
 }
-var fAE=_v()
-_(x9D,fAE)
-if(_oz(z,1,e,s,gg)){fAE.wxVkey=1
-}
-var cBE=_v()
-_(x9D,cBE)
-if(_oz(z,2,e,s,gg)){cBE.wxVkey=1
-}
+o8D.wxXCkey=1
+x9D.wxXCkey=1
 o0D.wxXCkey=1
-fAE.wxXCkey=1
-cBE.wxXCkey=1
-_(r,x9D)
+_(r,b7D)
 return r
 }
 e_[x[17]]={f:m17,j:[],i:[],ti:[],ic:[]}
 d_[x[18]]={}
 var m18=function(e,s,r,gg){
 var z=gz$gwx_19()
+var cBE=_v()
+_(r,cBE)
+if(_oz(z,0,e,s,gg)){cBE.wxVkey=1
+}
+cBE.wxXCkey=1
 return r
 }
 e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
@@ -2523,40 +2507,40 @@ e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
 d_[x[21]]={}
 var m21=function(e,s,r,gg){
 var z=gz$gwx_22()
-var lGE=_mz(z,'scroll-view',['scrollWithAnimation',-1,'scrollY',-1,'bindscroll',0,'data-event-opts',1,'scrollTop',1],[],e,s,gg)
-var aHE=_v()
-_(lGE,aHE)
-if(_oz(z,3,e,s,gg)){aHE.wxVkey=1
+var oFE=_mz(z,'scroll-view',['scrollWithAnimation',-1,'scrollY',-1,'bindscroll',0,'data-event-opts',1,'scrollTop',1],[],e,s,gg)
+var lGE=_v()
+_(oFE,lGE)
+if(_oz(z,3,e,s,gg)){lGE.wxVkey=1
 }
-aHE.wxXCkey=1
-_(r,lGE)
+lGE.wxXCkey=1
+_(r,oFE)
 return r
 }
 e_[x[21]]={f:m21,j:[],i:[],ti:[],ic:[]}
 d_[x[22]]={}
 var m22=function(e,s,r,gg){
 var z=gz$gwx_23()
-var eJE=_n('view')
-_rz(z,eJE,'class',0,e,s,gg)
-var oLE=_n('view')
-_rz(z,oLE,'class',1,e,s,gg)
+var tIE=_n('view')
+_rz(z,tIE,'class',0,e,s,gg)
+var bKE=_n('view')
+_rz(z,bKE,'class',1,e,s,gg)
+var oLE=_v()
+_(bKE,oLE)
+if(_oz(z,2,e,s,gg)){oLE.wxVkey=1
+}
 var xME=_v()
-_(oLE,xME)
-if(_oz(z,2,e,s,gg)){xME.wxVkey=1
+_(bKE,xME)
+if(_oz(z,3,e,s,gg)){xME.wxVkey=1
 }
-var oNE=_v()
-_(oLE,oNE)
-if(_oz(z,3,e,s,gg)){oNE.wxVkey=1
-}
+oLE.wxXCkey=1
 xME.wxXCkey=1
-oNE.wxXCkey=1
-_(eJE,oLE)
-var bKE=_v()
-_(eJE,bKE)
-if(_oz(z,4,e,s,gg)){bKE.wxVkey=1
+_(tIE,bKE)
+var eJE=_v()
+_(tIE,eJE)
+if(_oz(z,4,e,s,gg)){eJE.wxVkey=1
 }
-bKE.wxXCkey=1
-_(r,eJE)
+eJE.wxXCkey=1
+_(r,tIE)
 return r
 }
 e_[x[22]]={f:m22,j:[],i:[],ti:[],ic:[]}
@@ -2587,11 +2571,13 @@ e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
 d_[x[27]]={}
 var m27=function(e,s,r,gg){
 var z=gz$gwx_28()
+var cSE=_mz(z,'scroll-view',['bindscrolltolower',0,'data-event-opts',1,'scrollY',1],[],e,s,gg)
 var oTE=_v()
-_(r,oTE)
-if(_oz(z,0,e,s,gg)){oTE.wxVkey=1
+_(cSE,oTE)
+if(_oz(z,3,e,s,gg)){oTE.wxVkey=1
 }
 oTE.wxXCkey=1
+_(r,cSE)
 return r
 }
 e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
@@ -3001,83 +2987,54 @@ e_[x[53]]={f:m53,j:[],i:[],ti:[],ic:[]}
 d_[x[54]]={}
 var m54=function(e,s,r,gg){
 var z=gz$gwx_55()
-var xQH=_n('view')
-_rz(z,xQH,'class',0,e,s,gg)
-var oRH=_v()
-_(xQH,oRH)
-var fSH=function(hUH,cTH,oVH,gg){
-var oXH=_v()
-_(oVH,oXH)
-if(_oz(z,5,hUH,cTH,gg)){oXH.wxVkey=1
-}
-oXH.wxXCkey=1
-return oVH
-}
-oRH.wxXCkey=2
-_2z(z,3,fSH,e,s,gg,oRH,'itemL','indexL','indexL')
-var lYH=_n('view')
-_rz(z,lYH,'class',6,e,s,gg)
-var aZH=_v()
-_(lYH,aZH)
-if(_oz(z,7,e,s,gg)){aZH.wxVkey=1
-}
-var t1H=_v()
-_(lYH,t1H)
-if(_oz(z,8,e,s,gg)){t1H.wxVkey=1
-}
-var e2H=_v()
-_(lYH,e2H)
-if(_oz(z,9,e,s,gg)){e2H.wxVkey=1
-}
-aZH.wxXCkey=1
-t1H.wxXCkey=1
-e2H.wxXCkey=1
-_(xQH,lYH)
+var xQH=_v()
 _(r,xQH)
+var oRH=function(cTH,fSH,hUH,gg){
+var cWH=_v()
+_(hUH,cWH)
+if(_oz(z,4,cTH,fSH,gg)){cWH.wxVkey=1
+}
+cWH.wxXCkey=1
+return hUH
+}
+xQH.wxXCkey=2
+_2z(z,2,oRH,e,s,gg,xQH,'itemL','indexL','indexL')
 return r
 }
 e_[x[54]]={f:m54,j:[],i:[],ti:[],ic:[]}
 d_[x[55]]={}
 var m55=function(e,s,r,gg){
 var z=gz$gwx_56()
-var o4H=_n('view')
-_rz(z,o4H,'class',0,e,s,gg)
-var o6H=_v()
-_(o4H,o6H)
-var f7H=function(h9H,c8H,o0H,gg){
-var oBI=_mz(z,'view',['bindtap',5,'class',1,'data-event-opts',2],[],h9H,c8H,gg)
-var lCI=_v()
-_(oBI,lCI)
-if(_oz(z,8,h9H,c8H,gg)){lCI.wxVkey=1
+var lYH=_n('view')
+_rz(z,lYH,'class',0,e,s,gg)
+var t1H=_v()
+_(lYH,t1H)
+var e2H=function(o4H,b3H,x5H,gg){
+var f7H=_mz(z,'view',['bindtap',5,'class',1,'data-event-opts',2],[],o4H,b3H,gg)
+var c8H=_v()
+_(f7H,c8H)
+if(_oz(z,8,o4H,b3H,gg)){c8H.wxVkey=1
 }
-lCI.wxXCkey=1
-_(o0H,oBI)
-return o0H
+c8H.wxXCkey=1
+_(x5H,f7H)
+return x5H
 }
-o6H.wxXCkey=2
-_2z(z,3,f7H,e,s,gg,o6H,'item','index','index')
-var x5H=_v()
-_(o4H,x5H)
-if(_oz(z,9,e,s,gg)){x5H.wxVkey=1
+t1H.wxXCkey=2
+_2z(z,3,e2H,e,s,gg,t1H,'item','index','index')
+var aZH=_v()
+_(lYH,aZH)
+if(_oz(z,9,e,s,gg)){aZH.wxVkey=1
 }
-x5H.wxXCkey=1
-_(r,o4H)
+aZH.wxXCkey=1
+_(r,lYH)
 return r
 }
 e_[x[55]]={f:m55,j:[],i:[],ti:[],ic:[]}
 d_[x[56]]={}
 var m56=function(e,s,r,gg){
 var z=gz$gwx_57()
-var tEI=_n('view')
-_rz(z,tEI,'class',0,e,s,gg)
-var bGI=_mz(z,'jyf-parser',['bind:__l',1,'class',1,'data-ref',2,'html',3,'vueId',4],[],e,s,gg)
-_(tEI,bGI)
-var eFI=_v()
-_(tEI,eFI)
-if(_oz(z,6,e,s,gg)){eFI.wxVkey=1
-}
-eFI.wxXCkey=1
-_(r,tEI)
+var o0H=_mz(z,'jyf-parser',['bind:__l',0,'class',1,'data-ref',1,'html',2,'vueId',3],[],e,s,gg)
+_(r,o0H)
 return r
 }
 e_[x[56]]={f:m56,j:[],i:[],ti:[],ic:[]}
@@ -3102,65 +3059,60 @@ e_[x[59]]={f:m59,j:[],i:[],ti:[],ic:[]}
 d_[x[60]]={}
 var m60=function(e,s,r,gg){
 var z=gz$gwx_61()
-var cLI=_n('view')
-_rz(z,cLI,'class',0,e,s,gg)
-var oNI=_n('view')
-_rz(z,oNI,'class',1,e,s,gg)
-var cOI=_v()
-_(oNI,cOI)
-if(_oz(z,2,e,s,gg)){cOI.wxVkey=1
+var tEI=_n('view')
+_rz(z,tEI,'class',0,e,s,gg)
+var bGI=_n('view')
+_rz(z,bGI,'class',1,e,s,gg)
+var oHI=_v()
+_(bGI,oHI)
+if(_oz(z,2,e,s,gg)){oHI.wxVkey=1
 }
-var oPI=_v()
-_(oNI,oPI)
-if(_oz(z,3,e,s,gg)){oPI.wxVkey=1
+var xII=_v()
+_(bGI,xII)
+if(_oz(z,3,e,s,gg)){xII.wxVkey=1
 }
-cOI.wxXCkey=1
-oPI.wxXCkey=1
-_(cLI,oNI)
-var hMI=_v()
-_(cLI,hMI)
-if(_oz(z,4,e,s,gg)){hMI.wxVkey=1
+oHI.wxXCkey=1
+xII.wxXCkey=1
+_(tEI,bGI)
+var eFI=_v()
+_(tEI,eFI)
+if(_oz(z,4,e,s,gg)){eFI.wxVkey=1
 }
-hMI.wxXCkey=1
-_(r,cLI)
+eFI.wxXCkey=1
+_(r,tEI)
 return r
 }
 e_[x[60]]={f:m60,j:[],i:[],ti:[],ic:[]}
 d_[x[61]]={}
 var m61=function(e,s,r,gg){
 var z=gz$gwx_62()
-var aRI=_n('view')
-_rz(z,aRI,'class',0,e,s,gg)
+var fKI=_n('view')
+_rz(z,fKI,'class',0,e,s,gg)
+var hMI=_v()
+_(fKI,hMI)
+var oNI=function(oPI,cOI,lQI,gg){
 var tSI=_v()
-_(aRI,tSI)
+_(lQI,tSI)
 var eTI=function(oVI,bUI,xWI,gg){
 var fYI=_v()
 _(xWI,fYI)
-var cZI=function(o2I,h1I,c3I,gg){
-var l5I=_v()
-_(c3I,l5I)
-if(_oz(z,9,o2I,h1I,gg)){l5I.wxVkey=1
+if(_oz(z,9,oVI,bUI,gg)){fYI.wxVkey=1
 }
-l5I.wxXCkey=1
-return c3I
-}
-fYI.wxXCkey=2
-_2z(z,7,cZI,oVI,bUI,gg,fYI,'sonItem','sonIndex','sonIndex')
+fYI.wxXCkey=1
 return xWI
 }
 tSI.wxXCkey=2
-_2z(z,3,eTI,e,s,gg,tSI,'itemAll','index','index')
-var a6I=_n('view')
-_rz(z,a6I,'class',10,e,s,gg)
-var e8I=_mz(z,'uni-drawer',['bind:__l',11,'bind:close',1,'data-event-opts',2,'visible',3,'vueId',4,'vueSlots',5],[],e,s,gg)
-_(a6I,e8I)
-var t7I=_v()
-_(a6I,t7I)
-if(_oz(z,17,e,s,gg)){t7I.wxVkey=1
+_2z(z,7,eTI,oPI,cOI,gg,tSI,'sonItem','sonIndex','sonIndex')
+return lQI
 }
-t7I.wxXCkey=1
-_(aRI,a6I)
-_(r,aRI)
+hMI.wxXCkey=2
+_2z(z,3,oNI,e,s,gg,hMI,'itemAll','index','index')
+var cLI=_v()
+_(fKI,cLI)
+if(_oz(z,10,e,s,gg)){cLI.wxVkey=1
+}
+cLI.wxXCkey=1
+_(r,fKI)
 return r
 }
 e_[x[61]]={f:m61,j:[],i:[],ti:[],ic:[]}
@@ -3173,23 +3125,23 @@ e_[x[62]]={f:m62,j:[],i:[],ti:[],ic:[]}
 d_[x[63]]={}
 var m63=function(e,s,r,gg){
 var z=gz$gwx_64()
-var xAJ=_v()
-_(r,xAJ)
-var oBJ=function(cDJ,fCJ,hEJ,gg){
-var cGJ=_v()
-_(hEJ,cGJ)
-if(_oz(z,4,cDJ,fCJ,gg)){cGJ.wxVkey=1
+var o2I=_v()
+_(r,o2I)
+var c3I=function(l5I,o4I,a6I,gg){
+var e8I=_v()
+_(a6I,e8I)
+if(_oz(z,4,l5I,o4I,gg)){e8I.wxVkey=1
 }
-var oHJ=_v()
-_(hEJ,oHJ)
-if(_oz(z,5,cDJ,fCJ,gg)){oHJ.wxVkey=1
+var b9I=_v()
+_(a6I,b9I)
+if(_oz(z,5,l5I,o4I,gg)){b9I.wxVkey=1
 }
-cGJ.wxXCkey=1
-oHJ.wxXCkey=1
-return hEJ
+e8I.wxXCkey=1
+b9I.wxXCkey=1
+return a6I
 }
-xAJ.wxXCkey=2
-_2z(z,2,oBJ,e,s,gg,xAJ,'item','index','index')
+o2I.wxXCkey=2
+_2z(z,2,c3I,e,s,gg,o2I,'item','index','index')
 return r
 }
 e_[x[63]]={f:m63,j:[],i:[],ti:[],ic:[]}
@@ -3202,209 +3154,209 @@ e_[x[64]]={f:m64,j:[],i:[],ti:[],ic:[]}
 d_[x[65]]={}
 var m65=function(e,s,r,gg){
 var z=gz$gwx_66()
-var tKJ=_n('view')
-_rz(z,tKJ,'class',0,e,s,gg)
-var oNJ=_mz(z,'picker',['bindchange',1,'data-event-opts',1,'range',2,'rangeKey',3,'value',4],[],e,s,gg)
+var oBJ=_n('view')
+_rz(z,oBJ,'class',0,e,s,gg)
+var hEJ=_mz(z,'picker',['bindchange',1,'data-event-opts',1,'range',2,'rangeKey',3,'value',4],[],e,s,gg)
+var oFJ=_v()
+_(hEJ,oFJ)
+if(_oz(z,6,e,s,gg)){oFJ.wxVkey=1
+}
+var cGJ=_v()
+_(hEJ,cGJ)
+if(_oz(z,7,e,s,gg)){cGJ.wxVkey=1
+}
+oFJ.wxXCkey=1
+cGJ.wxXCkey=1
+_(oBJ,hEJ)
+var fCJ=_v()
+_(oBJ,fCJ)
+if(_oz(z,8,e,s,gg)){fCJ.wxVkey=1
+}
+var cDJ=_v()
+_(oBJ,cDJ)
+if(_oz(z,9,e,s,gg)){cDJ.wxVkey=1
+var oHJ=_v()
+_(cDJ,oHJ)
+var lIJ=function(tKJ,aJJ,eLJ,gg){
+var oNJ=_n('view')
 var xOJ=_v()
 _(oNJ,xOJ)
-if(_oz(z,6,e,s,gg)){xOJ.wxVkey=1
+if(_oz(z,14,tKJ,aJJ,gg)){xOJ.wxVkey=1
 }
 var oPJ=_v()
 _(oNJ,oPJ)
-if(_oz(z,7,e,s,gg)){oPJ.wxVkey=1
+if(_oz(z,15,tKJ,aJJ,gg)){oPJ.wxVkey=1
 }
 xOJ.wxXCkey=1
 oPJ.wxXCkey=1
-_(tKJ,oNJ)
-var eLJ=_v()
-_(tKJ,eLJ)
-if(_oz(z,8,e,s,gg)){eLJ.wxVkey=1
+_(eLJ,oNJ)
+return eLJ
 }
-var bMJ=_v()
-_(tKJ,bMJ)
-if(_oz(z,9,e,s,gg)){bMJ.wxVkey=1
-var fQJ=_v()
-_(bMJ,fQJ)
-var cRJ=function(oTJ,hSJ,cUJ,gg){
-var lWJ=_n('view')
-var aXJ=_v()
-_(lWJ,aXJ)
-if(_oz(z,14,oTJ,hSJ,gg)){aXJ.wxVkey=1
+oHJ.wxXCkey=2
+_2z(z,12,lIJ,e,s,gg,oHJ,'item','index','index')
 }
-var tYJ=_v()
-_(lWJ,tYJ)
-if(_oz(z,15,oTJ,hSJ,gg)){tYJ.wxVkey=1
-}
-aXJ.wxXCkey=1
-tYJ.wxXCkey=1
-_(cUJ,lWJ)
-return cUJ
-}
-fQJ.wxXCkey=2
-_2z(z,12,cRJ,e,s,gg,fQJ,'item','index','index')
-}
-eLJ.wxXCkey=1
-bMJ.wxXCkey=1
-_(r,tKJ)
+fCJ.wxXCkey=1
+cDJ.wxXCkey=1
+_(r,oBJ)
 return r
 }
 e_[x[65]]={f:m65,j:[],i:[],ti:[],ic:[]}
 d_[x[66]]={}
 var m66=function(e,s,r,gg){
 var z=gz$gwx_67()
-var b1J=_n('view')
-_rz(z,b1J,'class',0,e,s,gg)
-var o2J=_v()
-_(b1J,o2J)
-if(_oz(z,1,e,s,gg)){o2J.wxVkey=1
-var o4J=_n('view')
-var f5J=_v()
-_(o4J,f5J)
-if(_oz(z,2,e,s,gg)){f5J.wxVkey=1
+var cRJ=_n('view')
+_rz(z,cRJ,'class',0,e,s,gg)
+var hSJ=_v()
+_(cRJ,hSJ)
+if(_oz(z,1,e,s,gg)){hSJ.wxVkey=1
+var cUJ=_n('view')
+var oVJ=_v()
+_(cUJ,oVJ)
+if(_oz(z,2,e,s,gg)){oVJ.wxVkey=1
 }
-var c6J=_v()
-_(o4J,c6J)
-if(_oz(z,3,e,s,gg)){c6J.wxVkey=1
+var lWJ=_v()
+_(cUJ,lWJ)
+if(_oz(z,3,e,s,gg)){lWJ.wxVkey=1
 }
-f5J.wxXCkey=1
-c6J.wxXCkey=1
-_(o2J,o4J)
+oVJ.wxXCkey=1
+lWJ.wxXCkey=1
+_(hSJ,cUJ)
 }
-var x3J=_v()
-_(b1J,x3J)
-if(_oz(z,4,e,s,gg)){x3J.wxVkey=1
-var h7J=_n('view')
-_rz(z,h7J,'class',5,e,s,gg)
-var o8J=_v()
-_(h7J,o8J)
-if(_oz(z,6,e,s,gg)){o8J.wxVkey=1
+var oTJ=_v()
+_(cRJ,oTJ)
+if(_oz(z,4,e,s,gg)){oTJ.wxVkey=1
+var aXJ=_n('view')
+_rz(z,aXJ,'class',5,e,s,gg)
+var tYJ=_v()
+_(aXJ,tYJ)
+if(_oz(z,6,e,s,gg)){tYJ.wxVkey=1
 }
-var c9J=_v()
-_(h7J,c9J)
-if(_oz(z,7,e,s,gg)){c9J.wxVkey=1
+var eZJ=_v()
+_(aXJ,eZJ)
+if(_oz(z,7,e,s,gg)){eZJ.wxVkey=1
 }
-o8J.wxXCkey=1
-c9J.wxXCkey=1
-_(x3J,h7J)
+tYJ.wxXCkey=1
+eZJ.wxXCkey=1
+_(oTJ,aXJ)
 }
-o2J.wxXCkey=1
-x3J.wxXCkey=1
-_(r,b1J)
+hSJ.wxXCkey=1
+oTJ.wxXCkey=1
+_(r,cRJ)
 return r
 }
 e_[x[66]]={f:m66,j:[],i:[],ti:[],ic:[]}
 d_[x[67]]={}
 var m67=function(e,s,r,gg){
 var z=gz$gwx_68()
-var lAK=_n('view')
-_rz(z,lAK,'class',0,e,s,gg)
-var eDK=_n('view')
-_rz(z,eDK,'class',1,e,s,gg)
-var bEK=_v()
-_(eDK,bEK)
-if(_oz(z,2,e,s,gg)){bEK.wxVkey=1
+var o2J=_n('view')
+_rz(z,o2J,'class',0,e,s,gg)
+var f5J=_n('view')
+_rz(z,f5J,'class',1,e,s,gg)
+var c6J=_v()
+_(f5J,c6J)
+if(_oz(z,2,e,s,gg)){c6J.wxVkey=1
 }
-var oFK=_v()
-_(eDK,oFK)
-if(_oz(z,3,e,s,gg)){oFK.wxVkey=1
+var h7J=_v()
+_(f5J,h7J)
+if(_oz(z,3,e,s,gg)){h7J.wxVkey=1
 }
-bEK.wxXCkey=1
-oFK.wxXCkey=1
-_(lAK,eDK)
-var xGK=_mz(z,'uni-popup',['bind:__l',4,'catch:touchmove',1,'class',2,'data-event-opts',3,'data-ref',4,'type',5,'vueId',6,'vueSlots',7],[],e,s,gg)
-_(lAK,xGK)
-var aBK=_v()
-_(lAK,aBK)
-if(_oz(z,12,e,s,gg)){aBK.wxVkey=1
+c6J.wxXCkey=1
+h7J.wxXCkey=1
+_(o2J,f5J)
+var o8J=_mz(z,'uni-popup',['bind:__l',4,'catch:touchmove',1,'class',2,'data-event-opts',3,'data-ref',4,'type',5,'vueId',6,'vueSlots',7],[],e,s,gg)
+_(o2J,o8J)
+var x3J=_v()
+_(o2J,x3J)
+if(_oz(z,12,e,s,gg)){x3J.wxVkey=1
 }
-var tCK=_v()
-_(lAK,tCK)
-if(_oz(z,13,e,s,gg)){tCK.wxVkey=1
+var o4J=_v()
+_(o2J,o4J)
+if(_oz(z,13,e,s,gg)){o4J.wxVkey=1
 }
-aBK.wxXCkey=1
-tCK.wxXCkey=1
-_(r,lAK)
+x3J.wxXCkey=1
+o4J.wxXCkey=1
+_(r,o2J)
 return r
 }
 e_[x[67]]={f:m67,j:[],i:[],ti:[],ic:[]}
 d_[x[68]]={}
 var m68=function(e,s,r,gg){
 var z=gz$gwx_69()
-var fIK=_n('view')
-_rz(z,fIK,'class',0,e,s,gg)
-var oLK=_mz(z,'uni-popup',['bind:__l',1,'catch:touchmove',1,'class',2,'data-event-opts',3,'data-ref',4,'type',5,'vueId',6,'vueSlots',7],[],e,s,gg)
-_(fIK,oLK)
-var cJK=_v()
-_(fIK,cJK)
-if(_oz(z,9,e,s,gg)){cJK.wxVkey=1
+var o0J=_n('view')
+_rz(z,o0J,'class',0,e,s,gg)
+var tCK=_mz(z,'uni-popup',['bind:__l',1,'catch:touchmove',1,'class',2,'data-event-opts',3,'data-ref',4,'type',5,'vueId',6,'vueSlots',7],[],e,s,gg)
+_(o0J,tCK)
+var lAK=_v()
+_(o0J,lAK)
+if(_oz(z,9,e,s,gg)){lAK.wxVkey=1
 }
-var hKK=_v()
-_(fIK,hKK)
-if(_oz(z,10,e,s,gg)){hKK.wxVkey=1
+var aBK=_v()
+_(o0J,aBK)
+if(_oz(z,10,e,s,gg)){aBK.wxVkey=1
 }
-cJK.wxXCkey=1
-hKK.wxXCkey=1
-_(r,fIK)
+lAK.wxXCkey=1
+aBK.wxXCkey=1
+_(r,o0J)
 return r
 }
 e_[x[68]]={f:m68,j:[],i:[],ti:[],ic:[]}
 d_[x[69]]={}
 var m69=function(e,s,r,gg){
 var z=gz$gwx_70()
-var oNK=_v()
-_(r,oNK)
-var lOK=function(tQK,aPK,eRK,gg){
-var oTK=_n('view')
-_rz(z,oTK,'class',4,tQK,aPK,gg)
-var xUK=_v()
-_(oTK,xUK)
-if(_oz(z,5,tQK,aPK,gg)){xUK.wxVkey=1
+var bEK=_v()
+_(r,bEK)
+var oFK=function(oHK,xGK,fIK,gg){
+var hKK=_n('view')
+_rz(z,hKK,'class',4,oHK,xGK,gg)
+var oLK=_v()
+_(hKK,oLK)
+if(_oz(z,5,oHK,xGK,gg)){oLK.wxVkey=1
 }
-var oVK=_v()
-_(oTK,oVK)
-if(_oz(z,6,tQK,aPK,gg)){oVK.wxVkey=1
+var cMK=_v()
+_(hKK,cMK)
+if(_oz(z,6,oHK,xGK,gg)){cMK.wxVkey=1
 }
-xUK.wxXCkey=1
-oVK.wxXCkey=1
-_(eRK,oTK)
-return eRK
+oLK.wxXCkey=1
+cMK.wxXCkey=1
+_(fIK,hKK)
+return fIK
 }
-oNK.wxXCkey=2
-_2z(z,2,lOK,e,s,gg,oNK,'item','index','index')
+bEK.wxXCkey=2
+_2z(z,2,oFK,e,s,gg,bEK,'item','index','index')
 return r
 }
 e_[x[69]]={f:m69,j:[],i:[],ti:[],ic:[]}
 d_[x[70]]={}
 var m70=function(e,s,r,gg){
 var z=gz$gwx_71()
-var cXK=_n('view')
-_rz(z,cXK,'class',0,e,s,gg)
-var hYK=_v()
-_(cXK,hYK)
-if(_oz(z,1,e,s,gg)){hYK.wxVkey=1
+var lOK=_n('view')
+_rz(z,lOK,'class',0,e,s,gg)
+var aPK=_v()
+_(lOK,aPK)
+if(_oz(z,1,e,s,gg)){aPK.wxVkey=1
 }
-var oZK=_v()
-_(cXK,oZK)
-if(_oz(z,2,e,s,gg)){oZK.wxVkey=1
+var tQK=_v()
+_(lOK,tQK)
+if(_oz(z,2,e,s,gg)){tQK.wxVkey=1
 }
-var c1K=_v()
-_(cXK,c1K)
-if(_oz(z,3,e,s,gg)){c1K.wxVkey=1
+var eRK=_v()
+_(lOK,eRK)
+if(_oz(z,3,e,s,gg)){eRK.wxVkey=1
 }
-var o2K=_v()
-_(cXK,o2K)
-if(_oz(z,4,e,s,gg)){o2K.wxVkey=1
+var bSK=_v()
+_(lOK,bSK)
+if(_oz(z,4,e,s,gg)){bSK.wxVkey=1
 }
-var l3K=_v()
-_(cXK,l3K)
-if(_oz(z,5,e,s,gg)){l3K.wxVkey=1
+var oTK=_v()
+_(lOK,oTK)
+if(_oz(z,5,e,s,gg)){oTK.wxVkey=1
 }
-hYK.wxXCkey=1
-oZK.wxXCkey=1
-c1K.wxXCkey=1
-o2K.wxXCkey=1
-l3K.wxXCkey=1
-_(r,cXK)
+aPK.wxXCkey=1
+tQK.wxXCkey=1
+eRK.wxXCkey=1
+bSK.wxXCkey=1
+oTK.wxXCkey=1
+_(r,lOK)
 return r
 }
 e_[x[70]]={f:m70,j:[],i:[],ti:[],ic:[]}
@@ -3431,7 +3383,7 @@ return root;
 
 
 
-__wxAppCode__['app.json']={"pages":["pages/index","pages/login","pages/registered","pages/forgetPassword","pages/collection","pages/apply","pages/exchang","pages/me","pages/articleDetail","pages/queryTool","pages/post","pages/experience","pages/productSupermarket","pages/meUserInfo","pages/meFavorite","pages/meFollow","pages/meFriend","pages/mePost","pages/meMyDraft","pages/meMyMobile","pages/meMyMobile_1","pages/meMyMobile_2","pages/meMyMobile_3","pages/meMessage","pages/meCertification","pages/meVIP","pages/contactCustomer","pages/meSpread","pages/meService","pages/meSetting","pages/indexA","pages/meCertificationConfirm","pages/meEditSet","pages/meEdit","pages/meApplyMessage","pages/meTreaty","pages/paySuccess","pages/productDetail","pages/searchNetloan","pages/allProduct","pages/applyShow","pages/iframe","pages/meFan","pages/tel","pages/payType","pages/search","pages/meTeamList","pages/commissionSet","pages/getQrCode","pages/cashOut","pages/promptlyGetQr","pages/teamPeopleDetail","pages/message","pages/teamList","pages/shareCode","pages/meApply","pages/exchangList","pages/boardData","pages/showCode","pages/messageDetail"],"window":{"navigationBarTextStyle":"white","navigationBarTitleText":"uni-app","navigationBarBackgroundColor":"#2390DC","backgroundColor":"#F8F8F8"},"tabBar":{"color":"#333","selectedColor":"#2390DC","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/index","text":"首页","iconPath":"static/index.png","selectedIconPath":"static/indexCur.png"},{"pagePath":"pages/collection","text":"精准匹配","iconPath":"static/gather.png","selectedIconPath":"static/gatherCur.png"},{"pagePath":"pages/apply","text":"极品干货","iconPath":"static/apply.png","selectedIconPath":"static/applyCur.png"},{"pagePath":"pages/exchang","text":"信贷员互动","iconPath":"static/exchange.png","selectedIconPath":"static/exchangeCur.png"},{"pagePath":"pages/me","text":"个人中心","iconPath":"static/me.png","selectedIconPath":"static/meCur.png"}]},"nvueCompiler":"uni-app","renderer":"auto","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"子诺新微金","compilerVersion":"2.6.8","usingComponents":{"mescroll-body":"/components/mescroll-uni/mescroll-body","mescroll-uni":"/components/mescroll-uni/mescroll-uni","page-search":"/components/pageSearch","uni-load-more":"/components/uni-load-more"}};
+__wxAppCode__['app.json']={"pages":["pages/index","pages/login","pages/registered","pages/forgetPassword","pages/collection","pages/apply","pages/exchang","pages/me","pages/articleDetail","pages/queryTool","pages/post","pages/experience","pages/productSupermarket","pages/meUserInfo","pages/meFavorite","pages/meFollow","pages/meFriend","pages/mePost","pages/meMyDraft","pages/meMyMobile","pages/meMyMobile_1","pages/meMyMobile_2","pages/meMyMobile_3","pages/meMessage","pages/meCertification","pages/meVIP","pages/contactCustomer","pages/meSpread","pages/meService","pages/meSetting","pages/indexA","pages/meCertificationConfirm","pages/meEditSet","pages/meEdit","pages/meApplyMessage","pages/meTreaty","pages/paySuccess","pages/productDetail","pages/searchNetloan","pages/allProduct","pages/applyShow","pages/iframe","pages/meFan","pages/tel","pages/payType","pages/search","pages/meTeamList","pages/commissionSet","pages/getQrCode","pages/cashOut","pages/promptlyGetQr","pages/teamPeopleDetail","pages/message","pages/teamList","pages/shareCode","pages/meApply","pages/exchangList","pages/boardData","pages/showCode","pages/messageDetail"],"window":{"navigationBarTextStyle":"white","navigationBarTitleText":"uni-app","navigationBarBackgroundColor":"#2390DC","backgroundColor":"#F8F8F8"},"tabBar":{"color":"#333","selectedColor":"#2390DC","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/index","text":"首页","iconPath":"static/index.png","selectedIconPath":"static/indexCur.png"},{"pagePath":"pages/collection","text":"精准匹配","iconPath":"static/gather.png","selectedIconPath":"static/gatherCur.png"},{"pagePath":"pages/apply","text":"会员专享","iconPath":"static/apply.png","selectedIconPath":"static/applyCur.png"},{"pagePath":"pages/exchang","text":"信贷员互动","iconPath":"static/exchange.png","selectedIconPath":"static/exchangeCur.png"},{"pagePath":"pages/me","text":"个人中心","iconPath":"static/me.png","selectedIconPath":"static/meCur.png"}]},"nvueCompiler":"uni-app","renderer":"auto","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"子诺新微金","compilerVersion":"2.6.8","usingComponents":{"mescroll-body":"/components/mescroll-uni/mescroll-body","mescroll-uni":"/components/mescroll-uni/mescroll-uni","page-search":"/components/pageSearch","uni-load-more":"/components/uni-load-more"}};
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/jyf-parser.json']={"component":true,"usingComponents":{"trees":"/components/libs/trees"}};
@@ -3473,7 +3425,7 @@ __wxAppCode__['components/wangding-pickerAddress.wxml']=$gwx('./components/wangd
 __wxAppCode__['pages/allProduct.json']={"navigationBarTitleText":"所有产品","usingComponents":{}};
 __wxAppCode__['pages/allProduct.wxml']=$gwx('./pages/allProduct.wxml');
 
-__wxAppCode__['pages/apply.json']={"navigationBarTitleText":"极品干货","usingComponents":{}};
+__wxAppCode__['pages/apply.json']={"navigationBarTitleText":"会员专享","usingComponents":{}};
 __wxAppCode__['pages/apply.wxml']=$gwx('./pages/apply.wxml');
 
 __wxAppCode__['pages/applyShow.json']={"navigationBarTitleText":"分类","usingComponents":{}};
@@ -3847,7 +3799,7 @@ define('common/runtime.js',function(require, module, exports, window, document, 
 })([]);
 });
 define('common/vendor.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["common/vendor"],{"0de9":function(t,e,n){"use strict";function r(t){var e=Object.prototype.toString.call(t);return e.substring(8,e.length-1)}function a(){return"string"===typeof __channelId__&&__channelId__}function i(){for(var t=arguments.length,e=new Array(t),n=0;n<t;n++)e[n]=arguments[n];var i=e.shift();if(a())return e.push(e.pop().replace("at ","uni-app:///")),console[i]["apply"](console,e);var o=e.map((function(t){var e=Object.prototype.toString.call(t);if("[object object]"===e.toLowerCase())try{t="---BEGIN:JSON---"+JSON.stringify(t)+"---END:JSON---"}catch(a){t="[object object]"}else if(null===t)t="---NULL---";else if(void 0===t)t="---UNDEFINED---";else{var n=r(t).toUpperCase();t="NUMBER"===n||"BOOLEAN"===n?"---BEGIN:"+n+"---"+t+"---END:"+n+"---":String(t)}return t})),s="";if(o.length>1){var c=o.pop();s=o.join("---COMMA---"),0===c.indexOf(" at ")?s+=c:s+="---COMMA---"+c}else s=o[0];console[i](s)}n.r(e),n.d(e,"default",(function(){return i}))},"108f":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r={pages:{"pages/index":{navigationBarTitleText:"子诺新微金"},"pages/login":{navigationBarTitleText:"登录"},"pages/registered":{navigationBarTitleText:"注册"},"pages/forgetPassword":{navigationBarTitleText:"找回密码"},"pages/collection":{navigationBarTitleText:"精准匹配"},"pages/apply":{navigationBarTitleText:"极品干货"},"pages/exchang":{navigationBarTitleText:"信贷员互动"},"pages/me":{navigationBarTitleText:"个人中心"},"pages/articleDetail":{navigationBarTitleText:"文章详情"},"pages/queryTool":{navigationBarTitleText:"查询工具"},"pages/post":{navigationBarTitleText:"发布内容"},"pages/experience":{navigationBarTitleText:"选择模块"},"pages/productSupermarket":{navigationBarTitleText:"产品超市"},"pages/meUserInfo":{navigationBarTitleText:"个人信息"},"pages/meFavorite":{navigationBarTitleText:"我的收藏"},"pages/meFollow":{navigationBarTitleText:"我的关注"},"pages/meFriend":{navigationBarTitleText:"我的好友"},"pages/mePost":{navigationBarTitleText:"我的发表"},"pages/meMyDraft":{navigationBarTitleText:"我的草稿"},"pages/meMyMobile":{navigationBarTitleText:"我的手机"},"pages/meMyMobile_1":{navigationBarTitleText:"更换手机号"},"pages/meMyMobile_2":{navigationBarTitleText:"更换手机号"},"pages/meMyMobile_3":{navigationBarTitleText:"更换手机号"},"pages/meMessage":{navigationBarTitleText:"我的消息"},"pages/meCertification":{navigationBarTitleText:"用户认证"},"pages/meVIP":{navigationBarTitleText:"开通会员"},"pages/contactCustomer":{navigationBarTitleText:"联系客服"},"pages/meSpread":{navigationBarTitleText:"推广返佣"},"pages/meService":{navigationBarTitleText:"联系客服"},"pages/meSetting":{navigationBarTitleText:"个人设置"},"pages/indexA":{},"pages/meCertificationConfirm":{navigationBarTitleText:"实名认证"},"pages/meEditSet":{navigationBarTitleText:"信息录入"},"pages/meEdit":{navigationBarTitleText:"编辑"},"pages/meApplyMessage":{navigationBarTitleText:"系统消息"},"pages/meTreaty":{navigationBarTitleText:"相关协议"},"pages/paySuccess":{navigationBarTitleText:"支付成功"},"pages/productDetail":{navigationBarTitleText:"产品详情"},"pages/searchNetloan":{navigationBarTitleText:"搜索"},"pages/allProduct":{navigationBarTitleText:"所有产品"},"pages/applyShow":{navigationBarTitleText:"分类"},"pages/iframe":{},"pages/meFan":{navigationBarTitleText:"我的粉丝"},"pages/tel":{navigationBarTitleText:"手机实名查询-嘉合骏贷款超市"},"pages/payType":{navigationBarTitleText:"支付方式"},"pages/search":{navigationBarTitleText:"搜索"},"pages/meTeamList":{},"pages/commissionSet":{navigationBarTitleText:"返佣设置"},"pages/getQrCode":{navigationBarTitleText:"获取二维码"},"pages/cashOut":{navigationBarTitleText:"提现"},"pages/promptlyGetQr":{navigationBarTitleText:"获取二维码"},"pages/teamPeopleDetail":{navigationBarTitleText:"用户信息"},"pages/message":{navigationBarTitleText:"消息"},"pages/teamList":{navigationBarTitleText:"团队列表"},"pages/shareCode":{navigationBarTitleText:"获取二维码"},"pages/meApply":{navigationBarTitleText:"系统应用"},"pages/exchangList":{enablePullDownRefresh:!0},"pages/boardData":{},"pages/showCode":{navigationBarTitleText:"推广二维码"},"pages/messageDetail":{navigationBarTitleText:"系统消息详情"}},globalStyle:{navigationBarTextStyle:"white",navigationBarTitleText:"uni-app",navigationBarBackgroundColor:"#2390DC",backgroundColor:"#F8F8F8"}};e.default=r},"20a6":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r={appid:"__UNI__EA9C27B"};e.default=r},"24e8":function(t,e,n){"use strict";function r(t){if(0===t.indexOf("_www")||0===t.indexOf("_doc")||0===t.indexOf("_documents")||0===t.indexOf("_downloads"))return t;if(0===t.indexOf("file://"))return t;if(0===t.indexOf("/storage/emulated/0/"))return t;if(0===t.indexOf("/")){var e=plus.io.convertAbsoluteFileSystem(t);if(e!==t)return e;t=t.substr(1)}return"_www/"+t}function a(t){return new Promise((function(e,n){if("object"===typeof window&&"document"in window){if("function"===typeof FileReader){var a=new XMLHttpRequest;return a.open("GET",t,!0),a.responseType="blob",a.onload=function(){if(200===this.status){var t=new FileReader;t.onload=function(t){e(t.target.result)},t.onerror=n,t.readAsDataURL(this.response)}},a.onerror=n,void a.send()}var i=document.createElement("canvas"),o=i.getContext("2d"),s=new Image;return s.onload=function(){i.width=s.width,i.height=s.height,o.drawImage(s,0,0),e(i.toDataURL()),i.height=i.width=0},s.onerror=n,void(s.src=t)}"object"!==typeof plus?"object"===typeof wx&&wx.canIUse("getFileSystemManager")?wx.getFileSystemManager().readFile({filePath:t,encoding:"base64",success:function(t){e("data:image/png;base64,"+t.data)},fail:function(t){n(t)}}):n(new Error("not support")):plus.io.resolveLocalFileSystemURL(r(t),(function(t){t.file((function(t){var r=new plus.io.FileReader;r.onload=function(t){e(t.target.result)},r.onerror=function(t){n(t)},r.readAsDataURL(t)}),(function(t){n(t)}))}),(function(t){n(t)}))}))}function i(t){return new Promise((function(e,n){if("object"===typeof window&&"document"in window){t=t.split(",");var r=t[0].match(/:(.*?);/)[1],a=atob(t[1]),i=a.length,o=new Uint8Array(i);while(i--)o[i]=a.charCodeAt(i);return e((window.URL||window.webkitURL).createObjectURL(new Blob([o],{type:r})))}var s=t.match(/data\:\S+\/(\S+);/);s?s=s[1]:n(new Error("base64 error"));var c=Date.now()+"."+s;if("object"!==typeof plus)if("object"===typeof wx&&wx.canIUse("getFileSystemManager")){var u=wx.env.USER_DATA_PATH+"/"+c;wx.getFileSystemManager().writeFile({filePath:u,data:t.replace(/^data:\S+\/\S+;base64,/,""),encoding:"base64",success:function(){e(u)},fail:function(t){n(t)}})}else n(new Error("not support"));else{var l=new plus.nativeObj.Bitmap("bitmap"+Date.now());l.loadBase64Data(t,(function(){var t="_doc/uniapp_temp/"+c;l.save(t,{},(function(){l.clear(),e(t)}),(function(t){l.clear(),n(t)}))}),(function(t){l.clear(),n(t)}))}}))}Object.defineProperty(e,"__esModule",{value:!0}),e.pathToBase64=a,e.base64ToPath=i},5478:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r=[{name:"北京市",city:[{name:"北京市",area:["东城区","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"]}]},{name:"天津市",city:[{name:"天津市",area:["和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟  县"]}]},{name:"河北省",city:[{name:"石家庄市",area:["长安区","桥东区","桥西区","新华区","郊  区","井陉矿区","井陉县","正定县","栾城县","行唐县","灵寿县","高邑县","深泽县","赞皇县","无极县","平山县","元氏县","赵  县","辛集市","藁","晋州市","新乐市","鹿泉市"]},{name:"唐山市",area:["路南区","路北区","古冶区","开平区","新  区","丰润县","滦  县","滦南县","乐亭县","迁西县","玉田县","唐海县","遵化市","丰南市","迁安市"]},{name:"秦皇岛市",area:["海港区","山海关区","北戴河区","青龙满族自治县","昌黎县","抚宁县","卢龙县"]},{name:"邯郸市",area:["邯山区","丛台区","复兴区","峰峰矿区","邯郸县","临漳县","成安县","大名县","涉  县","磁  县","肥乡县","永年县","邱  县","鸡泽县","广平县","馆陶县","魏  县","曲周县","武安市"]},{name:"邢台市",area:["桥东区","桥西区","邢台县","临城县","内丘县","柏乡县","隆尧县","任  县","南和县","宁晋县","巨鹿县","新河县","广宗县","平乡县","威  县","清河县","临西县","南宫市","沙河市"]},{name:"保定市",area:["新市区","北市区","南市区","满城县","清苑县","涞水县","阜平县","徐水县","定兴县","唐  县","高阳县","容城县","涞源县","望都县","安新县","易  县","曲阳县","蠡  县","顺平县","博野","雄县","涿州市","定州市","安国市","高碑店市"]},{name:"张家口",area:["桥东区","桥西区","宣化区","下花园区","宣化县","张北县","康保县","沽源县","尚义县","蔚  县","阳原县","怀安县","万全县","怀来县","涿鹿县","赤城县","崇礼县"]},{name:"承德市",area:["双桥区","双滦区","鹰手营子矿区","承德县","兴隆县","平泉县","滦平县","隆化县","丰宁满族自治县","宽城满族自治县","围场满族蒙古族自治县"]},{name:"沧州市",area:["新华区","运河区","沧  县","青  县","东光县","海兴县","盐山县","肃宁县","南皮县","吴桥县","献  县","孟村回族自治县","泊头市","任丘市","黄骅市","河间市"]},{name:"廊坊市",area:["安次区","固安县","永清县","香河县","大城县","文安县","大厂回族自治县","霸州市","三河市"]},{name:"衡水市",area:["桃城区","枣强县","武邑县","武强县","饶阳县","安平县","故城县","景  县","阜城县","冀州市","深州市"]}]},{name:"山西省",city:[{name:"太原市",area:["小店区","迎泽区","杏花岭区","尖草坪区","万柏林区","晋源区","清徐县","阳曲县","娄烦县","古交市"]},{name:"大同市",area:["城  区","矿  区","南郊区","新荣区","阳高县","天镇县","广灵县","灵丘县","浑源县","左云县","大同县"]},{name:"阳泉市",area:["城  区","矿  区","郊  区","平定县","盂  县"]},{name:"长治市",area:["城  区","郊  区","长治县","襄垣县","屯留县","平顺县","黎城县","壶关县","长子县","武乡县","沁  县","沁源县","潞城市"]},{name:"晋城市",area:["城  区","沁水县","阳城县","陵川县","泽州县","高平市"]},{name:"朔州市",area:["朔城区","平鲁区","山阴县","应  县","右玉县","怀仁县"]},{name:"忻州市",area:["忻府区","原平市","定襄县","五台县","代  县","繁峙县","宁武县","静乐县","神池县","五寨县","岢岚县","河曲县","保德县","偏关县"]},{name:"吕梁市",area:["离石区","孝义市","汾阳市","文水县","交城县","兴  县","临  县","柳林县","石楼县","岚  县","方山县","中阳县","交口县"]},{name:"晋中市",area:["榆次市","介休市","榆社县","左权县","和顺县","昔阳县","寿阳县","太谷县","祁  县","平遥县","灵石县"]},{name:"临汾市",area:["临汾市","侯马市","霍州市","曲沃县","翼城县","襄汾县","洪洞县","古  县","安泽县","浮山县","吉  县","乡宁县","蒲  县","大宁县","永和县","隰  县","汾西县"]},{name:"运城市",area:["运城市","永济市","河津市","芮城县","临猗县","万荣县","新绛县","稷山县","闻喜县","夏  县","绛  县","平陆县","垣曲县"]}]},{name:"内蒙古",city:[{name:"呼和浩特市",area:["新城区","回民区","玉泉区","郊  区","土默特左旗","托克托县","和林格尔县","清水河县","武川县"]},{name:"包头市",area:["东河区","昆都伦区","青山区","石拐矿区","白云矿区","郊  区","土默特右旗","固阳县","达尔罕茂明安联合旗"]},{name:"乌海市",area:["海勃湾区","海南区","乌达区"]},{name:"赤峰市",area:["红山区","元宝山区","松山区","阿鲁科尔沁旗","巴林左旗","巴林右旗","林西县","克什克腾旗","翁牛特旗","喀喇沁旗","宁城县","敖汉旗"]},{name:"呼伦贝尔市",area:["海拉尔市","满洲里市","扎兰屯市","牙克石市","根河市","额尔古纳市","阿荣旗","莫力达瓦达斡尔族自治旗","鄂伦春自治旗","鄂温克族自治旗","新巴尔虎右旗","新巴尔虎左旗","陈巴尔虎旗"]},{name:"兴安盟",area:["乌兰浩特市","阿尔山市","科尔沁右翼前旗","科尔沁右翼中旗","扎赉特旗","突泉县"]},{name:"通辽市",area:["科尔沁区","霍林郭勒市","科尔沁左翼中旗","科尔沁左翼后旗","开鲁县","库伦旗","奈曼旗","扎鲁特旗"]},{name:"锡林郭勒盟",area:["二连浩特市","锡林浩特市","阿巴嘎旗","苏尼特左旗","苏尼特右旗","东乌珠穆沁旗","西乌珠穆沁旗","太仆寺旗","镶黄旗","正镶白旗","正蓝旗","多伦县"]},{name:"乌兰察布盟",area:["集宁市","丰镇市","卓资县","化德县","商都县","兴和县","凉城县","察哈尔右翼前旗","察哈尔右翼中旗","察哈尔右翼后旗","四子王旗"]},{name:"伊克昭盟",area:["东胜市","达拉特旗","准格尔旗","鄂托克前旗","鄂托克旗","杭锦旗","乌审旗","伊金霍洛旗"]},{name:"巴彦淖尔盟",area:["临河市","五原县","磴口县","乌拉特前旗","乌拉特中旗","乌拉特后旗","杭锦后旗"]},{name:"阿拉善盟",area:["阿拉善左旗","阿拉善右旗","额济纳旗"]}]},{name:"辽宁省",city:[{name:"沈阳市",area:["沈河区","皇姑区","和平区","大东区","铁西区","苏家屯区","东陵区","于洪区","新民市","法库县","辽中县","康平县","新城子区"]},{name:"大连市",area:["西岗区","中山区","沙河口区","甘井子区","旅顺口区","金州区","瓦房店市","普兰店市","庄河市","长海县"]},{name:"鞍山市",area:["铁东区","铁西区","立山区","千山区","海城市","台安县","岫岩满族自治县"]},{name:"抚顺市",area:["顺城区","新抚区","东洲区","望花区","抚顺县","清原满族自治县","新宾满族自治县"]},{name:"本溪市",area:["平山区","明山区","溪湖区","南芬区","本溪满族自治县","桓仁满族自治县"]},{name:"丹东市",area:["振兴区","元宝区","振安区","东港市","凤城市","宽甸满族自治县"]},{name:"锦州市",area:["太和区","古塔区","凌河区","凌海市","黑山县","义县","北宁市"]},{name:"营口市",area:["站前区","西市区","鲅鱼圈区","老边区","大石桥市","盖州市"]},{name:"阜新市",area:["海州区","新邱区","太平区","清河门区","细河区","彰武县","阜新蒙古族自治县"]},{name:"辽阳市",area:["白塔区","文圣区","宏伟区","太子河区","弓长岭区","灯塔市","辽阳县"]},{name:"盘锦",area:["双台子区","兴隆台区","盘山县","大洼县"]},{name:"铁岭市",area:["银州区","清河区","调兵山市","开原市","铁岭县","昌图县","西丰县"]},{name:"朝阳市",area:["双塔区","龙城区","凌源市","北票市","朝阳县","建平县","喀喇沁左翼蒙古族自治县"]},{name:"葫芦岛市",area:["龙港区","南票区","连山区","兴城市","绥中县","建昌县"]}]},{name:"吉林省",city:[{name:"长春市",area:["朝阳区","宽城区","二道区","南关区","绿园区","双阳区","九台市","榆树市","德惠市","农安县"]},{name:"吉林市",area:["船营区","昌邑区","龙潭区","丰满区","舒兰市","桦甸市","蛟河市","磐石市","永吉县"]},{name:"四平",area:["铁西区","铁东区","公主岭市","双辽市","梨树县","伊通满族自治县"]},{name:"辽源市",area:["龙山区","西安区","东辽县","东丰县"]},{name:"通化市",area:["东昌区","二道江区","梅河口市","集安市","通化县","辉南县","柳河县"]},{name:"白山市",area:["八道江区","江源区","临江市","靖宇县","抚松县","长白朝鲜族自治县"]},{name:"松原市",area:["宁江区","乾安县","长岭县","扶余县","前郭尔罗斯蒙古族自治县"]},{name:"白城市",area:["洮北区","大安市","洮南市","镇赉县","通榆县"]},{name:"延边朝鲜族自治州",area:["延吉市","图们市","敦化市","龙井市","珲春市","和龙市","安图县","汪清县"]}]},{name:"黑龙江省",city:[{name:"哈尔滨市",area:["松北区","道里区","南岗区","平房区","香坊区","道外区","呼兰区","阿城区","双城市","尚志市","五常市","宾县","方正县","通河县","巴彦县","延寿县","木兰县","依兰县"]},{name:"齐齐哈尔市",area:["龙沙区","昂昂溪区","铁锋区","建华区","富拉尔基区","碾子山区","梅里斯达斡尔族区","讷河市","富裕县","拜泉县","甘南县","依安县","克山县","泰来县","克东县","龙江县"]},{name:"鹤岗市",area:["兴山区","工农区","南山区","兴安区","向阳区","东山区","萝北县","绥滨县"]},{name:"双鸭山",area:["尖山区","岭东区","四方台区","宝山区","集贤县","宝清县","友谊县","饶河县"]},{name:"鸡西市",area:["鸡冠区","恒山区","城子河区","滴道区","梨树区","麻山区","密山市","虎林市","鸡东县"]},{name:"大庆市",area:["萨尔图区","红岗区","龙凤区","让胡路区","大同区","林甸县","肇州县","肇源县","杜尔伯特蒙古族自治县"]},{name:"伊春市",area:["伊春区","带岭区","南岔区","金山屯区","西林区","美溪区","乌马河区","翠峦区","友好区","上甘岭区","五营区","红星区","新青区","汤旺河区","乌伊岭区","铁力市","嘉荫县"]},{name:"牡丹江市",area:["爱民区","东安区","阳明区","西安区","绥芬河市","宁安市","海林市","穆棱市","林口县","东宁县"]},{name:"佳木斯市",area:["向阳区","前进区","东风区","郊区","同江市","富锦市","桦川县","抚远县","桦南县","汤原县"]},{name:"七台河市",area:["桃山区","新兴区","茄子河区","勃利县"]},{name:"黑河市",area:["爱辉区","北安市","五大连池市","逊克县","嫩江县","孙吴县"]},{name:"绥化市",area:["北林区","安达市","肇东市","海伦市","绥棱县","兰西县","明水县","青冈县","庆安县","望奎县"]},{name:"大兴安岭地区",area:["呼玛县","塔河县","漠河县","大兴安岭辖区"]}]},{name:"上海市",city:[{name:"上海市",area:["黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","宝山区","闵行区","嘉定区","松江区","金山区","青浦区","南汇区","奉贤区","浦东新区","崇明县"]}]},{name:"江苏省",city:[{name:"南京市",area:["玄武区","白下区","秦淮区","建邺区","鼓楼区","下关区","栖霞区","雨花台区","浦口区","江宁区","六合区","溧水县","高淳县"]},{name:"苏州市",area:["金阊区","平江区","沧浪区","虎丘区","吴中区","相城区","常熟市","张家港市","昆山市","吴江市","太仓市"]},{name:"无锡市",area:["崇安区","南长区","北塘区","滨湖区","锡山区","惠山区","江阴市","宜兴市"]},{name:"常州市",area:["钟楼区","天宁区","戚墅堰区","新北区","武进区","金坛市","溧阳市"]},{name:"镇江市",area:["京口区","润州区","丹徒区","丹阳市","扬中市","句容市"]},{name:"南通市",area:["崇川区","港闸区","通州市","如皋市","海门市","启东市","海安县","如东县"]},{name:"泰州市",area:["海陵区","高港区","姜堰市","泰兴市","靖江市","兴化市"]},{name:"扬州市",area:["广陵区","维扬区","邗江区","江都市","仪征市","高邮市","宝应县"]},{name:"盐城市",area:["亭湖区","盐都区","大丰市","东台市","建湖县","射阳县","阜宁县","滨海县","响水县"]},{name:"连云港市",area:["新浦区","海州区","连云区","东海县","灌云县","赣榆县","灌南县"]},{name:"徐州市",area:["云龙区","鼓楼区","九里区","泉山区","贾汪区","邳州市","新沂市","铜山县","睢宁县","沛县","丰县"]},{name:"淮安市",area:["清河区","清浦区","楚州区","淮阴区","涟水县","洪泽县","金湖县","盱眙县"]},{name:"宿迁市",area:["宿城区","宿豫区","沭阳县","泗阳县","泗洪县"]}]},{name:"浙江省",city:[{name:"杭州市",area:["拱墅区","西湖区","上城区","下城区","江干区","滨江区","余杭区","萧山区","建德市","富阳市","临安市","桐庐县","淳安县"]},{name:"宁波市",area:["海曙区","江东区","江北区","镇海区","北仑区","鄞州区","余姚市","慈溪市","奉化市","宁海县","象山县"]},{name:"温州市",area:["鹿城区","龙湾区","瓯海区","瑞安市","乐清市","永嘉县","洞头县","平阳县","苍南县","文成县","泰顺县"]},{name:"嘉兴市",area:["秀城区","秀洲区","海宁市","平湖市","桐乡市","嘉善县","海盐县"]},{name:"湖州市",area:["吴兴区","南浔区","长兴县","德清县","安吉县"]},{name:"绍兴市",area:["越城区","诸暨市","上虞市","嵊州市","绍兴县","新昌县"]},{name:"金华市",area:["婺城区","金东区","兰溪市","义乌市","东阳市","永康市","武义县","浦江县","磐安县"]},{name:"衢州市",area:["柯城区","衢江区","江山市","龙游县","常山县","开化县"]},{name:"舟山市",area:["定海区","普陀区","岱山县","嵊泗县"]},{name:"台州市",area:["椒江区","黄岩区","路桥区","临海市","温岭市","玉环县","天台县","仙居县","三门县"]},{name:"丽水市",area:["莲都区","龙泉市","缙云县","青田县","云和县","遂昌县","松阳县","庆元县","景宁畲族自治县"]}]},{name:"安徽省",city:[{name:"合肥市",area:["庐阳区","瑶海区","蜀山区","包河区","长丰县","肥东县","肥西县"]},{name:"芜湖市",area:["镜湖区","弋江区","鸠江区","三山区","芜湖县","南陵县","繁昌县"]},{name:"蚌埠市",area:["蚌山区","龙子湖区","禹会区","淮上区","怀远县","固镇县","五河县"]},{name:"淮南市",area:["田家庵区","大通区","谢家集区","八公山区","潘集区","凤台县"]},{name:"马鞍山市",area:["雨山区","花山区","金家庄区","当涂县"]},{name:"淮北市",area:["相山区","杜集区","烈山区","濉溪县"]},{name:"铜陵市",area:["铜官山区","狮子山区","郊区","铜陵县"]},{name:"安庆市",area:["迎江区","大观区","宜秀区","桐城市","宿松县","枞阳县","太湖县","怀宁县","岳西县","望江县","潜山县"]},{name:"黄山市",area:["屯溪区","黄山区","徽州区","休宁县","歙县","祁门县","黟县"]},{name:"滁州市",area:["琅琊区","南谯区","天长市","明光市","全椒县","来安县","定远县","凤阳县"]},{name:"阜阳市",area:["颍州区","颍东区","颍泉区","界首市","临泉县","颍上县","阜南县","太和县"]},{name:"宿州市",area:["埇桥区","萧县","泗县","砀山县","灵璧县"]},{name:"巢湖市",area:["居巢区","含山县","无为县","庐江县","和县"]},{name:"六安市",area:["金安区","裕安区","寿县","霍山县","霍邱县","舒城县","金寨县"]},{name:"亳州市",area:["谯城区","利辛县","涡阳县","蒙城县"]},{name:"池州市",area:["贵池区","东至县","石台县","青阳县"]},{name:"宣城市",area:["宣州区","宁国市","广德县","郎溪县","泾县","旌德县","绩溪县"]}]},{name:"福建省",city:[{name:"福州市",area:["鼓楼区","台江区","仓山区","马尾区","晋安区","福清市","长乐市","闽侯县","闽清县","永泰县","连江县","罗源县","平潭县"]},{name:"厦门市",area:["思明区","海沧区","湖里区","集美区","同安区","翔安区"]},{name:"莆田市",area:["城厢区","涵江区","荔城区","秀屿区","仙游县"]},{name:"三明市",area:["梅列区","三元区","永安市","明溪县","将乐县","大田县","宁化县","建宁县","沙县","尤溪县","清流县","泰宁县"]},{name:"泉州市",area:["鲤城区","丰泽区","洛江区","泉港区","石狮市","晋江市","南安市","惠安县","永春县","安溪县","德化县","金门县"]},{name:"漳州市",area:["芗城区","龙文区","龙海市","平和县","南靖县","诏安县","漳浦县","华安县","东山县","长泰县","云霄县"]},{name:"南平市",area:["延平区","建瓯市","邵武市","武夷山市","建阳市","松溪县","光泽县","顺昌县","浦城县","政和县"]},{name:"龙岩市",area:["新罗区","漳平市","长汀县","武平县","上杭县","永定县","连城县"]},{name:"宁德市",area:["蕉城区","福安市","福鼎市","寿宁县","霞浦县","柘荣县","屏南县","古田县","周宁县"]}]},{name:"江西省",city:[{name:"南昌市",area:["东湖区","西湖区","青云谱区","湾里区","青山湖区","新建县","南昌县","进贤县","安义县"]},{name:"景德镇市",area:["珠山区","昌江区","乐平市","浮梁县"]},{name:"萍乡市",area:["安源区","湘东区","莲花县","上栗县","芦溪县"]},{name:"九江市",area:["浔阳区","庐山区","瑞昌市","九江县","星子县","武宁县","彭泽县","永修县","修水县","湖口县","德安县","都昌县"]},{name:"新余市",area:["渝水区","分宜县"]},{name:"鹰潭市",area:["月湖区","贵溪市","余江县"]},{name:"赣州市",area:["章贡区","瑞金市","南康市","石城县","安远县","赣县","宁都县","寻乌县","兴国县","定南县","上犹县","于都县","龙南县","崇义县","信丰县","全南县","大余县","会昌县"]},{name:"吉安市",area:["吉州区","青原区","井冈山市","吉安县","永丰县","永新县","新干县","泰和县","峡江县","遂川县","安福县","吉水县","万安县"]},{name:"宜春市",area:["袁州区","丰城市","樟树市","高安市","铜鼓县","靖安县","宜丰县","奉新县","万载县","上高县"]},{name:"抚州市",area:["临川区","南丰县","乐安县","金溪县","南城县","东乡县","资溪县","宜黄县","广昌县","黎川县","崇仁县"]},{name:"上饶市",area:["信州区","德兴市","上饶县","广丰县","鄱阳县","婺源县","铅山县","余干县","横峰县","弋阳县","玉山县","万年县"]}]},{name:"山东省",city:[{name:"济南市",area:["市中区","历下区","天桥区","槐荫区","历城区","长清区","章丘市","平阴县","济阳县","商河县"]},{name:"青岛市",area:["市南区","市北区","城阳区","四方区","李沧区","黄岛区","崂山区","胶南市","胶州市","平度市","莱西市","即墨市"]},{name:"淄博市",area:["张店区","临淄区","淄川区","博山区","周村区","桓台县","高青县","沂源县"]},{name:"枣庄市",area:["市中区","山亭区","峄城区","台儿庄区","薛城区","滕州市"]},{name:"东营市",area:["东营区","河口区","垦利县","广饶县","利津县"]},{name:"烟台市",area:["芝罘区","福山区","牟平区","莱山区","龙口市","莱阳市","莱州市","招远市","蓬莱市","栖霞市","海阳市","长岛县"]},{name:"潍坊市",area:["潍城区","寒亭区","坊子区","奎文区","青州市","诸城市","寿光市","安丘市","高密市","昌邑市","昌乐县","临朐县"]},{name:"济宁市",area:["市中区","任城区","曲阜市","兖州市","邹城市","鱼台县","金乡县","嘉祥县","微山县","汶上县","泗水县","梁山县"]},{name:"泰安市",area:["泰山区","岱岳区","新泰市","肥城市","宁阳县","东平县"]},{name:"威海市",area:["环翠区","乳山市","文登市","荣成市"]},{name:"日照市",area:["东港区","岚山区","五莲县","莒县"]},{name:"莱芜市",area:["莱城区","钢城区"]},{name:"临沂市",area:["兰山区","罗庄区","河东区","沂南县","郯城县","沂水县","苍山县","费县","平邑县","莒南县","蒙阴县","临沭县"]},{name:"德州市",area:["德城区","乐陵市","禹城市","陵县","宁津县","齐河县","武城县","庆云县","平原县","夏津县","临邑县"]},{name:"聊城市",area:["东昌府区","临清市","高唐县","阳谷县","茌平县","莘县","东阿县","冠县"]},{name:"滨州市",area:["滨城区","邹平县","沾化县","惠民县","博兴县","阳信县","无棣县"]},{name:"菏泽市",area:["牡丹区","鄄城县","单县","郓城县","曹县","定陶县","巨野县","东明县","成武县"]}]},{name:"河南省",city:[{name:"郑州市",area:["中原区","金水区","二七区","管城回族区","上街区","惠济区","巩义市","新郑市","新密市","登封市","荥阳市","中牟县"]},{name:"开封市",area:["鼓楼区","龙亭区","顺河回族区","禹王台区","金明区","开封县","尉氏县","兰考县","杞县","通许县"]},{name:"洛阳市",area:["西工区","老城区","涧西区","瀍河回族区","洛龙区","吉利区","偃师市","孟津县","汝阳县","伊川县","洛宁县","嵩县","宜阳县","新安县","栾川县"]},{name:"平顶山市",area:["新华区","卫东区","湛河区","石龙区","汝州市","舞钢市","宝丰县","叶县","郏县","鲁山县"]},{name:"安阳市",area:["北关区","文峰区","殷都区","龙安区","林州市","安阳县","滑县","内黄县","汤阴县"]},{name:"鹤壁市",area:["淇滨区","山城区","鹤山区","浚县","淇县"]},{name:"新乡市",area:["卫滨区","红旗区","凤泉区","牧野区","卫辉市","辉县市","新乡县","获嘉县","原阳县","长垣县","封丘县","延津县"]},{name:"焦作市",area:["解放区","中站区","马村区","山阳区","沁阳市","孟州市","修武县","温县","武陟县","博爱县"]},{name:"濮阳市",area:["华龙区","濮阳县","南乐县","台前县","清丰县","范县"]},{name:"许昌市",area:["魏都区","禹州市","长葛市","许昌县","鄢陵县","襄城县"]},{name:"漯河市",area:["源汇区","郾城区","召陵区","临颍县","舞阳县"]},{name:"三门峡市",area:["湖滨区","义马市","灵宝市","渑池县","卢氏县","陕县"]},{name:"南阳市",area:["卧龙区","宛城区","邓州市","桐柏县","方城县","淅川县","镇平县","唐河县","南召县","内乡县","新野县","社旗县","西峡县"]},{name:"商丘市",area:["梁园区","睢阳区","永城市","宁陵县","虞城县","民权县","夏邑县","柘城县","睢县"]},{name:"信阳市",area:["浉河区","平桥区","潢川县","淮滨县","息县","新县","商城县","固始县","罗山县","光山县"]},{name:"周口市",area:["川汇区","项城市","商水县","淮阳县","太康县","鹿邑县","西华县","扶沟县","沈丘县","郸城县"]},{name:"驻马店市",area:["驿城区","确山县","新蔡县","上蔡县","西平县","泌阳县","平舆县","汝南县","遂平县","正阳县"]},{name:"焦作市",area:["济源市"]}]},{name:"湖北省",city:[{name:"武汉市",area:["江岸区","武昌区","江汉区","硚口区","汉阳区","青山区","洪山区","东西湖区","汉南区","蔡甸区","江夏区","黄陂区","新洲区"]},{name:"黄石市",area:["黄石港区","西塞山区","下陆区","铁山区","大冶市","阳新县"]},{name:"十堰市",area:["张湾区","茅箭区","丹江口市","郧县","竹山县","房县","郧西县","竹溪县"]},{name:"荆州市",area:["沙市区","荆州区","洪湖市","石首市","松滋市","监利县","公安县","江陵县"]},{name:"宜昌市",area:["西陵区","伍家岗区","点军区","猇亭区","夷陵区","宜都市","当阳市","枝江市","秭归县","远安县","兴山县","五峰土家族自治县","长阳土家族自治县"]},{name:"襄樊市",area:["襄城区","樊城区","襄阳区","老河口市","枣阳市","宜城市","南漳县","谷城县","保康县"]},{name:"鄂州市",area:["鄂城区","华容区","梁子湖区"]},{name:"荆门市",area:["东宝区","掇刀区","钟祥市","京山县","沙洋县"]},{name:"孝感市",area:["孝南区","应城市","安陆市","汉川市","云梦县","大悟县","孝昌县"]},{name:"黄冈市",area:["黄州区","麻城市","武穴市","红安县","罗田县","浠水县","蕲春县","黄梅县","英山县","团风县"]},{name:"咸宁市",area:["咸安区","赤壁市","嘉鱼县","通山县","崇阳县","通城县"]},{name:"随州市",area:["曾都区","广水市"]},{name:"恩施土家族苗族自治州",area:["恩施市","利川市","建始县","来凤县","巴东县","鹤峰县","宣恩县","咸丰县"]},{name:"仙桃市",area:["仙桃"]},{name:"天门市",area:["天门"]},{name:"潜江市",area:["潜江"]},{name:"神农架林区",area:["神农架林区"]}]},{name:"湖南省",city:[{name:"长沙市",area:["岳麓区","芙蓉区","天心区","开福区","雨花区","浏阳市","长沙县","望城县","宁乡县"]},{name:"株洲市",area:["天元区","荷塘区","芦淞区","石峰区","醴陵市","株洲县","炎陵县","茶陵县","攸县"]},{name:"湘潭市",area:["岳塘区","雨湖区","湘乡市","韶山市","湘潭县"]},{name:"衡阳市",area:["雁峰区","珠晖区","石鼓区","蒸湘区","南岳区","耒阳市","常宁市","衡阳县","衡东县","衡山县","衡南县","祁东县"]},{name:"邵阳市",area:["双清区","大祥区","北塔区","武冈市","邵东县","洞口县","新邵县","绥宁县","新宁县","邵阳县","隆回县","城步苗族自治县"]},{name:"岳阳市",area:["岳阳楼区","云溪区","君山区","临湘市","汨罗市","岳阳县","湘阴县","平江县","华容县"]},{name:"常德市",area:["武陵区","鼎城区","津市市","澧县","临澧县","桃源县","汉寿县","安乡县","石门县"]},{name:"张家界市",area:["永定区","武陵源区","慈利县","桑植县"]},{name:"益阳市",area:["赫山区","资阳区","沅江市","桃江县","南县","安化县"]},{name:"郴州市",area:["北湖区","苏仙区","资兴市","宜章县","汝城县","安仁县","嘉禾县","临武县","桂东县","永兴县","桂阳县"]},{name:"永州市",area:["冷水滩区","零陵区","祁阳县","蓝山县","宁远县","新田县","东安县","江永县","道县","双牌县","江华瑶族自治县"]},{name:"怀化市",area:["鹤城区","洪江市","会同县","沅陵县","辰溪县","溆浦县","中方县","新晃侗族自治县","芷江侗族自治县","通道侗族自治县","靖州苗族侗族自治县","麻阳苗族自治县"]},{name:"娄底市",area:["娄星区","冷水江市","涟源市","新化县","双峰县"]},{name:"湘西土家族苗族自治州",area:["吉首市","古丈县","龙山县","永顺县","凤凰县","泸溪县","保靖县","花垣县"]}]},{name:"广东省",city:[{name:"广州市",area:["越秀区","荔湾区","海珠区","天河区","白云区","黄埔区","番禺区","花都区","南沙区","萝岗区","增城市","从化市"]},{name:"深圳市",area:["福田区","罗湖区","南山区","宝安区","龙岗区","盐田区"]},{name:"东莞市",area:["莞城","常平","塘厦","塘厦","塘厦"]},{name:"中山市",area:["中山"]},{name:"潮州市",area:["湘桥区","潮安县","饶平县"]},{name:"揭阳市",area:["榕城区","揭东县","揭西县","惠来县","普宁市"]},{name:"云浮市",area:["云城区","新兴县","郁南县","云安县","罗定市"]},{name:"珠海市",area:["香洲区","斗门区","金湾区"]},{name:"汕头市",area:["金平区","濠江区","龙湖区","潮阳区","潮南区","澄海区","南澳县"]},{name:"韶关市",area:["浈江区","武江区","曲江区","乐昌市","南雄市","始兴县","仁化县","翁源县","新丰县","乳源瑶族自治县"]},{name:"佛山市",area:["禅城区","南海区","顺德区","三水区","高明区"]},{name:"江门市",area:["蓬江区","江海区","新会区","恩平市","台山市","开平市","鹤山市"]},{name:"湛江市",area:["赤坎区","霞山区","坡头区","麻章区","吴川市","廉江市","雷州市","遂溪县","徐闻县"]},{name:"茂名市",area:["茂南区","茂港区","化州市","信宜市","高州市","电白县"]},{name:"肇庆市",area:["端州区","鼎湖区","高要市","四会市","广宁县","怀集县","封开县","德庆县"]},{name:"惠州市",area:["惠城区","惠阳区","博罗县","惠东县","龙门县"]},{name:"梅州市",area:["梅江区","兴宁市","梅县","大埔县","丰顺县","五华县","平远县","蕉岭县"]},{name:"汕尾市",area:["城区","陆丰市","海丰县","陆河县"]},{name:"河源市",area:["源城区","紫金县","龙川县","连平县","和平县","东源县"]},{name:"阳江市",area:["江城区","阳春市","阳西县","阳东县"]},{name:"清远市",area:["清城区","英德市","连州市","佛冈县","阳山县","清新县","连山壮族瑶族自治县","连南瑶族自治县"]}]},{name:"广西",city:[{name:"南宁市",area:["青秀区","兴宁区","西乡塘区","良庆区","江南区","邕宁区","武鸣县","隆安县","马山县","上林县","宾阳县","横县"]},{name:"柳州市",area:["城中区","鱼峰区","柳北区","柳南区","柳江县","柳城县","鹿寨县","融安县","融水苗族自治县","三江侗族自治县"]},{name:"桂林市",area:["象山区","秀峰区","叠彩区","七星区","雁山区","阳朔县","临桂县","灵川县","全州县","平乐县","兴安县","灌阳县","荔浦县","资源县","永福县","龙胜各族自治县","恭城瑶族自治县"]},{name:"梧州市",area:["万秀区","蝶山区","长洲区","岑溪市","苍梧县","藤县","蒙山县"]},{name:"北海市",area:["海城区","银海区","铁山港区","合浦县"]},{name:"防城港市",area:["港口区","防城区","东兴市","上思县"]},{name:"钦州市",area:["钦南区","钦北区","灵山县","浦北县"]},{name:"贵港市",area:["港北区","港南区","覃塘区","桂平市","平南县"]},{name:"玉林市",area:["玉州区","北流市","容县","陆川县","博白县","兴业县"]},{name:"百色市",area:["右江区","凌云县","平果县","西林县","乐业县","德保县","田林县","田阳县","靖西县","田东县","那坡县","隆林各族自治县"]},{name:"贺州市",area:["八步区","钟山县","昭平县","富川瑶族自治县"]},{name:"河池市",area:["金城江区","宜州市","天峨县","凤山县","南丹县","东兰县","都安瑶族自治县","罗城仫佬族自治县","巴马瑶族自治县","环江毛南族自治县","大化瑶族自治县"]},{name:"来宾市",area:["兴宾区","合山市","象州县","武宣县","忻城县","金秀瑶族自治县"]},{name:"崇左市",area:["江州区","凭祥市","宁明县","扶绥县","龙州县","大新县","天等县"]}]},{name:"海南省",city:[{name:"海口市",area:["龙华区","秀英区","琼山区","美兰区"]},{name:"三亚市",area:["三亚市"]},{name:"五指山市",area:["五指山"]},{name:"琼海市",area:["琼海"]},{name:"儋州市",area:["儋州"]},{name:"文昌市",area:["文昌"]},{name:"万宁市",area:["万宁"]},{name:"东方市",area:["东方"]},{name:"澄迈县",area:["澄迈县"]},{name:"定安县",area:["定安县"]},{name:"屯昌县",area:["屯昌县"]},{name:"临高县",area:["临高县"]},{name:"白沙黎族自治县",area:["白沙黎族自治县"]},{name:"昌江黎族自治县",area:["昌江黎族自治县"]},{name:"乐东黎族自治县",area:["乐东黎族自治县"]},{name:"陵水黎族自治县",area:["陵水黎族自治县"]},{name:"保亭黎族苗族自治县",area:["保亭黎族苗族自治县"]},{name:"琼中黎族苗族自治县",area:["琼中黎族苗族自治县"]}]},{name:"重庆市",city:[{name:"重庆市",area:["渝中区","大渡口区","江北区","南岸区","北碚区","渝北区","巴南区","长寿区","双桥区","沙坪坝区","万盛区","万州区","涪陵区","黔江区","永川区","合川区","江津区","九龙坡区","南川区","綦江县","潼南县","荣昌县","璧山县","大足县","铜梁县","梁平县","开县","忠县","城口县","垫江县","武隆县","丰都县","奉节县","云阳县","巫溪县","巫山县","石柱土家族自治县","秀山土家族苗族自治县","酉阳土家族苗族自治县","彭水苗族土家族自治县"]}]},{name:"四川省",city:[{name:"成都市",area:["青羊区","锦江区","金牛区","武侯区","成华区","龙泉驿区","青白江区","新都区","温江区","都江堰市","彭州市","邛崃市","崇州市","金堂县","郫县","新津县","双流县","蒲江县","大邑县"]},{name:"自贡市",area:["大安区","自流井区","贡井区","沿滩区","荣县","富顺县"]},{name:"攀枝花市",area:["仁和区","米易县","盐边县","东区","西区"]},{name:"泸州市",area:["江阳区","纳溪区","龙马潭区","泸县","合江县","叙永县","古蔺县"]},{name:"德阳市",area:["旌阳区","广汉市","什邡市","绵竹市","罗江县","中江县"]},{name:"绵阳市",area:["涪城区","游仙区","江油市","盐亭县","三台县","平武县","安县","梓潼县","北川羌族自治县"]},{name:"广元市",area:["元坝区","朝天区","青川县","旺苍县","剑阁县","苍溪县","市中区"]},{name:"遂宁市",area:["船山区","安居区","射洪县","蓬溪县","大英县"]},{name:"内江市",area:["市中区","东兴区","资中县","隆昌县","威远县"]},{name:"乐山市",area:["市中区","五通桥区","沙湾区","金口河区","峨眉山市","夹江县","井研县","犍为县","沐川县","马边彝族自治县","峨边彝族自治县"]},{name:"南充",area:["顺庆区","高坪区","嘉陵区","阆中市","营山县","蓬安县","仪陇县","南部县","西充县"]},{name:"眉山市",area:["东坡区","仁寿县","彭山县","洪雅县","丹棱县","青神县"]},{name:"宜宾市",area:["翠屏区","宜宾县","兴文县","南溪县","珙县","长宁县","高县","江安县","筠连县","屏山县"]},{name:"广安市",area:["广安区","华蓥市","岳池县","邻水县","武胜县"]},{name:"达州市",area:["通川区","万源市","达县","渠县","宣汉县","开江县","大竹县"]},{name:"雅安市",area:["雨城区","芦山县","石棉县","名山县","天全县","荥经县","宝兴县","汉源县"]},{name:"巴中市",area:["巴州区","南江县","平昌县","通江县"]},{name:"资阳市",area:["雁江区","简阳市","安岳县","乐至县"]},{name:"阿坝藏族羌族自治州",area:["马尔康县","九寨沟县","红原县","汶川县","阿坝县","理县","若尔盖县","小金县","黑水县","金川县","松潘县","壤塘县","茂县"]},{name:"甘孜藏族自治州",area:["康定县","丹巴县","炉霍县","九龙县","甘孜县","雅江县","新龙县","道孚县","白玉县","理塘县","德格县","乡城县","石渠县","稻城县","色达县","巴塘县","泸定县","得荣县"]},{name:"凉山彝族自治州",area:["西昌市","美姑县","昭觉县","金阳县","甘洛县","布拖县","雷波县","普格县","宁南县","喜德县","会东县","越西县","会理县","盐源县","德昌县","冕宁县","木里藏族自治县"]}]},{name:"贵州省",city:[{name:"贵阳市",area:["南明区","云岩区","花溪区","乌当区","白云区","小河区","清镇市","开阳县","修文县","息烽县"]},{name:"六盘水市",area:["钟山区","水城县","盘县","六枝特区"]},{name:"遵义市",area:["红花岗区","汇川区","赤水市","仁怀市","遵义县","绥阳县","桐梓县","习水县","凤冈县","正安县","余庆县","湄潭县","道真仡佬族苗族自治县","务川仡佬族苗族自治县"]},{name:"安顺市",area:["西秀区","普定县","平坝县","镇宁布依族苗族自治县","紫云苗族布依族自治县","关岭布依族苗族自治县"]},{name:"铜仁地区",area:["铜仁市","德江县","江口县","思南县","石阡县","玉屏侗族自治县","松桃苗族自治县","印江土家族苗族自治县","沿河土家族自治县","万山特区"]},{name:"毕节地区",area:["毕节市","黔西县","大方县","织金县","金沙县","赫章县","纳雍县","威宁彝族回族苗族自治县"]},{name:"黔西南布依族苗族自治州",area:["兴义市","望谟县","兴仁县","普安县","册亨县","晴隆县","贞丰县","安龙县"]},{name:"黔东南苗族侗族自治州",area:["凯里市","施秉县","从江县","锦屏县","镇远县","麻江县","台江县","天柱县","黄平县","榕江县","剑河县","三穗县","雷山县","黎平县","岑巩县","丹寨县"]},{name:"黔南布依族苗族自治州",area:["都匀市","福泉市","贵定县","惠水县","罗甸县","瓮安县","荔波县","龙里县","平塘县","长顺县","独山县","三都水族自治县"]}]},{name:"云南省",city:[{name:"昆明市",area:["盘龙区","五华区","官渡区","西山区","东川区","安宁市","呈贡县","晋宁县","富民县","宜良县","嵩明县","石林彝族自治县","禄劝彝族苗族自治县","寻甸回族彝族自治县"]},{name:"曲靖市",area:["麒麟区","宣威市","马龙县","沾益县","富源县","罗平县","师宗县","陆良县","会泽县"]},{name:"玉溪市",area:["红塔区","江川县","澄江县","通海县","华宁县","易门县","峨山彝族自治县","新平彝族傣族自治县","元江哈尼族彝族傣族自治县"]},{name:"保山市",area:["隆阳区","施甸县","腾冲县","龙陵县","昌宁县"]},{name:"昭通市",area:["昭阳区","鲁甸县","巧家县","盐津县","大关县","永善县","绥江县","镇雄县","彝良县","威信县","水富县"]},{name:"丽江市",area:["古城区","永胜县","华坪县","玉龙纳西族自治县","宁蒗彝族自治县"]},{name:"普洱市",area:["思茅区","普洱哈尼族彝族自治县","墨江哈尼族自治县","景东彝族自治县","景谷傣族彝族自治县","镇沅彝族哈尼族拉祜族自治县","江城哈尼族彝族自治县","孟连傣族拉祜族佤族自治县","澜沧拉祜族自治县","西盟佤族自治县"]},{name:"临沧市",area:["临翔区","凤庆县","云县","永德县","镇康县","双江拉祜族佤族布朗族傣族自治县","耿马傣族佤族自治县","沧源佤族自治县"]},{name:"德宏傣族景颇族自治州",area:["潞西市","瑞丽市","梁河县","盈江县","陇川县"]},{name:"怒江傈僳族自治州",area:["泸水县","福贡县","贡山独龙族怒族自治县","兰坪白族普米族自治县"]},{name:"迪庆藏族自治州",area:["香格里拉县","德钦县","维西傈僳族自治县"]},{name:"大理白族自治州",area:["大理市","祥云县","宾川县","弥渡县","永平县","云龙县","洱源县","剑川县","鹤庆县","漾濞彝族自治县","南涧彝族自治县","巍山彝族回族自治县"]},{name:"楚雄彝族自治州",area:["楚雄市","双柏县","牟定县","南华县","姚安县","大姚县","永仁县","元谋县","武定县","禄丰县"]},{name:"红河哈尼族彝族自治州",area:["蒙自县","个旧市","开远市","绿春县","建水县","石屏县","弥勒县","泸西县","元阳县","红河县","金平苗族瑶族傣族自治县","河口瑶族自治县","屏边苗族自治县"]},{name:"文山壮族苗族自治州",area:["文山县","砚山县","西畴县","麻栗坡县","马关县","丘北县","广南县","富宁县"]},{name:"西双版纳傣族自治州",area:["景洪市","勐海县","勐腊县"]}]},{name:"西藏",city:[{name:"拉萨市",area:["城关区","林周县","当雄县","尼木县","曲水县","堆龙德庆县","达孜县","墨竹工卡县"]},{name:"那曲地区",area:["那曲县","嘉黎县","比如县","聂荣县","安多县","申扎县","索县","班戈县","巴青县","尼玛县"]},{name:"昌都地区",area:["昌都县","江达县","贡觉县","类乌齐县","丁青县","察雅县","八宿县","左贡县","芒康县","洛隆县","边坝县"]},{name:"林芝地区",area:["林芝县","工布江达县","米林县","墨脱县","波密县","察隅县","朗县"]},{name:"山南地区",area:["乃东县","扎囊县","贡嘎县","桑日县","琼结县","曲松县","措美县","洛扎县","加查县","隆子县","错那县","浪卡子县"]},{name:"日喀则地区",area:["日喀则市","南木林县","江孜县","定日县","萨迦县","拉孜县","昂仁县","谢通门县","白朗县","仁布县","康马县","定结县","仲巴县","亚东县","吉隆县","聂拉木县","萨嘎县","岗巴县"]},{name:"阿里地区",area:["噶尔县","普兰县","札达县","日土县","革吉县","改则县","措勤县"]}]},{name:"陕西省",city:[{name:"西安市",area:["莲湖区","新城区","碑林区","雁塔区","灞桥区","未央区","阎良区","临潼区","长安区","高陵县","蓝田县","户县","周至县"]},{name:"铜川市",area:["耀州区","王益区","印台区","宜君县"]},{name:"宝鸡市",area:["渭滨区","金台区","陈仓区","岐山县","凤翔县","陇县","太白县","麟游县","扶风县","千阳县","眉县","凤县"]},{name:"咸阳市",area:["秦都区","渭城区","杨陵区","兴平市","礼泉县","泾阳县","永寿县","三原县","彬县","旬邑县","长武县","乾县","武功县","淳化县"]},{name:"渭南市",area:["临渭区","韩城市","华阴市","蒲城县","潼关县","白水县","澄城县","华县","合阳县","富平县","大荔县"]},{name:"延安市",area:["宝塔区","安塞县","洛川县","子长县","黄陵县","延川县","富县","延长县","甘泉县","宜川县","志丹县","黄龙县","吴起县"]},{name:"汉中市",area:["汉台区","留坝县","镇巴县","城固县","南郑县","洋县","宁强县","佛坪县","勉县","西乡县","略阳县"]},{name:"榆林市",area:["榆阳区","清涧县","绥德县","神木县","佳县","府谷县","子洲县","靖边县","横山县","米脂县","吴堡县","定边县"]},{name:"安康市",area:["汉滨区","紫阳县","岚皋县","旬阳县","镇坪县","平利县","石泉县","宁陕县","白河县","汉阴县"]},{name:"商洛市",area:["商州区","镇安县","山阳县","洛南县","商南县","丹凤县","柞水县"]}]},{name:"甘肃省",city:[{name:"兰州市",area:["城关区","七里河区","西固区","安宁区","红古区","永登县","皋兰县","榆中县"]},{name:"嘉峪关市",area:["嘉峪关市"]},{name:"金昌市",area:["金川区","永昌县"]},{name:"白银市",area:["白银区","平川区","靖远县","会宁县","景泰县"]},{name:"天水市",area:["清水县","秦安县","甘谷县","武山县","张家川回族自治县","北道区","秦城区"]},{name:"武威市",area:["凉州区","民勤县","古浪县","天祝藏族自治县"]},{name:"酒泉市",area:["肃州区","玉门市","敦煌市","金塔县","肃北蒙古族自治县","阿克塞哈萨克族自治县","安西县"]},{name:"张掖市",area:["甘州区","民乐县","临泽县","高台县","山丹县","肃南裕固族自治县"]},{name:"庆阳市",area:["西峰区","庆城县","环县","华池县","合水县","正宁县","宁县","镇原县"]},{name:"平凉市",area:["崆峒区","泾川县","灵台县","崇信县","华亭县","庄浪县","静宁县"]},{name:"定西市",area:["安定区","通渭县","临洮县","漳县","岷县","渭源县","陇西县"]},{name:"陇南市",area:["武都区","成县","宕昌县","康县","文县","西和县","礼县","两当县","徽县"]},{name:"临夏回族自治州",area:["临夏市","临夏县","康乐县","永靖县","广河县","和政县","东乡族自治县","积石山保安族东乡族撒拉族自治县"]},{name:"甘南藏族自治州",area:["合作市","临潭县","卓尼县","舟曲县","迭部县","玛曲县","碌曲县","夏河县"]}]},{name:"青海省",city:[{name:"西宁市",area:["城中区","城东区","城西区","城北区","湟源县","湟中县","大通回族土族自治县"]},{name:"海东地区",area:["平安县","乐都县","民和回族土族自治县","互助土族自治县","化隆回族自治县","循化撒拉族自治县"]},{name:"海北藏族自治州",area:["海晏县","祁连县","刚察县","门源回族自治县"]},{name:"海南藏族自治州",area:["共和县","同德县","贵德县","兴海县","贵南县"]},{name:"黄南藏族自治州",area:["同仁县","尖扎县","泽库县","河南蒙古族自治县"]},{name:"果洛藏族自治州",area:["玛沁县","班玛县","甘德县","达日县","久治县","玛多县"]},{name:"玉树藏族自治州",area:["玉树县","杂多县","称多县","治多县","囊谦县","曲麻莱县"]},{name:"海西蒙古族藏族自治州",area:["德令哈市","格尔木市","乌兰县","都兰县","天峻县"]}]},{name:"宁夏",city:[{name:"银川市",area:["兴庆区","西夏区","金凤区","灵武市","永宁县","贺兰县"]},{name:"石嘴山市",area:["大武口区","惠农区","平罗县"]},{name:"吴忠市",area:["利通区","青铜峡市","盐池县","同心县"]},{name:"固原市",area:["原州区","西吉县","隆德县","泾源县","彭阳县"]},{name:"中卫市",area:["沙坡头区","中宁县","海原县"]}]},{name:"新疆",city:[{name:"乌鲁木齐市",area:["天山区","沙依巴克区","新市区","水磨沟区","头屯河区","达坂城区","东山区","乌鲁木齐县"]},{name:"克拉玛依市",area:["克拉玛依区","独山子区","白碱滩区","乌尔禾区"]},{name:"吐鲁番地区",area:["吐鲁番市","托克逊县","鄯善县"]},{name:"哈密地区",area:["哈密市","伊吾县","巴里坤哈萨克自治县"]},{name:"和田地区",area:["和田市","和田县","洛浦县","民丰县","皮山县","策勒县","于田县","墨玉县"]},{name:"阿克苏地区",area:["阿克苏市","温宿县","沙雅县","拜城县","阿瓦提县","库车县","柯坪县","新和县","乌什县"]},{name:"喀什地区",area:["喀什市","巴楚县","泽普县","伽师县","叶城县","岳普湖县","疏勒县","麦盖提县","英吉沙县","莎车县","疏附县","塔什库尔干塔吉克自治县"]},{name:"克孜勒苏柯尔克孜自治州",area:["阿图什市","阿合奇县","乌恰县","阿克陶县"]},{name:"巴音郭楞蒙古自治州",area:["库尔勒市","和静县","尉犁县","和硕县","且末县","博湖县","轮台县","若羌县","焉耆回族自治县"]},{name:"昌吉回族自治州",area:["昌吉市","阜康市","奇台县","玛纳斯县","吉木萨尔县","呼图壁县","木垒哈萨克自治县","米泉市"]},{name:"博尔塔拉蒙古自治州",area:["博乐市","精河县","温泉县"]},{name:"石河子",area:["石河子"]},{name:"阿拉尔",area:["阿拉尔"]},{name:"图木舒克",area:["图木舒克"]},{name:"五家渠",area:["五家渠"]},{name:"伊犁哈萨克自治州",area:["伊宁市","奎屯市","伊宁县","特克斯县","尼勒克县","昭苏县","新源县","霍城县","巩留县","察布查尔锡伯自治县","塔城地区","阿勒泰地区"]}]},{name:"台湾省",city:[{name:"台北市",area:["内湖区","南港区","中正区","万华区","大同区","中山区","松山区","大安区","信义区","文山区","士林区","北投区"]},{name:"新北市",area:["板桥区","汐止区","新店区"]},{name:"桃园市",area:["其他"]},{name:"台中市",area:["其他"]},{name:"台南市",area:["其他"]},{name:"高雄市",area:["其他"]}]},{name:"澳门",city:[{name:"澳门",area:["花地玛堂区","圣安多尼堂区","大堂区","望德堂区","风顺堂区","嘉模堂区","圣方济各堂区","路凼"]}]},{name:"香港",city:[{name:"香港",area:["深水埗区","油尖旺区","九龙城区","黄大仙区","观塘区","北区","大埔区","沙田区","西贡区","元朗区","屯门区","荃湾区","葵青区","离岛区","中西区","湾仔区","东区","南区"]}]}];e.default=r},"59ba":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r={down:{textInOffset:"下拉刷新",textOutOffset:"释放更新",textLoading:"加载中 ...",offset:80,native:!1},up:{textLoading:"加载中 ...",textNoMore:"-- END --",offset:80,isBounce:!1,toTop:{src:"http://www.mescroll.com/img/mescroll-totop.png?v=1",offset:1e3,right:20,bottom:120,width:72},empty:{use:!0,icon:"http://www.mescroll.com/img/mescroll-empty.png?v=1",tip:"~ 暂无相关数据 ~"}}},a=r;e.default=a},"66fd":function(t,e,n){"use strict";n.r(e),function(t){
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["common/vendor"],{"0de9":function(t,e,n){"use strict";function r(t){var e=Object.prototype.toString.call(t);return e.substring(8,e.length-1)}function a(){return"string"===typeof __channelId__&&__channelId__}function i(){for(var t=arguments.length,e=new Array(t),n=0;n<t;n++)e[n]=arguments[n];var i=e.shift();if(a())return e.push(e.pop().replace("at ","uni-app:///")),console[i]["apply"](console,e);var o=e.map((function(t){var e=Object.prototype.toString.call(t);if("[object object]"===e.toLowerCase())try{t="---BEGIN:JSON---"+JSON.stringify(t)+"---END:JSON---"}catch(a){t="[object object]"}else if(null===t)t="---NULL---";else if(void 0===t)t="---UNDEFINED---";else{var n=r(t).toUpperCase();t="NUMBER"===n||"BOOLEAN"===n?"---BEGIN:"+n+"---"+t+"---END:"+n+"---":String(t)}return t})),s="";if(o.length>1){var c=o.pop();s=o.join("---COMMA---"),0===c.indexOf(" at ")?s+=c:s+="---COMMA---"+c}else s=o[0];console[i](s)}n.r(e),n.d(e,"default",(function(){return i}))},"108f":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r={pages:{"pages/index":{navigationBarTitleText:"子诺新微金"},"pages/login":{navigationBarTitleText:"登录"},"pages/registered":{navigationBarTitleText:"注册"},"pages/forgetPassword":{navigationBarTitleText:"找回密码"},"pages/collection":{navigationBarTitleText:"精准匹配"},"pages/apply":{navigationBarTitleText:"会员专享"},"pages/exchang":{navigationBarTitleText:"信贷员互动"},"pages/me":{navigationBarTitleText:"个人中心"},"pages/articleDetail":{navigationBarTitleText:"文章详情"},"pages/queryTool":{navigationBarTitleText:"查询工具"},"pages/post":{navigationBarTitleText:"发布内容"},"pages/experience":{navigationBarTitleText:"选择模块"},"pages/productSupermarket":{navigationBarTitleText:"产品超市"},"pages/meUserInfo":{navigationBarTitleText:"个人信息"},"pages/meFavorite":{navigationBarTitleText:"我的收藏"},"pages/meFollow":{navigationBarTitleText:"我的关注"},"pages/meFriend":{navigationBarTitleText:"我的好友"},"pages/mePost":{navigationBarTitleText:"我的发表"},"pages/meMyDraft":{navigationBarTitleText:"我的草稿"},"pages/meMyMobile":{navigationBarTitleText:"我的手机"},"pages/meMyMobile_1":{navigationBarTitleText:"更换手机号"},"pages/meMyMobile_2":{navigationBarTitleText:"更换手机号"},"pages/meMyMobile_3":{navigationBarTitleText:"更换手机号"},"pages/meMessage":{navigationBarTitleText:"我的消息"},"pages/meCertification":{navigationBarTitleText:"用户认证"},"pages/meVIP":{navigationBarTitleText:"开通会员"},"pages/contactCustomer":{navigationBarTitleText:"联系客服"},"pages/meSpread":{navigationBarTitleText:"推广返佣"},"pages/meService":{navigationBarTitleText:"联系客服"},"pages/meSetting":{navigationBarTitleText:"个人设置"},"pages/indexA":{},"pages/meCertificationConfirm":{navigationBarTitleText:"实名认证"},"pages/meEditSet":{navigationBarTitleText:"信息录入"},"pages/meEdit":{navigationBarTitleText:"编辑"},"pages/meApplyMessage":{navigationBarTitleText:"系统消息"},"pages/meTreaty":{navigationBarTitleText:"相关协议"},"pages/paySuccess":{navigationBarTitleText:"支付成功"},"pages/productDetail":{navigationBarTitleText:"产品详情"},"pages/searchNetloan":{navigationBarTitleText:"搜索"},"pages/allProduct":{navigationBarTitleText:"所有产品"},"pages/applyShow":{navigationBarTitleText:"分类"},"pages/iframe":{},"pages/meFan":{navigationBarTitleText:"我的粉丝"},"pages/tel":{navigationBarTitleText:"手机实名查询-嘉合骏贷款超市"},"pages/payType":{navigationBarTitleText:"支付方式"},"pages/search":{navigationBarTitleText:"搜索"},"pages/meTeamList":{},"pages/commissionSet":{navigationBarTitleText:"返佣设置"},"pages/getQrCode":{navigationBarTitleText:"获取二维码"},"pages/cashOut":{navigationBarTitleText:"提现"},"pages/promptlyGetQr":{navigationBarTitleText:"获取二维码"},"pages/teamPeopleDetail":{navigationBarTitleText:"用户信息"},"pages/message":{navigationBarTitleText:"消息"},"pages/teamList":{navigationBarTitleText:"团队列表"},"pages/shareCode":{navigationBarTitleText:"获取二维码"},"pages/meApply":{navigationBarTitleText:"系统应用"},"pages/exchangList":{enablePullDownRefresh:!0},"pages/boardData":{},"pages/showCode":{navigationBarTitleText:"推广二维码"},"pages/messageDetail":{navigationBarTitleText:"系统消息详情"}},globalStyle:{navigationBarTextStyle:"white",navigationBarTitleText:"uni-app",navigationBarBackgroundColor:"#2390DC",backgroundColor:"#F8F8F8"}};e.default=r},"20a6":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r={appid:"__UNI__EA9C27B"};e.default=r},"24e8":function(t,e,n){"use strict";function r(t){if(0===t.indexOf("_www")||0===t.indexOf("_doc")||0===t.indexOf("_documents")||0===t.indexOf("_downloads"))return t;if(0===t.indexOf("file://"))return t;if(0===t.indexOf("/storage/emulated/0/"))return t;if(0===t.indexOf("/")){var e=plus.io.convertAbsoluteFileSystem(t);if(e!==t)return e;t=t.substr(1)}return"_www/"+t}function a(t){return new Promise((function(e,n){if("object"===typeof window&&"document"in window){if("function"===typeof FileReader){var a=new XMLHttpRequest;return a.open("GET",t,!0),a.responseType="blob",a.onload=function(){if(200===this.status){var t=new FileReader;t.onload=function(t){e(t.target.result)},t.onerror=n,t.readAsDataURL(this.response)}},a.onerror=n,void a.send()}var i=document.createElement("canvas"),o=i.getContext("2d"),s=new Image;return s.onload=function(){i.width=s.width,i.height=s.height,o.drawImage(s,0,0),e(i.toDataURL()),i.height=i.width=0},s.onerror=n,void(s.src=t)}"object"!==typeof plus?"object"===typeof wx&&wx.canIUse("getFileSystemManager")?wx.getFileSystemManager().readFile({filePath:t,encoding:"base64",success:function(t){e("data:image/png;base64,"+t.data)},fail:function(t){n(t)}}):n(new Error("not support")):plus.io.resolveLocalFileSystemURL(r(t),(function(t){t.file((function(t){var r=new plus.io.FileReader;r.onload=function(t){e(t.target.result)},r.onerror=function(t){n(t)},r.readAsDataURL(t)}),(function(t){n(t)}))}),(function(t){n(t)}))}))}function i(t){return new Promise((function(e,n){if("object"===typeof window&&"document"in window){t=t.split(",");var r=t[0].match(/:(.*?);/)[1],a=atob(t[1]),i=a.length,o=new Uint8Array(i);while(i--)o[i]=a.charCodeAt(i);return e((window.URL||window.webkitURL).createObjectURL(new Blob([o],{type:r})))}var s=t.match(/data\:\S+\/(\S+);/);s?s=s[1]:n(new Error("base64 error"));var c=Date.now()+"."+s;if("object"!==typeof plus)if("object"===typeof wx&&wx.canIUse("getFileSystemManager")){var u=wx.env.USER_DATA_PATH+"/"+c;wx.getFileSystemManager().writeFile({filePath:u,data:t.replace(/^data:\S+\/\S+;base64,/,""),encoding:"base64",success:function(){e(u)},fail:function(t){n(t)}})}else n(new Error("not support"));else{var l=new plus.nativeObj.Bitmap("bitmap"+Date.now());l.loadBase64Data(t,(function(){var t="_doc/uniapp_temp/"+c;l.save(t,{},(function(){l.clear(),e(t)}),(function(t){l.clear(),n(t)}))}),(function(t){l.clear(),n(t)}))}}))}Object.defineProperty(e,"__esModule",{value:!0}),e.pathToBase64=a,e.base64ToPath=i},5478:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r=[{name:"北京市",city:[{name:"北京市",area:["东城区","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"]}]},{name:"天津市",city:[{name:"天津市",area:["和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟  县"]}]},{name:"河北省",city:[{name:"石家庄市",area:["长安区","桥东区","桥西区","新华区","郊  区","井陉矿区","井陉县","正定县","栾城县","行唐县","灵寿县","高邑县","深泽县","赞皇县","无极县","平山县","元氏县","赵  县","辛集市","藁","晋州市","新乐市","鹿泉市"]},{name:"唐山市",area:["路南区","路北区","古冶区","开平区","新  区","丰润县","滦  县","滦南县","乐亭县","迁西县","玉田县","唐海县","遵化市","丰南市","迁安市"]},{name:"秦皇岛市",area:["海港区","山海关区","北戴河区","青龙满族自治县","昌黎县","抚宁县","卢龙县"]},{name:"邯郸市",area:["邯山区","丛台区","复兴区","峰峰矿区","邯郸县","临漳县","成安县","大名县","涉  县","磁  县","肥乡县","永年县","邱  县","鸡泽县","广平县","馆陶县","魏  县","曲周县","武安市"]},{name:"邢台市",area:["桥东区","桥西区","邢台县","临城县","内丘县","柏乡县","隆尧县","任  县","南和县","宁晋县","巨鹿县","新河县","广宗县","平乡县","威  县","清河县","临西县","南宫市","沙河市"]},{name:"保定市",area:["新市区","北市区","南市区","满城县","清苑县","涞水县","阜平县","徐水县","定兴县","唐  县","高阳县","容城县","涞源县","望都县","安新县","易  县","曲阳县","蠡  县","顺平县","博野","雄县","涿州市","定州市","安国市","高碑店市"]},{name:"张家口",area:["桥东区","桥西区","宣化区","下花园区","宣化县","张北县","康保县","沽源县","尚义县","蔚  县","阳原县","怀安县","万全县","怀来县","涿鹿县","赤城县","崇礼县"]},{name:"承德市",area:["双桥区","双滦区","鹰手营子矿区","承德县","兴隆县","平泉县","滦平县","隆化县","丰宁满族自治县","宽城满族自治县","围场满族蒙古族自治县"]},{name:"沧州市",area:["新华区","运河区","沧  县","青  县","东光县","海兴县","盐山县","肃宁县","南皮县","吴桥县","献  县","孟村回族自治县","泊头市","任丘市","黄骅市","河间市"]},{name:"廊坊市",area:["安次区","固安县","永清县","香河县","大城县","文安县","大厂回族自治县","霸州市","三河市"]},{name:"衡水市",area:["桃城区","枣强县","武邑县","武强县","饶阳县","安平县","故城县","景  县","阜城县","冀州市","深州市"]}]},{name:"山西省",city:[{name:"太原市",area:["小店区","迎泽区","杏花岭区","尖草坪区","万柏林区","晋源区","清徐县","阳曲县","娄烦县","古交市"]},{name:"大同市",area:["城  区","矿  区","南郊区","新荣区","阳高县","天镇县","广灵县","灵丘县","浑源县","左云县","大同县"]},{name:"阳泉市",area:["城  区","矿  区","郊  区","平定县","盂  县"]},{name:"长治市",area:["城  区","郊  区","长治县","襄垣县","屯留县","平顺县","黎城县","壶关县","长子县","武乡县","沁  县","沁源县","潞城市"]},{name:"晋城市",area:["城  区","沁水县","阳城县","陵川县","泽州县","高平市"]},{name:"朔州市",area:["朔城区","平鲁区","山阴县","应  县","右玉县","怀仁县"]},{name:"忻州市",area:["忻府区","原平市","定襄县","五台县","代  县","繁峙县","宁武县","静乐县","神池县","五寨县","岢岚县","河曲县","保德县","偏关县"]},{name:"吕梁市",area:["离石区","孝义市","汾阳市","文水县","交城县","兴  县","临  县","柳林县","石楼县","岚  县","方山县","中阳县","交口县"]},{name:"晋中市",area:["榆次市","介休市","榆社县","左权县","和顺县","昔阳县","寿阳县","太谷县","祁  县","平遥县","灵石县"]},{name:"临汾市",area:["临汾市","侯马市","霍州市","曲沃县","翼城县","襄汾县","洪洞县","古  县","安泽县","浮山县","吉  县","乡宁县","蒲  县","大宁县","永和县","隰  县","汾西县"]},{name:"运城市",area:["运城市","永济市","河津市","芮城县","临猗县","万荣县","新绛县","稷山县","闻喜县","夏  县","绛  县","平陆县","垣曲县"]}]},{name:"内蒙古",city:[{name:"呼和浩特市",area:["新城区","回民区","玉泉区","郊  区","土默特左旗","托克托县","和林格尔县","清水河县","武川县"]},{name:"包头市",area:["东河区","昆都伦区","青山区","石拐矿区","白云矿区","郊  区","土默特右旗","固阳县","达尔罕茂明安联合旗"]},{name:"乌海市",area:["海勃湾区","海南区","乌达区"]},{name:"赤峰市",area:["红山区","元宝山区","松山区","阿鲁科尔沁旗","巴林左旗","巴林右旗","林西县","克什克腾旗","翁牛特旗","喀喇沁旗","宁城县","敖汉旗"]},{name:"呼伦贝尔市",area:["海拉尔市","满洲里市","扎兰屯市","牙克石市","根河市","额尔古纳市","阿荣旗","莫力达瓦达斡尔族自治旗","鄂伦春自治旗","鄂温克族自治旗","新巴尔虎右旗","新巴尔虎左旗","陈巴尔虎旗"]},{name:"兴安盟",area:["乌兰浩特市","阿尔山市","科尔沁右翼前旗","科尔沁右翼中旗","扎赉特旗","突泉县"]},{name:"通辽市",area:["科尔沁区","霍林郭勒市","科尔沁左翼中旗","科尔沁左翼后旗","开鲁县","库伦旗","奈曼旗","扎鲁特旗"]},{name:"锡林郭勒盟",area:["二连浩特市","锡林浩特市","阿巴嘎旗","苏尼特左旗","苏尼特右旗","东乌珠穆沁旗","西乌珠穆沁旗","太仆寺旗","镶黄旗","正镶白旗","正蓝旗","多伦县"]},{name:"乌兰察布盟",area:["集宁市","丰镇市","卓资县","化德县","商都县","兴和县","凉城县","察哈尔右翼前旗","察哈尔右翼中旗","察哈尔右翼后旗","四子王旗"]},{name:"伊克昭盟",area:["东胜市","达拉特旗","准格尔旗","鄂托克前旗","鄂托克旗","杭锦旗","乌审旗","伊金霍洛旗"]},{name:"巴彦淖尔盟",area:["临河市","五原县","磴口县","乌拉特前旗","乌拉特中旗","乌拉特后旗","杭锦后旗"]},{name:"阿拉善盟",area:["阿拉善左旗","阿拉善右旗","额济纳旗"]}]},{name:"辽宁省",city:[{name:"沈阳市",area:["沈河区","皇姑区","和平区","大东区","铁西区","苏家屯区","东陵区","于洪区","新民市","法库县","辽中县","康平县","新城子区"]},{name:"大连市",area:["西岗区","中山区","沙河口区","甘井子区","旅顺口区","金州区","瓦房店市","普兰店市","庄河市","长海县"]},{name:"鞍山市",area:["铁东区","铁西区","立山区","千山区","海城市","台安县","岫岩满族自治县"]},{name:"抚顺市",area:["顺城区","新抚区","东洲区","望花区","抚顺县","清原满族自治县","新宾满族自治县"]},{name:"本溪市",area:["平山区","明山区","溪湖区","南芬区","本溪满族自治县","桓仁满族自治县"]},{name:"丹东市",area:["振兴区","元宝区","振安区","东港市","凤城市","宽甸满族自治县"]},{name:"锦州市",area:["太和区","古塔区","凌河区","凌海市","黑山县","义县","北宁市"]},{name:"营口市",area:["站前区","西市区","鲅鱼圈区","老边区","大石桥市","盖州市"]},{name:"阜新市",area:["海州区","新邱区","太平区","清河门区","细河区","彰武县","阜新蒙古族自治县"]},{name:"辽阳市",area:["白塔区","文圣区","宏伟区","太子河区","弓长岭区","灯塔市","辽阳县"]},{name:"盘锦",area:["双台子区","兴隆台区","盘山县","大洼县"]},{name:"铁岭市",area:["银州区","清河区","调兵山市","开原市","铁岭县","昌图县","西丰县"]},{name:"朝阳市",area:["双塔区","龙城区","凌源市","北票市","朝阳县","建平县","喀喇沁左翼蒙古族自治县"]},{name:"葫芦岛市",area:["龙港区","南票区","连山区","兴城市","绥中县","建昌县"]}]},{name:"吉林省",city:[{name:"长春市",area:["朝阳区","宽城区","二道区","南关区","绿园区","双阳区","九台市","榆树市","德惠市","农安县"]},{name:"吉林市",area:["船营区","昌邑区","龙潭区","丰满区","舒兰市","桦甸市","蛟河市","磐石市","永吉县"]},{name:"四平",area:["铁西区","铁东区","公主岭市","双辽市","梨树县","伊通满族自治县"]},{name:"辽源市",area:["龙山区","西安区","东辽县","东丰县"]},{name:"通化市",area:["东昌区","二道江区","梅河口市","集安市","通化县","辉南县","柳河县"]},{name:"白山市",area:["八道江区","江源区","临江市","靖宇县","抚松县","长白朝鲜族自治县"]},{name:"松原市",area:["宁江区","乾安县","长岭县","扶余县","前郭尔罗斯蒙古族自治县"]},{name:"白城市",area:["洮北区","大安市","洮南市","镇赉县","通榆县"]},{name:"延边朝鲜族自治州",area:["延吉市","图们市","敦化市","龙井市","珲春市","和龙市","安图县","汪清县"]}]},{name:"黑龙江省",city:[{name:"哈尔滨市",area:["松北区","道里区","南岗区","平房区","香坊区","道外区","呼兰区","阿城区","双城市","尚志市","五常市","宾县","方正县","通河县","巴彦县","延寿县","木兰县","依兰县"]},{name:"齐齐哈尔市",area:["龙沙区","昂昂溪区","铁锋区","建华区","富拉尔基区","碾子山区","梅里斯达斡尔族区","讷河市","富裕县","拜泉县","甘南县","依安县","克山县","泰来县","克东县","龙江县"]},{name:"鹤岗市",area:["兴山区","工农区","南山区","兴安区","向阳区","东山区","萝北县","绥滨县"]},{name:"双鸭山",area:["尖山区","岭东区","四方台区","宝山区","集贤县","宝清县","友谊县","饶河县"]},{name:"鸡西市",area:["鸡冠区","恒山区","城子河区","滴道区","梨树区","麻山区","密山市","虎林市","鸡东县"]},{name:"大庆市",area:["萨尔图区","红岗区","龙凤区","让胡路区","大同区","林甸县","肇州县","肇源县","杜尔伯特蒙古族自治县"]},{name:"伊春市",area:["伊春区","带岭区","南岔区","金山屯区","西林区","美溪区","乌马河区","翠峦区","友好区","上甘岭区","五营区","红星区","新青区","汤旺河区","乌伊岭区","铁力市","嘉荫县"]},{name:"牡丹江市",area:["爱民区","东安区","阳明区","西安区","绥芬河市","宁安市","海林市","穆棱市","林口县","东宁县"]},{name:"佳木斯市",area:["向阳区","前进区","东风区","郊区","同江市","富锦市","桦川县","抚远县","桦南县","汤原县"]},{name:"七台河市",area:["桃山区","新兴区","茄子河区","勃利县"]},{name:"黑河市",area:["爱辉区","北安市","五大连池市","逊克县","嫩江县","孙吴县"]},{name:"绥化市",area:["北林区","安达市","肇东市","海伦市","绥棱县","兰西县","明水县","青冈县","庆安县","望奎县"]},{name:"大兴安岭地区",area:["呼玛县","塔河县","漠河县","大兴安岭辖区"]}]},{name:"上海市",city:[{name:"上海市",area:["黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","宝山区","闵行区","嘉定区","松江区","金山区","青浦区","南汇区","奉贤区","浦东新区","崇明县"]}]},{name:"江苏省",city:[{name:"南京市",area:["玄武区","白下区","秦淮区","建邺区","鼓楼区","下关区","栖霞区","雨花台区","浦口区","江宁区","六合区","溧水县","高淳县"]},{name:"苏州市",area:["金阊区","平江区","沧浪区","虎丘区","吴中区","相城区","常熟市","张家港市","昆山市","吴江市","太仓市"]},{name:"无锡市",area:["崇安区","南长区","北塘区","滨湖区","锡山区","惠山区","江阴市","宜兴市"]},{name:"常州市",area:["钟楼区","天宁区","戚墅堰区","新北区","武进区","金坛市","溧阳市"]},{name:"镇江市",area:["京口区","润州区","丹徒区","丹阳市","扬中市","句容市"]},{name:"南通市",area:["崇川区","港闸区","通州市","如皋市","海门市","启东市","海安县","如东县"]},{name:"泰州市",area:["海陵区","高港区","姜堰市","泰兴市","靖江市","兴化市"]},{name:"扬州市",area:["广陵区","维扬区","邗江区","江都市","仪征市","高邮市","宝应县"]},{name:"盐城市",area:["亭湖区","盐都区","大丰市","东台市","建湖县","射阳县","阜宁县","滨海县","响水县"]},{name:"连云港市",area:["新浦区","海州区","连云区","东海县","灌云县","赣榆县","灌南县"]},{name:"徐州市",area:["云龙区","鼓楼区","九里区","泉山区","贾汪区","邳州市","新沂市","铜山县","睢宁县","沛县","丰县"]},{name:"淮安市",area:["清河区","清浦区","楚州区","淮阴区","涟水县","洪泽县","金湖县","盱眙县"]},{name:"宿迁市",area:["宿城区","宿豫区","沭阳县","泗阳县","泗洪县"]}]},{name:"浙江省",city:[{name:"杭州市",area:["拱墅区","西湖区","上城区","下城区","江干区","滨江区","余杭区","萧山区","建德市","富阳市","临安市","桐庐县","淳安县"]},{name:"宁波市",area:["海曙区","江东区","江北区","镇海区","北仑区","鄞州区","余姚市","慈溪市","奉化市","宁海县","象山县"]},{name:"温州市",area:["鹿城区","龙湾区","瓯海区","瑞安市","乐清市","永嘉县","洞头县","平阳县","苍南县","文成县","泰顺县"]},{name:"嘉兴市",area:["秀城区","秀洲区","海宁市","平湖市","桐乡市","嘉善县","海盐县"]},{name:"湖州市",area:["吴兴区","南浔区","长兴县","德清县","安吉县"]},{name:"绍兴市",area:["越城区","诸暨市","上虞市","嵊州市","绍兴县","新昌县"]},{name:"金华市",area:["婺城区","金东区","兰溪市","义乌市","东阳市","永康市","武义县","浦江县","磐安县"]},{name:"衢州市",area:["柯城区","衢江区","江山市","龙游县","常山县","开化县"]},{name:"舟山市",area:["定海区","普陀区","岱山县","嵊泗县"]},{name:"台州市",area:["椒江区","黄岩区","路桥区","临海市","温岭市","玉环县","天台县","仙居县","三门县"]},{name:"丽水市",area:["莲都区","龙泉市","缙云县","青田县","云和县","遂昌县","松阳县","庆元县","景宁畲族自治县"]}]},{name:"安徽省",city:[{name:"合肥市",area:["庐阳区","瑶海区","蜀山区","包河区","长丰县","肥东县","肥西县"]},{name:"芜湖市",area:["镜湖区","弋江区","鸠江区","三山区","芜湖县","南陵县","繁昌县"]},{name:"蚌埠市",area:["蚌山区","龙子湖区","禹会区","淮上区","怀远县","固镇县","五河县"]},{name:"淮南市",area:["田家庵区","大通区","谢家集区","八公山区","潘集区","凤台县"]},{name:"马鞍山市",area:["雨山区","花山区","金家庄区","当涂县"]},{name:"淮北市",area:["相山区","杜集区","烈山区","濉溪县"]},{name:"铜陵市",area:["铜官山区","狮子山区","郊区","铜陵县"]},{name:"安庆市",area:["迎江区","大观区","宜秀区","桐城市","宿松县","枞阳县","太湖县","怀宁县","岳西县","望江县","潜山县"]},{name:"黄山市",area:["屯溪区","黄山区","徽州区","休宁县","歙县","祁门县","黟县"]},{name:"滁州市",area:["琅琊区","南谯区","天长市","明光市","全椒县","来安县","定远县","凤阳县"]},{name:"阜阳市",area:["颍州区","颍东区","颍泉区","界首市","临泉县","颍上县","阜南县","太和县"]},{name:"宿州市",area:["埇桥区","萧县","泗县","砀山县","灵璧县"]},{name:"巢湖市",area:["居巢区","含山县","无为县","庐江县","和县"]},{name:"六安市",area:["金安区","裕安区","寿县","霍山县","霍邱县","舒城县","金寨县"]},{name:"亳州市",area:["谯城区","利辛县","涡阳县","蒙城县"]},{name:"池州市",area:["贵池区","东至县","石台县","青阳县"]},{name:"宣城市",area:["宣州区","宁国市","广德县","郎溪县","泾县","旌德县","绩溪县"]}]},{name:"福建省",city:[{name:"福州市",area:["鼓楼区","台江区","仓山区","马尾区","晋安区","福清市","长乐市","闽侯县","闽清县","永泰县","连江县","罗源县","平潭县"]},{name:"厦门市",area:["思明区","海沧区","湖里区","集美区","同安区","翔安区"]},{name:"莆田市",area:["城厢区","涵江区","荔城区","秀屿区","仙游县"]},{name:"三明市",area:["梅列区","三元区","永安市","明溪县","将乐县","大田县","宁化县","建宁县","沙县","尤溪县","清流县","泰宁县"]},{name:"泉州市",area:["鲤城区","丰泽区","洛江区","泉港区","石狮市","晋江市","南安市","惠安县","永春县","安溪县","德化县","金门县"]},{name:"漳州市",area:["芗城区","龙文区","龙海市","平和县","南靖县","诏安县","漳浦县","华安县","东山县","长泰县","云霄县"]},{name:"南平市",area:["延平区","建瓯市","邵武市","武夷山市","建阳市","松溪县","光泽县","顺昌县","浦城县","政和县"]},{name:"龙岩市",area:["新罗区","漳平市","长汀县","武平县","上杭县","永定县","连城县"]},{name:"宁德市",area:["蕉城区","福安市","福鼎市","寿宁县","霞浦县","柘荣县","屏南县","古田县","周宁县"]}]},{name:"江西省",city:[{name:"南昌市",area:["东湖区","西湖区","青云谱区","湾里区","青山湖区","新建县","南昌县","进贤县","安义县"]},{name:"景德镇市",area:["珠山区","昌江区","乐平市","浮梁县"]},{name:"萍乡市",area:["安源区","湘东区","莲花县","上栗县","芦溪县"]},{name:"九江市",area:["浔阳区","庐山区","瑞昌市","九江县","星子县","武宁县","彭泽县","永修县","修水县","湖口县","德安县","都昌县"]},{name:"新余市",area:["渝水区","分宜县"]},{name:"鹰潭市",area:["月湖区","贵溪市","余江县"]},{name:"赣州市",area:["章贡区","瑞金市","南康市","石城县","安远县","赣县","宁都县","寻乌县","兴国县","定南县","上犹县","于都县","龙南县","崇义县","信丰县","全南县","大余县","会昌县"]},{name:"吉安市",area:["吉州区","青原区","井冈山市","吉安县","永丰县","永新县","新干县","泰和县","峡江县","遂川县","安福县","吉水县","万安县"]},{name:"宜春市",area:["袁州区","丰城市","樟树市","高安市","铜鼓县","靖安县","宜丰县","奉新县","万载县","上高县"]},{name:"抚州市",area:["临川区","南丰县","乐安县","金溪县","南城县","东乡县","资溪县","宜黄县","广昌县","黎川县","崇仁县"]},{name:"上饶市",area:["信州区","德兴市","上饶县","广丰县","鄱阳县","婺源县","铅山县","余干县","横峰县","弋阳县","玉山县","万年县"]}]},{name:"山东省",city:[{name:"济南市",area:["市中区","历下区","天桥区","槐荫区","历城区","长清区","章丘市","平阴县","济阳县","商河县"]},{name:"青岛市",area:["市南区","市北区","城阳区","四方区","李沧区","黄岛区","崂山区","胶南市","胶州市","平度市","莱西市","即墨市"]},{name:"淄博市",area:["张店区","临淄区","淄川区","博山区","周村区","桓台县","高青县","沂源县"]},{name:"枣庄市",area:["市中区","山亭区","峄城区","台儿庄区","薛城区","滕州市"]},{name:"东营市",area:["东营区","河口区","垦利县","广饶县","利津县"]},{name:"烟台市",area:["芝罘区","福山区","牟平区","莱山区","龙口市","莱阳市","莱州市","招远市","蓬莱市","栖霞市","海阳市","长岛县"]},{name:"潍坊市",area:["潍城区","寒亭区","坊子区","奎文区","青州市","诸城市","寿光市","安丘市","高密市","昌邑市","昌乐县","临朐县"]},{name:"济宁市",area:["市中区","任城区","曲阜市","兖州市","邹城市","鱼台县","金乡县","嘉祥县","微山县","汶上县","泗水县","梁山县"]},{name:"泰安市",area:["泰山区","岱岳区","新泰市","肥城市","宁阳县","东平县"]},{name:"威海市",area:["环翠区","乳山市","文登市","荣成市"]},{name:"日照市",area:["东港区","岚山区","五莲县","莒县"]},{name:"莱芜市",area:["莱城区","钢城区"]},{name:"临沂市",area:["兰山区","罗庄区","河东区","沂南县","郯城县","沂水县","苍山县","费县","平邑县","莒南县","蒙阴县","临沭县"]},{name:"德州市",area:["德城区","乐陵市","禹城市","陵县","宁津县","齐河县","武城县","庆云县","平原县","夏津县","临邑县"]},{name:"聊城市",area:["东昌府区","临清市","高唐县","阳谷县","茌平县","莘县","东阿县","冠县"]},{name:"滨州市",area:["滨城区","邹平县","沾化县","惠民县","博兴县","阳信县","无棣县"]},{name:"菏泽市",area:["牡丹区","鄄城县","单县","郓城县","曹县","定陶县","巨野县","东明县","成武县"]}]},{name:"河南省",city:[{name:"郑州市",area:["中原区","金水区","二七区","管城回族区","上街区","惠济区","巩义市","新郑市","新密市","登封市","荥阳市","中牟县"]},{name:"开封市",area:["鼓楼区","龙亭区","顺河回族区","禹王台区","金明区","开封县","尉氏县","兰考县","杞县","通许县"]},{name:"洛阳市",area:["西工区","老城区","涧西区","瀍河回族区","洛龙区","吉利区","偃师市","孟津县","汝阳县","伊川县","洛宁县","嵩县","宜阳县","新安县","栾川县"]},{name:"平顶山市",area:["新华区","卫东区","湛河区","石龙区","汝州市","舞钢市","宝丰县","叶县","郏县","鲁山县"]},{name:"安阳市",area:["北关区","文峰区","殷都区","龙安区","林州市","安阳县","滑县","内黄县","汤阴县"]},{name:"鹤壁市",area:["淇滨区","山城区","鹤山区","浚县","淇县"]},{name:"新乡市",area:["卫滨区","红旗区","凤泉区","牧野区","卫辉市","辉县市","新乡县","获嘉县","原阳县","长垣县","封丘县","延津县"]},{name:"焦作市",area:["解放区","中站区","马村区","山阳区","沁阳市","孟州市","修武县","温县","武陟县","博爱县"]},{name:"濮阳市",area:["华龙区","濮阳县","南乐县","台前县","清丰县","范县"]},{name:"许昌市",area:["魏都区","禹州市","长葛市","许昌县","鄢陵县","襄城县"]},{name:"漯河市",area:["源汇区","郾城区","召陵区","临颍县","舞阳县"]},{name:"三门峡市",area:["湖滨区","义马市","灵宝市","渑池县","卢氏县","陕县"]},{name:"南阳市",area:["卧龙区","宛城区","邓州市","桐柏县","方城县","淅川县","镇平县","唐河县","南召县","内乡县","新野县","社旗县","西峡县"]},{name:"商丘市",area:["梁园区","睢阳区","永城市","宁陵县","虞城县","民权县","夏邑县","柘城县","睢县"]},{name:"信阳市",area:["浉河区","平桥区","潢川县","淮滨县","息县","新县","商城县","固始县","罗山县","光山县"]},{name:"周口市",area:["川汇区","项城市","商水县","淮阳县","太康县","鹿邑县","西华县","扶沟县","沈丘县","郸城县"]},{name:"驻马店市",area:["驿城区","确山县","新蔡县","上蔡县","西平县","泌阳县","平舆县","汝南县","遂平县","正阳县"]},{name:"焦作市",area:["济源市"]}]},{name:"湖北省",city:[{name:"武汉市",area:["江岸区","武昌区","江汉区","硚口区","汉阳区","青山区","洪山区","东西湖区","汉南区","蔡甸区","江夏区","黄陂区","新洲区"]},{name:"黄石市",area:["黄石港区","西塞山区","下陆区","铁山区","大冶市","阳新县"]},{name:"十堰市",area:["张湾区","茅箭区","丹江口市","郧县","竹山县","房县","郧西县","竹溪县"]},{name:"荆州市",area:["沙市区","荆州区","洪湖市","石首市","松滋市","监利县","公安县","江陵县"]},{name:"宜昌市",area:["西陵区","伍家岗区","点军区","猇亭区","夷陵区","宜都市","当阳市","枝江市","秭归县","远安县","兴山县","五峰土家族自治县","长阳土家族自治县"]},{name:"襄樊市",area:["襄城区","樊城区","襄阳区","老河口市","枣阳市","宜城市","南漳县","谷城县","保康县"]},{name:"鄂州市",area:["鄂城区","华容区","梁子湖区"]},{name:"荆门市",area:["东宝区","掇刀区","钟祥市","京山县","沙洋县"]},{name:"孝感市",area:["孝南区","应城市","安陆市","汉川市","云梦县","大悟县","孝昌县"]},{name:"黄冈市",area:["黄州区","麻城市","武穴市","红安县","罗田县","浠水县","蕲春县","黄梅县","英山县","团风县"]},{name:"咸宁市",area:["咸安区","赤壁市","嘉鱼县","通山县","崇阳县","通城县"]},{name:"随州市",area:["曾都区","广水市"]},{name:"恩施土家族苗族自治州",area:["恩施市","利川市","建始县","来凤县","巴东县","鹤峰县","宣恩县","咸丰县"]},{name:"仙桃市",area:["仙桃"]},{name:"天门市",area:["天门"]},{name:"潜江市",area:["潜江"]},{name:"神农架林区",area:["神农架林区"]}]},{name:"湖南省",city:[{name:"长沙市",area:["岳麓区","芙蓉区","天心区","开福区","雨花区","浏阳市","长沙县","望城县","宁乡县"]},{name:"株洲市",area:["天元区","荷塘区","芦淞区","石峰区","醴陵市","株洲县","炎陵县","茶陵县","攸县"]},{name:"湘潭市",area:["岳塘区","雨湖区","湘乡市","韶山市","湘潭县"]},{name:"衡阳市",area:["雁峰区","珠晖区","石鼓区","蒸湘区","南岳区","耒阳市","常宁市","衡阳县","衡东县","衡山县","衡南县","祁东县"]},{name:"邵阳市",area:["双清区","大祥区","北塔区","武冈市","邵东县","洞口县","新邵县","绥宁县","新宁县","邵阳县","隆回县","城步苗族自治县"]},{name:"岳阳市",area:["岳阳楼区","云溪区","君山区","临湘市","汨罗市","岳阳县","湘阴县","平江县","华容县"]},{name:"常德市",area:["武陵区","鼎城区","津市市","澧县","临澧县","桃源县","汉寿县","安乡县","石门县"]},{name:"张家界市",area:["永定区","武陵源区","慈利县","桑植县"]},{name:"益阳市",area:["赫山区","资阳区","沅江市","桃江县","南县","安化县"]},{name:"郴州市",area:["北湖区","苏仙区","资兴市","宜章县","汝城县","安仁县","嘉禾县","临武县","桂东县","永兴县","桂阳县"]},{name:"永州市",area:["冷水滩区","零陵区","祁阳县","蓝山县","宁远县","新田县","东安县","江永县","道县","双牌县","江华瑶族自治县"]},{name:"怀化市",area:["鹤城区","洪江市","会同县","沅陵县","辰溪县","溆浦县","中方县","新晃侗族自治县","芷江侗族自治县","通道侗族自治县","靖州苗族侗族自治县","麻阳苗族自治县"]},{name:"娄底市",area:["娄星区","冷水江市","涟源市","新化县","双峰县"]},{name:"湘西土家族苗族自治州",area:["吉首市","古丈县","龙山县","永顺县","凤凰县","泸溪县","保靖县","花垣县"]}]},{name:"广东省",city:[{name:"广州市",area:["越秀区","荔湾区","海珠区","天河区","白云区","黄埔区","番禺区","花都区","南沙区","萝岗区","增城市","从化市"]},{name:"深圳市",area:["福田区","罗湖区","南山区","宝安区","龙岗区","盐田区"]},{name:"东莞市",area:["莞城","常平","塘厦","塘厦","塘厦"]},{name:"中山市",area:["中山"]},{name:"潮州市",area:["湘桥区","潮安县","饶平县"]},{name:"揭阳市",area:["榕城区","揭东县","揭西县","惠来县","普宁市"]},{name:"云浮市",area:["云城区","新兴县","郁南县","云安县","罗定市"]},{name:"珠海市",area:["香洲区","斗门区","金湾区"]},{name:"汕头市",area:["金平区","濠江区","龙湖区","潮阳区","潮南区","澄海区","南澳县"]},{name:"韶关市",area:["浈江区","武江区","曲江区","乐昌市","南雄市","始兴县","仁化县","翁源县","新丰县","乳源瑶族自治县"]},{name:"佛山市",area:["禅城区","南海区","顺德区","三水区","高明区"]},{name:"江门市",area:["蓬江区","江海区","新会区","恩平市","台山市","开平市","鹤山市"]},{name:"湛江市",area:["赤坎区","霞山区","坡头区","麻章区","吴川市","廉江市","雷州市","遂溪县","徐闻县"]},{name:"茂名市",area:["茂南区","茂港区","化州市","信宜市","高州市","电白县"]},{name:"肇庆市",area:["端州区","鼎湖区","高要市","四会市","广宁县","怀集县","封开县","德庆县"]},{name:"惠州市",area:["惠城区","惠阳区","博罗县","惠东县","龙门县"]},{name:"梅州市",area:["梅江区","兴宁市","梅县","大埔县","丰顺县","五华县","平远县","蕉岭县"]},{name:"汕尾市",area:["城区","陆丰市","海丰县","陆河县"]},{name:"河源市",area:["源城区","紫金县","龙川县","连平县","和平县","东源县"]},{name:"阳江市",area:["江城区","阳春市","阳西县","阳东县"]},{name:"清远市",area:["清城区","英德市","连州市","佛冈县","阳山县","清新县","连山壮族瑶族自治县","连南瑶族自治县"]}]},{name:"广西",city:[{name:"南宁市",area:["青秀区","兴宁区","西乡塘区","良庆区","江南区","邕宁区","武鸣县","隆安县","马山县","上林县","宾阳县","横县"]},{name:"柳州市",area:["城中区","鱼峰区","柳北区","柳南区","柳江县","柳城县","鹿寨县","融安县","融水苗族自治县","三江侗族自治县"]},{name:"桂林市",area:["象山区","秀峰区","叠彩区","七星区","雁山区","阳朔县","临桂县","灵川县","全州县","平乐县","兴安县","灌阳县","荔浦县","资源县","永福县","龙胜各族自治县","恭城瑶族自治县"]},{name:"梧州市",area:["万秀区","蝶山区","长洲区","岑溪市","苍梧县","藤县","蒙山县"]},{name:"北海市",area:["海城区","银海区","铁山港区","合浦县"]},{name:"防城港市",area:["港口区","防城区","东兴市","上思县"]},{name:"钦州市",area:["钦南区","钦北区","灵山县","浦北县"]},{name:"贵港市",area:["港北区","港南区","覃塘区","桂平市","平南县"]},{name:"玉林市",area:["玉州区","北流市","容县","陆川县","博白县","兴业县"]},{name:"百色市",area:["右江区","凌云县","平果县","西林县","乐业县","德保县","田林县","田阳县","靖西县","田东县","那坡县","隆林各族自治县"]},{name:"贺州市",area:["八步区","钟山县","昭平县","富川瑶族自治县"]},{name:"河池市",area:["金城江区","宜州市","天峨县","凤山县","南丹县","东兰县","都安瑶族自治县","罗城仫佬族自治县","巴马瑶族自治县","环江毛南族自治县","大化瑶族自治县"]},{name:"来宾市",area:["兴宾区","合山市","象州县","武宣县","忻城县","金秀瑶族自治县"]},{name:"崇左市",area:["江州区","凭祥市","宁明县","扶绥县","龙州县","大新县","天等县"]}]},{name:"海南省",city:[{name:"海口市",area:["龙华区","秀英区","琼山区","美兰区"]},{name:"三亚市",area:["三亚市"]},{name:"五指山市",area:["五指山"]},{name:"琼海市",area:["琼海"]},{name:"儋州市",area:["儋州"]},{name:"文昌市",area:["文昌"]},{name:"万宁市",area:["万宁"]},{name:"东方市",area:["东方"]},{name:"澄迈县",area:["澄迈县"]},{name:"定安县",area:["定安县"]},{name:"屯昌县",area:["屯昌县"]},{name:"临高县",area:["临高县"]},{name:"白沙黎族自治县",area:["白沙黎族自治县"]},{name:"昌江黎族自治县",area:["昌江黎族自治县"]},{name:"乐东黎族自治县",area:["乐东黎族自治县"]},{name:"陵水黎族自治县",area:["陵水黎族自治县"]},{name:"保亭黎族苗族自治县",area:["保亭黎族苗族自治县"]},{name:"琼中黎族苗族自治县",area:["琼中黎族苗族自治县"]}]},{name:"重庆市",city:[{name:"重庆市",area:["渝中区","大渡口区","江北区","南岸区","北碚区","渝北区","巴南区","长寿区","双桥区","沙坪坝区","万盛区","万州区","涪陵区","黔江区","永川区","合川区","江津区","九龙坡区","南川区","綦江县","潼南县","荣昌县","璧山县","大足县","铜梁县","梁平县","开县","忠县","城口县","垫江县","武隆县","丰都县","奉节县","云阳县","巫溪县","巫山县","石柱土家族自治县","秀山土家族苗族自治县","酉阳土家族苗族自治县","彭水苗族土家族自治县"]}]},{name:"四川省",city:[{name:"成都市",area:["青羊区","锦江区","金牛区","武侯区","成华区","龙泉驿区","青白江区","新都区","温江区","都江堰市","彭州市","邛崃市","崇州市","金堂县","郫县","新津县","双流县","蒲江县","大邑县"]},{name:"自贡市",area:["大安区","自流井区","贡井区","沿滩区","荣县","富顺县"]},{name:"攀枝花市",area:["仁和区","米易县","盐边县","东区","西区"]},{name:"泸州市",area:["江阳区","纳溪区","龙马潭区","泸县","合江县","叙永县","古蔺县"]},{name:"德阳市",area:["旌阳区","广汉市","什邡市","绵竹市","罗江县","中江县"]},{name:"绵阳市",area:["涪城区","游仙区","江油市","盐亭县","三台县","平武县","安县","梓潼县","北川羌族自治县"]},{name:"广元市",area:["元坝区","朝天区","青川县","旺苍县","剑阁县","苍溪县","市中区"]},{name:"遂宁市",area:["船山区","安居区","射洪县","蓬溪县","大英县"]},{name:"内江市",area:["市中区","东兴区","资中县","隆昌县","威远县"]},{name:"乐山市",area:["市中区","五通桥区","沙湾区","金口河区","峨眉山市","夹江县","井研县","犍为县","沐川县","马边彝族自治县","峨边彝族自治县"]},{name:"南充",area:["顺庆区","高坪区","嘉陵区","阆中市","营山县","蓬安县","仪陇县","南部县","西充县"]},{name:"眉山市",area:["东坡区","仁寿县","彭山县","洪雅县","丹棱县","青神县"]},{name:"宜宾市",area:["翠屏区","宜宾县","兴文县","南溪县","珙县","长宁县","高县","江安县","筠连县","屏山县"]},{name:"广安市",area:["广安区","华蓥市","岳池县","邻水县","武胜县"]},{name:"达州市",area:["通川区","万源市","达县","渠县","宣汉县","开江县","大竹县"]},{name:"雅安市",area:["雨城区","芦山县","石棉县","名山县","天全县","荥经县","宝兴县","汉源县"]},{name:"巴中市",area:["巴州区","南江县","平昌县","通江县"]},{name:"资阳市",area:["雁江区","简阳市","安岳县","乐至县"]},{name:"阿坝藏族羌族自治州",area:["马尔康县","九寨沟县","红原县","汶川县","阿坝县","理县","若尔盖县","小金县","黑水县","金川县","松潘县","壤塘县","茂县"]},{name:"甘孜藏族自治州",area:["康定县","丹巴县","炉霍县","九龙县","甘孜县","雅江县","新龙县","道孚县","白玉县","理塘县","德格县","乡城县","石渠县","稻城县","色达县","巴塘县","泸定县","得荣县"]},{name:"凉山彝族自治州",area:["西昌市","美姑县","昭觉县","金阳县","甘洛县","布拖县","雷波县","普格县","宁南县","喜德县","会东县","越西县","会理县","盐源县","德昌县","冕宁县","木里藏族自治县"]}]},{name:"贵州省",city:[{name:"贵阳市",area:["南明区","云岩区","花溪区","乌当区","白云区","小河区","清镇市","开阳县","修文县","息烽县"]},{name:"六盘水市",area:["钟山区","水城县","盘县","六枝特区"]},{name:"遵义市",area:["红花岗区","汇川区","赤水市","仁怀市","遵义县","绥阳县","桐梓县","习水县","凤冈县","正安县","余庆县","湄潭县","道真仡佬族苗族自治县","务川仡佬族苗族自治县"]},{name:"安顺市",area:["西秀区","普定县","平坝县","镇宁布依族苗族自治县","紫云苗族布依族自治县","关岭布依族苗族自治县"]},{name:"铜仁地区",area:["铜仁市","德江县","江口县","思南县","石阡县","玉屏侗族自治县","松桃苗族自治县","印江土家族苗族自治县","沿河土家族自治县","万山特区"]},{name:"毕节地区",area:["毕节市","黔西县","大方县","织金县","金沙县","赫章县","纳雍县","威宁彝族回族苗族自治县"]},{name:"黔西南布依族苗族自治州",area:["兴义市","望谟县","兴仁县","普安县","册亨县","晴隆县","贞丰县","安龙县"]},{name:"黔东南苗族侗族自治州",area:["凯里市","施秉县","从江县","锦屏县","镇远县","麻江县","台江县","天柱县","黄平县","榕江县","剑河县","三穗县","雷山县","黎平县","岑巩县","丹寨县"]},{name:"黔南布依族苗族自治州",area:["都匀市","福泉市","贵定县","惠水县","罗甸县","瓮安县","荔波县","龙里县","平塘县","长顺县","独山县","三都水族自治县"]}]},{name:"云南省",city:[{name:"昆明市",area:["盘龙区","五华区","官渡区","西山区","东川区","安宁市","呈贡县","晋宁县","富民县","宜良县","嵩明县","石林彝族自治县","禄劝彝族苗族自治县","寻甸回族彝族自治县"]},{name:"曲靖市",area:["麒麟区","宣威市","马龙县","沾益县","富源县","罗平县","师宗县","陆良县","会泽县"]},{name:"玉溪市",area:["红塔区","江川县","澄江县","通海县","华宁县","易门县","峨山彝族自治县","新平彝族傣族自治县","元江哈尼族彝族傣族自治县"]},{name:"保山市",area:["隆阳区","施甸县","腾冲县","龙陵县","昌宁县"]},{name:"昭通市",area:["昭阳区","鲁甸县","巧家县","盐津县","大关县","永善县","绥江县","镇雄县","彝良县","威信县","水富县"]},{name:"丽江市",area:["古城区","永胜县","华坪县","玉龙纳西族自治县","宁蒗彝族自治县"]},{name:"普洱市",area:["思茅区","普洱哈尼族彝族自治县","墨江哈尼族自治县","景东彝族自治县","景谷傣族彝族自治县","镇沅彝族哈尼族拉祜族自治县","江城哈尼族彝族自治县","孟连傣族拉祜族佤族自治县","澜沧拉祜族自治县","西盟佤族自治县"]},{name:"临沧市",area:["临翔区","凤庆县","云县","永德县","镇康县","双江拉祜族佤族布朗族傣族自治县","耿马傣族佤族自治县","沧源佤族自治县"]},{name:"德宏傣族景颇族自治州",area:["潞西市","瑞丽市","梁河县","盈江县","陇川县"]},{name:"怒江傈僳族自治州",area:["泸水县","福贡县","贡山独龙族怒族自治县","兰坪白族普米族自治县"]},{name:"迪庆藏族自治州",area:["香格里拉县","德钦县","维西傈僳族自治县"]},{name:"大理白族自治州",area:["大理市","祥云县","宾川县","弥渡县","永平县","云龙县","洱源县","剑川县","鹤庆县","漾濞彝族自治县","南涧彝族自治县","巍山彝族回族自治县"]},{name:"楚雄彝族自治州",area:["楚雄市","双柏县","牟定县","南华县","姚安县","大姚县","永仁县","元谋县","武定县","禄丰县"]},{name:"红河哈尼族彝族自治州",area:["蒙自县","个旧市","开远市","绿春县","建水县","石屏县","弥勒县","泸西县","元阳县","红河县","金平苗族瑶族傣族自治县","河口瑶族自治县","屏边苗族自治县"]},{name:"文山壮族苗族自治州",area:["文山县","砚山县","西畴县","麻栗坡县","马关县","丘北县","广南县","富宁县"]},{name:"西双版纳傣族自治州",area:["景洪市","勐海县","勐腊县"]}]},{name:"西藏",city:[{name:"拉萨市",area:["城关区","林周县","当雄县","尼木县","曲水县","堆龙德庆县","达孜县","墨竹工卡县"]},{name:"那曲地区",area:["那曲县","嘉黎县","比如县","聂荣县","安多县","申扎县","索县","班戈县","巴青县","尼玛县"]},{name:"昌都地区",area:["昌都县","江达县","贡觉县","类乌齐县","丁青县","察雅县","八宿县","左贡县","芒康县","洛隆县","边坝县"]},{name:"林芝地区",area:["林芝县","工布江达县","米林县","墨脱县","波密县","察隅县","朗县"]},{name:"山南地区",area:["乃东县","扎囊县","贡嘎县","桑日县","琼结县","曲松县","措美县","洛扎县","加查县","隆子县","错那县","浪卡子县"]},{name:"日喀则地区",area:["日喀则市","南木林县","江孜县","定日县","萨迦县","拉孜县","昂仁县","谢通门县","白朗县","仁布县","康马县","定结县","仲巴县","亚东县","吉隆县","聂拉木县","萨嘎县","岗巴县"]},{name:"阿里地区",area:["噶尔县","普兰县","札达县","日土县","革吉县","改则县","措勤县"]}]},{name:"陕西省",city:[{name:"西安市",area:["莲湖区","新城区","碑林区","雁塔区","灞桥区","未央区","阎良区","临潼区","长安区","高陵县","蓝田县","户县","周至县"]},{name:"铜川市",area:["耀州区","王益区","印台区","宜君县"]},{name:"宝鸡市",area:["渭滨区","金台区","陈仓区","岐山县","凤翔县","陇县","太白县","麟游县","扶风县","千阳县","眉县","凤县"]},{name:"咸阳市",area:["秦都区","渭城区","杨陵区","兴平市","礼泉县","泾阳县","永寿县","三原县","彬县","旬邑县","长武县","乾县","武功县","淳化县"]},{name:"渭南市",area:["临渭区","韩城市","华阴市","蒲城县","潼关县","白水县","澄城县","华县","合阳县","富平县","大荔县"]},{name:"延安市",area:["宝塔区","安塞县","洛川县","子长县","黄陵县","延川县","富县","延长县","甘泉县","宜川县","志丹县","黄龙县","吴起县"]},{name:"汉中市",area:["汉台区","留坝县","镇巴县","城固县","南郑县","洋县","宁强县","佛坪县","勉县","西乡县","略阳县"]},{name:"榆林市",area:["榆阳区","清涧县","绥德县","神木县","佳县","府谷县","子洲县","靖边县","横山县","米脂县","吴堡县","定边县"]},{name:"安康市",area:["汉滨区","紫阳县","岚皋县","旬阳县","镇坪县","平利县","石泉县","宁陕县","白河县","汉阴县"]},{name:"商洛市",area:["商州区","镇安县","山阳县","洛南县","商南县","丹凤县","柞水县"]}]},{name:"甘肃省",city:[{name:"兰州市",area:["城关区","七里河区","西固区","安宁区","红古区","永登县","皋兰县","榆中县"]},{name:"嘉峪关市",area:["嘉峪关市"]},{name:"金昌市",area:["金川区","永昌县"]},{name:"白银市",area:["白银区","平川区","靖远县","会宁县","景泰县"]},{name:"天水市",area:["清水县","秦安县","甘谷县","武山县","张家川回族自治县","北道区","秦城区"]},{name:"武威市",area:["凉州区","民勤县","古浪县","天祝藏族自治县"]},{name:"酒泉市",area:["肃州区","玉门市","敦煌市","金塔县","肃北蒙古族自治县","阿克塞哈萨克族自治县","安西县"]},{name:"张掖市",area:["甘州区","民乐县","临泽县","高台县","山丹县","肃南裕固族自治县"]},{name:"庆阳市",area:["西峰区","庆城县","环县","华池县","合水县","正宁县","宁县","镇原县"]},{name:"平凉市",area:["崆峒区","泾川县","灵台县","崇信县","华亭县","庄浪县","静宁县"]},{name:"定西市",area:["安定区","通渭县","临洮县","漳县","岷县","渭源县","陇西县"]},{name:"陇南市",area:["武都区","成县","宕昌县","康县","文县","西和县","礼县","两当县","徽县"]},{name:"临夏回族自治州",area:["临夏市","临夏县","康乐县","永靖县","广河县","和政县","东乡族自治县","积石山保安族东乡族撒拉族自治县"]},{name:"甘南藏族自治州",area:["合作市","临潭县","卓尼县","舟曲县","迭部县","玛曲县","碌曲县","夏河县"]}]},{name:"青海省",city:[{name:"西宁市",area:["城中区","城东区","城西区","城北区","湟源县","湟中县","大通回族土族自治县"]},{name:"海东地区",area:["平安县","乐都县","民和回族土族自治县","互助土族自治县","化隆回族自治县","循化撒拉族自治县"]},{name:"海北藏族自治州",area:["海晏县","祁连县","刚察县","门源回族自治县"]},{name:"海南藏族自治州",area:["共和县","同德县","贵德县","兴海县","贵南县"]},{name:"黄南藏族自治州",area:["同仁县","尖扎县","泽库县","河南蒙古族自治县"]},{name:"果洛藏族自治州",area:["玛沁县","班玛县","甘德县","达日县","久治县","玛多县"]},{name:"玉树藏族自治州",area:["玉树县","杂多县","称多县","治多县","囊谦县","曲麻莱县"]},{name:"海西蒙古族藏族自治州",area:["德令哈市","格尔木市","乌兰县","都兰县","天峻县"]}]},{name:"宁夏",city:[{name:"银川市",area:["兴庆区","西夏区","金凤区","灵武市","永宁县","贺兰县"]},{name:"石嘴山市",area:["大武口区","惠农区","平罗县"]},{name:"吴忠市",area:["利通区","青铜峡市","盐池县","同心县"]},{name:"固原市",area:["原州区","西吉县","隆德县","泾源县","彭阳县"]},{name:"中卫市",area:["沙坡头区","中宁县","海原县"]}]},{name:"新疆",city:[{name:"乌鲁木齐市",area:["天山区","沙依巴克区","新市区","水磨沟区","头屯河区","达坂城区","东山区","乌鲁木齐县"]},{name:"克拉玛依市",area:["克拉玛依区","独山子区","白碱滩区","乌尔禾区"]},{name:"吐鲁番地区",area:["吐鲁番市","托克逊县","鄯善县"]},{name:"哈密地区",area:["哈密市","伊吾县","巴里坤哈萨克自治县"]},{name:"和田地区",area:["和田市","和田县","洛浦县","民丰县","皮山县","策勒县","于田县","墨玉县"]},{name:"阿克苏地区",area:["阿克苏市","温宿县","沙雅县","拜城县","阿瓦提县","库车县","柯坪县","新和县","乌什县"]},{name:"喀什地区",area:["喀什市","巴楚县","泽普县","伽师县","叶城县","岳普湖县","疏勒县","麦盖提县","英吉沙县","莎车县","疏附县","塔什库尔干塔吉克自治县"]},{name:"克孜勒苏柯尔克孜自治州",area:["阿图什市","阿合奇县","乌恰县","阿克陶县"]},{name:"巴音郭楞蒙古自治州",area:["库尔勒市","和静县","尉犁县","和硕县","且末县","博湖县","轮台县","若羌县","焉耆回族自治县"]},{name:"昌吉回族自治州",area:["昌吉市","阜康市","奇台县","玛纳斯县","吉木萨尔县","呼图壁县","木垒哈萨克自治县","米泉市"]},{name:"博尔塔拉蒙古自治州",area:["博乐市","精河县","温泉县"]},{name:"石河子",area:["石河子"]},{name:"阿拉尔",area:["阿拉尔"]},{name:"图木舒克",area:["图木舒克"]},{name:"五家渠",area:["五家渠"]},{name:"伊犁哈萨克自治州",area:["伊宁市","奎屯市","伊宁县","特克斯县","尼勒克县","昭苏县","新源县","霍城县","巩留县","察布查尔锡伯自治县","塔城地区","阿勒泰地区"]}]},{name:"台湾省",city:[{name:"台北市",area:["内湖区","南港区","中正区","万华区","大同区","中山区","松山区","大安区","信义区","文山区","士林区","北投区"]},{name:"新北市",area:["板桥区","汐止区","新店区"]},{name:"桃园市",area:["其他"]},{name:"台中市",area:["其他"]},{name:"台南市",area:["其他"]},{name:"高雄市",area:["其他"]}]},{name:"澳门",city:[{name:"澳门",area:["花地玛堂区","圣安多尼堂区","大堂区","望德堂区","风顺堂区","嘉模堂区","圣方济各堂区","路凼"]}]},{name:"香港",city:[{name:"香港",area:["深水埗区","油尖旺区","九龙城区","黄大仙区","观塘区","北区","大埔区","沙田区","西贡区","元朗区","屯门区","荃湾区","葵青区","离岛区","中西区","湾仔区","东区","南区"]}]}];e.default=r},"59ba":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r={down:{textInOffset:"下拉刷新",textOutOffset:"释放更新",textLoading:"加载中 ...",offset:80,native:!1},up:{textLoading:"加载中 ...",textNoMore:"-- END --",offset:80,isBounce:!1,toTop:{src:"http://www.mescroll.com/img/mescroll-totop.png?v=1",offset:1e3,right:20,bottom:120,width:72},empty:{use:!0,icon:"http://www.mescroll.com/img/mescroll-empty.png?v=1",tip:"~ 暂无相关数据 ~"}}},a=r;e.default=a},"66fd":function(t,e,n){"use strict";n.r(e),function(t){
 /*!
  * Vue.js v2.6.11
  * (c) 2014-2020 Evan You
@@ -6278,7 +6230,7 @@ require('components/wangding-pickerAddress.js');
 __wxRoute = 'pages/index';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/index.js';
 
 define('pages/index.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index"],{4800:function(t,e,a){"use strict";a.r(e);var n=a("7517"),o=a.n(n);for(var i in n)"default"!==i&&function(t){a.d(e,t,(function(){return n[t]}))}(i);e["default"]=o.a},"6c777":function(t,e,a){"use strict";a.r(e);var n=a("973c"),o=a("4800");for(var i in o)"default"!==i&&function(t){a.d(e,t,(function(){return o[t]}))}(i);a("8c25");var r,s=a("f0c5"),u=Object(s["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],r);e["default"]=u.exports},7517:function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=i(a("a3a0"));function i(t){return t&&t.__esModule?t:{default:t}}var r=getApp(),s={data:function(){return{indicatorDots:!0,autoplay:!0,interval:2e3,duration:500,Inv:0,boardId:"",pageNode:[],imgUrl:"",page_size:5,page:1,listNode:[],token:""}},onLaunch:function(){},onShow:function(){},onHide:function(){},onShareAppMessage:function(){return{title:"子诺新微金分享",path:"pages/index"}},onLoad:function(){this.token=t.getStorageSync("token"),this.imgUrl=o.default.imgUrl,this.getList()},methods:{getIsToken:function(){if(""==this.token){var e=t.getStorageSync("login_name"),a=t.getStorageSync("login_pwd");""==e||""==a?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):this.runLogin(e,a)}else this.getUserInfo()},runLogin:function(e,a){var i=this;t.request({url:"".concat(o.default.requestUrl,"/login"),method:"POST",data:{username:e,password:a},success:function(e){n("log",e," at pages\\index.vue:135"),t.hideLoading(),e=o.default.null2str(e),200==e.statusCode?(t.setStorageSync("login_name",i.loginName),t.setStorageSync("login_pwd",i.loginPaw),i.token="".concat(e.data.token_type," ").concat(e.data.access_token),t.setStorageSync("token",i.token)):(t.showToast({title:e.data.message,icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3))}})},goNavs:function(e){var a=e.currentTarget.dataset.link,n=e.currentTarget.dataset.bind_board,o=(e.currentTarget.dataset.id,e.currentTarget.dataset.name);if(""==this.token){var i=t.getStorageSync("login_name"),r=t.getStorageSync("login_pwd");""==i||""==r?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(i,r),"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)}))}else"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)})},selListType:function(t){this.Inv=t.currentTarget.dataset.index,this.boardId=t.currentTarget.dataset.block_id,this.page="1",this.listNode=[],this.getListMore()},goBanner:function(t){},goDetail:function(e){if(""==this.token){var a=t.getStorageSync("login_name"),n=t.getStorageSync("login_pwd");""==a||""==n?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(a,n),t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)}))}else t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)})},getUserInfo:function(){var e=this;t.showLoading({title:"用户信息获取中..."}),t.request({url:"".concat(o.default.requestUrl,"/me"),method:"POST",header:{authorization:this.token},success:function(a){t.hideLoading(),a=o.default.null2str(a),n("log",a,"++++++++"," at pages\\index.vue:271"),e.userInfo=a.data,r.globalData.userInfo=a.data,n("log",e.userInfo.mobile," at pages\\index.vue:274")}})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/index"),method:"GET",header:{authorization:this.token},success:function(a){if(t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code){var i=a.data.data;e.pageNode=i,i.board_data.length>0&&(e.boardId=i.board_data[0].id,n("log",e.boardId,"999"," at pages\\index.vue:299"),e.getListMore())}else t.showToast({title:a.data.message})}})},onReachBottom:function(){this.page++,t.showLoading({title:"加载中...",duration:1e6}),this.getListMore()},getListMore:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/index-board-posts"),method:"GET",header:{authorization:this.token},data:{board_id:this.boardId,page_size:this.page_size,page:this.page},success:function(a){t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code?(n("log","888",a.data.data," at pages\\index.vue:339"),n("log",e.pageNode.board_data[e.Inv].posts,"*****"," at pages\\index.vue:340"),a.data.data.length>0?e.listNode=e.listNode.concat(a.data.data):t.showToast({title:"没有更多数据了",icon:"none"})):t.showToast({title:a.data.message})}})}}};e.default=s}).call(this,a("6e42")["default"],a("0de9")["default"])},"8c25":function(t,e,a){"use strict";var n=a("d607"),o=a.n(n);o.a},"973c":function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},i=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return i})),a.d(e,"a",(function(){return n}))},a4b7:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("6c777"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},d607:function(t,e,a){}},[["a4b7","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/index"],{4800:function(t,e,a){"use strict";a.r(e);var n=a("7517"),o=a.n(n);for(var i in n)"default"!==i&&function(t){a.d(e,t,(function(){return n[t]}))}(i);e["default"]=o.a},"682da":function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},i=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return i})),a.d(e,"a",(function(){return n}))},"6c777":function(t,e,a){"use strict";a.r(e);var n=a("682da"),o=a("4800");for(var i in o)"default"!==i&&function(t){a.d(e,t,(function(){return o[t]}))}(i);a("8c25");var s,r=a("f0c5"),u=Object(r["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],s);e["default"]=u.exports},7517:function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=i(a("a3a0"));function i(t){return t&&t.__esModule?t:{default:t}}var s=getApp(),r={data:function(){return{indicatorDots:!0,autoplay:!0,interval:2e3,duration:500,pageNode:[],imgUrl:"",categoryList:[],subCategoryList:[],page:"1",page_size:"10",boardId:"",categoryActive:0,activeStyle:{color:this.activeTextColor,backgroundColor:this.activeBackgroundColor},vip:"",token:"",isShow:!0}},props:{defaultActive:{type:Number,default:0},activeTextColor:{type:String,default:"#333"},activeBackgroundColor:{type:String,default:"#ffffff"}},onLaunch:function(){},onShow:function(){},onHide:function(){},onShareAppMessage:function(){return{title:"子诺新微金分享",path:"pages/index"}},onLoad:function(){this.token=t.getStorageSync("token"),this.imgUrl=o.default.imgUrl,this.getNav(),this.categoryActive=0,this.subCategoryList=[],this.getList()},methods:{getIsToken:function(){if(""==this.token){var e=t.getStorageSync("login_name"),a=t.getStorageSync("login_pwd");""==e||""==a?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):this.runLogin(e,a)}else this.getUserInfo()},runLogin:function(e,a){var i=this;t.request({url:"".concat(o.default.requestUrl,"/login"),method:"POST",data:{username:e,password:a},success:function(e){n("log",e," at pages\\index.vue:151"),t.hideLoading(),e=o.default.null2str(e),200==e.statusCode?(t.setStorageSync("login_name",i.loginName),t.setStorageSync("login_pwd",i.loginPaw),i.token="".concat(e.data.token_type," ").concat(e.data.access_token),t.setStorageSync("token",i.token)):(t.showToast({title:e.data.message,icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3))}})},categoryMainClick:function(t,e,a){this.boardId=t,this.page="1",this.page_size="10",this.subCategoryList=[],this.categoryActive=e,this.getNavList()},categorySubClick:function(e){if(""==this.token){var a=t.getStorageSync("login_name"),n=t.getStorageSync("login_pwd");""==a||""==n?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(a,n),t.navigateTo({url:"/pages/articleDetail?id=".concat(e.id)}))}else t.navigateTo({url:"/pages/articleDetail?id=".concat(e.id)})},getNav:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/board/boards"),method:"GET",header:{authorization:this.token},success:function(a){a=o.default.null2str(a),n("log",a," at pages\\index.vue:228"),200==a.data.status_code?(e.categoryList=a.data.data,e.boardId=a.data.data[0].id,e.getNavList()):"用户不存在或登陆已过期"==a.data.message?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):t.showToast({title:a.data.message,icon:"none",duration:3e3})}})},getNavList:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/posts/board-posts"),method:"GET",header:{authorization:this.token},data:{board_id:this.boardId,page_size:this.page_size,page:this.page},success:function(a){a=o.default.null2str(a),n("log",a," at pages\\index.vue:274"),200==a.data.status_code?(e.subCategoryList=e.subCategoryList.concat(a.data.data),0==a.data.data?(t.showToast({title:"暂无更多数据",icon:"none"}),e.isShow=!0):e.isShow=!1):202==a.data.status_code?(e.vip=a.data.message,e.isShow=!1):t.showToast({title:a.data.message,icon:"none",duration:2e3})}})},toLowFun:function(){this.page++,this.getNavList()},goNavs:function(e){var a=e.currentTarget.dataset.link,n=e.currentTarget.dataset.bind_board,o=(e.currentTarget.dataset.id,e.currentTarget.dataset.name);if(""==this.token){var i=t.getStorageSync("login_name"),s=t.getStorageSync("login_pwd");""==i||""==s?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(i,s),"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)}))}else"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)})},goBanner:function(t){},goDetail:function(e){if(""==this.token){var a=t.getStorageSync("login_name"),n=t.getStorageSync("login_pwd");""==a||""==n?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(a,n),t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)}))}else t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)})},getUserInfo:function(){var e=this;t.showLoading({title:"用户信息获取中..."}),t.request({url:"".concat(o.default.requestUrl,"/me"),method:"POST",header:{authorization:this.token},success:function(a){t.hideLoading(),a=o.default.null2str(a),n("log",a,"++++++++"," at pages\\index.vue:407"),e.userInfo=a.data,s.globalData.userInfo=a.data,n("log",e.userInfo.mobile," at pages\\index.vue:410")}})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/index"),method:"GET",header:{authorization:this.token},success:function(a){if(t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code){var n=a.data.data;e.pageNode=n}else t.showToast({title:a.data.message})}})}}};e.default=r}).call(this,a("6e42")["default"],a("0de9")["default"])},"8c25":function(t,e,a){"use strict";var n=a("d607"),o=a.n(n);o.a},a4b7:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("6c777"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},d607:function(t,e,a){}},[["a4b7","common/runtime","common/vendor"]]]);
 });
 require('pages/index.js');
 __wxRoute = 'pages/login';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/login.js';
@@ -6302,19 +6254,19 @@ require('pages/forgetPassword.js');
 __wxRoute = 'pages/collection';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/collection.js';
 
 define('pages/collection.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/collection"],{"2af2":function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=i(a("a3a0"));function i(t){return t&&t.__esModule?t:{default:t}}getApp();var u={data:function(){return{autoplay:!0,interval:2e3,bannerList:[],list:[],page:"1",imgUrl:"",vip:"",isShow:!1,token:""}},onLoad:function(){this.imgUrl=o.default.imgUrl,this.token=t.getStorageSync("token")},onShow:function(){this.getAd(),this.getList()},methods:{getAd:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/board/info"),method:"GET",header:{authorization:this.token},data:{board_id:"5",page_size:"10",page:1},success:function(a){t.hideLoading(),a=o.default.null2str(a),n("log",a," at pages\\collection.vue:78"),200==a.data.status_code?e.bannerList=a.data.board_ad.aditems:t.showToast({title:a.data.message})}})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/posts/board-posts"),method:"GET",header:{authorization:this.token},data:{board_id:"5",page_size:"10",page:this.page},success:function(a){t.hideLoading(),a=o.default.null2str(a),n("log",a," at pages\\collection.vue:109"),200==a.data.status_code?(e.list=e.list.concat(a.data.data),0==a.data.data&&t.showToast({title:"暂无更多数据",icon:"none"}),e.isShow=!1):202==a.data.status_code?e.isShow=!0:"用户不存在或登陆已过期"==a.data.message?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):t.showToast({title:a.data.message,icon:"none",duration:3e3})}})},goDetail:function(e){t.navigateTo({url:"/pages/articleDetail?id=".concat(e)})},onReachBottom:function(){this.page++,this.getList()}}};e.default=u}).call(this,a("6e42")["default"],a("0de9")["default"])},"37cd":function(t,e,a){},"65e5":function(t,e,a){"use strict";var n=a("37cd"),o=a.n(n);o.a},6763:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("bdaf"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},9080:function(t,e,a){"use strict";a.r(e);var n=a("2af2"),o=a.n(n);for(var i in n)"default"!==i&&function(t){a.d(e,t,(function(){return n[t]}))}(i);e["default"]=o.a},9563:function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},i=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return i})),a.d(e,"a",(function(){return n}))},bdaf:function(t,e,a){"use strict";a.r(e);var n=a("9563"),o=a("9080");for(var i in o)"default"!==i&&function(t){a.d(e,t,(function(){return o[t]}))}(i);a("65e5");var u,s=a("f0c5"),r=Object(s["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],u);e["default"]=r.exports}},[["6763","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/collection"],{"2af2":function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=i(a("a3a0"));function i(t){return t&&t.__esModule?t:{default:t}}getApp();var r={data:function(){return{Inv:0,boardId:"",pageNode:[],imgUrl:"",page_size:5,page:1,listNode:[],token:""}},onLaunch:function(){},onShow:function(){},onHide:function(){},onLoad:function(){this.token=t.getStorageSync("token"),this.imgUrl=o.default.imgUrl,this.getList()},methods:{goNavs:function(e){var a=e.currentTarget.dataset.link,n=e.currentTarget.dataset.bind_board,o=(e.currentTarget.dataset.id,e.currentTarget.dataset.name);if(""==this.token){var i=t.getStorageSync("login_name"),r=t.getStorageSync("login_pwd");""==i||""==r?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(i,r),"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)}))}else"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)})},selListType:function(t){this.Inv=t.currentTarget.dataset.index,this.boardId=t.currentTarget.dataset.block_id,this.page="1",this.listNode=[],this.getListMore()},goDetail:function(e){if(""==this.token){var a=t.getStorageSync("login_name"),n=t.getStorageSync("login_pwd");""==a||""==n?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(a,n),t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)}))}else t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/index"),method:"GET",header:{authorization:this.token},data:{type:"1"},success:function(a){if(t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code){var i=a.data.data;e.pageNode=i,i.board_data.length>0&&(e.boardId=i.board_data[0].id,n("log",e.boardId,"999"," at pages\\collection.vue:190"),e.getListMore())}else t.showToast({title:a.data.message})}})},onReachBottom:function(){this.page++,t.showLoading({title:"加载中...",duration:1e6}),this.getListMore()},getListMore:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/index-board-posts"),method:"GET",header:{authorization:this.token},data:{board_id:this.boardId,page_size:this.page_size,page:this.page},success:function(a){t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code?(n("log","888",a.data.data," at pages\\collection.vue:227"),n("log",e.pageNode.board_data[e.Inv].posts,"*****"," at pages\\collection.vue:228"),a.data.data.length>0?e.listNode=e.listNode.concat(a.data.data):t.showToast({title:"没有更多数据了",icon:"none"})):t.showToast({title:a.data.message})}})}}};e.default=r}).call(this,a("6e42")["default"],a("0de9")["default"])},3201:function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},i=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return i})),a.d(e,"a",(function(){return n}))},"37cd":function(t,e,a){},"65e5":function(t,e,a){"use strict";var n=a("37cd"),o=a.n(n);o.a},6763:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("bdaf"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},9080:function(t,e,a){"use strict";a.r(e);var n=a("2af2"),o=a.n(n);for(var i in n)"default"!==i&&function(t){a.d(e,t,(function(){return n[t]}))}(i);e["default"]=o.a},bdaf:function(t,e,a){"use strict";a.r(e);var n=a("3201"),o=a("9080");for(var i in o)"default"!==i&&function(t){a.d(e,t,(function(){return o[t]}))}(i);a("65e5");var r,d=a("f0c5"),s=Object(d["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],r);e["default"]=s.exports}},[["6763","common/runtime","common/vendor"]]]);
 });
 require('pages/collection.js');
 __wxRoute = 'pages/apply';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/apply.js';
 
 define('pages/apply.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/apply"],{"129a":function(t,e,a){},"953e":function(t,e,a){"use strict";var o,i=function(){var t=this,e=t.$createElement;t._self._c},n=[];a.d(e,"b",(function(){return i})),a.d(e,"c",(function(){return n})),a.d(e,"a",(function(){return o}))},"96ff":function(t,e,a){"use strict";(function(t,o){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=n(a("a3a0"));function n(t){return t&&t.__esModule?t:{default:t}}getApp();var s={data:function(){return{categoryList:[],subCategoryList:[],imgUrl:"",page:"1",page_size:"10",boardId:"",categoryActive:0,activeStyle:{color:this.activeTextColor,backgroundColor:this.activeBackgroundColor},vip:"",isShow:!0,isShow1:!1,token:""}},props:{defaultActive:{type:Number,default:0},activeTextColor:{type:String,default:"#333"},activeBackgroundColor:{type:String,default:"#ffffff"}},onLoad:function(){this.imgUrl=i.default.imgUrl,this.token=t.getStorageSync("token")},onShow:function(){this.getNav(),this.categoryActive=0,this.subCategoryList=[]},mounted:function(){},methods:{categoryMainClick:function(t,e,a){this.boardId=t,this.page="1",this.page_size="10",this.subCategoryList=[],this.categoryActive=e,this.getList()},categorySubClick:function(e){t.navigateTo({url:"/pages/articleDetail?id=".concat(e.id)})},getNav:function(){var e=this;t.request({url:"".concat(i.default.requestUrl,"/board/boards"),method:"GET",header:{authorization:this.token},success:function(a){a=i.default.null2str(a),o("log",a," at pages\\apply.vue:110"),200==a.data.status_code?(e.categoryList=a.data.data,e.boardId=a.data.data[0].id,e.getList()):"用户不存在或登陆已过期"==a.data.message?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):t.showToast({title:a.data.message,icon:"none",duration:3e3})}})},getList:function(){var e=this;t.request({url:"".concat(i.default.requestUrl,"/posts/board-posts"),method:"GET",header:{authorization:this.token},data:{board_id:this.boardId,page_size:this.page_size,page:this.page},success:function(a){a=i.default.null2str(a),o("log",a," at pages\\apply.vue:156"),200==a.data.status_code?(e.subCategoryList=e.subCategoryList.concat(a.data.data),0==a.data.data?(t.showToast({title:"暂无更多数据",icon:"none"}),e.isShow=!0,e.isShow1=!1):(e.isShow=!1,e.isShow1=!1)):202==a.data.status_code?(e.vip=a.data.message,e.isShow1=!0,e.isShow=!1):t.showToast({title:a.data.message,icon:"none",duration:2e3})}})},toLowFun:function(){this.page++,this.getList()}}};e.default=s}).call(this,a("6e42")["default"],a("0de9")["default"])},"97fa":function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");o(a("66fd"));var e=o(a("bd24"));function o(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},bd24:function(t,e,a){"use strict";a.r(e);var o=a("953e"),i=a("f4cc");for(var n in i)"default"!==n&&function(t){a.d(e,t,(function(){return i[t]}))}(n);a("ff03");var s,u=a("f0c5"),r=Object(u["a"])(i["default"],o["b"],o["c"],!1,null,null,null,!1,o["a"],s);e["default"]=r.exports},f4cc:function(t,e,a){"use strict";a.r(e);var o=a("96ff"),i=a.n(o);for(var n in o)"default"!==n&&function(t){a.d(e,t,(function(){return o[t]}))}(n);e["default"]=i.a},ff03:function(t,e,a){"use strict";var o=a("129a"),i=a.n(o);i.a}},[["97fa","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/apply"],{"129a":function(t,e,a){},"96ff":function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=i(a("a3a0"));function i(t){return t&&t.__esModule?t:{default:t}}getApp();var r={data:function(){return{Inv:0,boardId:"",pageNode:[],imgUrl:"",page_size:5,page:1,listNode:[],token:""}},onLaunch:function(){},onShow:function(){this.token=t.getStorageSync("token"),this.imgUrl=o.default.imgUrl,this.getList()},onHide:function(){},onLoad:function(){},methods:{runLogin:function(e,a){var i=this;t.request({url:"".concat(o.default.requestUrl,"/login"),method:"POST",data:{username:e,password:a},success:function(e){n("log",e," at pages\\apply.vue:89"),t.hideLoading(),e=o.default.null2str(e),200==e.statusCode?(t.setStorageSync("login_name",i.loginName),t.setStorageSync("login_pwd",i.loginPaw),i.token="".concat(e.data.token_type," ").concat(e.data.access_token),t.setStorageSync("token",i.token)):(t.showToast({title:e.data.message,icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3))}})},goNavs:function(e){var a=e.currentTarget.dataset.link,n=e.currentTarget.dataset.bind_board,o=(e.currentTarget.dataset.id,e.currentTarget.dataset.name);if(""==this.token){var i=t.getStorageSync("login_name"),r=t.getStorageSync("login_pwd");""==i||""==r?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(i,r),"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)}))}else"0"==n?t.navigateTo({url:"/pages/".concat(a)}):t.navigateTo({url:"/pages/indexA?id=".concat(n,"&name=").concat(o)})},selListType:function(t){this.Inv=t.currentTarget.dataset.index,this.boardId=t.currentTarget.dataset.block_id,this.page="1",this.listNode=[],this.getListMore()},goDetail:function(e){if(""==this.token){var a=t.getStorageSync("login_name"),n=t.getStorageSync("login_pwd");""==a||""==n?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),2e3)):(this.runLogin(a,n),t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)}))}else t.navigateTo({url:"/pages/articleDetail?id=".concat(e.currentTarget.dataset.id)})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/index"),method:"GET",header:{authorization:this.token},data:{type:"2"},success:function(a){if(t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code){var i=a.data.data;e.pageNode=i,i.board_data.length>0&&(e.boardId=i.board_data[0].id,n("log",e.boardId,"999"," at pages\\apply.vue:227"),e.getListMore())}else t.showToast({title:a.data.message})}})},onReachBottom:function(){this.page++,t.showLoading({title:"加载中...",duration:1e6}),this.getListMore()},getListMore:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/index-board-posts"),method:"GET",header:{authorization:this.token},data:{board_id:this.boardId,page_size:this.page_size,page:this.page},success:function(a){t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code?(n("log","888",a.data.data," at pages\\apply.vue:264"),n("log",e.pageNode.board_data[e.Inv].posts,"*****"," at pages\\apply.vue:265"),a.data.data.length>0?e.listNode=e.listNode.concat(a.data.data):t.showToast({title:"没有更多数据了",icon:"none"})):t.showToast({title:a.data.message})}})}}};e.default=r}).call(this,a("6e42")["default"],a("0de9")["default"])},"97fa":function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("bd24"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},bd24:function(t,e,a){"use strict";a.r(e);var n=a("efeb"),o=a("f4cc");for(var i in o)"default"!==i&&function(t){a.d(e,t,(function(){return o[t]}))}(i);a("ff03");var r,s=a("f0c5"),u=Object(s["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],r);e["default"]=u.exports},efeb:function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},i=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return i})),a.d(e,"a",(function(){return n}))},f4cc:function(t,e,a){"use strict";a.r(e);var n=a("96ff"),o=a.n(n);for(var i in n)"default"!==i&&function(t){a.d(e,t,(function(){return n[t]}))}(i);e["default"]=o.a},ff03:function(t,e,a){"use strict";var n=a("129a"),o=a.n(n);o.a}},[["97fa","common/runtime","common/vendor"]]]);
 });
 require('pages/apply.js');
 __wxRoute = 'pages/exchang';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/exchang.js';
 
 define('pages/exchang.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/exchang"],{6016:function(t,e,a){},"6dfe":function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");i(a("66fd"));var e=i(a("8e46"));function i(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},"8e46":function(t,e,a){"use strict";a.r(e);var i=a("d61c"),n=a("ccd6");for(var o in n)"default"!==o&&function(t){a.d(e,t,(function(){return n[t]}))}(o);a("8ee2");var c,u=a("f0c5"),s=Object(u["a"])(n["default"],i["b"],i["c"],!1,null,null,null,!1,i["a"],c);e["default"]=s.exports},"8ee2":function(t,e,a){"use strict";var i=a("6016"),n=a.n(i);n.a},a577:function(t,e,a){"use strict";(function(t,i){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var n=o(a("a3a0"));function o(t){return t&&t.__esModule?t:{default:t}}getApp();var c={data:function(){return{navList:[{id:"3",img:"iconbulletin",title:"微金公告",type:"23"},{id:"6",img:"iconqiapiansousuo",title:"互动搜索",type:""},{id:"2",img:"iconliebiao",title:"贷款产品互动",type:"1"},{id:"4",img:"iconyonghu",title:"信用卡互动",type:"2"},{id:"5",img:"iconqiapiansousuo",title:"推荐热帖",type:"3"},{id:"1",img:"iconxiepinglun",title:"网友互动",type:""}],imgUrl:"",isShow:!1,categoryList:[],subCategoryList:[],categoryActive:0,area_id:"",token:""}},onLoad:function(){this.imgUrl=n.default.imgUrl,this.token=t.getStorageSync("token")},onShow:function(){this.getUserInfo(),this.categoryActive=0,this.subCategoryList=[],this.getRegion()},methods:{categoryMainClick:function(t,e){i("log",t,e," at pages\\exchang.vue:89"),this.categoryActive=e,this.area_id=t,this.subCategoryList=[],this.getList()},categorySubClick:function(e,a,i,n){t.navigateTo({url:"/pages/exchangList?title=".concat(e,"&id=").concat(a,"&img=").concat(i,"&fatheId=").concat(n)})},getUserInfo:function(){var e=this;t.request({url:"".concat(n.default.requestUrl,"/me"),method:"POST",header:{authorization:this.token},success:function(a){t.hideLoading(),a=n.default.null2str(a),i("log",a,"++++++++"," at pages\\exchang.vue:112");var o=a.data.type,c=a.data.vip_id;e.isShow="normal"==o||"2"!=c&&"3"!=c}})},getRegion:function(){var e=this;t.request({url:"".concat(n.default.requestUrl,"/areas/area-list"),method:"GET",header:{authorization:this.token},success:function(a){t.hideLoading(),a=n.default.null2str(a),i("log",a," at pages\\exchang.vue:139"),"200"==a.data.status_code?(e.categoryList=a.data.data,e.area_id=e.categoryList[0].id,e.getList()):"用户不存在或登陆已过期"==a.data.message?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):t.showToast({title:a.data.message,icon:"none",duration:3e3})}})},getNav:function(e,a,i){""!=e?t.navigateTo({url:"/pages/indexA?id=".concat(e,"&name=").concat(a)}):"网友互动"==a&&t.navigateTo({url:"/pages/boardData?title=".concat(a,"&id=",38,"&img=").concat(i)})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(n.default.requestUrl,"/areas/city-list"),method:"POST",header:{authorization:this.token},data:{area_id:this.area_id},success:function(a){t.hideLoading(),a=n.default.null2str(a),i("log",a," at pages\\exchang.vue:202"),"200"==a.data.status_code?e.subCategoryList=a.data.data:t.showToast({title:a.data.message,icon:"none"})}})}}};e.default=c}).call(this,a("6e42")["default"],a("0de9")["default"])},ccd6:function(t,e,a){"use strict";a.r(e);var i=a("a577"),n=a.n(i);for(var o in i)"default"!==o&&function(t){a.d(e,t,(function(){return i[t]}))}(o);e["default"]=n.a},d61c:function(t,e,a){"use strict";var i,n=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"b",(function(){return n})),a.d(e,"c",(function(){return o})),a.d(e,"a",(function(){return i}))}},[["6dfe","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/exchang"],{6016:function(t,e,a){},"6c52":function(t,e,a){"use strict";var i,n=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"b",(function(){return n})),a.d(e,"c",(function(){return o})),a.d(e,"a",(function(){return i}))},"6dfe":function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");i(a("66fd"));var e=i(a("8e46"));function i(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},"8e46":function(t,e,a){"use strict";a.r(e);var i=a("6c52"),n=a("ccd6");for(var o in n)"default"!==o&&function(t){a.d(e,t,(function(){return n[t]}))}(o);a("8ee2");var s,u=a("f0c5"),c=Object(u["a"])(n["default"],i["b"],i["c"],!1,null,null,null,!1,i["a"],s);e["default"]=c.exports},"8ee2":function(t,e,a){"use strict";var i=a("6016"),n=a.n(i);n.a},a577:function(t,e,a){"use strict";(function(t,i){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var n=o(a("a3a0"));function o(t){return t&&t.__esModule?t:{default:t}}getApp();var s={data:function(){return{navList:[{id:"3",img:"iconbulletin",title:"微金公告",type:"23"},{id:"6",img:"iconqiapiansousuo",title:"互动搜索",type:""},{id:"2",img:"iconliebiao",title:"贷款产品互动",type:"1"},{id:"4",img:"iconyonghu",title:"信用卡互动",type:"2"},{id:"5",img:"iconqiapiansousuo",title:"推荐热帖",type:"3"},{id:"1",img:"iconxiepinglun",title:"网友互动",type:""}],imgUrl:"",isShow:!1,categoryList:[],subCategoryList:[],categoryActive:0,area_id:"",token:"",type:""}},onLoad:function(){this.imgUrl=n.default.imgUrl,this.token=t.getStorageSync("token")},onShow:function(){this.getUserInfo(),this.subCategoryList=[],this.getRegion(),this.getAll()},methods:{categoryMainClick:function(t,e){i("log",t,e," at pages\\exchang.vue:81"),this.categoryActive=e,this.area_id=t,this.type="",this.subCategoryList=[],this.getList()},getAll:function(t){this.area_id="",this.type="all",this.subCategoryList=[],this.categoryActive=t,this.getList()},categorySubClick:function(e,a,i,n){t.navigateTo({url:"/pages/exchangList?title=".concat(e,"&id=").concat(a,"&img=").concat(i,"&fatheId=").concat(n)})},getUserInfo:function(){var e=this;t.request({url:"".concat(n.default.requestUrl,"/me"),method:"POST",header:{authorization:this.token},success:function(a){t.hideLoading(),a=n.default.null2str(a),i("log",a,"++++++++"," at pages\\exchang.vue:112");var o=a.data.type,s=a.data.vip_id;e.isShow="normal"==o||"2"!=s&&"3"!=s}})},getRegion:function(){var e=this;t.request({url:"".concat(n.default.requestUrl,"/areas/area-list"),method:"GET",header:{authorization:this.token},success:function(a){t.hideLoading(),a=n.default.null2str(a),i("log",a," at pages\\exchang.vue:139"),"200"==a.data.status_code?e.categoryList=a.data.data:"用户不存在或登陆已过期"==a.data.message?(t.showToast({title:"未检测到用户的登录记录，请进行登录",icon:"none",duration:3e3}),setTimeout((function(){t.reLaunch({url:"./login"})}),3e3)):t.showToast({title:a.data.message,icon:"none",duration:3e3})}})},getNav:function(e,a,i){""!=e?t.navigateTo({url:"/pages/indexA?id=".concat(e,"&name=").concat(a)}):"网友互动"==a&&t.navigateTo({url:"/pages/boardData?title=".concat(a,"&id=",38,"&img=").concat(i)})},getList:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(n.default.requestUrl,"/areas/city-list"),method:"POST",header:{authorization:this.token},data:{area_id:this.area_id,type:this.type},success:function(a){t.hideLoading(),a=n.default.null2str(a),i("log",a," at pages\\exchang.vue:203"),"200"==a.data.status_code?e.subCategoryList=a.data.data:t.showToast({title:a.data.message,icon:"none"})}})}}};e.default=s}).call(this,a("6e42")["default"],a("0de9")["default"])},ccd6:function(t,e,a){"use strict";a.r(e);var i=a("a577"),n=a.n(i);for(var o in i)"default"!==o&&function(t){a.d(e,t,(function(){return i[t]}))}(o);e["default"]=n.a}},[["6dfe","common/runtime","common/vendor"]]]);
 });
 require('pages/exchang.js');
 __wxRoute = 'pages/me';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/me.js';
@@ -6326,7 +6278,7 @@ require('pages/me.js');
 __wxRoute = 'pages/articleDetail';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/articleDetail.js';
 
 define('pages/articleDetail.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/articleDetail"],{"08c3":function(t,e,a){"use strict";a.r(e);var i=a("f875"),o=a("baaa");for(var s in o)"default"!==s&&function(t){a.d(e,t,(function(){return o[t]}))}(s);a("acd5");var n,l=a("f0c5"),c=Object(l["a"])(o["default"],i["b"],i["c"],!1,null,null,null,!1,i["a"],n);e["default"]=c.exports},"9f7b":function(t,e,a){},acd5:function(t,e,a){"use strict";var i=a("9f7b"),o=a.n(i);o.a},baaa:function(t,e,a){"use strict";a.r(e);var i=a("d9ef"),o=a.n(i);for(var s in i)"default"!==s&&function(t){a.d(e,t,(function(){return i[t]}))}(s);e["default"]=o.a},d9ef:function(t,e,a){"use strict";(function(t,i){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=s(a("a3a0"));function s(t){return t&&t.__esModule?t:{default:t}}getApp();var n=function(){Promise.all([a.e("common/vendor"),a.e("components/jyf-parser")]).then(function(){return resolve(a("def7"))}.bind(null,a)).catch(a.oe)},l={data:function(){return{userInfo:{},focus:!1,isShow:"0",isHide:"0",info:{},nodes:[],commentList:[],articleDetail:null,options:null,imgUrl:"",page:"1",postContent:"",just_landlord:"",comment_id:"",isSex:"0",type:"",token:""}},components:{"jyf-parser":n},onLoad:function(e){this.options=e,this.imgUrl=o.default.imgUrl,this.token=t.getStorageSync("token")},onShow:function(){this.getArticleDetail(),this.getComment()},onShareAppMessage:function(){var t=this.getPageUrl();return{title:this.articleDetail.title,path:t}},methods:{linkUrl:function(e){i("log",e," at pages\\articleDetail.vue:176");t.downloadFile({url:e,success:function(e){e.statusCode,i("log",e.tempFilePath," at pages\\articleDetail.vue:183");t.saveFile({tempFilePath:e.tempFilePath,success:function(e){t.showToast({title:"已保存内部存储/Android/data/io.dcloud.HBuilder/apps/HBuilder/doc/uniapp_save",icon:"none",duration:3e3});e.savedFilePath;i("log",e," at pages\\articleDetail.vue:194")}})}})},goVIPPage:function(e){var a=this;if("normal"==this.articleDetail.user.type){var i=e;"member"==i&&t.showModal({title:"提示",content:"是否前往开通会员",success:function(t){t.confirm?a.goVip():t.cancel}})}},goVip:function(){t.navigateTo({url:"/pages/meVIP"})},getContent:function(t){this.postContent=t.detail.value},getArticleDetail:function(){var e=this;t.showLoading({title:"加载中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/show"),method:"GET",header:{authorization:this.token},data:{post_id:this.options.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code?(e.articleDetail=a.data,i("log","----------------"," at pages\\articleDetail.vue:264"),i("log",e.articleDetail.extras," at pages\\articleDetail.vue:265"),"f"==e.articleDetail.user.sex&&(e.isSex="1")):202==a.data.status_code?(e.articleDetail=null,t.showToast({title:a.data.message,icon:"none",duration:2e3}),setTimeout((function(e){t.redirectTo({url:"./meVIP"})}),2e3)):(t.showToast({title:a.data.message,icon:"none",duration:2e3}),"用户不存在或登陆已过期"==a.data.message&&setTimeout((function(e){t.redirectTo({url:"./login"})}),2e3))}})},shareFriend:function(){this.share("WXSceneSession")},shareFriendcricle:function(){this.share("WXSenceTimeline")},getPageUrl:function(){var t=getCurrentPages();t=t[t.length-1];var e=t.route,a=t.options,i="?";for(var o in a)i+=o,i+="=",i+=a[o],i+="&";return i=i.substring(0,i.length-1),e+=i,e},h5Share:function(e){i("log",e," at pages\\articleDetail.vue:336");var a=this,s=a.getPageUrl();t.request({url:"".concat(o.default.requestUrl,"/getSignPackage"),dataType:"text",method:"POST",data:{url:window.location.href.split("#")[0]},success:function(t){var o=JSON.parse(t.data);wxj.config({debug:!0,appId:o.appId,timestamp:o.timestamp,nonceStr:o.nonceStr,signature:o.signature,jsApiList:["onMenuShareTimeline","onMenuShareAppMessage","updateAppMessageShareData"]}),"朋友"==e?(i("log",e," at pages\\articleDetail.vue:359"),wxj.ready((function(){wxj.updateAppMessageShareData({title:a.articleDetail.title,link:"https://jinrong.beaconway.cn/"+s,type:"",dataUrl:"",success:function(){}})}))):"朋友圈"==e&&wxj.ready((function(){wxj.onMenuShareTimeline({title:a.articleDetail.title,link:"https://jinrong.beaconway.cn/"+s,success:function(){}})}))},fail:function(t){i("log","request fail",t," at pages\\articleDetail.vue:389")}})},share:function(e){var a=this.getPageUrl();t.share({provider:"weixin",scene:e,type:0,href:"https://jinrong.beaconway.cn/#/"+a,title:this.articleDetail.title,summary:"",imageUrl:"",success:function(t){i("log","success:"+JSON.stringify(t)," at pages\\articleDetail.vue:405")},fail:function(t){i("log","fail:"+JSON.stringify(t)," at pages\\articleDetail.vue:408")}})},postReward:function(){var e=this;t.showLoading({title:"打赏中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/reward"),method:"GET",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:429"),"200"==a.data.status_code?(t.showToast({title:"打赏成功"}),e.articleDetail.rewards_count+=1):t.showToast({title:"打赏失败",icon:"none"})}})},addCollection:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/user/add_collection"),method:"POST",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:462"),"1"==a.data.status_code?(e.articleDetail.is_collections,t.showToast({title:a.data.message})):t.showToast({title:a.data.message,icon:"none"})}})},delCollection:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/user/del_collection"),method:"POST",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:496"),"1"==a.data.status_code?(e.articleDetail.is_collections,t.showToast({title:a.data.message})):t.showToast({title:a.data.message,icon:"none"})}})},addFollow:function(e){var a=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/user/add_follow"),method:"POST",header:{authorization:this.token},data:{follow_id:this.articleDetail.user_id,type:e},success:function(e){t.hideLoading(),e=o.default.null2str(e),i("log",e," at pages\\articleDetail.vue:531"),200==e.data.status_code?(t.showToast({title:e.data.message}),a.articleDetail.is_follow=1):t.showToast({title:e.data.message,icon:"none"})}})},getComment:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/posts/post-comments"),method:"GET",header:{authorization:this.token},data:{post_id:this.options.id,just_landlord:this.just_landlord,page:this.page,page_size:"10"},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a,"**********"," at pages\\articleDetail.vue:563"),"200"==a.data.status_code&&(e.commentList=e.commentList.concat(a.data.data))}})},postDiscuss:function(){""==this.postContent?t.showToast({title:"请输入发表内容",icon:"none"}):"0"==this.isShow?this.getPost():"1"==this.isShow&&this.postReply()},getPost:function(){var e=this;t.showLoading({title:"评论提交中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/send-comment"),method:"POST",header:{authorization:this.token},data:{post_id:this.options.id,content:this.postContent},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:604"),"200"==a.data.status_code?(t.showToast({title:a.data.message,icon:"none"}),e.postContent=" "):t.showToast({title:"发表失败",icon:"none"})}})},reply:function(t,e){i("log",t,e," at pages\\articleDetail.vue:622"),this.comment_id=t,this.isShow=e,this.focus=!0},postReply:function(){var e=this;t.showLoading({title:"评论发布中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/send-reply"),method:"POST",header:{authorization:this.token},data:{comment_id:this.comment_id,content:this.postContent},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:644"),"200"==a.data.status_code?(t.showToast({title:a.data.message,icon:"none"}),e.postContent=" ",e.isShow="0"):t.showToast({title:"发表失败",icon:"none"})}})},commentLandlord:function(t){i("log",t," at pages\\articleDetail.vue:663"),this.just_landlord=t,this.commentList=[],this.page="1",this.getComment()},clickZan:function(e){var a=this;this.isHide="1",t.showLoading({title:"点赞中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/like"),method:"GET",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(e){t.hideLoading(),e=o.default.null2str(e),i("log",e," at pages\\articleDetail.vue:687"),"200"==e.data.status_code?(t.showToast({title:"点赞成功",icon:"none"}),a.articleDetail.like+=1,a.articleDetail.is_collections=1):t.showToast({title:"点赞失败",icon:"none"})}})},onReachBottom:function(){this.page++,this.getComment()}}};e.default=l}).call(this,a("6e42")["default"],a("0de9")["default"])},e764:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");i(a("66fd"));var e=i(a("08c3"));function i(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},f875:function(t,e,a){"use strict";var i,o=function(){var t=this,e=t.$createElement;t._self._c},s=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return s})),a.d(e,"a",(function(){return i}))}},[["e764","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/articleDetail"],{"08c3":function(t,e,a){"use strict";a.r(e);var i=a("b271"),o=a("baaa");for(var s in o)"default"!==s&&function(t){a.d(e,t,(function(){return o[t]}))}(s);a("acd5");var n,l=a("f0c5"),c=Object(l["a"])(o["default"],i["b"],i["c"],!1,null,null,null,!1,i["a"],n);e["default"]=c.exports},"9f7b":function(t,e,a){},acd5:function(t,e,a){"use strict";var i=a("9f7b"),o=a.n(i);o.a},b271:function(t,e,a){"use strict";var i,o=function(){var t=this,e=t.$createElement;t._self._c},s=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return s})),a.d(e,"a",(function(){return i}))},baaa:function(t,e,a){"use strict";a.r(e);var i=a("d9ef"),o=a.n(i);for(var s in i)"default"!==s&&function(t){a.d(e,t,(function(){return i[t]}))}(s);e["default"]=o.a},d9ef:function(t,e,a){"use strict";(function(t,i){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=s(a("a3a0"));function s(t){return t&&t.__esModule?t:{default:t}}getApp();var n=function(){Promise.all([a.e("common/vendor"),a.e("components/jyf-parser")]).then(function(){return resolve(a("def7"))}.bind(null,a)).catch(a.oe)},l={data:function(){return{userInfo:{},focus:!1,isShow:"0",isHide:"0",info:{},nodes:[],commentList:[],articleDetail:null,options:null,imgUrl:"",page:"1",postContent:"",just_landlord:"",comment_id:"",isSex:"0",type:"",token:""}},components:{"jyf-parser":n},onLoad:function(e){this.options=e,this.imgUrl=o.default.imgUrl,this.token=t.getStorageSync("token")},onShow:function(){this.getArticleDetail(),this.getComment()},onShareAppMessage:function(){var t=this.getPageUrl();return{title:this.articleDetail.title,path:t}},methods:{linkUrl:function(e){i("log",e," at pages\\articleDetail.vue:176");t.downloadFile({url:e,success:function(e){e.statusCode,i("log",e.tempFilePath," at pages\\articleDetail.vue:183");t.saveFile({tempFilePath:e.tempFilePath,success:function(e){t.showToast({title:"已保存内部存储/Android/data/io.dcloud.HBuilder/apps/HBuilder/doc/uniapp_save",icon:"none",duration:3e3});e.savedFilePath;i("log",e," at pages\\articleDetail.vue:194")}})}})},goVIPPage:function(e){var a=this;if("normal"==this.articleDetail.user.type){var i=e;"member"==i&&t.showModal({title:"提示",content:"是否前往开通会员",success:function(t){t.confirm?a.goVip():t.cancel}})}},goVip:function(){t.navigateTo({url:"/pages/meVIP"})},getContent:function(t){this.postContent=t.detail.value},getArticleDetail:function(){var e=this;t.showLoading({title:"加载中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/show"),method:"GET",header:{authorization:this.token},data:{post_id:this.options.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),200==a.data.status_code?(e.articleDetail=a.data,i("log","----------------"," at pages\\articleDetail.vue:264"),i("log",e.articleDetail.extras," at pages\\articleDetail.vue:265"),"f"==e.articleDetail.user.sex&&(e.isSex="1")):202==a.data.status_code?(e.articleDetail=null,t.showToast({title:a.data.message,icon:"none",duration:2e3}),setTimeout((function(e){t.redirectTo({url:"./meVIP"})}),2e3)):(t.showToast({title:a.data.message,icon:"none",duration:2e3}),"用户不存在或登陆已过期"==a.data.message&&setTimeout((function(e){t.redirectTo({url:"./login"})}),2e3))}})},shareFriend:function(){this.share("WXSceneSession")},shareFriendcricle:function(){this.share("WXSenceTimeline")},getPageUrl:function(){var t=getCurrentPages();t=t[t.length-1];var e=t.route,a=t.options,i="?";for(var o in a)i+=o,i+="=",i+=a[o],i+="&";return i=i.substring(0,i.length-1),e+=i,e},h5Share:function(e){i("log",e," at pages\\articleDetail.vue:336");var a=this,s=a.getPageUrl();t.request({url:"".concat(o.default.requestUrl,"/getSignPackage"),dataType:"text",method:"POST",data:{url:window.location.href.split("#")[0]},success:function(t){var o=JSON.parse(t.data);wxj.config({debug:!0,appId:o.appId,timestamp:o.timestamp,nonceStr:o.nonceStr,signature:o.signature,jsApiList:["onMenuShareTimeline","onMenuShareAppMessage","updateAppMessageShareData"]}),"朋友"==e?(i("log",e," at pages\\articleDetail.vue:359"),wxj.ready((function(){wxj.updateAppMessageShareData({title:a.articleDetail.title,link:"https://jinrong.beaconway.cn/"+s,type:"",dataUrl:"",success:function(){}})}))):"朋友圈"==e&&wxj.ready((function(){wxj.onMenuShareTimeline({title:a.articleDetail.title,link:"https://jinrong.beaconway.cn/"+s,success:function(){}})}))},fail:function(t){i("log","request fail",t," at pages\\articleDetail.vue:389")}})},share:function(e){var a=this.getPageUrl();t.share({provider:"weixin",scene:e,type:0,href:"https://jinrong.beaconway.cn/#/"+a,title:this.articleDetail.title,summary:"",imageUrl:"",success:function(t){i("log","success:"+JSON.stringify(t)," at pages\\articleDetail.vue:405")},fail:function(t){i("log","fail:"+JSON.stringify(t)," at pages\\articleDetail.vue:408")}})},postReward:function(){var e=this;t.showLoading({title:"打赏中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/reward"),method:"GET",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:429"),"200"==a.data.status_code?(t.showToast({title:"打赏成功"}),e.articleDetail.rewards_count+=1):t.showToast({title:"打赏失败",icon:"none"})}})},addCollection:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/user/add_collection"),method:"POST",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:462"),"1"==a.data.status_code?(e.articleDetail.is_collections,t.showToast({title:a.data.message})):t.showToast({title:a.data.message,icon:"none"})}})},delCollection:function(){var e=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/user/del_collection"),method:"POST",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:496"),"1"==a.data.status_code?(e.articleDetail.is_collections,t.showToast({title:a.data.message})):t.showToast({title:a.data.message,icon:"none"})}})},addFollow:function(e){var a=this;t.showLoading({title:"加载中...",duration:1e6}),t.request({url:"".concat(o.default.requestUrl,"/user/add_follow"),method:"POST",header:{authorization:this.token},data:{follow_id:this.articleDetail.user_id,type:e},success:function(e){t.hideLoading(),e=o.default.null2str(e),i("log",e," at pages\\articleDetail.vue:531"),200==e.data.status_code?(t.showToast({title:e.data.message}),a.articleDetail.is_follow=1):t.showToast({title:e.data.message,icon:"none"})}})},getComment:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/posts/post-comments"),method:"GET",header:{authorization:this.token},data:{post_id:this.options.id,just_landlord:this.just_landlord,page:this.page,page_size:"10"},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a,"**********"," at pages\\articleDetail.vue:563"),"200"==a.data.status_code&&(e.commentList=e.commentList.concat(a.data.data))}})},postDiscuss:function(){""==this.postContent?t.showToast({title:"请输入发表内容",icon:"none"}):"0"==this.isShow?this.getPost():"1"==this.isShow&&this.postReply()},getPost:function(){var e=this;t.showLoading({title:"评论提交中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/send-comment"),method:"POST",header:{authorization:this.token},data:{post_id:this.options.id,content:this.postContent},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:604"),"200"==a.data.status_code?(t.showToast({title:a.data.message,icon:"none"}),e.postContent=" "):t.showToast({title:"发表失败",icon:"none"})}})},reply:function(t,e){i("log",t,e," at pages\\articleDetail.vue:622"),this.comment_id=t,this.isShow=e,this.focus=!0},postReply:function(){var e=this;t.showLoading({title:"评论发布中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/send-reply"),method:"POST",header:{authorization:this.token},data:{comment_id:this.comment_id,content:this.postContent},success:function(a){t.hideLoading(),a=o.default.null2str(a),i("log",a," at pages\\articleDetail.vue:644"),"200"==a.data.status_code?(t.showToast({title:a.data.message,icon:"none"}),e.postContent=" ",e.isShow="0"):t.showToast({title:"发表失败",icon:"none"})}})},commentLandlord:function(t){i("log",t," at pages\\articleDetail.vue:663"),this.just_landlord=t,this.commentList=[],this.page="1",this.getComment()},clickZan:function(e){var a=this;this.isHide="1",t.showLoading({title:"点赞中..."}),t.request({url:"".concat(o.default.requestUrl,"/posts/like"),method:"GET",header:{authorization:this.token},data:{post_id:this.articleDetail.id},success:function(e){t.hideLoading(),e=o.default.null2str(e),i("log",e," at pages\\articleDetail.vue:687"),"200"==e.data.status_code?(t.showToast({title:"点赞成功",icon:"none"}),a.articleDetail.like+=1,a.articleDetail.is_collections=1):t.showToast({title:"点赞失败",icon:"none"})}})},onReachBottom:function(){this.page++,this.getComment()}}};e.default=l}).call(this,a("6e42")["default"],a("0de9")["default"])},e764:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");i(a("66fd"));var e=i(a("08c3"));function i(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])}},[["e764","common/runtime","common/vendor"]]]);
 });
 require('pages/articleDetail.js');
 __wxRoute = 'pages/queryTool';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/queryTool.js';
@@ -6350,7 +6302,7 @@ require('pages/experience.js');
 __wxRoute = 'pages/productSupermarket';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/productSupermarket.js';
 
 define('pages/productSupermarket.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/productSupermarket"],{"0959":function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("a93c"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},"39fc":function(t,e,a){"use strict";var n,s=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"b",(function(){return s})),a.d(e,"c",(function(){return o})),a.d(e,"a",(function(){return n}))},"58f6":function(t,e,a){},a93c:function(t,e,a){"use strict";a.r(e);var n=a("39fc"),s=a("dd04");for(var o in s)"default"!==o&&function(t){a.d(e,t,(function(){return s[t]}))}(o);a("d591");var u,i=a("f0c5"),r=Object(i["a"])(s["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],u);e["default"]=r.exports},d591:function(t,e,a){"use strict";var n=a("58f6"),s=a.n(n);s.a},dd04:function(t,e,a){"use strict";a.r(e);var n=a("eb5d"),s=a.n(n);for(var o in n)"default"!==o&&function(t){a.d(e,t,(function(){return n[t]}))}(o);e["default"]=s.a},eb5d:function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var s=o(a("a3a0"));function o(t){return t&&t.__esModule?t:{default:t}}getApp();var u=function(){a.e("components/uni-drawer").then(function(){return resolve(a("9413"))}.bind(null,a)).catch(a.oe)},i={data:function(){return{indicatorDots:!0,Inv:0,list:[],keywords:"",navList:[],tabType:"is_new",page_size:"10",page:"1",imgUrl:"",navLeft:[],navReft:[],active:"0",activeStyle:{color:this.activeTextColor,backgroundColor:this.activeBackgroundColor},activeHead:"0",showLeft:!1,classType:"0",bankId:"",letfNavChild:[],token:""}},components:{uniDrawer:u},onLoad:function(){this.token=t.getStorageSync("token"),this.getNav(),this.imgUrl=s.default.imgUrl,this.getNavLeft()},methods:{navsHead:function(e){n("log",e," at pages\\productSupermarket.vue:137"),t.navigateTo({url:"/pages/allProduct?id=".concat(e.currentTarget.dataset.id,"&title=").concat(e.currentTarget.dataset.title)})},leftNav:function(t,e){this.active=t,this.showLeft=!0,this.bankId=e,this.page="1",this.getLeftNavChild(),n("log",e," at pages\\productSupermarket.vue:149"),n("log",this.showLeft," at pages\\productSupermarket.vue:150")},getNavLeft:function(){var e=this;t.request({url:"".concat(s.default.requestUrl,"/holes/banks"),method:"GET",header:{authorization:this.token},success:function(t){t=s.default.null2str(t),n("log",t,"左边导航数据"," at pages\\productSupermarket.vue:162"),200==t.data.status_code&&(e.navLeft=t.data.data,e.bankId=t.data.data[0].id,n("log",e.bankId,"银行"," at pages\\productSupermarket.vue:166"),e.getReftNav())}})},childItem:function(e,a,n){this.showLeft=!1,t.navigateTo({url:"/pages/indexA?bankId=".concat(e,"&name=").concat(n,"&childId=").concat(a)})},getLeftNavChild:function(){var e=this;t.request({url:"".concat(s.default.requestUrl,"/holes/bank_child"),method:"GET",header:{authorization:this.token},success:function(t){t=s.default.null2str(t),n("log",t,"右边导航数据"," at pages\\productSupermarket.vue:197"),200==t.data.status_code&&(e.letfNavChild=t.data.data)}})},getReftNav:function(){var e=this;t.request({url:"".concat(s.default.requestUrl,"/holes/loan_class"),method:"GET",header:{authorization:this.token},success:function(t){t=s.default.null2str(t),n("log",t,"右边导航数据"," at pages\\productSupermarket.vue:216"),200==t.data.status_code&&(e.navReft=t.data.data,e.list=[],e.getTab())}})},closeDrawer:function(){this.showLeft=!1},clickItem:function(t){this.showLeft=!1,this.bankId=t,this.page="1",this.list=[],this.getTab()},headNav:function(t,e){n("log",t,e," at pages\\productSupermarket.vue:242"),this.activeHead=t,this.classType=e,this.list=[],this.page="1",this.getTab()},changeTab:function(t){n("log",t," at pages\\productSupermarket.vue:250"),this.Inv=t,this.page="1",0==this.Inv?this.tabType="is_new":1==this.Inv?this.tabType="is_hot":3==this.Inv&&(this.tabType="is_romend"),this.list=[],this.getTab()},getSearch:function(){t.navigateTo({url:"/pages/searchNetloan"})},getNav:function(){var e=this;t.request({url:"".concat(s.default.requestUrl,"/holes/categories"),method:"GET",header:{authorization:this.token},success:function(a){if(a=s.default.null2str(a),n("log",a," at pages\\productSupermarket.vue:281"),200==a.data.status_code){for(var o=a.data.data,u=[],i=10,r=0;r<o.length;r+=i)u.push(o.slice(r,r+i));n("log",u," at pages\\productSupermarket.vue:289"),e.navList=u}else t.showToast({title:a.data.message,icon:"none"})}})},getTab:function(){var e=this;t.request({url:"".concat(s.default.requestUrl,"/holes/index-recommends"),method:"GET",header:{authorization:this.token},data:{type:this.tabType,bank_id:this.bankId,class_id:this.classType,page_size:this.page_size,page:this.page},success:function(t){t=s.default.null2str(t),n("log",t," at pages\\productSupermarket.vue:317"),200==t.data.status_code&&(e.list=e.list.concat(t.data.data))}})},goProduct:function(e){n("log",e," at pages\\productSupermarket.vue:330");var a=e.currentTarget.dataset.id;t.navigateTo({url:"/pages/productDetail?id=".concat(a)})},onReachBottom:function(){this.page++,this.getTab()}}};e.default=i}).call(this,a("6e42")["default"],a("0de9")["default"])}},[["0959","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/productSupermarket"],{"0959":function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("a93c"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},"58f6":function(t,e,a){},7183:function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},i=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return i})),a.d(e,"a",(function(){return n}))},a93c:function(t,e,a){"use strict";a.r(e);var n=a("7183"),o=a("dd04");for(var i in o)"default"!==i&&function(t){a.d(e,t,(function(){return o[t]}))}(i);a("d591");var r,s=a("f0c5"),u=Object(s["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],r);e["default"]=u.exports},d591:function(t,e,a){"use strict";var n=a("58f6"),o=a.n(n);o.a},dd04:function(t,e,a){"use strict";a.r(e);var n=a("eb5d"),o=a.n(n);for(var i in n)"default"!==i&&function(t){a.d(e,t,(function(){return n[t]}))}(i);e["default"]=o.a},eb5d:function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=i(a("a3a0"));function i(t){return t&&t.__esModule?t:{default:t}}getApp();var r=function(){a.e("components/uni-drawer").then(function(){return resolve(a("9413"))}.bind(null,a)).catch(a.oe)},s={data:function(){return{indicatorDots:!0,Inv:0,list:[],keywords:"",navList:[],tabType:"is_new",page_size:"10",page:"1",imgUrl:"",navLeft:[],active:"0",activeStyle:{color:this.activeTextColor,backgroundColor:this.activeBackgroundColor},activeHead:"0",showLeft:!1,classType:"0",category_id:"",letfNavChild:[],token:""}},components:{uniDrawer:r},onLoad:function(){this.token=t.getStorageSync("token"),this.getNav(),this.imgUrl=o.default.imgUrl,this.getNavLeft()},methods:{navsHead:function(e){n("log",e," at pages\\productSupermarket.vue:137"),t.navigateTo({url:"/pages/allProduct?id=".concat(e.currentTarget.dataset.id,"&title=").concat(e.currentTarget.dataset.title)})},leftNav:function(t,e){this.active=t,this.category_id=e,this.page="1",this.list=[],this.getTab(),n("log",e," at pages\\productSupermarket.vue:152"),n("log",this.showLeft," at pages\\productSupermarket.vue:153")},getNavLeft:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/holes/categories"),method:"GET",header:{authorization:this.token},success:function(a){a=o.default.null2str(a),n("log",a," at pages\\productSupermarket.vue:165"),200==a.data.status_code?(e.navLeft=a.data.data,e.category_id=a.data.data[0].id,e.page="1",e.list=[],e.getTab()):t.showToast({title:a.data.message,icon:"none"})}})},closeDrawer:function(){this.showLeft=!1},clickItem:function(t){this.showLeft=!1,this.category_id=t,this.page="1",this.list=[],this.getTab()},changeTab:function(t){n("log",t," at pages\\productSupermarket.vue:258"),this.Inv=t,this.page="1",0==this.Inv?this.tabType="is_new":1==this.Inv?this.tabType="is_hot":3==this.Inv&&(this.tabType="is_romend"),this.list=[],this.getTab()},getSearch:function(){t.navigateTo({url:"/pages/searchNetloan"})},getNav:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/holes/banks"),method:"GET",header:{authorization:this.token},success:function(t){if(t=o.default.null2str(t),n("log",t,"左边导航数据"," at pages\\productSupermarket.vue:289"),200==t.data.status_code){for(var a=t.data.data,i=[],r=10,s=0;s<a.length;s+=r)i.push(a.slice(s,s+r));n("log",i," at pages\\productSupermarket.vue:297"),e.navList=i}}})},getTab:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/holes/index-recommends"),method:"GET",header:{authorization:this.token},data:{type:this.tabType,category_id:this.category_id,page_size:this.page_size,page:this.page},success:function(t){t=o.default.null2str(t),n("log",t," at pages\\productSupermarket.vue:326"),200==t.data.status_code&&(e.list=e.list.concat(t.data.data))}})},goProduct:function(e){n("log",e,"*********************************"," at pages\\productSupermarket.vue:336");var a=e.currentTarget.dataset.id;t.navigateTo({url:"/pages/productDetail?id=".concat(a)})},onReachBottom:function(){this.page++,this.getTab()}}};e.default=s}).call(this,a("6e42")["default"],a("0de9")["default"])}},[["0959","common/runtime","common/vendor"]]]);
 });
 require('pages/productSupermarket.js');
 __wxRoute = 'pages/meUserInfo';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/meUserInfo.js';
@@ -6428,7 +6380,7 @@ require('pages/meCertification.js');
 __wxRoute = 'pages/meVIP';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/meVIP.js';
 
 define('pages/meVIP.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/meVIP"],{"013c":function(t,e,n){"use strict";n.r(e);var a=n("59b5"),i=n("6c77");for(var u in i)"default"!==u&&function(t){n.d(e,t,(function(){return i[t]}))}(u);n("143d");var c,o=n("f0c5"),r=Object(o["a"])(i["default"],a["b"],a["c"],!1,null,null,null,!1,a["a"],c);e["default"]=r.exports},"143d":function(t,e,n){"use strict";var a=n("f6c7"),i=n.n(a);i.a},"2c3d":function(t,e,n){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=u(n("a3a0"));function u(t){return t&&t.__esModule?t:{default:t}}var c=getApp(),o={data:function(){return{isCheck:!1,bannerIndex:"0",current:"0",vip:[],imgUrl:"",token:""}},onLoad:function(){this.token=t.getStorageSync("token"),this.vipList(),this.imgUrl=i.default.imgUrl},onShow:function(){1==c.globalData.vipIndex&&(this.isCheck=!0)},methods:{meTreaty:function(){t.navigateTo({url:"/pages/meTreaty"})},banner:function(t){this.current=t.detail.current},checkboxChange:function(t){this.isCheck=!this.isCheck},vipList:function(){var e=this;t.request({url:"".concat(i.default.requestUrl,"/vips"),method:"GET",header:{authorization:this.token},success:function(n){t.hideLoading(),n=i.default.null2str(n),a("log",n," at pages\\meVIP.vue:119"),200==n.data.status_code?e.vip=n.data:t.showToast({title:n.data.message})}})},goVip:function(e){a("log",this.isCheck," at pages\\meVIP.vue:132"),this.isCheck?t.navigateTo({url:"/pages/payType?id=".concat(e.currentTarget.dataset.id,"&money=").concat(e.currentTarget.dataset.money)}):t.showToast({title:"请同意相关协议",icon:"none",duration:2e3})}}};e.default=o}).call(this,n("6e42")["default"],n("0de9")["default"])},"59b5":function(t,e,n){"use strict";var a,i=function(){var t=this,e=t.$createElement;t._self._c},u=[];n.d(e,"b",(function(){return i})),n.d(e,"c",(function(){return u})),n.d(e,"a",(function(){return a}))},"6c77":function(t,e,n){"use strict";n.r(e);var a=n("2c3d"),i=n.n(a);for(var u in a)"default"!==u&&function(t){n.d(e,t,(function(){return a[t]}))}(u);e["default"]=i.a},ecad7:function(t,e,n){"use strict";(function(t){n("b5b4"),n("921b");a(n("66fd"));var e=a(n("013c"));function a(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},f6c7:function(t,e,n){}},[["ecad7","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/meVIP"],{"013c":function(t,e,n){"use strict";n.r(e);var a=n("e673"),i=n("6c77");for(var o in i)"default"!==o&&function(t){n.d(e,t,(function(){return i[t]}))}(o);n("143d");var u,c=n("f0c5"),r=Object(c["a"])(i["default"],a["b"],a["c"],!1,null,null,null,!1,a["a"],u);e["default"]=r.exports},"143d":function(t,e,n){"use strict";var a=n("f6c7"),i=n.n(a);i.a},"2c3d":function(t,e,n){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var i=o(n("a3a0"));function o(t){return t&&t.__esModule?t:{default:t}}var u=getApp(),c={data:function(){return{isCheck:!1,bannerIndex:"0",current:"0",vip:[],imgUrl:"",token:"",money:""}},onLoad:function(){this.token=t.getStorageSync("token"),this.vipList(),this.imgUrl=i.default.imgUrl},onShow:function(){1==u.globalData.vipIndex&&(this.isCheck=!0)},methods:{getMony:function(t){a("log",t,"************"," at pages\\meVIP.vue:108"),this.money=t.detail.value},meTreaty:function(){t.navigateTo({url:"/pages/meTreaty"})},banner:function(t){this.current=t.detail.current},checkboxChange:function(t){this.isCheck=!this.isCheck},vipList:function(){var e=this;t.request({url:"".concat(i.default.requestUrl,"/vips"),method:"GET",header:{authorization:this.token},success:function(n){t.hideLoading(),n=i.default.null2str(n),a("log",n," at pages\\meVIP.vue:133"),200==n.data.status_code?e.vip=n.data:t.showToast({title:n.data.message})}})},goVip:function(e){if(a("log",this.isCheck," at pages\\meVIP.vue:146"),!this.isCheck)return t.showToast({title:"请同意相关协议",icon:"none",duration:2e3}),!1;var n=this.money;""!=n?t.navigateTo({url:"/pages/payType?id=".concat(e.currentTarget.dataset.id,"&money=").concat(n)}):t.showToast({title:"请选择价格",icon:"none",duration:2e3})}}};e.default=c}).call(this,n("6e42")["default"],n("0de9")["default"])},"6c77":function(t,e,n){"use strict";n.r(e);var a=n("2c3d"),i=n.n(a);for(var o in a)"default"!==o&&function(t){n.d(e,t,(function(){return a[t]}))}(o);e["default"]=i.a},e673:function(t,e,n){"use strict";var a,i=function(){var t=this,e=t.$createElement;t._self._c},o=[];n.d(e,"b",(function(){return i})),n.d(e,"c",(function(){return o})),n.d(e,"a",(function(){return a}))},ecad7:function(t,e,n){"use strict";(function(t){n("b5b4"),n("921b");a(n("66fd"));var e=a(n("013c"));function a(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},f6c7:function(t,e,n){}},[["ecad7","common/runtime","common/vendor"]]]);
 });
 require('pages/meVIP.js');
 __wxRoute = 'pages/contactCustomer';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/contactCustomer.js';
@@ -6500,7 +6452,7 @@ require('pages/paySuccess.js');
 __wxRoute = 'pages/productDetail';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/productDetail.js';
 
 define('pages/productDetail.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/productDetail"],{"68ae":function(t,e,n){"use strict";var a=n("84dd"),o=n.n(a);o.a},"68fd":function(t,e,n){"use strict";n.r(e);var a=n("6bfc"),o=n.n(a);for(var u in a)"default"!==u&&function(t){n.d(e,t,(function(){return a[t]}))}(u);e["default"]=o.a},"6bfc":function(t,e,n){"use strict";(function(t,a){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=u(n("a3a0"));function u(t){return t&&t.__esModule?t:{default:t}}var i=getApp(),r={data:function(){return{productId:"",listInfo:[],imgUrl:"",vip:"",token:""}},onLoad:function(e){this.token=t.getStorageSync("token"),this.productId=e.id,this.imgUrl=o.default.imgUrl,this.getInfo()},methods:{MP_WEIXIN_apply:function(e){t.showToast({title:"该小程序不支持，请下载APP",icon:"none"})},APP_PLUS_apply:function(e){a("log","APP-PLUS"," at pages\\productDetail.vue:157");var n=e.currentTarget.dataset.link,o=e.currentTarget.dataset.name;""==n&&t.showToast({title:"该模块正在维修站",icon:"none"}),t.navigateTo({url:"/pages/iframe?name=".concat(o)}),i.globalData.link=n},getInfo:function(){var e=this;t.request({url:"".concat(o.default.requestUrl,"/holes/detial"),method:"GET",header:{authorization:this.token},data:{hole_id:this.productId},success:function(n){n=o.default.null2str(n),a("log",n," at pages\\productDetail.vue:183"),200==n.data.status_code?e.listInfo=n.data.data:202==n.data.status_code?(e.vip=n.data.message,t.showToast({title:n.data.message,icon:"none",duration:2e3}),setTimeout((function(){t.redirectTo({url:"meVIP"})}),2e3)):t.showToast({title:n.data.message,icon:"none"})}})}}};e.default=r}).call(this,n("6e42")["default"],n("0de9")["default"])},"84dd":function(t,e,n){},"8bd3":function(t,e,n){"use strict";var a,o=function(){var t=this,e=t.$createElement;t._self._c},u=[];n.d(e,"b",(function(){return o})),n.d(e,"c",(function(){return u})),n.d(e,"a",(function(){return a}))},c4ff:function(t,e,n){"use strict";(function(t){n("b5b4"),n("921b");a(n("66fd"));var e=a(n("deed"));function a(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,n("6e42")["createPage"])},deed:function(t,e,n){"use strict";n.r(e);var a=n("8bd3"),o=n("68fd");for(var u in o)"default"!==u&&function(t){n.d(e,t,(function(){return o[t]}))}(u);n("68ae");var i,r=n("f0c5"),c=Object(r["a"])(o["default"],a["b"],a["c"],!1,null,null,null,!1,a["a"],i);e["default"]=c.exports}},[["c4ff","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/productDetail"],{"53ef":function(t,e,a){"use strict";var n,o=function(){var t=this,e=t.$createElement;t._self._c},u=[];a.d(e,"b",(function(){return o})),a.d(e,"c",(function(){return u})),a.d(e,"a",(function(){return n}))},"68ae":function(t,e,a){"use strict";var n=a("84dd"),o=a.n(n);o.a},"68fd":function(t,e,a){"use strict";a.r(e);var n=a("6bfc"),o=a.n(n);for(var u in n)"default"!==u&&function(t){a.d(e,t,(function(){return n[t]}))}(u);e["default"]=o.a},"6bfc":function(t,e,a){"use strict";(function(t,n){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var o=u(a("a3a0"));function u(t){return t&&t.__esModule?t:{default:t}}var i=getApp(),r={data:function(){return{productId:"",listInfo:{},imgUrl:"",vip:"",token:""}},onLoad:function(e){t("log",e,"///////////////"," at pages\\productDetail.vue:142"),this.token=n.getStorageSync("token"),this.productId=e.id,this.imgUrl=o.default.imgUrl,this.getInfo()},methods:{MP_WEIXIN_apply:function(t){n.showToast({title:"该小程序不支持，请下载APP",icon:"none"})},APP_PLUS_apply:function(e){t("log","APP-PLUS"," at pages\\productDetail.vue:158");var a=e.currentTarget.dataset.link,o=e.currentTarget.dataset.name;""==a&&n.showToast({title:"该模块正在维修站",icon:"none"}),n.navigateTo({url:"/pages/iframe?name=".concat(o)}),i.globalData.link=a},getInfo:function(){var e=this;n.request({url:"".concat(o.default.requestUrl,"/holes/detial"),method:"GET",header:{authorization:this.token},data:{hole_id:this.productId},success:function(a){a=o.default.null2str(a),t("log",a," at pages\\productDetail.vue:184"),200==a.data.status_code?e.listInfo=a.data.data:202==a.data.status_code?(e.vip=a.data.message,n.showToast({title:a.data.message,icon:"none",duration:2e3}),setTimeout((function(){n.redirectTo({url:"meVIP"})}),2e3)):n.showToast({title:a.data.message,icon:"none"})}})}}};e.default=r}).call(this,a("0de9")["default"],a("6e42")["default"])},"84dd":function(t,e,a){},c4ff:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");n(a("66fd"));var e=n(a("deed"));function n(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},deed:function(t,e,a){"use strict";a.r(e);var n=a("53ef"),o=a("68fd");for(var u in o)"default"!==u&&function(t){a.d(e,t,(function(){return o[t]}))}(u);a("68ae");var i,r=a("f0c5"),c=Object(r["a"])(o["default"],n["b"],n["c"],!1,null,null,null,!1,n["a"],i);e["default"]=c.exports}},[["c4ff","common/runtime","common/vendor"]]]);
 });
 require('pages/productDetail.js');
 __wxRoute = 'pages/searchNetloan';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/searchNetloan.js';
@@ -6512,7 +6464,7 @@ require('pages/searchNetloan.js');
 __wxRoute = 'pages/allProduct';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/allProduct.js';
 
 define('pages/allProduct.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/allProduct"],{"0cc9":function(t,e,a){"use strict";a.r(e);var i=a("920a"),s=a("33bd");for(var o in s)"default"!==o&&function(t){a.d(e,t,(function(){return s[t]}))}(o);a("173a");var n,u=a("f0c5"),r=Object(u["a"])(s["default"],i["b"],i["c"],!1,null,null,null,!1,i["a"],n);e["default"]=r.exports},"173a":function(t,e,a){"use strict";var i=a("6d88"),s=a.n(i);s.a},"33bd":function(t,e,a){"use strict";a.r(e);var i=a("3857"),s=a.n(i);for(var o in i)"default"!==o&&function(t){a.d(e,t,(function(){return i[t]}))}(o);e["default"]=s.a},3857:function(t,e,a){"use strict";(function(t,i){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var s=o(a("a3a0"));function o(t){return t&&t.__esModule?t:{default:t}}getApp();var n={data:function(){return{imgUrl:"",type:"",typeText1:"所有额度",typeText2:"所有贷款分类",list:[],currentIndex:0,mask:!1,quota:"",keyShow:[],moneyList:[{title:"所有额度"},{title:"100-5000"},{title:"5000-2万"},{title:"2万-5万"},{title:"5万-10万"},{title:"10万以上"}],typeList:[],category_id:"",down:"0",top:"0",vip:"",isShow:!0,isShow1:!1,token:"",page:"1"}},onLoad:function(e){t("log",e," at pages\\allProduct.vue:101"),this.typeText2=e.title,this.category_id=e.id,this.imgUrl=s.default.imgUrl,this.token=i.getStorageSync("token")||this.token,this.getList()},methods:{goProduct:function(t){var e=t.currentTarget.dataset.id;i.navigateTo({url:"/pages/productDetail?id=".concat(e)})},getTap:function(t){this.type=t,1==t?(this.keyShow=this.moneyList,this.down=1):(this.keyShow=this.typeList,this.top=1,this.getTypeList()),this.mask=!0},screenList:function(e){t("log",e,"****"," at pages\\allProduct.vue:130"),this.currentIndex=e.currentTarget.dataset.index,1==this.type?(this.typeText1=this.keyShow[this.currentIndex].title,this.quota=this.keyShow[this.currentIndex].title,this.down=0):(this.typeText2=this.keyShow[this.currentIndex].title,this.category_id=e.currentTarget.dataset.id,this.top=0),this.list=[],this.mask=!1,this.getList()},hideModal:function(){this.mask=!1,this.down,this.top},getTypeList:function(){var e=this;i.request({url:"".concat(s.default.requestUrl,"/holes/categories"),method:"GET",header:{authorization:this.token},success:function(a){a=s.default.null2str(a),t("log",a,"----"," at pages\\allProduct.vue:162"),200==a.data.status_code&&(e.keyShow=a.data.data)}})},getList:function(){var e=this;i.request({url:"".concat(s.default.requestUrl,"/holes/categories-holes"),method:"GET",header:{authorization:this.token},data:{category_id:this.category_id,quota:this.quota,page_size:"10",page:this.page},success:function(a){a=s.default.null2str(a),t("log",a," at pages\\allProduct.vue:186"),200==a.data.status_code?(e.list=e.list.concat(a.data.data),0==a.data.data?(i.showToast({title:"暂无更多数据",icon:"none"}),e.isShow=!0,t("log",e.isShow," at pages\\allProduct.vue:195"),e.isShow1=!1):(e.isShow=!1,e.isShow1=!1)):202==a.data.status_code?(e.vip=a.data.message,e.isShow1=!0,e.isShow=!1):i.showToast({title:a.data.message})}})},onReachBottom:function(){this.page++,this.getList()}}};e.default=n}).call(this,a("0de9")["default"],a("6e42")["default"])},"6d88":function(t,e,a){},"920a":function(t,e,a){"use strict";var i,s=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"b",(function(){return s})),a.d(e,"c",(function(){return o})),a.d(e,"a",(function(){return i}))},a095:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");i(a("66fd"));var e=i(a("0cc9"));function i(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])}},[["a095","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/allProduct"],{"0cc9":function(t,e,a){"use strict";a.r(e);var i=a("f2ed"),s=a("33bd");for(var o in s)"default"!==o&&function(t){a.d(e,t,(function(){return s[t]}))}(o);a("173a");var n,u=a("f0c5"),r=Object(u["a"])(s["default"],i["b"],i["c"],!1,null,null,null,!1,i["a"],n);e["default"]=r.exports},"173a":function(t,e,a){"use strict";var i=a("6d88"),s=a.n(i);s.a},"33bd":function(t,e,a){"use strict";a.r(e);var i=a("3857"),s=a.n(i);for(var o in i)"default"!==o&&function(t){a.d(e,t,(function(){return i[t]}))}(o);e["default"]=s.a},3857:function(t,e,a){"use strict";(function(t,i){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var s=o(a("a3a0"));function o(t){return t&&t.__esModule?t:{default:t}}getApp();var n={data:function(){return{imgUrl:"",type:"",typeText1:"所有额度",typeText2:"所有贷款分类",list:[],currentIndex:0,mask:!1,quota:"",keyShow:[],moneyList:[{title:"所有额度"},{title:"100-5000"},{title:"5000-2万"},{title:"2万-5万"},{title:"5万-10万"},{title:"10万以上"}],typeList:[],category_id:"",down:"0",top:"0",vip:"",isShow:!0,isShow1:!1,token:"",page:"1",bank_id:""}},onLoad:function(e){t("log",e," at pages\\allProduct.vue:102"),this.bank_id=e.id,this.imgUrl=s.default.imgUrl,this.token=i.getStorageSync("token")||this.token,this.getList()},methods:{goProduct:function(t){var e=t.currentTarget.dataset.id;i.navigateTo({url:"/pages/productDetail?id=".concat(e)})},getTap:function(t){this.type=t,1==t?(this.keyShow=this.moneyList,this.down=1):(this.keyShow=this.typeList,this.top=1,this.getTypeList()),this.mask=!0},screenList:function(e){t("log",e,"****"," at pages\\allProduct.vue:131"),this.currentIndex=e.currentTarget.dataset.index,1==this.type?(this.typeText1=this.keyShow[this.currentIndex].title,this.quota=this.keyShow[this.currentIndex].title,this.down=0):(this.typeText2=this.keyShow[this.currentIndex].title,this.category_id=e.currentTarget.dataset.id,this.top=0),this.list=[],this.mask=!1,this.getList()},hideModal:function(){this.mask=!1,this.down,this.top},getTypeList:function(){var e=this;i.request({url:"".concat(s.default.requestUrl,"/holes/categories"),method:"GET",header:{authorization:this.token},success:function(a){a=s.default.null2str(a),t("log",a,"----"," at pages\\allProduct.vue:163"),200==a.data.status_code&&(e.keyShow=a.data.data)}})},getList:function(){var e=this;i.request({url:"".concat(s.default.requestUrl,"/holes/categories-holes"),method:"GET",header:{authorization:this.token},data:{category_id:this.category_id,quota:this.quota,bank_id:this.bank_id,page_size:"10",page:this.page},success:function(a){a=s.default.null2str(a),t("log",a," at pages\\allProduct.vue:188"),200==a.data.status_code?(e.list=e.list.concat(a.data.data),0==a.data.data?(i.showToast({title:"暂无更多数据",icon:"none"}),e.isShow=!0,t("log",e.isShow," at pages\\allProduct.vue:197"),e.isShow1=!1):(e.isShow=!1,e.isShow1=!1)):202==a.data.status_code?(e.vip=a.data.message,e.isShow1=!0,e.isShow=!1):i.showToast({title:a.data.message})}})},onReachBottom:function(){this.page++,this.getList()}}};e.default=n}).call(this,a("0de9")["default"],a("6e42")["default"])},"6d88":function(t,e,a){},a095:function(t,e,a){"use strict";(function(t){a("b5b4"),a("921b");i(a("66fd"));var e=i(a("0cc9"));function i(t){return t&&t.__esModule?t:{default:t}}t(e.default)}).call(this,a("6e42")["createPage"])},f2ed:function(t,e,a){"use strict";var i,s=function(){var t=this,e=t.$createElement;t._self._c},o=[];a.d(e,"b",(function(){return s})),a.d(e,"c",(function(){return o})),a.d(e,"a",(function(){return i}))}},[["a095","common/runtime","common/vendor"]]]);
 });
 require('pages/allProduct.js');
 __wxRoute = 'pages/applyShow';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/applyShow.js';
@@ -6602,7 +6554,7 @@ require('pages/teamList.js');
 __wxRoute = 'pages/shareCode';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/shareCode.js';
 
 define('pages/shareCode.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/shareCode"],{"19a4":function(e,t,n){"use strict";n.r(t);var o=n("a585"),i=n.n(o);for(var a in o)"default"!==a&&function(e){n.d(t,e,(function(){return o[e]}))}(a);t["default"]=i.a},"803e":function(e,t,n){"use strict";var o,i=function(){var e=this,t=e.$createElement;e._self._c},a=[];n.d(t,"b",(function(){return i})),n.d(t,"c",(function(){return a})),n.d(t,"a",(function(){return o}))},"84ec":function(e,t,n){"use strict";var o=n("a02b"),i=n.n(o);i.a},a02b:function(e,t,n){},a126:function(e,t,n){"use strict";(function(e){n("b5b4"),n("921b");o(n("66fd"));var t=o(n("cc25"));function o(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},a585:function(e,t,n){"use strict";(function(e,o){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=a(n("a3a0"));n("24e8");function a(e){return e&&e.__esModule?e:{default:e}}getApp();var s=function(){n.e("components/uni-popup").then(function(){return resolve(n("a78d"))}.bind(null,n)).catch(n.oe)},c={data:function(){return{bottomData:[{text:"微信好友",type:"WXSceneSession",icon:"iconweixin"},{text:"朋友圈",type:"WXSenceTimeline",icon:"iconpengyouquan"}],codeType:"",codeList:{},showIs:"0",openSettingBtnHidden:!0,imgUrl:"",bj:"../static/erweimaImg.png",wWidth:"",wHeight:"",token:""}},components:{uniPopup:s},onLoad:function(t){var n=this;this.token=e.getStorageSync("token"),o("log",t," at pages\\shareCode.vue:102"),this.codeType=t.type,this.imgUrl=i.default.imgUrl,"1"==this.codeType&&this.getCode(),e.getSystemInfo({success:function(e){n.wWidth=e.windowWidth,o("log",n.wWidth," at pages\\shareCode.vue:111"),n.wHeight=e.windowHeight}})},onShareAppMessage:function(){o("log",123," at pages\\shareCode.vue:118")},shareFriend:function(){this.goShare("WXSceneSession")},shareFriendcricle:function(){this.goShare("WXSenceTimeline")},methods:{quickInlet:function(e){2==e?this.$refs.showshare.open():1==e&&this.getList()},handleSetting:function(e){o("log",e," at pages\\shareCode.vue:147"),e.detail.authSetting["scope.writePhotosAlbum"]?this.openSettingBtnHidden=!0:this.openSettingBtnHidden=!1},saveEwm:function(){var t=this;e.getSetting({success:function(n){n.authSetting["scope.writePhotosAlbum"]?t.saveImgToLocal():e.authorize({scope:"scope.writePhotosAlbum",success:function(){t.saveImgToLocal()},fail:function(){t.openSettingBtnHidden=!1}})}})},saveImgToLocal:function(){var t=this;e.showModal({title:"提示",content:"确定保存到相册吗",success:function(n){if(n.confirm){var i=t,a=(e.getSystemInfoSync(),e.createCanvasContext("mycanvas"));e.getImageInfo({src:i.codeList.faceurl,success:function(t){o("log",t," at pages\\shareCode.vue:192"),a.drawImage(i.bj,0,0,i.wWidth,i.wHeight),a.drawImage(t.path,i.wWidth/2-80,i.wHeight/2-160,160,160),a.draw(!0,(function(){e.canvasToTempFilePath({x:0,y:0,width:i.wWidth,height:i.wHeight,destWidth:i.wWidth,destHeight:i.wHeight,canvasId:"mycanvas",success:function(t){e.saveImageToPhotosAlbum({filePath:t.tempFilePath,success:function(){e.showToast({title:"图片保存成功～"})},fail:function(e){},complete:function(){e.hideLoading()}})},fail:function(t){e.showToast({title:"保存失败",icon:"none"})}})}))}})}else n.cancel&&e.showToast({title:"取消成功",icon:"none"})}})},getCode:function(){var t=this;e.request({url:"".concat(i.default.requestUrl,"/promote-showmycode"),method:"GET",header:{authorization:this.token},success:function(n){n=i.default.null2str(n),o("log",n,"---"," at pages\\shareCode.vue:252"),-1==n.data.code?(e.showToast({title:n.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3)):(t.codeList=n.data,t.showIs="0",o("log",t.codeList.face,"*"," at pages\\shareCode.vue:266"))}})},getList:function(){e.request({url:"".concat(i.default.requestUrl,"/promote-getmycode"),method:"GET",header:{authorization:this.token},success:function(t){t=i.default.null2str(t),o("log",t,"++++"," at pages\\shareCode.vue:282"),0==t.data.code?e.showToast({title:t.data.tip_msg,icon:"none"}):2==t.data.code?e.navigateTo({url:"/pages/message"}):(e.showToast({title:t.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3))}})},cancel:function(e){this.$refs["show"+e].close()},des:function(){e.showToast({title:"请重新获取二维码",icon:"none"})},goShare:function(t){var n=this;o("log",t," at pages\\shareCode.vue:317");var i="";"WXSceneSession"==t?i="WXSceneSession":"WXSenceTimeline"==t&&(i="WXSenceTimeline"),e.share({provider:"weixin",scene:i,type:0,href:this.codeList.share_link,title:"子诺新微金",summary:"我正在使用子诺新微金，赶紧跟我一起来体验！",imageUrl:" ",success:function(e){n.showIs="1"},fail:function(e){}})},getPageUrl:function(){var e=getCurrentPages();e=e[e.length-1];var t=e.route,n=e.options,o="?";for(var i in n)o+=i,o+="=",o+=n[i],o+="&";return o=o.substring(0,o.length-1),t+=o,t},again:function(){this.getCode()}}};t.default=c}).call(this,n("6e42")["default"],n("0de9")["default"])},cc25:function(e,t,n){"use strict";n.r(t);var o=n("803e"),i=n("19a4");for(var a in i)"default"!==a&&function(e){n.d(t,e,(function(){return i[e]}))}(a);n("84ec");var s,c=n("f0c5"),u=Object(c["a"])(i["default"],o["b"],o["c"],!1,null,null,null,!1,o["a"],s);t["default"]=u.exports}},[["a126","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/shareCode"],{"19a4":function(e,t,n){"use strict";n.r(t);var o=n("a585"),i=n.n(o);for(var a in o)"default"!==a&&function(e){n.d(t,e,(function(){return o[e]}))}(a);t["default"]=i.a},2454:function(e,t,n){"use strict";var o,i=function(){var e=this,t=e.$createElement;e._self._c},a=[];n.d(t,"b",(function(){return i})),n.d(t,"c",(function(){return a})),n.d(t,"a",(function(){return o}))},"84ec":function(e,t,n){"use strict";var o=n("a02b"),i=n.n(o);i.a},a02b:function(e,t,n){},a126:function(e,t,n){"use strict";(function(e){n("b5b4"),n("921b");o(n("66fd"));var t=o(n("cc25"));function o(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])},a585:function(e,t,n){"use strict";(function(e,o){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=a(n("a3a0"));n("24e8");function a(e){return e&&e.__esModule?e:{default:e}}getApp();var s=function(){n.e("components/uni-popup").then(function(){return resolve(n("a78d"))}.bind(null,n)).catch(n.oe)},c={data:function(){return{bottomData:[{text:"微信好友",type:"WXSceneSession",icon:"iconweixin"},{text:"朋友圈",type:"WXSenceTimeline",icon:"iconpengyouquan"}],codeType:"",codeList:{},showIs:"0",openSettingBtnHidden:!0,imgUrl:"",bj:"../static/erweimaImg.png",wWidth:"",wHeight:"",token:""}},components:{uniPopup:s},onLoad:function(t){var n=this;this.token=e.getStorageSync("token"),o("log",t,"--------------------------------"," at pages\\shareCode.vue:102"),this.codeType=t.type,this.imgUrl=i.default.imgUrl,"1"==this.codeType&&this.getCode(),e.getSystemInfo({success:function(e){n.wWidth=e.windowWidth,o("log",n.wWidth," at pages\\shareCode.vue:111"),n.wHeight=e.windowHeight}})},onShareAppMessage:function(){o("log",123," at pages\\shareCode.vue:118")},shareFriend:function(){this.goShare("WXSceneSession")},shareFriendcricle:function(){this.goShare("WXSenceTimeline")},methods:{quickInlet:function(e){2==e?this.$refs.showshare.open():1==e&&this.getList()},handleSetting:function(e){o("log",e," at pages\\shareCode.vue:147"),e.detail.authSetting["scope.writePhotosAlbum"]?this.openSettingBtnHidden=!0:this.openSettingBtnHidden=!1},saveEwm:function(){var t=this;e.getSetting({success:function(n){n.authSetting["scope.writePhotosAlbum"]?t.saveImgToLocal():e.authorize({scope:"scope.writePhotosAlbum",success:function(){t.saveImgToLocal()},fail:function(){t.openSettingBtnHidden=!1}})}})},saveImgToLocal:function(){var t=this;e.showModal({title:"提示",content:"确定保存到相册吗",success:function(n){if(n.confirm){var i=t,a=(e.getSystemInfoSync(),e.createCanvasContext("mycanvas"));e.getImageInfo({src:i.codeList.faceurl,success:function(t){o("log",t," at pages\\shareCode.vue:192"),a.drawImage(i.bj,0,0,i.wWidth,i.wHeight),a.drawImage(t.path,i.wWidth/2-80,i.wHeight/2-160,160,160),a.draw(!0,(function(){e.canvasToTempFilePath({x:0,y:0,width:i.wWidth,height:i.wHeight,destWidth:i.wWidth,destHeight:i.wHeight,canvasId:"mycanvas",success:function(t){e.saveImageToPhotosAlbum({filePath:t.tempFilePath,success:function(){e.showToast({title:"图片保存成功～"})},fail:function(e){},complete:function(){e.hideLoading()}})},fail:function(t){e.showToast({title:"保存失败",icon:"none"})}})}))}})}else n.cancel&&e.showToast({title:"取消成功",icon:"none"})}})},getCode:function(){var t=this;e.request({url:"".concat(i.default.requestUrl,"/promote-showmycode"),method:"GET",header:{authorization:this.token},success:function(n){n=i.default.null2str(n),o("log",n,"---"," at pages\\shareCode.vue:252"),-1==n.data.code?(e.showToast({title:n.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3)):(t.codeList=n.data,t.showIs="0",o("log",t.codeList.face,"*"," at pages\\shareCode.vue:266"))}})},getList:function(){e.request({url:"".concat(i.default.requestUrl,"/promote-getmycode"),method:"GET",header:{authorization:this.token},success:function(t){t=i.default.null2str(t),o("log",t,"++++"," at pages\\shareCode.vue:282"),0==t.data.code?(e.showToast({title:t.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:2})}),2e3)):(e.showToast({title:t.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3))}})},cancel:function(e){this.$refs["show"+e].close()},des:function(){e.showToast({title:"请重新获取二维码",icon:"none"})},goShare:function(t){var n=this;o("log",t," at pages\\shareCode.vue:317");var i="";"WXSceneSession"==t?i="WXSceneSession":"WXSenceTimeline"==t&&(i="WXSenceTimeline"),e.share({provider:"weixin",scene:i,type:0,href:this.codeList.share_link,title:"子诺新微金",summary:"我正在使用子诺新微金，赶紧跟我一起来体验！",imageUrl:" ",success:function(e){n.showIs="1"},fail:function(e){}})},getPageUrl:function(){var e=getCurrentPages();e=e[e.length-1];var t=e.route,n=e.options,o="?";for(var i in n)o+=i,o+="=",o+=n[i],o+="&";return o=o.substring(0,o.length-1),t+=o,t},again:function(){this.getCode()}}};t.default=c}).call(this,n("6e42")["default"],n("0de9")["default"])},cc25:function(e,t,n){"use strict";n.r(t);var o=n("2454"),i=n("19a4");for(var a in i)"default"!==a&&function(e){n.d(t,e,(function(){return i[e]}))}(a);n("84ec");var s,c=n("f0c5"),u=Object(c["a"])(i["default"],o["b"],o["c"],!1,null,null,null,!1,o["a"],s);t["default"]=u.exports}},[["a126","common/runtime","common/vendor"]]]);
 });
 require('pages/shareCode.js');
 __wxRoute = 'pages/meApply';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/meApply.js';
@@ -6626,13 +6578,13 @@ require('pages/boardData.js');
 __wxRoute = 'pages/showCode';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/showCode.js';
 
 define('pages/showCode.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/showCode"],{"2a81":function(e,t,n){"use strict";n.r(t);var o=n("b026"),i=n("ae1c");for(var a in i)"default"!==a&&function(e){n.d(t,e,(function(){return i[e]}))}(a);n("2fa1");var s,c=n("f0c5"),u=Object(c["a"])(i["default"],o["b"],o["c"],!1,null,null,null,!1,o["a"],s);t["default"]=u.exports},"2fa1":function(e,t,n){"use strict";var o=n("aabe"),i=n.n(o);i.a},aabe:function(e,t,n){},acf7:function(e,t,n){"use strict";(function(e,o){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=a(n("a3a0"));n("24e8");function a(e){return e&&e.__esModule?e:{default:e}}getApp();var s=function(){n.e("components/uni-popup").then(function(){return resolve(n("a78d"))}.bind(null,n)).catch(n.oe)},c={data:function(){return{bottomData:[{text:"微信好友",type:"WXSceneSession",icon:"iconweixin"},{text:"朋友圈",type:"WXSenceTimeline",icon:"iconpengyouquan"}],codeType:"",codeList:{},showIs:"0",openSettingBtnHidden:!0,imgUrl:"",bj:"../static/erweimaImg.png",wWidth:"",wHeight:"",token:""}},components:{uniPopup:s},onLoad:function(t){var n=this;this.token=e.getStorageSync("token"),o("log",t," at pages\\showCode.vue:102"),this.codeType=t.type,this.imgUrl=i.default.imgUrl,e.getSystemInfo({success:function(e){n.wWidth=e.windowWidth,o("log",n.wWidth," at pages\\showCode.vue:108"),n.wHeight=e.windowHeight}})},onShow:function(){this.getCode()},onShareAppMessage:function(){var e=this.getPageUrl();return{title:this.articleDetail.title,path:e}},shareFriend:function(){this.goShare("WXSceneSession")},shareFriendcricle:function(){this.goShare("WXSenceTimeline")},methods:{quickInlet:function(e){2==e?this.$refs.showshare.open():1==e&&this.getList()},handleSetting:function(e){o("log",e," at pages\\showCode.vue:146"),e.detail.authSetting["scope.writePhotosAlbum"]?this.openSettingBtnHidden=!0:this.openSettingBtnHidden=!1},saveEwm:function(){var t=this;e.getSetting({success:function(n){n.authSetting["scope.writePhotosAlbum"]?t.saveImgToLocal():e.authorize({scope:"scope.writePhotosAlbum",success:function(){t.saveImgToLocal()},fail:function(){t.openSettingBtnHidden=!1}})}})},saveImgToLocal:function(){var t=this;e.showModal({title:"提示",content:"确定保存到相册吗",success:function(n){if(n.confirm){var i=t,a=(e.getSystemInfoSync(),e.createCanvasContext("mycanvas"));e.getImageInfo({src:i.codeList.faceurl,success:function(t){o("log",t," at pages\\showCode.vue:190"),a.drawImage(i.bj,0,0,i.wWidth,i.wHeight),a.drawImage(t.path,i.wWidth/2-80,i.wHeight/2-160,160,160),a.draw(!0,(function(){e.canvasToTempFilePath({x:0,y:0,width:i.wWidth,height:i.wHeight,destWidth:i.wWidth,destHeight:i.wHeight,canvasId:"mycanvas",success:function(t){e.saveImageToPhotosAlbum({filePath:t.tempFilePath,success:function(){e.showToast({title:"图片保存成功～"})},fail:function(e){},complete:function(){e.hideLoading()}})},fail:function(t){e.showToast({title:"保存失败",icon:"none"})}})}))}})}else n.cancel&&e.showToast({title:"取消成功",icon:"none"})}})},getCode:function(){var t=this;e.request({url:"".concat(i.default.requestUrl,"/promote-showmycode"),method:"GET",header:{authorization:this.token},success:function(n){n=i.default.null2str(n),o("log",n,"---"," at pages\\showCode.vue:245"),-1==n.data.code?(e.showToast({title:n.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateTo({url:"/pages/message"})}),2e3)):(t.codeList=n.data,t.showIs="0",o("log",t.codeList.face,"*"," at pages\\showCode.vue:259"))}})},getList:function(){e.request({url:"".concat(i.default.requestUrl,"/promote-getmycode"),method:"GET",header:{authorization:this.token},success:function(t){t=i.default.null2str(t),o("log",t,"++++"," at pages\\showCode.vue:275"),0==t.data.code?e.showToast({title:t.data.tip_msg,icon:"none"}):(e.showToast({title:t.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3))}})},cancel:function(e){this.$refs["show"+e].close()},des:function(){e.showToast({title:"请重新获取二维码",icon:"none"})},goShare:function(t){var n=this;o("log",t," at pages\\showCode.vue:316");var i="";"WXSceneSession"==t?i="WXSceneSession":"WXSenceTimeline"==t&&(i="WXSenceTimeline"),e.share({provider:"weixin",scene:i,type:0,href:this.codeList.share_link,title:"子诺新微金",summary:"我正在使用子诺新微金，赶紧跟我一起来体验！",imageUrl:" ",success:function(e){n.showIs="1"},fail:function(e){}})},getPageUrl:function(){var e=getCurrentPages();e=e[e.length-1];var t=e.route,n=e.options,o="?";for(var i in n)o+=i,o+="=",o+=n[i],o+="&";return o=o.substring(0,o.length-1),t+=o,t},again:function(){this.getCode()}}};t.default=c}).call(this,n("6e42")["default"],n("0de9")["default"])},ae1c:function(e,t,n){"use strict";n.r(t);var o=n("acf7"),i=n.n(o);for(var a in o)"default"!==a&&function(e){n.d(t,e,(function(){return o[e]}))}(a);t["default"]=i.a},b026:function(e,t,n){"use strict";var o,i=function(){var e=this,t=e.$createElement;e._self._c},a=[];n.d(t,"b",(function(){return i})),n.d(t,"c",(function(){return a})),n.d(t,"a",(function(){return o}))},f7a4:function(e,t,n){"use strict";(function(e){n("b5b4"),n("921b");o(n("66fd"));var t=o(n("2a81"));function o(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])}},[["f7a4","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/showCode"],{"2a81":function(e,t,n){"use strict";n.r(t);var o=n("bf91"),i=n("ae1c");for(var a in i)"default"!==a&&function(e){n.d(t,e,(function(){return i[e]}))}(a);n("2fa1");var s,c=n("f0c5"),u=Object(c["a"])(i["default"],o["b"],o["c"],!1,null,null,null,!1,o["a"],s);t["default"]=u.exports},"2fa1":function(e,t,n){"use strict";var o=n("aabe"),i=n.n(o);i.a},aabe:function(e,t,n){},acf7:function(e,t,n){"use strict";(function(e,o){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=a(n("a3a0"));n("24e8");function a(e){return e&&e.__esModule?e:{default:e}}getApp();var s=function(){n.e("components/uni-popup").then(function(){return resolve(n("a78d"))}.bind(null,n)).catch(n.oe)},c={data:function(){return{bottomData:[{text:"微信好友",type:"WXSceneSession",icon:"iconweixin"},{text:"朋友圈",type:"WXSenceTimeline",icon:"iconpengyouquan"}],codeType:"",codeList:{},showIs:"0",openSettingBtnHidden:!0,imgUrl:"",bj:"../static/erweimaImg.png",wWidth:"",wHeight:"",token:""}},components:{uniPopup:s},onLoad:function(t){var n=this;this.token=e.getStorageSync("token"),o("log",t," at pages\\showCode.vue:102"),this.codeType=t.type,this.imgUrl=i.default.imgUrl,e.getSystemInfo({success:function(e){n.wWidth=e.windowWidth,o("log",n.wWidth," at pages\\showCode.vue:108"),n.wHeight=e.windowHeight}})},onShow:function(){this.getCode()},onShareAppMessage:function(){var e=this.getPageUrl();return{title:this.articleDetail.title,path:e}},shareFriend:function(){this.goShare("WXSceneSession")},shareFriendcricle:function(){this.goShare("WXSenceTimeline")},methods:{quickInlet:function(e){2==e?this.$refs.showshare.open():1==e&&this.getList()},handleSetting:function(e){o("log",e," at pages\\showCode.vue:146"),e.detail.authSetting["scope.writePhotosAlbum"]?this.openSettingBtnHidden=!0:this.openSettingBtnHidden=!1},saveEwm:function(){var t=this;e.getSetting({success:function(n){n.authSetting["scope.writePhotosAlbum"]?t.saveImgToLocal():e.authorize({scope:"scope.writePhotosAlbum",success:function(){t.saveImgToLocal()},fail:function(){t.openSettingBtnHidden=!1}})}})},saveImgToLocal:function(){var t=this;e.showModal({title:"提示",content:"确定保存到相册吗",success:function(n){if(n.confirm){var i=t,a=(e.getSystemInfoSync(),e.createCanvasContext("mycanvas"));e.getImageInfo({src:i.codeList.faceurl,success:function(t){o("log",t," at pages\\showCode.vue:190"),a.drawImage(i.bj,0,0,i.wWidth,i.wHeight),a.drawImage(t.path,i.wWidth/2-80,i.wHeight/2-160,160,160),a.draw(!0,(function(){e.canvasToTempFilePath({x:0,y:0,width:i.wWidth,height:i.wHeight,destWidth:i.wWidth,destHeight:i.wHeight,canvasId:"mycanvas",success:function(t){e.saveImageToPhotosAlbum({filePath:t.tempFilePath,success:function(){e.showToast({title:"图片保存成功～"})},fail:function(e){},complete:function(){e.hideLoading()}})},fail:function(t){e.showToast({title:"保存失败",icon:"none"})}})}))}})}else n.cancel&&e.showToast({title:"取消成功",icon:"none"})}})},getCode:function(){var t=this;e.request({url:"".concat(i.default.requestUrl,"/promote-showmycode"),method:"GET",header:{authorization:this.token},success:function(n){n=i.default.null2str(n),o("log",n,"---"," at pages\\showCode.vue:245"),-1==n.data.code?(e.showToast({title:n.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3)):(t.codeList=n.data,t.showIs="0",o("log",t.codeList.face,"*"," at pages\\showCode.vue:259"))}})},getList:function(){e.request({url:"".concat(i.default.requestUrl,"/promote-getmycode"),method:"GET",header:{authorization:this.token},success:function(t){t=i.default.null2str(t),o("log",t,"++++"," at pages\\showCode.vue:275"),0==t.data.code?e.showToast({title:t.data.tip_msg,icon:"none"}):(e.showToast({title:t.data.tip_msg,icon:"none"}),setTimeout((function(t){e.navigateBack({delta:1})}),2e3))}})},cancel:function(e){this.$refs["show"+e].close()},des:function(){e.showToast({title:"请重新获取二维码",icon:"none"})},goShare:function(t){var n=this;o("log",t," at pages\\showCode.vue:316");var i="";"WXSceneSession"==t?i="WXSceneSession":"WXSenceTimeline"==t&&(i="WXSenceTimeline"),e.share({provider:"weixin",scene:i,type:0,href:this.codeList.share_link,title:"子诺新微金",summary:"我正在使用子诺新微金，赶紧跟我一起来体验！",imageUrl:" ",success:function(e){n.showIs="1"},fail:function(e){}})},getPageUrl:function(){var e=getCurrentPages();e=e[e.length-1];var t=e.route,n=e.options,o="?";for(var i in n)o+=i,o+="=",o+=n[i],o+="&";return o=o.substring(0,o.length-1),t+=o,t},again:function(){this.getCode()}}};t.default=c}).call(this,n("6e42")["default"],n("0de9")["default"])},ae1c:function(e,t,n){"use strict";n.r(t);var o=n("acf7"),i=n.n(o);for(var a in o)"default"!==a&&function(e){n.d(t,e,(function(){return o[e]}))}(a);t["default"]=i.a},bf91:function(e,t,n){"use strict";var o,i=function(){var e=this,t=e.$createElement;e._self._c},a=[];n.d(t,"b",(function(){return i})),n.d(t,"c",(function(){return a})),n.d(t,"a",(function(){return o}))},f7a4:function(e,t,n){"use strict";(function(e){n("b5b4"),n("921b");o(n("66fd"));var t=o(n("2a81"));function o(e){return e&&e.__esModule?e:{default:e}}e(t.default)}).call(this,n("6e42")["createPage"])}},[["f7a4","common/runtime","common/vendor"]]]);
 });
 require('pages/showCode.js');
 __wxRoute = 'pages/messageDetail';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/messageDetail.js';
 
 define('pages/messageDetail.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/messageDetail"],{"1e72":function(e,n,t){"use strict";(function(e){t("b5b4"),t("921b");u(t("66fd"));var n=u(t("3b8b"));function u(e){return e&&e.__esModule?e:{default:e}}e(n.default)}).call(this,t("6e42")["createPage"])},"3b8b":function(e,n,t){"use strict";t.r(n);var u=t("605c"),a=t("6b58");for(var o in a)"default"!==o&&function(e){t.d(n,e,(function(){return a[e]}))}(o);t("57ae");var r,c=t("f0c5"),f=Object(c["a"])(a["default"],u["b"],u["c"],!1,null,null,null,!1,u["a"],r);n["default"]=f.exports},"57ae":function(e,n,t){"use strict";var u=t("7724"),a=t.n(u);a.a},"605c":function(e,n,t){"use strict";var u,a=function(){var e=this,n=e.$createElement;e._self._c},o=[];t.d(n,"b",(function(){return a})),t.d(n,"c",(function(){return o})),t.d(n,"a",(function(){return u}))},"6b58":function(e,n,t){"use strict";t.r(n);var u=t("6e40"),a=t.n(u);for(var o in u)"default"!==o&&function(e){t.d(n,e,(function(){return u[e]}))}(o);n["default"]=a.a},"6e40":function(e,n,t){"use strict";(function(e,u){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;a(t("a3a0"));function a(e){return e&&e.__esModule?e:{default:e}}var o=function(){Promise.all([t.e("common/vendor"),t.e("components/jyf-parser")]).then(function(){return resolve(t("def7"))}.bind(null,t)).catch(t.oe)},r={data:function(){return{news:{}}},components:{"jyf-parser":o},onLoad:function(n){e("log",n," at pages\\messageDetail.vue:22"),this.news=JSON.parse(n.obj)},methods:{link:function(){u.navigateTo({url:"/pages/promptlyGetQr"})}}};n.default=r}).call(this,t("0de9")["default"],t("6e42")["default"])},7724:function(e,n,t){}},[["1e72","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/messageDetail"],{"0040":function(e,n,t){"use strict";var u,a=function(){var e=this,n=e.$createElement;e._self._c},o=[];t.d(n,"b",(function(){return a})),t.d(n,"c",(function(){return o})),t.d(n,"a",(function(){return u}))},"1e72":function(e,n,t){"use strict";(function(e){t("b5b4"),t("921b");u(t("66fd"));var n=u(t("3b8b"));function u(e){return e&&e.__esModule?e:{default:e}}e(n.default)}).call(this,t("6e42")["createPage"])},"3b8b":function(e,n,t){"use strict";t.r(n);var u=t("0040"),a=t("6b58");for(var o in a)"default"!==o&&function(e){t.d(n,e,(function(){return a[e]}))}(o);t("57ae");var r,c=t("f0c5"),f=Object(c["a"])(a["default"],u["b"],u["c"],!1,null,null,null,!1,u["a"],r);n["default"]=f.exports},"57ae":function(e,n,t){"use strict";var u=t("7724"),a=t.n(u);a.a},"6b58":function(e,n,t){"use strict";t.r(n);var u=t("6e40"),a=t.n(u);for(var o in u)"default"!==o&&function(e){t.d(n,e,(function(){return u[e]}))}(o);n["default"]=a.a},"6e40":function(e,n,t){"use strict";(function(e,u){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;a(t("a3a0"));function a(e){return e&&e.__esModule?e:{default:e}}var o=function(){Promise.all([t.e("common/vendor"),t.e("components/jyf-parser")]).then(function(){return resolve(t("def7"))}.bind(null,t)).catch(t.oe)},r={data:function(){return{news:{}}},components:{"jyf-parser":o},onLoad:function(n){e("log",n," at pages\\messageDetail.vue:22"),this.news=JSON.parse(n.obj)},methods:{link:function(){u.navigateTo({url:"/pages/promptlyGetQr"})}}};n.default=r}).call(this,t("0de9")["default"],t("6e42")["default"])},7724:function(e,n,t){}},[["1e72","common/runtime","common/vendor"]]]);
 });
 require('pages/messageDetail.js');
 ;(function(global) {
