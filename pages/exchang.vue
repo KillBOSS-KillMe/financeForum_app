@@ -12,7 +12,7 @@
 		<view class="leftNav">
 			<view class="nav-left">
 				<scroll-view scroll-y>
-					<view class="nav-left-item"  @tap="getAll(index)" :class="['colorD', categoryActive == index ? 'color' : '']">全国开放</view>
+					<view class="nav-left-item" @tap="getAll(-1)" :class="['colorD', categoryActive == -1 ? 'color' : '']">全国开放</view>
 					<view class="nav-left-item" v-for="(item,index) in categoryList" @click="categoryMainClick(item.id,index)" :key="index"
 					 :class="['colorD', categoryActive == index ? 'color' : '']">
 						{{item.area_name}}
@@ -57,7 +57,7 @@ export default {
 			isShow: false,
 			categoryList:[],
 			subCategoryList:[],
-			categoryActive: 0,
+			categoryActive: '-1',
 			area_id: '',
 			token: '',
 			type: ''
@@ -69,11 +69,11 @@ export default {
 	},
 	onShow(){	
 		this.getUserInfo()
-		// this.categoryActive = 0,
 		this.subCategoryList =[]
 		// 加载微金交流首页数据
 		this.getRegion();
-		this.getAll()
+		this.getList()
+		// this.getAll()
 	},
 	methods: {
 		// 左边导航点击事件
@@ -86,6 +86,7 @@ export default {
 			this.getList()
 		},
 		getAll(e){
+			console.log(e)
 			this.area_id = ''
 			this.type = 'all'
 			this.subCategoryList =[]

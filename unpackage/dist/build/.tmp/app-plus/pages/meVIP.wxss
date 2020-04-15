@@ -4,7 +4,7 @@
 }
 .head {
 	width: 750rpx;
-	height: 260rpx;
+	height: 186rpx;
 	background: #2390dc;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -16,7 +16,7 @@
 	        align-content: flex-start;
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
-	padding-top: 30rpx;
+	padding-top: 16rpx;
 }
 .head image {
 	width: 124rpx;
@@ -31,6 +31,9 @@
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
 	padding: 10rpx 0;
 }
 .radioList radio {
@@ -54,6 +57,14 @@
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	position: relative;
+}
+.bannerI .item{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
 }
 .bannerImg{
 	position: relative;

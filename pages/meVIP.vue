@@ -18,18 +18,24 @@
 				</view>
 			</view> -->
 			<view class="bannerI">
-				<block v-for="(item,index) in vip.data" :key="index">
-					<view class="bannerImg">
-						<image :src="imgUrl+item.title_pic" data-id="item.id"></image>
-						<text class="vipTip">{{item.level}}</text>
-					</view>
+				<radio-group @change="getMony">
+					<block v-for="(item,index) in vip.data" :key="index">
+						<view class="item">
+							<radio :value="index" checked="true" v-if="index == 0"/>
+							<radio :value="index" v-else/>
+							<view class="bannerImg">
+								<image :src="imgUrl+item.title_pic" data-id="item.id"></image>
+								<text class="vipTip">{{item.level}}</text>
+							</view>
+						</view>
 						
-				</block>
+					</block>
+				</radio-group>
 			</view>
 			<view class="list" current='current'>
 				<text>会员可享受一以下功能权限</text>
 				<view class="listItem">
-						<block v-for="(itemL,indexL) in vip.data[current].permission" :key="indexL">
+						<block v-for="(itemL,indexL) in vip.data[0].permission" :key="indexL">
 							<view class="item" v-if="itemL.icon != ''">
 								<image :src="imgUrl + itemL.icon" mode=""></image>
 								<text>{{itemL.name}}</text>
@@ -38,24 +44,21 @@
 				</view>
 			</view>
 			<view class="longVip">
-				<radio-group @change="getMony">
-					<block v-for="(item,index) in vip.data" :key="index">
+				<!-- <radio-group @change="getMony"> -->
+					<!-- <block v-for="(item,index) in vip.data" :key="index"> -->
 						<view class="radioList">
-							<radio :value="item.vip_price"/>
-							<view>
-								<view class="money">
-									￥
-									<text>{{item.vip_price  || 0}}</text>
-									/{{item.level}}
-								</view>
-								<view class="time">
-									<text class="long">{{item.level}}</text>
-									<text>{{item.level}}专享受价￥{{item.vip_price || 0}}</text>
-								</view>
+							<view class="money">
+								￥
+								<text>{{vip.data[current].vip_price  || 0}}</text>
+								/{{vip.data[current].level}}
+							</view>
+							<view class="time">
+								<text class="long">{{vip.data[current].level}}</text>
+								<text>{{vip.data[current].level}}专享受价￥{{vip.data[current].vip_price || 0}}</text>
 							</view>
 						</view>
-					</block>
-				</radio-group>
+					<!-- </block> -->
+				<!-- </radio-group> -->
 				
 				
 			</view>
@@ -106,7 +109,7 @@
 		methods: {
 			getMony(e){
 				console.log(e,'************')
-				this.money =e.detail.value
+				this.current =e.detail.value
 			},
 			meTreaty(){
 				uni.navigateTo({
@@ -114,7 +117,7 @@
 				})
 			},
 			banner(e){
-				this.current = e.detail.current
+				// this.current = e.detail.current
 				// console.log(e)
 			},
 			checkboxChange(e){
@@ -144,28 +147,30 @@
 			},
 			goVip(e){
 				console.log(this.isCheck)
-				
 				if (!this.isCheck) {
 					uni.showToast({
 						title: '请同意相关协议',
 						icon: 'none',
 						duration: 2000
 					});
-					return false
-				}
-				let money = this.money
-				if (money != '') {
-					// console.log(e)
+				}else{
 					uni.navigateTo({
-						url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${money}`
+						url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${e.currentTarget.dataset.money}`
 					})
-				} else {
-					uni.showToast({
-						title: '请选择价格',
-						icon: 'none',
-						duration: 2000
-					});
 				}
+				// let money = this.money
+				// if (money != '') {
+				// 	// console.log(e)
+				// 	uni.navigateTo({
+				// 		url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${money}`
+				// 	})
+				// } else {
+				// 	uni.showToast({
+				// 		title: '请选择价格',
+				// 		icon: 'none',
+				// 		duration: 2000
+				// 	});
+				// }
 				
 			}
 		}
@@ -178,13 +183,13 @@
 }
 .head {
 	width: 750rpx;
-	height: 260rpx;
+	height: 186rpx;
 	background: #2390dc;
 	display: flex;
 	justify-content: center;
 	align-content: flex-start;
 	flex-wrap: wrap;
-	padding-top: 30rpx;
+	padding-top: 16rpx;
 }
 .head image {
 	width: 124rpx;
@@ -195,6 +200,7 @@
 .radioList{
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	padding: 10rpx 0;
 }
 .radioList radio {
@@ -213,6 +219,10 @@
 	justify-content: center;
 	flex-wrap: wrap;
 	position: relative;
+}
+.bannerI .item{
+	display: flex;
+	align-items: center;
 }
 .bannerImg{
 	position: relative;

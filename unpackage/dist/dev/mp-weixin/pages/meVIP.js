@@ -212,6 +212,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -291,15 +294,25 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
+//
+//
+//
 var app = getApp();var _default = { data: function data() {return { isCheck: false, bannerIndex: '0', current: '0', vip: [], imgUrl: '', token: '', money: '' };}, onLoad: function onLoad() {this.token = uni.getStorageSync('token');this.vipList();this.imgUrl = _helper.default.imgUrl;}, onShow: function onShow() {// console.log(app.globalData.vipIndex)
-    if (app.globalData.vipIndex == 1) {this.isCheck = true;}}, methods: { getMony: function getMony(e) {console.log(e, '************');this.money = e.detail.value;}, meTreaty: function meTreaty() {uni.navigateTo({ url: '/pages/meTreaty' });}, banner: function banner(e) {this.current = e.detail.current; // console.log(e)
-    }, checkboxChange: function checkboxChange(e) {this.isCheck = !this.isCheck;}, vipList: function vipList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/vips"), method: 'GET', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.vip = res.data;} else {uni.showToast({ title: res.data.message });}} });}, goVip: function goVip(e) {console.log(this.isCheck);if (!this.isCheck) {uni.showToast({ title: '请同意相关协议', icon: 'none', duration: 2000 });return false;}var money = this.money;if (money != '') {// console.log(e)
-        uni.navigateTo({ url: "/pages/payType?id=".concat(e.currentTarget.dataset.id, "&money=").concat(money) });} else {uni.showToast({ title: '请选择价格',
-          icon: 'none',
-          duration: 2000 });
-
-      }
-
+    if (app.globalData.vipIndex == 1) {this.isCheck = true;}}, methods: { getMony: function getMony(e) {console.log(e, '************');this.current = e.detail.value;}, meTreaty: function meTreaty() {uni.navigateTo({ url: '/pages/meTreaty' });}, banner: function banner(e) {// this.current = e.detail.current
+      // console.log(e)
+    }, checkboxChange: function checkboxChange(e) {this.isCheck = !this.isCheck;}, vipList: function vipList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/vips"), method: 'GET', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);console.log(res);if (res.data.status_code == 200) {_this.vip = res.data;} else {uni.showToast({ title: res.data.message });}} });}, goVip: function goVip(e) {console.log(this.isCheck);if (!this.isCheck) {uni.showToast({ title: '请同意相关协议', icon: 'none', duration: 2000 });} else {uni.navigateTo({ url: "/pages/payType?id=".concat(e.currentTarget.dataset.id, "&money=").concat(e.currentTarget.dataset.money) });} // let money = this.money
+      // if (money != '') {
+      // 	// console.log(e)
+      // 	uni.navigateTo({
+      // 		url:`/pages/payType?id=${e.currentTarget.dataset.id}&money=${money}`
+      // 	})
+      // } else {
+      // 	uni.showToast({
+      // 		title: '请选择价格',
+      // 		icon: 'none',
+      // 		duration: 2000
+      // 	});
+      // }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
