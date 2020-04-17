@@ -46,13 +46,13 @@
 				<text class="faceInlet" @tap="showCode(collectionList.member.is_show_face)">查看我的推广二维码</text>
 			</view>
 			<view class="content">
-				<text>1、分享邀请链接给您的好友，用户下载安装app您将获得3现金奖励；</text>
-				<text>2、邀请奖励将在好友领取时（访问此页面）发放；</text>
-				<text>3、邀请奖励：用户开通一年会员，您将获得80元现金奖励；用户开通永久会员，您将获得120元先将奖励；（限会员才有推广权限）</text>
-				<text>4、邀请好友获得现金奖励，满50元均可联系官方客服申请提现；</text>
-				<text>5、一个硬件设备均视为同一用户，邀请链接仅对新注册用户有效；</text>
-				<text>6、如发现任何违规作弊行为将视为情节严重程度进行判断：不予发放奖励封停冻结账号；</text>
-				<text>7、如有其它的疑问请咨询子诺交流官方客服Tel:18535464004;</text>
+				<view>1、分享邀请链接给您的用户，用户下载安装app您将获得5现金奖励。现金奖励仅限邀请客户！</view>
+				<view>2、所有人均可享受两级分润，由一级代理设置分润比例。</view>
+				<view>3、凡是由您邀请用户，后期用户续费可享受二次分润！</view>
+				<view>4、邀请好友获得现金奖励，满50元申请提现即可;</view>
+				<view>5、一个硬件设备均视为同一用户，邀请链接仅对新注册用户有效;</view>
+				<view>6、如发现任何违规作弊行为将视为情节严重程度进行判断:不予发放奖励封停冻结账号;</view>
+				<view>7、如有其它的疑问请咨询子诺新微金官方客服电话同微信:<text>17118444444</text>，QQ:<text>1071076818</text></view>
 			</view>
 		</view>
 	</view>
@@ -500,11 +500,15 @@ button::after {
 /* 	width: 690rpx;
 	padding: 30rpx 30rpx; */
 }
-.content text {
-	font-size: 20rpx;
+.content>view {
+	font-size: 24rpx;
 	font-weight: 500;
-	color: #b8b8b8;
+	color: #000;
 	line-height: 40rpx;
+}
+.content>view text{
+	color: red;
+	display: inline-block;
 }
 .hr {
 	width: 750rpx;

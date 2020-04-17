@@ -387,11 +387,15 @@ button::after {
 /* 	width: 690rpx;
 	padding: 30rpx 30rpx; */
 }
-.content text {
-	font-size: 20rpx;
+.content>view {
+	font-size: 24rpx;
 	font-weight: 500;
-	color: #b8b8b8;
+	color: #000;
 	line-height: 40rpx;
+}
+.content>view text{
+	color: red;
+	display: inline-block;
 }
 .hr {
 	width: 750rpx;

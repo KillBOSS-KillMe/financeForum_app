@@ -300,15 +300,15 @@
 	}
 
 	.nav .navList {
-		width: 150rpx;
-		margin-right: 27.99rpx;
+		width: 120rpx;
+		margin-right: 20rpx;
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
 		margin-bottom: 38rpx;
 	}
 
-	.nav .navList:nth-child(4n) {
+	.nav .navList:nth-child(5n) {
 		margin-right: 0;
 	}
 
@@ -317,6 +317,9 @@
 		color: #333333;
 		font-weight: 600;
 		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	.nav .navList image {

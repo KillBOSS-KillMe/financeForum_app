@@ -263,15 +263,15 @@
 	}
 
 	.nav .navList {
-		width: 116rpx;
-		margin-right: 27.99rpx;
+		width: 150rpx;
+		margin-right: 30rpx;
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
 		margin-bottom: 38rpx;
 	}
 
-	.nav .navList:nth-child(5n) {
+	.nav .navList:nth-child(4n) {
 		margin-right: 0;
 	}
 

@@ -74,13 +74,13 @@
     "list": [
       {
         "pagePath": "pages/index",
-        "text": "首页",
+        "text": "微金首页",
         "iconPath": "static/index.png",
         "selectedIconPath": "static/indexCur.png"
       },
       {
         "pagePath": "pages/collection",
-        "text": "精准匹配",
+        "text": "免费专区",
         "iconPath": "static/gather.png",
         "selectedIconPath": "static/gatherCur.png"
       },
@@ -110,5 +110,5 @@
     "page-search": "/components/pageSearch",
     "uni-load-more": "/components/uni-load-more"
   },
-  "sitemapLocation": "sitemap9.json"
+  "sitemapLocation": "sitemap34.json"
 }

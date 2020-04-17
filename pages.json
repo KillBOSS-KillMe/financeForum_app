@@ -28,7 +28,7 @@
 		{
 			"path": "pages/collection",
 			"style": {
-				"navigationBarTitleText": "精准匹配"
+				"navigationBarTitleText": "免费专区"
 			}
 		},
 		{
@@ -378,13 +378,13 @@
 		// "borderStyle":"black",
 		"list": [{
 				"pagePath": "pages/index",
-				"text": "首页",
+				"text": "微金首页",
 				"iconPath": "static/index.png",
 				"selectedIconPath": "static/indexCur.png"
 			},
 			{
 				"pagePath": "pages/collection",
-				"text": "精准匹配",
+				"text": "免费专区",
 				"iconPath": "static/gather.png",
 				"selectedIconPath": "static/gatherCur.png"
 			},
