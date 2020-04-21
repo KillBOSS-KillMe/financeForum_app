@@ -49,7 +49,7 @@
 				boardId: '',
 				pageNode: [],
 				imgUrl: '',
-				page_size: 5,
+				page_size: 15,
 				page:1,
 				listNode: [],
 				token: ''

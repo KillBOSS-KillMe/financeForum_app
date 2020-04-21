@@ -60,7 +60,7 @@ export default {
 			categoryActive: '-1',
 			area_id: '',
 			token: '',
-			type: ''
+			type: 'all'
 		};
 	},
 	onLoad() {	

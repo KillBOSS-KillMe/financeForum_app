@@ -201,7 +201,7 @@ page {
 }
 .exchangList {
 	width: 690rpx;
-	margin: 20rpx 30rpx;
+	padding: 20rpx 30rpx;
 }
 .headInfo {
 	display: flex;

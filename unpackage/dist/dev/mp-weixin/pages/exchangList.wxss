@@ -6,10 +6,11 @@ page {
 	padding: 18rpx;
 	background-color: #ffffff;
 	border-radius: 8rpx;
+	width: 690rpx;
+	padding: 20rpx 30rpx;
 }
 .exchangList {
-	width: 690rpx;
-	margin: 20rpx 30rpx;
+	width: 750rpx;
 }
 .headInfo {
 	display: -webkit-box;
@@ -123,7 +124,8 @@ page {
 	margin-top: 18rpx;
 	background-color: #ffffff;
 	border-radius: 8rpx;
-	padding: 18rpx;
+	padding: 18rpx 30rpx 100rpx;
+	width: 690rpx;
 }
 .contentItem {
 	display: -webkit-box;
@@ -165,17 +167,36 @@ page {
 	font-weight: 700;
 	text-align: left;
 	color: #333333;
+	margin-bottom: 10rpx;
 }
 .contentItem .right .title .form {
 	color: #2390dc;
 	font-weight: 400;
-	width: 250rpx;
+	width: 170rpx;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	/* text-overflow: ellipsis; */
 	white-space: nowrap;
 	font-size: 28rpx;
 	font-weight: 700;
 	text-align: right;
+}
+.contentRight{
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-webkit-flex-direction: row-reverse;
+	        flex-direction: row-reverse;
+}
+.contentRight .right .title{
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-webkit-flex-direction: row-reverse;
+	        flex-direction: row-reverse;
+}
+.contentRight .headTitle{
+	text-align: right;
+}
+.contentRight .itemContent{
+	text-align: right !important;
 }
 .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
@@ -184,9 +205,10 @@ page {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-size: 28rpx;
-	font-weight: 700;
+	/* font-weight: 700; */
 	text-align: left;
 	color: #666;
+	line-height: 46rpx;
 }
 .contentItem .right .icon {
 	display: -webkit-box;
@@ -216,5 +238,40 @@ page {
 	font-size: 26rpx;
 	color: #999999;
 	margin: 0 6rpx 0 10rpx;
+}
+.bottom{
+	width: 690rpx;
+	padding: 20rpx 30rpx;
+	background-color: #FFFFFF;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	border-top: 1rpx solid #B8B8B8;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.bottom input{
+	width: 550rpx;
+	height: 30rpx;
+	padding: 14rpx 20rpx;
+	border-radius: 30rpx;
+	border: 1rpx solid #b8b8b8;
+	color: #000000;
+	font-size: 28rpx;
+}
+.bottom .iconfont{
+	color: #B8B8B8;
+	font-size: 60rpx;
+}
+.postContent{
+	color: #B8B8B8;
+	font-size: 28rpx;
 }
 

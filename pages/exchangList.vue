@@ -21,31 +21,37 @@
 		</view>
 		<view class="content">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="contentItem" @tap="getDateil(item.id)">
-					<image :src="imgUrl + item.user.avatar" mode=""></image>
+				<view class="contentItem" @tap="getDateil(item.id)" v-if="item.type == 0">
+					<image :src="item.avatar" mode=""></image>
+					<!-- <image :src="imgUrl + item.user.avatar" mode=""></image> -->
 					<view class="right">
 						<view class="title">
-							<text class="headTitle">{{ item.user.name }}</text>
-							<text class="form">来自 {{ item.from_board }}</text>
+							<text class="headTitle">{{ item.name }}</text>
+							<!-- <text class="headTitle">{{ item.user.name }}</text> -->
+							<text class="form">{{ item.created_at }}</text>
 						</view>
 						<view class="itemContent">{{ item.title }}</view>
-						<view class="icon">
-							<text>{{ item.created_at }}</text>
-							<view class="iconRight">
-								<view>
-									<uni-icon type="" class="iconfont icondianzan"></uni-icon>
-									<text>{{ item.like }}</text>
-								</view>
-								<view>
-									<uni-icon type="" class="iconfont iconhuifu"></uni-icon>
-									<text>{{ item.comments_count }}</text>
-								</view>
-							</view>
+					</view>
+				</view>
+				<view class="contentItem contentRight" @tap="getDateil(item.id)" v-if="item.type == 1">
+					<image :src="item.avatar" mode=""></image>
+					<!-- <image :src="imgUrl + item.user.avatar" mode=""></image> -->
+					<view class="right">
+						<view class="title">
+							<text class="headTitle">{{ item.name }}</text>
+							<!-- <text class="headTitle">{{ item.user.name }}</text> -->
+							<text class="form">{{ item.created_at }}</text>
 						</view>
+						<view class="itemContent">{{ item.title }}</view>
 					</view>
 				</view>
 			</block>
 		</view>
+		<view class="bottom">
+			<input type="text" value="" placeholder="写评论" placeholder-class="postContent"/>
+			<uni-icons type="" class="iconfont iconziyuan"></uni-icons>
+		</view>
+		<!-- <button type="default" class="bottom">123</button> -->
 		<!-- #ifndef MP-WEIXIN -->
 		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconxiepinglun"></uni-icon></view>
 		<!-- #endif -->
@@ -61,7 +67,11 @@ export default {
 			imgUrl: '',
 			cityInfo: {},
 			see_sticky: '',
-			list: [],
+			list: [
+				{avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
+				{avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '1'},
+				{avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
+			],
 			page: '1',
 			pageList: '1',
 			tipList: [],
@@ -78,7 +88,7 @@ export default {
 			title: e.title
 		});
 		this.cityInfo = e;
-		this.getList();
+		// this.getList();
 		this.see_stickyList();
 	},
 	methods: {
@@ -194,10 +204,12 @@ page {
 	padding: 18rpx;
 	background-color: #ffffff;
 	border-radius: 8rpx;
+	width: 690rpx;
+	padding: 20rpx 30rpx;
 }
 .exchangList {
-	width: 690rpx;
-	margin: 20rpx 30rpx;
+	width: 750rpx;
+	
 }
 .headInfo {
 	display: flex;
@@ -287,14 +299,17 @@ page {
 	margin-top: 18rpx;
 	background-color: #ffffff;
 	border-radius: 8rpx;
-	padding: 18rpx;
+	padding: 18rpx 30rpx 100rpx;
+	width: 690rpx;
+	
 }
 .contentItem {
 	display: flex;
 	justify-content: space-between;
 	align-content: flex-start;
 	align-items: flex-start;
-	margin-bottom: 40rpx;
+	padding: 30rpx 0;
+	border-bottom: 1rpx solid #CCCCCC;
 }
 .contentItem > image {
 	width: 80rpx;
@@ -318,17 +333,30 @@ page {
 	font-weight: 700;
 	text-align: left;
 	color: #333333;
+	margin-bottom: 10rpx;
 }
 .contentItem .right .title .form {
 	color: #2390dc;
 	font-weight: 400;
-	width: 250rpx;
+	width: 170rpx;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	/* text-overflow: ellipsis; */
 	white-space: nowrap;
 	font-size: 28rpx;
 	font-weight: 700;
 	text-align: right;
+}
+.contentRight{
+	flex-direction: row-reverse;
+}
+.contentRight .right .title{
+	flex-direction: row-reverse;
+}
+.contentRight .headTitle{
+	text-align: right;
+}
+.contentRight .itemContent{
+	text-align: right !important;
 }
 .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
@@ -337,9 +365,10 @@ page {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-size: 28rpx;
-	font-weight: 700;
+	/* font-weight: 700; */
 	text-align: left;
 	color: #666;
+	line-height: 46rpx;
 }
 .contentItem .right .icon {
 	display: flex;
@@ -362,5 +391,34 @@ page {
 	font-size: 26rpx;
 	color: #999999;
 	margin: 0 6rpx 0 10rpx;
+}
+.bottom{
+	width: 690rpx;
+	padding: 20rpx 30rpx;
+	background-color: #FFFFFF;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	border-top: 1rpx solid #B8B8B8;
+	align-items: center;
+}
+.bottom input{
+	width: 550rpx;
+	height: 30rpx;
+	padding: 14rpx 20rpx;
+	border-radius: 30rpx;
+	border: 1rpx solid #b8b8b8;
+	color: #000000;
+	font-size: 28rpx;
+}
+.bottom .iconfont{
+	color: #B8B8B8;
+	font-size: 60rpx;
+}
+.postContent{
+	color: #B8B8B8;
+	font-size: 28rpx;
 }
 </style>
