@@ -81,7 +81,7 @@
 						res = helper.null2str(res);
 						console.log(res,'8');
 						if (res.statusCode == 200) {
-							this.list = res.data.datas.one.data
+							this.list = this.list.concat(res.data.datas.one.data)
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message
@@ -117,8 +117,13 @@
 			},
 			onReachBottom(){
 				this.page ++;
-				this.getTeamOne()
-				this.getTeamTwo()
+				if(this.indexType == 'one'){
+					this.getTeamOne()
+				} else if(this.indexType == 'two'){
+					this.getTeamTwo()
+				}
+				// this.getTeamOne()
+				// this.getTeamTwo()
 			}
 		}
 	}

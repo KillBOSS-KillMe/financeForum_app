@@ -339,7 +339,7 @@
 		}, {
 			"path": "pages/exchangList",
 			"style": {
-				"enablePullDownRefresh": true
+				// "enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/boardData",

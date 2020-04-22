@@ -192,7 +192,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -252,25 +251,83 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-//
-var app = getApp();var _default = { data: function data() {return { imgUrl: '', cityInfo: {}, see_sticky: '', list: [{ avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg', name: '来来来', title: 'nxjvnjdxflxzfkjbig', created_at: '2018-10-20', type: '0' }, { avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg', name: '来来来', title: 'nxjvnjdxflxzfkjbig', created_at: '2018-10-20', type: '1' }, { avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg', name: '来来来', title: 'nxjvnjdxflxzfkjbig', created_at: '2018-10-20', type: '0' }], page: '1', pageList: '1', tipList: [], total: '', is_follow: '', token: '' };}, onLoad: function onLoad(e) {console.log(e);this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.title });this.cityInfo = e; // this.getList();
-    this.see_stickyList();}, methods: { // 发布
+var app = getApp();var _default = { data: function data() {return { imgUrl: '', cityInfo: {}, see_sticky: '', list: [// {avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
+        // {avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '1'},
+        // {avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
+      ], page: '1', pageList: '1', tipList: [], total: '', is_follow: '', token: '', inputValue: '', userInfo: {} };}, onLoad: function onLoad(e) {console.log(e);this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;uni.setNavigationBarTitle({ title: e.title });this.cityInfo = e;this.getList();this.see_stickyList();this.user();}, methods: { user: function user() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/me"), method: 'POST', header: { authorization: this.token }, success: function success(res) {uni.hideLoading();res = _helper.default.null2str(res);_this.userInfo = res.data.id;console.log(_this.userInfo, '+++++---------------------+++');} });}, // 发布
     getPost: function getPost() {uni.navigateTo({ url: "/pages/post?id=".concat(this.cityInfo.id) });}, // 置顶加载更多
-    getMore: function getMore() {this.page++;this.see_stickyList();}, onReachBottom: function onReachBottom() {this.pageList++;this.getList();}, // 跳转帖子详情
-    getDateil: function getDateil(e) {uni.navigateTo({ url: "/pages/articleDetail?id=".concat(e) });}, // 帖子列表
-    getList: function getList() {var _this = this;uni.request({ url: "".concat(_helper.default.requestUrl, "/posts/city-posts"), method: 'GET', header: { authorization: this.token }, data: { city_id: this.cityInfo.id, see_sticky: '0', //帖子
-          page: this.pageList, page_size: '10' },
+    getMore: function getMore() {this.page++;this.see_stickyList();}, onReachBottom: function onReachBottom() {this.pageList++;this.getList();},
+    // 跳转帖子详情
+    // getDateil(e) {
+    // 	uni.navigateTo({
+    // 		url: `/pages/articleDetail?id=${e}`
+    // 	});
+    // },
+    inputV: function inputV(e) {
+      console.log(e);
+      this.inputValue = e.detail.value;
+    },
+    postContent: function postContent() {var _this2 = this;
+      if (this.inputValue == '') {
+        uni.showToast({
+          title: '请输入发表内容',
+          icon: 'none' });
+
+        return false;
+      }
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/message/sendMessageWithCityId"),
+        method: 'POST',
+        header: {
+          authorization: this.token },
+
+        data: {
+          city_id: this.cityInfo.id,
+          content: this.inputValue },
+
         success: function success(res) {
           res = _helper.default.null2str(res);
-          console.log(res, '++++++++');
+          console.log(res, '**************');
+
           if (res.data.status_code == 200) {
-            _this.list = _this.list.concat(res.data.data);
-            _this.is_follow = res.data.is_follow;
+            uni.showToast({
+              title: res.data.message,
+              icon: 'none' });
+
+            _this2.list = [];
+            _this2.pageList = '1';
+            _this2.inputValue = '';
+            _this2.getList();
           }
         } });
 
     },
-    see_stickyList: function see_stickyList() {var _this2 = this;
+    // 帖子列表
+    getList: function getList() {var _this3 = this;
+      uni.request({
+        url: "".concat(_helper.default.requestUrl, "/message/getMessageByCityId"),
+        method: 'POST',
+        header: {
+          authorization: this.token },
+
+        data: {
+          city_id: this.cityInfo.id,
+          page: this.pageList,
+          page_size: '10' },
+
+        success: function success(res) {
+          res = _helper.default.null2str(res);
+          console.log(res, '++++++++');
+
+          if (res.data.status_code == 200) {
+            console.log(res.data.data.data, '/////////////////////////////////');
+            _this3.list = _this3.list.concat(res.data.data.data);
+            _this3.is_follow = res.data.is_follow;
+          }
+        } });
+
+    },
+    see_stickyList: function see_stickyList() {var _this4 = this;
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/posts/city-posts"),
         method: 'GET',
@@ -287,13 +344,13 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
           res = _helper.default.null2str(res);
           console.log(res, '++++++++');
           if (res.data.status_code == 200) {
-            _this2.total = res.data.total;
-            _this2.tipList = _this2.tipList.concat(res.data.data);
+            _this4.total = res.data.total;
+            _this4.tipList = _this4.tipList.concat(res.data.data);
           }
         } });
 
     },
-    addFollow: function addFollow(type) {var _this3 = this;
+    addFollow: function addFollow(type) {var _this5 = this;
       // 关注用户
       uni.request({
         url: "".concat(_helper.default.requestUrl, "/user/add_follow"),
@@ -315,7 +372,7 @@ var app = getApp();var _default = { data: function data() {return { imgUrl: '', 
               icon: 'none',
               duration: 2000 });
 
-            _this3.is_follow = 1;
+            _this5.is_follow = 1;
           } else {
             uni.showToast({
               title: res.data.message,

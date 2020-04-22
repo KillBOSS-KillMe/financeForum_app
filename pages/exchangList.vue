@@ -21,35 +21,34 @@
 		</view>
 		<view class="content">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="contentItem" @tap="getDateil(item.id)" v-if="item.type == 0">
-					<image :src="item.avatar" mode=""></image>
-					<!-- <image :src="imgUrl + item.user.avatar" mode=""></image> -->
+				<view class="contentItem" @tap="getDateil(item.id)" v-if="item.user.id != userInfo">
+					<!-- <image :src="item.avatar" mode=""></image> -->
+					<image :src="imgUrl + item.user.avatar" mode=""></image>
 					<view class="right">
 						<view class="title">
-							<text class="headTitle">{{ item.name }}</text>
-							<!-- <text class="headTitle">{{ item.user.name }}</text> -->
+							<!-- <text class="headTitle">{{ item.name }}</text> -->
+							<text class="headTitle">{{ item.user.name }}</text>
 							<text class="form">{{ item.created_at }}</text>
 						</view>
-						<view class="itemContent">{{ item.title }}</view>
+						<view class="itemContent">{{ item.content }}</view>
 					</view>
 				</view>
-				<view class="contentItem contentRight" @tap="getDateil(item.id)" v-if="item.type == 1">
-					<image :src="item.avatar" mode=""></image>
-					<!-- <image :src="imgUrl + item.user.avatar" mode=""></image> -->
+				<view class="contentItem contentRight" @tap="getDateil(item.id)" v-if="item.user.id == userInfo">
+					<image :src="imgUrl + item.user.avatar" mode=""></image>
 					<view class="right">
 						<view class="title">
-							<text class="headTitle">{{ item.name }}</text>
-							<!-- <text class="headTitle">{{ item.user.name }}</text> -->
+							<!-- <text class="headTitle">{{ item.name }}</text> -->
+							<text class="headTitle">{{ item.user.name }}</text>
 							<text class="form">{{ item.created_at }}</text>
 						</view>
-						<view class="itemContent">{{ item.title }}</view>
+						<view class="itemContent">{{ item.content }}</view>
 					</view>
 				</view>
 			</block>
 		</view>
 		<view class="bottom">
-			<input type="text" value="" placeholder="写评论" placeholder-class="postContent"/>
-			<uni-icons type="" class="iconfont iconziyuan"></uni-icons>
+			<input type="text" :value="inputValue" @input="inputV" placeholder="写评论" placeholder-class="postContent"/>
+			<uni-icons type="" class="iconfont iconziyuan" @tap="postContent"></uni-icons>
 		</view>
 		<!-- <button type="default" class="bottom">123</button> -->
 		<!-- #ifndef MP-WEIXIN -->
@@ -68,16 +67,18 @@ export default {
 			cityInfo: {},
 			see_sticky: '',
 			list: [
-				{avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
-				{avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '1'},
-				{avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
+				// {avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
+				// {avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '1'},
+				// {avatar: 'https://jinrong.beaconway.cn/uploads/files/images/202004/01/1_1585715979_KEJLhcJznd.jpg',name: '来来来',title: 'nxjvnjdxflxzfkjbig',created_at: '2018-10-20',type: '0'},
 			],
 			page: '1',
 			pageList: '1',
 			tipList: [],
 			total: '',
 			is_follow: '',
-			token: ''
+			token: '',
+			inputValue: '',
+			userInfo: {}
 		};
 	},
 	onLoad(e) {
@@ -88,10 +89,26 @@ export default {
 			title: e.title
 		});
 		this.cityInfo = e;
-		// this.getList();
+		this.getList();
 		this.see_stickyList();
+		this.user()
 	},
 	methods: {
+		user(){
+			uni.request({
+				url: `${helper.requestUrl}/me`,
+				method: 'POST',
+				header: {
+					authorization: this.token
+				},
+				success: res => {
+					uni.hideLoading();
+					res = helper.null2str(res)
+					this.userInfo = res.data.id
+					console.log(this.userInfo,'+++++---------------------+++')
+				}
+			})
+		},
 		// 发布
 		getPost() {
 			uni.navigateTo({
@@ -108,30 +125,70 @@ export default {
 			this.getList()
 		},
 		// 跳转帖子详情
-		getDateil(e) {
-			uni.navigateTo({
-				url: `/pages/articleDetail?id=${e}`
-			});
+		// getDateil(e) {
+		// 	uni.navigateTo({
+		// 		url: `/pages/articleDetail?id=${e}`
+		// 	});
+		// },
+		inputV(e){
+			console.log(e)
+			this.inputValue = e.detail.value
 		},
-		// 帖子列表
-		getList() {
+		postContent(){
+			if(this.inputValue == ''){
+				uni.showToast({
+					title: '请输入发表内容',
+					icon: 'none'
+				})
+				return false
+			}
 			uni.request({
-				url: `${helper.requestUrl}/posts/city-posts`,
-				method: 'GET',
+				url: `${helper.requestUrl}/message/sendMessageWithCityId`,
+				method: 'POST',
 				header: {
 					authorization: this.token
 				},
 				data: {
 					city_id: this.cityInfo.id,
-					see_sticky: '0', //帖子
+					content: this.inputValue
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res, '**************');
+					
+					if (res.data.status_code == 200) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						})
+						this.list = []
+						this.pageList = '1'
+						this.inputValue = ''
+						this.getList()
+					}
+				}
+			});
+		},
+		// 帖子列表
+		getList() {
+			uni.request({
+				url: `${helper.requestUrl}/message/getMessageByCityId`,
+				method: 'POST',
+				header: {
+					authorization: this.token
+				},
+				data: {
+					city_id: this.cityInfo.id,
 					page: this.pageList,
 					page_size: '10'
 				},
 				success: res => {
 					res = helper.null2str(res);
 					console.log(res, '++++++++');
+					
 					if (res.data.status_code == 200) {
-						this.list = this.list.concat(res.data.data);
+						console.log(res.data.data.data,'/////////////////////////////////')
+						this.list = this.list.concat(res.data.data.data);
 						this.is_follow = res.data.is_follow
 					}
 				}

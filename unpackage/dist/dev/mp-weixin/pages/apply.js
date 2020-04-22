@@ -215,7 +215,7 @@ var _helper = _interopRequireDefault(__webpack_require__(/*! ../common/helper.js
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 5, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, onHide: function onHide() {}, // onShareAppMessage(){
+var app = getApp();var _default = { data: function data() {return { Inv: 0, boardId: '', pageNode: [], imgUrl: '', page_size: 15, page: 1, listNode: [], token: '' };}, onLaunch: function onLaunch() {}, onShow: function onShow() {this.token = uni.getStorageSync('token');this.imgUrl = _helper.default.imgUrl;this.getList();}, onHide: function onHide() {}, // onShareAppMessage(){
   // 	return {
   // 		title: '子诺新微金分享',
   // 		path: 'pages/index'

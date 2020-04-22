@@ -214,7 +214,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
           res = _helper.default.null2str(res);
           console.log(res, '8');
           if (res.statusCode == 200) {
-            _this.list = res.data.datas.one.data;
+            _this.list = _this.list.concat(res.data.datas.one.data);
           } else {
             // uni.showToast({
             // 	title: res.data.message
@@ -250,8 +250,13 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
     },
     onReachBottom: function onReachBottom() {
       this.page++;
-      this.getTeamOne();
-      this.getTeamTwo();
+      if (this.indexType == 'one') {
+        this.getTeamOne();
+      } else if (this.indexType == 'two') {
+        this.getTeamTwo();
+      }
+      // this.getTeamOne()
+      // this.getTeamTwo()
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

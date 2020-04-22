@@ -21,30 +21,34 @@
 		</view>
 		<view class="content">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="contentItem" @tap="getDateil(item.id)">
+				<view class="contentItem" @tap="getDateil(item.id)" v-if="item.user.id != userInfo">
+					<!-- <image :src="item.avatar" mode=""></image> -->
 					<image :src="imgUrl + item.user.avatar" mode=""></image>
 					<view class="right">
 						<view class="title">
+							<!-- <text class="headTitle">{{ item.name }}</text> -->
 							<text class="headTitle">{{ item.user.name }}</text>
-							<text class="form">来自 {{ item.from_board }}</text>
+							<text class="form">{{ item.created_at }}</text>
 						</view>
-						<view class="itemContent">{{ item.title }}</view>
-						<view class="icon">
-							<text>{{ item.created_at }}</text>
-							<view class="iconRight">
-								<view>
-									<uni-icon type="" class="iconfont icondianzan"></uni-icon>
-									<text>{{ item.like }}</text>
-								</view>
-								<view>
-									<uni-icon type="" class="iconfont iconhuifu"></uni-icon>
-									<text>{{ item.comments_count }}</text>
-								</view>
-							</view>
+						<view class="itemContent">{{ item.content }}</view>
+					</view>
+				</view>
+				<view class="contentItem contentRight" @tap="getDateil(item.id)" v-if="item.user.id == userInfo">
+					<image :src="imgUrl + item.user.avatar" mode=""></image>
+					<view class="right">
+						<view class="title">
+							<!-- <text class="headTitle">{{ item.name }}</text> -->
+							<text class="headTitle">{{ item.user.name }}</text>
+							<text class="form">{{ item.created_at }}</text>
 						</view>
+						<view class="itemContent">{{ item.content }}</view>
 					</view>
 				</view>
 			</block>
+		</view>
+		<view class="bottom">
+			<input type="text" :value="inputValue" @input="inputV" placeholder="写评论" placeholder-class="postContent"/>
+			<uni-icons type="" class="iconfont iconziyuan" @tap="postContent"></uni-icons>
 		</view>
 		<!-- #ifndef MP-WEIXIN -->
 		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view>
@@ -67,7 +71,9 @@ export default {
 			tipList: [],
 			total: '',
 			is_follow: '',
-			token: ''
+			token: '',
+			inputValue: '',
+			userInfo: {}
 		};
 	},
 	onLoad(e) {
@@ -80,8 +86,24 @@ export default {
 		this.cityInfo = e;
 		this.getBordList()
 		this.getSee_stickyList()
+		this.user()
 	},
 	methods: {
+		user(){
+			uni.request({
+				url: `${helper.requestUrl}/me`,
+				method: 'POST',
+				header: {
+					authorization: this.token
+				},
+				success: res => {
+					uni.hideLoading();
+					res = helper.null2str(res)
+					this.userInfo = res.data.id
+					console.log(this.userInfo,'+++++---------------------+++')
+				}
+			})
+		},
 		// 发布
 		getPost() {
 			uni.navigateTo({
@@ -98,23 +120,58 @@ export default {
 			this.getBordList()
 		},
 		// 跳转帖子详情
-		getDateil(e) {
-			uni.navigateTo({
-				url: `/pages/articleDetail?id=${e}`
-			});
+		// getDateil(e) {
+		// 	uni.navigateTo({
+		// 		url: `/pages/articleDetail?id=${e}`
+		// 	});
+		// },
+		inputV(e){
+			console.log(e)
+			this.inputValue = e.detail.value
 		},
-		getBordList() {
+		postContent(){
+			if(this.inputValue == ''){
+				uni.showToast({
+					title: '请输入发表内容',
+					icon: 'none'
+				})
+				return false
+			}
 			uni.request({
-				url: `${helper.requestUrl}/posts/board-posts`,
-				method: 'GET',
+				url: `${helper.requestUrl}/message/sendMessageWithCityId`,
+				method: 'POST',
 				header: {
 					authorization: this.token
 				},
 				data: {
-					see_sticky: '0', //帖子
-					board_id: this.cityInfo.id,
-					bank_id: '0',
-					child_id: '0',
+					city_id: '0',
+					content: this.inputValue
+				},
+				success: res => {
+					res = helper.null2str(res);
+					console.log(res, '**************');
+					if (res.data.status_code == 200) {
+						uni.showToast({
+							title: res.data.message,
+							icon: 'none'
+						})
+						this.list = []
+						this.pageList = '1'
+						this.inputValue = ''
+						this.getBordList()
+					}
+				}
+			});
+		},
+		getBordList() {
+			uni.request({
+				url: `${helper.requestUrl}/message/getMessageByCityId`,
+				method: 'POST',
+				header: {
+					authorization: this.token
+				},
+				data: {
+					city_id: 'all',
 					page: this.pageList,
 					page_size: '10'
 				},
@@ -122,7 +179,8 @@ export default {
 					res = helper.null2str(res);
 					console.log(res, '++++++++');
 					if (res.data.status_code == 200) {
-						this.list = this.list.concat(res.data.data);
+						console.log(res.data.data.data,'/////////////////////////////////')
+						this.list = this.list.concat(res.data.data.data);
 						this.is_follow = res.data.is_follow
 					}
 				}
@@ -305,14 +363,17 @@ page {
 	margin-top: 18rpx;
 	background-color: #ffffff;
 	border-radius: 8rpx;
-	padding: 18rpx;
+	padding: 18rpx 30rpx 100rpx;
+	width: 690rpx;
+	
 }
 .contentItem {
 	display: flex;
 	justify-content: space-between;
 	align-content: flex-start;
 	align-items: flex-start;
-	margin-bottom: 40rpx;
+	padding: 30rpx 0;
+	border-bottom: 1rpx solid #CCCCCC;
 }
 .contentItem > image {
 	width: 80rpx;
@@ -336,17 +397,30 @@ page {
 	font-weight: 700;
 	text-align: left;
 	color: #333333;
+	margin-bottom: 10rpx;
 }
 .contentItem .right .title .form {
 	color: #2390dc;
 	font-weight: 400;
-	width: 250rpx;
+	width: 170rpx;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	/* text-overflow: ellipsis; */
 	white-space: nowrap;
 	font-size: 28rpx;
 	font-weight: 700;
 	text-align: right;
+}
+.contentRight{
+	flex-direction: row-reverse;
+}
+.contentRight .right .title{
+	flex-direction: row-reverse;
+}
+.contentRight .headTitle{
+	text-align: right;
+}
+.contentRight .itemContent{
+	text-align: right !important;
 }
 .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
@@ -355,9 +429,10 @@ page {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-size: 28rpx;
-	font-weight: 700;
+	/* font-weight: 700; */
 	text-align: left;
 	color: #666;
+	line-height: 46rpx;
 }
 .contentItem .right .icon {
 	display: flex;
@@ -380,5 +455,34 @@ page {
 	font-size: 26rpx;
 	color: #999999;
 	margin: 0 6rpx 0 10rpx;
+}
+.bottom{
+	width: 690rpx;
+	padding: 20rpx 30rpx;
+	background-color: #FFFFFF;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	border-top: 1rpx solid #B8B8B8;
+	align-items: center;
+}
+.bottom input{
+	width: 550rpx;
+	height: 30rpx;
+	padding: 14rpx 20rpx;
+	border-radius: 30rpx;
+	border: 1rpx solid #b8b8b8;
+	color: #000000;
+	font-size: 28rpx;
+}
+.bottom .iconfont{
+	color: #B8B8B8;
+	font-size: 60rpx;
+}
+.postContent{
+	color: #B8B8B8;
+	font-size: 28rpx;
 }
 </style>
