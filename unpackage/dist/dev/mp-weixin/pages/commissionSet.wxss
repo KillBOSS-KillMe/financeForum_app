@@ -14,7 +14,8 @@
 	height: 258rpx;
 	background: #ffffff;
 	border-radius: 10rpx;
-	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(192, 192, 192, 0.45);
+	-webkit-box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(192, 192, 192, 0.45);
+	        box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(192, 192, 192, 0.45);
 }
 .itemTitle {
 	font-size: 26rpx;
@@ -63,7 +64,8 @@
 	position: fixed;
 	bottom: 60rpx;
 	left: 50rpx;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	border-radius: 60rpx;
 	font-size: 32rpx;
 	font-weight: 700;

@@ -68,7 +68,8 @@ button::after{
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
-	box-shadow: 0 0 40rpx 0rpx #22BA42;
+	-webkit-box-shadow: 0 0 40rpx 0rpx #22BA42;
+	        box-shadow: 0 0 40rpx 0rpx #22BA42;
 }
 .iconFont .iconfont{
 	font-size: 60rpx;

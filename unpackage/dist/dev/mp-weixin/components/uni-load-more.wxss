@@ -70,7 +70,8 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	border: solid 2px #777;
 	border-radius: 50%;
 	border-bottom-color: transparent !important;

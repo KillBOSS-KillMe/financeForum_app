@@ -16,7 +16,8 @@
 .list .item{
 	width: 642rpx;
 	background: #ffffff;
-	box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228,228,228,0.4); 
+	-webkit-box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228,228,228,0.4);
+	        box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228,228,228,0.4); 
 	border-radius: 10rpx;
 	padding: 24rpx;
 	margin-bottom: 30rpx;

@@ -9,7 +9,8 @@
 	margin: -50rpx 30rpx 0 30rpx;
 	background: #ffffff;
 	border-radius: 10rpx;
-	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	-webkit-box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45);
+	        box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	display: -webkit-box; 
 	display: -webkit-flex; 
 	display: flex;
@@ -43,7 +44,8 @@
 	height: 115rpx;
 	border-radius: 115rpx;
 	border: 6rpx solid #FFFFFF;
-	box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
+	-webkit-box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
+	        box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
 	margin-right: 20rpx;
 }
 /* .user .left .userInfo{
@@ -69,7 +71,8 @@
 	padding: 6rpx 26rpx;
 	border-radius: 30rpx;
 	background: #2390dc;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6); 
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6); 
 	font-size: 24rpx;
 	font-weight: 700;
 	color: #ffffff;
@@ -82,7 +85,8 @@ button {
 	margin-right:auto;
 	padding-left:14px;
 	padding-right:14px;
-	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	        box-sizing:border-box;
 	font-size:18px;
 	text-align:center;
 	text-decoration:none;
@@ -104,7 +108,8 @@ button {
 	padding: 20rpx;
 	background: #fff;
 	border-radius: 10rpx;
-	box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45); 
+	-webkit-box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
+	        box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45); 
 	display: -webkit-box; 
 	display: -webkit-flex; 
 	display: flex;
@@ -119,7 +124,8 @@ button {
 	padding: 66rpx 20rpx 20rpx;
 	background: #ffffff;
 	border-radius: 10rpx;
-	box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	-webkit-box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45);
+	        box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	z-index: 8;
 }
 .info>text{
@@ -155,7 +161,8 @@ button {
 	padding: 20rpx;
 	background: #fff;
 	border-radius: 10rpx;
-	box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
+	-webkit-box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
+	        box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
 }
 .meMoney>text{
 	font-size: 24rpx;
@@ -194,7 +201,8 @@ button {
 	line-height: 42rpx;
 	background: #2390dc;
 	border-radius: 21rpx;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 }
 .team>view{
 	width: 320rpx;
@@ -305,13 +313,15 @@ button::after {
 	border: 6rpx solid #FFFFFF;
 	margin-top: 20rpx;
 	z-index: 9;
-	box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
+	-webkit-box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
+	        box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
 }
 .head .meSpreadHead {
 	width: 690rpx;
 	height: 290rpx;
 	background: #fff;
-	box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
+	-webkit-box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
+	        box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
 	border-radius: 10rpx;
 	margin-top: 60rpx;
 }
@@ -336,7 +346,8 @@ button::after {
 	height: 70rpx;
 	line-height: 70rpx;
 	background: #2390dc;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	border-radius: 36rpx;
 	font-size: 32rpx;
 	font-weight: 700;
@@ -350,7 +361,8 @@ button::after {
 	padding: 30rpx;
 	background: #ffffff;
 	border-radius: 10rpx;
-	box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45);
+	-webkit-box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45);
+	        box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45);
 }
 .invite {
 	/* width: 690rpx;

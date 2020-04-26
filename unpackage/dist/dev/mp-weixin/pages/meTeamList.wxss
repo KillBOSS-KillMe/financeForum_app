@@ -8,7 +8,8 @@
 	margin: 30rpx 30rpx 0;
 	background: #ffffff;
 	border-radius: 10rpx;
-	box-shadow: 10rpx 10rpx 44rpx 0rpx #ededed; 
+	-webkit-box-shadow: 10rpx 10rpx 44rpx 0rpx #ededed;
+	        box-shadow: 10rpx 10rpx 44rpx 0rpx #ededed; 
 	padding: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;

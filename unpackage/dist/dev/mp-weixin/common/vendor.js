@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {return;}var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
 
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -245,12 +245,16 @@ var SYNC_API_RE =
 
 var CONTEXT_API_RE = /^create|Manager$/;
 
+// Context例外情况
+var CONTEXT_API_RE_EXC = ['createBLEConnection'];
+
+// 同步例外情况
 var ASYNC_API = ['createBLEConnection'];
 
-var CALLBACK_API_RE = /^on/;
+var CALLBACK_API_RE = /^on|^off/;
 
 function isContextApi(name) {
-  return CONTEXT_API_RE.test(name);
+  return CONTEXT_API_RE.test(name) && CONTEXT_API_RE_EXC.indexOf(name) === -1;
 }
 function isSyncApi(name) {
   return SYNC_API_RE.test(name) && ASYNC_API.indexOf(name) === -1;
@@ -354,14 +358,12 @@ var interceptors = {
   promiseInterceptor: promiseInterceptor };
 
 
-
-
 var baseApi = /*#__PURE__*/Object.freeze({
   __proto__: null,
   upx2px: upx2px,
-  interceptors: interceptors,
   addInterceptor: addInterceptor,
-  removeInterceptor: removeInterceptor });
+  removeInterceptor: removeInterceptor,
+  interceptors: interceptors });
 
 
 var previewImage = {
@@ -604,8 +606,6 @@ var eventApi = /*#__PURE__*/Object.freeze({
   $emit: $emit });
 
 
-
-
 var api = /*#__PURE__*/Object.freeze({
   __proto__: null });
 
@@ -757,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -792,14 +792,14 @@ function createObserver(name) {
 }
 
 function initBehaviors(vueOptions, initBehavior) {
-  var vueBehaviors = vueOptions['behaviors'];
-  var vueExtends = vueOptions['extends'];
-  var vueMixins = vueOptions['mixins'];
+  var vueBehaviors = vueOptions.behaviors;
+  var vueExtends = vueOptions.extends;
+  var vueMixins = vueOptions.mixins;
 
-  var vueProps = vueOptions['props'];
+  var vueProps = vueOptions.props;
 
   if (!vueProps) {
-    vueOptions['props'] = vueProps = [];
+    vueOptions.props = vueProps = [];
   }
 
   var behaviors = [];
@@ -811,11 +811,11 @@ function initBehaviors(vueOptions, initBehavior) {
           vueProps.push('name');
           vueProps.push('value');
         } else {
-          vueProps['name'] = {
+          vueProps.name = {
             type: String,
             default: '' };
 
-          vueProps['value'] = {
+          vueProps.value = {
             type: [String, Number, Boolean, Array, Object, Date],
             default: '' };
 
@@ -884,7 +884,7 @@ function initProperties(props) {var isBehavior = arguments.length > 1 && argumen
     Object.keys(props).forEach(function (key) {
       var opts = props[key];
       if (isPlainObject(opts)) {// title:{type:String,default:''}
-        var value = opts['default'];
+        var value = opts.default;
         if (isFn(value)) {
           value = value();
         }
@@ -919,8 +919,12 @@ function wrapper$1(event) {
 
   event.target = event.target || {};
 
-  if (!hasOwn(event, 'detail')) {
+  if (!hasOwn(event, 'detail') || !event.detail) {
     event.detail = {};
+  }
+
+  if (!('markerId' in event.detail) && 'markerId' in event) {
+    event.detail.markerId = event.markerId;
   }
 
   if (isPlainObject(event.detail)) {
@@ -1075,11 +1079,11 @@ function handleEvent(event) {var _this = this;
   // [['tap',[['handle',[1,2,a]],['handle1',[1,2,a]]]]]
   var dataset = (event.currentTarget || event.target).dataset;
   if (!dataset) {
-    return console.warn("\u4E8B\u4EF6\u4FE1\u606F\u4E0D\u5B58\u5728");
+    return console.warn('事件信息不存在');
   }
   var eventOpts = dataset.eventOpts || dataset['event-opts']; // 支付宝 web-view 组件 dataset 非驼峰
   if (!eventOpts) {
-    return console.warn("\u4E8B\u4EF6\u4FE1\u606F\u4E0D\u5B58\u5728");
+    return console.warn('事件信息不存在');
   }
 
   // [['handle',[1,2,a]],['handle1',[1,2,a]]]
@@ -1338,8 +1342,8 @@ function parseBaseComponent(vueComponentOptions)
 
   {
     // 微信 multipleSlots 部分情况有 bug，导致内容顺序错乱 如 u-list，提供覆盖选项
-    if (vueOptions['mp-weixin'] && vueOptions['mp-weixin']['options']) {
-      Object.assign(options, vueOptions['mp-weixin']['options']);
+    if (vueOptions['mp-weixin'] && vueOptions['mp-weixin'].options) {
+      Object.assign(options, vueOptions['mp-weixin'].options);
     }
   }
 
@@ -6741,10 +6745,10 @@ function initMixin (Vue) {
     initEvents(vm);
     initRender(vm);
     callHook(vm, 'beforeCreate');
-    vm.mpHost !== 'mp-toutiao' && initInjections(vm); // resolve injections before data/props  
+    !vm._$fallback && initInjections(vm); // resolve injections before data/props  
     initState(vm);
-    vm.mpHost !== 'mp-toutiao' && initProvide(vm); // resolve provide after data/props
-    vm.mpHost !== 'mp-toutiao' && callHook(vm, 'created');      
+    !vm._$fallback && initProvide(vm); // resolve provide after data/props
+    !vm._$fallback && callHook(vm, 'created');      
 
     /* istanbul ignore if */
     if ( true && config.performance && mark) {
@@ -7302,7 +7306,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7323,14 +7327,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7406,7 +7410,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7460,7 +7464,7 @@ function mountComponent$1(
     }
   }
   
-  vm.mpHost !== 'mp-toutiao' && callHook(vm, 'beforeMount');
+  !vm._$fallback && callHook(vm, 'beforeMount');
 
   var updateComponent = function () {
     vm._update(vm._render(), hydrating);
@@ -7907,9 +7911,8 @@ module.exports = g;
   !*** D:/work/financeForum_app/pages.json ***!
   \*******************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
 
 
 /***/ }),
@@ -8080,7 +8083,7 @@ function base64ToPath(base64) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {var _package = __webpack_require__(/*! ../package.json */ 6);function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
+/* WEBPACK VAR INJECTION */(function(uni) {var _package = __webpack_require__(/*! ../package.json */ 6);function _createSuper(Derived) {return function () {var Super = _getPrototypeOf(Derived),result;if (_isNativeReflectConstruct()) {var NewTarget = _getPrototypeOf(this).constructor;result = Reflect.construct(Super, arguments, NewTarget);} else {result = Super.apply(this, arguments);}return _possibleConstructorReturn(this, result);};}function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _isNativeReflectConstruct() {if (typeof Reflect === "undefined" || !Reflect.construct) return false;if (Reflect.construct.sham) return false;if (typeof Proxy === "function") return true;try {Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));return true;} catch (e) {return false;}}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
 
 var STAT_VERSION = _package.version;
 var STAT_URL = 'https://tongji.dcloud.io/uni/stat';
@@ -8770,7 +8773,7 @@ Util = /*#__PURE__*/function () {
 
 
 
-Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);_createClass(Stat, null, [{ key: "getInstance", value: function getInstance()
+Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);var _super = _createSuper(Stat);_createClass(Stat, null, [{ key: "getInstance", value: function getInstance()
     {
       if (!this.instance) {
         this.instance = new Stat();
@@ -8778,7 +8781,7 @@ Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);_createClass(Stat, 
       return this.instance;
     } }]);
   function Stat() {var _this6;_classCallCheck(this, Stat);
-    _this6 = _possibleConstructorReturn(this, _getPrototypeOf(Stat).call(this));
+    _this6 = _super.call(this);
     _this6.instance = null;
     // 注册拦截器
     if (typeof uni.addInterceptor === 'function' && "development" !== 'development') {
@@ -9885,15 +9888,14 @@ GlobalOption;exports.default = _default;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             解析和匹配 Css 的选择器
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             github：https://github.com/jin-yufeng/Parser
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             docs：https://jin-yufeng.github.io/Parser
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             author：JinYufeng
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                解析和匹配 Css 的选择器
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                github：https://github.com/jin-yufeng/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                docs：https://jin-yufeng.github.io/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                author：JinYufeng
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              */
 var config = __webpack_require__(/*! ./config.js */ 524);var
-CssHandler = /*#__PURE__*/function () {
+CssHandler = /*#__PURE__*/function () {"use strict";
   function CssHandler() {var tagStyle = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};_classCallCheck(this, CssHandler);
     this.styles = Object.assign({}, tagStyle);
   }_createClass(CssHandler, [{ key: "getStyle", value: function getStyle(
@@ -9918,7 +9920,7 @@ CssHandler = /*#__PURE__*/function () {
     } }]);return CssHandler;}();
 
 module.exports = CssHandler;var
-CssParser = /*#__PURE__*/function () {
+CssParser = /*#__PURE__*/function () {"use strict";
   function CssParser(data, tagStyle) {_classCallCheck(this, CssParser);
     this.data = data;
     this.res = tagStyle;
@@ -10010,10 +10012,9 @@ CssParser = /*#__PURE__*/function () {
   !*** D:/work/financeForum_app/components/libs/config.js ***!
   \**********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
- /* 配置文件 */
+/* 配置文件 */
 function makeMap(str) {var obj = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var map = obj,
   list = str.split(',');
@@ -10233,18 +10234,17 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             将 html 解析为适用于小程序 rich-text 的 DOM 结构
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             github：https://github.com/jin-yufeng/Parser
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             docs：https://jin-yufeng.github.io/Parser
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             author：JinYufeng
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                将 html 解析为适用于小程序 rich-text 的 DOM 结构
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                github：https://github.com/jin-yufeng/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                docs：https://jin-yufeng.github.io/Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                author：JinYufeng
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              */
 var config = __webpack_require__(/*! ./config.js */ 524);
 var blankChar = config.blankChar;
 var CssHandler = __webpack_require__(/*! ./CssHandler.js */ 523);
 var emoji; // emoji 补丁包 https://jin-yufeng.github.io/Parser/#/instructions?id=emoji
-var MpHtmlParser = /*#__PURE__*/function () {
+var MpHtmlParser = /*#__PURE__*/function () {"use strict";
   function MpHtmlParser(data) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};_classCallCheck(this, MpHtmlParser);
     this.CssHandler = new CssHandler(options.tagStyle);
     this.data = data;
@@ -15566,7 +15566,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, files, gitHead, homepage, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-26820200330001","_inBundle":false,"_integrity":"sha512-Qzo5LcBl+abS7DvpyTXBYW2VVYHVcHBewduQecjn/gbzAn9e90aOVn02/2VZ82wV6TBiDXbGyloXojOY3InzWA==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-26820200330001.tgz","_shasum":"880c5c5a4920bb35e9cf691eeb7427a7bf67ffd7","_spec":"@dcloudio/uni-stat@next","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"57ef7f7b5b6164a74ec425ff12f9fe0a1147841a","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-26820200330001"};
+module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-26920200421003","_inBundle":false,"_integrity":"sha512-Aa6R66ZF2pIK9XB+Y7QbSW2GficyNTcdT7fnxFw5gY1eeY+u8oT7rTpZrL1W2qKbqf2FbsNPDjZrg1nRj6RxkQ==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-26920200421003.tgz","_shasum":"c08ebc00afa71edd9ed388fc4bf411e42d458ac5","_spec":"@dcloudio/uni-stat@next","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"a7035ab7f2a83dbc2c75090de34f68e5a01224a7","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-26920200421003"};
 
 /***/ }),
 
@@ -15578,7 +15578,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "子诺新微金", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/login": { "navigationBarTitleText": "登录", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/registered": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/collection": { "navigationBarTitleText": "免费专区", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/apply": { "navigationBarTitleText": "会员专享", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/exchang": { "navigationBarTitleText": "信贷员互动", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/me": { "navigationBarTitleText": "个人中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/articleDetail": { "navigationBarTitleText": "文章详情", "usingComponents": { "jyf-parser": "/components/jyf-parser" }, "usingAutoImportComponents": {} }, "pages/queryTool": { "navigationBarTitleText": "查询工具", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/experience": { "navigationBarTitleText": "选择模块", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市", "usingComponents": { "uni-drawer": "/components/uni-drawer" }, "usingAutoImportComponents": {} }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFollow": { "navigationBarTitleText": "我的关注", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFriend": { "navigationBarTitleText": "我的好友", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/mePost": { "navigationBarTitleText": "我的发表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meMessage": { "navigationBarTitleText": "我的消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertification": { "navigationBarTitleText": "用户认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meVIP": { "navigationBarTitleText": "开通会员", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSpread": { "navigationBarTitleText": "推广返佣", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meService": { "navigationBarTitleText": "联系客服", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meSetting": { "navigationBarTitleText": "个人设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/indexA": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meEditSet": { "navigationBarTitleText": "信息录入", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meEdit": { "navigationBarTitleText": "编辑", "usingComponents": { "picker-address": "/components/wangding-pickerAddress" }, "usingAutoImportComponents": {} }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTreaty": { "navigationBarTitleText": "相关协议", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/paySuccess": { "navigationBarTitleText": "支付成功", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/productDetail": { "navigationBarTitleText": "产品详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/searchNetloan": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/allProduct": { "navigationBarTitleText": "所有产品", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/applyShow": { "navigationBarTitleText": "分类", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/iframe": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meFan": { "navigationBarTitleText": "我的粉丝", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/payType": { "navigationBarTitleText": "支付方式", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/search": { "navigationBarTitleText": "搜索", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/meTeamList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/commissionSet": { "navigationBarTitleText": "返佣设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/getQrCode": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/cashOut": { "navigationBarTitleText": "提现", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/promptlyGetQr": { "navigationBarTitleText": "获取二维码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamPeopleDetail": { "navigationBarTitleText": "用户信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/message": { "navigationBarTitleText": "消息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/teamList": { "navigationBarTitleText": "团队列表", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/shareCode": { "navigationBarTitleText": "获取二维码", "usingComponents": { "uni-popup": "/components/uni-popup" }, "usingAutoImportComponents": {} }, "pages/meApply": { "navigationBarTitleText": "系统应用", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/exchangList": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/boardData": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/showCode": { "navigationBarTitleText": "推广二维码", "usingComponents": { "uni-popup": "/components/uni-popup" }, "usingAutoImportComponents": {} }, "pages/messageDetail": { "navigationBarTitleText": "系统消息详情", "usingComponents": { "jyf-parser": "/components/jyf-parser" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index": { "navigationBarTitleText": "子诺新微金" }, "pages/login": { "navigationBarTitleText": "登录" }, "pages/registered": { "navigationBarTitleText": "注册" }, "pages/forgetPassword": { "navigationBarTitleText": "找回密码" }, "pages/collection": { "navigationBarTitleText": "免费专区" }, "pages/apply": { "navigationBarTitleText": "会员专享" }, "pages/exchang": { "navigationBarTitleText": "信贷员互动" }, "pages/me": { "navigationBarTitleText": "个人中心" }, "pages/articleDetail": { "navigationBarTitleText": "文章详情" }, "pages/queryTool": { "navigationBarTitleText": "查询工具" }, "pages/experience": { "navigationBarTitleText": "选择模块" }, "pages/productSupermarket": { "navigationBarTitleText": "产品超市" }, "pages/meUserInfo": { "navigationBarTitleText": "个人信息" }, "pages/meFavorite": { "navigationBarTitleText": "我的收藏" }, "pages/meFollow": { "navigationBarTitleText": "我的关注" }, "pages/meFriend": { "navigationBarTitleText": "我的好友" }, "pages/mePost": { "navigationBarTitleText": "我的发表" }, "pages/meMyDraft": { "navigationBarTitleText": "我的草稿" }, "pages/meMyMobile": { "navigationBarTitleText": "我的手机" }, "pages/meMyMobile_1": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_2": { "navigationBarTitleText": "更换手机号" }, "pages/meMyMobile_3": { "navigationBarTitleText": "更换手机号" }, "pages/meMessage": { "navigationBarTitleText": "我的消息" }, "pages/meCertification": { "navigationBarTitleText": "用户认证" }, "pages/meVIP": { "navigationBarTitleText": "开通会员" }, "pages/contactCustomer": { "navigationBarTitleText": "联系客服" }, "pages/meSpread": { "navigationBarTitleText": "推广返佣" }, "pages/meService": { "navigationBarTitleText": "联系客服" }, "pages/meSetting": { "navigationBarTitleText": "个人设置" }, "pages/indexA": {}, "pages/meCertificationConfirm": { "navigationBarTitleText": "实名认证" }, "pages/meEditSet": { "navigationBarTitleText": "信息录入" }, "pages/meEdit": { "navigationBarTitleText": "编辑" }, "pages/meApplyMessage": { "navigationBarTitleText": "系统消息" }, "pages/meTreaty": { "navigationBarTitleText": "相关协议" }, "pages/paySuccess": { "navigationBarTitleText": "支付成功" }, "pages/productDetail": { "navigationBarTitleText": "产品详情" }, "pages/searchNetloan": { "navigationBarTitleText": "搜索" }, "pages/allProduct": { "navigationBarTitleText": "所有产品" }, "pages/applyShow": { "navigationBarTitleText": "分类" }, "pages/iframe": {}, "pages/meFan": { "navigationBarTitleText": "我的粉丝" }, "pages/tel": { "navigationBarTitleText": "手机实名查询-嘉合骏贷款超市" }, "pages/payType": { "navigationBarTitleText": "支付方式" }, "pages/search": { "navigationBarTitleText": "搜索" }, "pages/meTeamList": {}, "pages/commissionSet": { "navigationBarTitleText": "返佣设置" }, "pages/getQrCode": { "navigationBarTitleText": "获取二维码" }, "pages/cashOut": { "navigationBarTitleText": "提现" }, "pages/promptlyGetQr": { "navigationBarTitleText": "获取二维码" }, "pages/teamPeopleDetail": { "navigationBarTitleText": "用户信息" }, "pages/message": { "navigationBarTitleText": "消息" }, "pages/teamList": { "navigationBarTitleText": "团队列表" }, "pages/shareCode": { "navigationBarTitleText": "获取二维码" }, "pages/meApply": { "navigationBarTitleText": "系统应用" }, "pages/exchangList": {}, "pages/boardData": {}, "pages/showCode": { "navigationBarTitleText": "推广二维码" }, "pages/messageDetail": { "navigationBarTitleText": "系统消息详情" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#2390DC", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

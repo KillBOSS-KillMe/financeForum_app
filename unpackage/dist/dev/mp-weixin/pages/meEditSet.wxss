@@ -5,7 +5,8 @@ textarea{
 	height: 300rpx;
 	margin: 29rpx;
 	font-size: 28rpx;
-	box-shadow: #999 1rpx 1rpx 10rpx 5rpx;
+	-webkit-box-shadow: #999 1rpx 1rpx 10rpx 5rpx;
+	        box-shadow: #999 1rpx 1rpx 10rpx 5rpx;
 }
 .submit{
 	width: 750rpx;

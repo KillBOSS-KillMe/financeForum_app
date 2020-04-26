@@ -52,22 +52,27 @@
 	-webkit-align-items: center;
 	        align-items: center;
 	margin: 0 auto;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#F9A2A2), to(#F46969));
 	background-image: -webkit-linear-gradient(#F9A2A2, #F46969);
 	background-image: linear-gradient(#F9A2A2, #F46969);
 }
 .exchang .nav .item:nth-child(2)>view{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#F9D5A1), to(#F4C26B));
 	background-image: -webkit-linear-gradient(#F9D5A1, #F4C26B);
 	background-image: linear-gradient(#F9D5A1, #F4C26B);
 }
 .exchang .nav .item:nth-child(3)>view{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#B4A1F9), to(#826BF4));
 	background-image: -webkit-linear-gradient(#B4A1F9, #826BF4);
 	background-image: linear-gradient(#B4A1F9, #826BF4);
 }
 .exchang .nav .item:nth-child(4)>view{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#A1DDF9), to(#6BD2F4));
 	background-image: -webkit-linear-gradient(#A1DDF9, #6BD2F4);
 	background-image: linear-gradient(#A1DDF9, #6BD2F4);
 }
 .exchang .nav .item:nth-child(5)>view{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#A1F9D9), to(#6BF4B2));
 	background-image: -webkit-linear-gradient(#A1F9D9, #6BF4B2);
 	background-image: linear-gradient(#A1F9D9, #6BF4B2);
 }

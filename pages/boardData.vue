@@ -21,25 +21,25 @@
 		</view>
 		<view class="content">
 			<block v-for="(item, index) in list" :key="index">
-				<view class="contentItem" @tap="getDateil(item.id)" v-if="item.user.id != userInfo">
+				<view class="contentItem contentLeft" @tap="getDateil(item.id)" v-if="item.user.id != userInfo">
 					<!-- <image :src="item.avatar" mode=""></image> -->
 					<image :src="imgUrl + item.user.avatar" mode=""></image>
 					<view class="right">
 						<view class="title">
 							<!-- <text class="headTitle">{{ item.name }}</text> -->
 							<text class="headTitle">{{ item.user.name }}</text>
-							<text class="form">{{ item.created_at }}</text>
+							<!-- <text class="form">{{ item.created_at }}</text> -->
 						</view>
 						<view class="itemContent">{{ item.content }}</view>
 					</view>
 				</view>
 				<view class="contentItem contentRight" @tap="getDateil(item.id)" v-if="item.user.id == userInfo">
 					<image :src="imgUrl + item.user.avatar" mode=""></image>
-					<view class="right">
+					<view class="right clearfix">
 						<view class="title">
 							<!-- <text class="headTitle">{{ item.name }}</text> -->
 							<text class="headTitle">{{ item.user.name }}</text>
-							<text class="form">{{ item.created_at }}</text>
+							<!-- <text class="form">{{ item.created_at }}</text> -->
 						</view>
 						<view class="itemContent">{{ item.content }}</view>
 					</view>
@@ -51,7 +51,7 @@
 			<uni-icons type="" class="iconfont iconziyuan" @tap="postContent"></uni-icons>
 		</view>
 		<!-- #ifndef MP-WEIXIN -->
-		<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view>
+	<!-- 	<view class="post" @tap="getPost"><uni-icon type="" class="iconfont iconzhizhang5"></uni-icon></view> -->
 		<!-- #endif -->
 	</view>
 </template>
@@ -256,10 +256,11 @@ page {
 	padding: 18rpx;
 	background-color: #ffffff;
 	border-radius: 8rpx;
-}
-.exchangList {
 	width: 690rpx;
 	padding: 20rpx 30rpx;
+}
+.exchangList {
+	width: 750rpx;
 }
 .headInfo {
 	display: flex;
@@ -271,20 +272,6 @@ page {
 .headInfo .headLeft {
 	display: flex;
 	align-items: center;
-}
-.headLeft>view{
-	width: 90rpx;
-	height: 90rpx;
-	border-radius: 90rpx;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	align-items: center;
-	margin: 0 auto;
-	color: #ffffff !important;
-	font-size: 48rpx;
-	margin-right: 14rpx;
-	background-image: linear-gradient(#F9A2A2, #F46969);
 }
 .post {
 	width: 96rpx;
@@ -365,7 +352,6 @@ page {
 	border-radius: 8rpx;
 	padding: 18rpx 30rpx 100rpx;
 	width: 690rpx;
-	
 }
 .contentItem {
 	display: flex;
@@ -373,7 +359,6 @@ page {
 	align-content: flex-start;
 	align-items: flex-start;
 	padding: 30rpx 0;
-	border-bottom: 1rpx solid #CCCCCC;
 }
 .contentItem > image {
 	width: 80rpx;
@@ -382,21 +367,42 @@ page {
 	overflow: hidden;
 }
 .contentItem .right {
-	width: 560rpx;
+	width: 574rpx;
+}
+.contentLeft .right .itemContent {
+	/* width: 530rpx; */
+	background-color: #218fda;
+	color: #ffffff;
+	font-size: 26rpx;
+	padding: 20rpx;
+	border-radius: 0 20rpx 20rpx;
+	font-weight: 600;
+	display: initial;
 }
 .contentItem .right .title {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 10rpx;
+}
+.clearfix:after,
+.clearfix:before {
+	content: '';
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
 }
 .headTitle {
 	width: 300rpx;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 28rpx;
-	font-weight: 700;
+	font-size: 26rpx;
 	text-align: left;
-	color: #333333;
+	color: #676767;
 	margin-bottom: 10rpx;
 }
 .contentItem .right .title .form {
@@ -410,30 +416,41 @@ page {
 	font-weight: 700;
 	text-align: right;
 }
-.contentRight{
+.contentRight {
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+.contentRight .right .title {
 	flex-direction: row-reverse;
 }
-.contentRight .right .title{
-	flex-direction: row-reverse;
-}
-.contentRight .headTitle{
+.contentRight .headTitle {
 	text-align: right;
+	color: #676767;
 }
-.contentRight .itemContent{
-	text-align: right !important;
+.contentRight .itemContent {
+	text-align: left !important;
+	font-size: 26rpx;
+	color: #454545;
+	font-weight: 600;
+	background-color: #f6f6f6;
+	display: initial;
+	float: right;
+	/* width: 530rpx; */
+	padding: 20rpx;
+	border-radius: 20rpx 0 20rpx 20rpx;
 }
-.contentItem .right .itemContent {
+/* .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	font-size: 28rpx;
-	/* font-weight: 700; */
-	text-align: left;
+	font-weight: 700;
+/* 	text-align: left;
 	color: #666;
 	line-height: 46rpx;
-}
+} */
 .contentItem .right .icon {
 	display: flex;
 	justify-content: space-between;
@@ -456,19 +473,19 @@ page {
 	color: #999999;
 	margin: 0 6rpx 0 10rpx;
 }
-.bottom{
+.bottom {
 	width: 690rpx;
 	padding: 20rpx 30rpx;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	display: flex;
 	justify-content: space-between;
-	border-top: 1rpx solid #B8B8B8;
+	border-top: 1rpx solid #b8b8b8;
 	align-items: center;
 }
-.bottom input{
+.bottom input {
 	width: 550rpx;
 	height: 30rpx;
 	padding: 14rpx 20rpx;
@@ -477,12 +494,12 @@ page {
 	color: #000000;
 	font-size: 28rpx;
 }
-.bottom .iconfont{
-	color: #B8B8B8;
+.bottom .iconfont {
+	color: #b8b8b8;
 	font-size: 60rpx;
 }
-.postContent{
-	color: #B8B8B8;
+.postContent {
+	color: #b8b8b8;
 	font-size: 28rpx;
 }
 </style>

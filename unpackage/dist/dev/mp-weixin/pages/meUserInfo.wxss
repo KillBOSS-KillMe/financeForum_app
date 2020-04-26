@@ -41,7 +41,8 @@
 	height: 217rpx;
 	z-index: 3;
 	width: 670rpx;
-	box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
+	-webkit-box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
+	        box-shadow: 0rpx 10rpx 44rpx 4rpx rgba(5, 5, 5, 0.11);
 	margin-top: -70rpx;
 	padding-top: 70rpx;
 }

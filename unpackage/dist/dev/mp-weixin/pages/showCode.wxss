@@ -79,7 +79,8 @@
 	height: 50rpx;
 	line-height: 50rpx;
 	background: #2390dc;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	border: none;
 	color: #fff;
 	font-size: 24rpx;

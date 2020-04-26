@@ -22,7 +22,8 @@
 	width: 124rpx;
 	height: 124rpx;
 	border-radius: 124rpx;
-	box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(40, 148, 223, 0.6);
+	-webkit-box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(40, 148, 223, 0.6);
+	        box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(40, 148, 223, 0.6);
 }
 .radioList{
 	display: -webkit-box;
@@ -233,7 +234,8 @@
 	line-height: 80rpx;
 	/* opacity: 0.5; */
 	background: rgba(35, 144, 220, 0.5);
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	border: none;
 	font-size: 30rpx;
 	font-weight: 700;

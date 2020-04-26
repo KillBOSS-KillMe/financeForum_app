@@ -265,14 +265,10 @@
 
 
 /* 在这里引入自定义的外部样式 */
-
-
 :host,
 ._a {
 	display: inline;
 }
-
-
 .interlayer {
 	-webkit-align-content: inherit;
 	        align-content: inherit;
@@ -400,18 +396,12 @@
 	font-size: smaller;
 	vertical-align: super;
 }
-
-
-
-
 .__bdo,
 .__bdi,
 .__ruby,
 .__rt {
 	display: inline-block;
 }
-
-
 ._video {
 	background-color: black;
 	display: inline-block;

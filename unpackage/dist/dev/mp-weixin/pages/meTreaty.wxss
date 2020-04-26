@@ -39,7 +39,8 @@
 	height: 80rpx;
 	line-height: 80rpx;
 	background: #2390DC;
-	box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
+	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	font-size: 32rpx;
 	font-weight: 700;
 	margin-top: 60rpx;

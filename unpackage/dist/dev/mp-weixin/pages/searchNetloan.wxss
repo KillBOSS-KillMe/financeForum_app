@@ -76,7 +76,8 @@
 	color: #000000;
 	font-size: 28rpx;
 	width: 28rpx;
-	/* height: 26rpx; */
+	/* height: 26rpx;
+ */
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

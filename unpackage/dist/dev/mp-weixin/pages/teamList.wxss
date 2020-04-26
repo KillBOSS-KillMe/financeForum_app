@@ -6,7 +6,8 @@
 .team{
 	width: 650rpx;
 	background: #ffffff;
-	box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
+	-webkit-box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45);
+	        box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	padding: 20rpx;
 	margin-bottom: 30rpx;
 }
