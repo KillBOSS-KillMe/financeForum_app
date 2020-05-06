@@ -106,7 +106,7 @@
 						res = helper.null2str(res);
 						console.log(res,'8');
 						if (res.statusCode == 200) {
-							this.list = res.data.datas.two.data
+							this.list = this.list.concat(res.data.datas.two.data)
 						} else {
 							// uni.showToast({
 							// 	title: res.data.message

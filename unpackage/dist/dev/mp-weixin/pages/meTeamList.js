@@ -238,7 +238,7 @@ var app = getApp();var _default = { data: function data() {return { list: [], im
           res = _helper.default.null2str(res);
           console.log(res, '8');
           if (res.statusCode == 200) {
-            _this2.list = res.data.datas.two.data;
+            _this2.list = _this2.list.concat(res.data.datas.two.data);
           } else {
             // uni.showToast({
             // 	title: res.data.message
