@@ -18,6 +18,14 @@
 				"navigationBarTitleText": "注册"
 			}
 		},
+		// #ifdef H5 || APP-PLUS
+		{
+			"path": "pages/tip",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		// #endif
 		{
 			"path": "pages/forgetPassword",
 			"style": {

@@ -21,6 +21,9 @@
 		<view class="item">
 			<view class="registered" @tap="goRegistered">注册</view>
 		</view>
+		<!-- #ifdef APP-PLUS || H5 -->
+		<view class="tip">登录即代表同意<text @tap="getTip(1)">"用户协议"</text>和<text  @tap="getTip(2)">"隐私政策"</text></view>
+			<!-- #endif -->
 		<!-- #ifdef MP-WEIXIN -->
 		<view class="skip">
 			<text @tap="getSkip">取消</text>
@@ -52,6 +55,12 @@
 				uni.switchTab({
 					url: '/pages/index'
 				});
+			},
+			getTip(e){
+				console.log(e)
+				uni.navigateTo({
+					url: `/pages/tip?type=${e}`
+				})
 			},
 			// 获取登录名
 			getLoginName(e) {
@@ -179,7 +188,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.login {
 		display: flex;
 		flex-direction: column;
@@ -246,5 +255,16 @@
 		color: #666666;
 		font-size: 30rpx;
 		font-weight: 600;
+	}
+	.tip{
+		width: 690rpx;
+		display: flex;
+		color: #666666;
+		font-size: 26rpx;
+		justify-content: center;
+		margin-top: 20rpx;
+		text{
+			color: #033d5d;
+		}
 	}
 </style>
