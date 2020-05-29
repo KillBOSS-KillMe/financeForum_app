@@ -35,7 +35,8 @@
 	color: #999999;
 	font-size: 28rpx;
 	font-size: 600;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .search text {
 	color: #fff;
@@ -45,7 +46,8 @@
 	width: 140rpx;
 	text-align: center;
 	line-height: 70rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .contentList .item {
 		display: -webkit-box;
@@ -59,7 +61,8 @@
 .contentList .item image {
 		width: 220rpx;
 		height: 136rpx;
-		border-radius: 10rpx;
+		-webkit-border-radius: 10rpx;
+		        border-radius: 10rpx;
 }
 .contentList .item .itemRight {
 		width: 440rpx;
@@ -107,7 +110,8 @@
 .userList .item{
 		width: 690rpx;
 		height: 170rpx;
-		border-radius: 10rpx;
+		-webkit-border-radius: 10rpx;
+		        border-radius: 10rpx;
 		background-color: #F9F9F9;
 		margin: 20rpx 30rpx;
 		display: -webkit-box;
@@ -123,13 +127,15 @@
 .userList .item image{
 		width: 118rpx;
 		height: 118rpx;
-		border-radius: 118rpx;
+		-webkit-border-radius: 118rpx;
+		        border-radius: 118rpx;
 		margin: 20rpx;
 }
 .userList .item .con{
 		width: 390rpx;
 		height: 118rpx;
-		border-radius: 118rpx;
+		-webkit-border-radius: 118rpx;
+		        border-radius: 118rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;
@@ -165,7 +171,8 @@
 .userList .item .label{
 		font-size: 18rpx;
 		padding: 5rpx 10rpx;
-		border-radius: 30rpx;
+		-webkit-border-radius: 30rpx;
+		        border-radius: 30rpx;
 		color: #fff;
 		background-color: #D2BF8E;
 }
@@ -215,7 +222,8 @@
 		font-size: 26rpx;
 		color: #fff;
 		background-color: #B8B8B8;
-		border-radius: 10rpx;
+		-webkit-border-radius: 10rpx;
+		        border-radius: 10rpx;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;

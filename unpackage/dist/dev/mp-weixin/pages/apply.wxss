@@ -74,7 +74,8 @@
 		border-bottom: 6rpx solid #2390dc;
 		width: 46rpx;
 		margin: 26rpx auto 0;
-		border-radius: 3rpx;
+		-webkit-border-radius: 3rpx;
+		        border-radius: 3rpx;
 }
 .content .contentList .item {
 		display: -webkit-box;
@@ -88,7 +89,8 @@
 .content .contentList .item image {
 		width: 220rpx;
 		height: 136rpx;
-		border-radius: 10rpx;
+		-webkit-border-radius: 10rpx;
+		        border-radius: 10rpx;
 }
 .content .contentList .item .itemRight {
 		width: 440rpx;

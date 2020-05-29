@@ -8,7 +8,8 @@
 	width: 650rpx;
 	margin: -50rpx 30rpx 0 30rpx;
 	background: #ffffff;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	-webkit-box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45);
 	        box-shadow: 0rpx 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	display: -webkit-box; 
@@ -42,7 +43,8 @@
 .user .left image{
 	width: 115rpx;
 	height: 115rpx;
-	border-radius: 115rpx;
+	-webkit-border-radius: 115rpx;
+	        border-radius: 115rpx;
 	border: 6rpx solid #FFFFFF;
 	-webkit-box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
 	        box-shadow: 3rpx 3rpx 44rpx 0rpx rgba(202, 202, 202, 0.7);
@@ -60,7 +62,8 @@
 }
 .user .left .userInfo .tip text{
 	background: #2390dc;
-	border-radius: 2rpx;
+	-webkit-border-radius: 2rpx;
+	        border-radius: 2rpx;
 	font-size: 18rpx;
 	font-weight: 400;
 	color: #ffffff;
@@ -69,7 +72,8 @@
 }
 .user .right{
 	padding: 6rpx 26rpx;
-	border-radius: 30rpx;
+	-webkit-border-radius: 30rpx;
+	        border-radius: 30rpx;
 	background: #2390dc;
 	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6); 
@@ -91,7 +95,8 @@ button {
 	text-align:center;
 	text-decoration:none;
 	line-height:2.55555556;
-	border-radius:5px;
+	-webkit-border-radius:5px;
+	        border-radius:5px;
 	-webkit-tap-highlight-color:transparent;
 	overflow:hidden;
 	color:#000000;
@@ -99,7 +104,8 @@ button {
 	margin: 0;
 }
 button {
-  border-radius:0;
+  -webkit-border-radius:0;
+          border-radius:0;
 }
 .team{
 	margin: 30rpx auto 30rpx;
@@ -107,7 +113,8 @@ button {
 	height: 100rpx;
 	padding: 20rpx;
 	background: #fff;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	-webkit-box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
 	        box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45); 
 	display: -webkit-box; 
@@ -123,7 +130,8 @@ button {
 	margin: -60rpx 30rpx 30rpx;
 	padding: 66rpx 20rpx 20rpx;
 	background: #ffffff;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	-webkit-box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45);
 	        box-shadow: 0px 10rpx 44rpx 0rpx rgba(205,205,205,0.45); 
 	z-index: 8;
@@ -152,7 +160,8 @@ button {
 	font-size: 18rpx;
 	margin-right: 16rpx;
 	padding: 6rpx 16rpx;
-	border-radius: 5rpx;
+	-webkit-border-radius: 5rpx;
+	        border-radius: 5rpx;
 }
 .meMoney{
 	margin: 30rpx auto 30rpx;
@@ -160,7 +169,8 @@ button {
 	height: 100rpx;
 	padding: 20rpx;
 	background: #fff;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	-webkit-box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
 	        box-shadow: 0rpx 15rpx 10rpx 0rpx rgba(205,205,205,0.45);
 }
@@ -200,7 +210,8 @@ button {
 	height: 42rpx;
 	line-height: 42rpx;
 	background: #2390dc;
-	border-radius: 21rpx;
+	-webkit-border-radius: 21rpx;
+	        border-radius: 21rpx;
 	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 }
@@ -252,7 +263,8 @@ button::after {
 	height: 306rpx;
 	padding: 30rpx;
 	background: #ffffff;
-	border-radius: 8rpx;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
 }
 .contentModel>text{
 	font-size: 32rpx;
@@ -265,7 +277,8 @@ button::after {
 	height: 58rpx;
 	background: #efefef;
 	border: 2rpx solid #efefef;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	margin: 40rpx auto;
 	padding: 3rpx 16rpx;
 }
@@ -281,7 +294,8 @@ button::after {
 	width: 275rpx;
 	height: 80rpx;
 	background: #2390dc;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	color: #fff;
 	font-size: 32rpx;
 	font-weight: 600;
@@ -309,7 +323,8 @@ button::after {
 .head image{
 	width: 115rpx;
 	height: 115rpx;
-	border-radius: 115rpx;
+	-webkit-border-radius: 115rpx;
+	        border-radius: 115rpx;
 	border: 6rpx solid #FFFFFF;
 	margin-top: 20rpx;
 	z-index: 9;
@@ -322,7 +337,8 @@ button::after {
 	background: #fff;
 	-webkit-box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
 	        box-shadow: 0rpx 1rpx 44rpx 0rpx rgba(202, 202, 202, 0.6);
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	margin-top: 60rpx;
 }
 .balance {
@@ -348,7 +364,8 @@ button::after {
 	background: #2390dc;
 	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
 	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35, 144, 220, 0.6);
-	border-radius: 36rpx;
+	-webkit-border-radius: 36rpx;
+	        border-radius: 36rpx;
 	font-size: 32rpx;
 	font-weight: 700;
 	color: #FFFFFF;
@@ -360,7 +377,8 @@ button::after {
 	margin: 30rpx;
 	padding: 30rpx;
 	background: #ffffff;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	-webkit-box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45);
 	        box-shadow: 0px 10rpx 44rpx 0px rgba(205,205,205,0.45);
 }
@@ -381,7 +399,8 @@ button::after {
 	font-size: 24rpx;
 	font-weight: 700;
 	/* line-height: 70rpx; */
-	border-radius: 30rpx;
+	-webkit-border-radius: 30rpx;
+	        border-radius: 30rpx;
 	letter-spacing: 1rpx;
 	padding: 8rpx 22rpx;
 }
@@ -579,7 +598,8 @@ button::after {
 	width: 70rpx;
 	height: 70rpx;
 	overflow: hidden;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .uni-share-content-image .iconfont {
 	font-size: 60rpx;

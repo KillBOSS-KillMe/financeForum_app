@@ -22,7 +22,8 @@
 		width: 172rpx;
 		height: 172rpx;
 		margin: 60rpx 0;
-		border-radius: 172rpx;
+		-webkit-border-radius: 172rpx;
+		        border-radius: 172rpx;
 		background-color: #3e8cfd;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -67,7 +68,8 @@
 		-webkit-justify-content: center;
 		        justify-content: center;
 		margin-bottom: 15px;
-    border-radius: 2px;
+    -webkit-border-radius: 2px;
+            border-radius: 2px;
     background-color: #2390DC;
     box-shadow: 5px 5px 5px 0 #2390DC;
     -webkit-box-shadow: #2390DC 0px 0px 10px;

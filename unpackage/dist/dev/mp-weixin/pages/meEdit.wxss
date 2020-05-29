@@ -32,7 +32,8 @@
 .edit .itemList .right image {
 	width: 58rpx;
 	height: 58rpx;
-	border-radius: 58rpx;
+	-webkit-border-radius: 58rpx;
+	        border-radius: 58rpx;
 	margin-right: 20rpx;
 }
 .edit .itemList text,

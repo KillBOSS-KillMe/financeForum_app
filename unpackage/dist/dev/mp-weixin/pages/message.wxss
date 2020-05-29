@@ -18,7 +18,8 @@
 	background: #ffffff;
 	-webkit-box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228,228,228,0.4);
 	        box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228,228,228,0.4); 
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx; 
+	        border-radius: 10rpx;
 	padding: 24rpx;
 	margin-bottom: 30rpx;
 }
@@ -34,7 +35,8 @@
 .list .item .head image{
 	width: 44rpx;
 	height: 44rpx;
-	border-radius: 44rpx;
+	-webkit-border-radius: 44rpx;
+	        border-radius: 44rpx;
 	margin-right: 16rpx;
 }
 .list .item .head text{
@@ -71,7 +73,8 @@
 .cur{
 	width: 14rpx;
 	height: 14rpx;
-	border-radius: 14rpx;
+	-webkit-border-radius: 14rpx;
+	        border-radius: 14rpx;
 	background-color: red;
 	content: '';
 	display: block;

@@ -5,7 +5,8 @@
 }
 .meMessage .item{
 	border: 1rpx solid #F8F8F8;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	padding: 30rpx;
 	margin-top: 20rpx;
 	display: -webkit-box;
@@ -35,7 +36,8 @@
 .meMessage .item .iconfont{
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 96rpx;
+	-webkit-border-radius: 96rpx;
+	        border-radius: 96rpx;
 	font-size: 60rpx;
 	font-weight: 600;
 	display: -webkit-box;
@@ -61,7 +63,8 @@
 	width: 14rpx;
 	height: 14rpx;
 	background: red;
-	border-radius: 14rpx;
+	-webkit-border-radius: 14rpx;
+	        border-radius: 14rpx;
 	position: absolute;
 	top: 15rpx;
 	right: 33rpx;

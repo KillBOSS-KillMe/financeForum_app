@@ -36,7 +36,8 @@
 		width: 95rpx;
 		height: 95rpx;
 		margin: 35rpx 0;
-		border-radius: 95rpx;
+		-webkit-border-radius: 95rpx;
+		        border-radius: 95rpx;
 }
 .head ._span{
 		margin-bottom: 50rpx;
@@ -64,7 +65,8 @@
 		padding: 0 20rpx;
 		margin: 20rpx 0;
 		border: 1rpx solid #dedede;
-		border-radius: 10rpx;
+		-webkit-border-radius: 10rpx;
+		        border-radius: 10rpx;
 		
 		display: -webkit-box;
 		
@@ -122,7 +124,8 @@
 		-webkit-justify-content: center;
 		        justify-content: center;
 		margin-bottom: 15px;
-    border-radius: 2px;
+    -webkit-border-radius: 2px;
+            border-radius: 2px;
     background-color: #2390DC;
     box-shadow: 5px 5px 5px 0 #2390DC;
     -webkit-box-shadow: #2390DC 0px 0px 10px;

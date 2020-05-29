@@ -269,10 +269,19 @@
 				}
 				// 链接处理
 				var links = this.rtf.getElementsByTagName('a');
+        // console.clear()
+        // console.log(links)
 				for (var link of links) {
 					link.onclick = function(e) {
 						var jump = true,
 							href = this.getAttribute("href");
+              // console.clear()
+              // console.log(href)
+              // #ifndef H5
+                // H5版本下  根据链接跳转外部链接
+                window.location.href = href;
+                // return
+              // #endif
 						component.$emit("linkpress", {
 							href,
 							ignore: () => jump = false

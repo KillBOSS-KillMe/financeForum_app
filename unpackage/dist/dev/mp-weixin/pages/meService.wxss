@@ -5,7 +5,8 @@
 }
 .meMessage .item{
 	border: 1rpx solid #F8F8F8;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	padding: 30rpx;
 	margin-top: 20rpx;
 	display: -webkit-box;
@@ -29,7 +30,8 @@
 .meMessage .item image{
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 96rpx;
+	-webkit-border-radius: 96rpx;
+	        border-radius: 96rpx;
 }
 .iconfont{
 	color: #B8B8B8;
@@ -55,7 +57,8 @@ button::after{
 .iconFont{
 	width: 100rpx;
 	height: 100rpx;
-	border-radius: 100rpx;
+	-webkit-border-radius: 100rpx;
+	        border-radius: 100rpx;
 	/* background: #22BA42; */
 	background-image: -webkit-linear-gradient(130deg, #A8F4B8, #22BA42);
 	background-image: linear-gradient(-40deg, #A8F4B8, #22BA42);

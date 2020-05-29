@@ -15,7 +15,8 @@
 .productDetail .head image {
 	width: 130rpx;
 	height: 130rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .productDetail .head .itemRight {
 	width: 530rpx;

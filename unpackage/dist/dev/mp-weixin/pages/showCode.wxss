@@ -19,7 +19,8 @@
 	width: 552rpx;
 	background: #ffffff;
 	border: 1rpx solid #ffffff;
-	border-radius: 14rpx;
+	-webkit-border-radius: 14rpx;
+	        border-radius: 14rpx;
 	padding: 0 0 60rpx 0;
 }
 .content .head {
@@ -36,7 +37,8 @@
 	width: 20rpx;
 	height: 40rpx;
 	background: #2390dc;
-	border-radius: 0 50rpx 50rpx 0;
+	-webkit-border-radius: 0 50rpx 50rpx 0;
+	        border-radius: 0 50rpx 50rpx 0;
 	position: absolute;
 	top: 66rpx;
 	left: -2rpx;
@@ -47,7 +49,8 @@
 	width: 20rpx;
 	height: 40rpx;
 	background: #2390dc;
-	border-radius: 50rpx 0 0 50rpx;
+	-webkit-border-radius: 50rpx 0 0 50rpx;
+	        border-radius: 50rpx 0 0 50rpx;
 	position: absolute;
 	top: 66rpx;
 	right: -2rpx;
@@ -86,7 +89,8 @@
 	font-size: 24rpx;
 	font-weight: 700;
 	letter-spacing: 1rpx;
-	border-radius: 30rpx;
+	-webkit-border-radius: 30rpx;
+	        border-radius: 30rpx;
 }
 .meShare {
 	width: 750rpx;
@@ -157,7 +161,8 @@
 	width: 70rpx;
 	height: 70rpx;
 	overflow: hidden;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .uni-share-content-image .iconfont {
 	font-size: 60rpx;

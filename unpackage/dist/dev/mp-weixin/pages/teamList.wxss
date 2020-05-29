@@ -57,7 +57,8 @@
 .list .item image{
 	width: 86rpx;
 	height: 86rpx;
-	border-radius: 86rpx;
+	-webkit-border-radius: 86rpx;
+	        border-radius: 86rpx;
 }
 .list .item text{
 	font-size: 24rpx;

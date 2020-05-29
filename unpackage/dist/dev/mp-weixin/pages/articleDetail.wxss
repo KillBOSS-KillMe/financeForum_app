@@ -13,7 +13,8 @@ button {
 	text-align: center;
 	text-decoration: none;
 	line-height: 2.55555556;
-	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	        border-radius: 5px;
 	-webkit-tap-highlight-color: transparent;
 	overflow: hidden;
 	color: #000000;
@@ -21,7 +22,8 @@ button {
 	margin: 0;
 }
 button {
-	border-radius: 0;
+	-webkit-border-radius: 0;
+	        border-radius: 0;
 }
 button {
 	background-color: #fff;
@@ -80,7 +82,8 @@ button::after {
 .articleDetail .content .info .left > image {
 	width: 90rpx;
 	height: 90rpx;
-	border-radius: 90rpx;
+	-webkit-border-radius: 90rpx;
+	        border-radius: 90rpx;
 	margin-right: 20rpx;
 }
 .articleDetail .content .info .left .leftTitle > text {
@@ -114,7 +117,8 @@ button::after {
 	height: 48rpx;
 	line-height: 48rpx;
 	text-align: center;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .read {
 	/* width: 150rpx; */
@@ -144,7 +148,8 @@ button::after {
 	color: #666666;
 	margin: 8rpx 0 14rpx;
 	background: #f0f0f0;
-	border-radius: 40rpx;
+	-webkit-border-radius: 40rpx;
+	        border-radius: 40rpx;
 	padding: 10rpx 16rpx;
 }
 .postCom text {
@@ -189,7 +194,8 @@ button::after {
 .reward .iconText {
 	width: 65rpx;
 	height: 65rpx;
-	border-radius: 65rpx;
+	-webkit-border-radius: 65rpx;
+	        border-radius: 65rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -204,7 +210,8 @@ button::after {
 .content .share image {
 	width: 64rpx;
 	height: 64rpx;
-	border-radius: 64rpx;
+	-webkit-border-radius: 64rpx;
+	        border-radius: 64rpx;
 	margin-left: 36rpx;
 }
 .reward {
@@ -221,7 +228,8 @@ button::after {
 .reward image {
 	width: 64rpx;
 	height: 64rpx;
-	border-radius: 64rpx;
+	-webkit-border-radius: 64rpx;
+	        border-radius: 64rpx;
 }
 .reward text {
 	text-align: center;
@@ -257,7 +265,8 @@ button::after {
 	font-weight: 600;
 	border: 1rpx solid #2390dc;
 	padding: 6rpx 14rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .comment .list {
 	width: 690rpx;
@@ -282,7 +291,8 @@ button::after {
 .comment .item > image {
 	width: 90rpx;
 	height: 90rpx;
-	border-radius: 90rpx;
+	-webkit-border-radius: 90rpx;
+	        border-radius: 90rpx;
 }
 .comment .right {
 	width: 580rpx;
@@ -348,7 +358,8 @@ button::after {
 	color: #fff;
 	font-size: 18rpx;
 	padding: 1rpx 10rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	margin-left: 20rpx;
 }
 .reward .money {
@@ -380,7 +391,8 @@ button::after {
 	border: 1rpx solid #b8b8b8;
 	height: 70rpx;
 	line-height: 70rpx;
-	border-radius: 40rpx;
+	-webkit-border-radius: 40rpx;
+	        border-radius: 40rpx;
 	padding: 0 20rpx;
 	color: #999999;
 	font-size: 24rpx;
@@ -404,7 +416,8 @@ button::after {
 .iconText {
 	width: 140rpx;
 	height: 140rpx;
-	border-radius: 140rpx;
+	-webkit-border-radius: 140rpx;
+	        border-radius: 140rpx;
 	background: #2390dc;
 	color: #fff;
 }

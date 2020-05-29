@@ -18,7 +18,8 @@
 .service {
 		width: 60rpx;
 		height: 60rpx;
-		border-radius: 60rpx;
+		-webkit-border-radius: 60rpx;
+		        border-radius: 60rpx;
 		background: #FFFFFF;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -42,7 +43,8 @@
 		width: 532rpx;
 		height: 70rpx;
 		background: #fff;
-		border-radius: 10rpx;
+		-webkit-border-radius: 10rpx;
+		        border-radius: 10rpx;
 }
 .searchBox input {
 		width: 492rpx;

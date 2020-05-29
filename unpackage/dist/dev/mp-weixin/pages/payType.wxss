@@ -22,7 +22,8 @@
 	margin-right: 16rpx;
 	width: 10rpx;
 	height: 26rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	background: #2390dc;
 }
 .head view {

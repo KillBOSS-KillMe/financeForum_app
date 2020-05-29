@@ -77,7 +77,8 @@
 	padding: 18rpx;
 	font-size: 28rpx;
 	border: 1rpx solid #e04b28;
-	border-radius: 60rpx;
+	-webkit-border-radius: 60rpx;
+	        border-radius: 60rpx;
 	color: #e04b28;
 }
 .mescroll-empty .empty-btn:active {

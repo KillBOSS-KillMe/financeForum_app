@@ -5,7 +5,8 @@ page {
 .head {
 	padding: 18rpx;
 	background-color: #ffffff;
-	border-radius: 8rpx;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
 	width: 690rpx;
 	padding: 20rpx 30rpx;
 }
@@ -36,7 +37,8 @@ page {
 .post {
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 96rpx;
+	-webkit-border-radius: 96rpx;
+	        border-radius: 96rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -65,7 +67,8 @@ page {
 	width: 100rpx;
 	height: 100rpx;
 	overflow: hidden;
-	border-radius: 8rpx;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
 	margin-right: 14rpx;
 }
 .headInfo .headLeft > text {
@@ -80,7 +83,8 @@ page {
 .headInfo > text {
 	padding: 6rpx 18rpx;
 	background-color: #2390dc;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	color: #ffffff;
 	font-size: 26rpx;
 }
@@ -101,7 +105,8 @@ page {
 	font-size: 22rpx;
 	border: 1rpx solid #e22929;
 	padding: 0 10rpx;
-	border-radius: 8rpx;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
 	margin-right: 12rpx;
 }
 .headList .headItem .text {
@@ -124,7 +129,8 @@ page {
 .content {
 	margin-top: 18rpx;
 	background-color: #ffffff;
-	border-radius: 8rpx;
+	-webkit-border-radius: 8rpx;
+	        border-radius: 8rpx;
 	padding: 18rpx 30rpx 100rpx;
 	width: 690rpx;
 }
@@ -145,7 +151,8 @@ page {
 .contentItem > image {
 	width: 80rpx;
 	height: 80rpx;
-	border-radius: 80rpx;
+	-webkit-border-radius: 80rpx;
+	        border-radius: 80rpx;
 	overflow: hidden;
 }
 .contentItem .right {
@@ -157,7 +164,8 @@ page {
 	color: #ffffff;
 	font-size: 26rpx;
 	padding: 20rpx;
-	border-radius: 0 20rpx 20rpx;
+	-webkit-border-radius: 0 20rpx 20rpx;
+	        border-radius: 0 20rpx 20rpx;
 	font-weight: 600;
 	display: initial;
 }
@@ -231,7 +239,8 @@ page {
 	float: right;
 	/* width: 530rpx; */
 	padding: 20rpx;
-	border-radius: 20rpx 0 20rpx 20rpx;
+	-webkit-border-radius: 20rpx 0 20rpx 20rpx;
+	        border-radius: 20rpx 0 20rpx 20rpx;
 }
 /* .contentItem .right .itemContent {
 	-webkit-line-clamp: 3;
@@ -296,7 +305,8 @@ page {
 	width: 550rpx;
 	height: 30rpx;
 	padding: 14rpx 20rpx;
-	border-radius: 30rpx;
+	-webkit-border-radius: 30rpx;
+	        border-radius: 30rpx;
 	border: 1rpx solid #b8b8b8;
 	color: #000000;
 	font-size: 28rpx;

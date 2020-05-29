@@ -9,7 +9,8 @@
 	background: #ffffff;
 	-webkit-box-shadow: 0rpx 1rpx 36rpx 0rpx rgba(212, 212, 212, 0.6);
 	        box-shadow: 0rpx 1rpx 36rpx 0rpx rgba(212, 212, 212, 0.6);
-	border-radius: 36rpx;
+	-webkit-border-radius: 36rpx;
+	        border-radius: 36rpx;
 	margin-bottom: 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -38,7 +39,8 @@
 	font-size: 26rpx;
 	font-weight: 700;
 	color: #ffffff;
-	border-radius: 60rpx;
+	-webkit-border-radius: 60rpx;
+	        border-radius: 60rpx;
 	text-align: center;
 	padding: 6rpx 24rpx;
 	letter-spacing: 4rpx;
@@ -56,7 +58,8 @@
 	background: #4e9ed8;
 	line-height: 62rpx;
 	text-align: center;
-	border-radius: 60rpx;
+	-webkit-border-radius: 60rpx;
+	        border-radius: 60rpx;
 	-webkit-box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(78, 158, 216, 0.6);
 	        box-shadow: 0rpx 15rpx 38rpx 0rpx rgba(78, 158, 216, 0.6);
 }

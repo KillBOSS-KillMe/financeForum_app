@@ -5,7 +5,8 @@
 }
 .meMessage .item{
 	border: 1rpx solid #F8F8F8;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	padding: 30rpx;
 	margin-top: 20rpx;
 	display: -webkit-box;
@@ -35,7 +36,8 @@
 .meMessage .item image{
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 96rpx;
+	-webkit-border-radius: 96rpx;
+	        border-radius: 96rpx;
 	margin-right: 20rpx;
 }
 .right{

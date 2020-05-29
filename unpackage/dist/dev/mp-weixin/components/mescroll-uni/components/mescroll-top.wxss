@@ -56,7 +56,8 @@
 	bottom: 120rpx;
 	width: 72rpx;
 	height: auto;
-	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
 	opacity: 0;
 	-webkit-transition: opacity 0.5s;
 	transition: opacity 0.5s; /* 过渡 */

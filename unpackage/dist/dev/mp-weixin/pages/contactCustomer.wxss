@@ -105,7 +105,8 @@
 	color: #2390DC;
 	/* font-weight: 600; */
 	border: 1rpx solid #2390DC;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	padding: 6rpx 16rpx;
 }
 

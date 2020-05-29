@@ -58,7 +58,8 @@
 .content .contentList .item image {
 	width: 130rpx;
 	height: 130rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .content .contentList .item .itemRight {
 	width: 530rpx;
@@ -174,7 +175,8 @@
 	line-height: 56rpx;
 	text-align: center;
 	margin: 0 35rpx 30rpx 0;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .cor {
 	background: #eee;

@@ -15,7 +15,8 @@
 .indexAccurate .contentList .item image {
 	width: 202rpx;
 	height: 150rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .indexAccurate .contentList .item .itemRight {
 	width: 440rpx;

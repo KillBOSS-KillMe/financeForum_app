@@ -7,7 +7,8 @@
 	height: 160rpx;
 	background: #007AFF;
 	margin: 30rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .banner image{
 	width: 690rpx;
@@ -39,7 +40,8 @@
 .exchang .nav .item>view{
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 96rpx;
+	-webkit-border-radius: 96rpx;
+	        border-radius: 96rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -149,7 +151,8 @@ scroll-view {
 .nav-right-item image {
 		width: 130rpx;
 		height: 110rpx;
-		border-radius: 8rpx;
+		-webkit-border-radius: 8rpx;
+		        border-radius: 8rpx;
 		/* margin-right: 16rpx; */
 }
 .nav-right-item text{

@@ -56,7 +56,8 @@
 .head image{
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 50rpx;
+	-webkit-border-radius: 50rpx;
+	        border-radius: 50rpx;
 	margin: 0;
 }
 .collectionList{
@@ -89,7 +90,8 @@
 .collectionList .item image{
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 50rpx;
+	-webkit-border-radius: 50rpx;
+	        border-radius: 50rpx;
 	display: block;
 }
 .collectionList .item text{

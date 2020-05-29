@@ -37,7 +37,8 @@
 }
 .me .meHead .meHeadCon {
 	background: #fff;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	height: 217rpx;
 	z-index: 3;
 	width: 670rpx;
@@ -51,7 +52,8 @@
 	width: 144rpx;
 	height: 144rpx;
 	border: 4rpx solid #FFFFFF;
-	border-radius: 144rpx;
+	-webkit-border-radius: 144rpx;
+	        border-radius: 144rpx;
 }
 .me .meHeadCon>view {
 	display: -webkit-box;
@@ -74,7 +76,8 @@
 	font-size: 18rpx;
 	background: #2390DC;
 	padding: 4rpx 14rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	height: 36rpx;
 	line-height: 36rpx;
 	margin-left: 10rpx;
@@ -131,7 +134,8 @@ height: 6rpx; */
 	border-bottom: 6rpx solid #2390DC;
 	width: 46rpx;
 	margin: 26rpx auto 0;
-	border-radius: 3rpx;
+	-webkit-border-radius: 3rpx;
+	        border-radius: 3rpx;
 }
 .content .contentList .item {
 	display: -webkit-box;
@@ -145,7 +149,8 @@ height: 6rpx; */
 .content .contentList .item image {
 	width: 220rpx;
 	height: 136rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .content .contentList .item .itemRight {
 	width: 440rpx;

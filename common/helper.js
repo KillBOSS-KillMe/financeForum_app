@@ -1,6 +1,9 @@
 
-const requestUrl = 'https://jinrong.beaconway.cn/api';
-const imgUrl = 'https://jinrong.beaconway.cn/uploads/';
+// const requestUrl = 'https://jinrong.beaconway.cn/api';
+// const imgUrl = 'https://jinrong.beaconway.cn/uploads/';
+
+const requestUrl = 'https://www.zinuo7777.com/api';
+const imgUrl = 'https://www.zinuo7777.com/uploads/';
 // 修改图片路径时候同时修改components中的qiyue-category图片路径
 
 // const requestUrl = 'http://192.168.1.168/api';

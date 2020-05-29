@@ -25,7 +25,8 @@
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	        justify-content: center;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	font-size: 32rpx;
 	color: #fff;
 	background-color: #2390dc;

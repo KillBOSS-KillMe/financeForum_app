@@ -27,7 +27,8 @@
 	border-bottom: 6rpx solid #2390dc;
 	width: 46rpx;
 	margin: 10rpx auto 0;
-	border-radius: 3rpx;
+	-webkit-border-radius: 3rpx;
+	        border-radius: 3rpx;
 }
 .search {
 	width: 650rpx;
@@ -70,7 +71,8 @@
 }
 .item {
 	height: 170rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	background-color: #f9f9f9;
 	margin: 20rpx 30rpx;
 	display: -webkit-box;
@@ -86,13 +88,15 @@
 .item image {
 	width: 118rpx;
 	height: 118rpx;
-	border-radius: 118rpx;
+	-webkit-border-radius: 118rpx;
+	        border-radius: 118rpx;
 	margin: 20rpx;
 }
 .item .con {
 	width: 390rpx;
 	height: 118rpx;
-	border-radius: 118rpx;
+	-webkit-border-radius: 118rpx;
+	        border-radius: 118rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -128,7 +132,8 @@
 .item .label {
 	font-size: 18rpx;
 	padding: 5rpx 10rpx;
-	border-radius: 30rpx;
+	-webkit-border-radius: 30rpx;
+	        border-radius: 30rpx;
 	color: #fff;
 	background-color: #d2bf8e;
 }
@@ -178,7 +183,8 @@
 	font-size: 26rpx;
 	color: #fff;
 	background-color: #b8b8b8;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

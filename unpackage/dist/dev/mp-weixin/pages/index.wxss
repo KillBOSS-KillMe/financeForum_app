@@ -7,7 +7,8 @@
 .banner {
 	width: 690rpx;
 	margin: 30rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	overflow: hidden;
 }
 .bannerImg {
@@ -17,13 +18,15 @@
 	width: 690rpx;
 	height:300rpx;
 	overflow: hidden;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 swiper-item{
 	width: 690rpx;
 	height:300rpx;
 	overflow: hidden;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .nav {
 		display: -webkit-box;
@@ -91,7 +94,8 @@ scroll-view {
 .nav-right-item image {
 		width: 130rpx;
 		height: 110rpx;
-		border-radius: 8rpx;
+		-webkit-border-radius: 8rpx;
+		        border-radius: 8rpx;
 		margin-right: 16rpx;
 }
 .applyInfo{

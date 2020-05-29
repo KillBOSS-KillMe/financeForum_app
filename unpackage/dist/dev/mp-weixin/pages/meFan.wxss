@@ -41,7 +41,8 @@
 .item{
 	width: 690rpx;
 	height: 170rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	background-color: #F9F9F9;
 	margin: 20rpx 30rpx;
 	display: -webkit-box;
@@ -57,13 +58,15 @@
 .item image{
 	width: 118rpx;
 	height: 118rpx;
-	border-radius: 118rpx;
+	-webkit-border-radius: 118rpx;
+	        border-radius: 118rpx;
 	margin: 20rpx;
 }
 .item .con{
 	width: 390rpx;
 	height: 118rpx;
-	border-radius: 118rpx;
+	-webkit-border-radius: 118rpx;
+	        border-radius: 118rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -99,7 +102,8 @@
 .item .label{
 	font-size: 18rpx;
 	padding: 5rpx 10rpx;
-	border-radius: 30rpx;
+	-webkit-border-radius: 30rpx;
+	        border-radius: 30rpx;
 	color: #fff;
 	background-color: #D2BF8E;
 }
@@ -149,7 +153,8 @@
 	font-size: 26rpx;
 	color: #fff;
 	background-color: #B8B8B8;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

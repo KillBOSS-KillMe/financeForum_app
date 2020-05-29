@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.uni-drawer.data-v-6882f03e {
+.uni-drawer.data-v-da1b9c52 {
   display: block;
   position: fixed;
   top: 0;
@@ -34,7 +34,7 @@
   overflow: hidden;
   z-index: 999;
 }
-.uni-drawer__content.data-v-6882f03e {
+.uni-drawer__content.data-v-da1b9c52 {
   display: block;
   position: absolute;
   top: 0;
@@ -46,21 +46,21 @@
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
-.uni-drawer--left.data-v-6882f03e {
+.uni-drawer--left.data-v-da1b9c52 {
   left: 0;
   -webkit-transform: translateX(-220px);
           transform: translateX(-220px);
 }
-.uni-drawer--right.data-v-6882f03e {
+.uni-drawer--right.data-v-da1b9c52 {
   right: 0;
   -webkit-transform: translateX(220px);
           transform: translateX(220px);
 }
-.uni-drawer__content--visible.data-v-6882f03e {
+.uni-drawer__content--visible.data-v-da1b9c52 {
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
 }
-.uni-drawer__mask.data-v-6882f03e {
+.uni-drawer__mask.data-v-da1b9c52 {
   display: block;
   opacity: 0;
   position: absolute;
@@ -72,7 +72,7 @@
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-.uni-drawer__mask--visible.data-v-6882f03e {
+.uni-drawer__mask--visible.data-v-da1b9c52 {
   display: block;
   opacity: 1;
 }

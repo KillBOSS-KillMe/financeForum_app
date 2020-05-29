@@ -12,7 +12,8 @@
 	border: 1rpx solid #ffffff;
 	-webkit-box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228, 228, 228, 0.4);
 	        box-shadow: 0rpx 10rpx 35rpx 0rpx rgba(228, 228, 228, 0.4);
-	border-radius: 14rpx;
+	-webkit-border-radius: 14rpx;
+	        border-radius: 14rpx;
 }
 .cash .cashMoney {
 	font-size: 24rpx;
@@ -85,7 +86,8 @@
 	width: 147rpx;
 	height: 147rpx;
 	background: #eeeeee;
-	border-radius: 14rpx;
+	-webkit-border-radius: 14rpx;
+	        border-radius: 14rpx;
 	overflow: hidden;
 	margin: 10rpx 0;
 }
@@ -105,7 +107,8 @@
 	font-weight: 700;
 	color: #ffffff;
 	border: none;
-	border-radius: 60rpx;
+	-webkit-border-radius: 60rpx;
+	        border-radius: 60rpx;
 	padding: 4rpx 0;
 }
 

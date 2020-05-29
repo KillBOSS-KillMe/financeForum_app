@@ -77,7 +77,8 @@
 .quickInlet .quickItem > image {
 	width: 96rpx;
 	height: 96rpx;
-	border-radius: 96rpx;
+	-webkit-border-radius: 96rpx;
+	        border-radius: 96rpx;
 	margin-right: 20rpx;
 }
 .quickInlet .quickItem text {
@@ -110,7 +111,8 @@
 	color: #999999;
 	font-size: 28rpx;
 	font-size: 600;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .query text {
 	color: #fff;
@@ -120,7 +122,8 @@
 	width: 140rpx;
 	text-align: center;
 	line-height: 70rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .content {
 	width: 750rpx;
@@ -156,7 +159,8 @@
 	border-bottom: 6rpx solid #2390dc;
 	width: 46rpx;
 	margin: 10rpx auto 0;
-	border-radius: 3rpx;
+	-webkit-border-radius: 3rpx;
+	        border-radius: 3rpx;
 }
 .content .contentList {
 	width: 510rpx;
@@ -174,7 +178,8 @@
 .content .contentList .item image {
 	width: 100rpx;
 	height: 100rpx;
-	border-radius: 6rpx;
+	-webkit-border-radius: 6rpx;
+	        border-radius: 6rpx;
 }
 .content .contentList .item .itemRight {
 	/* width: 530rpx; */

@@ -20,7 +20,8 @@
 	color: #999999;
 	font-size: 28rpx;
 	font-size: 600;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .search text {
 	color: #fff;
@@ -30,7 +31,8 @@
 	width: 140rpx;
 	text-align: center;
 	line-height: 70rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .historySearch {
 	width: 690rpx;
@@ -135,7 +137,8 @@
 .result .content .item image {
 	width: 94rpx;
 	height: 94rpx;
-	border-radius: 94rpx;
+	-webkit-border-radius: 94rpx;
+	        border-radius: 94rpx;
 }
 .result .content .item text {
 	/* text-align: center; */

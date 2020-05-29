@@ -18,7 +18,8 @@
 	background: #2390DC;
 	display: inline-block;
 	margin-right: 14rpx;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 }
 .item .itemList view{
 	display: -webkit-box;

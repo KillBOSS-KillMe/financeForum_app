@@ -63,7 +63,8 @@
 .card image{
 	width: 328rpx;
 	height: 221rpx;
-	border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	        border-radius: 10px 10px 10px 10px;
 }
 .meCertification{
 	width: 630rpx;
@@ -72,7 +73,8 @@
 	background: #91c0e1;
 	-webkit-box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
 	        box-shadow: 0rpx 10rpx 45rpx 0rpx rgba(35,144,220,0.6);
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	barder:none;
 	margin-top: 40rpx;
 	color: #fff;
